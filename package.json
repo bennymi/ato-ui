@@ -41,7 +41,7 @@
 		"svelte-headlessui": "^0.0.15",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
-		"unocss": "^0.50.4",
+		"unocss": "^0.50.6",
 		"vite": "^4.0.0"
 	},
 	"svelte": "./dist/index.js",
@@ -51,6 +51,7 @@
 		"@unocss/autocomplete": "^0.50.4",
 		"@unocss/core": "^0.50.4",
 		"@unocss/preset-attributify": "^0.50.4",
-		"@unocss/preset-uno": "^0.50.4"
+		"@unocss/preset-uno": "^0.50.4",
+		"@unocss/reset": "^0.50.6"
 	}
 }

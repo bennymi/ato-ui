@@ -3,6 +3,7 @@ import {
   presetAttributify,
   presetIcons,
   presetUno,
+  presetWind
 } from 'unocss';
 
 import { extractorSvelte } from '@unocss/core';
@@ -18,7 +19,7 @@ const baseColors = {
 }
 
 const colorValues = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
-
+const types = ['shadow', 'text'];
 
 export default defineConfig({
   extractors: [extractorSvelte],
@@ -26,7 +27,7 @@ export default defineConfig({
     ['custom-rule', { color: 'red' }, { autocomplete: 'custom-rule' }],
   ],
   shortcuts: [
-    [new RegExp(`^text-example-(${Object.keys(baseColors).join('|')})-([3-9][0]{2})$`), ([, t, c]) => `text-[var(--${t + '-' + c})]`],
+    [new RegExp(`^(${types.join('|')})-example-(${Object.keys(baseColors).join('|')})-([3-9][0]{2})$`), ([, type, base, value]) => `${type}-[color:var(--color-${base + '-' + value})]`],
     // ['text-example-primary-800', `text-[color:var(--${'primary'}-${800})]`],
     // --> Text Tokens
     // [new RegExp(`^text-(${Object.keys(baseColors).join('|')})-([1-9][0]{2})$`), ([, t, c]) => `text-${baseColors[t]}-${c}`],
@@ -42,5 +43,6 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
+    presetWind()
   ]
 })
