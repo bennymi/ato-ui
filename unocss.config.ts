@@ -19,15 +19,30 @@ const baseColors = {
 }
 
 const colorValues = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
-const types = ['shadow', 'text'];
+const types = ['border', 'shadow', 'text', 'ring'];
 
 export default defineConfig({
   extractors: [extractorSvelte],
+  theme: {
+    colors: {
+      primary: {
+        300: '--color-primary-300',
+        400: '#2DD4BF',
+        500: '#14B8A6',
+        600: '#0891B2',
+        700: 'var(--color-primary-700)',
+        // 700: '#4338CA',
+        800: '#9F1239',
+        900: '#4242ff'
+
+      }
+    }
+  },
   rules: [
     ['custom-rule', { color: 'red' }, { autocomplete: 'custom-rule' }],
   ],
   shortcuts: [
-    [new RegExp(`^(${types.join('|')})-example-(${Object.keys(baseColors).join('|')})-([3-9][0]{2})$`), ([, type, base, value]) => `${type}-[color:var(--color-${base + '-' + value})]`],
+    // [new RegExp(`^(${types.join('|')})-(${Object.keys(baseColors).join('|')})-([3-9][0]{2})$`), ([, type, base, value]) => `${type}-[color:var(--color-${base + '-' + value})]`],
     // ['text-example-primary-800', `text-[color:var(--${'primary'}-${800})]`],
     // --> Text Tokens
     // [new RegExp(`^text-(${Object.keys(baseColors).join('|')})-([1-9][0]{2})$`), ([, t, c]) => `text-${baseColors[t]}-${c}`],
