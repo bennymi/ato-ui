@@ -18,24 +18,29 @@ const baseColors = {
   'surface': 'blue-gray'
 }
 
-const colorValues = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
-const types = ['border', 'shadow', 'text', 'ring'];
+const colorValues = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
+// const types = ['border', 'shadow', 'text', 'ring'];
 
 export default defineConfig({
   extractors: [extractorSvelte],
   theme: {
     colors: {
-      primary: {
-        300: '--color-primary-300',
-        400: '#2DD4BF',
-        500: '#14B8A6',
-        600: '#0891B2',
-        700: 'var(--color-primary-700)',
-        // 700: '#4338CA',
-        800: '#9F1239',
-        900: '#4242ff'
-
-      }
+      primary: Object.fromEntries(colorValues.map(x => [x, `var(--color-primary-${x})`])),
+      secondary: Object.fromEntries(colorValues.map(x => [x, `var(--color-secondary-${x})`])),
+      tertiary: Object.fromEntries(colorValues.map(x => [x, `var(--color-tertiary-${x})`])),
+      success: Object.fromEntries(colorValues.map(x => [x, `var(--color-success-${x})`])),
+      warning: Object.fromEntries(colorValues.map(x => [x, `var(--color-warning-${x})`])),
+      error: Object.fromEntries(colorValues.map(x => [x, `var(--color-error-${x})`])),
+      surface: Object.fromEntries(colorValues.map(x => [x, `var(--color-surface-${x})`])),
+      // primary: {
+      //   300: 'var(--color-primary-300)',
+      //   400: 'var(--color-primary-400)',
+      //   500: 'var(--color-primary-500)',
+      //   600: 'var(--color-primary-600)',
+      //   700: 'var(--color-primary-700)',
+      //   800: 'var(--color-primary-800)',
+      //   900: 'var(--color-primary-900)'
+      // }
     }
   },
   rules: [
