@@ -1,17 +1,3 @@
-/* :root {
-    --color-primary-50: #29FD22;
-    --color-primary-100: #FAE100;
-    --color-primary-200: #867939;
-    --color-primary-300: #FDE047;
-    --color-primary-400: #2DD4BF;
-    --color-primary-500: #14B8A6;
-    --color-primary-600: #0891B2;
-    --color-primary-700: #4338CA;
-    --color-primary-800: #9F1239;
-    --color-primary-900: #18181B;
-} */
-
-
 :root {
 	/* =~= Theme Properties =~= */
 	--theme-font-family-base: system-ui;
@@ -115,5 +101,4 @@
 	--color-surface-700: #11111d;
 	--color-surface-800: #0d0d17;
 	--color-surface-900: #0b0b13;
-	
 }

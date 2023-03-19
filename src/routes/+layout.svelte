@@ -7,6 +7,8 @@
 </script>
 
 <div class:dark>
-	<button on:click={() => (dark = !dark)}>Dark/Light</button>
+	<button class="btn-gradient-b-primary-secondary" on:click={() => (dark = !dark)}
+		>Dark/Light</button
+	>
 	<slot />
 </div>
