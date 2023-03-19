@@ -62,8 +62,6 @@ export default defineConfig({
     [new RegExp(`^ato-text-inverse-(${baseTs})(-[1-9][0]{1,2})?-(${baseTs})(-[1-9][0]{1,2})?$`), ([, b1, v1, b2, v2]) => `text-${b1}${v1 ?? '-500'} dark:text-${b2}${v2 ?? '-500'}`],
 
     // --> Background Tokens
-    [new RegExp(`^bg-(${baseTs})-([1-9][0]{2})$`), ([, t, c]) => `bg-${baseColors[t]}-${c}`],
-
     [new RegExp(`^ato-bg-(${baseTs})-([1-9][0]{1,2})-([1-9][0]{2})$`), ([, b, v1, v2]) => `bg-${b}-${v1} dark:bg-${b}-${v2}`],
   ],
   presets: [
