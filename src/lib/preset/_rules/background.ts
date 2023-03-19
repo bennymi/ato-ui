@@ -23,10 +23,10 @@ export const shortcuts: Shortcut[] = [
 
     // Background Inverse Tokens
     [
-        new RegExp(`^ato-bg-inverse-(${baseTs})(-${colorVs})?-(${baseTs})(-${colorVs})?$`), 
-        ([, b1, v1, b2, v2]) => `bg-${b1}${['white', 'black'].includes(b1) ? '' : v1 ?? '-500'} dark:bg-${b2}${['white', 'black'].includes(b2) ? '' : v2 ?? '-500'}`,
+        new RegExp(`^ato-bg-inverse-(${baseTs})-?(${colorVs})?-(${baseTs})-?(${colorVs})?$`), 
+        ([, b1, v1, b2, v2]) => `bg-${b1}${['white', 'black'].includes(b1) ? '' : v1 ? `-${v1}` : '-500'} dark:bg-${b2}${['white', 'black'].includes(b2) ? '' : v2 ? `-${v2}` : '-500'}`,
         {
-            autocomplete: `ato-bg-inverse-(${baseTs})-(${baseTs})`
+            autocomplete: [`ato-bg-inverse-$colors-(${baseTs})`, `ato-bg-inverse-$colors-(${colorVs})-$colors`, `ato-bg-inverse-$colors-(${colorVs})-$colors-(${colorVs})`]
         }
     ],
 ]

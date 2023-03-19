@@ -7,3 +7,4 @@
 <button class="bg-primary-500/40">Click</button>
 <button class="btn-glass-secondary">Glass Primary</button>
 <button class="btn-gradient-b-primary-secondary">Dark/Light</button>
+<button class="btn-gradient-br-primary-400-secondary-800">Dark/Light</button>

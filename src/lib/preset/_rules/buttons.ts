@@ -39,11 +39,11 @@ export const shortcuts: Shortcut[] = [
             autocomplete: [`btn-gradient-(${dirVs})-(${baseTs})-(${baseTs})`]
         }
     ],
-    // [
-    //     new RegExp(`^btn-gradient-(${dirVs})-(${baseTs})(-${colorVs})?-(${baseTs})(-${colorVs})?$`), 
-    //     ([, dir, b1, v1, b2, v2]) => `${baseStyles} bg-gradient-to-${dir} text-on-${b1} from-${b1}${v1 ?? '-500'} to-${b2}${v2 ?? '-500'} hover:brightness-110`, 
-    //     {
-    //         autocomplete: [`btn-gradient-(${dirVs})-(${baseTs})-(${baseTs})`]
-    //     }
-    // ],
+    [
+        new RegExp(`^btn-gradient-(${dirVs})-(${baseTs})-?(${colorVs})?-(${baseTs})-(${colorVs})?$`), 
+        ([, dir, b1, v1, b2, v2]) => `${baseStyles} bg-gradient-to-${dir} text-on-${b1} from-${b1}${v1 ? `-${v1}` : '-500'} to-${b2}${v2 ? `-${v2}` : '-500'} hover:brightness-110`, 
+        {
+            autocomplete: [`btn-gradient-(${dirVs})-(${baseTs})-(${baseTs})`]
+        }
+    ],
 ]

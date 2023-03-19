@@ -28,6 +28,6 @@ Check out the Contributions guide. Find an open issue you can work on and come d
 The following amazing projects made this library possible and / or heavily inspired features:
 
 - [UnoCSS](https://github.com/unocss/unocss)
-- [Skeleton](https://github.com/skeletonlabs/skeleton)
-- [Tailwind](https://github.com/tailwindlabs/tailwindcss)
 - [HeadlessUI](https://github.com/CaptainCodeman/svelte-headlessui)
+- [Tailwind](https://github.com/tailwindlabs/tailwindcss)
+- [Skeleton](https://github.com/skeletonlabs/skeleton)
