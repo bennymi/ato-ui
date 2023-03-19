@@ -1,4 +1,4 @@
-export const baseTypes = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
+export const baseTypes = ['white', 'black', 'primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
 
 export const baseTs = baseTypes.join('|');
 
