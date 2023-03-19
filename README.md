@@ -16,7 +16,7 @@ Check out the Contributions guide. Find an open issue you can work on and come d
 
 ## 🌸 Credits
 
-The following amazing projects made this library possible and inspired features:
+The following amazing projects made this library possible and / or heavily inspired features:
 
 - [UnoCSS](https://github.com/unocss/unocss)
 - [Skeleton](https://github.com/skeletonlabs/skeleton)
