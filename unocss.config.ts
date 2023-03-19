@@ -18,7 +18,10 @@ const baseColors = {
   'surface': 'blue-gray'
 }
 
+const baseTypes = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
 const colorValues = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
+const baseTs = baseTypes.join('|');
+const colorVs = colorValues.join('|');
 // const types = ['border', 'shadow', 'text', 'ring'];
 
 export default defineConfig({
@@ -54,12 +57,14 @@ export default defineConfig({
     // [new RegExp(`^text-(${Object.keys(baseColors).join('|')})-([1-9][0]{2})(/[1-9][0-9]?|100)?$`), ([, t, c, d]) => `text-${baseColors[t]}-${c}${d ? ' opacity-[' + parseInt(d.substring(1)) / 100 + ']' : ''}`, {autocomplete: [`text-(${Object.keys(baseColors).join('|')})-(${colorValues.join('|')})`]}],
     [new RegExp(`^text-(${Object.keys(baseColors).join('|')})-([1-9][0]{2})(/[1-9][0-9]?|100)?$`), ([, t, c, d]) => `text-${t}-${c}${d ? ' opacity-[' + parseInt(d.substring(1)) / 100 + ']' : ''}`, {autocomplete: [`text-(${Object.keys(baseColors).join('|')})-(${colorValues.join('|')})`]}],
 
-    [new RegExp(`^text-(${Object.keys(baseColors).join('|')})-token-([1-9][0]{2})-([1-9][0]{2})$`), ([, t, p1, p2]) => `text-${t}-${p1} hover:text-${t}-${p2}`],
+    [new RegExp(`^ato-text-(${Object.keys(baseColors).join('|')})-([1-9][0]{1,2})-([1-9][0]{1,2})$`), ([, b, v1, v2]) => `text-${b}-${v1} dark:text-${b}-${v2}`],
+
+    [new RegExp(`^ato-text-inverse-(${baseTs})(-[1-9][0]{1,2})?-(${baseTs})(-[1-9][0]{1,2})?$`), ([, b1, v1, b2, v2]) => `text-${b1}${v1 ?? '-500'} dark:text-${b2}${v2 ?? '-500'}`],
 
     // --> Background Tokens
-    [new RegExp(`^bg-(${Object.keys(baseColors).join('|')})-([1-9][0]{2})$`), ([, t, c]) => `bg-${baseColors[t]}-${c}`],
+    [new RegExp(`^bg-(${baseTs})-([1-9][0]{2})$`), ([, t, c]) => `bg-${baseColors[t]}-${c}`],
 
-    [new RegExp(`^bg-(${Object.keys(baseColors).join('|')})-token-([1-9][0]{2})-([1-9][0]{2})$`), ([, t, p1, p2]) => `bg-${t}-${p1} hover:bg-${t}-${p2}`],
+    [new RegExp(`^ato-bg-(${baseTs})-([1-9][0]{1,2})-([1-9][0]{2})$`), ([, b, v1, v2]) => `bg-${b}-${v1} dark:bg-${b}-${v2}`],
   ],
   presets: [
     presetUno(),

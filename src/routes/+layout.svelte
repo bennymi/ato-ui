@@ -4,4 +4,6 @@
 	import '@unocss/reset/tailwind.css';
 </script>
 
-<slot />
+<div class="dark">
+	<slot />
+</div>
