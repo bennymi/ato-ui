@@ -8,6 +8,8 @@ import {
 
 import { extractorSvelte } from '@unocss/core';
 
+import { presetAtoUI } from './src/lib/preset/index';
+
 const baseColors = {
   'primary': 'light-blue',
   'secondary': 'blue',
@@ -18,7 +20,7 @@ const baseColors = {
   'surface': 'blue-gray'
 }
 
-const baseTypes = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
+const baseTypes = ['white', 'black', 'primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
 const colorValues = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
 const baseTs = baseTypes.join('|');
 const colorVs = colorValues.join('|');
@@ -26,26 +28,17 @@ const colorVs = colorValues.join('|');
 
 export default defineConfig({
   extractors: [extractorSvelte],
-  theme: {
-    colors: {
-      primary: Object.fromEntries(colorValues.map(x => [x, `var(--color-primary-${x})`])),
-      secondary: Object.fromEntries(colorValues.map(x => [x, `var(--color-secondary-${x})`])),
-      tertiary: Object.fromEntries(colorValues.map(x => [x, `var(--color-tertiary-${x})`])),
-      success: Object.fromEntries(colorValues.map(x => [x, `var(--color-success-${x})`])),
-      warning: Object.fromEntries(colorValues.map(x => [x, `var(--color-warning-${x})`])),
-      error: Object.fromEntries(colorValues.map(x => [x, `var(--color-error-${x})`])),
-      surface: Object.fromEntries(colorValues.map(x => [x, `var(--color-surface-${x})`])),
-      // primary: {
-      //   300: 'var(--color-primary-300)',
-      //   400: 'var(--color-primary-400)',
-      //   500: 'var(--color-primary-500)',
-      //   600: 'var(--color-primary-600)',
-      //   700: 'var(--color-primary-700)',
-      //   800: 'var(--color-primary-800)',
-      //   900: 'var(--color-primary-900)'
-      // }
-    }
-  },
+  // theme: {
+  //   colors: {
+  //     primary: Object.fromEntries(colorValues.map(x => [x, `var(--color-primary-${x})`])),
+  //     secondary: Object.fromEntries(colorValues.map(x => [x, `var(--color-secondary-${x})`])),
+  //     tertiary: Object.fromEntries(colorValues.map(x => [x, `var(--color-tertiary-${x})`])),
+  //     success: Object.fromEntries(colorValues.map(x => [x, `var(--color-success-${x})`])),
+  //     warning: Object.fromEntries(colorValues.map(x => [x, `var(--color-warning-${x})`])),
+  //     error: Object.fromEntries(colorValues.map(x => [x, `var(--color-error-${x})`])),
+  //     surface: Object.fromEntries(colorValues.map(x => [x, `var(--color-surface-${x})`])),
+  //   }
+  // },
   rules: [
     ['custom-rule', { color: 'red' }, { autocomplete: 'custom-rule' }],
   ],
@@ -60,13 +53,16 @@ export default defineConfig({
     [new RegExp(`^ato-text-(${Object.keys(baseColors).join('|')})-([1-9][0]{1,2})-([1-9][0]{1,2})$`), ([, b, v1, v2]) => `text-${b}-${v1} dark:text-${b}-${v2}`],
 
     [new RegExp(`^ato-text-inverse-(${baseTs})(-[1-9][0]{1,2})?-(${baseTs})(-[1-9][0]{1,2})?$`), ([, b1, v1, b2, v2]) => `text-${b1}${v1 ?? '-500'} dark:text-${b2}${v2 ?? '-500'}`],
-
+    
     // --> Background Tokens
     [new RegExp(`^ato-bg-(${baseTs})-([1-9][0]{1,2})-([1-9][0]{2})$`), ([, b, v1, v2]) => `bg-${b}-${v1} dark:bg-${b}-${v2}`],
+
+    [new RegExp(`^ato-bg-inverse-(${baseTs})(-[1-9][0]{1,2})?-(${baseTs})(-[1-9][0]{1,2})?$`), ([, b1, v1, b2, v2]) => `bg-${b1}${['white', 'black'].includes(b1) ? '' : v1 ?? '-500'} dark:bg-${b2}${['white', 'black'].includes(b2) ? '' : v2 ?? '-500'}`],
   ],
   presets: [
     presetUno(),
     presetAttributify(),
-    presetWind()
+    presetWind(),
+    presetAtoUI()
   ]
 })
