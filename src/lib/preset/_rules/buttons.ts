@@ -3,7 +3,7 @@ import type { Shortcut } from '@unocss/core';
 import { baseTs, colorVs } from '../../types/colors.d';
 import { dirVs } from '../../types/directions.d';
 
-const baseStyles = 'px-3 py-1 inline-flex justify-center items-center space-x-2 rounded-token-base disabled:(opacity-80 cursor-not-allowed)';
+const baseStyles = 'px-3 py-1 inline-flex justify-center items-center font-medium space-x-2 rounded-token-base disabled:(opacity-80 cursor-not-allowed)';
 
 export const shortcuts: Shortcut[] = [
     // Button regular
@@ -11,7 +11,7 @@ export const shortcuts: Shortcut[] = [
         new RegExp(`^btn-(${baseTs})$`), 
         ([, b]) => `${baseStyles} bg-${b}-500 text-on-${b} hover:bg-${b}-600 disabled:hover:bg-${b}-500`, 
         {
-            autocomplete: [`btn-(${baseTs})`]
+            autocomplete: [`btn-(${baseTs})`, 'btn-primary', 'btn-secondary', 'btn-tertiary']
         }
     ],
     

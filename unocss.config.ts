@@ -1,7 +1,7 @@
 import {
   defineConfig,
   presetAttributify,
-  presetIcons,
+  // presetIcons,
   presetUno,
   presetWind
 } from 'unocss';

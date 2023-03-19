@@ -1,14 +1,23 @@
 # Ato-UI
 
-The ato(mic) UI component library for Svelte and UnoCSS.
+The atomic UI component library for Svelte and UnoCSS.
 
 ## 🚀 Getting Started
 
 Check out the Documentation.
 
-## 🍕 Features
+```shell
+pnpm add -D ato-ui
+```
+
+## ✨ Features
+- ⚛️ Many components (... and many more to come)
+- 🎯 Written in TypeScript
+- 🎪 Interactive documentation
+- 🛰️ Dynamic CSS classes thanks to UnoCSS
 
 ## 👋 Community
+- Discord
 
 ## 🔑 Contributions
 
@@ -21,3 +30,4 @@ The following amazing projects made this library possible and / or heavily inspi
 - [UnoCSS](https://github.com/unocss/unocss)
 - [Skeleton](https://github.com/skeletonlabs/skeleton)
 - [Tailwind](https://github.com/tailwindlabs/tailwindcss)
+- [HeadlessUI](https://github.com/CaptainCodeman/svelte-headlessui)
