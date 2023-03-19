@@ -3,7 +3,7 @@
 
 	$: color = clicked ? '#14B8A6' : '#4338CA';
 
-	$: cssText = `
+	$: rootCSSVariables = `
 :root {
 	--color-primary-700: ${color}
 }
@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	{@html `<style>${cssText}</style>`}
+	{@html `<style>${rootCSSVariables}</style>`}
 </svelte:head>
 
 <h1 class="text-primary-500/88 text-2xl font-bold">Welcome to your library project</h1>
