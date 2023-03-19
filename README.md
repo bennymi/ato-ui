@@ -12,7 +12,7 @@ Check out the Documentation.
 
 ## 🔑 Contributions
 
-Check out the Contributions guide.
+Check out the Contributions guide. Find an open issue you can work on and come discuss it on discord.
 
 ## 🌸 Credits
 
