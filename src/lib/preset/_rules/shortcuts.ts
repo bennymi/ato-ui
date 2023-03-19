@@ -4,6 +4,7 @@ import { shortcuts as backgroundsSC } from './background';
 import { shortcuts as buttonsSC } from './buttons';
 import { shortcuts as cardsSC } from './cards';
 import { shortcuts as chipsSC } from './chips';
+import { shortcuts as roundedSC } from './rounded';
 import { shortcuts as textsSC } from './text';
 
 export const shortcuts: Shortcut[] = [
@@ -11,6 +12,7 @@ export const shortcuts: Shortcut[] = [
     ...buttonsSC,
     ...cardsSC,
     ...chipsSC,
+    ...roundedSC,
     ...textsSC
     // [new RegExp(`^(${types.join('|')})-(${baseTs})-([3-9][0]{2})$`), ([, type, base, value]) => `${type}-[color:var(--color-${base + '-' + value})]`],
     // ['text-example-primary-800', `text-[color:var(--${'primary'}-${800})]`],

@@ -3,6 +3,15 @@ import type { Shortcut } from '@unocss/core';
 import { baseTs, colorVs } from '../../types/colors.d';
 
 export const shortcuts: Shortcut[] = [
+    // Text on base colours
+    [
+        new RegExp(`^text-on-(${baseTs})$`),
+        ([, b]) => `text-[color:var(--on-${b})]`,
+        {
+            autocomplete: `text-on-$colors`
+        }
+    ],
+
     // Text with opacity values
     [
         new RegExp(`^text-(${baseTs})-(${colorVs})(/[1-9][0-9]?|100)?$`), 

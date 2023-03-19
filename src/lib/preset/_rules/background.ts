@@ -3,12 +3,21 @@ import type { Shortcut } from '@unocss/core';
 import { baseTs, colorVs } from '../../types/colors.d';
 
 export const shortcuts: Shortcut[] = [
+    // Opacity
+    // [
+    //     new RegExp(`^bg-(${baseTs})(/[1-9][0-9]?|100)?$`), 
+    //     ([, b, op]) => `bg-${b} ${op ? 'bg-opacity-[' + parseInt(op.substring(1)) / 100 + ']' : ''}`,
+    //     {
+    //         autocomplete: `bg-(${baseTs})`
+    //     }
+    // ],
+
     // Background Tokens
     [
-        new RegExp(`^ato-bg-(${baseTs})-(${colorVs})-([1-9][0]{2})$`), 
+        new RegExp(`^ato-bg-(${baseTs})-(${colorVs})-(${colorVs})$`), 
         ([, b, v1, v2]) => `bg-${b}-${v1} dark:bg-${b}-${v2}`,
         {
-            autocomplete: `ato-bg-(${baseTs})-(${baseTs})`
+            autocomplete: `ato-bg-(${baseTs})-(${colorVs})-(${colorVs})`
         }
     ],
 
