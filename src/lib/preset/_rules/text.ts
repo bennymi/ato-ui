@@ -45,22 +45,15 @@ export const shortcuts: Shortcut[] = [
 
     // Text gradients
     [
-        new RegExp(`^text-gradient-(${directionsJoined})-(${themeColorsJoined})-(${themeColorsJoined})-(${themeColorsJoined})$`), 
-        ([, dir, b1, b2, b3]) => `${gradientClasses} bg-gradient-to-${dir} from-${b1}-500 via-${b2}-500 to-${b3}-500`, 
+        new RegExp(`^text-gradient-(${directionsJoined})-(${themeColorsJoined})-?(${colorValuesJoined})?-(${themeColorsJoined})-?(${colorValuesJoined})?-(${themeColorsJoined})-?(${colorValuesJoined})?$`), 
+        ([, dir, b1, v1, b2, v2, b3, v3]) => `${gradientClasses} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'} via-${b2}-${v2 ?? '500'} to-${b3}-${ v3 ?? '500'}`, 
         {
             autocomplete: [`text-gradient-(${directionsJoined})-(${themeColorsJoined})-(${themeColorsJoined})-(${themeColorsJoined})`]
         }
     ],
     [
-        new RegExp(`^text-gradient-(${directionsJoined})-(${themeColorsJoined})-(${themeColorsJoined})$`), 
-        ([, dir, b1, b2]) => `${gradientClasses} bg-gradient-to-${dir} from-${b1}-500 to-${b2}-500`, 
-        {
-            autocomplete: [`text-gradient-(${directionsJoined})-(${themeColorsJoined})-(${themeColorsJoined})`]
-        }
-    ],
-    [
-        new RegExp(`^text-gradient-(${directionsJoined})-(${themeColorsJoined})-?(${colorValuesJoined})?-(${themeColorsJoined})-(${colorValuesJoined})?$`), 
-        ([, dir, b1, v1, b2, v2]) => `${gradientClasses} bg-gradient-to-${dir} from-${b1}${v1 ? `-${v1}` : '-500'} to-${b2}${v2 ? `-${v2}` : '-500'}`, 
+        new RegExp(`^text-gradient-(${directionsJoined})-(${themeColorsJoined})-?(${colorValuesJoined})?-(${themeColorsJoined})-?(${colorValuesJoined})?$`), 
+        ([, dir, b1, v1, b2, v2]) => `${gradientClasses} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'} to-${b2}-${v2 ?? '500'}`, 
         {
             autocomplete: [`text-gradient-(${directionsJoined})-(${themeColorsJoined})-(${themeColorsJoined})`]
         }
