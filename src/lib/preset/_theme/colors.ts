@@ -12,3 +12,13 @@ export const colors = {
     error: Object.fromEntries(colorValues.map(x => [x, `var(--color-error-${x})`])),
     surface: Object.fromEntries(colorValues.map(x => [x, `var(--color-surface-${x})`]))
 } satisfies Theme['colors']
+
+// export const colors = {
+//     primary: Object.fromEntries(colorValues.map(x => [x, `rgb(var(--color-primary-${x}))`])),
+//     secondary: Object.fromEntries(colorValues.map(x => [x, `rgb(var(--color-secondary-${x}))`])),
+//     tertiary: Object.fromEntries(colorValues.map(x => [x, `rgb(var(--color-tertiary-${x})`])),
+//     success: Object.fromEntries(colorValues.map(x => [x, `rgb(var(--color-success-${x}))`])),
+//     warning: Object.fromEntries(colorValues.map(x => [x, `rgb(var(--color-warning-${x}))`])),
+//     error: Object.fromEntries(colorValues.map(x => [x, `rgb(var(--color-error-${x}))`])),
+//     surface: Object.fromEntries(colorValues.map(x => [x, `rgb(var(--color-surface-${x}))`]))
+// } satisfies Theme['colors']

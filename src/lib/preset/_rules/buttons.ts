@@ -18,7 +18,7 @@ export const shortcuts: Shortcut[] = [
     // Button glass
     [
         new RegExp(`^btn-glass-(${themeColorsJoined})$`), 
-        ([, b]) => `${baseStyles} bg-${b}-500/40 text-on-${b} ring-1 ring-${b}-600 hover:bg-${b}-600 disabled:hover:bg-${b}-500`, 
+        ([, b]) => `${baseStyles} bg-${b}-500/30 text-on-${b} ring-1 ring-${b}-500 hover:bg-${b}-600 disabled:hover:bg-${b}-500`, 
         {
             autocomplete: [`btn-glass-(${themeColorsJoined})`]
         }

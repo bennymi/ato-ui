@@ -10,6 +10,7 @@ specifiers:
   '@unocss/core': ^0.50.6
   '@unocss/preset-attributify': ^0.50.6
   '@unocss/preset-uno': ^0.50.6
+  '@unocss/preset-wind': ^0.50.6
   '@unocss/reset': ^0.50.6
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
@@ -30,6 +31,7 @@ dependencies:
   '@unocss/core': 0.50.6
   '@unocss/preset-attributify': 0.50.6
   '@unocss/preset-uno': 0.50.6
+  '@unocss/preset-wind': 0.50.6
   '@unocss/reset': 0.50.6
 
 devDependencies:

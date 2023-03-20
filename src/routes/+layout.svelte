@@ -1,5 +1,5 @@
 <script>
-	import '$lib/styles/themes/random.css';
+	import '$lib/styles/themes/random2.css';
 	import 'uno.css';
 	import '@unocss/reset/tailwind.css';
 
