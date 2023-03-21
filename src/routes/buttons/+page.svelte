@@ -2,6 +2,7 @@
 	<div class="flex justify-center items-center flex-wrap gap-4">
 		<button class="btn-primary">Dark/Light</button>
 		<button class="btn-gradient-tr-primary-tertiary-secondary">Click</button>
+		<button class="btn-border-surface-800-br-primary-secondary">Gradient border</button>
 		<button class="btn-glass-primary">Glass Primary</button>
 		<button class="btn-glass-secondary border-dashed">Glass Secondary dashed</button>
 		<button class="btn-glass-success border-dotted">Glass Primary Dotted</button>

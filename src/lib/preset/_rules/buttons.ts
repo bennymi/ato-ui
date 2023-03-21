@@ -1,7 +1,7 @@
 import type { Shortcut, Rule } from '@unocss/core';
 
 import { themeColorsJ, colorValuesJ } from '../../types/colors.d';
-import { directionsJ } from '../../types/directions.d';
+import { directions, directionsJ } from '../../types/directions.d';
 
 const sizes: { [key: string]: string } = {
     'sm': 'py-1 px-2 text-sm',
@@ -19,13 +19,27 @@ const glassOp = '30';
 
 const gradientStyles = 'hover:brightness-105';
 
-// TODO: rules for gradient border
 export const buttonRules: Rule[] = [
-
+    // Gradient border
+    [
+        new RegExp(`^border-(${themeColorsJ})-?(${colorValuesJ})?-(${directionsJ})-(${themeColorsJ})-?(${colorValuesJ})?-(${themeColorsJ})-?(${colorValuesJ})?$`),
+        ([, b, vb, dir, c1, v1, c2, v2]) => ({
+            "background": `linear-gradient(to right, rgb(var(--color-${b}-${vb ?? '500'})), rgb(var(--color-${b}-${vb ?? '500'}))), linear-gradient(to ${directions[dir]}, rgb(var(--color-${c1}-${v1 ?? '500'})), rgb(var(--color-${c2}-${v2 ?? '500'})))`,
+            "background-clip": `padding-box, border-box`,
+            "background-origin": `padding-box, border-box`,
+            "border": "3px solid transparent",
+        }),
+        {
+            autocomplete: [
+                `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+                `btn-border-(${themeColorsJ})-(${colorValuesJ})-(${directionsJ})-(${themeColorsJ})-(${colorValuesJ})-(${themeColorsJ})-(${colorValuesJ})`,
+            ]
+        }
+    ]
 ]
 
 export const buttonSCs: Shortcut[] = [
-    // TODO: button size
+    // Button size
     [
         new RegExp(`^btn-(${sizesJ})$`),
         ([, s]) => `${sizes[s]}`,
@@ -42,7 +56,6 @@ export const buttonSCs: Shortcut[] = [
             autocomplete: [`btn-(${themeColorsJ})`, 'btn-primary', 'btn-secondary', 'btn-tertiary']
         }
     ],
-    // TODO: Button outline
     
     // Button glass
     [
@@ -95,7 +108,7 @@ export const buttonSCs: Shortcut[] = [
     ],
     [
         new RegExp(`^btn-gradient-(${directionsJ})-(${themeColorsJ})-?(${colorValuesJ})?-(${themeColorsJ})-(${colorValuesJ})?$`), 
-        ([, dir, b1, v1, b2, v2]) => `${baseStyles} bg-gradient-to-${dir} text-on-${b1} from-${b1}${v1 ? `-${v1}` : '-500'} to-${b2}${v2 ? `-${v2}` : '-500'} ${gradientStyles}`, 
+        ([, dir, b1, v1, b2, v2]) => `${baseStyles} text-on-${b1} bg-gradient-to-${dir} from-${b1}-${v1 ? `${v1}` : '500'} to-${b2}-${v2 ? `${v2}` : '500'} ${gradientStyles}`, 
         {
             autocomplete: [
                 `btn-gradient-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
@@ -103,4 +116,16 @@ export const buttonSCs: Shortcut[] = [
             ]
         }
     ],
+
+    // Button gradient border
+    [
+        new RegExp(`^btn-border-(${themeColorsJ})-?(${colorValuesJ})?-(${directionsJ})-(${themeColorsJ})-?(${colorValuesJ})?-(${themeColorsJ})-?(${colorValuesJ})?$`),
+        ([, b, vb, dir, c1, v1, c2, v2]) => `${baseStyles} text-on-${b} border-${b}${vb ? `-${vb}` : ''}-${dir}-${c1}${v1 ? `-${v1}` : ''}-${c2}${v2 ? `-${v2}` : ''} hover:(bg-gradient-to-${dir} from-${c1}-${v1 ? `${v1}` : '500'} to-${c2}-${v2 ? `${v2}` : '500'})`,
+        {
+            autocomplete: [
+                `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+                `btn-border-(${themeColorsJ})-(${colorValuesJ})-(${directionsJ})-(${themeColorsJ})-(${colorValuesJ})-(${themeColorsJ})-(${colorValuesJ})`,
+            ]
+        }
+    ]
 ]
