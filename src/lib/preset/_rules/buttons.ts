@@ -1,9 +1,18 @@
-import type { Shortcut } from '@unocss/core';
+import type { Shortcut, Rule } from '@unocss/core';
 
 import { allColorsJoined, themeColorsJoined, colorValuesJoined } from '../../types/colors.d';
 import { directionsJoined } from '../../types/directions.d';
 
-const baseStyles = 'px-3 py-1 inline-flex justify-center items-center font-medium space-x-2 rounded-token-base disabled:(opacity-80 cursor-not-allowed)';
+const sizes: { [key: string]: string } = {
+    'sm': 'py-1 px-2 text-sm',
+    'md': 'py-1 px-3',
+    'lg': 'py-2 px-4 text-lg',
+    'xl': 'py-3 px-6 text-xl'
+}
+
+const sizesJ = Object.keys(sizes).join('|')
+
+const baseStyles = `${sizes['md']} inline-flex justify-center items-center font-medium space-x-2 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
 
 const glassStyles = 'border-1';
 const glassOp = '30';
@@ -14,6 +23,13 @@ const gradientStyles = 'hover:brightness-105';
 
 export const shortcuts: Shortcut[] = [
     // TODO: button size
+    [
+        new RegExp(`^btn-(${sizesJ})$`),
+        ([, s]) => `${sizes[s]}`,
+        {
+            autocomplete: `btn-(${sizesJ})`
+        }
+    ],
 
     // Button regular
     [

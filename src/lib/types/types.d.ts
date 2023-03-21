@@ -1,6 +1,7 @@
 import { allColors, themeColors } from './colors.d';
 import { directions } from './directions.d';
 
+export type Size = 'sm' | 'md' | 'lg' | 'xl';
 
 export type ShortcutVariable = 'themeColors' | 'allColors' | 'directions';
 
