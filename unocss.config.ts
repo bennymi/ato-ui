@@ -1,24 +1,28 @@
 import {
   defineConfig,
   presetAttributify,
-  presetIcons,
+  // presetIcons,
   presetUno,
   presetWind
 } from 'unocss';
 
 import { extractorSvelte } from '@unocss/core';
 
-import { presetAtoUI } from './src/lib/preset/index';
+import { colors, presetAtoUI } from './src/lib/preset/index';
 
 export default defineConfig({
   extractors: [extractorSvelte],
-  rules: [
-    ['custom-rule', { color: 'red' }, { autocomplete: 'custom-rule' }],
-  ],
+  theme: {
+    // colors: {
+    //   primary: {
+    //     600: 'var(--color-primary-600)',
+    //   }
+    // }
+  },
   presets: [
     presetUno(),
     presetAttributify(),
-    presetWind(),
+    // presetWind(),
     presetAtoUI()
   ]
 })

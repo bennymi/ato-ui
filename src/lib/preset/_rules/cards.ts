@@ -1,5 +1,5 @@
 import type { Shortcut } from '@unocss/core';
 
-import { baseTs, colorVs } from '../../types/colors.d';
+// import { allColorsJoined, themeColorsJoined, colorValuesJoined } from '../../types/colors.d';
 
-export const shortcuts: Shortcut[] = []
+export const cardSCs: Shortcut[] = []

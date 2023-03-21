@@ -4,11 +4,11 @@ import type { Theme } from "@unocss/preset-uno"
 import { colorValues } from "../../types/colors.d"
 
 export const colors = {
-    primary: Object.fromEntries(colorValues.map(x => [x, `var(--color-primary-${x})`])),
-    secondary: Object.fromEntries(colorValues.map(x => [x, `var(--color-secondary-${x})`])),
-    tertiary: Object.fromEntries(colorValues.map(x => [x, `var(--color-tertiary-${x})`])),
-    success: Object.fromEntries(colorValues.map(x => [x, `var(--color-success-${x})`])),
-    warning: Object.fromEntries(colorValues.map(x => [x, `var(--color-warning-${x})`])),
-    error: Object.fromEntries(colorValues.map(x => [x, `var(--color-error-${x})`])),
-    surface: Object.fromEntries(colorValues.map(x => [x, `var(--color-surface-${x})`]))
+    primary: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-primary-${x}), %alpha)`])),
+    secondary: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-secondary-${x}), %alpha)`])),
+    tertiary: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-tertiary-${x}), %alpha)`])),
+    success: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-success-${x}), %alpha)`])),
+    warning: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-warning-${x}), %alpha))`])),
+    error: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-error-${x}), %alpha)`])),
+    surface: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-surface-${x}), %alpha)`]))
 } satisfies Theme['colors']

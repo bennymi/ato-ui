@@ -1,7 +1,7 @@
 import type { Shortcut } from '@unocss/core';
 
 
-export const shortcuts: Shortcut[] = [
+export const roundedSCs: Shortcut[] = [
     // rounded regular
     [
         `rounded-token-base`, 
