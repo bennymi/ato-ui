@@ -13,11 +13,11 @@ import { colors, presetAtoUI } from './src/lib/preset/index';
 export default defineConfig({
   extractors: [extractorSvelte],
   theme: {
-    colors: {
-      primary: {
-        600: 'var(--color-primary-600)',
-      }
-    }
+    // colors: {
+    //   primary: {
+    //     600: 'var(--color-primary-600)',
+    //   }
+    // }
   },
   presets: [
     presetUno(),

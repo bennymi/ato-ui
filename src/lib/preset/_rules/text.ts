@@ -9,7 +9,7 @@ export const shortcuts: Shortcut[] = [
     // Text on base colours
     [
         new RegExp(`^text-on-(${themeColorsJoined})$`),
-        ([, b]) => `text-[color:var(--on-${b})]`,
+        ([, b]) => `text-[color:rgb(var(--on-${b}))]`,
         {
             autocomplete: `text-on-$colors`
         }
