@@ -1,4 +1,4 @@
-export const themeColors = ['white', 'black', 'primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
+export const themeColors = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
 
 export const allColors = ['white', 'black', 'primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'surface'];
 

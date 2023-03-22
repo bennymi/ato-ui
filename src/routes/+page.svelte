@@ -1,6 +1,4 @@
-<div
-	class="flex flex-col justify-center items-center min-h-screen ato-bg-inverse-white-surface ato-text-surface-900-50"
->
+<div class="flex flex-col justify-center items-center min-h-screen ato-text-surface-900-50">
 	<!-- <div
 	class="flex flex-col justify-center items-center min-h-screen ato-bg-inverse-white-surface-900 ato-text-surface-900-50"
 > -->

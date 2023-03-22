@@ -1,11 +1,12 @@
-<div class="flex justify-center items-center min-h-screen ato-bg-inverse-white-surface px-1/6">
+<div class="flex justify-center items-center min-h-screen px-1/6">
 	<div class="flex justify-center items-center flex-wrap gap-4">
 		<button class="btn-primary">Dark/Light</button>
 		<button class="btn-gradient-tr-primary-tertiary-secondary">Click</button>
 		<button class="btn-border-surface-800-br-primary-secondary">Gradient border</button>
 		<button class="btn-glass-primary">Glass Primary</button>
 		<button class="btn-glass-secondary border-dashed">Glass Secondary dashed</button>
-		<button class="btn-glass-success border-dotted">Glass Primary Dotted</button>
+		<button class="btn-glass-success border-dotted">Glass Success Dotted</button>
+		<button class="btn-glass-warning border-dotted">Glass Warning Dotted</button>
 		<button class="btn-glass-secondary" disabled>Glass Disabled</button>
 		<button class="btn-glass-tl-tertiary-primary">Glass Gradient</button>
 		<button class="btn-glass-tl-tertiary-primary-secondary">Glass 3 Gradient</button>

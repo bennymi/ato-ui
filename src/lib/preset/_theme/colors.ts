@@ -8,7 +8,7 @@ export const colors = {
     secondary: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-secondary-${x}), %alpha)`])),
     tertiary: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-tertiary-${x}), %alpha)`])),
     success: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-success-${x}), %alpha)`])),
-    warning: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-warning-${x}), %alpha))`])),
+    warning: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-warning-${x}), %alpha)`])),
     error: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-error-${x}), %alpha)`])),
     surface: Object.fromEntries(colorValues.map(x => [x, `rgba(var(--color-surface-${x}), %alpha)`]))
 } satisfies Theme['colors']
