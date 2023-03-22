@@ -69,8 +69,8 @@ export const buttonSCs: Shortcut[] = [
         new RegExp(`^btn-glass-(${directionsJ})-(${themeColorsJ})-?(${colorValuesJ})?-(${themeColorsJ})-?(${colorValuesJ})?$`), 
         ([, dir, b1, v1, b2, v2]) => 
             `${baseStyles} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'}/${glassOp} to-${b2}-${v2 ?? '500'}/${glassOp} 
-            text-on-${b1} ${glassStyles} border-${b1}-${v1 ?? '500'} 
-            hover:(from-${b1}-${v1 ?? '500'} to-${b2}-${v2 ?? '500'}) 
+            text-${b1}-${v1 ?? '500'} ${glassStyles} border-${b1}-${v1 ?? '500'} 
+            hover:(from-${b1}-${v1 ?? '500'} to-${b2}-${v2 ?? '500'} text-on-${b1}) 
             disabled:hover:(from-${b1}-${v1 ?? '500'}/${glassOp} to-${b2}-${v2 ?? '500'}/${glassOp})`, 
         {
             autocomplete: [`btn-glass-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`, `btn-glass-(${directionsJ})-(${themeColorsJ})-(${colorValuesJ})-(${themeColorsJ})-(${colorValuesJ})`]
@@ -80,8 +80,8 @@ export const buttonSCs: Shortcut[] = [
         new RegExp(`^btn-glass-(${directionsJ})-(${themeColorsJ})-?(${colorValuesJ})?-(${themeColorsJ})-?(${colorValuesJ})?-(${themeColorsJ})-?(${colorValuesJ})?$`), 
         ([, dir, b1, v1, b2, v2, b3, v3]) => 
             `${baseStyles} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'}/${glassOp} via-${b2}-${v2 ?? '500'}/${glassOp} to-${b3}-${v3 ?? '500'}/${glassOp}
-            text-on-${b1} ${glassStyles} border-${b1}-${v1 ?? '500'} 
-            hover:(from-${b1}-${v1 ?? '500'} via-${b2}-${v2 ?? '500'} to-${b3}-${v3 ?? '500'}) 
+            text-${b1}-${v1 ?? '500'} ${glassStyles} border-${b1}-${v1 ?? '500'} 
+            hover:(from-${b1}-${v1 ?? '500'} via-${b2}-${v2 ?? '500'} to-${b3}-${v3 ?? '500'} text-on-${b1}) 
             disabled:hover:(from-${b1}-${v1 ?? '500'}/${glassOp} via-${b2}-${v2 ?? '500'}/${glassOp} to-${b3}-${v3 ?? '500'}/${glassOp})`, 
         {
             autocomplete: [
