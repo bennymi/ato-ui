@@ -1,10 +1,10 @@
 // Reference: https://github.com/unocss/unocss/blob/main/packages/preset-wind/src/index.ts
 
 import type { Preset } from '@unocss/core';
-import { presetWind } from '@unocss/preset-wind';
+// import { presetWind } from '@unocss/preset-wind';
 
 import { colors } from './_theme/colors';
-import { rules, shortcuts } from './_rules/index';
+import { animation, rules, shortcuts } from './_rules/index';
 
 export { colors } from './_theme/colors';
 
@@ -13,6 +13,7 @@ export const presetAtoUI = (): Preset => {
         name: 'presetAtoUI',
         theme: {
             colors,
+            animation
         },
         rules,
         shortcuts
