@@ -1,5 +1,6 @@
 import type { Rule, Shortcut } from '@unocss/core';
 
+import { directionsJ } from '../../types/directions.d';
 import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
 
 export const backgroundRules: Rule[] = [
@@ -58,6 +59,25 @@ export const backgroundSCs: Shortcut[] = [
                 `ato-bg-inverse-$colors-(${allColorsJ})`, 
                 `ato-bg-inverse-$colors-(${shadesJ})-$colors`, 
                 `ato-bg-inverse-$colors-(${shadesJ})-$colors-(${shadesJ})`
+            ]
+        }
+    ],
+
+    // Background gradients
+    [
+        new RegExp(`^bg-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
+        ([, dir, c1, s1, c2, s2, c3, s3]) => `bg-gradient-to-${dir} from-${c1}-${s1 ?? '500'} via-${c2}-${s2 ?? '500'} to-${c3}-${s3 ?? '500'}`, 
+        {
+            autocomplete: [`bg-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`]
+        }
+    ],
+    [
+        new RegExp(`^bg-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
+        ([, dir, c1, s1, c2, s2]) => `bg-gradient-to-${dir} from-${c1}-${s1 ?? '500'} to-${c2}-${s2 ?? '500'}`, 
+        {
+            autocomplete: [
+                `bg-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+                `bg-(${directionsJ})-${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
             ]
         }
     ],

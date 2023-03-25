@@ -2,8 +2,9 @@
 	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap mx-1/3">
 		<!-- Regular circle -->
 		<span class="s-circle-primary" />
-		<span class="s-circle-secondary border-dotted border-4" />
-		<span class="s-circle-tertiary-800 border-dashed border-4" />
+		<span class="s-circle-secondary border-dotted border-10" />
+		<span class="s-circle-tertiary-800 border-dashed border-6" />
+		<span class="s-circle-tertiary-800 border-dashed w-8 h-8" />
 		<!-- Hovering squares -->
 		<span class="s-squares-hover-primary-secondary-tertiary" />
 		<span
@@ -19,6 +20,7 @@
 		<span class="s-corners-primary" />
 		<span class="s-corners-outline-tertiary" />
 		<span class="s-corners-outline-secondary" />
+		<span class="s-corners-outline-secondary border-primary-bl-secondary-tertiary-primary" />
 		<!-- Squares folding -->
 		<span class="s-squares-folding-primary" />
 		<span class="s-squares-folding-secondary" />

@@ -2,7 +2,7 @@ import type { Theme } from "@unocss/preset-wind";
 
 export const animation = {
     keyframes: {
-        'rotate360': '{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}',
+        rotate360: '{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}',
         layers1: "{0% {box-shadow: 0px 0px 0 0px} 90%, 100% {box-shadow: 20px 20px 0 -4px}}",
         layerTr: "{0% {transform: translate(0, 0) scale(1)} 100% {transform: translate(-25px, -25px) scale(1)}}",
         flipXY: `{0% {transform: perspective(200px) rotateX(0deg) rotateY(0deg)} 50% {transform: perspective(200px) rotateX(-180deg) rotateY(0deg)} 100% {transform: perspective(200px) rotateX(-180deg) rotateY(-180deg)}}`,
@@ -27,7 +27,7 @@ export const animation = {
         }`,
     },
     counts: {
-        'rotate360': 'infinite',
+        rotate360: 'infinite',
         layers1: 'infinite',
         layerTr: 'infinite',
         flipXY: 'infinite',
@@ -42,7 +42,7 @@ export const animation = {
         foldingSquares2: 'ease,'
     },
     durations: {
-        'rotate360': '1s',
+        rotate360: '1.1s',
         layers1: '1s',
         layerTr: '1s',
         flipXY: '1.2s',
