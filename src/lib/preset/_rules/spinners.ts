@@ -1,3 +1,8 @@
+/*
+    Source of spinners: https://cssloaders.github.io/
+    Sliding bars: https://codepen.io/havardob/pen/VjjJey/
+*/
+
 import type { Rule, Shortcut } from '@unocss/core';
 
 import { directionsJ } from '../../types/directions.d';
@@ -28,6 +33,18 @@ export const spinnerRules: Rule[] = [
 ];
 
 export const spinnerSCs: Shortcut[] = [
+    // Regular spinner
+    [
+        new RegExp(`^s-circle-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c, s]) => `inline-block w-12 h-12 border-2 border-solid border-${c}-${s ?? '500'} border-b-transparent box-border rounded-full animate-rotate360`,
+        {
+            autocomplete: [
+                `s-circle-(${themeColorsJ})`,
+                `s-circle-(${themeColorsJ})-(${shadesJ})`
+            ]
+        }
+    ],
+
     // Hovering squares
     [
         new RegExp(`^s-squares-hover-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
@@ -125,18 +142,4 @@ export const spinnerSCs: Shortcut[] = [
             ]
         }
     ],
-    // [
-    //     new RegExp(`^s-squares-folding-(${themeColorsJ})-?(${shadesJ})?$`),
-    //     ([_, c, s]) => `
-    //         inline-block relative w-12 h-12 rotate-45 bg-${c}-${s ?? '500'}/80
-    //         before:(content-none box-border w-6 h-6 absolute left-0 -top-6 animate-foldingSquares1)
-    //         after:(content-none box-border w-6 h-6 left-0 top-0 shadow-md bg-transparent animate-foldingSquares2)
-    //     `,
-    //     {
-    //         autocomplete: [
-    //             `s-squares-folding-(${themeColorsJ})`,
-    //             `s-squares-folding-(${themeColorsJ})-(${shadesJ})`
-    //         ]
-    //     }
-    // ],
 ];

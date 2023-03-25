@@ -1,5 +1,9 @@
 <div class="min-h-screen flex justify-center items-center">
 	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap mx-1/3">
+		<!-- Regular circle -->
+		<span class="s-circle-primary" />
+		<span class="s-circle-secondary border-dotted border-4" />
+		<span class="s-circle-tertiary-800 border-dashed border-4" />
 		<!-- Hovering squares -->
 		<span class="s-squares-hover-primary-secondary-tertiary" />
 		<span

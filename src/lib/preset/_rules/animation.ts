@@ -2,6 +2,7 @@ import type { Theme } from "@unocss/preset-wind";
 
 export const animation = {
     keyframes: {
+        'rotate360': '{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}',
         layers1: "{0% {box-shadow: 0px 0px 0 0px} 90%, 100% {box-shadow: 20px 20px 0 -4px}}",
         layerTr: "{0% {transform: translate(0, 0) scale(1)} 100% {transform: translate(-25px, -25px) scale(1)}}",
         flipXY: `{0% {transform: perspective(200px) rotateX(0deg) rotateY(0deg)} 50% {transform: perspective(200px) rotateX(-180deg) rotateY(0deg)} 100% {transform: perspective(200px) rotateX(-180deg) rotateY(-180deg)}}`,
@@ -17,17 +18,6 @@ export const animation = {
             87.5% {border-radius: 50% 50% 50% 0; transform: rotate(315deg);}
             100% {border-radius: 50%; transform: rotate(360deg);}
         }`,
-        // foldingSquares1: `{
-        //     0% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
-        //     12% {box-shadow: 0 24px white, 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
-        //     25% {box-shadow: 0 24px white, 24px 24px white, 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
-        //     37% {box-shadow: 0 24px white, 24px 24px white, 24px 48px white, 0px 48px rgba(255, 255, 255, 0);}
-        //     50% {box-shadow: 0 24px white, 24px 24px white, 24px 48px white, 0px 48px white;}
-        //     62% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px white, 24px 48px white, 0px 48px white;}
-        //     75% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px white, 0px 48px white;}
-        //     87% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px white;}
-        //     100% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
-        // }`,
         foldingSquares2: `{
             0% {transform: translate(0, 0) rotateX(0) rotateY(0);}
             25% {transform: translate(100%, 0) rotateX(0) rotateY(180deg);}
@@ -37,6 +27,7 @@ export const animation = {
         }`,
     },
     counts: {
+        'rotate360': 'infinite',
         layers1: 'infinite',
         layerTr: 'infinite',
         flipXY: 'infinite',
@@ -51,6 +42,7 @@ export const animation = {
         foldingSquares2: 'ease,'
     },
     durations: {
+        'rotate360': '1s',
         layers1: '1s',
         layerTr: '1s',
         flipXY: '1.2s',
