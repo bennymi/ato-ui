@@ -70,4 +70,26 @@ export const spinnerSCs: Shortcut[] = [
             ]
         }
     ],
+
+    // Shape shifting square
+    [
+        new RegExp(`^s-corners-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c, s]) => `relative w-12 h-12 bg-${c}-${s ?? '500'} animate-squareShapeShift`,
+        {
+            autocomplete: [
+                `s-squares-flip-(${themeColorsJ})`,
+                `s-squares-flip-(${themeColorsJ})-(${shadesJ})`
+            ]
+        }
+    ],
+    [
+        new RegExp(`^s-corners-outline-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c, s]) => `relative w-12 h-12 border-4 border-${c}-${s ?? '500'} animate-squareShapeShift`,
+        {
+            autocomplete: [
+                `s-squares-flip-(${themeColorsJ})`,
+                `s-squares-flip-(${themeColorsJ})-(${shadesJ})`
+            ]
+        }
+    ],
 ];
