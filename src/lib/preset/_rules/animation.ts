@@ -17,6 +17,24 @@ export const animation = {
             87.5% {border-radius: 50% 50% 50% 0; transform: rotate(315deg);}
             100% {border-radius: 50%; transform: rotate(360deg);}
         }`,
+        // foldingSquares1: `{
+        //     0% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+        //     12% {box-shadow: 0 24px white, 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+        //     25% {box-shadow: 0 24px white, 24px 24px white, 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+        //     37% {box-shadow: 0 24px white, 24px 24px white, 24px 48px white, 0px 48px rgba(255, 255, 255, 0);}
+        //     50% {box-shadow: 0 24px white, 24px 24px white, 24px 48px white, 0px 48px white;}
+        //     62% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px white, 24px 48px white, 0px 48px white;}
+        //     75% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px white, 0px 48px white;}
+        //     87% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px white;}
+        //     100% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+        // }`,
+        foldingSquares2: `{
+            0% {transform: translate(0, 0) rotateX(0) rotateY(0);}
+            25% {transform: translate(100%, 0) rotateX(0) rotateY(180deg);}
+            50% {transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);}
+            75% {transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);}
+            100% {transform: translate(0, 0) rotateX(0) rotateY(360deg);}
+        }`,
     },
     counts: {
         layers1: 'infinite',
@@ -24,9 +42,13 @@ export const animation = {
         flipXY: 'infinite',
         barSlide: 'infinite',
         squareShapeShift: 'infinite',
+        foldingSquares1: 'infinite',
+        foldingSquares2: 'infinite',
     },
     timingFns: {
-        barSlide: 'ease-in-out'
+        barSlide: 'ease-in-out',
+        foldingSquares: 'ease',
+        foldingSquares2: 'ease,'
     },
     durations: {
         layers1: '1s',
@@ -34,5 +56,7 @@ export const animation = {
         flipXY: '1.2s',
         barSlide: '1.8s',
         squareShapeShift: '2s',
+        foldingSquares1: '4s',
+        foldingSquares2: '2s',
     }
 } satisfies Theme['animation'];

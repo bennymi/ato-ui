@@ -7,12 +7,13 @@ import { buttonRules, buttonSCs } from './buttons';
 import { cardSCs } from './cards';
 import { chipSCs } from './chips';
 import { roundedSCs } from './rounded';
-import { spinnerSCs } from './spinners';
+import { spinnerRules, spinnerSCs } from './spinners';
 import { textSCs } from './text';
 
 export const rules: Rule[] = [
     ...backgroundRules,
     ...buttonRules,
+    ...spinnerRules,
 ];
 
 export const shortcuts: Shortcut[] = [

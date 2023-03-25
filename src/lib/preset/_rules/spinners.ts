@@ -1,4 +1,4 @@
-import type { Shortcut } from '@unocss/core';
+import type { Rule, Shortcut } from '@unocss/core';
 
 import { directionsJ } from '../../types/directions.d';
 import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
@@ -9,6 +9,23 @@ const sqFlipBase = 'w-12 h-12 inline-block relative  box-border animate-flipXY';
 
 const barSlideBase = 'h-2.5 animate-barSlide';
 const barSlideBeforeAfter = 'absolute block content-none animate-barSlide h-2.5';
+
+export const spinnerRules: Rule[] = [
+    [
+        new RegExp(`^folding-squares-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c, s], { constructCSS }) => `@keyframes foldingSquares1-${c}-${s ?? '500'} {
+            0% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+            12% {box-shadow: 0 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+            25% {box-shadow: 0 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+            37% {box-shadow: 0 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 48px rgb(var(--color-${c}-${s ?? '500'})), 0px 48px rgba(255, 255, 255, 0);}
+            50% {box-shadow: 0 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 48px rgb(var(--color-${c}-${s ?? '500'})), 0px 48px rgb(var(--color-${c}-${s ?? '500'}));}
+            62% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgb(var(--color-${c}-${s ?? '500'})), 24px 48px rgb(var(--color-${c}-${s ?? '500'})), 0px 48px rgb(var(--color-${c}-${s ?? '500'}));}
+            75% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgb(var(--color-${c}-${s ?? '500'})), 0px 48px rgb(var(--color-${c}-${s ?? '500'}));}
+            87% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgb(var(--color-${c}-${s ?? '500'}));}
+            100% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
+        }\n ${constructCSS({ animation: `foldingSquares1-${c}-${s ?? '500'} 4s ease infinite` })}`
+    ]
+];
 
 export const spinnerSCs: Shortcut[] = [
     // Hovering squares
@@ -77,8 +94,8 @@ export const spinnerSCs: Shortcut[] = [
         ([_, c, s]) => `relative w-12 h-12 bg-${c}-${s ?? '500'} animate-squareShapeShift`,
         {
             autocomplete: [
-                `s-squares-flip-(${themeColorsJ})`,
-                `s-squares-flip-(${themeColorsJ})-(${shadesJ})`
+                `s-corners-(${themeColorsJ})`,
+                `s-corners-(${themeColorsJ})-(${shadesJ})`
             ]
         }
     ],
@@ -87,9 +104,39 @@ export const spinnerSCs: Shortcut[] = [
         ([_, c, s]) => `relative w-12 h-12 border-4 border-${c}-${s ?? '500'} animate-squareShapeShift`,
         {
             autocomplete: [
-                `s-squares-flip-(${themeColorsJ})`,
-                `s-squares-flip-(${themeColorsJ})-(${shadesJ})`
+                `s-corners-outline-(${themeColorsJ})`,
+                `s-corners-outline-(${themeColorsJ})-(${shadesJ})`
             ]
         }
     ],
+
+    // Folding squares
+    [
+        new RegExp(`^s-squares-folding-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c, s]) => `
+            inline-block relative w-12 h-12 rotate-45
+            before:(content-none box-border w-6 h-6 absolute left-0 -top-6 folding-squares-${c}-${s ?? '500'})
+            after:(content-none box-border w-6 h-6 absolute left-0 top-0 shadow-md animate-foldingSquares2)
+        `,
+        {
+            autocomplete: [
+                `s-squares-folding-(${themeColorsJ})`,
+                `s-squares-folding-(${themeColorsJ})-(${shadesJ})`
+            ]
+        }
+    ],
+    // [
+    //     new RegExp(`^s-squares-folding-(${themeColorsJ})-?(${shadesJ})?$`),
+    //     ([_, c, s]) => `
+    //         inline-block relative w-12 h-12 rotate-45 bg-${c}-${s ?? '500'}/80
+    //         before:(content-none box-border w-6 h-6 absolute left-0 -top-6 animate-foldingSquares1)
+    //         after:(content-none box-border w-6 h-6 left-0 top-0 shadow-md bg-transparent animate-foldingSquares2)
+    //     `,
+    //     {
+    //         autocomplete: [
+    //             `s-squares-folding-(${themeColorsJ})`,
+    //             `s-squares-folding-(${themeColorsJ})-(${shadesJ})`
+    //         ]
+    //     }
+    // ],
 ];
