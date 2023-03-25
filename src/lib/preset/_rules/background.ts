@@ -1,6 +1,34 @@
-import type { Shortcut } from '@unocss/core';
+import type { Rule, Shortcut } from '@unocss/core';
 
 import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
+
+export const backgroundRules: Rule[] = [
+    // Radial background gradients
+    [
+        new RegExp(`^bg-radial-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c1, s1, c2, s2]) => ({
+          "background": `radial-gradient(rgb(var(--color-${c1}-${s1 ?? '500'})), rgb(var(--color-${c2}-${s2 ?? '500'})))`
+        }),
+        {
+            autocomplete: [
+                `bg-radial-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
+                `bg-radial-(${themeColorsJ})-(${themeColorsJ})`
+            ]
+        }
+    ],
+    [
+        new RegExp(`^bg-radial-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c1, s1, c2, s2, c3, s3]) => ({
+          "background": `radial-gradient(rgb(var(--color-${c1}-${s1 ?? '500'})), rgb(var(--color-${c2}-${s2 ?? '500'})), rgb(var(--color-${c3}-${s3 ?? '500'})))`
+        }),
+        {
+            autocomplete: [
+                `bg-radial-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
+                `bg-radial-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
+            ]
+        }
+    ]
+];
 
 export const backgroundSCs: Shortcut[] = [
     // Opacity
