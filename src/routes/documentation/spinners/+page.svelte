@@ -27,6 +27,7 @@
 		<span class="s-squares-folding-secondary" />
 		<span class="s-squares-folding-tertiary-700" />
 		<!-- 2 Squares rotating -->
+		<span class="s-squares-rotate-primary" />
 		<span class="s-squares-rotate-primary-secondary" />
 		<span class="s-squares-rotate-tertiary-600-primary-300" />
 	</div>

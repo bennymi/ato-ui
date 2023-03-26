@@ -7,6 +7,7 @@ import type { Rule, Shortcut } from '@unocss/core';
 
 import { directionsJ } from '../../types/directions.d';
 import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
+import type { RulesDescription } from '../../types/types.d';
 
 const sqHoverBase = 'relative w-12 h-12 rotate-x-65 rotate-z-45 animate-layers1 animate-alternate after:(content-none absolute inset-0 animate-layerTr animate-alternate animate-delay-500)';
 
@@ -157,6 +158,19 @@ export const spinnerSCs: Shortcut[] = [
 
     // 2 Rotating squares
     [
+        new RegExp(`^s-squares-rotate-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c1, s1]) => `
+            w-12 h-12 relative inline-block 
+            before:(${rotSquaresBeforeAfter} border-${c1}-${s1 ?? '500'})
+            after:(${rotSquaresBeforeAfter} border-${c1}-${s1 ?? '500'} animate-reverse)`,
+        {
+            autocomplete: [
+                `s-squares-rotate-(${themeColorsJ})`,
+                `s-squares-rotate-(${themeColorsJ})-(${shadesJ})`
+            ]
+        }
+    ],
+    [
         new RegExp(`^s-squares-rotate-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
         ([_, c1, s1, c2, s2]) => `
             w-12 h-12 relative inline-block 
@@ -169,4 +183,106 @@ export const spinnerSCs: Shortcut[] = [
             ]
         }
     ],
+];
+
+export const spinnersDescriptions: RulesDescription[] = [
+    {
+        rule: 's-circle-(themeColors)-(shades)',
+        description: `Inserts a circle spinner. The shade value is optional and 500 is used by default. You can increase the border width with 'border-4' for example and change the border style to dotted or dashed with 'border-dotted' and 'border-dashed' respectively.`,
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-circle-primary', 's-circle-tertiary-600']
+    },
+    {
+        rule: 's-circle-split-(themeColors)-(shades)',
+        description: `Inserts a circle spinner with two separate quarter circles. The shade value is optional and 500 is used by default. You can increase the border width with 'border-4' for example and change the border style to dotted or dashed with 'border-dotted' and 'border-dashed' respectively.`,
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-circle-split-primary', 's-circle-split-tertiary-600']
+    },
+    {
+        rule: 's-squares-hover-(themeColors)-(shades)-(themeColors)-(shades)-(themeColors)-(shades)',
+        description: 'Inserts a spinner with 3 hovering squares. You can control the color of each square with the 3 theme color values (starting from the lowest square). The shade values are optional and 500 is the default.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: [
+            's-squares-hover-primary-secondary-tertiary',
+            's-squares-hover-tertiary-secondary-primary dark:s-squares-hover-tertiary-secondary-primary-200 rounded-xl after:rounded-xl'
+        ]
+    },
+    {
+        rule: 's-squares-flip-(themeColors)-(shades)',
+        description: 'Inserts a spinner with a flipping square. You can control the color of the square with the theme color value. The shade is optional and 500 is the default.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-squares-flip-primary']
+    },
+    {
+        rule: 's-squares-flip-(themeColors)-(shades)-(themeColors)-(shades)',
+        description: 'Inserts a spinner with a flipping square and a radial color gradient of the 2 specified colors. The shades are optional.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-squares-flip-primary-secondary']
+    },
+    {
+        rule: 's-squares-flip-(themeColors)-(shades)-(themeColors)-(shades)-(themeColors)-(shades)',
+        description: 'Inserts a spinner with a flipping square and a radial color gradient of the 3 specified colors. The shades are optional.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-squares-flip-primary-secondary-tertiary']
+    },
+    {
+        rule: 's-bars-(themeColors)-(shades)-(themeColors)-(shades)-(themeColors)-(shades)',
+        description: 'Inserts a spinner with 3 bars flying left to right. You can specify the colors of all three bars. The shades are optional.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-bars-primary-secondary-success']
+    },
+    {
+        rule: 's-corners-(themeColors)-(shades)',
+        description: 'Inserts a spinner with a shape shifting square. You can control the color of the square with the theme color value. The shade is optional and 500 is the default.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-corners-primary']
+    },
+    {
+        rule: 's-corners-outline-(themeColors)-(shades)',
+        description: 'Inserts a spinner with a shape shifting square outline. You can control the color of the outline with the theme color value. The shade is optional and 500 is the default.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-corners-primary']
+    },
+    {
+        rule: 's-squares-folding-(themeColors)-(shades)',
+        description: 'Inserts a spinner with a square that folds and expands. You can control the color of the squares with the theme color value. The shade is optional and 500 is the default.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-squares-folding-primary']
+    },
+    {
+        rule: 's-squares-rotate-(themeColors)-(shades)',
+        description: 'Inserts a spinner with 2 squares that rotate around each other. You can control the color of the squares with the theme color value. The shade is optional and 500 is the default.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-squares-rotate-primary']
+    },
+    {
+        rule: 's-squares-rotate-(themeColors)-(shades)-(themeColors)-(shades)',
+        description: 'Inserts a spinner with 2 squares that rotate around each other. You can control the color of the squares with the 2 theme color values. The shade is optional and 500 is the default.',
+        keywords: ['spinners'],
+        variablesUsed: ['themeColors', 'shades'],
+        classes: [],
+        examples: ['s-squares-rotate-primary-secondary-300']
+    },
 ];
