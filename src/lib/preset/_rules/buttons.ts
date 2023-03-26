@@ -14,32 +14,32 @@ const gradientStyles = 'hover:brightness-105';
 export const buttonRules: Rule[] = [
     // Gradient border
     [
-        new RegExp(`^border-(${themeColorsJ})-?(${shadesJ})?-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
+        new RegExp(`^border-?(${themeColorsJ})?-?(${shadesJ})?-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
         ([, b, bs, dir, c1, s1, c2, s2, c3, s3]) => ({
-            "background": `linear-gradient(to right, rgb(var(--color-${b}-${bs ?? '500'})), rgb(var(--color-${b}-${bs ?? '500'}))), linear-gradient(to ${directions[dir]}, rgb(var(--color-${c1}-${s1 ?? '500'})), rgb(var(--color-${c2}-${s2 ?? '500'})), rgb(var(--color-${c3}-${s3 ?? '500'})))`,
+            "background": `linear-gradient(to right, rgba(var(--color-${b}-${bs ?? '500'}), 0.8), rgba(var(--color-${b}-${bs ?? '500'}), 0.8)), linear-gradient(to ${directions[dir]}, rgb(var(--color-${c1}-${s1 ?? '500'})), rgb(var(--color-${c2}-${s2 ?? '500'})), rgb(var(--color-${c3}-${s3 ?? '500'})))`,
             "background-clip": `padding-box, border-box`,
             "background-origin": `padding-box, border-box`,
             "border": "2px solid transparent",
         }),
         {
             autocomplete: [
-                `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-border-(${themeColorsJ})-(${shadesJ})-(${directionsJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
+                `border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+                `border-(${themeColorsJ})-(${shadesJ})-(${directionsJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
             ]
         }
     ],
     [
         new RegExp(`^border-(${themeColorsJ})-?(${shadesJ})?-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
         ([, b, vb, dir, c1, v1, c2, v2]) => ({
-            "background": `linear-gradient(to right, rgb(var(--color-${b}-${vb ?? '500'})), rgb(var(--color-${b}-${vb ?? '500'}))), linear-gradient(to ${directions[dir]}, rgb(var(--color-${c1}-${v1 ?? '500'})), rgb(var(--color-${c2}-${v2 ?? '500'})))`,
+            "background": `linear-gradient(to right, rgba(var(--color-${b}-${vb ?? '500'}), 0.8), rgba(var(--color-${b}-${vb ?? '500'}), 0.8)), linear-gradient(to ${directions[dir]}, rgb(var(--color-${c1}-${v1 ?? '500'})), rgb(var(--color-${c2}-${v2 ?? '500'})))`,
             "background-clip": `padding-box, border-box`,
             "background-origin": `padding-box, border-box`,
             "border": "2px solid transparent",
         }),
         {
             autocomplete: [
-                `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-border-(${themeColorsJ})-(${shadesJ})-(${directionsJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
+                `border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+                `border-(${themeColorsJ})-(${shadesJ})-(${directionsJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
             ]
         }
     ],

@@ -14,7 +14,7 @@ export const sizesJ = Object.keys(sizes).join('|');
 
 export type ShortcutVariable = 'themeColors' | 'allColors' | 'shades' | 'directions' | 'sizes';
 
-export type Keyword = 'button' | 'cards' | 'chips' | 'gradient' | 'glass' | 'text' | 'background' | 'dark/light mode' | 'border';
+export type Keyword = 'button' | 'cards' | 'chips' | 'gradient' | 'glass' | 'text' | 'background' | 'dark/light mode' | 'border' | 'spinners';
 
 export type RulesDescription = {
     rule: string,

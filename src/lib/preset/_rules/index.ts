@@ -1,14 +1,19 @@
 import type { Rule, Shortcut } from '@unocss/core';
 
-import { backgroundSCs } from './background';
+export { animation } from './animation';
+
+import { backgroundRules, backgroundSCs } from './background';
 import { buttonRules, buttonSCs } from './buttons';
 import { cardSCs } from './cards';
 import { chipSCs } from './chips';
 import { roundedSCs } from './rounded';
+import { spinnerRules, spinnerSCs } from './spinners';
 import { textSCs } from './text';
 
 export const rules: Rule[] = [
-    ...buttonRules
+    ...backgroundRules,
+    ...buttonRules,
+    ...spinnerRules,
 ];
 
 export const shortcuts: Shortcut[] = [
@@ -17,5 +22,6 @@ export const shortcuts: Shortcut[] = [
     ...cardSCs,
     ...chipSCs,
     ...roundedSCs,
+    ...spinnerSCs,
     ...textSCs
 ];

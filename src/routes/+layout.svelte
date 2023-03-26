@@ -3,7 +3,7 @@
 	import 'uno.css';
 	import '@unocss/reset/tailwind.css';
 
-	let dark = false;
+	let dark = true;
 </script>
 
 <div class:dark>
