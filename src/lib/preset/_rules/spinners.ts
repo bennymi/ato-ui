@@ -15,6 +15,8 @@ const sqFlipBase = 'w-12 h-12 inline-block relative  box-border animate-flipXY';
 const barSlideBase = 'h-2.5 animate-barSlide';
 const barSlideBeforeAfter = 'absolute block content-none animate-barSlide h-2.5';
 
+const rotSquaresBeforeAfter = 'content-none w-12 h-12 border-2 absolute top-0 left-0 box-border animate-rotateSquare360';
+
 export const spinnerRules: Rule[] = [
     [
         new RegExp(`^folding-squares-(${themeColorsJ})-?(${shadesJ})?$`),
@@ -41,6 +43,16 @@ export const spinnerSCs: Shortcut[] = [
             autocomplete: [
                 `s-circle-(${themeColorsJ})`,
                 `s-circle-(${themeColorsJ})-(${shadesJ})`
+            ]
+        }
+    ],
+    [
+        new RegExp(`^s-circle-split-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c, s]) => `inline-block w-12 h-12 border-2 border-solid border-${c}-${s ?? '500'} border-y-transparent box-border rounded-full animate-rotate360`,
+        {
+            autocomplete: [
+                `s-circle-split-(${themeColorsJ})`,
+                `s-circle-split-(${themeColorsJ})-(${shadesJ})`
             ]
         }
     ],
@@ -139,6 +151,21 @@ export const spinnerSCs: Shortcut[] = [
             autocomplete: [
                 `s-squares-folding-(${themeColorsJ})`,
                 `s-squares-folding-(${themeColorsJ})-(${shadesJ})`
+            ]
+        }
+    ],
+
+    // 2 Rotating squares
+    [
+        new RegExp(`^s-squares-rotate-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
+        ([_, c1, s1, c2, s2]) => `
+            w-12 h-12 relative inline-block 
+            before:(${rotSquaresBeforeAfter} border-${c1}-${s1 ?? '500'})
+            after:(${rotSquaresBeforeAfter} border-${c2}-${s2 ?? '500'} animate-reverse)`,
+        {
+            autocomplete: [
+                `s-squares-rotate-(${themeColorsJ})-(${themeColorsJ})`,
+                `s-squares-rotate-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
             ]
         }
     ],

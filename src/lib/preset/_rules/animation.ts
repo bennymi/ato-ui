@@ -2,7 +2,8 @@ import type { Theme } from "@unocss/preset-wind";
 
 export const animation = {
     keyframes: {
-        rotate360: '{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}',
+        rotate360: '{from{transform: rotate(0deg)}to{transform: rotate(360deg)}}',
+        rotateSquare360: '{0% {transform: rotate(0deg)} 50% {transform: rotate(360deg)} 100% {transform: rotate(0deg)}}',
         layers1: "{0% {box-shadow: 0px 0px 0 0px} 90%, 100% {box-shadow: 20px 20px 0 -4px}}",
         layerTr: "{0% {transform: translate(0, 0) scale(1)} 100% {transform: translate(-25px, -25px) scale(1)}}",
         flipXY: `{0% {transform: perspective(200px) rotateX(0deg) rotateY(0deg)} 50% {transform: perspective(200px) rotateX(-180deg) rotateY(0deg)} 100% {transform: perspective(200px) rotateX(-180deg) rotateY(-180deg)}}`,
@@ -28,6 +29,7 @@ export const animation = {
     },
     counts: {
         rotate360: 'infinite',
+        rotateSquare360: 'infinite',
         layers1: 'infinite',
         layerTr: 'infinite',
         flipXY: 'infinite',
@@ -37,12 +39,14 @@ export const animation = {
         foldingSquares2: 'infinite',
     },
     timingFns: {
+        rotateSquare360: 'ease',
         barSlide: 'ease-in-out',
         foldingSquares: 'ease',
         foldingSquares2: 'ease,'
     },
     durations: {
         rotate360: '1.1s',
+        rotateSquare360: '4s',
         layers1: '1s',
         layerTr: '1s',
         flipXY: '1.2s',

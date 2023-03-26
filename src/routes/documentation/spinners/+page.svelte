@@ -2,7 +2,7 @@
 	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap mx-1/3">
 		<!-- Regular circle -->
 		<span class="s-circle-primary" />
-		<span class="s-circle-primary border-t-transparent" />
+		<span class="s-circle-split-primary" />
 		<span class="s-circle-secondary border-dotted border-10" />
 		<span class="s-circle-tertiary-800 border-dashed border-6" />
 		<span class="s-circle-tertiary-800 border-dashed w-8 h-8" />
@@ -26,5 +26,8 @@
 		<span class="s-squares-folding-primary" />
 		<span class="s-squares-folding-secondary" />
 		<span class="s-squares-folding-tertiary-700" />
+		<!-- 2 Squares rotating -->
+		<span class="s-squares-rotate-primary-secondary" />
+		<span class="s-squares-rotate-tertiary-600-primary-300" />
 	</div>
 </div>
