@@ -19,19 +19,19 @@ export default defineConfig({
 		// UnoCSS('./unocss.config.ts'),
 		UnoCSS({
 			extractors: [extractorSvelte],
-  theme: {
-    // colors: {
-    //   primary: {
-    //     600: 'var(--color-primary-600)',
-    //   }
-    // }
-  },
-  presets: [
-    presetUno(),
-    presetAttributify(),
-    // presetWind(),
-    presetAtoUI()
-  ]
+      theme: {
+        // colors: {
+        //   primary: {
+        //     600: 'var(--color-primary-600)',
+        //   }
+        // }
+      },
+      presets: [
+        presetUno(),
+        presetAttributify(),
+        // presetWind(),
+        presetAtoUI()
+      ]
 		})
 	]
 });
