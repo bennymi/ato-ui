@@ -3,5 +3,5 @@
 </script>
 
 <div class="min-h-screen flex justify-center items-center">
-	<Avatar size="w-42 h-42" />
+	<Avatar size="w-20 h-20" rounded="rounded-full" />
 </div>

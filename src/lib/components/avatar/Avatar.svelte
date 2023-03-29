@@ -3,13 +3,17 @@
 	export let rounded: string = 'rounded-token-base';
 </script>
 
-<div class="{size} {rounded} relative inline-flex justify-center items-center">
-	<img
-		class="{size} {rounded} drag-none hover:border-primary-500 hover:border-2"
-		src="/corgi-avatar.jpg"
-		alt="Rounded avatar"
-	/>
+<div class="{size} relative inline-flex justify-center items-center">
+	<div
+		class="{size} {rounded} drag-none overflow-hidden transition-all border-4 border-surface-800 hover:(border-primary-500)"
+	>
+		<img
+			class="{size} {rounded} drag-none transition-all hover:(scale-110)"
+			src="/corgi-avatar.jpg"
+			alt="Rounded avatar"
+		/>
+	</div>
 	<span
-		class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-success-500 border-1 border-surface-800"
+		class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-success-500 border-2 border-surface-800"
 	/>
 </div>

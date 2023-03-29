@@ -7,6 +7,7 @@ import {
 	// presetIcons,
 	presetUno,
 	// presetWind
+  transformerVariantGroup
   } from 'unocss';
   
   import { extractorSvelte } from '@unocss/core';
@@ -31,7 +32,10 @@ export default defineConfig({
         presetAttributify(),
         // presetWind(),
         presetAtoUI()
-      ]
+      ],
+      transformers: [
+        transformerVariantGroup()
+      ],
 		})
 	]
 });
