@@ -8,7 +8,8 @@
 	export let badgeBackground: string = 'bg-green-500';
 	export let badgePosition: Position = 'bottom-right';
 	export let badgeIcon: string = '';
-	export let loading: boolean = false;
+	export let typing: boolean = false;
+	export let typingSpinner: string = 'primary-100';
 
 	// Test getContext without a parent
 	// $: console.log('context', getContext('loading'));
@@ -27,7 +28,14 @@
 			alt="Rounded avatar"
 		/>
 	</div>
-	{#if badge}
+	{#if typing}
+		<span
+			class="absolute {badgePos} {badgeBackground} w-10 rounded-token-base border-2 border-surface-800 flex justify-center items-center"
+		>
+			<span class="inline-flex s-dots-{typingSpinner} scale-[0.4]" />
+		</span>
+	{/if}
+	{#if badge && !typing}
 		<span
 			class="absolute {badgePos} {badgeBackground} w-5 h-5 rounded-full border-2 border-surface-800 flex justify-center items-center"
 		>
