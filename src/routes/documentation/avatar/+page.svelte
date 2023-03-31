@@ -11,7 +11,12 @@
 		<Avatar size="w-20 h-20" rounded="rounded-full" /> -->
 		<Avatar rounded="rounded-none" badgeBackground="bg-secondary-500" badge />
 		<Avatar badge />
-		<Avatar rounded="rounded-xl" badgeBackground="bg-red-500" badge />
+		<Avatar
+			rounded="rounded-xl"
+			badgeBackground="bg-red-600"
+			badge
+			badgeIcon="text-gray-300 w-5 h-5 i-material-symbols:horizontal-rule-rounded"
+		/>
 		<Avatar rounded="rounded-3xl" badgeBackground="bg-yellow-500" badge />
 		<Avatar
 			rounded="rounded-full"

@@ -1,4 +1,14 @@
+import type { Rule } from '@unocss/core';
+
 import type { Theme } from "@unocss/preset-wind";
+
+export const animationRules: Rule[] = [
+    [
+        'fill-mode-both', {
+            'animation-fill-mode': 'both',
+        }
+    ]
+];
 
 export const animation = {
     keyframes: {
@@ -26,6 +36,17 @@ export const animation = {
             75% {transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);}
             100% {transform: translate(0, 0) rotateX(0) rotateY(360deg);}
         }`,
+        // 0%, 80%, 100% {box-shadow: 0 2.5em 0 -1.3em}
+        // 40% {box-shadow: 0 2.5em 0 0}
+        // 0%, 80%, 100% {box-shadow: 0 0 0 -1.3em}
+        // 40% {box-shadow: 0 0 0 0}
+        // 0%, 80%, 100% {transform: scale(1, 1)}
+        // 40% {transform: scale(0.1, 0.1)}
+        bblFadeInOut: `{
+            0%, 20%, 80%, 100% {opacity: 1}
+            40% {opacity: 0.2}
+            60% {opacity: 0.6}
+        }`,
     },
     counts: {
         rotate360: 'infinite',
@@ -37,12 +58,14 @@ export const animation = {
         squareShapeShift: 'infinite',
         foldingSquares1: 'infinite',
         foldingSquares2: 'infinite',
+        bblFadeInOut: 'infinite',
     },
     timingFns: {
         rotateSquare360: 'ease',
         barSlide: 'ease-in-out',
         foldingSquares: 'ease',
-        foldingSquares2: 'ease,'
+        foldingSquares2: 'ease',
+        bblFadeInOut: 'ease-in-out',
     },
     durations: {
         rotate360: '1.1s',
@@ -54,5 +77,6 @@ export const animation = {
         squareShapeShift: '2s',
         foldingSquares1: '4s',
         foldingSquares2: '2s',
+        bblFadeInOut: '1.8s',
     }
 } satisfies Theme['animation'];

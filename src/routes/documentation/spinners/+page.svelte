@@ -6,6 +6,9 @@
 		<span class="s-circle-secondary border-dotted border-10" />
 		<span class="s-circle-tertiary-800 border-dashed border-6" />
 		<span class="s-circle-tertiary-800 border-dashed w-8 h-8" />
+		<!-- Dots fading -->
+		<span class="s-dots-primary" />
+		<span class="s-dots-primary-secondary-tertiary" />
 		<!-- Hovering squares -->
 		<span class="s-squares-hover-primary-secondary-tertiary" />
 		<span
