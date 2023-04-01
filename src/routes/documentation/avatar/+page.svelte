@@ -10,31 +10,49 @@
 		on:click={() => (typing = !typing)}>Typing On/Off</button
 	>
 	<div class="flex flex-wrap justify-center items-center gap-8">
-		<!-- <Avatar size="w-20 h-20" rounded="rounded-none" />
-		<Avatar size="w-20 h-20" />
-		<Avatar size="w-20 h-20" rounded="rounded-xl" />
-		<Avatar size="w-20 h-20" rounded="rounded-3xl" />
-		<Avatar size="w-20 h-20" rounded="rounded-full" /> -->
-		<Avatar rounded="rounded-none" badgeBackground="bg-secondary-500" badge />
-		<Avatar badge badgePosition="bottom-left" />
-		<Avatar badge rounded="rounded-full" badgePosition="bottom-left" />
-		<Avatar badge badgePosition="top-left" />
-		<Avatar badge rounded="rounded-full" badgePosition="top-right" {typing} />
-		<Avatar badge badgeBackground="bg-warning-500" {typing} typingSpinner="s-dots-surface-900" />
 		<Avatar
+			src="/corgi-avatar.jpg"
+			rounded="rounded-none"
+			badgeBackground="bg-secondary-500"
+			border="border-4 border-surface-800 hover:(border-primary-500)"
+			badge
+		/>
+		<Avatar src="/corgi-avatar.jpg" badge badgePosition="bottom-left" />
+		<Avatar text="Ben M." />
+		<Avatar text="Robert Downey Jr." rounded="rounded-full" />
+		<Avatar src="/corgi-avatar.jpg" badge rounded="rounded-full" badgePosition="bottom-left" />
+		<Avatar src="/corgi-avatar.jpg" badge badgePosition="top-left" />
+		<Avatar
+			src="/corgi-avatar.jpg"
+			badge
+			rounded="rounded-full"
+			badgePosition="top-right"
+			{typing}
+		/>
+		<Avatar
+			src="/corgi-avatar.jpg"
+			badge
+			badgeBackground="bg-warning-500"
+			{typing}
+			typingSpinner="s-dots-surface-900"
+		/>
+		<Avatar
+			src="/corgi-avatar.jpg"
 			rounded="rounded-xl"
 			badgeBackground="bg-red-600"
 			badge
 			badgeIcon="text-gray-300 w-5 h-5 i-material-symbols:horizontal-rule-rounded"
 		/>
-		<Avatar rounded="rounded-3xl" badgeBackground="bg-yellow-500" badge />
+		<Avatar src="/corgi-avatar.jpg" rounded="rounded-3xl" badgeBackground="bg-yellow-500" badge />
 		<Avatar
+			src="/corgi-avatar.jpg"
 			rounded="rounded-full"
 			badgeBackground="bg-surface-500"
 			badge
 			badgeIcon="i-material-symbols:nights-stay-rounded text-yellow-400"
 		/>
 		<Avatar
+			src="/corgi-avatar.jpg"
 			rounded="rounded-full"
 			badgeBackground="bg-surface-500"
 			badge

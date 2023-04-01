@@ -2,8 +2,14 @@
 	import { getContext } from 'svelte';
 	import type { Rounded, Position } from '../../types/types.d';
 
-	export let size: string = 'w-16'; //  h-16
+	export let src: string = '';
+	export let text: string = '';
+	export let size: string = 'w-16 h-16'; //  h-16
 	export let rounded: Rounded = 'rounded-token-base';
+	export let border: string = 'border-4 border-surface-800';
+	export let background: string = 'bg-primary-500';
+	export let textStyles: string = 'font-bold text-on-primary';
+
 	export let badge: boolean = false;
 	export let badgeBackground: string = 'bg-green-500';
 	export let badgePosition: Position = 'bottom-right';
@@ -33,6 +39,19 @@
 		}
 	};
 
+	const formatText = () => {
+		let letters = text
+			.trim()
+			.split(/\s/g)
+			.map((item) => {
+				return item[0];
+			});
+
+		return letters.slice(0, 4).join('');
+	};
+
+	$: formattedText = text.length < 5 ? text : formatText();
+
 	$: badgePos =
 		rounded === 'rounded-full'
 			? positions[badgePosition]['rounded-full']
@@ -41,14 +60,17 @@
 
 <div class="{size} {rounded} relative inline-flex justify-center items-center">
 	<div
-		class="{size} {rounded} drag-none overflow-hidden transition-all border-4 border-surface-800"
+		class="{size} {rounded} {border} {background} inline-flex justify-center items-center drag-none overflow-hidden"
 	>
-		<!-- hover:(border-primary-500) -->
-		<img
-			class="{size} {rounded} drag-none transition-all hover:(scale-110)"
-			src="/corgi-avatar.jpg"
-			alt="Rounded avatar"
-		/>
+		{#if src}
+			<img
+				class="{size} {rounded} drag-none transition-all hover:(scale-110)"
+				{src}
+				alt="Rounded avatar"
+			/>
+		{:else}
+			<span class={textStyles}>{formattedText}</span>
+		{/if}
 	</div>
 	{#if typing}
 		<span
