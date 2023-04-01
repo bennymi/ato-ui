@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import type { Rounded, Position } from '../../types/types.d';
+
+	const dispatch = createEventDispatcher();
 
 	export let src: string = '';
 	export let text: string = '';
@@ -61,6 +64,10 @@
 <div class="{size} {rounded} relative inline-flex justify-center items-center">
 	<div
 		class="{size} {rounded} {border} {background} inline-flex justify-center items-center drag-none overflow-hidden"
+		on:mouseenter={(event) => dispatch('avatar-mouseenter', event)}
+		on:mouseleave={(event) => dispatch('avatar-mouseleave', event)}
+		on:click={(event) => dispatch('avatar-click', event)}
+		on:keydown
 	>
 		{#if src}
 			<img
@@ -82,6 +89,10 @@
 	{#if badge && !typing}
 		<span
 			class="absolute {badgePos} {badgeBackground} w-5 h-5 rounded-full border-2 border-surface-800 flex justify-center items-center"
+			on:mouseenter={(event) => dispatch('badge-mouseenter', event)}
+			on:mouseleave={(event) => dispatch('badge-mouseleave', event)}
+			on:click={(event) => dispatch('badge-click', event)}
+			on:keydown
 		>
 			{#if badgeIcon}
 				<span class="inline-flex w-3 h-3 {badgeIcon}" />

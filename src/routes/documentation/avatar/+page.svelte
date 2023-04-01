@@ -17,9 +17,15 @@
 			border="border-4 border-surface-800 hover:(border-primary-500)"
 			badge
 		/>
-		<Avatar src="/corgi-avatar.jpg" badge badgePosition="bottom-left" />
+		<Avatar
+			src="/corgi-avatar.jpg"
+			badge
+			badgePosition="bottom-left"
+			on:avatar-click={() => console.log('avatar-click')}
+			on:badge-mouseenter={() => console.log('badge-mouseenter')}
+		/>
 		<Avatar text="Ben M." />
-		<Avatar text="Robert Downey Jr." rounded="rounded-full" />
+		<Avatar text="George R. R. Martin" rounded="rounded-full" badge />
 		<Avatar src="/corgi-avatar.jpg" badge rounded="rounded-full" badgePosition="bottom-left" />
 		<Avatar src="/corgi-avatar.jpg" badge badgePosition="top-left" />
 		<Avatar
