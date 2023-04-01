@@ -15,7 +15,7 @@ pnpm add -D ato-ui
 - 🎯 Written in TypeScript
 - 🎪 Interactive documentation
 - 🛰️ Dynamic CSS classes thanks to UnoCSS
-- 💪 Customizable
+- 🎨 Customizable components
 
 ## 👋 Community
 - Discord
