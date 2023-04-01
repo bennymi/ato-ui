@@ -1,27 +1,42 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
 	import type { Rounded, Position } from '../../types/types.d';
 
 	const dispatch = createEventDispatcher();
 
+	/** Set the image source. */
 	export let src: string = '';
+	/** Set the image alt value. */
+	export let alt: string = 'avatar';
+	/** Set the text value in case you don't have an image. The string automatically gets shortened to 4 characters. If you pass in separate words it will use the first letters of each word. */
 	export let text: string = '';
-	export let size: string = 'w-16 h-16'; //  h-16
+	/** Set the width and height of the avatar. */
+	export let size: string = 'w-16 h-16';
+	/** Set the rounded shape. */
 	export let rounded: Rounded = 'rounded-token-base';
+	/** Set the border classes. You can also use this to apply hover effects: hover:(...). */
 	export let border: string = 'border-4 border-surface-800';
+	/** Set the background color, for when the text is being shown. Has no effect for when an image is being shown. */
 	export let background: string = 'bg-primary-500';
+	/** Set the text styles. */
 	export let textStyles: string = 'font-bold text-on-primary';
 
+	/** Show a badge. */
 	export let badge: boolean = false;
+	/** Set the badge color. */
 	export let badgeBackground: string = 'bg-green-500';
+	/** Set the badge position. */
 	export let badgePosition: Position = 'bottom-right';
+	/** Show notifications. */
+	export let notifications: string = '';
+	/** Set the notifications style. */
+	export let notificationsStyle: string = 'text-xs font-semibold';
+	/** Specify an icon to show in the badge. Use UnoCSS css icons. */
 	export let badgeIcon: string = '';
+	/** Show a typing animation. */
 	export let typing: boolean = false;
+	/** Specify the animation to use. */
 	export let typingSpinner: string = 's-dots-primary-100';
-
-	// Test getContext without a parent
-	// $: console.log('context', getContext('loading'));
 
 	let positions: any = {
 		'bottom-right': {
@@ -61,42 +76,40 @@
 			: positions[badgePosition]['other'];
 </script>
 
-<div class="{size} {rounded} relative inline-flex justify-center items-center">
+<div class="avatar {size} {rounded} relative inline-flex justify-center items-center">
 	<div
-		class="{size} {rounded} {border} {background} inline-flex justify-center items-center drag-none overflow-hidden"
+		class="avatar-image {size} {rounded} {border} {background} inline-flex justify-center items-center drag-none overflow-hidden"
 		on:mouseenter={(event) => dispatch('avatar-mouseenter', event)}
 		on:mouseleave={(event) => dispatch('avatar-mouseleave', event)}
 		on:click={(event) => dispatch('avatar-click', event)}
 		on:keydown
 	>
 		{#if src}
-			<img
-				class="{size} {rounded} drag-none transition-all hover:(scale-110)"
-				{src}
-				alt="Rounded avatar"
-			/>
+			<img class="{size} {rounded} drag-none transition-all hover:(scale-110)" {src} {alt} />
 		{:else}
 			<span class={textStyles}>{formattedText}</span>
 		{/if}
 	</div>
 	{#if typing}
 		<span
-			class="absolute {badgePos} {badgeBackground} w-8 h-4 rounded-token-base border-2 border-surface-800 flex justify-center items-center"
+			class="avatar-typing absolute {badgePos} {badgeBackground} w-8 h-4 rounded-token-base border-2 border-surface-800 flex justify-center items-center"
 		>
 			<span class="inline-flex {typingSpinner} scale-[0.3]" />
 		</span>
 	{/if}
 	{#if badge && !typing}
-		<span
-			class="absolute {badgePos} {badgeBackground} w-5 h-5 rounded-full border-2 border-surface-800 flex justify-center items-center"
+		<div
+			class="avatar-badge absolute w-5 h-5 rounded-lg border-2 border-surface-800 flex justify-center items-center {badgePos} {badgeBackground}"
 			on:mouseenter={(event) => dispatch('badge-mouseenter', event)}
 			on:mouseleave={(event) => dispatch('badge-mouseleave', event)}
 			on:click={(event) => dispatch('badge-click', event)}
 			on:keydown
 		>
-			{#if badgeIcon}
+			{#if notifications}
+				<span class={notificationsStyle}>{notifications}</span>
+			{:else if badgeIcon}
 				<span class="inline-flex w-3 h-3 {badgeIcon}" />
 			{/if}
-		</span>
+		</div>
 	{/if}
 </div>

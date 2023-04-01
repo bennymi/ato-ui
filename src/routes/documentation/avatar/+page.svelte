@@ -26,7 +26,13 @@
 		/>
 		<Avatar text="Ben M." />
 		<Avatar text="George R. R. Martin" rounded="rounded-full" badge />
-		<Avatar src="/corgi-avatar.jpg" badge rounded="rounded-full" badgePosition="bottom-left" />
+		<Avatar
+			src="/corgi-avatar.jpg"
+			badge
+			rounded="rounded-full"
+			badgePosition="bottom-left"
+			notifications={42}
+		/>
 		<Avatar src="/corgi-avatar.jpg" badge badgePosition="top-left" />
 		<Avatar
 			src="/corgi-avatar.jpg"
