@@ -3,15 +3,17 @@ import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
 
 import {
-	presetAttributify,
-	// presetIcons,
-	presetUno,
-	// presetWind
-  } from 'unocss';
-  
-  import { extractorSvelte } from '@unocss/core';
-  
-  import { colors, presetAtoUI } from './src/lib/preset/index';
+  presetAttributify,
+  // presetIcons,
+  presetUno,
+  // presetWind
+  transformerVariantGroup
+} from 'unocss';
+
+import { extractorSvelte } from '@unocss/core';
+import presetIcons from '@unocss/preset-icons'
+
+import { colors, presetAtoUI } from './src/lib/preset/index';
 
 export default defineConfig({
 	plugins: [
@@ -19,19 +21,23 @@ export default defineConfig({
 		// UnoCSS('./unocss.config.ts'),
 		UnoCSS({
 			extractors: [extractorSvelte],
-  theme: {
-    // colors: {
-    //   primary: {
-    //     600: 'var(--color-primary-600)',
-    //   }
-    // }
-  },
-  presets: [
-    presetUno(),
-    presetAttributify(),
-    // presetWind(),
-    presetAtoUI()
-  ]
+      theme: {
+        // colors: {
+        //   primary: {
+        //     600: 'var(--color-primary-600)',
+        //   }
+        // }
+      },
+      presets: [
+        presetUno(),
+        presetAttributify(),
+        presetIcons(),
+        // presetWind(),
+        presetAtoUI()
+      ],
+      transformers: [
+        transformerVariantGroup()
+      ],
 		})
 	]
 });
