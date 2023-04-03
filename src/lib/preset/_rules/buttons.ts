@@ -4,7 +4,7 @@ import { themeColorsJ, shadesJ } from '../../types/colors.d';
 import { directions, directionsJ } from '../../types/directions.d';
 import { sizes, sizesJ, type RulesDescription } from '../../types/types.d';
 
-const baseStyles = `${sizes['md']} inline-flex justify-center items-center space-x-2 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
+const baseStyles = `${sizes['md']} inline-flex justify-center items-center space-x-1 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
 
 const glassStyles = 'border-1';
 const glassOp = '30';
@@ -53,6 +53,11 @@ export const buttonSCs: Shortcut[] = [
         {
             autocomplete: `btn-(${sizesJ})`
         }
+    ],
+
+    // Icon button
+    [
+        'btn-icon', `${baseStyles} aspect-square`
     ],
 
     // Button regular
@@ -150,6 +155,15 @@ export const buttonDescriptions: RulesDescription[] = [
         variablesUsed: ['sizes'],
         classes: [],
         examples: ['btn-sm', 'btn-md', 'btn-lg', 'btn-xl']
+    },
+    // Button with icon
+    {
+        rule: 'btn-icon',
+        description: 'Creates an icon button.',
+        keywords: ['button', 'icons'],
+        variablesUsed: [],
+        classes: [],
+        examples: ['btn-icon']
     },
     // Regular button
     {

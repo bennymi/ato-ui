@@ -26,7 +26,7 @@ export const textSCs: Shortcut[] = [
 
     // Text
     [
-        new RegExp(`^ato-text-(${themeColorsJ})-(${shadesJ})-(${shadesJ})$`), 
+        new RegExp(`^text-(${themeColorsJ})-(${shadesJ})-(${shadesJ})$`), 
         ([, b, v1, v2]) => `text-${b}-${v1} dark:text-${b}-${v2}`,
         {
             autocomplete: `ato-text-(${themeColorsJ})-(${shadesJ})-(${shadesJ})`
@@ -35,7 +35,7 @@ export const textSCs: Shortcut[] = [
 
     // Text Inverse
     [
-        new RegExp(`^ato-text-inverse-(${themeColorsJ})(-${shadesJ})?-(${themeColorsJ})(-${shadesJ})?$`), 
+        new RegExp(`^text-inverse-(${themeColorsJ})(-${shadesJ})?-(${themeColorsJ})(-${shadesJ})?$`), 
         ([, b1, v1, b2, v2]) => `text-${b1}${['white', 'black'].includes(b1) ? '' : v1 ?? '-500'} dark:text-${b2}${['white', 'black'].includes(b2) ? '' : v2 ?? '-500'}`,
         {
             // autocomplete: `ato-text-inverse-(${themeColorsJ})-(${themeColorsJ})`
