@@ -31,9 +31,11 @@
 				<!-- <span class="sr-only">Alarm</span> -->
 				<span class="i-material-symbols:notifications-active-rounded" />
 			</button>
-			<button class="btn-border-surface-tl-primary-tertiary-error btn-icon rounded-full">
+			<button
+				class="btn-border-surface-bl-primary-secondary-success btn-icon rounded-full hover:(text-surface-900)"
+			>
 				<!-- <span class="sr-only">Alarm</span> -->
-				<span class="i-material-symbols:notifications-active-rounded" />
+				<span class="i-material-symbols:add-shopping-cart-outline-rounded" />
 			</button>
 			<button class="btn-border-surface-tl-primary-tertiary-error">
 				<!-- <span class="sr-only">Alarm</span> -->
@@ -43,7 +45,7 @@
 			<button class="btn-border-surface-tr-success-warning hover:(text-surface-900)">
 				<!-- <span class="sr-only">Alarm</span> -->
 				<span class="i-material-symbols:temp-preferences-eco-outline" />
-				<span>Alarm</span>
+				<span>Green</span>
 			</button>
 		</div>
 	</div>
