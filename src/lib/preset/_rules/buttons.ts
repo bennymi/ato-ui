@@ -43,6 +43,31 @@ export const buttonRules: Rule[] = [
             ]
         }
     ],
+
+    // Button group
+    [
+        new RegExp('^btn-group-new$'),
+        ([_, ], { constructCSS }) => `
+        .btn-group-new {
+            @apply inline-flex bg-r-primary-secondary-tertiary rounded-lg;
+        }
+        .btn-group-new button, .btn-group-new a {
+            @apply px-4 py-2 text-sm font-medium border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2;
+        }
+        .btn-group-new button:first-child {
+            @apply rounded-l-lg;
+        }
+        .btn-group-new button:last-child {
+            @apply rounded-r-lg;
+        }
+        `
+        // ${constructCSS({
+        //     '--at-apply': 'inline-flex bg-r-primary-secondary rounded-lg'
+        // })}
+        // btn-group-new {
+        //     @apply inline-flex bg-teal-500 rounded-token-base "first:rounded-l-lg" "last:rounded-r-lg";
+        // }
+    ]
 ];
 
 export const buttonSCs: Shortcut[] = [
@@ -144,6 +169,19 @@ export const buttonSCs: Shortcut[] = [
             ]
         }
     ],
+
+    // Button groups
+    [
+        'btn-group',
+        `inline-flex rounded-token-base 
+        first:rounded-l-lg
+        last:rounded-r-lg
+        [&>button,a]:(px-4 py-2 text-sm font-medium text-blue-700 bg-white border border-gray-200
+            focus:(z-10 ring-2 ring-blue-700 text-blue-700) 
+            hover:(bg-gray-100) 
+            dark:(bg-gray-700 border-gray-600 text-white hover:text-white hover:bg-gray-600 focus:ring-blue-500 focus:text-white)
+        )`
+    ]
 ];
 
 export const buttonDescriptions: RulesDescription[] = [

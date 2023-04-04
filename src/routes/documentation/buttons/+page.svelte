@@ -49,6 +49,14 @@
 			</button>
 		</div>
 	</section>
+	<section>
+		<h1>Button Groups</h1>
+		<div class="btn-group-new">
+			<button>Water</button>
+			<button>Earth</button>
+			<button>Fire</button>
+		</div>
+	</section>
 </div>
 
 <!-- Add a search functionality with all available shortcuts here -->
