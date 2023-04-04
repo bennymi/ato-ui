@@ -14,6 +14,7 @@ specifiers:
   '@unocss/preset-uno': ^0.50.6
   '@unocss/preset-wind': ^0.50.6
   '@unocss/reset': ^0.50.6
+  '@unocss/transformer-directives': ^0.50.6
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
@@ -44,6 +45,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.55.0_df358fd79317f138c7126227e4bb968a
   '@typescript-eslint/parser': 5.55.0_eslint@8.36.0+typescript@4.9.5
   '@unocss/preset-icons': 0.50.6
+  '@unocss/transformer-directives': 0.50.6
   eslint: 8.36.0
   eslint-config-prettier: 8.7.0_eslint@8.36.0
   eslint-plugin-svelte3: 4.0.0_eslint@8.36.0+svelte@3.56.0
