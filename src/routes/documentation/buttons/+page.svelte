@@ -51,10 +51,33 @@
 	</section>
 	<section>
 		<h1>Button Groups</h1>
-		<div class="btn-group-new">
-			<button>Water</button>
-			<button>Earth</button>
-			<button>Fire</button>
+		<div class="btn-group-error-op90">
+			<button>
+				<span class="text-xl i-material-symbols:water-drop-rounded" />
+				<span>Water</span>
+			</button>
+			<button>
+				<span class="text-xl i-material-symbols:globe-uk" />
+				<span>Earth</span>
+			</button>
+			<button>
+				<span class="text-xl i-mdi:fire" />
+				<span>Fire</span>
+			</button>
+		</div>
+		<div class="btn-group-primary-op90">
+			<button>
+				<span class="text-xl i-material-symbols:water-drop-rounded" />
+				<span>Water</span>
+			</button>
+			<button>
+				<span class="text-xl i-material-symbols:globe-uk" />
+				<span>Earth</span>
+			</button>
+			<button>
+				<span class="text-xl i-mdi:fire" />
+				<span>Fire</span>
+			</button>
 		</div>
 	</section>
 </div>

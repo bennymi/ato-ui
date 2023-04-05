@@ -11,6 +11,31 @@ const glassOp = '30';
 
 const gradientStyles = 'hover:brightness-105';
 
+// const regex_col_shade_op = `(${themeColorsJ})(?:-(${shadesJ}))?(?:\/(0|100|[1-9][0-9]?))?`;
+const regex_col_shade_op = `(${themeColorsJ})(?:-(${shadesJ}))?(?:-op(0|100|[1-9][0-9]?))?`;
+
+function convert_opacity(o: string) {
+    if (!o) return '[1]';
+
+    const opacity = parseInt(o) / 100;
+    return `[${opacity}]`
+}
+
+function theme_to_string(s: string, o: string) {
+    let shade = s ?? '500';
+    // return `${shade}/${convert_opacity(o)}`
+    const final = `${shade}/${convert_opacity(o)}`
+    // console.log('final', final);
+    return final;
+}
+
+function class_name(c: string, s: string, o: string) {
+    // console.log(`${c}${s ? `-${s}` : ''}${o ? `/${o}` : ''}`);
+    // return `${c}${s ? `-${s}` : ''}${o ? `\/${o}` : ''}`;
+    // console.log(`${c}${s ? `-${s}` : ''}${o ? `-op${o}` : ''}`);
+    return `${c}${s ? `-${s}` : ''}${o ? `-op${o}` : ''}`;
+}
+
 export const buttonRules: Rule[] = [
     // Gradient border
     [
@@ -46,27 +71,21 @@ export const buttonRules: Rule[] = [
 
     // Button group
     [
-        new RegExp('^btn-group-new$'),
-        ([_, ], { constructCSS }) => `
-        .btn-group-new {
-            @apply inline-flex bg-r-primary-secondary-tertiary rounded-lg;
+        new RegExp(`^btn-group-${regex_col_shade_op}$`),
+        ([_, c, s, o]) => `
+        .btn-group-${class_name(c, s, o)} {
+            @apply inline-flex rounded-lg;
         }
-        .btn-group-new button, .btn-group-new a {
-            @apply px-4 py-2 text-sm font-medium border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2;
+        .btn-group-${class_name(c, s, o)} button, .btn-group a {
+            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 border border-${c}-${theme_to_string(s, o)} text-${c}-${theme_to_string(s, o)} text-sm font-medium hover:(bg-${c}-${theme_to_string(s, o)} text-on-${c}) focus:ring-2;
         }
-        .btn-group-new button:first-child {
+        .btn-group-${class_name(c, s, o)} button:first-child {
             @apply rounded-l-lg;
         }
-        .btn-group-new button:last-child {
+        .btn-group-${class_name(c, s, o)} button:last-child {
             @apply rounded-r-lg;
         }
         `
-        // ${constructCSS({
-        //     '--at-apply': 'inline-flex bg-r-primary-secondary rounded-lg'
-        // })}
-        // btn-group-new {
-        //     @apply inline-flex bg-teal-500 rounded-token-base "first:rounded-l-lg" "last:rounded-r-lg";
-        // }
     ]
 ];
 
@@ -172,7 +191,7 @@ export const buttonSCs: Shortcut[] = [
 
     // Button groups
     [
-        'btn-group',
+        'btn-group-old',
         `inline-flex rounded-token-base 
         first:rounded-l-lg
         last:rounded-r-lg
