@@ -50,7 +50,7 @@
 		</div>
 	</section>
 	<section>
-		<h1>Button Groups</h1>
+		<h1>Button Groups (Regular and Outline)</h1>
 		<div class="btn-group-error-op90">
 			<button>
 				<span class="text-xl i-material-symbols:water-drop-rounded" />
@@ -65,7 +65,7 @@
 				<span>Fire</span>
 			</button>
 		</div>
-		<div class="btn-group-primary-op90">
+		<div class="btn-group-outline-primary-op90">
 			<button>
 				<span class="text-xl i-material-symbols:water-drop-rounded" />
 				<span>Water</span>
@@ -87,7 +87,12 @@
 	h1 {
 		@apply text-center text-2xl font-bold text-surface-900-200;
 	}
+
+	p {
+		@apply text-surface-900-200;
+	}
+
 	section {
-		@apply flex flex-col gap-4;
+		@apply flex flex-col gap-4 justify-center items-center;
 	}
 </style>

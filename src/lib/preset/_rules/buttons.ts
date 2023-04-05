@@ -69,7 +69,26 @@ export const buttonRules: Rule[] = [
         }
     ],
 
-    // Button group
+    // Button group outline
+    [
+        new RegExp(`^btn-group-outline-${regex_col_shade_op}$`),
+        ([_, c, s, o]) => `
+        .btn-group-outline-${class_name(c, s, o)} {
+            @apply inline-flex rounded-lg;
+        }
+        .btn-group-outline-${class_name(c, s, o)} button, .btn-group a {
+            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${c}-${theme_to_string(s, o)} text-${c}-${theme_to_string(s, o)} text-sm font-bold hover:(bg-${c}-${theme_to_string(s, o)} text-on-${c}) focus:ring-2;
+        }
+        .btn-group-outline-${class_name(c, s, o)} button:first-child {
+            @apply rounded-l-token-base;
+        }
+        .btn-group-outline-${class_name(c, s, o)} button:last-child {
+            @apply rounded-r-token-base;
+        }
+        `
+    ],
+
+    // Button group regular
     [
         new RegExp(`^btn-group-${regex_col_shade_op}$`),
         ([_, c, s, o]) => `
@@ -77,16 +96,16 @@ export const buttonRules: Rule[] = [
             @apply inline-flex rounded-lg;
         }
         .btn-group-${class_name(c, s, o)} button, .btn-group a {
-            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 border border-${c}-${theme_to_string(s, o)} text-${c}-${theme_to_string(s, o)} text-sm font-medium hover:(bg-${c}-${theme_to_string(s, o)} text-on-${c}) focus:ring-2;
+            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${c}-${theme_to_string(s, o)} bg-${c}-${theme_to_string(s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${c}-${theme_to_string(s, o)}) focus:ring-2;
         }
         .btn-group-${class_name(c, s, o)} button:first-child {
-            @apply rounded-l-lg;
+            @apply rounded-l-token-base;
         }
         .btn-group-${class_name(c, s, o)} button:last-child {
-            @apply rounded-r-lg;
+            @apply rounded-r-token-base;
         }
         `
-    ]
+    ],
 ];
 
 export const buttonSCs: Shortcut[] = [
@@ -188,19 +207,6 @@ export const buttonSCs: Shortcut[] = [
             ]
         }
     ],
-
-    // Button groups
-    [
-        'btn-group-old',
-        `inline-flex rounded-token-base 
-        first:rounded-l-lg
-        last:rounded-r-lg
-        [&>button,a]:(px-4 py-2 text-sm font-medium text-blue-700 bg-white border border-gray-200
-            focus:(z-10 ring-2 ring-blue-700 text-blue-700) 
-            hover:(bg-gray-100) 
-            dark:(bg-gray-700 border-gray-600 text-white hover:text-white hover:bg-gray-600 focus:ring-blue-500 focus:text-white)
-        )`
-    ]
 ];
 
 export const buttonDescriptions: RulesDescription[] = [
