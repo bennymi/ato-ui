@@ -65,7 +65,7 @@
 				<span>Fire</span>
 			</button>
 		</div>
-		<div class="btn-group-outline-primary-op90">
+		<div class="btn-group-outline-primary">
 			<button>
 				<span class="text-xl i-material-symbols:water-drop-rounded" />
 				<span>Water</span>
@@ -75,6 +75,21 @@
 				<span>Earth</span>
 			</button>
 			<button>
+				<span class="text-xl i-mdi:fire" />
+				<span>Fire</span>
+			</button>
+		</div>
+		<!-- <div class="btn-group-outline-primary-200 btn-group-text-hover-primary-900"> -->
+		<div class="btn-group-outline-primary-200">
+			<button class="hover:(text-primary-900)!">
+				<span class="text-xl i-material-symbols:water-drop-rounded" />
+				<span>Water</span>
+			</button>
+			<button class="hover:(text-primary-900)!">
+				<span class="text-xl i-material-symbols:globe-uk" />
+				<span>Earth</span>
+			</button>
+			<button class="hover:(text-primary-900)!">
 				<span class="text-xl i-mdi:fire" />
 				<span>Fire</span>
 			</button>
