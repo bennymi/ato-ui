@@ -7,6 +7,8 @@
 			<button class="btn-border-surface-800-br-primary-secondary">Gradient border</button>
 			<button class="btn-border-surface-800-br-primary-secondary-success">3 Gradient border</button>
 			<button class="btn-glass-primary">Glass Primary</button>
+			<!-- Overwritting the default background opacity of 30% for glass buttons -->
+			<!-- <button class="btn-glass-primary-op20">Glass Primary</button> -->
 			<button class="btn-glass-secondary border-dashed">Glass Secondary dashed</button>
 			<button class="btn-glass-success border-dotted">Glass Success Dotted</button>
 			<button class="btn-glass-warning border-dotted">Glass Warning Dotted</button>
@@ -65,7 +67,7 @@
 				<span>Fire</span>
 			</button>
 		</div>
-		<div class="btn-group-outline-primary">
+		<div class="btn-group-outline-secondary">
 			<button>
 				<span class="text-xl i-material-symbols:water-drop-rounded" />
 				<span>Water</span>

@@ -21,12 +21,20 @@ function convert_opacity(o: string) {
     return `[${opacity}]`
 }
 
-function theme_to_string(s: string, o: string) {
+function so(s: string, o: string) {
     let shade = s ?? '500';
     // return `${shade}/${convert_opacity(o)}`
     const final = `${shade}/${convert_opacity(o)}`
     // console.log('final', final);
     return final;
+}
+
+function cs(c: string, s: string) {
+    return `${c}-${s ?? '500'}`;
+}
+
+function cso(c: string, s: string, o: string) {
+    return `${c}-${so(s, o)}`;
 }
 
 function class_name(c: string, s: string, o: string) {
@@ -77,7 +85,7 @@ export const buttonRules: Rule[] = [
             @apply inline-flex rounded-lg;
         }
         .btn-group-outline-${class_name(c, s, o)} button, .btn-group a {
-            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${c}-${theme_to_string(s, o)} text-${c}-${theme_to_string(s, o)} text-sm font-bold hover:(bg-${c}-${theme_to_string(s, o)} text-on-${c}) focus:ring-2;
+            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
         }
         .btn-group-outline-${class_name(c, s, o)} button:first-child {
             @apply rounded-l-token-base;
@@ -96,7 +104,7 @@ export const buttonRules: Rule[] = [
             @apply inline-flex rounded-lg;
         }
         .btn-group-${class_name(c, s, o)} button, .btn-group a {
-            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${c}-${theme_to_string(s, o)} bg-${c}-${theme_to_string(s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${c}-${theme_to_string(s, o)}) focus:ring-2;
+            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
         }
         .btn-group-${class_name(c, s, o)} button:first-child {
             @apply rounded-l-token-base;
@@ -134,8 +142,8 @@ export const buttonSCs: Shortcut[] = [
     
     // Button glass
     [
-        new RegExp(`^btn-glass-(${themeColorsJ})-?(${shadesJ})?$`), 
-        ([, b, v]) => `${baseStyles} bg-${b}-${v ?? '500'}/${glassOp} ${glassStyles} text-${b}-${v ?? '500'} border-${b}-${v ?? '500'} hover:(bg-${b}-${v ?? '500'} text-on-${b}) disabled:hover:(bg-${b}-${v ?? '500'}/${glassOp} text-${b}-${v ?? '500'})`, 
+        new RegExp(`^btn-glass-${regex_col_shade_op}$`), 
+        ([, c, s, o]) => `${baseStyles} ${glassStyles} bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)} border-${cs(c, s)} hover:(bg-${cs(c, s)} text-on-${c}) disabled:hover:(bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)})`, 
         {
             autocomplete: [`btn-glass-(${themeColorsJ})`, `btn-glass-(${themeColorsJ})-(${shadesJ})`]
         }
