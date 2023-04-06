@@ -2,12 +2,14 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
 
+import transformerDirectives from '@unocss/transformer-directives'
+
 import {
   presetAttributify,
   // presetIcons,
   presetUno,
-  // presetWind
-  transformerVariantGroup
+  presetWind,
+  transformerVariantGroup,
 } from 'unocss';
 
 import { extractorSvelte } from '@unocss/core';
@@ -20,23 +22,20 @@ export default defineConfig({
 		sveltekit(),
 		// UnoCSS('./unocss.config.ts'),
 		UnoCSS({
+      // configFile: './unocss.config.ts'
 			extractors: [extractorSvelte],
       theme: {
-        // colors: {
-        //   primary: {
-        //     600: 'var(--color-primary-600)',
-        //   }
-        // }
       },
       presets: [
         presetUno(),
         presetAttributify(),
         presetIcons(),
-        // presetWind(),
+        presetWind(),
         presetAtoUI()
       ],
       transformers: [
-        transformerVariantGroup()
+        transformerVariantGroup(),
+        transformerDirectives()
       ],
 		})
 	]

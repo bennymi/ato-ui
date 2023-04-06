@@ -1,9 +1,10 @@
 // import {
 //   defineConfig,
 //   presetAttributify,
-//   // presetIcons,
+//   presetIcons,
 //   presetUno,
-//   presetWind
+//   presetWind,
+//   transformerVariantGroup
 // } from 'unocss';
 
 // import { extractorSvelte } from '@unocss/core';
@@ -22,7 +23,11 @@
 //   presets: [
 //     presetUno(),
 //     presetAttributify(),
-//     // presetWind(),
+//     presetIcons(),
+//     presetWind(),
 //     presetAtoUI()
-//   ]
+//   ],
+//   transformers: [
+//     transformerVariantGroup()
+//   ],
 // })
