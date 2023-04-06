@@ -4,6 +4,8 @@ import { sizesJ } from '../../types/types.d';
 
 /**
  * reg_... = regular expressions
+ * l = size
+ * d = direction
  * c = color
  * s = shade
  * o = opacity
@@ -12,18 +14,28 @@ import { sizesJ } from '../../types/types.d';
  */
 
 // ===== Regular Expressions
+export const reg_l = `(${sizesJ})`;
+
+export const reg_d = `(${directionsJ})`;
+export const reg_dO = `(?:-(${directionsJ}))?`;
+
 export const reg_c = `(${themeColorsJ})`;
 export const reg_sO = `(?:-(${shadesJ}))?`;
 export const reg_oO = `(?:-op(0|100|[1-9][0-9]?))?`;
 // export const re_oO = `(?:\/(0|100|[1-9][0-9]?))?`;
 
+export const reg_c_sO = `${reg_c}${reg_sO}`;
 export const reg_c_sO_oO = `${reg_c}${reg_sO}${reg_oO}`;
 
 // ===== Functions used for shortcuts
+export function norm_op(o: string) {
+    return `${parseInt(o) / 100}`
+}
+
 export function convert_opacity(o: string) {
     if (!o) return '[1]';
 
-    const opacity = parseInt(o) / 100;
+    const opacity = norm_op(o);
     return `[${opacity}]`
 }
 

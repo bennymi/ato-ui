@@ -4,6 +4,7 @@
 		<div class="flex justify-center items-center flex-wrap gap-4">
 			<button class="btn-primary">Dark/Light</button>
 			<button class="btn-tr-primary-tertiary-secondary">Click</button>
+			<button class="btn-tr-primary-op50-tertiary-op50-secondary-op50">Click</button>
 			<button class="btn-border-surface-800-br-primary-secondary">Gradient border</button>
 			<button class="btn-border-surface-800-br-primary-secondary-success">3 Gradient border</button>
 			<button class="btn-glass-primary">Glass Primary</button>
@@ -14,6 +15,8 @@
 			<button class="btn-glass-warning border-dotted">Glass Warning Dotted</button>
 			<button class="btn-glass-secondary" disabled>Glass Disabled</button>
 			<button class="btn-glass-tl-tertiary-primary">Glass Gradient</button>
+			<!-- Glass Gradient with non-default opacity values -->
+			<button class="btn-glass-tertiary-op15-primary-op15">Glass (Bg-Opacity 15%)</button>
 			<button class="btn-glass-tl-tertiary-primary-secondary">Glass 3 Gradient</button>
 			<button class="btn-b-primary-secondary">Dark/Light</button>
 			<button class="btn-br-primary-400-secondary-800">Dark/Light</button>

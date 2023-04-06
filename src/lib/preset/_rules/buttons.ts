@@ -4,21 +4,23 @@ import { themeColorsJ, shadesJ } from '../../types/colors.d';
 import { directions, directionsJ } from '../../types/directions.d';
 import { sizes, sizesJ, type RulesDescription } from '../../types/types.d';
 
-import { reg_c_sO_oO, cs, cso, name_c_sO_oO } from '../utils/regex';
+import { reg_c, reg_c_sO, reg_c_sO_oO, cs, cso, name_c_sO_oO, reg_l, reg_dO, norm_op } from '../utils/regex';
 
 const baseStyles = `${sizes['md']} inline-flex justify-center items-center space-x-1 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
 
 const glassStyles = 'border-1';
-const glassOp = '30';
+const glassOp = '25';
+
+const default_dir = 'r';
 
 const gradientStyles = 'hover:brightness-105';
 
 export const buttonRules: Rule[] = [
     // Gradient border
     [
-        new RegExp(`^border-?(${themeColorsJ})?-?(${shadesJ})?-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
-        ([, b, bs, dir, c1, s1, c2, s2, c3, s3]) => ({
-            "background": `linear-gradient(to right, rgba(var(--color-${b}-${bs ?? '500'}), 0.8), rgba(var(--color-${b}-${bs ?? '500'}), 0.8)), linear-gradient(to ${directions[dir]}, rgb(var(--color-${c1}-${s1 ?? '500'})), rgb(var(--color-${c2}-${s2 ?? '500'})), rgb(var(--color-${c3}-${s3 ?? '500'})))`,
+        new RegExp(`^border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
+        ([, bc, bs, bo, d, c1, s1, c2, s2, c3, s3]) => ({
+            "background": `linear-gradient(to right, rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'}), rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'})), linear-gradient(to ${d ? directions[d] : 'right'}, rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})), rgb(var(--color-${cs(c3, s3)})))`,
             "background-clip": `padding-box, border-box`,
             "background-origin": `padding-box, border-box`,
             "border": "2px solid transparent",
@@ -31,9 +33,9 @@ export const buttonRules: Rule[] = [
         }
     ],
     [
-        new RegExp(`^border-(${themeColorsJ})-?(${shadesJ})?-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
-        ([, b, vb, dir, c1, v1, c2, v2]) => ({
-            "background": `linear-gradient(to right, rgba(var(--color-${b}-${vb ?? '500'}), 0.8), rgba(var(--color-${b}-${vb ?? '500'}), 0.8)), linear-gradient(to ${directions[dir]}, rgb(var(--color-${c1}-${v1 ?? '500'})), rgb(var(--color-${c2}-${v2 ?? '500'})))`,
+        new RegExp(`^border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}$`),
+        ([, bc, bs, bo, d, c1, s1, c2, s2]) => ({
+            "background": `linear-gradient(to right, rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'}), rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'})), linear-gradient(to ${d ? directions[d] : 'right'}, rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})))`,
             "background-clip": `padding-box, border-box`,
             "background-origin": `padding-box, border-box`,
             "border": "2px solid transparent",
@@ -88,8 +90,8 @@ export const buttonRules: Rule[] = [
 export const buttonSCs: Shortcut[] = [
     // Button size
     [
-        new RegExp(`^btn-(${sizesJ})$`),
-        ([, s]) => `${sizes[s]}`,
+        new RegExp(`^btn-${reg_l}$`),
+        ([, l]) => `${sizes[l]}`,
         {
             autocomplete: `btn-(${sizesJ})`
         }
@@ -102,8 +104,8 @@ export const buttonSCs: Shortcut[] = [
 
     // Button regular
     [
-        new RegExp(`^btn-(${themeColorsJ})$`), 
-        ([, b]) => `${baseStyles} bg-${b}-500 text-on-${b} hover:bg-${b}-600 disabled:hover:bg-${b}-500`, 
+        new RegExp(`^btn-${reg_c}$`), 
+        ([, c]) => `${baseStyles} bg-${c}-500 text-on-${c} hover:bg-${c}-600 disabled:hover:bg-${c}-500`, 
         {
             autocomplete: [`btn-(${themeColorsJ})`, 'btn-primary', 'btn-secondary', 'btn-tertiary']
         }
@@ -118,23 +120,23 @@ export const buttonSCs: Shortcut[] = [
         }
     ],
     [
-        new RegExp(`^btn-glass-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
-        ([, dir, b1, v1, b2, v2]) => 
-            `${baseStyles} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'}/${glassOp} to-${b2}-${v2 ?? '500'}/${glassOp} 
-            text-${b1}-${v1 ?? '500'} ${glassStyles} border-${b1}-${v1 ?? '500'} 
-            hover:(from-${b1}-${v1 ?? '500'} to-${b2}-${v2 ?? '500'} text-on-${b1}) 
-            disabled:hover:(from-${b1}-${v1 ?? '500'}/${glassOp} to-${b2}-${v2 ?? '500'}/${glassOp})`, 
+        new RegExp(`^btn-glass${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
+        ([, d, c1, s1, o1, c2, s2, o2]) => 
+            `${baseStyles} ${glassStyles} bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, `${o1 ?? glassOp}`)} to-${cso(c2, s2, `${o2 ?? glassOp}`)} 
+            text-${cs(c1, s1)} border-${cs(c1, s1)} 
+            hover:(from-${cs(c1, s1)} to-${cs(c2, s2)} text-on-${c1}) 
+            disabled:hover:(from-${cso(c1, s1, `${o1 ?? glassOp}`)} to-${cso(c2, s2, `${o2 ?? glassOp}`)})`, 
         {
             autocomplete: [`btn-glass-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`, `btn-glass-(${directionsJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`]
         }
     ],
     [
-        new RegExp(`^btn-glass-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
-        ([, dir, b1, v1, b2, v2, b3, v3]) => 
-            `${baseStyles} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'}/${glassOp} via-${b2}-${v2 ?? '500'}/${glassOp} to-${b3}-${v3 ?? '500'}/${glassOp}
-            text-${b1}-${v1 ?? '500'} ${glassStyles} border-${b1}-${v1 ?? '500'} 
-            hover:(from-${b1}-${v1 ?? '500'} via-${b2}-${v2 ?? '500'} to-${b3}-${v3 ?? '500'} text-on-${b1}) 
-            disabled:hover:(from-${b1}-${v1 ?? '500'}/${glassOp} via-${b2}-${v2 ?? '500'}/${glassOp} to-${b3}-${v3 ?? '500'}/${glassOp})`, 
+        new RegExp(`^btn-glass${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
+        ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]) => 
+            `${baseStyles} ${glassStyles} bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)}
+            text-${cs(c1, s1)} border-${cs(c1, s1)} 
+            hover:(from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)} text-on-${c1}) 
+            disabled:hover:(from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)}`, 
         {
             autocomplete: [
                 `btn-glass-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ}-(${themeColorsJ}))`, 
@@ -145,15 +147,15 @@ export const buttonSCs: Shortcut[] = [
 
     // Button gradients
     [
-        new RegExp(`^btn-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
-        ([, dir, c1, s1, c2, s2, c3, s3]) => `${baseStyles} bg-gradient-to-${dir} text-on-${c1} from-${c1}-${s1 ?? '500'} via-${c2}-${s2 ?? '500'} to-${c3}-${s3 ?? '500'} ${gradientStyles}`, 
+        new RegExp(`^btn${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
+        ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]) => `${baseStyles} ${gradientStyles} bg-gradient-to-${d ?? default_dir} text-on-${c1} from-${cso(c1, s1, o1)} via-${cso(c2, s2, o2)} to-${cso(c3, s3, o3)}`, 
         {
             autocomplete: [`btn-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`]
         }
     ],
     [
-        new RegExp(`^btn-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
-        ([, dir, c1, s1, c2, s2]) => `${baseStyles} bg-gradient-to-${dir} text-on-${c1} from-${c1}-${s1 ?? '500'} to-${c2}-${s2 ?? '500'} ${gradientStyles}`, 
+        new RegExp(`^btn${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
+        ([, d, c1, s1, o1, c2, s2, o2]) => `${baseStyles} ${gradientStyles} bg-gradient-to-${d ?? default_dir} text-on-${c1} from-${cso(c1, s1, o1)} to-${cso(c2, s2, o2)}`, 
         {
             autocomplete: [
                 `btn-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
@@ -164,8 +166,8 @@ export const buttonSCs: Shortcut[] = [
 
     // Button gradient border
     [
-        new RegExp(`^btn-border-(${themeColorsJ})-?(${shadesJ})?-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
-        ([, b, vb, dir, c1, v1, c2, v2]) => `${baseStyles} text-on-${b} border-${b}${vb ? `-${vb}` : ''}-${dir}-${c1}${v1 ? `-${v1}` : ''}-${c2}${v2 ? `-${v2}` : ''} hover:(bg-gradient-to-${dir} from-${c1}-${v1 ? `${v1}` : '500'} to-${c2}-${v2 ? `${v2}` : '500'})`,
+        new RegExp(`^btn-border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}$`),
+        ([, bc, bs, bo, d, c1, s1, c2, s2]) => `${baseStyles} text-on-${bc} border-${name_c_sO_oO(bc, bs, bo)}-${d ?? default_dir}-${cs(c1, s1)}-${cs(c2, s2)} hover:(bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} to-${cs(c2, s2)})`,
         {
             autocomplete: [
                 `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
@@ -174,9 +176,9 @@ export const buttonSCs: Shortcut[] = [
         }
     ],
     [
-        new RegExp(`^btn-border-(${themeColorsJ})-?(${shadesJ})?-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`),
-        ([, b, bs, dir, c1, s1, c2, s2, c3, s3]) => 
-        `${baseStyles} text-on-${b} border-${b}${bs ? `-${bs}` : ''}-${dir}-${c1}${s1 ? `-${s1}` : ''}-${c2}${s2 ? `-${s2}` : ''}-${c3}${s3 ? `-${s3}` : ''} hover:(bg-gradient-to-${dir} from-${c1}-${s1 ?? '500'} via-${c2}-${s2 ?? '500'} to-${c3}-${s3 ?? '500'})`,
+        new RegExp(`^btn-border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
+        ([, bc, bs, bo, d, c1, s1, c2, s2, c3, s3]) => 
+        `${baseStyles} text-on-${bc} border-${name_c_sO_oO(bc, bs, bo)}-${d ?? default_dir}-${cs(c1, s1)}-${cs(c2, s2)}-${cs(c3, s3)} hover:(bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)})`,
         {
             autocomplete: [
                 `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
