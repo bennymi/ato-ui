@@ -4,45 +4,14 @@ import { themeColorsJ, shadesJ } from '../../types/colors.d';
 import { directions, directionsJ } from '../../types/directions.d';
 import { sizes, sizesJ, type RulesDescription } from '../../types/types.d';
 
+import { reg_c_sO_oO, cs, cso, name_c_sO_oO } from '../utils/regex';
+
 const baseStyles = `${sizes['md']} inline-flex justify-center items-center space-x-1 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
 
 const glassStyles = 'border-1';
 const glassOp = '30';
 
 const gradientStyles = 'hover:brightness-105';
-
-// const regex_col_shade_op = `(${themeColorsJ})(?:-(${shadesJ}))?(?:\/(0|100|[1-9][0-9]?))?`;
-const regex_col_shade_op = `(${themeColorsJ})(?:-(${shadesJ}))?(?:-op(0|100|[1-9][0-9]?))?`;
-
-function convert_opacity(o: string) {
-    if (!o) return '[1]';
-
-    const opacity = parseInt(o) / 100;
-    return `[${opacity}]`
-}
-
-function so(s: string, o: string) {
-    let shade = s ?? '500';
-    // return `${shade}/${convert_opacity(o)}`
-    const final = `${shade}/${convert_opacity(o)}`
-    // console.log('final', final);
-    return final;
-}
-
-function cs(c: string, s: string) {
-    return `${c}-${s ?? '500'}`;
-}
-
-function cso(c: string, s: string, o: string) {
-    return `${c}-${so(s, o)}`;
-}
-
-function class_name(c: string, s: string, o: string) {
-    // console.log(`${c}${s ? `-${s}` : ''}${o ? `/${o}` : ''}`);
-    // return `${c}${s ? `-${s}` : ''}${o ? `\/${o}` : ''}`;
-    // console.log(`${c}${s ? `-${s}` : ''}${o ? `-op${o}` : ''}`);
-    return `${c}${s ? `-${s}` : ''}${o ? `-op${o}` : ''}`;
-}
 
 export const buttonRules: Rule[] = [
     // Gradient border
@@ -79,18 +48,18 @@ export const buttonRules: Rule[] = [
 
     // Button group outline
     [
-        new RegExp(`^btn-group-outline-${regex_col_shade_op}$`),
+        new RegExp(`^btn-group-outline-${reg_c_sO_oO}$`),
         ([_, c, s, o]) => `
-        .btn-group-outline-${class_name(c, s, o)} {
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} {
             @apply inline-flex rounded-lg;
         }
-        .btn-group-outline-${class_name(c, s, o)} button, .btn-group a {
-            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button, .btn-group a {
+            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 bg-${cso(c, s, '15')} transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
         }
-        .btn-group-outline-${class_name(c, s, o)} button:first-child {
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:first-child {
             @apply rounded-l-token-base;
         }
-        .btn-group-outline-${class_name(c, s, o)} button:last-child {
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:last-child {
             @apply rounded-r-token-base;
         }
         `
@@ -98,18 +67,18 @@ export const buttonRules: Rule[] = [
 
     // Button group regular
     [
-        new RegExp(`^btn-group-${regex_col_shade_op}$`),
+        new RegExp(`^btn-group-${reg_c_sO_oO}$`),
         ([_, c, s, o]) => `
-        .btn-group-${class_name(c, s, o)} {
+        .btn-group-${name_c_sO_oO(c, s, o)} {
             @apply inline-flex rounded-lg;
         }
-        .btn-group-${class_name(c, s, o)} button, .btn-group a {
+        .btn-group-${name_c_sO_oO(c, s, o)} button, .btn-group a {
             @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
         }
-        .btn-group-${class_name(c, s, o)} button:first-child {
+        .btn-group-${name_c_sO_oO(c, s, o)} button:first-child {
             @apply rounded-l-token-base;
         }
-        .btn-group-${class_name(c, s, o)} button:last-child {
+        .btn-group-${name_c_sO_oO(c, s, o)} button:last-child {
             @apply rounded-r-token-base;
         }
         `
@@ -142,7 +111,7 @@ export const buttonSCs: Shortcut[] = [
     
     // Button glass
     [
-        new RegExp(`^btn-glass-${regex_col_shade_op}$`), 
+        new RegExp(`^btn-glass-${reg_c_sO_oO}$`), 
         ([, c, s, o]) => `${baseStyles} ${glassStyles} bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)} border-${cs(c, s)} hover:(bg-${cs(c, s)} text-on-${c}) disabled:hover:(bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)})`, 
         {
             autocomplete: [`btn-glass-(${themeColorsJ})`, `btn-glass-(${themeColorsJ})-(${shadesJ})`]
