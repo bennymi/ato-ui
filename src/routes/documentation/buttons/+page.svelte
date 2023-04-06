@@ -7,6 +7,9 @@
 			<button class="btn-tr-primary-op50-tertiary-op50-secondary-op50">Click</button>
 			<button class="btn-border-surface-800-br-primary-secondary">Gradient border</button>
 			<button class="btn-border-surface-800-br-primary-secondary-success">3 Gradient border</button>
+			<button class="btn-border-surface-800-op90-br-primary-secondary-success"
+				>3 Gradient border (op90)</button
+			>
 			<button class="btn-glass-primary">Glass Primary</button>
 			<!-- Overwritting the default background opacity of 30% for glass buttons -->
 			<!-- <button class="btn-glass-primary-op20">Glass Primary</button> -->
