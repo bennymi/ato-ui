@@ -1,6 +1,7 @@
 import { themeColorsJ, shadesJ } from '../../types/colors.d';
 import { directionsJ } from '../../types/directions.d';
 import { sizesJ } from '../../types/types.d';
+import { pos_j  } from '../../types/positions.d';
 
 /**
  * reg_... = regular expressions
@@ -9,12 +10,15 @@ import { sizesJ } from '../../types/types.d';
  * c = color
  * s = shade
  * o = opacity
+ * p = position
  * O = Optional
  * name_... = class names
  */
 
 // ===== Regular Expressions
 export const reg_l = `(${sizesJ})`;
+
+export const reg_p = `(${pos_j})`;
 
 export const reg_d = `(${directionsJ})`;
 export const reg_dO = `(?:-(${directionsJ}))?`;
