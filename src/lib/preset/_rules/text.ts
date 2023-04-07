@@ -1,15 +1,14 @@
 import type { Shortcut } from '@unocss/core';
 
-import { themeColorsJ, shadesJ } from '../../types/colors.d';
-import { directionsJ } from '../../types/directions.d';
+import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_d } from '../utils/regex';
 
 const gradientClasses = 'bg-clip-text text-transparent';
 
 export const textSCs: Shortcut[] = [
     // Text on base colours
     [
-        new RegExp(`^text-on-(${themeColorsJ})$`),
-        ([, b]) => `text-[color:rgb(var(--on-${b}))]`,
+        new RegExp(`^text-on-${reg_c}$`),
+        ([, c]) => `text-[color:rgb(var(--on-${c}))]`,
         {
             autocomplete: `text-on-$colors`
         }
@@ -26,36 +25,39 @@ export const textSCs: Shortcut[] = [
 
     // Text
     [
-        new RegExp(`^text-(${themeColorsJ})-(${shadesJ})-(${shadesJ})$`), 
-        ([, b, v1, v2]) => `text-${b}-${v1} dark:text-${b}-${v2}`,
+        new RegExp(`^text-${reg_c}-${reg_s}-${reg_s}$`), 
+        ([, b, s1, s2]) => `text-${b}-${s1} dark:text-${b}-${s2}`,
         {
-            autocomplete: `ato-text-(${themeColorsJ})-(${shadesJ})-(${shadesJ})`
+            autocomplete: `ato-text-${reg_c}-${reg_s}-${reg_s}`
         }
     ],
 
     // Text Inverse
     [
-        new RegExp(`^text-inverse-(${themeColorsJ})(-${shadesJ})?-(${themeColorsJ})(-${shadesJ})?$`), 
-        ([, b1, v1, b2, v2]) => `text-${b1}${['white', 'black'].includes(b1) ? '' : v1 ?? '-500'} dark:text-${b2}${['white', 'black'].includes(b2) ? '' : v2 ?? '-500'}`,
+        new RegExp(`^text-inverse-${reg_c_sO}-${reg_c_sO}$`), 
+        ([, c1, s1, c2, s2]) => `text-${cs(c1, s1)} dark:text-${cs(c2, s2)}`,
         {
             // autocomplete: `ato-text-inverse-(${themeColorsJ})-(${themeColorsJ})`
-            autocomplete: `ato-text-inverse-$colors`
+            autocomplete: [
+                `ato-text-inverse-${reg_c}-${reg_c}`,
+                `ato-text-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
+            ]
         }
     ],
 
     // Text gradients
     [
-        new RegExp(`^text-gradient-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
-        ([, dir, b1, v1, b2, v2, b3, v3]) => `${gradientClasses} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'} via-${b2}-${v2 ?? '500'} to-${b3}-${ v3 ?? '500'}`, 
+        new RegExp(`^text-gradient${reg_dO}-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`), 
+        ([, d, c1, s1, c2, s2, c3, s3]) => `${gradientClasses} bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)}`, 
         {
-            autocomplete: [`text-gradient-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`]
+            autocomplete: [`text-gradient-${reg_d}-${reg_c}-${reg_c}-${reg_c}`]
         }
     ],
     [
-        new RegExp(`^text-gradient-(${directionsJ})-(${themeColorsJ})-?(${shadesJ})?-(${themeColorsJ})-?(${shadesJ})?$`), 
-        ([, dir, b1, v1, b2, v2]) => `${gradientClasses} bg-gradient-to-${dir} from-${b1}-${v1 ?? '500'} to-${b2}-${v2 ?? '500'}`, 
+        new RegExp(`^text-gradient${reg_dO}-${reg_c_sO}-${reg_c_sO}$`), 
+        ([, d, c1, s1, c2, s2]) => `${gradientClasses} bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} to-${cs(c2, s2)}`, 
         {
-            autocomplete: [`text-gradient-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`]
+            autocomplete: [`text-gradient-${reg_d}-${reg_c}-${reg_c}`]
         }
     ],
 ]
