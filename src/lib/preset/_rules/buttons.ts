@@ -55,13 +55,13 @@ export const buttonRules: Rule[] = [
         .btn-group-outline-${name_c_sO_oO(c, s, o)} {
             @apply inline-flex rounded-lg;
         }
-        .btn-group-outline-${name_c_sO_oO(c, s, o)} button, .btn-group a {
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button, .btn-group-${name_c_sO_oO(c, s, o)} a {
             @apply px-4 py-2 inline-flex justify-center items-center space-x-1 bg-${cso(c, s, '15')} transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
         }
-        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:first-child {
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:first-child, btn-group-outline-${name_c_sO_oO(c, s, o)} a:first-child {
             @apply rounded-l-token-base;
         }
-        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:last-child {
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:last-child, btn-group-outline-${name_c_sO_oO(c, s, o)} a:last-child {
             @apply rounded-r-token-base;
         }
         `
@@ -74,13 +74,13 @@ export const buttonRules: Rule[] = [
         .btn-group-${name_c_sO_oO(c, s, o)} {
             @apply inline-flex rounded-lg;
         }
-        .btn-group-${name_c_sO_oO(c, s, o)} button, .btn-group a {
+        .btn-group-${name_c_sO_oO(c, s, o)} button, btn-group-${name_c_sO_oO(c, s, o)} a {
             @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
         }
-        .btn-group-${name_c_sO_oO(c, s, o)} button:first-child {
+        .btn-group-${name_c_sO_oO(c, s, o)} button:first-child, btn-group-${name_c_sO_oO(c, s, o)} a:first-child {
             @apply rounded-l-token-base;
         }
-        .btn-group-${name_c_sO_oO(c, s, o)} button:last-child {
+        .btn-group-${name_c_sO_oO(c, s, o)} button:last-child, btn-group-${name_c_sO_oO(c, s, o)} a:last-child {
             @apply rounded-r-token-base;
         }
         `
