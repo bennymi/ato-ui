@@ -24,7 +24,7 @@
 		<span class="s-corners-primary" />
 		<span class="s-corners-outline-tertiary" />
 		<span class="s-corners-outline-secondary" />
-		<span class="s-corners-outline-secondary border-primary-bl-secondary-tertiary-primary" />
+		<span class="s-corners-outline-secondary border-primary-op0-bl-error-tertiary-primary" />
 		<!-- Squares folding -->
 		<span class="s-squares-folding-primary" />
 		<span class="s-squares-folding-secondary" />
