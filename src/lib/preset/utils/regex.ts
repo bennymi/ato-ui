@@ -15,6 +15,11 @@ import { pos_j  } from '../../types/positions.d';
  * name_... = class names
  */
 
+const white_black = ['white', 'black'];
+
+// ===== Default values
+export const default_dir = 'r';
+
 // ===== Regular Expressions
 export const reg_l = `(${sizesJ})`;
 
@@ -24,6 +29,7 @@ export const reg_d = `(${directionsJ})`;
 export const reg_dO = `(?:-(${directionsJ}))?`;
 
 export const reg_c = `(${themeColorsJ})`;
+export const reg_s = `(${shadesJ})`;
 export const reg_sO = `(?:-(${shadesJ}))?`;
 export const reg_oO = `(?:-op(0|100|[1-9][0-9]?))?`;
 // export const re_oO = `(?:\/(0|100|[1-9][0-9]?))?`;
@@ -51,10 +57,18 @@ export function so(s: string, o: string) {
 }
 
 export function cs(c: string, s: string) {
+    if (white_black.includes(c)) {
+        return c;
+    }
+
     return `${c}-${s ?? '500'}`;
 }
 
 export function cso(c: string, s: string, o: string) {
+    if (white_black.includes(c)) {
+        return c;
+    }
+
     return `${c}-${so(s, o)}`;
 }
 

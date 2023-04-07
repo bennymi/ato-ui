@@ -5,11 +5,10 @@
 
 import type { Rule, Shortcut } from '@unocss/core';
 
-// import { directionsJ } from '../../types/directions.d';
-import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
+import { themeColorsJ, shadesJ } from '../../types/colors.d';
 import type { RulesDescription } from '../../types/types.d';
 
-import { reg_c_sO, reg_c_sO_oO, cs, cso } from '../utils/regex';
+import { reg_c_sO, cs } from '../utils/regex';
 
 const sqHoverBase = 'relative w-12 h-12 rotate-x-65 rotate-z-45 animate-layers1 animate-alternate after:(content-none absolute inset-0 animate-layerTr animate-alternate animate-delay-500)';
 
