@@ -49,20 +49,60 @@ export const buttonRules: Rule[] = [
     ],
 
     // Button group outline
+    // [
+    //     new RegExp(`^btn-group-outline-${reg_c_sO_oO}$`),
+    //     ([_, c, s, o]) => `
+    //     .btn-group-outline-${name_c_sO_oO(c, s, o)} {
+    //         @apply inline-flex rounded-lg;
+    //     }
+    //     .btn-group-outline-${name_c_sO_oO(c, s, o)} button, .btn-group-outline-${name_c_sO_oO(c, s, o)} a {
+    //         @apply px-4 py-2 inline-flex justify-center items-center space-x-1 bg-${cso(c, s, '15')} transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
+    //     }
+    //     .btn-group-outline-${name_c_sO_oO(c, s, o)} button:first-child, btn-group-outline-${name_c_sO_oO(c, s, o)} a:first-child {
+    //         @apply rounded-l-token-base;
+    //     }
+    //     .btn-group-outline-${name_c_sO_oO(c, s, o)} button:last-child, btn-group-outline-${name_c_sO_oO(c, s, o)} a:last-child {
+    //         @apply rounded-r-token-base;
+    //     }
+    //     `
+    // ],
     [
         new RegExp(`^btn-group-outline-${reg_c_sO_oO}$`),
         ([_, c, s, o]) => `
         .btn-group-outline-${name_c_sO_oO(c, s, o)} {
-            @apply inline-flex rounded-lg;
+            display: inline-flex;
+            border-radius: var(--theme-rounded-base);
         }
-        .btn-group-outline-${name_c_sO_oO(c, s, o)} button, .btn-group-${name_c_sO_oO(c, s, o)} a {
-            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 bg-${cso(c, s, '15')} transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button, .btn-group-outline-${name_c_sO_oO(c, s, o)} a {
+            display: inline-flex; 
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem; 
+            padding-left: 1rem;
+            padding-right: 1rem; 
+            transition-property: all; 
+            font-size: 0.875rem;
+            line-height: 1.25rem; 
+            font-weight: 700; 
+            justify-content: center; 
+            align-items: center; 
+            border: 1px solid rgba(var(--color-${cs(c, s)}), 1);
+            color: rgba(var(--color-${cs(c, s)}), 1);
+            background: rgba(var(--color-${cs(c, s)}), 0.15);
         }
-        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:first-child, btn-group-outline-${name_c_sO_oO(c, s, o)} a:first-child {
-            @apply rounded-l-token-base;
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button > * + *, .btn-group-outline-${name_c_sO_oO(c, s, o)} a > * + * {
+            margin-left: 0.25rem;
         }
-        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:last-child, btn-group-outline-${name_c_sO_oO(c, s, o)} a:last-child {
-            @apply rounded-r-token-base;
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:hover, .btn-group-outline-${name_c_sO_oO(c, s, o)} a:hover {
+            color: rgba(var(--on-${c}), 1);
+            background: rgba(var(--color-${cs(c, s)}), 1);
+        }
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:first-child, .btn-group-outline-${name_c_sO_oO(c, s, o)} a:first-child {
+            border-top-left-radius: var(--theme-rounded-base);
+            border-bottom-left-radius: var(--theme-rounded-base);
+        }
+        .btn-group-outline-${name_c_sO_oO(c, s, o)} button:last-child, .btn-group-outline-${name_c_sO_oO(c, s, o)} a:last-child {
+            border-top-right-radius: var(--theme-rounded-base);
+            border-bottom-right-radius: var(--theme-rounded-base);
         }
         `
     ],
@@ -72,19 +112,60 @@ export const buttonRules: Rule[] = [
         new RegExp(`^btn-group-${reg_c_sO_oO}$`),
         ([_, c, s, o]) => `
         .btn-group-${name_c_sO_oO(c, s, o)} {
-            @apply inline-flex rounded-lg;
+            display: inline-flex;
+            border-radius: var(--theme-rounded-base);
         }
-        .btn-group-${name_c_sO_oO(c, s, o)} button, btn-group-${name_c_sO_oO(c, s, o)} a {
-            @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
+        .btn-group-${name_c_sO_oO(c, s, o)} button, .btn-group-${name_c_sO_oO(c, s, o)} a {
+            display: inline-flex; 
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem; 
+            padding-left: 1rem;
+            padding-right: 1rem; 
+            transition-property: all; 
+            font-size: 0.875rem;
+            line-height: 1.25rem; 
+            font-weight: 700; 
+            justify-content: center; 
+            align-items: center; 
+            border: 1px solid rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o) / 100 : '1'});
+            color: rgba(var(--on-${c}));
+            background: rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o) / 100 : '1'});
         }
-        .btn-group-${name_c_sO_oO(c, s, o)} button:first-child, btn-group-${name_c_sO_oO(c, s, o)} a:first-child {
-            @apply rounded-l-token-base;
+        .btn-group-${name_c_sO_oO(c, s, o)} button > * + *, .btn-group-${name_c_sO_oO(c, s, o)} a > * + * {
+            margin-left: 0.25rem;
         }
-        .btn-group-${name_c_sO_oO(c, s, o)} button:last-child, btn-group-${name_c_sO_oO(c, s, o)} a:last-child {
-            @apply rounded-r-token-base;
+        .btn-group-${name_c_sO_oO(c, s, o)} button:hover, .btn-group-${name_c_sO_oO(c, s, o)} a:hover {
+            color: rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o) / 100 : '1'});
+            background: rgba(var(--color-${cs(c, s)}), 0.05);
+        }
+        .btn-group-${name_c_sO_oO(c, s, o)} button:first-child, .btn-group-${name_c_sO_oO(c, s, o)} a:first-child {
+            border-top-left-radius: var(--theme-rounded-base);
+            border-bottom-left-radius: var(--theme-rounded-base);
+        }
+        .btn-group-${name_c_sO_oO(c, s, o)} button:last-child, .btn-group-${name_c_sO_oO(c, s, o)} a:last-child {
+            border-top-right-radius: var(--theme-rounded-base);
+            border-bottom-right-radius: var(--theme-rounded-base);
         }
         `
+        // @apply space-x-1 hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
     ],
+    // [
+    //     new RegExp(`^btn-group-${reg_c_sO_oO}$`),
+    //     ([_, c, s, o]) => `
+    //     .btn-group-${name_c_sO_oO(c, s, o)} {
+    //         @apply inline-flex rounded-lg;
+    //     }
+    //     .btn-group-${name_c_sO_oO(c, s, o)} button, btn-group-${name_c_sO_oO(c, s, o)} a {
+    //         @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
+    //     }
+    //     .btn-group-${name_c_sO_oO(c, s, o)} button:first-child, btn-group-${name_c_sO_oO(c, s, o)} a:first-child {
+    //         @apply rounded-l-token-base;
+    //     }
+    //     .btn-group-${name_c_sO_oO(c, s, o)} button:last-child, btn-group-${name_c_sO_oO(c, s, o)} a:last-child {
+    //         @apply rounded-r-token-base;
+    //     }
+    //     `
+    // ],
 ];
 
 export const buttonSCs: Shortcut[] = [
