@@ -23,7 +23,7 @@
 				class="btn-border-surface-primary-secondary text-on-primary"
 				on:click={() => (activeIdx += 1)}
 			>
-				{activeTheme}
+				{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
 			</button>
 		</div>
 		<slot />
