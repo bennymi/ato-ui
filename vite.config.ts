@@ -12,7 +12,7 @@ import {
   transformerVariantGroup,
 } from 'unocss';
 
-import { extractorSvelte } from '@unocss/core';
+import extractorSvelte from '@unocss/extractor-svelte';
 import presetIcons from '@unocss/preset-icons'
 
 import { colors, presetAtoUI } from './src/lib/preset/index';
@@ -23,7 +23,7 @@ export default defineConfig({
 		// UnoCSS('./unocss.config.ts'),
 		UnoCSS({
       // configFile: './unocss.config.ts'
-			extractors: [extractorSvelte],
+			extractors: [extractorSvelte()],
       theme: {
       },
       presets: [
