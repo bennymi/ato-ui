@@ -217,7 +217,7 @@ export const buttonSCs: Shortcut[] = [
             `${baseStyles} ${glassStyles} bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)}
             text-${cs(c1, s1)} border-${cs(c1, s1)} 
             hover:(from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)} text-on-${c1}) 
-            disabled:hover:(from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)}`, 
+            disabled:hover:(from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)} text-${cs(c1, s1)})`, 
         {
             autocomplete: [
                 `btn-glass-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ}-(${themeColorsJ}))`, 
