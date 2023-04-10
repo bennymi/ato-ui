@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "svelte.svelte-vscode",
+        "dbaeumer.vscode-eslint",
+        "antfu.unocss",
+        "bradlc.vscode-tailwindcss",
+        "voorjaar.windicss-intellisense",
+        "esbenp.prettier-vscode",
+    ]
+}
