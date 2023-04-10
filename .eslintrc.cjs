@@ -64,5 +64,13 @@ module.exports = {
 		],
 		'no-restricted-imports': ['error', { paths: ['$env/static/private'] }],
 		'no-self-assign': 0,
+		"@typescript-eslint/naming-convention": {
+			format: [
+				 'camelCase',
+				 'PascalCase',
+				 'snake_case',
+				 'UPPER_CASE'
+			]
+		}
 	},
 };

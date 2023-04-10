@@ -6,7 +6,7 @@ import { sizes, sizesJ, type RulesDescription } from '../../types/types.d';
 
 import { reg_c, reg_c_sO, reg_c_sO_oO, cs, cso, name_c_sO_oO, reg_l, reg_dO, norm_op } from '../utils/regex';
 
-const baseStyles = `${sizes['md']} inline-flex justify-center items-center space-x-1 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
+const baseStyles = `${sizes.md} inline-flex justify-center items-center space-x-1 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
 
 const glassStyles = 'border-1';
 const glassOp = '25';
