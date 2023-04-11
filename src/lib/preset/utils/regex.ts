@@ -39,7 +39,7 @@ export const reg_c_sO_oO = `${reg_c}${reg_sO}${reg_oO}`;
 
 // ===== Functions used for shortcuts
 export function norm_op(o: string) {
-    return `${parseInt(o) / 100}`
+    return `${parseInt(o, 10) / 100}`
 }
 
 export function convert_opacity(o: string) {
@@ -50,7 +50,7 @@ export function convert_opacity(o: string) {
 }
 
 export function so(s: string, o: string) {
-    let shade = s ?? '500';
+    const shade = s ?? '500';
     // return `${shade}/${convert_opacity(o)}`
     const final = `${shade}/${convert_opacity(o)}`
     return final;
@@ -73,7 +73,7 @@ export function cso(c: string, s: string, o: string) {
 }
 
 // ===== Functions used only for specifying class names in rules
-export function name_c_sO_oO(c: string, s: string='', o: string='') {
+export function name_c_sO_oO(c: string, s='', o='') {
     // console.log(`${c}${s ? `-${s}` : ''}${o ? `/${o}` : ''}`);
     // return `${c}${s ? `-${s}` : ''}${o ? `\/${o}` : ''}`;
     return `${c}${s ? `-${s}` : ''}${o ? `-op${o}` : ''}`;

@@ -11,6 +11,7 @@ module.exports = {
 	],
 	plugins: [
 		'@typescript-eslint',
+		'import'
 	],
 	ignorePatterns: ['*.cjs'],
 	overrides: [
@@ -56,21 +57,42 @@ module.exports = {
 		'import/no-extraneous-dependencies': 0,
 		'import/no-mutable-exports': 0,
 		'import/no-duplicates': 0,
-		'import-no-duplicates-prefix-resolved-path/no-duplicates': [
-			'error',
-			{
-				prefixResolvedPathWithImportName: true,
-			},
-		],
+		// 'import-no-duplicates-prefix-resolved-path/no-duplicates': [
+		// 	'error',
+		// 	{
+		// 		prefixResolvedPathWithImportName: true,
+		// 	},
+		// ],
 		'no-restricted-imports': ['error', { paths: ['$env/static/private'] }],
 		'no-self-assign': 0,
-		"@typescript-eslint/naming-convention": {
-			format: [
-				 'camelCase',
-				 'PascalCase',
-				 'snake_case',
-				 'UPPER_CASE'
-			]
-		}
+		'@typescript-eslint/naming-convention': [
+			"warn",
+			{
+				selector: 'default',
+				format: ['camelCase', 'PascalCase', 'snake_case', 'UPPER_CASE'],
+				leadingUnderscore: 'allow',
+				trailingUnderscore: 'allow',
+			  },
+			
+			  {
+				selector: 'variable',
+				format: ['camelCase', 'snake_case', 'UPPER_CASE'],
+				leadingUnderscore: 'allow',
+				trailingUnderscore: 'allow',
+			  },
+			
+			  {
+				selector: 'typeLike',
+				format: ['PascalCase'],
+			  },
+		]
+		// "@typescript-eslint/naming-convention": {
+		// 	format: [
+		// 		 'camelCase',
+		// 		 'PascalCase',
+		// 		 'snake_case',
+		// 		 'UPPER_CASE'
+		// 	]
+		// }
 	},
 };
