@@ -127,15 +127,15 @@ export const buttonRules: Rule[] = [
             font-weight: 700; 
             justify-content: center; 
             align-items: center; 
-            border: 1px solid rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o) / 100 : '1'});
+            border: 1px solid rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o, 10) / 100 : '1'});
             color: rgba(var(--on-${c}));
-            background: rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o) / 100 : '1'});
+            background: rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o, 10) / 100 : '1'});
         }
         .btn-group-${name_c_sO_oO(c, s, o)} button > * + *, .btn-group-${name_c_sO_oO(c, s, o)} a > * + * {
             margin-left: 0.25rem;
         }
         .btn-group-${name_c_sO_oO(c, s, o)} button:hover, .btn-group-${name_c_sO_oO(c, s, o)} a:hover {
-            color: rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o) / 100 : '1'});
+            color: rgba(var(--color-${cs(c, s)}), ${o ? parseInt(o, 10) / 100 : '1'});
             background: rgba(var(--color-${cs(c, s)}), 0.05);
         }
         .btn-group-${name_c_sO_oO(c, s, o)} button:first-child, .btn-group-${name_c_sO_oO(c, s, o)} a:first-child {
