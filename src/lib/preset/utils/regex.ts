@@ -42,6 +42,10 @@ export function norm_op(o: string) {
     return `${parseInt(o, 10) / 100}`
 }
 
+export function parse_opacity(o: string, def_o='1') {
+    return `${o ? (parseInt(o, 10) / 100).toFixed(2) : def_o}`
+}
+
 export function convert_opacity(o: string) {
     if (!o) return '[1]';
 
