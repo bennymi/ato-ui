@@ -7,6 +7,8 @@
 	import 'uno.css';
 	import '@unocss/reset/tailwind.css';
 
+	import NavBar from '$lib/components/navbar/NavBar.svelte';
+
 	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
 
 	let activeIdx = 0;
@@ -16,7 +18,21 @@
 </script>
 
 <div class:dark class={activeTheme}>
-	<div class="bg-inverse-white-surface-700 min-h-screen">
+	<NavBar
+		icons={[
+			{ icon: 'i-mdi:github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
+			{ icon: 'i-mdi:discord', link: '', title: 'Discord' }
+		]}
+	>
+		<svelte:fragment slot="title">
+			<a href="/" class="text-surface-900-50 text-3xl select-none">
+				<span class="text-gradient-b-primary-secondary-600 font-extrabold">Ato</span><span
+					class="font-bold">UI</span
+				>
+			</a>
+		</svelte:fragment>
+	</NavBar>
+	<div class="AtoContent mt-12 bg-inverse-white-surface-700 min-h-screen">
 		<div class="p-4">
 			<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
 			<button
