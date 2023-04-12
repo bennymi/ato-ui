@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '$lib/styles/themes/ato.css';
 	import '$lib/styles/themes/water.css';
 	import '$lib/styles/themes/earth.css';
@@ -16,7 +16,7 @@
 </script>
 
 <div class:dark class={activeTheme}>
-	<div class="bg-inverse-white-surface-900 min-h-screen">
+	<div class="bg-inverse-white-surface-700 min-h-screen">
 		<div class="p-4">
 			<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
 			<button
