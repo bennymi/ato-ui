@@ -17,10 +17,7 @@
 		{#if icons.length > 0}
 			<div class="AtoNavBarSocials flex gap-x-4 mx-4">
 				{#each icons as { icon, link, title }}
-					<a
-						href={link}
-						class="text-surface-400 hover:text-surface-900 dark:(text-surface-200 hover:text-surface-50)"
-					>
+					<a href={link} class="text-surface-400-900-200-50">
 						<span class="sr-only">{title}</span>
 						<span class="text-2xl {icon}" />
 					</a>
