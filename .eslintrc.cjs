@@ -13,7 +13,7 @@ module.exports = {
 		'@typescript-eslint',
 		'import'
 	],
-	ignorePatterns: ['*.cjs'],
+	ignorePatterns: [], // ['*.cjs'],
 	overrides: [
 		{
 			files: ['**/*.svelte'],
@@ -53,12 +53,14 @@ module.exports = {
 		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
 		'import/prefer-default-export': 0,
 		'no-param-reassign': 0,
+		'no-return-assign': 0,
 		'import/extensions': 0,
 		'import/no-extraneous-dependencies': 0,
 		'import/no-mutable-exports': 0,
 		'import/no-duplicates': 0,
-		"no-unused-vars": "off",
-    	"@typescript-eslint/no-unused-vars": "warn",
+		'import/no-unresolved': 'warn',
+		'no-unused-vars': 'off',
+    	'@typescript-eslint/no-unused-vars': 'warn',
 		// 'import-no-duplicates-prefix-resolved-path/no-duplicates': [
 		// 	'error',
 		// 	{
@@ -68,7 +70,7 @@ module.exports = {
 		'no-restricted-imports': ['error', { paths: ['$env/static/private'] }],
 		'no-self-assign': 0,
 		'@typescript-eslint/naming-convention': [
-			"warn",
+			'warn',
 			{
 				selector: 'default',
 				format: ['camelCase', 'PascalCase', 'snake_case', 'UPPER_CASE'],
@@ -88,7 +90,7 @@ module.exports = {
 				format: ['PascalCase'],
 			  },
 		]
-		// "@typescript-eslint/naming-convention": {
+		// '@typescript-eslint/naming-convention': {
 		// 	format: [
 		// 		 'camelCase',
 		// 		 'PascalCase',

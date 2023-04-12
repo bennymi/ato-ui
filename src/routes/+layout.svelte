@@ -7,7 +7,7 @@
 	import 'uno.css';
 	import '@unocss/reset/tailwind.css';
 
-	let themes = ['ato', 'water', 'earth', 'fire', 'air'];
+	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
 
 	let activeIdx = 0;
 	let dark = true;
