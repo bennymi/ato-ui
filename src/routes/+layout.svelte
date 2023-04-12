@@ -32,8 +32,8 @@
 			</a>
 		</svelte:fragment>
 	</NavBar>
-	<div class="AtoContent mt-12 bg-inverse-white-surface-700 min-h-screen">
-		<div class="p-4">
+	<div class="AtoContent mt-12 py-10 bg-inverse-white-surface-700 min-h-screen">
+		<div class="px-10">
 			<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
 			<button
 				class="btn-border-surface-primary-secondary text-on-primary"

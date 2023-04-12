@@ -11,18 +11,20 @@
 		<div class="AtoNavBarTitle">
 			<slot name="title"><!-- optional fallback --></slot>
 		</div>
-		<nav class="AtoNavBarMenu text-surface-900-50">
-			<a href="/">Components</a>
-		</nav>
-		{#if icons.length > 0}
-			<div class="AtoNavBarSocials flex gap-x-4 mx-4">
-				{#each icons as { icon, link, title }}
-					<a href={link} class="text-surface-400-900-200-50">
-						<span class="sr-only">{title}</span>
-						<span class="text-2xl {icon}" />
-					</a>
-				{/each}
-			</div>
-		{/if}
+		<div class="flex justify-between items-center gap-4">
+			<nav class="AtoNavBarMenu text-surface-900-50">
+				<a href="/">Components</a>
+			</nav>
+			{#if icons.length > 0}
+				<div class="AtoNavBarSocials flex gap-x-4 mx-4 border-l-1 px-4 border-surface-400">
+					{#each icons as { icon, link, title }}
+						<a href={link} class="text-surface-400-900-200-50">
+							<span class="sr-only">{title}</span>
+							<span class="text-2xl {icon}" />
+						</a>
+					{/each}
+				</div>
+			{/if}
+		</div>
 	</div>
 </header>
