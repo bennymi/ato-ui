@@ -4,8 +4,10 @@
 	import '$lib/styles/themes/earth.css';
 	import '$lib/styles/themes/fire.css';
 	import '$lib/styles/themes/air.css';
-	import 'uno.css';
+
 	import '@unocss/reset/tailwind.css';
+	import 'uno.css';
+	import './app.css';
 
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 
@@ -17,7 +19,15 @@
 	$: activeTheme = themes[activeIdx % themes.length];
 </script>
 
-<div class:dark class={activeTheme}>
+<!-- <div class:dark class="min-w-screen">
+	<div class="flex justify-between">
+		<div>hi</div>
+		<div>bye</div>
+	</div>
+	<slot />
+</div> -->
+
+<div class:dark class="{activeTheme} min-w-screen min-h-screen">
 	<NavBar
 		icons={[
 			{ icon: 'i-mdi:github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
@@ -32,16 +42,18 @@
 			</a>
 		</svelte:fragment>
 	</NavBar>
-	<div class="AtoContent mt-12 py-10 bg-inverse-white-surface-700 min-h-screen">
-		<div class="px-10">
-			<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
-			<button
-				class="btn-border-surface-primary-secondary text-on-primary"
-				on:click={() => (activeIdx += 1)}
-			>
-				{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
-			</button>
+	<div class="bg-inverse-white-surface-700 min-h-screen">
+		<div class="AtoContent mt-12 pt-4 flex flex-col">
+			<div class="px-12">
+				<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
+				<button
+					class="btn-border-surface-primary-secondary text-on-primary"
+					on:click={() => (activeIdx += 1)}
+				>
+					{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
+				</button>
+			</div>
+			<slot />
 		</div>
-		<slot />
 	</div>
 </div>

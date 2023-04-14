@@ -28,17 +28,17 @@ dependencies:
 
 devDependencies:
   '@iconify-json/material-symbols':
-    specifier: ^1.1.37
-    version: 1.1.37
+    specifier: ^1.1.38
+    version: 1.1.38
   '@iconify-json/mdi':
     specifier: ^1.1.50
     version: 1.1.50
   '@sveltejs/adapter-auto':
     specifier: ^2.0.0
-    version: 2.0.0(@sveltejs/kit@1.15.4)
+    version: 2.0.0(@sveltejs/kit@1.15.5)
   '@sveltejs/kit':
-    specifier: ^1.15.4
-    version: 1.15.4(svelte@3.58.0)(vite@4.2.1)
+    specifier: ^1.15.5
+    version: 1.15.5(svelte@3.58.0)(vite@4.2.1)
   '@sveltejs/package':
     specifier: ^2.0.0
     version: 2.0.2(svelte@3.58.0)(typescript@5.0.4)
@@ -380,8 +380,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify-json/material-symbols@1.1.37:
-    resolution: {integrity: sha512-2liNEMWpm7Bwj22EsJBEtiMW9o5RAgKZAjE4zq+qxMELSvyCg+fqFsyWwHi5PAgp4V3fdt8jfRb+m6AfF8mFig==}
+  /@iconify-json/material-symbols@1.1.38:
+    resolution: {integrity: sha512-UdObccUrFmUojceFazSURHLXReAEFIUOWdGXVnBB/GK+2jAkSpF06Oj6rRhElvRFqsug4GDSr/xQhM2xgadiGA==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -494,17 +494,17 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-auto@2.0.0(@sveltejs/kit@1.15.4):
+  /@sveltejs/adapter-auto@2.0.0(@sveltejs/kit@1.15.5):
     resolution: {integrity: sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.15.4(svelte@3.58.0)(vite@4.2.1)
+      '@sveltejs/kit': 1.15.5(svelte@3.58.0)(vite@4.2.1)
       import-meta-resolve: 2.2.2
     dev: true
 
-  /@sveltejs/kit@1.15.4(svelte@3.58.0)(vite@4.2.1):
-    resolution: {integrity: sha512-m+Tid9nbtFawmiu85lDlal0AQ7UeuV48UsuKMe06QLr3ntMQSUzIPqyswNRZqFrar6NhVTUXQ0aO61M3U4MWpQ==}
+  /@sveltejs/kit@1.15.5(svelte@3.58.0)(vite@4.2.1):
+    resolution: {integrity: sha512-NyNtgIJBNo3AXMkl0iN10VrKgQS6VM6E+rcqZnZMn12dOo7SwFflj1du0ZgXNCZ1tx6VuEpSz9+FpPjswr4gEg==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -1380,7 +1380,7 @@ packages:
     dependencies:
       debug: 3.2.7
       is-core-module: 2.12.0
-      resolve: 1.22.2
+      resolve: 1.22.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1463,7 +1463,7 @@ packages:
       is-glob: 4.0.3
       minimatch: 3.1.2
       object.values: 1.1.6
-      resolve: 1.22.2
+      resolve: 1.22.3
       semver: 6.3.0
       tsconfig-paths: 3.14.2
     transitivePeerDependencies:
@@ -2590,6 +2590,15 @@ packages:
     hasBin: true
     dependencies:
       is-core-module: 2.11.0
+      path-parse: 1.0.7
+      supports-preserve-symlinks-flag: 1.0.0
+    dev: true
+
+  /resolve@1.22.3:
+    resolution: {integrity: sha512-P8ur/gp/AmbEzjr729bZnLjXK5Z+4P0zhIJgBgzqRih7hL7BOukHGtSTA3ACMY467GRFz3duQsi0bDZdR7DKdw==}
+    hasBin: true
+    dependencies:
+      is-core-module: 2.12.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
