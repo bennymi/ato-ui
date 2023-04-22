@@ -21,7 +21,7 @@
 			<a href="/">Components</a>
 		</nav>
 		<button
-			class="inline-flex border-l-1 pl-4 ml-4 border-surface-400 text-surface-400-900-200-50"
+			class="border-x-1 px-4 mx-4 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
 			on:click={() => ($darkTheme = !$darkTheme)}
 			aria-label="dark-theme"
 			aria-pressed={$darkTheme}
@@ -36,9 +36,7 @@
 			{/if}
 		</button>
 		{#if icons.length > 0}
-			<div
-				class="AtoNavBarSocials gap-x-2 border-l-1 pl-4 ml-4 border-surface-400 hidden md:inline-flex"
-			>
+			<div class="AtoNavBarSocials gap-x-2 hidden md:inline-flex">
 				{#each icons as { icon, link, title }}
 					<a href={link} class="text-surface-400-900-200-50">
 						<span class="sr-only">{title}</span>
