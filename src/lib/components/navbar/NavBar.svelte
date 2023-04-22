@@ -21,7 +21,7 @@
 		</nav>
 		{#if icons.length > 0}
 			<div
-				class="AtoNavBarSocials flex gap-x-4 border-l-1 pl-4 ml-4 border-surface-400 hidden md:inline-flex"
+				class="AtoNavBarSocials gap-x-2 border-l-1 pl-4 ml-4 border-surface-400 hidden md:inline-flex"
 			>
 				{#each icons as { icon, link, title }}
 					<a href={link} class="text-surface-400-900-200-50">
