@@ -3,6 +3,7 @@
         "svelte.svelte-vscode",
         "dbaeumer.vscode-eslint",
         "antfu.unocss",
+        "antfu.iconify",
         "bradlc.vscode-tailwindcss",
         "voorjaar.windicss-intellisense",
         "esbenp.prettier-vscode",
