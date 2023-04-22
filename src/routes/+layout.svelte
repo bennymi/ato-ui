@@ -42,7 +42,19 @@
 			</a>
 		</svelte:fragment>
 	</NavBar>
-	<div class="bg-inverse-white-surface-700 min-h-screen">
+	<div class="bg-inverse-white-surface-700 min-h-screen pt-16 text-center">
+		<div class="py-8">
+			<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
+			<button
+				class="btn-border-surface-primary-secondary text-on-primary"
+				on:click={() => (activeIdx += 1)}
+			>
+				{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
+			</button>
+		</div>
+		<slot />
+	</div>
+	<!-- <div class="bg-inverse-white-surface-700 min-h-screen">
 		<div class="AtoContent mt-12 pt-4 flex flex-col">
 			<div class="px-12">
 				<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
@@ -55,5 +67,5 @@
 			</div>
 			<slot />
 		</div>
-	</div>
+	</div> -->
 </div>

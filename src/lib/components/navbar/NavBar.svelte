@@ -5,7 +5,7 @@
 </script>
 
 <header
-	class="AtoNav bg-inverse-white-surface-800 fixed inset-x-0 top-0 z-40 flex h-12 w-full items-center justify-between shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900)"
+	class="AtoNav bg-inverse-white-surface-800 fixed inset-x-0 top-0 z-40 flex h-12 w-full items-center justify-between px-2 md:px-10 lg:px-32 shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900)"
 >
 	<!-- <div
 		class="bg-inverse-white-surface-800 fixed inset-x-0 top-0 z-40 flex h-12 w-full items-center justify-between shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900)"
