@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { NavIcon } from './types';
+	import { darkTheme } from '../../stores/lightswitch';
 
 	export let icons: NavIcon[] = [];
 </script>
@@ -19,6 +20,21 @@
 		<nav class="AtoNavBarMenu text-surface-900-50 hidden md:inline-flex">
 			<a href="/">Components</a>
 		</nav>
+		<button
+			class="inline-flex border-l-1 pl-4 ml-4 border-surface-400 text-surface-400-900-200-50"
+			on:click={() => ($darkTheme = !$darkTheme)}
+			aria-label="dark-theme"
+			aria-pressed={$darkTheme}
+		>
+			<span class="sr-only">Dark / Light mode toggle</span>
+			{#if $darkTheme}
+				<span class="sr-only">Dark mode</span>
+				<span class="i-material-symbols:dark-mode-rounded text-2xl" />
+			{:else}
+				<span class="sr-only">Light mode</span>
+				<span class="i-material-symbols:light-mode text-2xl" />
+			{/if}
+		</button>
 		{#if icons.length > 0}
 			<div
 				class="AtoNavBarSocials gap-x-2 border-l-1 pl-4 ml-4 border-surface-400 hidden md:inline-flex"
