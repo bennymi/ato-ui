@@ -37,6 +37,7 @@
 				},
 				{
 					groupTitle: 'Shortcuts',
+					groupIcon: 'i-vscode-icons:file-type-unocss',
 					items: [
 						{ title: 'Buttons', path: '/documentation/buttons' },
 						{ title: 'Spinners / Loaders', path: '/documentation/spinners' }
@@ -44,6 +45,7 @@
 				},
 				{
 					groupTitle: 'Svelte',
+					groupIcon: 'i-vscode-icons:file-type-svelte',
 					items: [{ title: 'Avatar', path: '/documentation/avatar' }]
 				}
 			]

@@ -1,5 +1,5 @@
-<div class="min-h-screen flex justify-center items-center">
-	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap mx-1/3">
+<div class="flex justify-center items-center px-1/6">
+	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap">
 		<!-- Regular circle -->
 		<span class="s-circle-primary" />
 		<span class="s-circle-split-primary" />
