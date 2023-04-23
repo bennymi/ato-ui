@@ -103,7 +103,7 @@
 
 	<div
 		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
-		style={sidebarIsHidden ? '' : `padding-left: ${sidebarWidth}px;`}
+		style={`padding-left: ${sidebarWidth}px`}
 	>
 		<div class="py-8">
 			<button

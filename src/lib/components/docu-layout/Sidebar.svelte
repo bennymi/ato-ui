@@ -38,6 +38,10 @@
 	onDestroy(() => {
 		observer?.disconnect();
 	});
+
+	$: if (!showSidebar) {
+		width = 0;
+	}
 </script>
 
 {#if showSidebar}
