@@ -7,9 +7,10 @@
 	import type { NavGroup } from './types';
 
 	export let showSidebar = true;
+	export let groups: NavGroup[];
+
 	export let width = 0;
 	export let sidebarIsHidden = false;
-	export let groups: NavGroup[];
 
 	let observer: IntersectionObserver;
 

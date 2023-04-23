@@ -20,12 +20,10 @@
 		<slot name="title"><!-- optional fallback --></slot>
 	</div>
 	<div class="flex justify-between items-center">
-		<nav class="AtoNavBarMenu space-x-2 text-surface-900-50 hidden md:inline-flex">
+		<nav class="AtoNavBarMenu space-x-4 text-surface-900-50 hidden md:inline-flex">
 			<!-- <a href="/">Components</a> -->
-			{#each Object.keys(navigation) as page}
-				<a class="font-semibold hover:text-primary-500" href={navigation[page].landingPath}
-					>{page}</a
-				>
+			{#each navigation as { navTitle, landingPath }}
+				<a class="font-semibold hover:text-primary-500" href={landingPath}>{navTitle}</a>
 			{/each}
 		</nav>
 		<button

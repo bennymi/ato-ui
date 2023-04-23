@@ -15,15 +15,19 @@
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
 
+	import { page } from '$app/stores';
+
 	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
 
 	let activeIdx = 0;
 	let sidebarWidth: number;
 	let sidebarIsHidden = false;
 
-	const navigation: Navigation = {
-		Components: {
+	const navigation: Navigation = [
+		{
+			navTitle: 'Components',
 			showSidebar: true,
+			basePath: '/documentation',
 			landingPath: '/documentation/buttons',
 			groups: [
 				{
@@ -50,13 +54,16 @@
 				}
 			]
 		},
-		Designer: {
+		{
+			navTitle: 'Designer',
 			showSidebar: false,
+			basePath: '/designer',
 			landingPath: '/designer',
 			groups: []
 		}
-	};
+	];
 
+	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
 	$: activeTheme = themes[activeIdx % themes.length];
 </script>
 
@@ -83,7 +90,12 @@
 		</svelte:fragment>
 	</NavBar>
 
-	<Sidebar bind:width={sidebarWidth} bind:sidebarIsHidden groups={navigation.Components.groups} />
+	<Sidebar
+		bind:width={sidebarWidth}
+		bind:sidebarIsHidden
+		showSidebar={currentNavPage ? currentNavPage.showSidebar : false}
+		groups={currentNavPage ? currentNavPage.groups : []}
+	/>
 
 	<div
 		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
@@ -99,18 +111,4 @@
 		</div>
 		<slot />
 	</div>
-	<!-- <div class="bg-inverse-white-surface-700 min-h-screen">
-		<div class="AtoContent mt-12 pt-4 flex flex-col">
-			<div class="px-12">
-				<button class="btn-b-primary-secondary" on:click={() => (dark = !dark)}>Dark/Light</button>
-				<button
-					class="btn-border-surface-primary-secondary text-on-primary"
-					on:click={() => (activeIdx += 1)}
-				>
-					{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
-				</button>
-			</div>
-			<slot />
-		</div>
-	</div> -->
 </div>
