@@ -5,7 +5,7 @@
 
 	$: rootCSSVariables = `
 :root {
-	--color-primary-700: ${color}
+	--color-test-700: ${color}
 }
 	`;
 </script>

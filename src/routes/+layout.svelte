@@ -11,13 +11,49 @@
 
 	import NavBar from '$lib/components/docu-layout/NavBar.svelte';
 	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
+	import type { Navigation } from '$lib/components/docu-layout/types';
 	import { darkTheme } from '$lib/stores/lightswitch';
+	import AtoUI from './AtoUI.svelte';
 
 	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
 
 	let activeIdx = 0;
 	let sidebarWidth: number;
 	let sidebarIsHidden = false;
+
+	const navigation: Navigation = {
+		Components: {
+			showSidebar: true,
+			landingPath: '/documentation/buttons',
+			groups: [
+				{
+					groupTitle: 'Introduction',
+					hideTitle: true,
+					items: [
+						{ title: 'Getting Started', path: '/' },
+						{ title: 'Why UnoCSS?', path: '/' },
+						{ title: 'Search All Shortcuts', path: '/' }
+					]
+				},
+				{
+					groupTitle: 'Shortcuts',
+					items: [
+						{ title: 'Buttons', path: '/documentation/buttons' },
+						{ title: 'Spinners / Loaders', path: '/documentation/spinners' }
+					]
+				},
+				{
+					groupTitle: 'Svelte',
+					items: [{ title: 'Avatar', path: '/documentation/avatar' }]
+				}
+			]
+		},
+		Designer: {
+			showSidebar: false,
+			landingPath: '/designer',
+			groups: []
+		}
+	};
 
 	$: activeTheme = themes[activeIdx % themes.length];
 </script>
@@ -32,6 +68,7 @@
 
 <div class:dark={$darkTheme} class="{activeTheme} min-w-screen min-h-screen">
 	<NavBar
+		{navigation}
 		icons={[
 			{ icon: 'i-mdi:github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
 			{ icon: 'i-mdi:discord', link: '', title: 'Discord' }
@@ -39,17 +76,15 @@
 	>
 		<svelte:fragment slot="title">
 			<a href="/" class="text-surface-900-50 text-3xl select-none">
-				<span class="text-gradient-b-primary-secondary-600 font-extrabold">Ato</span><span
-					class="font-bold">UI</span
-				>
+				<AtoUI />
 			</a>
 		</svelte:fragment>
 	</NavBar>
 
-	<Sidebar bind:width={sidebarWidth} bind:sidebarIsHidden />
+	<Sidebar bind:width={sidebarWidth} bind:sidebarIsHidden groups={navigation.Components.groups} />
 
 	<div
-		class="bg-inverse-white-surface-600 min-h-screen pt-16 pb-20 text-center"
+		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
 		style={sidebarIsHidden ? '' : `padding-left: ${sidebarWidth}px;`}
 	>
 		<div class="py-8">

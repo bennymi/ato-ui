@@ -1,8 +1,11 @@
 <script lang="ts">
-	import type { NavIcon } from './types';
+	import type { NavIcon, Navigation } from './types';
 	import { darkTheme } from '../../stores/lightswitch';
 
+	export let navigation: Navigation = {};
 	export let icons: NavIcon[] = [];
+
+	$: pages = Object.keys(navigation);
 </script>
 
 <header
@@ -17,8 +20,13 @@
 		<slot name="title"><!-- optional fallback --></slot>
 	</div>
 	<div class="flex justify-between items-center">
-		<nav class="AtoNavBarMenu text-surface-900-50 hidden md:inline-flex">
-			<a href="/">Components</a>
+		<nav class="AtoNavBarMenu space-x-2 text-surface-900-50 hidden md:inline-flex">
+			<!-- <a href="/">Components</a> -->
+			{#each Object.keys(navigation) as page}
+				<a class="font-semibold hover:text-primary-500" href={navigation[page].landingPath}
+					>{page}</a
+				>
+			{/each}
 		</nav>
 		<button
 			class="border-x-1 px-4 mx-4 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
