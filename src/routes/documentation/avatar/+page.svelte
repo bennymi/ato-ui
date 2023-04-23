@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Avatar from '$lib/components/avatar/Avatar.svelte';
 
-	let typing: boolean = true;
+	let typing = true;
 </script>
 
-<div class="min-h-screen flex flex-col justify-center items-center">
+<div class="flex flex-col justify-center items-center">
 	<button
 		class="btn-border-surface-900-bl-success-secondary-tertiary my-10 btn-lg"
 		on:click={() => (typing = !typing)}>Typing On/Off</button

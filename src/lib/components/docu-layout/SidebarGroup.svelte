@@ -23,8 +23,14 @@
 	{#each items as { title, path, icon }}
 		<a
 			href={path}
-			class="block hover:text-primary-500 {path === $page.url.pathname ? 'text-primary-500' : ''}"
-			>{title}</a
+			class="flex items-center gap-2 hover:text-primary-500 {path === $page.url.pathname
+				? 'text-primary-500'
+				: ''}"
 		>
+			{#if icon}
+				<span class="text-lg {icon}" />
+			{/if}
+			{title}
+		</a>
 	{/each}
 </div>

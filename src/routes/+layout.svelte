@@ -34,9 +34,13 @@
 					groupTitle: 'Introduction',
 					hideTitle: true,
 					items: [
-						{ title: 'Getting Started', path: '/' },
-						{ title: 'Why UnoCSS?', path: '/' },
-						{ title: 'Search All Shortcuts', path: '/' }
+						{
+							title: 'Getting Started',
+							path: '/',
+							icon: 'i-material-symbols:rocket-launch-rounded'
+						},
+						{ title: 'Why UnoCSS?', path: '/', icon: 'i-material-symbols:question-mark-rounded' },
+						{ title: 'Search All Shortcuts', path: '/', icon: 'i-material-symbols:search-rounded' }
 					]
 				},
 				{
