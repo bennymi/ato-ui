@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-8 justify-center items-center min-h-screen px-1/6">
+<div class="flex flex-col gap-8 justify-center items-center px-1/6">
 	<section>
 		<h1>Regular Buttons</h1>
 		<div class="flex justify-center items-center flex-wrap gap-4">
@@ -111,9 +111,9 @@
 		@apply text-center text-2xl font-bold text-surface-900-200;
 	}
 
-	p {
+	/* p {
 		@apply text-surface-900-200;
-	}
+	} */
 
 	section {
 		@apply flex flex-col gap-4 justify-center items-center;

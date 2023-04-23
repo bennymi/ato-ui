@@ -9,12 +9,15 @@
 	import 'uno.css';
 	import './app.css';
 
-	import NavBar from '$lib/components/navbar/NavBar.svelte';
+	import NavBar from '$lib/components/docu-layout/NavBar.svelte';
+	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
 	import { darkTheme } from '$lib/stores/lightswitch';
 
 	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
 
 	let activeIdx = 0;
+	let sidebarWidth: number;
+	let sidebarIsHidden = false;
 
 	$: activeTheme = themes[activeIdx % themes.length];
 </script>
@@ -42,7 +45,13 @@
 			</a>
 		</svelte:fragment>
 	</NavBar>
-	<div class="bg-inverse-white-surface-700 min-h-screen pt-16 text-center">
+
+	<Sidebar bind:width={sidebarWidth} bind:sidebarIsHidden />
+
+	<div
+		class="bg-inverse-white-surface-600 min-h-screen pt-16 pb-20 text-center"
+		style={sidebarIsHidden ? '' : `padding-left: ${sidebarWidth}px;`}
+	>
 		<div class="py-8">
 			<button
 				class="btn-border-surface-primary-secondary text-on-primary"

@@ -26,7 +26,6 @@
 			aria-label="dark-theme"
 			aria-pressed={$darkTheme}
 		>
-			<span class="sr-only">Dark / Light mode toggle</span>
 			{#if $darkTheme}
 				<span class="sr-only">Dark mode</span>
 				<span class="i-material-symbols:dark-mode-rounded text-2xl" />
