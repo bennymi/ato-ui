@@ -44,6 +44,15 @@
 					]
 				},
 				{
+					groupTitle: 'Tokens',
+					groupIcon: 'i-mdi:dots-grid',
+					items: [
+						{ title: 'Background', path: 'documentation/backgrounds' },
+						{ title: 'Rounded Borders', path: 'documentation/rounded' },
+						{ title: 'Text', path: '/documentation/text' }
+					]
+				},
+				{
 					groupTitle: 'Shortcuts',
 					groupIcon: 'i-vscode-icons:file-type-unocss',
 					items: [
@@ -103,7 +112,7 @@
 
 	<div
 		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
-		style={`padding-left: ${sidebarWidth}px`}
+		style={`padding-left: ${sidebarIsHidden ? 0 : sidebarWidth}px`}
 	>
 		<div class="py-8">
 			<button
@@ -113,6 +122,8 @@
 				{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
 			</button>
 		</div>
-		<slot />
+		<div class="AtoContent px-2 lg:px-1/12">
+			<slot />
+		</div>
 	</div>
 </div>
