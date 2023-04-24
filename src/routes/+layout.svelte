@@ -37,9 +37,15 @@
 						{
 							title: 'Getting Started',
 							path: '/',
-							icon: 'i-material-symbols:rocket-launch-rounded'
+							icon: 'i-material-symbols-rocket-launch-rounded'
 						},
 						{ title: 'Why UnoCSS?', path: '/', icon: 'i-material-symbols:question-mark-rounded' },
+						{
+							title: 'Icons',
+							path: '/',
+							icon: 'i-mdi-emoticon-outline',
+							hoverIcon: 'i-mdi-emoticon-wink'
+						},
 						{ title: 'Search All Shortcuts', path: '/', icon: 'i-material-symbols:search-rounded' }
 					]
 				},

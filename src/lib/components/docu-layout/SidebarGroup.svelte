@@ -20,15 +20,15 @@
 			</h2>
 		</div>
 	{/if}
-	{#each items as { title, path, icon }}
+	{#each items as { title, path, icon, hoverIcon }}
 		<a
 			href={path}
 			class="flex items-center gap-2 hover:text-primary-500 {path === $page.url.pathname
 				? 'text-primary-500'
-				: ''}"
+				: ''} group"
 		>
 			{#if icon}
-				<span class="text-lg {icon}" />
+				<span class="text-lg {icon} group-hover:{hoverIcon}" />
 			{/if}
 			{title}
 		</a>
