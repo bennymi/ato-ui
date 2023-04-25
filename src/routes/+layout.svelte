@@ -11,7 +11,8 @@
 
 	import NavBar from '$lib/components/docu-layout/NavBar.svelte';
 	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
-	import type { Navigation } from '$lib/components/docu-layout/types';
+	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
+	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
 
@@ -22,6 +23,8 @@
 	let activeIdx = 0;
 	let sidebarWidth: number;
 	let sidebarIsHidden = false;
+	let previousPage: NavGroupItem | null = null;
+	let nextPage: NavGroupItem | null = null;
 
 	const navigation: Navigation = [
 		{
@@ -82,17 +85,19 @@
 		}
 	];
 
-	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
 	$: activeTheme = themes[activeIdx % themes.length];
+	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
+	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
+	$: currentPageIdx = allGroupItems?.findIndex((item) => item.path === $page.url.pathname);
+	$: previousPage =
+		currentPageIdx === 0 || !currentPageIdx || !allGroupItems
+			? null
+			: allGroupItems![currentPageIdx - 1];
+	$: nextPage =
+		currentPageIdx === allGroupItems!.length - 1 || !currentPageIdx || !allGroupItems
+			? null
+			: allGroupItems![currentPageIdx + 1];
 </script>
-
-<!-- <div class:dark class="min-w-screen">
-	<div class="flex justify-between">
-		<div>hi</div>
-		<div>bye</div>
-	</div>
-	<slot />
-</div> -->
 
 <div class:dark={$darkTheme} class="{activeTheme} min-w-screen min-h-screen">
 	<NavBar
@@ -128,8 +133,12 @@
 				{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
 			</button>
 		</div>
-		<div class="AtoContent px-2 lg:px-1/12">
+
+		<div class="AtoContent px-2 lg:px-3/12">
 			<slot />
+			<div class="pt-20 pb-32">
+				<BottomNav previous={previousPage} next={nextPage} />
+			</div>
 		</div>
 	</div>
 </div>

@@ -11,6 +11,8 @@ const baseStyles = `${sizes.md} inline-flex justify-center items-center space-x-
 const glassStyles = 'border-1';
 const glassOp = '25';
 
+const borderBaseOp = '0.8';
+
 const default_dir = 'r';
 
 const gradientStyles = 'hover:brightness-105';
@@ -20,7 +22,7 @@ export const buttonRules: Rule[] = [
     [
         new RegExp(`^border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
         ([, bc, bs, bo, d, c1, s1, c2, s2, c3, s3]) => ({
-            "background": `linear-gradient(to right, rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'}), rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'})), linear-gradient(to ${d ? directions[d] : 'right'}, rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})), rgb(var(--color-${cs(c3, s3)})))`,
+            "background": `linear-gradient(to right, rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : borderBaseOp}), rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : borderBaseOp})), linear-gradient(to ${d ? directions[d] : 'right'}, rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})), rgb(var(--color-${cs(c3, s3)})))`,
             "background-clip": `padding-box, border-box`,
             "background-origin": `padding-box, border-box`,
             "border": "2px solid transparent",
@@ -35,7 +37,7 @@ export const buttonRules: Rule[] = [
     [
         new RegExp(`^border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}$`),
         ([, bc, bs, bo, d, c1, s1, c2, s2]) => ({
-            "background": `linear-gradient(to right, rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'}), rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : '0.8'})), linear-gradient(to ${d ? directions[d] : 'right'}, rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})))`,
+            "background": `linear-gradient(to right, rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : borderBaseOp}), rgba(var(--color-${cs(bc, bs)}), ${bo ? norm_op(bo) : borderBaseOp})), linear-gradient(to ${d ? directions[d] : 'right'}, rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})))`,
             "background-clip": `padding-box, border-box`,
             "background-origin": `padding-box, border-box`,
             "border": "2px solid transparent",

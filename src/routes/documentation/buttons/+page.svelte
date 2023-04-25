@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-8 justify-center items-center px-1/6">
+<div class="flex flex-col gap-8 justify-center items-center">
 	<section>
 		<h1>Regular Buttons</h1>
 		<div class="flex justify-center items-center flex-wrap gap-4">
