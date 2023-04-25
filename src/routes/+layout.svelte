@@ -54,7 +54,7 @@
 				},
 				{
 					groupTitle: 'Tokens',
-					groupIcon: 'i-mdi:dots-grid',
+					groupIcon: 'i-mdi-dots-grid',
 					items: [
 						{ title: 'Background', path: 'documentation/backgrounds' },
 						{ title: 'Rounded Borders', path: 'documentation/rounded' },
@@ -63,7 +63,7 @@
 				},
 				{
 					groupTitle: 'Shortcuts',
-					groupIcon: 'i-vscode-icons:file-type-unocss',
+					groupIcon: 'i-vscode-icons-file-type-unocss',
 					items: [
 						{ title: 'Buttons', path: '/documentation/buttons' },
 						{ title: 'Spinners / Loaders', path: '/documentation/spinners' }
@@ -71,7 +71,7 @@
 				},
 				{
 					groupTitle: 'Svelte',
-					groupIcon: 'i-vscode-icons:file-type-svelte',
+					groupIcon: 'i-vscode-icons-file-type-svelte',
 					items: [{ title: 'Avatar', path: '/documentation/avatar' }]
 				}
 			]
@@ -108,8 +108,8 @@
 	<NavBar
 		{navigation}
 		icons={[
-			{ icon: 'i-mdi:github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
-			{ icon: 'i-mdi:discord', link: '', title: 'Discord' }
+			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
+			{ icon: 'i-mdi-discord', link: '', title: 'Discord' }
 		]}
 	>
 		<svelte:fragment slot="title">
