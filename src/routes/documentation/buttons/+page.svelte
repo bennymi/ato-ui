@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-8 justify-center items-center">
 	<section>
-		<h1>Regular Buttons</h1>
+		<h2>Regular Buttons</h2>
 		<div class="flex justify-center items-center flex-wrap gap-4">
 			<button class="btn-primary">Dark/Light</button>
 			<button class="btn-tr-primary-tertiary-secondary">Click</button>
@@ -30,7 +30,7 @@
 		</div>
 	</section>
 	<section>
-		<h1>Icon Buttons</h1>
+		<h2>Icon Buttons</h2>
 		<div class="flex justify-center items-center flex-wrap gap-4">
 			<button class="btn-br-primary-secondary btn-xl">
 				<span class="i-material-symbols:notifications-active-rounded" />
@@ -58,7 +58,7 @@
 		</div>
 	</section>
 	<section>
-		<h1>Button Groups (Regular and Outline)</h1>
+		<h2>Button Groups (Regular and Outline)</h2>
 		<div class="btn-group-error-op90">
 			<button>
 				<span class="text-xl i-material-symbols:water-drop-rounded" />
@@ -107,7 +107,7 @@
 
 <!-- Add a search functionality with all available shortcuts here -->
 <style>
-	h1 {
+	h2 {
 		@apply text-center text-2xl font-bold text-surface-900-200;
 	}
 

@@ -13,6 +13,7 @@
 	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
 	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
 	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
+	import TableOfContent from '$lib/components/table-of-contents/TableOfContent.svelte';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
 
@@ -139,7 +140,9 @@
 			</button>
 		</div>
 
-		<div class="AtoContent px-2 lg:px-3/12">
+		<TableOfContent target="#AtoContent" width="md:w-[200px] lg:w-[260px]" />
+
+		<div id="AtoContent" class="AtoContent px-2 lg:px-3/12">
 			<slot />
 			{#if currentNavPage && currentNavPage.showSidebar}
 				<div class="pt-20 pb-32">
