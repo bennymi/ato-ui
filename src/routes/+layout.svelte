@@ -86,17 +86,22 @@
 	];
 
 	$: activeTheme = themes[activeIdx % themes.length];
+
 	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
+
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
+
 	$: currentPageIdx = allGroupItems?.findIndex((item) => item.path === $page.url.pathname);
+
 	$: previousPage =
-		currentPageIdx === 0 || !currentPageIdx || !allGroupItems
+		allGroupItems && currentPageIdx && currentPageIdx === 0
 			? null
-			: allGroupItems![currentPageIdx - 1];
+			: allGroupItems![currentPageIdx! - 1];
+
 	$: nextPage =
-		currentPageIdx === allGroupItems!.length - 1 || !currentPageIdx || !allGroupItems
+		allGroupItems && currentPageIdx && currentPageIdx === allGroupItems!.length - 1
 			? null
-			: allGroupItems![currentPageIdx + 1];
+			: allGroupItems![currentPageIdx! + 1];
 </script>
 
 <div class:dark={$darkTheme} class="{activeTheme} min-w-screen min-h-screen">
@@ -136,9 +141,11 @@
 
 		<div class="AtoContent px-2 lg:px-3/12">
 			<slot />
-			<div class="pt-20 pb-32">
-				<BottomNav previous={previousPage} next={nextPage} />
-			</div>
+			{#if currentNavPage && currentNavPage.showSidebar}
+				<div class="pt-20 pb-32">
+					<BottomNav previous={previousPage} next={nextPage} />
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>
