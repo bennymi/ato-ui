@@ -13,7 +13,7 @@
 	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
 	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
 	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
-	import TableOfContent from '$lib/components/table-of-contents/TableOfContent.svelte';
+	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
 
@@ -31,8 +31,8 @@
 		{
 			navTitle: 'Components',
 			showSidebar: true,
-			basePath: '/documentation',
-			landingPath: '/documentation/buttons',
+			basePath: '/docu',
+			landingPath: '/docu/buttons',
 			groups: [
 				{
 					groupTitle: 'Introduction',
@@ -40,40 +40,48 @@
 					items: [
 						{
 							title: 'Getting Started',
-							path: '/',
+							path: '/docu/get-started/installation',
 							icon: 'i-material-symbols-rocket-launch-rounded'
 						},
-						{ title: 'Why UnoCSS?', path: '/', icon: 'i-material-symbols:question-mark-rounded' },
+						{
+							title: 'Why UnoCSS?',
+							path: '/docu/get-started/why',
+							icon: 'i-material-symbols:question-mark-rounded'
+						},
 						{
 							title: 'Icons',
-							path: '/',
+							path: '/docu/get-started/icons',
 							icon: 'i-mdi-emoticon-outline',
 							hoverIcon: 'i-mdi-emoticon-wink'
 						},
-						{ title: 'Search All Shortcuts', path: '/', icon: 'i-material-symbols:search-rounded' }
+						{
+							title: 'Search All Shortcuts',
+							path: '/docu/get-started/search',
+							icon: 'i-material-symbols:search-rounded'
+						}
 					]
 				},
 				{
 					groupTitle: 'Tokens',
 					groupIcon: 'i-mdi-dots-grid',
 					items: [
-						{ title: 'Background', path: 'documentation/backgrounds' },
-						{ title: 'Rounded Borders', path: 'documentation/rounded' },
-						{ title: 'Text', path: '/documentation/text' }
+						{ title: 'Background', path: '/docu/tokens/background' },
+						{ title: 'Border', path: '/docu/tokens/border' },
+						{ title: 'Text', path: '/docu/tokens/text' }
 					]
 				},
 				{
 					groupTitle: 'Shortcuts',
 					groupIcon: 'i-vscode-icons-file-type-unocss',
 					items: [
-						{ title: 'Buttons', path: '/documentation/buttons' },
-						{ title: 'Spinners / Loaders', path: '/documentation/spinners' }
+						{ title: 'Buttons', path: '/docu/shortcuts/buttons' },
+						{ title: 'Spinners / Loaders', path: '/docu/shortcuts/spinners' }
 					]
 				},
 				{
 					groupTitle: 'Svelte',
 					groupIcon: 'i-vscode-icons-file-type-svelte',
-					items: [{ title: 'Avatar', path: '/documentation/avatar' }]
+					items: [{ title: 'Avatar', path: '/docu/components/avatar' }]
 				}
 			]
 		},
@@ -143,9 +151,13 @@
 			</button>
 		</div>
 
-		<div class="hidden xl:block absolute fixed right-20">
-			<TableOfContent target="#AtoContent" width="md:w-[200px]" />
-		</div>
+		{#if currentNavPage && currentNavPage?.showSidebar}
+			{#key currentPageIdx}
+				<div class="hidden xl:block absolute fixed right-20">
+					<TableOfContents target="#AtoContent" width="md:w-[200px]" />
+				</div>
+			{/key}
+		{/if}
 
 		<div id="AtoContent" class="AtoContent px-6 lg:px-3/12">
 			<slot />

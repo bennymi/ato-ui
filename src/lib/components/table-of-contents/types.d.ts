@@ -7,3 +7,5 @@ export type ElementHeadingLU = {
 export type HeadingParentsLU = {
     [key: number]: number[] | null;
 }
+
+export type TOCType = 'lowest' | 'highest' | 'allActive' | 'lowestParents' | 'highestParents';
