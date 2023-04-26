@@ -6,7 +6,7 @@
 
 	// Props (settings)
 	/** Query selector for the element to scan for headings. */
-	export let target = '#page-content';
+	export let target = '';
 	/** Query selector for the allowed headings. From H2-H6. */
 	export let allowedHeadings = 'h2, h3, h4';
 	/** Set the label text. */
@@ -190,6 +190,9 @@
 		observer?.disconnect();
 	});
 
+	$: console.log('LUT el_h_LU', elementToHeading);
+	$: console.log('LUT h_parents_LU', headingsParents);
+
 	// Reactive
 	$: classesBase = `${width} ${spacing} ${$$props.class ?? ''}`;
 	$: classesLabel = `${cLabel} ${regionLabel}`;
@@ -230,8 +233,8 @@
 
 <div class="toc {classesBase}">
 	<nav class="toc-list {classesList}">
-		<div class="toc-label {classesLabel}">{label}</div>
-		<ul class="list-none">
+		<div class="toc-label text-left {classesLabel}">{label}</div>
+		<ul class="list-none text-left">
 			{#each headingsList as headingElem, i}
 				<!-- prettier-ignore -->
 				<li

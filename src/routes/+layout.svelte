@@ -95,12 +95,12 @@
 	$: currentPageIdx = allGroupItems?.findIndex((item) => item.path === $page.url.pathname);
 
 	$: previousPage =
-		allGroupItems && currentPageIdx && currentPageIdx === 0
+		!allGroupItems || !currentPageIdx || currentPageIdx === 0
 			? null
 			: allGroupItems![currentPageIdx! - 1];
 
 	$: nextPage =
-		allGroupItems && currentPageIdx && currentPageIdx === allGroupItems!.length - 1
+		!allGroupItems || !currentPageIdx || currentPageIdx === allGroupItems!.length - 1
 			? null
 			: allGroupItems![currentPageIdx! + 1];
 </script>
@@ -123,13 +123,16 @@
 	<Sidebar
 		bind:width={sidebarWidth}
 		bind:sidebarIsHidden
-		showSidebar={currentNavPage ? currentNavPage.showSidebar : false}
-		groups={currentNavPage ? currentNavPage.groups : []}
+		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
+		groups={currentNavPage ? currentNavPage?.groups : []}
 	/>
 
 	<div
 		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
-		style={`padding-left: ${sidebarIsHidden ? 0 : sidebarWidth}px`}
+		style={`
+			padding-left: ${sidebarIsHidden ? 0 : sidebarWidth}px;
+			padding-right: ${sidebarIsHidden ? 0 : 200}px;
+		`}
 	>
 		<div class="py-8">
 			<button
@@ -140,11 +143,13 @@
 			</button>
 		</div>
 
-		<TableOfContent target="#AtoContent" width="md:w-[200px] lg:w-[260px]" />
+		<div class="hidden xl:block absolute fixed right-20">
+			<TableOfContent target="#AtoContent" width="md:w-[200px]" />
+		</div>
 
-		<div id="AtoContent" class="AtoContent px-2 lg:px-3/12">
+		<div id="AtoContent" class="AtoContent px-6 lg:px-3/12">
 			<slot />
-			{#if currentNavPage && currentNavPage.showSidebar}
+			{#if currentNavPage && currentNavPage?.showSidebar}
 				<div class="pt-20 pb-32">
 					<BottomNav previous={previousPage} next={nextPage} />
 				</div>

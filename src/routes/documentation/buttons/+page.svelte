@@ -73,6 +73,7 @@
 				<span>Fire</span>
 			</button>
 		</div>
+		<h3>SubGroup</h3>
 		<div class="btn-group-outline-secondary">
 			<button>
 				<span class="text-xl i-material-symbols:water-drop-rounded" />
@@ -116,6 +117,6 @@
 	} */
 
 	section {
-		@apply flex flex-col gap-4 justify-center items-center;
+		@apply flex flex-col gap-4 justify-center items-center py-64;
 	}
 </style>
