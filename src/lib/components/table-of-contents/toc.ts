@@ -1,5 +1,5 @@
 
-import { derived, writable, type Writable } from "svelte/store";
+import { derived, writable, type Writable, type Readable } from "svelte/store";
 
 import type { Heading, ElementHeadingLU, HeadingParentsLU, TOCType } from "./types";
 
@@ -10,16 +10,33 @@ import type { Heading, ElementHeadingLU, HeadingParentsLU, TOCType } from "./typ
  *      - active headings (list of indexes of the active headings)
  *          - this list also already accounts for whether parents should be highlighted and so on
  *          - this list can then be used to style the headings list by checking if the headings index is in this list
+ * * 
+ * - highlightAllActive When set to true, all headings with visible elements will be highlighted.
+  * - highlightParentHeadings When set to true, parent headings of active headings will also be highlighted.
  */
+
+type ActiveHeading = {
+    heading: HTMLElement;
+    active: boolean;
+}
+
+type TOCStore = {
+    headings: ActiveHeading[];
+}
+
+interface CustomReadable<T> extends Readable<T> {
+    destroy: () => void;
+};
+
+export type ToC = CustomReadable<TOCStore>;
 
  /**
   * @param target An id or class of an element for which the Table of Contents should be generated.
   * @param excludeHeadings A list of HTML heading tags that should be ignored.
-  * @param highlightAllActive When set to true, all headings with visible elements will be highlighted.
-  * @param highlightParentHeadings When set to true, parent headings of active headings will also be highlighted.
-  * @returns 
+  * @param tocType Defines which headings should be marked as active.
+  * @returns { ToC }
  */
-export function create_toc(target: string, excludeHeadings: Heading[]=[], tocType: TOCType='lowest') {
+export function create_toc(target: string, excludeHeadings: Heading[]=[], tocType: TOCType='lowest'): ToC {
 
     // Variables
     const possible_headings: Heading[] = ['h2', 'h3', 'h4', 'h5', 'h6'];
@@ -42,12 +59,7 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
     let headings: Writable<HTMLElement[]> = writable([]);
     let activeHeadingIdxs: Writable<number[]> = writable([]);
 
-    // const { subscribe } = derived(headings, $state => ({ headings: $state }));
-    const { subscribe } = derived([headings, activeHeadingIdxs], ($state) => { 
-        console.log('derived-store', $state);
-        return { headings: $state[0], activeHeadingIdxs: $state[1] };
-        // return { headings: $state[0], activeHeadingIdxs: $state[1] }
-    });
+    const { subscribe } = derived([headings, activeHeadingIdxs], ($state) => ({ headings: $state[0].map((h, i) => ({ heading: h, active: $state[1].includes(i) })) }));
 
     function generate_initial_lists(): void {
         const allowed_headings = possible_headings.filter((h) => !excludeHeadings.includes(h));
@@ -204,7 +216,7 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
 
     init();
 
-    function destroy() {
+    function destroy(): void {
         observer?.disconnect();
     }
 

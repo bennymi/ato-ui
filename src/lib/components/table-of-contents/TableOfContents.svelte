@@ -5,7 +5,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	import { create_toc } from './toc';
+	import { create_toc, type ToC } from './toc';
 
 	// Props (settings)
 	/** Query selector for the element to scan for headings. */
@@ -54,17 +54,16 @@
 
 	// Scrolls to the selected heading
 	// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-	function scrollToHeading(headingElem: HTMLElement, i: number): void {
-		const elemTarget: any = document.querySelector(`#${headingElem.id}`);
-		elemTarget.scrollIntoView({ behavior: 'smooth' });
+	function scrollToHeading(headingElem: HTMLElement): void {
+		const elemTarget: Element | null = document.querySelector(`#${headingElem.id}`);
+		elemTarget?.scrollIntoView({ behavior: 'smooth' });
 	}
 
-	let toc;
+	let toc: ToC;
 
 	onMount(() => {
 		if (browser) {
-			toc = create_toc(target, [], 'allActive');
-			// toc.toc(document.querySelector(target));
+			toc = create_toc(target, [], 'lowestParents');
 		}
 	});
 
@@ -79,22 +78,22 @@
 	$: classesListItem = `${cListItem} ${hover} ${rounded}`;
 </script>
 
-<!-- @component Allows you to quickly navigate the hierarchy of headings for the current page. -->
+<!-- @component Create a table of contents for the target element, so you can quickly navigate to the page headings. -->
 
 {#if toc}
 	<div class="toc {classesBase}">
 		<nav class="toc-list {classesList}">
 			<div class="toc-label text-left {classesLabel}">{label}</div>
 			<ul class="list-none text-left">
-				{#each $toc.headings as headingElem, i}
+				{#each $toc.headings as { heading, active }, i}
 					<!-- prettier-ignore -->
 					<li
-					class="toc-list-item {classesListItem} {setHeadingClasses(headingElem)} {$toc.activeHeadingIdxs.includes(i) ? activeText : text}"
-					on:click={() => { scrollToHeading(headingElem, i); }}
+					class="toc-list-item {classesListItem} {setHeadingClasses(heading)} {active ? activeText : text}"
+					on:click={() => { scrollToHeading(heading); }}
 					on:click
 					on:keypress
 				>
-					{headingElem.innerText}
+					{heading.innerText}
 				</li>
 				{/each}
 			</ul>
