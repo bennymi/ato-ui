@@ -32,7 +32,7 @@
 			navTitle: 'Components',
 			showSidebar: true,
 			basePath: '/docu',
-			landingPath: '/docu/buttons',
+			landingPath: '/docu/shortcuts/buttons',
 			groups: [
 				{
 					groupTitle: 'Introduction',

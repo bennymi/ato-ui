@@ -3,11 +3,13 @@
  -->
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import { browser } from '$app/environment';
+	// import { browser } from '$app/environment';
+	import { BROWSER as browser } from 'esm-env';
 
 	// TODO: Import BROWSER
 
-	import { create_toc, type ToC } from './toc';
+	import type { ToC } from './types';
+	import { create_toc, scroll_to_element } from './toc';
 
 	// Props (settings)
 	/** Query selector for the element to scan for headings. */
@@ -56,22 +58,27 @@
 
 	// Scrolls to the selected heading
 	// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-	function scrollToHeading(headingElem: HTMLElement): void {
-		const elemTarget: Element | null = document.querySelector(`#${headingElem.id}`);
-		elemTarget?.scrollIntoView({ behavior: 'smooth' });
-	}
+	// function scrollToHeading(headingElem: HTMLElement): void {
+	// 	const elemTarget: Element | null = document.querySelector(`#${headingElem.id}`);
+	// 	elemTarget?.scrollIntoView({ behavior: 'smooth' });
+	// }
 
 	let toc: ToC;
 
 	onMount(() => {
 		if (browser) {
-			toc = create_toc(target, [], 'lowestParents');
+			toc = create_toc(target, [], 'highestParents');
 		}
 	});
 
 	onDestroy(() => {
 		toc?.destroy();
 	});
+
+	$: if (toc) {
+		// console.table('toc-headings', $toc.headings);
+		console.table($toc.headings);
+	}
 
 	// Reactive
 	$: classesBase = `${width} ${spacing} ${$$props.class ?? ''}`;
@@ -91,7 +98,7 @@
 					<!-- prettier-ignore -->
 					<li
 					class="toc-list-item {classesListItem} {setHeadingClasses(heading)} {active ? activeText : text}"
-					on:click={() => { scrollToHeading(heading); }}
+					on:click={() => { scroll_to_element(heading); }}
 					on:click
 					on:keypress
 				>

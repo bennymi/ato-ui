@@ -1,7 +1,7 @@
 
-import { derived, writable, type Writable, type Readable } from "svelte/store";
+import { derived, writable, type Writable } from "svelte/store";
 
-import type { Heading, ElementHeadingLU, HeadingParentsLU, TOCType } from "./types";
+import type { Heading, ElementHeadingLU, HeadingParentsLU, TOCType, ToC } from "./types";
 
 /**
  *  Variables to return as stores:
@@ -15,20 +15,10 @@ import type { Heading, ElementHeadingLU, HeadingParentsLU, TOCType } from "./typ
   * - highlightParentHeadings When set to true, parent headings of active headings will also be highlighted.
  */
 
-type ActiveHeading = {
-    heading: HTMLElement;
-    active: boolean;
+export function scroll_to_element(headingElem: HTMLElement): void {
+    const elemTarget: Element | null = document.querySelector(`#${headingElem.id}`);
+    elemTarget?.scrollIntoView({ behavior: 'smooth' });
 }
-
-type TOCStore = {
-    headings: ActiveHeading[];
-}
-
-interface CustomReadable<T> extends Readable<T> {
-    destroy: () => void;
-};
-
-export type ToC = CustomReadable<TOCStore>;
 
  /**
   * @param target An id or class of an element for which the Table of Contents should be generated.
@@ -163,30 +153,27 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
 
         const all_active_h_idxs = Array.from(new Set(visible_el_idxs.map((idx) => el_h_lu[idx])));
 
-        // const active_h_idx = Math.min(...visible_el_idxs.map((idx) => el_h_lu[idx]));
-        // active_heading.set(active_h_idx);
-
         let active_h_idxs: number[] = [];
 
-        if (tocType === 'lowest') {
+        if (tocType === 'highest') {
             active_h_idxs = [Math.min(...all_active_h_idxs)];
-        } else if (tocType === 'highest') {
+        } else if (tocType === 'lowest') {
             active_h_idxs = [Math.max(...all_active_h_idxs)];
         } else if (tocType === 'allActive') {
             active_h_idxs = all_active_h_idxs;
-        } else if (tocType === 'lowestParents') {
+        } else if (tocType === 'highestParents') {
             const active_h_idx = Math.min(...all_active_h_idxs);
 
             if (h_parents_lu[active_h_idx]) {
-                active_h_idxs = [...h_parents_lu[active_h_idx]!, active_h_idx];
+                active_h_idxs = [...<[]>h_parents_lu[active_h_idx], active_h_idx];
             } else {
                 active_h_idxs = [active_h_idx];
             }
-        } else if (tocType === 'highestParents') {
+        } else if (tocType === 'lowestParents') {
             const active_h_idx = Math.max(...all_active_h_idxs);
 
             if (h_parents_lu[active_h_idx]) {
-                active_h_idxs = [...h_parents_lu[active_h_idx]!, active_h_idx];
+                active_h_idxs = [...<[]>h_parents_lu[active_h_idx], active_h_idx];
             } else {
                 active_h_idxs = [active_h_idx];
             }
@@ -194,14 +181,6 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
 
         // Set store to active indexes.
         activeHeadingIdxs.set(active_h_idxs);
-
-        // if (highlightParentHeadings) {
-        //     // TODO
-        // }
-
-        // if (highlightAllActive) {
-        //     // TODO
-        // }
     }
 
     function init() {
@@ -223,7 +202,5 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
     return {
         subscribe,
         destroy
-        // headings,
-        // activeHeadingIdxs
     }
 }
