@@ -28,7 +28,7 @@
 				: ''} group"
 		>
 			{#if icon}
-				<span class="text-lg {icon} group-hover:{hoverIcon}" />
+				<span class="text-lg {icon} {hoverIcon}" />
 			{/if}
 			{title}
 		</a>

@@ -52,7 +52,7 @@
 							title: 'Icons',
 							path: '/docu/get-started/icons',
 							icon: 'i-mdi-emoticon-outline',
-							hoverIcon: 'i-mdi-emoticon-wink'
+							hoverIcon: 'group-hover:i-mdi-emoticon-wink'
 						},
 						{
 							title: 'Search All Shortcuts',
@@ -154,7 +154,7 @@
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key currentPageIdx}
 				<div class="hidden xl:block absolute fixed right-20">
-					<TableOfContents target="#AtoContent" width="md:w-[200px]" />
+					<TableOfContents target="#AtoContent" tocType="lowest-parents" />
 				</div>
 			{/key}
 		{/if}

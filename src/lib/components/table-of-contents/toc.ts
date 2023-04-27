@@ -1,19 +1,15 @@
 
 import { derived, writable, type Writable } from "svelte/store";
 
-import type { Heading, ElementHeadingLU, HeadingParentsLU, TOCType, ToC } from "./types";
+import type { Heading, IndentStyles, ElementHeadingLU, HeadingParentsLU, TOCType, ToC } from "./types";
 
-/**
- *  Variables to return as stores:
- *      - headings (list of headings)
- *          - this can then be iterated over to create the ToC
- *      - active headings (list of indexes of the active headings)
- *          - this list also already accounts for whether parents should be highlighted and so on
- *          - this list can then be used to style the headings list by checking if the headings index is in this list
- * * 
- * - highlightAllActive When set to true, all headings with visible elements will be highlighted.
-  * - highlightParentHeadings When set to true, parent headings of active headings will also be highlighted.
- */
+export let default_indentation_styles: IndentStyles = {
+    h2: { styles: '', icon: '' },
+    h3: { styles: 'ml-3', icon: '' },
+    h4: { styles: 'ml-6', icon: '' },
+    h5: { styles: 'ml-9', icon: '' },
+    h6: { styles: 'ml-12', icon: '' }
+};
 
 export function scroll_to_element(headingElem: HTMLElement): void {
     const elemTarget: Element | null = document.querySelector(`#${headingElem.id}`);
@@ -26,7 +22,7 @@ export function scroll_to_element(headingElem: HTMLElement): void {
   * @param tocType Defines which headings should be marked as active.
   * @returns { ToC }
  */
-export function create_toc(target: string, excludeHeadings: Heading[]=[], tocType: TOCType='lowest'): ToC {
+export function create_toc(target: string, excludeHeadings: Heading[]=[], tocType: TOCType='lowest', headingIndentationStyles: IndentStyles=default_indentation_styles): ToC {
 
     // Variables
     const possible_headings: Heading[] = ['h2', 'h3', 'h4', 'h5', 'h6'];
@@ -49,7 +45,7 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
     let headings: Writable<HTMLElement[]> = writable([]);
     let activeHeadingIdxs: Writable<number[]> = writable([]);
 
-    const { subscribe } = derived([headings, activeHeadingIdxs], ($state) => ({ headings: $state[0].map((h, i) => ({ heading: h, active: $state[1].includes(i) })) }));
+    const { subscribe } = derived([headings, activeHeadingIdxs], ($state) => ({ headings: $state[0].map((h, i) => ({ heading: h, active: $state[1].includes(i), ...headingIndentationStyles[<Heading>h.tagName.toLowerCase()] })) }));
 
     function generate_initial_lists(): void {
         const allowed_headings = possible_headings.filter((h) => !excludeHeadings.includes(h));
@@ -133,7 +129,7 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
 
                     // Only add active parents if parent headings should be highlighted.
                     active_parents_idxs =
-                        (tocType === 'highestParents' || tocType === 'lowestParents') && h_parents_lu[toc_idx]
+                        (tocType === 'highest-parents' || tocType === 'lowest-parents') && h_parents_lu[toc_idx]
                             ? [...active_parents_idxs, ...(<number[]>h_parents_lu[toc_idx])]
                             : [];
                 }
@@ -142,7 +138,7 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
                 visible_el_idxs = visible_el_idxs.filter((item) => item !== el_idx);
 
                 // Remove all parents of obsIndex from the active_parents_idxs list.
-                if ((tocType === 'highestParents' || tocType === 'lowestParents') && h_parents_lu[toc_idx]) {
+                if ((tocType === 'highest-parents' || tocType === 'lowest-parents') && h_parents_lu[toc_idx]) {
                     h_parents_lu[toc_idx]?.forEach((parent: number) => {
                         const index = active_parents_idxs.indexOf(parent);
                         active_parents_idxs.splice(index, 1);
@@ -159,9 +155,9 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
             active_h_idxs = [Math.min(...all_active_h_idxs)];
         } else if (tocType === 'lowest') {
             active_h_idxs = [Math.max(...all_active_h_idxs)];
-        } else if (tocType === 'allActive') {
+        } else if (tocType === 'all-active') {
             active_h_idxs = all_active_h_idxs;
-        } else if (tocType === 'highestParents') {
+        } else if (tocType === 'highest-parents') {
             const active_h_idx = Math.min(...all_active_h_idxs);
 
             if (h_parents_lu[active_h_idx]) {
@@ -169,7 +165,7 @@ export function create_toc(target: string, excludeHeadings: Heading[]=[], tocTyp
             } else {
                 active_h_idxs = [active_h_idx];
             }
-        } else if (tocType === 'lowestParents') {
+        } else if (tocType === 'lowest-parents') {
             const active_h_idx = Math.max(...all_active_h_idxs);
 
             if (h_parents_lu[active_h_idx]) {
