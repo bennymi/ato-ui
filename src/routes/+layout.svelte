@@ -81,7 +81,14 @@
 				{
 					groupTitle: 'Svelte',
 					groupIcon: 'i-vscode-icons-file-type-svelte',
-					items: [{ title: 'Avatar', path: '/docu/components/avatar' }]
+					items: [
+						{ title: 'Avatar', path: '/docu/components/avatar' },
+						{
+							title: 'Table of Contents',
+							path: '/docu/components/table-of-contents',
+							headless: true
+						}
+					]
 				}
 			]
 		},
@@ -100,7 +107,9 @@
 
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
 
-	$: currentPageIdx = allGroupItems?.findIndex((item) => item.path === $page.url.pathname);
+	$: currentPageIdx = allGroupItems?.findIndex(
+		(item) => item.path === $page.url.pathname || `${item.path}/headless` === $page.url.pathname
+	);
 
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx === 0

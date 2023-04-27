@@ -65,7 +65,7 @@
 				{#each $toc.headings as { heading, active, styles, icon }}
 					<!-- prettier-ignore -->
 					<li
-					class="ato-toc-heading px-4 py-2 cursor-pointer flex items-center gap-1 {styles ?? ''} {active ? activeText : text} {hover} {rounded}"
+					class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 {styles ?? ''} {active ? activeText : text} {hover} {rounded}"
 					on:click={() => scroll_to_element(heading)}
 					on:click
 					on:keypress

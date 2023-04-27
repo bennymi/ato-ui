@@ -10,6 +10,7 @@ export type NavGroupItem = {
     path: string,
     icon?: string,
     hoverIcon?: string,
+    headless?: boolean,
 }
 
 export type NavGroup = {
