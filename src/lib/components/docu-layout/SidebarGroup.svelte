@@ -26,7 +26,8 @@
 		<div class="flex items-center gap-1">
 			<a
 				href={path}
-				class="flex items-center gap-2 text-surface-600-900-300-50 {active(path)
+				class="flex items-center gap-2 text-surface-600-900-300-50 {active(path) ||
+				active(`${path}/headless`)
 					? '!text-surface-900-50 font-semibold'
 					: ''} group"
 			>
