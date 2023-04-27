@@ -5,6 +5,8 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
+	// TODO: Import BROWSER
+
 	import { create_toc, type ToC } from './toc';
 
 	// Props (settings)

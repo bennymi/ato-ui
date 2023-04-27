@@ -19,7 +19,7 @@
 			/* 
                 Check if the element is visible (display: block) or not (hidden). We use this to adjust the left padding of the content pages on the website.
             */
-			const element = document.getElementsByClassName('AtoSidebar')[0];
+			const element: Element | null = document.getElementsByClassName('AtoSidebar')[0];
 
 			observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
@@ -31,7 +31,9 @@
 				});
 			});
 
-			observer.observe(element);
+			if (element) {
+				observer.observe(element);
+			}
 		}
 	});
 

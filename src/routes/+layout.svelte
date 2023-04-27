@@ -139,7 +139,7 @@
 		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
 		style={`
 			padding-left: ${sidebarIsHidden ? 0 : sidebarWidth}px;
-			padding-right: ${sidebarIsHidden ? 0 : 200}px;
+			padding-right: ${sidebarIsHidden || !currentNavPage || !currentNavPage?.showSidebar ? 0 : 200}px;
 		`}
 	>
 		<div class="py-8">
