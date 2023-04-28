@@ -4,13 +4,17 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 import { escapeSvelte, mdsvex } from 'mdsvex';
 import shiki from 'shiki';
 
+import { join } from 'path';
+
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	extensions: ['.md'],
 	highlight: {
 		highlighter: async (code, lang='text') => {
+			const t = await shiki.loadTheme(join(process.cwd(),'./theme-synthwave84.json'));
+
 			const highlighter = await shiki.getHighlighter({
-				theme: 'github-dark'
+				theme: t
 			});
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang }));
 			return `{@html \`${html}\`}`;
