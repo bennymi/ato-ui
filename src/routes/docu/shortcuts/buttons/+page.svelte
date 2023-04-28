@@ -109,15 +109,15 @@
 
 <!-- Add a search functionality with all available shortcuts here -->
 <style>
-	h2 {
+	/* h2 {
 		@apply text-center text-2xl font-bold text-surface-900-200;
 	}
+
+	section {
+		@apply flex flex-col gap-4 justify-center items-center py-64;
+	} */
 
 	/* p {
 		@apply text-surface-900-200;
 	} */
-
-	section {
-		@apply flex flex-col gap-4 justify-center items-center py-64;
-	}
 </style>

@@ -148,7 +148,7 @@
 		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
 		style={`
 			padding-left: ${sidebarIsHidden ? 0 : sidebarWidth}px;
-			padding-right: ${sidebarIsHidden || !currentNavPage || !currentNavPage?.showSidebar ? 0 : 200}px;
+			padding-right: ${sidebarIsHidden || !currentNavPage || !currentNavPage?.showSidebar ? 0 : 13}rem;
 		`}
 	>
 		<div class="py-8">
@@ -163,12 +163,12 @@
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key currentPageIdx}
 				<div class="hidden xl:block absolute fixed right-20">
-					<TableOfContents target="#AtoContent" tocType="lowest-parents" />
+					<TableOfContents target="#AtoContent" tocType="all-active" />
 				</div>
 			{/key}
 		{/if}
 
-		<div id="AtoContent" class="AtoContent px-6 lg:px-3/12">
+		<div id="AtoContent" class="AtoContent text-left px-6 lg:px-3/12">
 			<slot />
 			{#if currentNavPage && currentNavPage?.showSidebar}
 				<div class="pt-20 pb-32">
@@ -178,3 +178,13 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	:global(p) {
+		@apply text-surface-900-50;
+	}
+
+	:global(pre) {
+		@apply overflow-x-scroll px-4 py-2 rounded-token-container;
+	}
+</style>

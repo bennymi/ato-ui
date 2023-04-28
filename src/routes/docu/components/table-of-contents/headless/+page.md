@@ -1,6 +1,33 @@
-<!-- 
-	From a Skeleton UI branch: https://github.com/bennymi/skeleton/blob/chore/toc-active-styles/src/lib/components/TableOfContents/TableOfContents.svelte
- -->
+---
+    title: Table of Contents | Headless
+---
+
+# Table of Contents | Headless
+
+## Example
+
+
+This is a simple button.
+
+<br />
+
+<button class="btn-border-surface-800-op90-br-primary-secondary-success">3 Gradient border (op90)</button>
+
+
+<br />
+<br />
+
+
+```html
+<button class="btn-border-surface-800-op90-br-primary-secondary-success">
+    open
+</button>
+```
+
+<br />
+<br />
+
+```svelte
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { BROWSER as browser } from 'esm-env';
@@ -93,3 +120,4 @@
 		</nav>
 	</div>
 {/if}
+```

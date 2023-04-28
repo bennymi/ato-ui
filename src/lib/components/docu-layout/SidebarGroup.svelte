@@ -44,20 +44,20 @@
 				<!-- <span class="px-1 bg-surface-500 text-on-surface rounded-token-base">H</span>
 				<span class="px-1 bg-primary-500 text-on-primary rounded-token-base">S</span> -->
 				<a
-					href={path}
-					class="group flex items-center p-1 rounded-token-base {active(path)
+					href={`${path}/headless`}
+					class="group flex items-center p-1 rounded-token-base {active(`${path}/headless`)
 						? 'bg-primary-500'
 						: 'bg-surface-500 '} hover:bg-primary-500"
 				>
 					<span
-						class="text-lg {active(path)
+						class="text-lg {active(`${path}/headless`)
 							? 'text-on-primary'
 							: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-outline-rounded"
 					/>
 				</a>
 				<a
-					href={`${path}/headless`}
-					class="group flex items-center p-1 rounded-token-base {active(`${path}/headless`)
+					href={path}
+					class="group flex items-center p-1 rounded-token-base {active(path)
 						? 'bg-primary-500'
 						: 'bg-surface-500 '} hover:bg-primary-500"
 				>
