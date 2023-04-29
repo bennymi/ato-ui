@@ -11,6 +11,7 @@ const mdsvexOptions = {
 	extensions: ['.md'],
 	highlight: {
 		highlighter: async (code, lang='text') => {
+			// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
 			const t = await shiki.loadTheme(join(process.cwd(),'./theme-synthwave84.json'));
 
 			const highlighter = await shiki.getHighlighter({
