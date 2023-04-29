@@ -30,5 +30,7 @@ The following amazing projects made this library possible and / or heavily inspi
 
 - [UnoCSS](https://github.com/unocss/unocss)
 - [HeadlessUI](https://github.com/CaptainCodeman/svelte-headlessui)
+- [MDsveX](https://github.com/pngwn/mdsvex)
 - [Tailwind](https://github.com/tailwindlabs/tailwindcss)
 - [Skeleton](https://github.com/skeletonlabs/skeleton)
+- [Gitpod](https://github.com/gitpod-io/website)
