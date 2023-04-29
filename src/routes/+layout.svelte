@@ -184,7 +184,7 @@
 		@apply text-surface-900-50;
 	}
 
-	:global(pre) {
+	/* :global(pre) {
 		@apply overflow-x-scroll px-4 py-2 rounded-token-container;
-	}
+	} */
 </style>

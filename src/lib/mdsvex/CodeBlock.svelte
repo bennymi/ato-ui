@@ -3,6 +3,7 @@
 	export let code: string | null = null;
 	export let title: string | null = null;
 	export let rawCode: string | null = null;
+	// export let highlightLines: string | null = null;
 
 	let copiedSuccessfully = false;
 
@@ -15,6 +16,10 @@
 		}
 		copiedSuccessfully = true;
 	};
+
+	// $: console.log('Title:', title);
+	// $: console.log('Lines to highlight =', highlightLines);
+
 	$: if (copiedSuccessfully) {
 		setTimeout(() => {
 			copiedSuccessfully = false;
@@ -23,11 +28,11 @@
 	$: tag = title ?? lang;
 </script>
 
-<div class="my-8 overflow-y-auto rounded-xl">
-	<div class="sticky bg-sand-dark dark:bg-light-black top-0 left-0 z-10 py-1 flex items-center">
+<div class="my-8 overflow-y-auto rounded-token-container">
+	<div class="sticky bg-surface-800 top-0 left-0 z-10 py-1 flex items-center">
 		{#if tag}
 			{#if title}
-				<span class="ml-4">{tag}</span>
+				<span class="ml-4 text-surface-900-50 font-mono">{tag}</span>
 			{:else}
 				<div class="ml-4 flex items-center">
 					<!-- <div class="flex items-center gap-1">
@@ -59,11 +64,7 @@
 			</div></button
 		>
 	</div>
-	<div>
+	<div class="[&>pre]:(px-4 py-2 overflow-x-scroll)">
 		{@html code}
-		<!-- <pre class="language-{lang} !m-0 !rounded-none">
-          <code class="language-{lang}">
-        {@html code}
-      </code></pre> -->
 	</div>
 </div>

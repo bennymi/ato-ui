@@ -22,9 +22,11 @@ import { join } from 'path';
  */
 export async function highlightCode(code, lang, meta) {
     let title = null;
+    // let line_numbers = null;
 
     if (meta) {
         title = meta.match(/title="?(.*?)"/)?.[1];
+        // line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
     }
 
     const t = await shiki.loadTheme(join(process.cwd(),'./src/lib/mdsvex/theme-synthwave84.json'));
@@ -35,5 +37,5 @@ export async function highlightCode(code, lang, meta) {
 
     const html = escapeSvelte(highlighter.codeToHtml(code ?? '', { lang }));
 
-    return `<CodeBlock code={${JSON.stringify(html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ""} />`;
+    return `<CodeBlock code={${JSON.stringify(html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''} />`;
 }

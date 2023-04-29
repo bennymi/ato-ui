@@ -18,7 +18,7 @@ This is a simple button.
 <br />
 
 
-```html
+```html title="button"
 <button class="btn-border-surface-800-op90-br-primary-secondary-success">
     open
 </button>

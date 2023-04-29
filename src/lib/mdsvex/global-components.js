@@ -46,12 +46,10 @@ export const mdsvexGlobalComponents = (options = {}) => {
       }
 
       const ext = extname(new_entry);
-      const path = join(dir, new_entry);
+      const path = join(dir, new_entry).replace(/\\/g, '/');
       name = name || basename(new_entry, ext);
 
-      // console.log('==================', entry, name, path);
-      // return `\nimport ${name} from "${path}"`;
-      return `\nimport ${name} from "${dir}/${new_entry}"`;
+      return `\nimport ${name} from "${path}"`;
     })
     .join("\n");
 
@@ -74,11 +72,9 @@ export const mdsvexGlobalComponents = (options = {}) => {
         return { code: content };
       }
 
-      // console.log('========= preprocessor:', { code: `${imports}\n${content}` });
       return { code: `${imports}\n${content}` };
     },
   };
 
-  // console.log('========= preprocessor:', preprocessor.script());
   return preprocessor;
 };
