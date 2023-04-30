@@ -6,6 +6,7 @@
 	// export let highlightLines: string | null = null;
 
 	let copiedSuccessfully = false;
+	let copyState = false;
 
 	let copyCode = async () => {
 		try {
@@ -16,55 +17,59 @@
 		}
 		copiedSuccessfully = true;
 	};
+	const handleCopy = () => {
+		// Add code to clipboard
+		navigator.clipboard.writeText(rawCode ?? '');
+
+		// Give feedback
+		copyState = true;
+		setTimeout(() => {
+			copyState = false;
+		}, 1500);
+	};
 
 	// $: console.log('Title:', title);
 	// $: console.log('Lines to highlight =', highlightLines);
 
-	$: if (copiedSuccessfully) {
-		setTimeout(() => {
-			copiedSuccessfully = false;
-		}, 1000);
-	}
-	$: tag = title ?? lang;
+	// $: if (copiedSuccessfully) {
+	// 	setTimeout(() => {
+	// 		copiedSuccessfully = false;
+	// 	}, 1000);
+	// }
+	$: tag = title ?? lang.toUpperCase();
 </script>
 
 <div class="my-8 overflow-y-auto rounded-token-container">
-	<div class="sticky bg-surface-800 top-0 left-0 z-10 py-1 flex items-center">
-		{#if tag}
-			{#if title}
-				<span class="ml-4 text-surface-900-50 font-mono">{tag}</span>
-			{:else}
-				<div class="ml-4 flex items-center">
-					<!-- <div class="flex items-center gap-1">
-						<img class="dark:hidden" src="/svg/docs/language.svg" alt="language icon" />
-						<img class="hidden dark:block" src="/svg/docs/language-dark.svg" alt="language icon" />
-						<span class="font-semibold text-important">language:&nbsp;</span>
-					</div> -->
-					<span class="text-important">{tag}</span>
-				</div>
-			{/if}
-		{/if}
-		<div class="flex-1" />
+	<header
+		class="code-header rounded-t-token-container flex justify-between items-center p-2 pl-4 bg-surface-500 text-on-surface/80 text-xs font-bold"
+	>
+		<!-- Language Text -->
+		<span class="code-block-language select-none">{tag}</span>
+
+		<!-- Copy Button -->
 		<button
-			on:click={copyCode}
-			class="mr-4 group px-2 py-1 transition-all duration-200 delay-[50] text-[12px] dark:stroke-[#999795] dark:hover:stroke-divider-light hover:stroke-black stroke-[#565252]"
-			><div
-				class={copiedSuccessfully
-					? 'hidden opacity-0'
-					: 'opacity-100 flex items-center gap-1 underline group-hover:text-black underline-offset-[0.25em] dark:group-hover:text-important group-hover:decoration-transparent transition-all duration-200 delay-[50]'}
-			>
-				Something
-			</div>
-			<div
-				class="transition-opacity z-10 duration-300 rounded-md ease-out
-          {copiedSuccessfully ? 'opacity-100' : 'hidden opacity-0'}"
-				aria-hidden="true"
-			>
-				copied successfully
-			</div></button
+			class="copy-btn px-2 py-1 rounded-token-container transition-all duration-200 text-on-surface/70 hover:text-on-surface/95 hover:scale-105"
+			on:click={handleCopy}
+			aria-label="copy code button"
 		>
-	</div>
-	<div class="[&>pre]:(px-4 py-2 overflow-x-scroll)">
+			{#if copyState}
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-5" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm-4 4q-.825 0-1.413-.587Q3 20.825 3 20V7q0-.425.288-.713Q3.575 6 4 6t.713.287Q5 6.575 5 7v13h10q.425 0 .713.288q.287.287.287.712t-.287.712Q15.425 22 15 22Z"
+					/></svg
+				>
+			{:else}
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-5" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.413-.587Q3 20.825 3 20V7q0-.425.288-.713Q3.575 6 4 6t.713.287Q5 6.575 5 7v13h10q.425 0 .713.288q.287.287.287.712t-.287.712Q15.425 22 15 22ZM9 4v12V4Z"
+					/></svg
+				>
+			{/if}
+		</button>
+	</header>
+	<div class="[&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-token-container)">
 		{@html code}
 	</div>
 </div>

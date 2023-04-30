@@ -13,6 +13,13 @@ export const textSCs: Shortcut[] = [
             autocomplete: `text-on-$colors`
         }
     ],
+    [
+        new RegExp(`^text-on-${reg_c}(?:/(0|100|[1-9][0-9])?)$`),
+        ([_, c, op]) => `text-[color:rgb(var(--on-${c}))]${op ? `/${op}` : ''}`,
+        {
+            autocomplete: `text-on-${reg_c}/<num>`
+        }
+    ],
 
     // Text with opacity values
     // [

@@ -29,10 +29,10 @@ export async function highlightCode(code, lang, meta) {
         // line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
     }
 
-    const t = await shiki.loadTheme(join(process.cwd(),'./src/lib/mdsvex/theme-synthwave84.json'));
+    // const t = await shiki.loadTheme(join(process.cwd(),'./src/lib/mdsvex/theme-synthwave84.json'));
 
     const highlighter = await shiki.getHighlighter({
-        theme: t
+        theme: 'github-dark'
     });
 
     const html = escapeSvelte(highlighter.codeToHtml(code ?? '', { lang }));
