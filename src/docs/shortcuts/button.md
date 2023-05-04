@@ -1,5 +1,5 @@
 ---
-title: Button
+title: Buttons
 description: Button classes that can be used.
 ---
 
@@ -62,8 +62,11 @@ description: Button classes that can be used.
 	</button>
 </div>
 
-## Button Groups (Regular and Outline)
+## Button Groups
 
+### Regular
+
+### Outline
 <section class="flex flex-col gap-4 justify-center items-center">
 	<div class="btn-group-error-op90">
 		<button>

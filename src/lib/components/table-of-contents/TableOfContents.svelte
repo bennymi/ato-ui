@@ -23,13 +23,15 @@
 	 * */
 	export let tocType: TOCType = 'lowest';
 	/** Set the styles the indentation styles that should be used for each heading type. Additionally you can add an icon at the front of a heading ('i-material-symbols-chevron-right-rounded'). */
-	export let headingIndentationStyles: IndentStyles = {
-		h2: { styles: '', icon: '' },
-		h3: { styles: 'ml-3', icon: '' },
-		h4: { styles: 'ml-6', icon: '' },
-		h5: { styles: 'ml-9', icon: '' },
-		h6: { styles: 'ml-12', icon: '' }
-	};
+	export let headingIndentationStyles: IndentStyles = default_indentation_styles;
+
+	// {
+	// 	h2: { styles: '', icon: '' },
+	// 	h3: { styles: 'ml-3', icon: '' },
+	// 	h4: { styles: 'ml-6', icon: '' },
+	// 	h5: { styles: 'ml-9', icon: '' },
+	// 	h6: { styles: 'ml-12', icon: '' }
+	// };
 
 	// Style props
 	/** Set the component container styles (width, border, etc). */

@@ -10,6 +10,12 @@
 		<h1 class="text-gradient-bl-secondary-primary-tertiary text-8xl font-bold text-center">
 			Ato-UI
 		</h1>
+		<!-- <h1 class="text-gradient-b-primary-secondary-600 text-8xl font-bold text-center">AtoUI</h1> -->
+		<h1 class="text-8xl text-center">
+			<span class="text-gradient-b-primary-secondary-600 font-extrabold">Ato</span><span
+				class="font-bold">UI</span
+			>
+		</h1>
 		<div class="font-bold text-xl">The elemental ato(mic) UI component library for Svelte</div>
 	</section>
 	<section>

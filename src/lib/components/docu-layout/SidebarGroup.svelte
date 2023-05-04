@@ -50,6 +50,7 @@
 						? 'bg-primary-500'
 						: 'bg-surface-500 '} hover:bg-primary-500"
 				>
+					<span class="sr-only">{`Headless ${item[0].title} component`}</span>
 					<span
 						class="text-lg {active(item[0].sitePath)
 							? 'text-on-primary'
@@ -62,6 +63,7 @@
 						? 'bg-primary-500'
 						: 'bg-surface-500 '} hover:bg-primary-500"
 				>
+					<span class="sr-only">{`Styled ${item[1].title} component`}</span>
 					<span
 						class="text-lg {active(item[1].sitePath)
 							? 'text-on-primary'
