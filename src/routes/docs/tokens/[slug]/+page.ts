@@ -1,8 +1,9 @@
 import { error } from '@sveltejs/kit'
+import type { PageLoad } from './$types';
 
-export async function load({ params }) {
+export const load = (async ({ params }) => {
 	try {
-		const documentation = await import(`/src/docs/tokens/${params.slug}.md`)
+		const documentation = await import(/* @vite-ignore */`../../../../docs/tokens/${params.slug}.md`)
 
 		return {
 			content: documentation.default,
@@ -11,4 +12,4 @@ export async function load({ params }) {
 	} catch (e) {
 		throw error(404, `Could not find ${params.slug}`)
 	}
-}
+}) satisfies PageLoad;

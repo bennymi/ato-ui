@@ -1,6 +1,6 @@
 import type { NavGroupItem } from '$lib/components/docu-layout/types.js';
 
-export async function load({ url }) {
+export async function load() {
 
     const glob_tokens = import.meta.glob('/src/docs/tokens/*.md', { eager: true });
     const glob_shortcuts = import.meta.glob('/src/docs/shortcuts/*.md', { eager: true });
@@ -64,7 +64,6 @@ export async function load({ url }) {
     });
     
 	return {
-		url: url.pathname,
         tokens,
         shortcuts,
         components
