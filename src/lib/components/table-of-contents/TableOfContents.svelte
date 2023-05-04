@@ -73,7 +73,7 @@
 		const lowest_active = $toc.headings.filter((h) => h.active).at(select_idx)?.heading;
 		const idx = $toc.headings.findIndex((h) => h.heading === lowest_active);
 
-		marker_top = 24 + 28 * idx + 4 * (idx + 1);
+		marker_top = 24 + 28 * idx + 2 * (idx + 1) + 2 * idx;
 	}
 </script>
 
@@ -83,7 +83,7 @@
 	<div class="ato-toc {container}">
 		<div class="ato-toc-content relative">
 			<div
-				class="ato-toc-marker absolute top-0 -left-[2px] w-[2px] h-6 bg-secondary-500"
+				class="ato-toc-marker absolute top-0 -left-[2px] w-[2px] h-[28px] bg-secondary-500"
 				style={`top: ${marker_top}px;`}
 			/>
 			<div class="ato-toc-label text-left px-4 pt-0 {labelClasses}">{label}</div>
