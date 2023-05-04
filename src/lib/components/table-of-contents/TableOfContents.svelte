@@ -25,14 +25,6 @@
 	/** Set the styles the indentation styles that should be used for each heading type. Additionally you can add an icon at the front of a heading ('i-material-symbols-chevron-right-rounded'). */
 	export let headingIndentationStyles: IndentStyles = default_indentation_styles;
 
-	// {
-	// 	h2: { styles: '', icon: '' },
-	// 	h3: { styles: 'ml-3', icon: '' },
-	// 	h4: { styles: 'ml-6', icon: '' },
-	// 	h5: { styles: 'ml-9', icon: '' },
-	// 	h6: { styles: 'ml-12', icon: '' }
-	// };
-
 	// Style props
 	/** Set the component container styles (width, border, etc). */
 	export let container = 'w-52 border-l-2 border-surface-300/40';
@@ -40,7 +32,7 @@
 	// export let text = 'text-surface-900-50';
 	export let text = 'text-surface-900-op60-50-op60';
 	/** Set the hover styles. ('hover:(bg-primary-500 text-surface-50)') */
-	export let hover = 'hover:(bg-primary-500 text-surface-50)';
+	export let hover = 'hover:(bg-primary-500 text-on-primary!)';
 	/** Set the header item radius styles. */
 	export let rounded = 'rounded-token-container';
 	/** Set the active header styles. */
@@ -109,3 +101,9 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	.ato-toc-marker {
+		transition: top 0.5s cubic-bezier(0, 1, 0.5, 1);
+	}
+</style>
