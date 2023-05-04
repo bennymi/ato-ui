@@ -18,8 +18,11 @@
 	import AtoUI from './AtoUI.svelte';
 
 	import { page } from '$app/stores';
+	import type { LayoutData } from './$types';
 
 	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
+
+	export let data: LayoutData;
 
 	let activeIdx = 0;
 	let sidebarWidth: number;
@@ -27,6 +30,7 @@
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
 
+	/*
 	const navigation: Navigation = [
 		{
 			navTitle: 'Components',
@@ -99,7 +103,92 @@
 			landingPath: '/designer',
 			groups: []
 		}
+	];	
+	*/
+	const navigation: Navigation = [
+		{
+			navTitle: 'Components',
+			showSidebar: true,
+			basePath: '/docs',
+			landingPath: '/docs/shortcuts/buttons',
+			groups: [
+				{
+					groupTitle: 'Introduction',
+					hideTitle: true,
+					items: [
+						{
+							title: 'Getting Started',
+							mdPath: '/src/docs/get-started/installation.md',
+							sitePath: '/docs/get-started/installation',
+							icon: 'i-material-symbols-rocket-launch-rounded'
+						},
+						{
+							title: 'Why UnoCSS?',
+							mdPath: '/src/docs/get-started/why.md',
+							sitePath: '/docs/get-started/why',
+							icon: 'i-material-symbols:question-mark-rounded'
+						},
+						{
+							title: 'Icons',
+							mdPath: '/src/docs/get-started/icons.md',
+							sitePath: '/docs/get-started/icons',
+							icon: 'i-mdi-emoticon-outline',
+							hoverIcon: 'group-hover:i-mdi-emoticon-wink'
+						},
+						{
+							title: 'Search All Shortcuts',
+							mdPath: '/src/docs/get-started/search.md',
+							sitePath: '/docs/get-started/search',
+							icon: 'i-material-symbols:search-rounded'
+						}
+					]
+				},
+				{
+					groupTitle: 'Tokens',
+					groupIcon: 'i-mdi-dots-grid',
+					items: data.tokens
+				},
+				{
+					groupTitle: 'Shortcuts',
+					groupIcon: 'i-vscode-icons-file-type-unocss',
+					items: data.shortcuts
+				},
+				{
+					groupTitle: 'Svelte',
+					groupIcon: 'i-vscode-icons-file-type-svelte',
+					items: data.components
+						.map((c) => {
+							let temp: NavGroupItem[] = [];
+							if (c.styled) {
+								temp.push(c.styled);
+							}
+
+							if (c.headless) {
+								temp.push(c.headless);
+							}
+
+							return temp;
+						})
+						.flat()
+				}
+			]
+		},
+		{
+			navTitle: 'Designer',
+			showSidebar: false,
+			basePath: '/designer',
+			landingPath: '/designer',
+			groups: []
+		}
 	];
+
+	const test = {
+		something: 'test',
+		...data
+	};
+
+	// $: console.log('layout data:', data);
+	$: console.log('test', test);
 
 	$: activeTheme = themes[activeIdx % themes.length];
 
@@ -107,8 +196,11 @@
 
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
 
+	// $: currentPageIdx = allGroupItems?.findIndex(
+	// 	(item) => item.path === $page.url.pathname || `${item.path}/headless` === $page.url.pathname
+	// );
 	$: currentPageIdx = allGroupItems?.findIndex(
-		(item) => item.path === $page.url.pathname || `${item.path}/headless` === $page.url.pathname
+		(item) => item.sitePath && item.sitePath === $page.url.pathname
 	);
 
 	$: previousPage =

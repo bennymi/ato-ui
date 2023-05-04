@@ -1,0 +1,79 @@
+import { json } from '@sveltejs/kit';
+
+import type { ComponentItem, NavGroupItem } from '$lib/components/docu-layout/types.js';
+
+export async function load({ url }) {
+
+    const glob_tokens = import.meta.glob('/src/docs/tokens/*.md', { eager: true });
+    const glob_shortcuts = import.meta.glob('/src/docs/shortcuts/*.md', { eager: true });
+    const glob_components = import.meta.glob('/src/docs/components/*.md', { eager: true });
+
+    let components: ComponentItem[] = [];
+    let tokens: NavGroupItem[] = [];
+    let shortcuts: NavGroupItem[] = [];
+
+    Object.keys(glob_tokens).forEach((t) => {
+        const file = glob_tokens[t];
+        const slug = t.split('/').at(-1)?.replace('.md', '');
+
+        if (file && typeof file === 'object' && 'metadata' in file && slug) {
+            const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
+            const token = { mdPath: t, sitePath: `/docs/tokens/${slug}`, ...metadata };
+
+            tokens.push(token);
+        }
+    });
+
+    Object.keys(glob_shortcuts).forEach((s) => {
+        const file = glob_shortcuts[s];
+        const slug = s.split('/').at(-1)?.replace('.md', '');
+
+        if (file && typeof file === 'object' && 'metadata' in file && slug) {
+            const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
+            const shortcut = { mdPath: s, sitePath: `/docs/shortcuts/${slug}`, ...metadata };
+
+            shortcuts.push(shortcut);
+        }
+    });
+
+    // Get the components.
+    Object.keys(glob_components).forEach((c) => {
+        const file = glob_components[c];
+        const slug = c.split('/').at(-1)?.replace('.md', '');
+        const name = slug?.replace('-headless', '');
+        const headless = slug?.includes('-headless');
+
+        if (file && typeof file === 'object' && 'metadata' in file && slug) {
+            const metadata = file.metadata as Omit<NavGroupItem, 'sitePath' | 'mdPath'>;
+            
+            const component = { mdPath: c, sitePath: `/docs/components/${slug}`, ...metadata };
+
+            const idx = components.findIndex((v) => v.component === name);
+
+            if (idx >= 0 && headless) {
+                components[idx].headless = component;
+            } else if (idx >= 0 && !headless) {
+                components[idx].styled = component;
+            } else if (headless && name) {
+                components.push({
+                    component: name,
+                    headless: component,
+                    styled: null
+                });
+            } else if (name) {
+                components.push({
+                    component: name,
+                    headless: null,
+                    styled: component,
+                });
+            }
+        }
+    });
+    
+	return {
+		url: url.pathname,
+        tokens,
+        shortcuts,
+        components
+	}
+}

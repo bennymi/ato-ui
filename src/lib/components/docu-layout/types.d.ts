@@ -7,10 +7,18 @@ export type NavIcon = {
 
 export type NavGroupItem = {
     title: string,
-    path: string,
+    mdPath: string,
+    sitePath: string,
+    description?: string,
     icon?: string,
     hoverIcon?: string,
-    headless?: boolean,
+    componentPath?: string,
+}
+
+export type ComponentItem = {
+    component: string,
+    styled: NavGroupItem | null,
+    headless: NavGroupItem | null,
 }
 
 export type NavGroup = {
@@ -18,6 +26,7 @@ export type NavGroup = {
     hideTitle?: boolean,
     groupIcon?: string,
     items: NavGroupItem[],
+    components?: ComponentItem[],
 }
 
 export type NavPage = {
