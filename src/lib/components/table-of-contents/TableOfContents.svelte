@@ -35,15 +35,16 @@
 
 	// Style props
 	/** Set the component container styles (width, border, etc). */
-	export let container = 'w-52 border-l-1 border-surface-300/40';
+	export let container = 'w-52 border-l-2 border-surface-300/40';
 	/** Set the row text color styles. */
-	export let text = 'text-surface-900-50';
+	// export let text = 'text-surface-900-50';
+	export let text = 'text-surface-900-op60-50-op60';
 	/** Set the hover styles. ('hover:(bg-primary-500 text-surface-50)') */
 	export let hover = 'hover:(bg-primary-500 text-surface-50)';
 	/** Set the header item radius styles. */
 	export let rounded = 'rounded-token-container';
 	/** Set the active header styles. */
-	export let activeHeader = 'text-primary-500';
+	export let activeHeader = 'text-surface-900-50';
 
 	/** Provide styles for the label. */
 	export let labelClasses = 'font-bold text-surface-900-50';
@@ -51,6 +52,11 @@
 	export let listClasses = 'list-none text-left';
 
 	let toc: ToC;
+	let marker_top = 24;
+
+	// Define the select index used for the dynamic marker position.
+	const select_idx =
+		tocType === 'highest' || tocType === 'highest-parents' || tocType === 'all-active' ? 0 : -1;
 
 	onMount(() => {
 		if (browser) {
@@ -61,37 +67,45 @@
 	onDestroy(() => {
 		toc?.destroy();
 	});
+
+	// Update marker position when active elements change.
+	$: if (toc) {
+		const lowest_active = $toc.headings.filter((h) => h.active).at(select_idx)?.heading;
+		const idx = $toc.headings.findIndex((h) => h.heading === lowest_active);
+
+		marker_top = 24 + 28 * idx + 4 * (idx + 1);
+	}
 </script>
 
-<!-- @component Create a table of contents for the target container element, so you can quickly navigate to its page headings. -->
+<!-- @component Create a table of contents component for the target container element, so you can quickly navigate to its page headings. -->
 
 {#if toc && $toc.headings.length > 0}
 	<div class="ato-toc {container}">
-		<nav class="ato-toc-list">
+		<div class="ato-toc-content relative">
+			<div
+				class="ato-toc-marker absolute top-0 -left-[2px] w-[2px] h-6 bg-secondary-500"
+				style={`top: ${marker_top}px;`}
+			/>
 			<div class="ato-toc-label text-left px-4 pt-0 {labelClasses}">{label}</div>
-			<ul class={listClasses}>
-				{#each $toc.headings as { heading, active, styles, icon }}
-					<li
-						class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 {styles} {active
-							? activeHeader
-							: text} {hover} {rounded}"
-						on:click={() => scroll_to_element(heading)}
-						on:click
-						on:keypress
-					>
-						<!-- <li
-						class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 {styles} {text} border-l-1"
-						on:click={() => scroll_to_element(heading)}
-						on:click
-						on:keypress
-					> -->
-						{#if icon}
-							<span class={icon} />
-						{/if}
-						{heading.innerText}
-					</li>
-				{/each}
-			</ul>
-		</nav>
+			<nav class="ato-toc-list">
+				<ul class={listClasses}>
+					{#each $toc.headings as { heading, active, styles, icon }}
+						<li
+							class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 {styles} {active
+								? activeHeader
+								: text} {hover} {rounded}"
+							on:click={() => scroll_to_element(heading)}
+							on:click
+							on:keypress
+						>
+							{#if icon}
+								<span class={icon} />
+							{/if}
+							{heading.innerText}
+						</li>
+					{/each}
+				</ul>
+			</nav>
+		</div>
 	</div>
 {/if}
