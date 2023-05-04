@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 
-import type { ComponentItem, NavGroupItem } from '$lib/components/docu-layout/types.js';
+import type { NavGroupItem } from '$lib/components/docu-layout/types.js';
 
 export async function load({ url }) {
 
@@ -8,9 +8,9 @@ export async function load({ url }) {
     const glob_shortcuts = import.meta.glob('/src/docs/shortcuts/*.md', { eager: true });
     const glob_components = import.meta.glob('/src/docs/components/*.md', { eager: true });
 
-    let components: ComponentItem[] = [];
-    let tokens: NavGroupItem[] = [];
-    let shortcuts: NavGroupItem[] = [];
+    let components: NavGroupItem[][] = [];
+    let tokens: NavGroupItem[][] = [];
+    let shortcuts: NavGroupItem[][] = [];
 
     Object.keys(glob_tokens).forEach((t) => {
         const file = glob_tokens[t];
@@ -20,7 +20,7 @@ export async function load({ url }) {
             const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
             const token = { mdPath: t, sitePath: `/docs/tokens/${slug}`, ...metadata };
 
-            tokens.push(token);
+            tokens.push([token]);
         }
     });
 
@@ -32,7 +32,7 @@ export async function load({ url }) {
             const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
             const shortcut = { mdPath: s, sitePath: `/docs/shortcuts/${slug}`, ...metadata };
 
-            shortcuts.push(shortcut);
+            shortcuts.push([shortcut]);
         }
     });
 
@@ -44,28 +44,23 @@ export async function load({ url }) {
         const headless = slug?.includes('-headless');
 
         if (file && typeof file === 'object' && 'metadata' in file && slug) {
-            const metadata = file.metadata as Omit<NavGroupItem, 'sitePath' | 'mdPath'>;
+            const metadata = file.metadata as Omit<NavGroupItem, 'sitePath' | 'mdPath' | 'component'>;
             
-            const component = { mdPath: c, sitePath: `/docs/components/${slug}`, ...metadata };
+            const component = { mdPath: c, component: name, sitePath: `/docs/components/${slug}`, ...metadata };
 
-            const idx = components.findIndex((v) => v.component === name);
+            
+            const idx = components.findIndex((v) => v.findIndex((item) => item.component === name) >= 0);
+            
+            // console.log('component', component);
+            // console.log('component', components);
+            // console.log('idx', idx);
 
             if (idx >= 0 && headless) {
-                components[idx].headless = component;
+                components[idx].unshift(component);
             } else if (idx >= 0 && !headless) {
-                components[idx].styled = component;
-            } else if (headless && name) {
-                components.push({
-                    component: name,
-                    headless: component,
-                    styled: null
-                });
-            } else if (name) {
-                components.push({
-                    component: name,
-                    headless: null,
-                    styled: component,
-                });
+                components[idx].push(component);
+            } else {
+                components.push([component]);
             }
         }
     });

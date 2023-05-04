@@ -12,20 +12,15 @@ export type NavGroupItem = {
     description?: string,
     icon?: string,
     hoverIcon?: string,
+    component?:  string,
     componentPath?: string,
-}
-
-export type ComponentItem = {
-    component: string,
-    styled: NavGroupItem | null,
-    headless: NavGroupItem | null,
 }
 
 export type NavGroup = {
     groupTitle: string,
     hideTitle?: boolean,
     groupIcon?: string,
-    items: NavGroupItem[],
+    items: NavGroupItem[][],
     components?: ComponentItem[],
 }
 

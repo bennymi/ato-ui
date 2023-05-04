@@ -116,31 +116,39 @@
 					groupTitle: 'Introduction',
 					hideTitle: true,
 					items: [
-						{
-							title: 'Getting Started',
-							mdPath: '/src/docs/get-started/installation.md',
-							sitePath: '/docs/get-started/installation',
-							icon: 'i-material-symbols-rocket-launch-rounded'
-						},
-						{
-							title: 'Why UnoCSS?',
-							mdPath: '/src/docs/get-started/why.md',
-							sitePath: '/docs/get-started/why',
-							icon: 'i-material-symbols:question-mark-rounded'
-						},
-						{
-							title: 'Icons',
-							mdPath: '/src/docs/get-started/icons.md',
-							sitePath: '/docs/get-started/icons',
-							icon: 'i-mdi-emoticon-outline',
-							hoverIcon: 'group-hover:i-mdi-emoticon-wink'
-						},
-						{
-							title: 'Search All Shortcuts',
-							mdPath: '/src/docs/get-started/search.md',
-							sitePath: '/docs/get-started/search',
-							icon: 'i-material-symbols:search-rounded'
-						}
+						[
+							{
+								title: 'Getting Started',
+								mdPath: '/src/docs/get-started/installation.md',
+								sitePath: '/docs/get-started/installation',
+								icon: 'i-material-symbols-rocket-launch-rounded'
+							}
+						],
+						[
+							{
+								title: 'Why UnoCSS?',
+								mdPath: '/src/docs/get-started/why.md',
+								sitePath: '/docs/get-started/why',
+								icon: 'i-material-symbols:question-mark-rounded'
+							}
+						],
+						[
+							{
+								title: 'Icons',
+								mdPath: '/src/docs/get-started/icons.md',
+								sitePath: '/docs/get-started/icons',
+								icon: 'i-mdi-emoticon-outline',
+								hoverIcon: 'group-hover:i-mdi-emoticon-wink'
+							}
+						],
+						[
+							{
+								title: 'Search All Shortcuts',
+								mdPath: '/src/docs/get-started/search.md',
+								sitePath: '/docs/get-started/search',
+								icon: 'i-material-symbols:search-rounded'
+							}
+						]
 					]
 				},
 				{
@@ -157,19 +165,6 @@
 					groupTitle: 'Svelte',
 					groupIcon: 'i-vscode-icons-file-type-svelte',
 					items: data.components
-						.map((c) => {
-							let temp: NavGroupItem[] = [];
-							if (c.styled) {
-								temp.push(c.styled);
-							}
-
-							if (c.headless) {
-								temp.push(c.headless);
-							}
-
-							return temp;
-						})
-						.flat()
 				}
 			]
 		},
@@ -182,13 +177,8 @@
 		}
 	];
 
-	const test = {
-		something: 'test',
-		...data
-	};
-
 	// $: console.log('layout data:', data);
-	$: console.log('test', test);
+	// $: console.log('navigation', navigation);
 
 	$: activeTheme = themes[activeIdx % themes.length];
 
@@ -196,22 +186,24 @@
 
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
 
+	// $: console.log('allGroupItems', allGroupItems);
+
 	// $: currentPageIdx = allGroupItems?.findIndex(
 	// 	(item) => item.path === $page.url.pathname || `${item.path}/headless` === $page.url.pathname
 	// );
 	$: currentPageIdx = allGroupItems?.findIndex(
-		(item) => item.sitePath && item.sitePath === $page.url.pathname
+		(v) => v.findIndex((item) => item.sitePath && item.sitePath === $page.url.pathname) >= 0
 	);
 
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx === 0
 			? null
-			: allGroupItems![currentPageIdx! - 1];
+			: allGroupItems![currentPageIdx! - 1][0];
 
 	$: nextPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx === allGroupItems!.length - 1
 			? null
-			: allGroupItems![currentPageIdx! + 1];
+			: allGroupItems![currentPageIdx! + 1][0];
 </script>
 
 <div class:dark={$darkTheme} class="{activeTheme} min-w-screen min-h-screen">

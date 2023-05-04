@@ -6,7 +6,7 @@
 	export let hideTitle = false;
 	export let groupIcon = '';
 	export let groupTitle: string;
-	export let items: NavGroupItem[];
+	export let items: NavGroupItem[][];
 
 	$: active = (path: string) => path === $page.url.pathname;
 </script>
@@ -22,47 +22,48 @@
 			</h2>
 		</div>
 	{/if}
-	{#each items as { title, path, icon, hoverIcon, headless }}
+	<!-- {#each items as { title, path, icon, hoverIcon, headless }} -->
+	{#each items as item}
 		<div class="flex items-center gap-1">
 			<a
-				href={path}
-				class="flex items-center gap-2 text-surface-600-900-300-50 {active(path) ||
-				active(`${path}/headless`)
+				href={item[0].sitePath}
+				class="flex items-center gap-2 text-surface-600-900-300-50 {active(item[0].sitePath) ||
+				(item.length === 2 && active(`${item[1].sitePath}`))
 					? '!text-surface-900-50 font-semibold'
 					: ''} group"
 			>
 				<!-- ? '!text-surface-900-50 font-semibold' -->
-				{#if icon}
-					<span class="text-lg {icon} {hoverIcon}" />
+				{#if item[0].icon}
+					<span class="text-lg {item[0].icon} {item[0].hoverIcon}" />
 				{/if}
 				<span>
-					{title}
+					{item[0].title}
 				</span>
 			</a>
 
-			{#if headless}
+			{#if item.length === 2}
 				<!-- <span class="px-1 bg-surface-500 text-on-surface rounded-token-base">H</span>
 				<span class="px-1 bg-primary-500 text-on-primary rounded-token-base">S</span> -->
 				<a
-					href={`${path}/headless`}
-					class="group flex items-center p-1 rounded-token-base {active(`${path}/headless`)
+					href={`${item[0].sitePath}`}
+					class="group flex items-center p-1 rounded-token-base {active(item[0].sitePath)
 						? 'bg-primary-500'
 						: 'bg-surface-500 '} hover:bg-primary-500"
 				>
 					<span
-						class="text-lg {active(`${path}/headless`)
+						class="text-lg {active(item[0].sitePath)
 							? 'text-on-primary'
 							: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-outline-rounded"
 					/>
 				</a>
 				<a
-					href={path}
-					class="group flex items-center p-1 rounded-token-base {active(path)
+					href={item[1].sitePath}
+					class="group flex items-center p-1 rounded-token-base {active(item[1].sitePath)
 						? 'bg-primary-500'
 						: 'bg-surface-500 '} hover:bg-primary-500"
 				>
 					<span
-						class="text-lg {active(path)
+						class="text-lg {active(item[1].sitePath)
 							? 'text-on-primary'
 							: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-rounded"
 					/>
