@@ -16,13 +16,17 @@
 }
 
 .prose > h2 {
-    @apply text-2xl font-bold;
+    @apply my-4 text-2xl font-bold;
+}
+
+.prose > h3 {
+    @apply my-4 text-xl font-bold;
+}
+
+.prose > h4 {
+    @apply my-4 text-xl font-bold;
 }
 
 .prose > p {
     @apply text-justify;
 }
-
-/* .prose br {
-    @apply block my-4;
-} */
