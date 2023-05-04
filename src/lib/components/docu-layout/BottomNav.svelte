@@ -8,7 +8,7 @@
 <div class="flex w-full gap-2">
 	{#if previous}
 		<a
-			href={previous.path}
+			href={previous.sitePath}
 			class="group flex flex-col items-start gap-1 border-2 border-primary-500/60 w-1/2 p-2 rounded-token-container hover:border-surface-50-op80-bl-primary-tertiary-secondary dark:hover:border-surface-900-op80-bl-primary-tertiary-secondary"
 		>
 			<div
@@ -24,7 +24,7 @@
 
 	{#if next}
 		<a
-			href={next.path}
+			href={next.sitePath}
 			class="group ml-auto flex flex-col items-end gap-1 border-2 border-primary-500/60 w-1/2 p-2 rounded-token-container hover:border-surface-50-op80-br-primary-tertiary-secondary dark:hover:border-surface-900-op80-br-primary-tertiary-secondary"
 		>
 			<div

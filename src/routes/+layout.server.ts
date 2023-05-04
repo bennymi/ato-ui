@@ -1,5 +1,3 @@
-import { json } from '@sveltejs/kit';
-
 import type { NavGroupItem } from '$lib/components/docu-layout/types.js';
 
 export async function load({ url }) {

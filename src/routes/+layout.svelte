@@ -30,87 +30,12 @@
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
 
-	/*
-	const navigation: Navigation = [
-		{
-			navTitle: 'Components',
-			showSidebar: true,
-			basePath: '/docu',
-			landingPath: '/docu/shortcuts/buttons',
-			groups: [
-				{
-					groupTitle: 'Introduction',
-					hideTitle: true,
-					items: [
-						{
-							title: 'Getting Started',
-							path: '/docu/get-started/installation',
-							icon: 'i-material-symbols-rocket-launch-rounded'
-						},
-						{
-							title: 'Why UnoCSS?',
-							path: '/docu/get-started/why',
-							icon: 'i-material-symbols:question-mark-rounded'
-						},
-						{
-							title: 'Icons',
-							path: '/docu/get-started/icons',
-							icon: 'i-mdi-emoticon-outline',
-							hoverIcon: 'group-hover:i-mdi-emoticon-wink'
-						},
-						{
-							title: 'Search All Shortcuts',
-							path: '/docu/get-started/search',
-							icon: 'i-material-symbols:search-rounded'
-						}
-					]
-				},
-				{
-					groupTitle: 'Tokens',
-					groupIcon: 'i-mdi-dots-grid',
-					items: [
-						{ title: 'Background', path: '/docu/tokens/background' },
-						{ title: 'Border', path: '/docu/tokens/border' },
-						{ title: 'Text', path: '/docu/tokens/text' }
-					]
-				},
-				{
-					groupTitle: 'Shortcuts',
-					groupIcon: 'i-vscode-icons-file-type-unocss',
-					items: [
-						{ title: 'Buttons', path: '/docu/shortcuts/buttons' },
-						{ title: 'Spinners / Loaders', path: '/docu/shortcuts/spinners' }
-					]
-				},
-				{
-					groupTitle: 'Svelte',
-					groupIcon: 'i-vscode-icons-file-type-svelte',
-					items: [
-						{ title: 'Avatar', path: '/docu/components/avatar' },
-						{
-							title: 'Table of Contents',
-							path: '/docu/components/table-of-contents',
-							headless: true
-						}
-					]
-				}
-			]
-		},
-		{
-			navTitle: 'Designer',
-			showSidebar: false,
-			basePath: '/designer',
-			landingPath: '/designer',
-			groups: []
-		}
-	];	
-	*/
 	const navigation: Navigation = [
 		{
 			navTitle: 'Components',
 			showSidebar: true,
 			basePath: '/docs',
-			landingPath: '/docs/shortcuts/buttons',
+			landingPath: '/docs/components/avatar',
 			groups: [
 				{
 					groupTitle: 'Introduction',
@@ -177,20 +102,12 @@
 		}
 	];
 
-	// $: console.log('layout data:', data);
-	// $: console.log('navigation', navigation);
-
 	$: activeTheme = themes[activeIdx % themes.length];
 
 	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
 
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
 
-	// $: console.log('allGroupItems', allGroupItems);
-
-	// $: currentPageIdx = allGroupItems?.findIndex(
-	// 	(item) => item.path === $page.url.pathname || `${item.path}/headless` === $page.url.pathname
-	// );
 	$: currentPageIdx = allGroupItems?.findIndex(
 		(v) => v.findIndex((item) => item.sitePath && item.sitePath === $page.url.pathname) >= 0
 	);

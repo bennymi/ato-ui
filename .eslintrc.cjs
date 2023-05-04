@@ -66,6 +66,7 @@ module.exports = {
 		'no-unused-vars': 'off',
 		'@typescript-eslint/no-loop-func': 0,
     	'@typescript-eslint/no-unused-vars': 'warn',
+    	'@typescript-eslint/no-throw-literal': 'warn',
 		// 'import-no-duplicates-prefix-resolved-path/no-duplicates': [
 		// 	'error',
 		// 	{
