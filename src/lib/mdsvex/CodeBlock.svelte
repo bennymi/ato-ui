@@ -39,7 +39,7 @@
 	$: tag = title ?? lang.toUpperCase();
 </script>
 
-<div class="my-8 overflow-y-auto rounded-token-container">
+<div class="AtoCodeBlock overflow-y-auto rounded-token-container">
 	<header
 		class="code-header rounded-t-token-container flex justify-between items-center p-2 pl-4 bg-surface-500 text-on-surface/80 text-xs font-bold"
 	>
@@ -48,7 +48,7 @@
 
 		<!-- Copy Button -->
 		<button
-			class="copy-btn px-2 py-1 rounded-token-container transition-all duration-200 text-on-surface/70 hover:text-on-surface/95 hover:scale-110"
+			class="code-block-copy-btn px-2 py-1 rounded-token-container transition-all duration-200 text-on-surface/70 hover:text-on-surface/95 hover:scale-110"
 			on:click={handleCopy}
 			aria-label="copy code button"
 		>
@@ -69,7 +69,7 @@
 			{/if}
 		</button>
 	</header>
-	<div class="[&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-token-container)">
+	<div class="code-block-code [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-token-container)">
 		{@html code}
 	</div>
 </div>

@@ -6,6 +6,7 @@ export const load = (async ({ params }) => {
 		const documentation = await import(/* @vite-ignore */`../../../../docs/components/${params.slug}.md`)
 
 		return {
+			slug: params.slug,
 			content: documentation.default,
 			meta: documentation.metadata
 		}

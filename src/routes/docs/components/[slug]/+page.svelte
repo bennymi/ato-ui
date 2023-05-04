@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.meta.title} | Ato-UI</title>
+	<title>{data.meta.title}{data.slug.includes('-headless') ? ' - Headless' : ''} | Ato-UI</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>

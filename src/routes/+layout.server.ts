@@ -2,13 +2,27 @@ import type { NavGroupItem } from '$lib/components/docu-layout/types.js';
 
 export async function load() {
 
+    const glob_start = import.meta.glob('/src/docs/get-started/*.md', { eager: true });
     const glob_tokens = import.meta.glob('/src/docs/tokens/*.md', { eager: true });
     const glob_shortcuts = import.meta.glob('/src/docs/shortcuts/*.md', { eager: true });
     const glob_components = import.meta.glob('/src/docs/components/*.md', { eager: true });
 
+    let articles: NavGroupItem[][] = [];
     let components: NavGroupItem[][] = [];
     let tokens: NavGroupItem[][] = [];
     let shortcuts: NavGroupItem[][] = [];
+
+    Object.keys(glob_start).forEach((s) => {
+        const file = glob_start[s];
+        const slug = s.split('/').at(-1)?.replace('.md', '');
+
+        if (file && typeof file === 'object' && 'metadata' in file && slug) {
+            const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
+            const start = { mdPath: s, sitePath: `/docs/get-started/${slug}`, ...metadata };
+
+            articles.push([start]);
+        }
+    });
 
     Object.keys(glob_tokens).forEach((t) => {
         const file = glob_tokens[t];
@@ -64,6 +78,7 @@ export async function load() {
     });
     
 	return {
+        articles,
         tokens,
         shortcuts,
         components

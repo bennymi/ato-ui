@@ -40,41 +40,7 @@
 				{
 					groupTitle: 'Introduction',
 					hideTitle: true,
-					items: [
-						[
-							{
-								title: 'Getting Started',
-								mdPath: '/src/docs/get-started/installation.md',
-								sitePath: '/docs/get-started/installation',
-								icon: 'i-material-symbols-rocket-launch-rounded'
-							}
-						],
-						[
-							{
-								title: 'Why UnoCSS?',
-								mdPath: '/src/docs/get-started/why.md',
-								sitePath: '/docs/get-started/why',
-								icon: 'i-material-symbols:question-mark-rounded'
-							}
-						],
-						[
-							{
-								title: 'Icons',
-								mdPath: '/src/docs/get-started/icons.md',
-								sitePath: '/docs/get-started/icons',
-								icon: 'i-mdi-emoticon-outline',
-								hoverIcon: 'group-hover:i-mdi-emoticon-wink'
-							}
-						],
-						[
-							{
-								title: 'Search All Shortcuts',
-								mdPath: '/src/docs/get-started/search.md',
-								sitePath: '/docs/get-started/search',
-								icon: 'i-material-symbols:search-rounded'
-							}
-						]
-					]
+					items: data.articles
 				},
 				{
 					groupTitle: 'Tokens',
