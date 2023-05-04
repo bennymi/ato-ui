@@ -24,6 +24,8 @@
 	export let tocType: TOCType = 'lowest';
 	/** Set the styles the indentation styles that should be used for each heading type. Additionally you can add an icon at the front of a heading ('i-material-symbols-chevron-right-rounded'). */
 	export let headingIndentationStyles: IndentStyles = default_indentation_styles;
+	/** Set whether the marker should be shown or not. */
+	export let showMarker = true;
 
 	// Style props
 	/** Set the component container styles (width, border, etc). */
@@ -45,6 +47,8 @@
 
 	let toc: ToC;
 	let marker_top = 24;
+	let marker_height = 28;
+	let list_elements: HTMLElement[] = [];
 
 	// Define the select index used for the dynamic marker position.
 	const select_idx =
@@ -61,11 +65,20 @@
 	});
 
 	// Update marker position when active elements change.
-	$: if (toc) {
+	$: if (toc && list_elements.length > 0) {
 		const lowest_active = $toc.headings.filter((h) => h.active).at(select_idx)?.heading;
 		const idx = $toc.headings.findIndex((h) => h.heading === lowest_active);
 
-		marker_top = 24 + 28 * idx + 2 * (idx + 1) + 2 * idx;
+		if (idx >= 0) {
+			const additional_height = list_elements
+				.slice(0, idx)
+				.map((li) => li.getClientRects()[0])
+				.reduce((a, b) => a + b.height, 0);
+
+			// marker_top = 24 + 28 * idx + 2 * (idx + 1) + 2 * idx;
+			marker_top = 24 + additional_height;
+			marker_height = list_elements[idx].getClientRects()[0].height;
+		}
 	}
 </script>
 
@@ -74,14 +87,16 @@
 {#if toc && $toc.headings.length > 0}
 	<div class="ato-toc {container}">
 		<div class="ato-toc-content relative">
-			<div
-				class="ato-toc-marker absolute top-0 -left-[2px] w-[2px] h-[28px] bg-secondary-500"
-				style={`top: ${marker_top}px;`}
-			/>
+			{#if showMarker}
+				<div
+					class="ato-toc-marker absolute top-0 -left-[2px] w-[2px] bg-secondary-500"
+					style={`top: ${marker_top}px; height: ${marker_height}px;`}
+				/>
+			{/if}
 			<div class="ato-toc-label text-left px-4 pt-0 {labelClasses}">{label}</div>
 			<nav class="ato-toc-list">
 				<ul class={listClasses}>
-					{#each $toc.headings as { heading, active, styles, icon }}
+					{#each $toc.headings as { heading, active, styles, icon }, i}
 						<li
 							class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 {styles} {active
 								? activeHeader
@@ -89,6 +104,7 @@
 							on:click={() => scroll_to_element(heading)}
 							on:click
 							on:keypress
+							bind:this={list_elements[i]}
 						>
 							{#if icon}
 								<span class={icon} />

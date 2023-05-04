@@ -130,7 +130,12 @@
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key currentPageIdx}
 				<div class="hidden xl:block absolute fixed right-20">
-					<TableOfContents target="#AtoContent" tocType="lowest-parents" />
+					<TableOfContents
+						target="#AtoContent"
+						tocType="lowest-parents"
+						hover="hover:(text-surface-900-50)"
+						markerBackground="bg-secondary-500"
+					/>
 				</div>
 			{/key}
 		{/if}

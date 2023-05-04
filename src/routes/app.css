@@ -7,7 +7,7 @@
     @apply w-full;
 }
 
-.prose > :is(h1, h2, h3, h4, h5, h6, p) {
+.prose > :is(h1, h2, h3, h4, h5, h6, p, ul) {
     @apply text-surface-900-50;
 }
 
@@ -29,4 +29,8 @@
 
 .prose > p {
     @apply text-justify;
+}
+
+.prose > ul {
+    @apply list-disc;
 }
