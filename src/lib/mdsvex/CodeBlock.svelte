@@ -48,7 +48,7 @@
 
 		<!-- Copy Button -->
 		<button
-			class="copy-btn px-2 py-1 rounded-token-container transition-all duration-200 text-on-surface/70 hover:text-on-surface/95 hover:scale-105"
+			class="copy-btn px-2 py-1 rounded-token-container transition-all duration-200 text-on-surface/70 hover:text-on-surface/95 hover:scale-110"
 			on:click={handleCopy}
 			aria-label="copy code button"
 		>

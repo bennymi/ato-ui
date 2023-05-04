@@ -8,14 +8,14 @@ description: A headless table of contents component.
 ## Example
 
 
-This is a simple button.
+This is a simple button. 
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda doloribus harum, corrupti architecto ipsam impedit facilis debitis quos officiis ad quibusdam magni non neque, illo cum vitae perspiciatis a explicabo.
 
 <br />
 
 <button class="btn-border-surface-800-op90-br-primary-secondary-success">3 Gradient border (op90)</button>
 
 
-<br />
 <br />
 
 
@@ -25,7 +25,6 @@ This is a simple button.
 </button>
 ```
 
-<br />
 <br />
 
 ```svelte

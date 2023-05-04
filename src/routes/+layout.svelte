@@ -170,7 +170,9 @@
 		{/if}
 
 		<div id="AtoContent" class="AtoContent text-left px-6 lg:px-3/12">
-			<slot />
+			<div class="prose">
+				<slot />
+			</div>
 			{#if currentNavPage && currentNavPage?.showSidebar}
 				<div class="pt-20 pb-32">
 					<BottomNav previous={previousPage} next={nextPage} />
@@ -181,9 +183,9 @@
 </div>
 
 <style>
-	:global(p) {
+	/* :global(p) {
 		@apply text-surface-900-50;
-	}
+	} */
 
 	/* :global(pre) {
 		@apply overflow-x-scroll px-4 py-2 rounded-token-container;

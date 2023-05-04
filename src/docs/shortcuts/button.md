@@ -3,6 +3,8 @@ title: Button
 description: Button classes that can be used.
 ---
 
+# Buttons
+
 <div class="flex flex-col gap-8 justify-center items-center">
 	<section>
 		<h2>Regular Buttons</h2>

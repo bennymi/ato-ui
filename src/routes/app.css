@@ -2,3 +2,27 @@
 /* html, body {
     @apply min-w-screen w-full h-full;
 } */
+
+.prose {
+    @apply w-full;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6, p) {
+    @apply text-surface-900-50;
+}
+
+.prose h1 {
+    @apply text-4xl font-bold mb-8;
+}
+
+.prose h2 {
+    @apply text-2xl font-bold;
+}
+
+.prose p {
+    @apply text-justify;
+}
+
+/* .prose br {
+    @apply block my-4;
+} */
