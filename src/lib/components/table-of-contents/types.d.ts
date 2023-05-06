@@ -32,7 +32,7 @@ type TOCStore = {
     headings: ActiveHeading[];
 }
 
-interface CustomReadable<T> extends Readable<T> {
+export interface CustomReadable<T> extends Readable<T> {
     destroy: () => void;
 };
 

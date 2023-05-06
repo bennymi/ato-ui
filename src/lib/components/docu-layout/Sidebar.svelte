@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
 
 	import SidebarGroup from './SidebarGroup.svelte';
 	import type { NavGroup } from './types';

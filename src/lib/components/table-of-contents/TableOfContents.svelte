@@ -39,6 +39,8 @@
 	export let rounded = 'rounded-token-container';
 	/** Set the active header styles. */
 	export let activeHeader = 'text-surface-900-50';
+	/** Pick the marker background color. */
+	export let markerBackground = 'bg-primary-500';
 
 	/** Provide styles for the label. */
 	export let labelClasses = 'font-bold text-surface-900-50';
@@ -70,14 +72,18 @@
 		const idx = $toc.headings.findIndex((h) => h.heading === lowest_active);
 
 		if (idx >= 0) {
-			const additional_height = list_elements
-				.slice(0, idx)
-				.map((li) => li.getClientRects()[0])
-				.reduce((a, b) => a + b.height, 0);
+			const client_rects = list_elements.slice(0, idx).map((li) => li.getClientRects()[0]);
+
+			let additional_height = 0;
+			if (client_rects.filter((v) => !v).length === 0) {
+				additional_height = client_rects.reduce((a, b) => a + b.height, 0);
+			}
 
 			// marker_top = 24 + 28 * idx + 2 * (idx + 1) + 2 * idx;
 			marker_top = 24 + additional_height;
-			marker_height = list_elements[idx].getClientRects()[0].height;
+
+			const active_client_rect = list_elements[idx].getClientRects()[0];
+			marker_height = active_client_rect ? active_client_rect.height : marker_height;
 		}
 	}
 </script>
@@ -89,7 +95,7 @@
 		<div class="ato-toc-content relative">
 			{#if showMarker}
 				<div
-					class="ato-toc-marker absolute top-0 -left-[2px] w-[2px] bg-secondary-500"
+					class="ato-toc-marker absolute top-0 -left-[2px] w-[2px] {markerBackground}"
 					style={`top: ${marker_top}px; height: ${marker_height}px;`}
 				/>
 			{/if}

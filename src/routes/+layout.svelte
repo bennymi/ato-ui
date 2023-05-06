@@ -9,11 +9,16 @@
 	import 'uno.css';
 	import './app.css';
 
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+
 	import NavBar from '$lib/components/docu-layout/NavBar.svelte';
 	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
 	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
 	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
+	import { observe } from '$lib/actions/observe/observe';
+	import type { Visibility } from '$lib/actions/observe/types';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
 
@@ -29,6 +34,7 @@
 	let sidebarIsHidden = false;
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
+	let tocVisibility: Visibility;
 
 	const navigation: Navigation = [
 		{
@@ -67,6 +73,14 @@
 			groups: []
 		}
 	];
+
+	onMount(() => {
+		if (browser) {
+			tocVisibility = observe('ato-toc');
+		}
+	});
+
+	$: console.log('toc-visibility', tocVisibility ? $tocVisibility.isVisible : '');
 
 	$: activeTheme = themes[activeIdx % themes.length];
 
@@ -140,8 +154,8 @@
 			{/key}
 		{/if}
 
-		<div id="AtoContent" class="AtoContent text-left px-6 lg:px-3/12">
-			<div class="prose">
+		<div id="AtoContent" class="AtoContent text-left mx-auto px-6 xl:px-3/12">
+			<div class="prose w-full">
 				<slot />
 			</div>
 			{#if currentNavPage && currentNavPage?.showSidebar}
@@ -152,13 +166,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	/* :global(p) {
-		@apply text-surface-900-50;
-	} */
-
-	/* :global(pre) {
-		@apply overflow-x-scroll px-4 py-2 rounded-token-container;
-	} */
-</style>
