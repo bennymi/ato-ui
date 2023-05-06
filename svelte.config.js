@@ -1,7 +1,7 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
-import { escapeSvelte, mdsvex } from 'mdsvex';
+import { mdsvex } from 'mdsvex';
 // import shiki from 'shiki';
 
 // import { join } from 'path';

@@ -52,6 +52,11 @@
 					items: data.shortcuts
 				},
 				{
+					groupTitle: 'Actions',
+					groupIcon: 'i-mdi-target',
+					items: data.actions
+				},
+				{
 					groupTitle: 'Svelte',
 					groupIcon: 'i-vscode-icons-file-type-svelte',
 					items: data.components
