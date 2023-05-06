@@ -29,7 +29,7 @@
 
 	// Style props
 	/** Set the component container styles (width, border, etc). */
-	export let container = 'w-52 border-l-2 border-surface-300/40';
+	export let container = 'border-l-2 border-surface-300/40';
 	/** Set the row text color styles. */
 	// export let text = 'text-surface-900-50';
 	export let text = 'text-surface-900-op60-50-op60';

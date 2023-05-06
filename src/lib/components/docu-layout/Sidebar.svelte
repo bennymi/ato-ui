@@ -47,7 +47,7 @@
 
 {#if showSidebar}
 	<aside
-		class="AtoSidebar bg-inverse-white-surface-800 fixed top-12 left-0 bottom-0 z-40 border-r-1 border-surface-200/50 dark:border-0 hidden lg:block"
+		class="AtoSidebar bg-inverse-white-surface-800 fixed top-12 left-0 bottom-0 z-40 border-r-1 border-surface-200/50 dark:border-0 hidden lg:block w-[350px] xl:w-[350px] 2xl:w-[400px] 2xl:pl-[50px]"
 		bind:clientWidth={width}
 	>
 		<nav class="h-full space-y-2 overflow-y-auto md:pl-10 lg:pl-32 pr-8 text-surface-900-200 py-12">

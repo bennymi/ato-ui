@@ -17,8 +17,6 @@
 	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
 	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
-	import { observe } from '$lib/actions/observe/observe';
-	import type { Visibility } from '$lib/actions/observe/types';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
 
@@ -34,7 +32,6 @@
 	let sidebarIsHidden = false;
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
-	let tocVisibility: Visibility;
 
 	const navigation: Navigation = [
 		{
@@ -73,14 +70,6 @@
 			groups: []
 		}
 	];
-
-	onMount(() => {
-		if (browser) {
-			tocVisibility = observe('ato-toc');
-		}
-	});
-
-	$: console.log('toc-visibility', tocVisibility ? $tocVisibility.isVisible : '');
 
 	$: activeTheme = themes[activeIdx % themes.length];
 
@@ -126,11 +115,7 @@
 	/>
 
 	<div
-		class="bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center"
-		style={`
-			padding-left: ${sidebarIsHidden ? 0 : sidebarWidth}px;
-			padding-right: ${sidebarIsHidden || !currentNavPage || !currentNavPage?.showSidebar ? 0 : 13}rem;
-		`}
+		class="relative bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center lg:pl-[350px] xl:pr-[300px] xl:pl-[350px] 2xl:pl-[400px]"
 	>
 		<div class="py-8">
 			<button
@@ -143,7 +128,7 @@
 
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key currentPageIdx}
-				<div class="hidden xl:block absolute fixed right-20">
+				<div class="hidden xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">
 					<TableOfContents
 						target="#AtoContent"
 						tocType="lowest-parents"
@@ -154,7 +139,10 @@
 			{/key}
 		{/if}
 
-		<div id="AtoContent" class="AtoContent text-left mx-auto px-6 xl:px-3/12">
+		<div
+			id="AtoContent"
+			class="AtoContent text-left mx-auto px-6 md:px-8 lg:px-10 xl:px-1/12 2xl:px-2/12"
+		>
 			<div class="prose w-full">
 				<slot />
 			</div>
