@@ -9,9 +9,6 @@
 	import 'uno.css';
 	import './app.css';
 
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-
 	import NavBar from '$lib/components/docu-layout/NavBar.svelte';
 	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
 	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
@@ -28,8 +25,6 @@
 	export let data: LayoutData;
 
 	let activeIdx = 0;
-	let sidebarWidth: number;
-	let sidebarIsHidden = false;
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
 
@@ -82,12 +77,15 @@
 	);
 
 	$: previousPage =
-		!allGroupItems || !currentPageIdx || currentPageIdx === 0
+		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
 			? null
 			: allGroupItems![currentPageIdx! - 1][0];
 
 	$: nextPage =
-		!allGroupItems || !currentPageIdx || currentPageIdx === allGroupItems!.length - 1
+		!allGroupItems ||
+		!currentPageIdx ||
+		currentPageIdx < 0 ||
+		currentPageIdx === allGroupItems!.length - 1
 			? null
 			: allGroupItems![currentPageIdx! + 1][0];
 </script>
@@ -108,14 +106,14 @@
 	</NavBar>
 
 	<Sidebar
-		bind:width={sidebarWidth}
-		bind:sidebarIsHidden
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		groups={currentNavPage ? currentNavPage?.groups : []}
 	/>
 
 	<div
-		class="relative bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center lg:pl-[350px] xl:pr-[300px] xl:pl-[350px] 2xl:pl-[400px]"
+		class="relative bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center {!currentNavPage?.showSidebar
+			? ''
+			: 'lg:pl-[350px] xl:pr-[300px] xl:pl-[350px] 2xl:pl-[400px]'}"
 	>
 		<div class="py-8">
 			<button
