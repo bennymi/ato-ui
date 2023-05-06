@@ -6,6 +6,7 @@
 	import '$lib/styles/themes/air.css';
 
 	import '@unocss/reset/tailwind.css';
+	/* eslint import/no-unresolved: [2, { ignore: ['uno.css'] }] */
 	import 'uno.css';
 	import './app.css';
 
@@ -79,15 +80,15 @@
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
 			? null
-			: allGroupItems![currentPageIdx! - 1][0];
+			: allGroupItems[currentPageIdx - 1][0];
 
 	$: nextPage =
 		!allGroupItems ||
 		!currentPageIdx ||
 		currentPageIdx < 0 ||
-		currentPageIdx === allGroupItems!.length - 1
+		currentPageIdx === allGroupItems.length - 1
 			? null
-			: allGroupItems![currentPageIdx! + 1][0];
+			: allGroupItems[currentPageIdx + 1][0];
 </script>
 
 <div class:dark={$darkTheme} class="{activeTheme} min-w-screen min-h-screen">
