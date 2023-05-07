@@ -2,6 +2,9 @@
 	import { slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import type { NavGroupItem } from './types';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	export let isLastGroup = false;
 	export let hideTitle = false;
@@ -10,6 +13,10 @@
 	export let items: NavGroupItem[][];
 
 	let hideGroup = false;
+
+	const handleClick = (sitePath: string) => {
+		dispatch('item-clicked', sitePath);
+	};
 
 	$: active = (path: string) => path === $page.url.pathname;
 </script>
@@ -48,6 +55,8 @@
 					(item.length === 2 && active(`${item[1].sitePath}`))
 						? '!text-surface-900-50 font-semibold'
 						: ''}"
+					on:click={() => handleClick(item[0].sitePath)}
+					on:keydown
 				>
 					<!-- ? '!text-surface-900-50 font-semibold' -->
 					{#if item[0].icon}
@@ -66,6 +75,8 @@
 						class="group flex items-center p-1 rounded-token-base {active(item[0].sitePath)
 							? 'bg-primary-500'
 							: 'bg-surface-500 '} hover:bg-primary-500"
+						on:click={() => handleClick(item[0].sitePath)}
+						on:keydown
 					>
 						<span class="sr-only">{`Headless ${item[0].title} component`}</span>
 						<span
@@ -79,6 +90,8 @@
 						class="group flex items-center p-1 rounded-token-base {active(item[1].sitePath)
 							? 'bg-primary-500'
 							: 'bg-surface-500 '} hover:bg-primary-500"
+						on:click={() => handleClick(item[1].sitePath)}
+						on:keydown
 					>
 						<span class="sr-only">{`Styled ${item[1].title} component`}</span>
 						<span

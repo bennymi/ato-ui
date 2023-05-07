@@ -1,15 +1,17 @@
 <script lang="ts">
-	import type { NavIcon, Navigation } from './types';
+	import type { NavIcon, Navigation, NavGroup } from './types';
 	import { darkTheme } from '../../stores/lightswitch';
 	import TableOfContents from '../table-of-contents/TableOfContents.svelte';
+	import SidebarGroup from './SidebarGroup.svelte';
 	import { page } from '$app/stores';
-	import { slide } from 'svelte/transition';
 
 	export let navigation: Navigation = [];
 	export let icons: NavIcon[] = [];
+	export let groups: NavGroup[];
 	export let showSidebar = false;
 
-	let showTOC = false;
+	let revealTOC = false;
+	let revealSidebar = false;
 
 	$: pathname = $page.url.pathname;
 </script>
@@ -55,35 +57,75 @@
 
 {#if showSidebar}
 	<div
-		class="fixed top-12 z-40 text-surface-400-900-200-50 shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900) xl:hidden"
+		class="fixed top-12 z-40 overflow-y-auto bg-inverse-surface-50-op40-surface-800-op70 backdrop-blur-md text-surface-400-900-200-50 xl:hidden {revealTOC
+			? ''
+			: 'shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900)'}"
 	>
-		<div
-			class="w-screen bg-inverse-white-surface-800 flex justify-end py-2 px-4 md:px-10 lg:px-[100px]"
-		>
-			<button class="inline-flex" on:click={() => (showTOC = !showTOC)}>
+		<div class="w-screen flex justify-between lg:justify-end py-2 px-4 md:px-10 lg:px-[100px]">
+			<button
+				class="inline-flex lg:hidden"
+				on:click={() => {
+					revealSidebar = !revealSidebar;
+					revealTOC = false;
+				}}
+			>
 				<span class="sr-only">Table of Contents</span>
 				<span
-					class="text-2xl {showTOC
+					class="text-2xl {revealSidebar
 						? 'i-material-symbols-cancel-outline-rounded'
 						: 'i-material-symbols-list-alt-rounded'}"
 				/>
 			</button>
+			<button
+				class="inline-flex justify-center items-center"
+				on:click={() => {
+					revealTOC = !revealTOC;
+					revealSidebar = false;
+				}}
+			>
+				<span class="sr-only">Table of Contents</span>
+				<span>On this page</span>
+				<span class="text-2xl {revealTOC ? 'i-mdi-chevron-down' : 'i-mdi-chevron-right'}" />
+				<!-- <span
+					class="text-2xl {revealTOC
+						? 'i-material-symbols-cancel-outline-rounded'
+						: 'i-material-symbols-filter-list-rounded'}"
+				/> -->
+			</button>
 		</div>
 
-		{#if showTOC}
+		{#if revealTOC}
 			<div
-				class="flex justify-end px-4 md:px-10 lg:px-[100px] bg-inverse-surface-50-op40-surface-800-op70 backdrop-blur-sm shadow shadow-md shadow-primary-700/50"
+				class="flex justify-end px-4 pb-4 md:px-10 lg:px-[100px] shadow shadow-md shadow-primary-700/50"
 			>
 				{#key pathname}
 					<TableOfContents
 						target="#AtoContent"
+						showLabel={false}
 						tocType="lowest-parents"
 						hover="hover:(text-surface-900-50)"
 						markerBackground="bg-secondary-500"
-						on:heading-clicked={() => (showTOC = false)}
+						on:heading-clicked={() => (revealTOC = false)}
 					/>
 				{/key}
 			</div>
+		{/if}
+
+		{#if revealSidebar}
+			<aside class="px-4 py-2 md:px-10 shadow shadow-md shadow-primary-700/50">
+				<nav class="h-96 space-y-2 overflow-y-auto md:pl-10 lg:pl-32 pr-8 text-surface-900-200">
+					{#each groups as { groupTitle, hideTitle, groupIcon, items }, i}
+						<SidebarGroup
+							{groupTitle}
+							{hideTitle}
+							{groupIcon}
+							{items}
+							isLastGroup={groups.length - 1 === i}
+							on:item-clicked={() => (revealSidebar = false)}
+						/>
+					{/each}
+				</nav>
+			</aside>
 		{/if}
 	</div>
 {/if}

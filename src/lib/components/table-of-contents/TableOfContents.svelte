@@ -29,6 +29,8 @@
 	export let headingIndentationStyles: IndentStyles = default_indentation_styles;
 	/** Set whether the marker should be shown or not. */
 	export let showMarker = true;
+	/** Show label. */
+	export let showLabel = true;
 
 	// Style props
 	/** Set the component container styles (width, border, etc). */
@@ -88,7 +90,7 @@
 			}
 
 			// marker_top = 24 + 28 * idx + 2 * (idx + 1) + 2 * idx;
-			marker_top = 24 + additional_height;
+			marker_top = showLabel ? 24 + additional_height : additional_height;
 
 			const active_client_rect = list_elements[idx].getClientRects()[0];
 			marker_height = active_client_rect ? active_client_rect.height : marker_height;
@@ -107,7 +109,9 @@
 					style={`top: ${marker_top}px; height: ${marker_height}px;`}
 				/>
 			{/if}
-			<div class="ato-toc-label text-left px-4 pt-0 {labelClasses}">{label}</div>
+			{#if showLabel}
+				<div class="ato-toc-label text-left px-4 pt-0 {labelClasses}">{label}</div>
+			{/if}
 			<nav class="ato-toc-list">
 				<ul class={listClasses}>
 					{#each $toc.headings as { heading, active, styles, icon }, i}
