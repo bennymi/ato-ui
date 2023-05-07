@@ -39,7 +39,9 @@
 	$: tag = title ?? lang.toUpperCase();
 </script>
 
-<div class="AtoCodeBlock overflow-y-auto rounded-token-container">
+<div
+	class="AtoCodeBlock mt-4 overflow-y-auto rounded-token-container shadow-lg shadow-primary-900 dark:shadow-primary-400"
+>
 	<header
 		class="code-header rounded-t-token-container flex justify-between items-center p-2 pl-4 bg-surface-500 text-on-surface/80 text-xs font-bold"
 	>
@@ -69,7 +71,22 @@
 			{/if}
 		</button>
 	</header>
-	<div class="code-block-code [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-token-container)">
+	<div
+		class="code-block-code hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-token-container)"
+	>
 		{@html code}
 	</div>
 </div>
+
+<style>
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	:global(.hide-scrollbar > pre)::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	:global(.hide-scrollbar > pre) {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+</style>

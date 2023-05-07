@@ -35,7 +35,7 @@ const config = {
 		vitePreprocess(),
 		mdsvexGlobalComponents({
 			dir: `$lib/mdsvex`,
-			list: [["CodeBlock", "CodeBlock.svelte"]],
+			list: [["CodeBlock", "CodeBlock.svelte"], ['CodeDisplay', 'CodeDisplay.svelte']],
 			extensions: [".md"],
 		  }),
 		mdsvex(mdsvexOptions)

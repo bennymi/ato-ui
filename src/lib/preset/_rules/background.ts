@@ -2,9 +2,23 @@ import type { Rule, Shortcut } from '@unocss/core';
 
 import { directionsJ } from '../../types/directions.d';
 import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
-import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_d, reg_c_sO_oO, cso, reg_sO } from '../utils/regex';
+import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_c_sO_oO, cso, reg_sO } from '../utils/regex';
 
 export const backgroundRules: Rule[] = [
+    // Scrollbar
+    [
+        /^scrollbar-none$/,
+        ([n]) =>
+        `
+        .${n}::-webkit-scrollbar {
+            display: none;
+        }
+        .${n} {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        `
+    ],
     // Radial background gradients
     [
         new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}$`),

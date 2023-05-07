@@ -22,10 +22,12 @@ import { join } from 'path';
  */
 export async function highlightCode(code, lang, meta) {
     let title = null;
+    let display = false;
     // let line_numbers = null;
 
     if (meta) {
         title = meta.match(/title="?(.*?)"/)?.[1];
+        display = meta.includes('display');
         // line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
     }
 
@@ -37,5 +39,7 @@ export async function highlightCode(code, lang, meta) {
 
     const html = escapeSvelte(highlighter.codeToHtml(code ?? '', { lang }));
 
-    return `<CodeBlock code={${JSON.stringify(html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''} />`;
+    // console.log('raw-code:', code);
+
+    return display ? `<CodeDisplay>${code}</CodeDisplay>` : `<CodeBlock code={${JSON.stringify(html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''} />`;
 }

@@ -34,9 +34,12 @@
 		</div>
 	{/if}
 	<!-- {#each items as { title, path, icon, hoverIcon, headless }} -->
-	{#if !hideGroup}
-		{#each items as item, i}
-			<div class="flex items-center gap-1" transition:slide={{ duration: 100, delay: i * 60 }}>
+	{#each items as item, i}
+		{#if !hideGroup}
+			<div
+				class="flex items-center gap-1"
+				transition:slide|local={{ duration: 100, delay: i * 60 }}
+			>
 				<a
 					href={item[0].sitePath}
 					class="flex items-center gap-2 text-surface-600-900-300-50 {active(item[0].sitePath) ||
@@ -84,6 +87,6 @@
 					</a>
 				{/if}
 			</div>
-		{/each}
-	{/if}
+		{/if}
+	{/each}
 </div>
