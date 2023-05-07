@@ -4,6 +4,7 @@
 	import TableOfContents from '../table-of-contents/TableOfContents.svelte';
 	import SidebarGroup from './SidebarGroup.svelte';
 	import { page } from '$app/stores';
+	import { slide } from 'svelte/transition';
 
 	export let navigation: Navigation = [];
 	export let icons: NavIcon[] = [];
@@ -63,18 +64,19 @@
 	>
 		<div class="w-screen flex justify-between lg:justify-end py-2 px-4 md:px-10 lg:px-[100px]">
 			<button
-				class="inline-flex lg:hidden"
+				class="inline-flex justify-center items-center gap-1 lg:hidden"
 				on:click={() => {
 					revealSidebar = !revealSidebar;
 					revealTOC = false;
 				}}
 			>
-				<span class="sr-only">Table of Contents</span>
 				<span
 					class="text-2xl {revealSidebar
 						? 'i-material-symbols-cancel-outline-rounded'
 						: 'i-material-symbols-list-alt-rounded'}"
 				/>
+
+				<span>Menu</span>
 			</button>
 			<button
 				class="inline-flex justify-center items-center"
@@ -83,7 +85,6 @@
 					revealSidebar = false;
 				}}
 			>
-				<span class="sr-only">Table of Contents</span>
 				<span>On this page</span>
 				<span class="text-2xl {revealTOC ? 'i-mdi-chevron-down' : 'i-mdi-chevron-right'}" />
 				<!-- <span
@@ -112,7 +113,7 @@
 		{/if}
 
 		{#if revealSidebar}
-			<aside class="px-4 py-2 md:px-10 shadow shadow-md shadow-primary-700/50">
+			<aside class="px-4 py-2 md:px-10 shadow shadow-md shadow-primary-700/50" transition:slide>
 				<nav class="h-96 space-y-2 overflow-y-auto md:pl-10 lg:pl-32 pr-8 text-surface-900-200">
 					{#each groups as { groupTitle, hideTitle, groupIcon, items }, i}
 						<SidebarGroup
