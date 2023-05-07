@@ -1,9 +1,17 @@
 <script lang="ts">
 	import type { NavIcon, Navigation } from './types';
 	import { darkTheme } from '../../stores/lightswitch';
+	import TableOfContents from '../table-of-contents/TableOfContents.svelte';
+	import { page } from '$app/stores';
+	import { slide } from 'svelte/transition';
 
 	export let navigation: Navigation = [];
 	export let icons: NavIcon[] = [];
+	export let showSidebar = false;
+
+	let showTOC = false;
+
+	$: pathname = $page.url.pathname;
 </script>
 
 <header
@@ -44,3 +52,38 @@
 		{/if}
 	</div>
 </header>
+
+{#if showSidebar}
+	<div
+		class="fixed top-12 z-40 text-surface-400-900-200-50 shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900) xl:hidden"
+	>
+		<div
+			class="w-screen bg-inverse-white-surface-800 flex justify-end py-2 px-4 md:px-10 lg:px-[100px]"
+		>
+			<button class="inline-flex" on:click={() => (showTOC = !showTOC)}>
+				<span class="sr-only">Table of Contents</span>
+				<span
+					class="text-2xl {showTOC
+						? 'i-material-symbols-cancel-outline-rounded'
+						: 'i-material-symbols-list-alt-rounded'}"
+				/>
+			</button>
+		</div>
+
+		{#if showTOC}
+			<div
+				class="flex justify-end px-4 md:px-10 lg:px-[100px] bg-inverse-surface-50-op40-surface-800-op70 backdrop-blur-sm shadow shadow-md shadow-primary-700/50"
+			>
+				{#key pathname}
+					<TableOfContents
+						target="#AtoContent"
+						tocType="lowest-parents"
+						hover="hover:(text-surface-900-50)"
+						markerBackground="bg-secondary-500"
+						on:heading-clicked={() => (showTOC = false)}
+					/>
+				{/key}
+			</div>
+		{/if}
+	</div>
+{/if}

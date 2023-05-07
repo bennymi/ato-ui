@@ -99,6 +99,7 @@
 <div class:dark={$darkTheme} class="{activeTheme} min-w-screen min-h-screen">
 	<NavBar
 		{navigation}
+		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		icons={[
 			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
 			{ icon: 'i-mdi-discord', link: '', title: 'Discord' }

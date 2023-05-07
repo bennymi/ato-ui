@@ -4,9 +4,12 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { BROWSER as browser } from 'esm-env';
+	import { createEventDispatcher } from 'svelte';
 
 	import type { Heading, IndentStyles, ToC, TOCType } from './types';
 	import { default_indentation_styles, create_toc, scroll_to_element } from './toc';
+
+	const dispatch = createEventDispatcher();
 
 	/** Query selector for the container with the headings. Should be an id ('#id') or class ('.class'). */
 	export let target = '';
@@ -55,6 +58,11 @@
 	// Define the select index used for the dynamic marker position.
 	const select_idx =
 		tocType === 'highest' || tocType === 'highest-parents' || tocType === 'all-active' ? 0 : -1;
+
+	const handleClick = (heading: HTMLElement) => {
+		dispatch('heading-clicked', heading);
+		scroll_to_element(heading);
+	};
 
 	onMount(() => {
 		if (browser) {
@@ -107,8 +115,7 @@
 							class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 {styles} {active
 								? activeHeader
 								: text} {hover} {rounded}"
-							on:click={() => scroll_to_element(heading)}
-							on:click
+							on:click={() => handleClick(heading)}
 							on:keypress
 							bind:this={list_elements[i]}
 						>
