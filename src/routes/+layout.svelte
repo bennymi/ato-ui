@@ -23,9 +23,20 @@
 
 	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
 
+	const themes2 = [
+		[
+			{ icon: 'i-mdi-atom-variant', text: `Ato` },
+			{ icon: 'i-material-symbols-water-drop-outline-rounded', text: `Water` },
+			{ icon: 'i-mdi-earth', text: `Earth` },
+			{ icon: 'i-material-symbols-local-fire-department-rounded', text: `Fire` },
+			{ icon: 'i-mdi-weather-windy-variant', text: `Air` }
+		]
+	];
+
 	export let data: LayoutData;
 
 	let activeIdx = 0;
+	let activeTheme = 'ato';
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
 
@@ -72,8 +83,6 @@
 		}
 	];
 
-	$: activeTheme = themes[activeIdx % themes.length];
-
 	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
 
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
@@ -101,10 +110,12 @@
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		groups={currentNavPage ? currentNavPage?.groups : []}
+		themes={themes2}
 		icons={[
 			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
 			{ icon: 'i-mdi-discord', link: '', title: 'Discord' }
 		]}
+		on:select={(event) => (activeTheme = event.detail.selected.toLowerCase())}
 	>
 		<svelte:fragment slot="title">
 			<a href="/" class="text-surface-900-50 text-3xl select-none">
@@ -119,19 +130,10 @@
 	/>
 
 	<div
-		class="relative bg-inverse-white-surface-700 min-h-screen pt-16 pb-20 text-center {!currentNavPage?.showSidebar
+		class="relative bg-inverse-white-surface-700 min-h-screen pt-28 pb-20 text-center {!currentNavPage?.showSidebar
 			? ''
 			: 'lg:pl-[350px] xl:pr-[300px] xl:pl-[350px] 2xl:pl-[400px]'}"
 	>
-		<div class="py-8">
-			<button
-				class="btn-border-surface-primary-secondary text-on-primary"
-				on:click={() => (activeIdx += 1)}
-			>
-				{activeTheme.charAt(0).toUpperCase() + activeTheme.slice(1)}
-			</button>
-		</div>
-
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key currentPageIdx}
 				<div class="hidden xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">

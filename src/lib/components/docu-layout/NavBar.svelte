@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { NavIcon, Navigation, NavGroup } from './types';
+	import type { Group } from '../dropdown-menu/types';
 	import { darkTheme } from '../../stores/lightswitch';
 	import TableOfContents from '../table-of-contents/TableOfContents.svelte';
+	import DropMenu from '../dropdown-menu/DropMenu.svelte';
 	import SidebarGroup from './SidebarGroup.svelte';
 	import { page } from '$app/stores';
 	import { slide } from 'svelte/transition';
@@ -10,6 +12,7 @@
 	export let icons: NavIcon[] = [];
 	export let groups: NavGroup[];
 	export let showSidebar = false;
+	export let themes: Group[] = [];
 
 	let revealTOC = false;
 	let revealSidebar = false;
@@ -18,19 +21,20 @@
 </script>
 
 <header
-	class="AtoNav bg-inverse-white-surface-800 fixed inset-x-0 top-0 z-40 flex h-12 w-full items-center justify-between px-4 md:px-10 lg:pl-[150px] lg:pr-[100px] xl:pl-[200px] xl:pr-[100px] 2xl:pr-[200px] shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900)"
+	class="AtoNav bg-inverse-white-surface-800 fixed inset-x-0 top-0 z-50 flex h-12 w-full items-center justify-between px-4 md:px-10 lg:pl-[150px] lg:pr-[100px] xl:pl-[200px] xl:pr-[100px] 2xl:pr-[200px] shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900)"
 >
 	<div class="AtoNavBarTitle">
 		<slot name="title"><!-- optional fallback --></slot>
 	</div>
-	<div class="flex justify-between items-center">
+	<div class="flex gap-2 justify-between items-center">
 		<nav class="AtoNavBarMenu space-x-4 text-surface-900-50 hidden md:inline-flex">
 			{#each navigation as { navTitle, landingPath }}
 				<a class="font-semibold hover:text-primary-500" href={landingPath}>{navTitle}</a>
 			{/each}
 		</nav>
+		<DropMenu label="Theme" groups={themes} buttonClass="btn-tr-primary-secondary" on:select />
 		<button
-			class="border-x-1 px-4 mx-4 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
+			class="border-x-1 px-4 mx-2 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
 			on:click={() => ($darkTheme = !$darkTheme)}
 			aria-label="dark-theme"
 			aria-pressed={$darkTheme}
@@ -114,7 +118,9 @@
 
 		{#if revealSidebar}
 			<aside class="px-4 py-2 md:px-10 shadow shadow-md shadow-primary-700/50" transition:slide>
-				<nav class="h-96 space-y-2 overflow-y-auto md:pl-10 lg:pl-32 pr-8 text-surface-900-200">
+				<nav
+					class="h-96 min-h-[calc(100vh-88px)] space-y-2 overflow-y-auto md:pl-10 lg:pl-32 pr-8 text-surface-900-200"
+				>
 					{#each groups as { groupTitle, hideTitle, groupIcon, items }, i}
 						<SidebarGroup
 							{groupTitle}
