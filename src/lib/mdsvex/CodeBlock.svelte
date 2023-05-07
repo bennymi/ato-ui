@@ -40,7 +40,7 @@
 </script>
 
 <div
-	class="AtoCodeBlock mt-4 overflow-y-auto rounded-token-container shadow-lg shadow-primary-900 dark:shadow-primary-400"
+	class="AtoCodeBlock mt-4 overflow-y-auto rounded-token-container shadow-md shadow-primary-900 dark:shadow-primary-400"
 >
 	<header
 		class="code-header rounded-t-token-container flex justify-between items-center p-2 pl-4 bg-surface-500 text-on-surface/80 text-xs font-bold"

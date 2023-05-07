@@ -42,10 +42,12 @@
 			>
 				<a
 					href={item[0].sitePath}
-					class="flex items-center gap-2 text-surface-600-900-300-50 {active(item[0].sitePath) ||
+					class="group flex items-center gap-2 text-surface-600-900-300-50 hover:(font-semibold) {active(
+						item[0].sitePath
+					) ||
 					(item.length === 2 && active(`${item[1].sitePath}`))
 						? '!text-surface-900-50 font-semibold'
-						: ''} group"
+						: ''}"
 				>
 					<!-- ? '!text-surface-900-50 font-semibold' -->
 					{#if item[0].icon}
