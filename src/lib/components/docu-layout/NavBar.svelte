@@ -97,13 +97,15 @@
 			<div
 				class="flex flex justify-around w-full items-center bg-surface-100-700 py-4 rounded-token-container text-surface-900-50"
 			>
-				<DropMenu
-					label="Theme"
-					width="w-24"
-					groups={themes}
-					buttonClass="btn-tr-primary-secondary btn-sm"
-					on:select
-				/>
+				<div class="z-60">
+					<DropMenu
+						label="Theme"
+						width="w-24"
+						groups={themes}
+						buttonClass="btn-tr-primary-secondary btn-sm"
+						on:select
+					/>
+				</div>
 				<button
 					class="text-surface-400-900-200-50 inline-flex"
 					on:click={() => ($darkTheme = !$darkTheme)}
