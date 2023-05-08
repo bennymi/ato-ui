@@ -2,9 +2,23 @@ import type { Rule, Shortcut } from '@unocss/core';
 
 import { directionsJ } from '../../types/directions.d';
 import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
-import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_d, reg_c_sO_oO, cso, reg_sO } from '../utils/regex';
+import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_c_sO_oO, cso, reg_sO, reg_oO } from '../utils/regex';
 
 export const backgroundRules: Rule[] = [
+    // Scrollbar
+    [
+        /^scrollbar-none$/,
+        ([n]) =>
+        `
+        .${n}::-webkit-scrollbar {
+            display: none;
+        }
+        .${n} {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        `
+    ],
     // Radial background gradients
     [
         new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}$`),
@@ -53,8 +67,8 @@ export const backgroundSCs: Shortcut[] = [
 
     // Background Inverse Tokens
     [
-        new RegExp(`^bg-inverse-(${allColorsJ})${reg_sO}-(${allColorsJ})${reg_sO}$`), 
-        ([, c1, s1, c2, s2]) => `bg-${cs(c1, s1)} dark:bg-${cs(c2, s2)}`,
+        new RegExp(`^bg-inverse-(${allColorsJ})${reg_sO}${reg_oO}-(${allColorsJ})${reg_sO}${reg_oO}$`), 
+        ([, c1, s1, o1, c2, s2, o2]) => `bg-${cso(c1, s1, o1)} dark:bg-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
                 `bg-inverse-$colors-(${allColorsJ})`, 

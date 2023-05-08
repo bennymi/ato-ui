@@ -5,7 +5,7 @@
 
 	$: rootCSSVariables = `
 :root {
-	--color-primary-700: ${color}
+	--color-test-700: ${color}
 }
 	`;
 </script>
@@ -14,7 +14,7 @@
 	{@html `<style>${rootCSSVariables}</style>`}
 </svelte:head>
 
-<div class="flex gap-4 flex-col justify-center items-center bg-gray-400 h-screen">
+<div class="flex gap-4 flex-col justify-center items-center">
 	<button on:click={() => (clicked = !clicked)} class="bg-teal-500 p-2 hover:bg-teal-600 rounded-lg"
 		>Update Shadow</button
 	>

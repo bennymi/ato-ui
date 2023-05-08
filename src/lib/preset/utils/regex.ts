@@ -34,12 +34,17 @@ export const reg_sO = `(?:-(${shadesJ}))?`;
 export const reg_oO = `(?:-op(0|100|[1-9][0-9]?))?`;
 // export const re_oO = `(?:\/(0|100|[1-9][0-9]?))?`;
 
+export const reg_c_s = `${reg_c}-${reg_s}`;
 export const reg_c_sO = `${reg_c}${reg_sO}`;
 export const reg_c_sO_oO = `${reg_c}${reg_sO}${reg_oO}`;
 
 // ===== Functions used for shortcuts
 export function norm_op(o: string) {
     return `${parseInt(o, 10) / 100}`
+}
+
+export function parse_opacity(o: string, def_o='1') {
+    return `${o ? (parseInt(o, 10) / 100).toFixed(2) : def_o}`
 }
 
 export function convert_opacity(o: string) {

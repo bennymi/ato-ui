@@ -1,5 +1,12 @@
-<div class="min-h-screen flex justify-center items-center">
-	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap mx-1/3">
+---
+title: Spinners / Loaders
+description: Allows you to easily add spinners to your website.
+---
+
+# Spinners / Loaders
+
+<div class="flex justify-center items-center">
+	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap">
 		<!-- Regular circle -->
 		<span class="s-circle-primary" />
 		<span class="s-circle-split-primary" />
