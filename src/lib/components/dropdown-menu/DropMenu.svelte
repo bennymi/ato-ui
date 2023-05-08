@@ -1,3 +1,7 @@
+<!-- 
+    Source: https://captaincodeman.github.io/svelte-headlessui/menu/
+ -->
+
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { createMenu } from 'svelte-headlessui';
@@ -6,9 +10,15 @@
 
 	const dispatch = createEventDispatcher();
 
+	/** Set the label of the button. */
 	export let label = '';
+	/** Set the button class (eg. btn-primary). */
 	export let buttonClass = 'btn-primary';
+	/** Pass in the item groups that should be displayed in the dropdown. */
 	export let groups: Group[] = [];
+
+	/** Set the width of the menu items. */
+	export let width = 'w-56';
 
 	const menu = createMenu({ label: 'Actions' });
 
@@ -43,7 +53,7 @@
 	{#if $menu.expanded}
 		<div
 			use:menu.items
-			class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-surface-100/90 rounded-token-container bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+			class="absolute right-0 mt-2 {width} origin-top-right divide-y divide-surface-100/90 rounded-token-container bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 		>
 			{#each groups as group}
 				<div class="px-1 py-1">
@@ -56,7 +66,7 @@
 								: 'text-surface-900'}"
 						>
 							<span
-								class="{active
+								class="text-lg {active
 									? 'text-on-primary'
 									: 'text-primary-500'} group-hover:(text-on-primary) {option.icon}"
 							/>

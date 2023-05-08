@@ -130,7 +130,7 @@
 	/>
 
 	<div
-		class="relative bg-inverse-white-surface-700 min-h-screen pt-28 pb-20 text-center {!currentNavPage?.showSidebar
+		class="relative bg-inverse-white-surface-700 min-h-screen pt-28 pb-42 text-center {!currentNavPage?.showSidebar
 			? ''
 			: 'lg:pl-[350px] xl:pr-[300px] xl:pl-[350px] 2xl:pl-[400px]'}"
 	>
@@ -155,7 +155,7 @@
 				<slot />
 			</div>
 			{#if currentNavPage && currentNavPage?.showSidebar}
-				<div class="pt-20 pb-32">
+				<div class="pt-20">
 					<BottomNav previous={previousPage} next={nextPage} />
 				</div>
 			{/if}
