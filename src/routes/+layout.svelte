@@ -135,7 +135,7 @@
 			: 'lg:pl-[350px] xl:pr-[300px] xl:pl-[350px] 2xl:pl-[400px]'}"
 	>
 		{#if currentNavPage && currentNavPage?.showSidebar}
-			{#key currentPageIdx}
+			{#key $page.url.pathname}
 				<div class="hidden xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">
 					<TableOfContents
 						target="#AtoContent"

@@ -2,9 +2,9 @@
 
 import { derived, writable, type Writable } from "svelte/store";
 
-import type { Heading, IndentStyles, ElementHeadingLU, HeadingParentsLU, TOCType, ToC } from "./types";
+import type { Heading, TOCIndentStyles, ElementHeadingLU, HeadingParentsLU, TOCType, ToC } from "./types";
 
-export let default_indentation_styles: IndentStyles = {
+export let default_indentation_styles: TOCIndentStyles = {
     h2: { styles: '', icon: '' },
     h3: { styles: 'ml-3', icon: '' },
     h4: { styles: 'ml-6', icon: '' },
@@ -23,7 +23,7 @@ export function scroll_to_element(headingElem: HTMLElement): void {
   * @param tocType Defines which headings should be marked as active.
   * @returns { ToC }
  */
-export function create_toc(target: string, excludeHeadings: Heading[]=[], tocType: TOCType='lowest', headingIndentationStyles: IndentStyles=default_indentation_styles): ToC {
+export function create_toc(target: string, excludeHeadings: Heading[]=[], tocType: TOCType='lowest', headingIndentationStyles: TOCIndentStyles=default_indentation_styles): ToC {
 
     // Variables
     const possible_headings: Heading[] = ['h2', 'h3', 'h4', 'h5', 'h6'];

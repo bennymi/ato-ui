@@ -7,7 +7,7 @@ type Indent = {
     icon?: string;
 }
 
-export type IndentStyles = {
+export type TOCIndentStyles = {
     [key in Heading]?: Indent;
 }
 

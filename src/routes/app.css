@@ -16,7 +16,7 @@
 }
 
 .prose > h2 {
-    @apply my-4 text-2xl font-bold;
+    @apply mt-8 mb-4 text-2xl font-bold;
 }
 
 .prose > h3 {
