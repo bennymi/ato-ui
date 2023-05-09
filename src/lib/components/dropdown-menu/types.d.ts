@@ -4,7 +4,7 @@ type GroupItem = {
     text: string,
 }
 
-export type Group = {
+export type DropMenuGroup = {
     title?: string,
     items: GroupItem[],
 };

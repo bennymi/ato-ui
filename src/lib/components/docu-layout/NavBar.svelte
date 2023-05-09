@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { NavIcon, Navigation, NavGroup } from './types';
-	import type { Group } from '../dropdown-menu/types';
+	import type { DropMenuGroup } from '../dropdown-menu/types';
 	import { darkTheme } from '../../stores/lightswitch';
 	import TableOfContents from '../table-of-contents/TableOfContents.svelte';
 	import DropMenu from '../dropdown-menu/DropMenu.svelte';
@@ -14,7 +14,7 @@
 	export let icons: NavIcon[] = [];
 	export let groups: NavGroup[];
 	export let showSidebar = false;
-	export let themes: Group[] = [];
+	export let themes: DropMenuGroup[] = [];
 
 	let revealTOC = false;
 	let revealSidebar = false;
@@ -41,6 +41,7 @@
 				label="Theme"
 				width="w-24"
 				groups={themes}
+				buttonIcon="i-mdi-chevron-down"
 				buttonClass="btn-tr-primary-secondary btn-sm"
 				on:select
 			/>
@@ -102,6 +103,7 @@
 						label="Theme"
 						width="w-24"
 						groups={themes}
+						buttonIcon="i-mdi-chevron-down"
 						buttonClass="btn-tr-primary-secondary btn-sm"
 						on:select
 					/>

@@ -6,16 +6,18 @@
 	import { createEventDispatcher } from 'svelte';
 	import { createMenu } from 'svelte-headlessui';
 
-	import type { Group } from './types.d';
+	import type { DropMenuGroup } from './types.d';
 
 	const dispatch = createEventDispatcher();
 
 	/** Set the label of the button. */
-	export let label = '';
+	export let label = 'Menu';
 	/** Set the button class (eg. btn-primary). */
 	export let buttonClass = 'btn-primary';
+	/** Button icon. */
+	export let buttonIcon = '';
 	/** Pass in the item groups that should be displayed in the dropdown. */
-	export let groups: Group[] = [];
+	export let groups: DropMenuGroup[] = [];
 
 	/** Set the width of the menu items. */
 	export let width = 'w-56';
@@ -48,7 +50,9 @@
 		class="inline-flex w-full justify-center {buttonClass}"
 	>
 		<span>{label}</span>
-		<span class="text-xl i-mdi-chevron-down" />
+		{#if buttonIcon}
+			<span class="text-xl {buttonIcon}" />
+		{/if}
 	</button>
 
 	{#if $menu.expanded}

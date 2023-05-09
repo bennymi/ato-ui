@@ -8,8 +8,10 @@
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>
 
-<article>
+<svelte:component this={data.content} />
+
+<!-- <article>
 	<div class="prose">
 		<svelte:component this={data.content} />
 	</div>
-</article>
+</article> -->

@@ -17,12 +17,12 @@
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
-	import type { Group } from '$lib/components/dropdown-menu/types.d';
+	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
 
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 
-	const themes: Group[] = [
+	const themes: DropMenuGroup[] = [
 		{
 			items: [
 				{ icon: 'i-mdi-atom-variant', text: `Ato` },
@@ -36,7 +36,6 @@
 
 	export let data: LayoutData;
 
-	let activeIdx = 0;
 	let activeTheme = 'ato';
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
