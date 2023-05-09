@@ -42,8 +42,7 @@ You can customize the button that opens the menu by passing in a button class to
 
 ```svelte
 <script lang="ts">
-    import DropMenu from 'ato-ui';
-    import type { DropMenuGroup } from 'ato-ui';
+    import { DropMenu, type DropMenuGroup } from 'ato-ui';
 
     const groups: DropMenuGroup = [
         {
