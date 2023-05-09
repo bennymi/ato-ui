@@ -38,6 +38,7 @@
 	// 	],
 	// 	[{ icon: 'i-material-symbols-delete-outline-rounded', text: `Delete` }]
 	// ];
+	// $menu.expanded = true;
 </script>
 
 <div class="relative inline-block text-left">
@@ -53,17 +54,22 @@
 	{#if $menu.expanded}
 		<div
 			use:menu.items
-			class="absolute right-0 mt-2 {width} origin-top-right divide-y divide-surface-100/90 rounded-token-container bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+			class="absolute right-0 mt-2 {width} origin-top-right rounded-token-container bg-inverse-white-surface-500 ring-1 ring-black ring-opacity-5 focus:outline-none shadow-lg shadow-surface-500/50-400/20"
 		>
-			{#each groups as group}
+			{#each groups as { title, items }, i}
 				<div class="px-1 py-1">
-					{#each group as option}
+					{#if title}
+						<div class="text-sm px-2 py-1 text-surface-800-op80-200-op80 font-semibold">
+							{title}
+						</div>
+					{/if}
+					{#each items as option}
 						{@const active = $menu.active === option.text}
 						<button
 							use:menu.item
 							class="group flex gap-1 rounded-token-base items-center w-full px-2 py-2 text-sm font-medium {active
 								? 'bg-primary-500 text-on-primary'
-								: 'text-surface-900'}"
+								: 'text-surface-900-50'}"
 						>
 							<span
 								class="text-lg {active
@@ -74,6 +80,9 @@
 						</button>
 					{/each}
 				</div>
+				{#if i !== groups.length - 1}
+					<hr class="border-inverse-surface-200/90-surface-100/40 mx-2 rounded-token-base" />
+				{/if}
 			{/each}
 		</div>
 	{/if}

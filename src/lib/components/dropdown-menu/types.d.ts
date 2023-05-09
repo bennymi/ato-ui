@@ -4,4 +4,7 @@ type GroupItem = {
     text: string,
 }
 
-export type Group = GroupItem[];
+export type Group = {
+    title?: string,
+    items: GroupItem[],
+};

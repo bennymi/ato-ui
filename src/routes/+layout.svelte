@@ -17,20 +17,21 @@
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
+	import type { Group } from '$lib/components/dropdown-menu/types.d';
 
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 
-	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
-
-	const themes2 = [
-		[
-			{ icon: 'i-mdi-atom-variant', text: `Ato` },
-			{ icon: 'i-material-symbols-water-drop-outline-rounded', text: `Water` },
-			{ icon: 'i-mdi-earth', text: `Earth` },
-			{ icon: 'i-material-symbols-local-fire-department-rounded', text: `Fire` },
-			{ icon: 'i-mdi-weather-windy-variant', text: `Air` }
-		]
+	const themes: Group[] = [
+		{
+			items: [
+				{ icon: 'i-mdi-atom-variant', text: `Ato` },
+				{ icon: 'i-material-symbols-water-drop-outline-rounded', text: `Water` },
+				{ icon: 'i-mdi-earth', text: `Earth` },
+				{ icon: 'i-material-symbols-local-fire-department-rounded', text: `Fire` },
+				{ icon: 'i-mdi-weather-windy-variant', text: `Air` }
+			]
+		}
 	];
 
 	export let data: LayoutData;
@@ -110,7 +111,7 @@
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		groups={currentNavPage ? currentNavPage?.groups : []}
-		themes={themes2}
+		{themes}
 		icons={[
 			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
 			{ icon: 'i-mdi-discord', link: '', title: 'Discord' }
