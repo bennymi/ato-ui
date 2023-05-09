@@ -28,19 +28,6 @@
 		// console.log('select', (e as CustomEvent).detail);
 		dispatch('select', (e as CustomEvent).detail);
 	}
-
-	// const groups = [
-	// 	[
-	// 		{ icon: 'i-material-symbols-edit-outline-rounded', text: `Edit` },
-	// 		{ icon: 'i-material-symbols-content-copy-outline-rounded', text: `Duplicate` }
-	// 	],
-	// 	[
-	// 		{ icon: 'i-material-symbols-archive-outline-rounded', text: `Archive` },
-	// 		{ icon: 'i-material-symbols-drive-file-move-outline-rounded', text: `Move` }
-	// 	],
-	// 	[{ icon: 'i-material-symbols-delete-outline-rounded', text: `Delete` }]
-	// ];
-	// $menu.expanded = true;
 </script>
 
 <div class="relative inline-block text-left">

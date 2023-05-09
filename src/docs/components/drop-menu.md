@@ -1,10 +1,12 @@
 ---
 title: Dropdown Menu
-component: /src/lib/components/dropdown-menu/DropMenu.svelte
+component: components/dropdown-menu/DropMenu.svelte
 description: Create a list of actions that is available through a dropdown menu.
 ---
 
 <script>
+    import PropsTable from './PropsTable.svelte';
+    import docs from '$lib/components/dropdown-menu/DropMenu.svelte?raw&sveld';
     import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
 
     const groups = [
@@ -90,3 +92,5 @@ You can customize the button that opens the menu by passing in a button class to
 ```
 
 ## Props
+
+<PropsTable props={docs.props} />
