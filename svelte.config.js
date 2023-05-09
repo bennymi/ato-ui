@@ -5,8 +5,8 @@ import { mdsvex } from 'mdsvex';
 // import shiki from 'shiki';
 
 // import { join } from 'path';
-import { highlightCode } from "./src/lib/mdsvex/highlight.js";
-import { mdsvexGlobalComponents } from "./src/lib/mdsvex/global-components.js";
+import { highlightCode } from './src/lib/mdsvex/highlight.js';
+import { mdsvexGlobalComponents } from './src/lib/mdsvex/global-components.js';
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -22,7 +22,7 @@ const mdsvexOptions = {
 		// 	const html = escapeSvelte(highlighter.codeToHtml(code, { lang }));
 		// 	return `{@html \`${html}\`}`;
 		// }
-		highlighter: highlightCode,
+		highlighter: highlightCode
 	}
 };
 
@@ -35,9 +35,12 @@ const config = {
 		vitePreprocess(),
 		mdsvexGlobalComponents({
 			dir: `$lib/mdsvex`,
-			list: [["CodeBlock", "CodeBlock.svelte"], ['CodeDisplay', 'CodeDisplay.svelte']],
-			extensions: [".md"],
-		  }),
+			list: [
+				['CodeBlock', 'CodeBlock.svelte'],
+				['CodeDisplay', 'CodeDisplay.svelte']
+			],
+			extensions: ['.md']
+		}),
 		mdsvex(mdsvexOptions)
 	],
 
@@ -45,7 +48,7 @@ const config = {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
 		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter(),
+		adapter: adapter()
 		// alias: {
 		// 	$app: '/node_modules/@sveltejs/kit/assets/app',
 		// 	$lib: '/src/lib',
@@ -59,9 +62,9 @@ const config = {
 			// show or hide the inspector option
 			showToggleButton: 'always',
 			// inspector position
-			toggleButtonPos: 'top-right',	
-		},
-	  },
+			toggleButtonPos: 'top-right'
+		}
+	}
 };
 
 export default config;

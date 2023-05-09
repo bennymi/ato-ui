@@ -6,7 +6,7 @@
 	import { BROWSER as browser } from 'esm-env';
 	import { createEventDispatcher } from 'svelte';
 
-	import type { Heading, IndentStyles, ToC, TOCType } from './types';
+	import type { Heading, TOCIndentStyles, ToC, TOCType } from './types';
 	import { default_indentation_styles, create_toc, scroll_to_element } from './toc';
 
 	const dispatch = createEventDispatcher();
@@ -26,7 +26,7 @@
 	 * */
 	export let tocType: TOCType = 'lowest';
 	/** Set the styles the indentation styles that should be used for each heading type. Additionally you can add an icon at the front of a heading ('i-material-symbols-chevron-right-rounded'). */
-	export let headingIndentationStyles: IndentStyles = default_indentation_styles;
+	export let headingIndentationStyles: TOCIndentStyles = default_indentation_styles;
 	/** Set whether the marker should be shown or not. */
 	export let showMarker = true;
 	/** Show label. */
@@ -35,9 +35,8 @@
 	// Style props
 	/** Set the component container styles (width, border, etc). */
 	export let container = 'border-l-2 border-surface-300/40';
-	/** Set the row text color styles. */
-	// export let text = 'text-surface-900-50';
-	export let text = 'text-surface-900-op60-50-op60';
+	/** Set the text color styles for inactive headings. */
+	export let inactiveText = 'text-surface-900-op60-50-op60';
 	/** Set the hover styles. ('hover:(bg-primary-500 text-surface-50)') */
 	export let hover = 'hover:(bg-primary-500 text-on-primary!)';
 	/** Set the header item radius styles. */
@@ -118,7 +117,7 @@
 						<li
 							class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 {styles} {active
 								? activeHeader
-								: text} {hover} {rounded}"
+								: inactiveText} {hover} {rounded}"
 							on:click={() => handleClick(heading)}
 							on:keypress
 							bind:this={list_elements[i]}

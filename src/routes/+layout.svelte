@@ -17,25 +17,25 @@
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import AtoUI from './AtoUI.svelte';
+	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
 
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 
-	const themes = ['ato', 'water', 'earth', 'fire', 'air'];
-
-	const themes2 = [
-		[
-			{ icon: 'i-mdi-atom-variant', text: `Ato` },
-			{ icon: 'i-material-symbols-water-drop-outline-rounded', text: `Water` },
-			{ icon: 'i-mdi-earth', text: `Earth` },
-			{ icon: 'i-material-symbols-local-fire-department-rounded', text: `Fire` },
-			{ icon: 'i-mdi-weather-windy-variant', text: `Air` }
-		]
+	const themes: DropMenuGroup[] = [
+		{
+			items: [
+				{ icon: 'i-mdi-atom-variant', text: `Ato` },
+				{ icon: 'i-material-symbols-water-drop-outline-rounded', text: `Water` },
+				{ icon: 'i-mdi-earth', text: `Earth` },
+				{ icon: 'i-material-symbols-local-fire-department-rounded', text: `Fire` },
+				{ icon: 'i-mdi-weather-windy-variant', text: `Air` }
+			]
+		}
 	];
 
 	export let data: LayoutData;
 
-	let activeIdx = 0;
 	let activeTheme = 'ato';
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
@@ -110,7 +110,7 @@
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		groups={currentNavPage ? currentNavPage?.groups : []}
-		themes={themes2}
+		{themes}
 		icons={[
 			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
 			{ icon: 'i-mdi-discord', link: '', title: 'Discord' }
@@ -135,7 +135,7 @@
 			: 'lg:pl-[350px] xl:pr-[300px] xl:pl-[350px] 2xl:pl-[400px]'}"
 	>
 		{#if currentNavPage && currentNavPage?.showSidebar}
-			{#key currentPageIdx}
+			{#key $page.url.pathname}
 				<div class="hidden xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">
 					<TableOfContents
 						target="#AtoContent"
