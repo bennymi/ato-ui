@@ -1,6 +1,6 @@
 import type { Shortcut } from '@unocss/core';
 
-import { cso, reg_c, reg_c_sO_oO2, reg_p, reg_s } from '../utils/regex';
+import { cso, reg_c, reg_c_sO_oO2, reg_oO2, reg_p, reg_s, reg_sO } from '../utils/regex';
 
 export const borderSCs: Shortcut[] = [
     // rounded regular
@@ -24,6 +24,19 @@ export const borderSCs: Shortcut[] = [
         ([_, side]) => `rounded-${side}-[var(--theme-rounded-container)]`,
         {
             autocomplete: `rounded-${reg_p}-token-container`
+        }
+    ],
+
+    // Border light - dark
+    [
+        new RegExp(`^border-${reg_c}-${reg_s}${reg_oO2}-${reg_s}${reg_oO2}$`),
+        ([_, c1, s1, o1, s2, o2]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c1, s2, o2)}`,
+        {
+            autocomplete: [
+                `border-inverse-${reg_c}-${reg_c}`,
+                `border-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
+                `border-inverse-${reg_c}/<num>-${reg_c}/<num>`
+            ]
         }
     ],
 

@@ -32,7 +32,7 @@ description: Create a list of actions that is available through a dropdown menu.
 
 ## Usage
 
-<div class="w-full flex justify-center items-center pt-12 pb-60 px-2 bg-white rounded-token-container my-4">
+<div class="w-full flex justify-center items-center pt-12 pb-60 px-2 rounded-token-container border-1 border-surface-500/30-200/30 my-4">
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />
 </div>
 
@@ -83,7 +83,8 @@ You can customize the button that opens the menu by passing in a button class to
 <DropMenu 
     {groups} 
     width="w-[150px]" 
-    buttonClass="btn-primary-secondary" 
+    buttonClass="btn-primary-secondary"
+    buttonIcon="i-mdi-chevron-down"
     on:select={(event) => console.log('selected:', event.detail)} 
 />
 ```
