@@ -47,13 +47,15 @@
 		"prettier-plugin-svelte": "^2.10.0",
 		"publint": "^0.1.11",
 		"shiki": "^0.14.2",
+		"sveld": "^0.18.0",
 		"svelte": "^3.59.1",
 		"svelte-check": "^3.3.2",
 		"svelte-headlessui": "^0.0.15",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.4",
 		"unocss": "^0.51.12",
-		"vite": "^4.3.5"
+		"vite": "^4.3.5",
+		"vite-plugin-sveld": "^1.1.0"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",

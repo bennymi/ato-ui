@@ -1,6 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
+import sveld from 'vite-plugin-sveld';
 
 // import transformerDirectives from '@unocss/transformer-directives'
 
@@ -20,6 +21,7 @@ import UnoCSS from 'unocss/vite';
 export default defineConfig({
 	plugins: [
 		sveltekit(),
+    sveld(),
 		// UnoCSS('./unocss.config.ts'),
 		UnoCSS({
       configFile: './unocss.config.ts'

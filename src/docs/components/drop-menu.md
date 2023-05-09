@@ -1,6 +1,6 @@
 ---
 title: Dropdown Menu
-component: $lib/components/dropdown-menu/DropMenu.svelte
+component: /src/lib/components/dropdown-menu/DropMenu.svelte
 description: Create a list of actions that is available through a dropdown menu.
 ---
 
@@ -88,3 +88,5 @@ You can customize the button that opens the menu by passing in a button class to
     on:select={(event) => console.log('selected:', event.detail)} 
 />
 ```
+
+## Props
