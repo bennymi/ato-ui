@@ -24,8 +24,8 @@ description: A headless dropdown menu that can be used to create a list of actio
                 { 
                     icon: 'i-material-symbols-delete-outline-rounded', 
                     text: `Delete`, 
-                    hoverStyle: 'hover:(bg-error-500 text-on-error)',
-                    iconStyle: 'text-error-500 group-hover:(text-on-error)' 
+                    hoverStyle: 'bg-error-500 text-on-error',
+                    iconStyle: 'text-error-500' 
                 }
             ]
         }
