@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { EntryGenerator, PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	try {
@@ -14,3 +14,23 @@ export const load = (async ({ params }) => {
 		throw error(404, `Could not find ${params.slug}`);
 	}
 }) satisfies PageLoad;
+
+type Slug = {
+	slug: string
+}
+
+export const entries = (() => {
+	const glob_components = import.meta.glob('/src/docs/components/*.md');
+
+	const slugs = Object.keys(glob_components).map((slug) => { 
+		const split = slug.split('/').at(-1);
+		
+		if (split) {
+			return { slug: split.replace('.md', '') };
+		}
+
+		return { slug: '' };
+	}) satisfies Slug[];
+
+	return slugs;
+}) satisfies EntryGenerator;
