@@ -24,7 +24,12 @@ description: Create a list of actions that is available through a dropdown menu.
         },
         {
             items: [
-                { icon: 'i-material-symbols-delete-outline-rounded', text: `Delete` }
+                { 
+                    icon: 'i-material-symbols-delete-outline-rounded', 
+                    text: `Delete`, 
+                    hoverStyle: 'hover:(bg-error-500 text-on-error)',
+                    iconStyle: 'text-error-500 group-hover:(text-on-error)' 
+                }
             ]
         }
     ]
@@ -38,7 +43,11 @@ description: Create a list of actions that is available through a dropdown menu.
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />
 </div>
 
-You can customize the button that opens the menu by passing in a button class to the `buttonClass` prop, for example `btn-primary-secondary`. When a menu item is clicked, it emits a `select` event with the clicked item.
+You can customize the button that opens the menu by passing in a button class to the `buttonClass` prop, for example `"btn-primary-secondary"`. Pass in the individual items through the `groups` prop. Each group can have a `title` as well as `items`. For each group item you can set a `text` as well as an optional `icon`. For each item you can also overwrite the default `hoverStyle` and `iconStyle` (check the last group item below with the delete action for an example of this). 
+
+Note that UnoCSS automatically turns `(px-4 py-2)` with multiple classes after `hover` into separate `hover:px-4 hover:py-2` classes, even in the code blocks below. Always use grouping with `()` to make your classes more readable. 
+
+When a menu item is clicked, it emits a `select` event with the clicked item.
 
 ```svelte
 <script lang="ts">
@@ -74,7 +83,9 @@ You can customize the button that opens the menu by passing in a button class to
             items: [
                 { 
                     icon: 'i-material-symbols-delete-outline-rounded', 
-                    text: `Delete` 
+                    text: `Delete`,
+                    hoverStyle: 'hover:(bg-error-500 text-on-error)',
+                    iconStyle: 'text-error-500 group-hover:(text-on-error)'
                 }
             ]
         }

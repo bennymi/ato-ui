@@ -28,7 +28,7 @@
 }
 
 .prose > p {
-    @apply text-justify;
+    @apply text-justify mt-4;
 }
 
 .prose > ul {
