@@ -21,12 +21,12 @@
 
 	/** Set the width of the menu items. */
 	export let width = 'w-56';
-	/** Set the global hover styles. Individual item hover styles can be overwritten inside the group prop. You can group hover styles with 'hover:()'. */
-	export let hoverStyle = 'hover:(bg-primary-500 text-on-primary)';
+	/** Set the global hover styles. Individual item hover styles can be overwritten inside the group prop. */
+	export let hoverStyle = 'bg-primary-500 text-on-primary';
 	/** Set the regular text styles. */
 	export let textStyle = 'text-surface-900-50';
-	/** Set the styles of the icons. Use 'group-hover:()' to style how it should respond on hover styles. */
-	export let iconStyle = 'text-primary-500 group-hover:(text-on-primary)';
+	/** Set the styles of the icons. */
+	export let iconStyle = 'text-primary-500';
 
 	const menu = createMenu({ label: 'Actions' });
 
@@ -60,12 +60,14 @@
 						</div>
 					{/if}
 					{#each items as item}
+						{@const active = $menu.active === item.text}
 						<button
 							use:menu.item
-							class="group flex gap-1 rounded-token-base items-center w-full px-2 py-2 text-sm font-medium {textStyle} {item.hoverStyle ??
-								hoverStyle}"
+							class="group flex gap-1 rounded-token-base items-center w-full px-2 py-2 text-sm font-medium {active
+								? item.hoverStyle ?? hoverStyle
+								: textStyle}"
 						>
-							<span class="text-lg {item.icon} {item.iconStyle ?? iconStyle}" />
+							<span class="text-lg {item.icon} {active ? '' : item.iconStyle ?? iconStyle}" />
 							<span>{item.text}</span>
 						</button>
 					{/each}
