@@ -116,8 +116,62 @@
 			{/each}
 		</div>
 		<div class="bg-primary-secondary-tertiary w-full h-20 rounded-token-container" />
+		<div class="bg-animated-gradient w-full h-20 rounded-token-container" />
 		<div class="text-center">
 			<div class="text-primary-500 font-bold">this is some text</div>
 		</div>
 	</div>
 </div>
+
+<style>
+	.bg-animated-gradient {
+		/* background: linear-gradient(
+			to right,
+			#ee7752,
+			#e73c7e,
+			#23a6d5,
+			#23d5ab,
+			#23a6d5,
+			#e73c7e,
+			#ee7752
+		); */
+		background: linear-gradient(
+			to right,
+			rgb(var(--color-primary-500)),
+			rgb(var(--color-secondary-500)),
+			rgb(var(--color-tertiary-500)),
+			rgb(var(--color-success-500)),
+			rgb(var(--color-warning-500)),
+			rgb(var(--color-error-500))
+		);
+		background-size: 300% 100%;
+		animation: gradient 10s ease infinite;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes gradient-full {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 50% 50%;
+		}
+		99% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+</style>
