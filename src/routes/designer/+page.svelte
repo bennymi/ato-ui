@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { themeStore } from '../stores';
+	import { themeStore, custom_theme_hex } from '../stores';
 
 	import type { ThemeColor, Theme } from './types.d';
 
 	import ColorPicker from './ColorPicker.svelte';
-
-	let clicked = false;
 
 	$themeStore = 'ato';
 
@@ -18,16 +16,6 @@
 		'warning',
 		'error'
 	];
-
-	let theme: Theme = {
-		primary: '#4242ff',
-		secondary: '#ff0000',
-		tertiary: '#0000ff',
-		surface: '#161626',
-		success: '#00ff00',
-		warning: '#f1bb27',
-		error: '#ff0000'
-	};
 
 	function hex_to_rgb(hex: string) {
 		const m = hex.match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
@@ -53,10 +41,10 @@
 		return rgb_theme;
 	}
 
-	let themeRGB: Theme = convert_theme(theme);
+	let themeRGB: Theme = convert_theme($custom_theme_hex);
 
 	$: {
-		themeRGB = convert_theme(theme);
+		themeRGB = convert_theme($custom_theme_hex);
 	}
 
 	$: customThemeCSS = `
@@ -110,12 +98,12 @@
 	<div class="w-[36rem] flex flex-col gap-4">
 		<div class="flex justify-center items-center py-2 bg-white">
 			{#each theme_colors as c}
-				<ColorPicker bind:value={theme[c]} size="w-20 h-20" />
+				<ColorPicker bind:value={$custom_theme_hex[c]} size="w-20 h-20" />
 			{/each}
 		</div>
 		<div class="bg-primary-secondary-tertiary w-full h-20" />
 		<div class="text-center">
-			<div class="text-primary-500">this is some text</div>
+			<div class="text-primary-500 font-bold">this is some text</div>
 		</div>
 	</div>
 </div>

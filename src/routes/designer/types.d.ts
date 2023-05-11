@@ -8,5 +8,5 @@ export type ThemeColor =
 		| 'error';
 
 export type Theme = {
-    [key in ThemeColor]: string;
+    [key in ThemeColor]?: string;
 };
