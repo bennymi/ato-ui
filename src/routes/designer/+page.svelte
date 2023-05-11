@@ -97,7 +97,9 @@
 <div class="custom-theme flex justify-center items-center">
 	<div class="w-[36rem] flex flex-col gap-4">
 		<h2 class="text-surface-900-50 font-bold text-2xl">Select Your Colors</h2>
-		<div class="flex justify-center items-center py-2 bg-white rounded-token-container">
+		<div
+			class="flex justify-center items-center py-2 bg-white rounded-token-container border-1 border-surface-900/40-50/0"
+		>
 			{#each theme_colors as c, i}
 				<div class="flex flex-col">
 					<div class="capitalize font-semibold text-center mb-2 select-none">{c}</div>
