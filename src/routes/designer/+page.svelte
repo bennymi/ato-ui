@@ -96,12 +96,24 @@
 
 <div class="custom-theme flex justify-center items-center">
 	<div class="w-[36rem] flex flex-col gap-4">
-		<div class="flex justify-center items-center py-2 bg-white">
-			{#each theme_colors as c}
-				<ColorPicker bind:value={$custom_theme_hex[c]} size="w-20 h-20" />
+		<h2 class="text-surface-900-50 font-bold text-2xl">Select Your Colors</h2>
+		<div class="flex justify-center items-center py-2 bg-white rounded-token-container">
+			{#each theme_colors as c, i}
+				<div class="flex flex-col">
+					<div class="capitalize font-semibold text-center mb-2 select-none">{c}</div>
+					<ColorPicker
+						bind:value={$custom_theme_hex[c]}
+						size="w-20 h-20"
+						rounded={i === 0
+							? 'rounded-l-token-container'
+							: i === theme_colors.length - 1
+							? 'rounded-r-token-container'
+							: ''}
+					/>
+				</div>
 			{/each}
 		</div>
-		<div class="bg-primary-secondary-tertiary w-full h-20" />
+		<div class="bg-primary-secondary-tertiary w-full h-20 rounded-token-container" />
 		<div class="text-center">
 			<div class="text-primary-500 font-bold">this is some text</div>
 		</div>

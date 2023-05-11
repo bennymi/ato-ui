@@ -9,6 +9,7 @@
 
 	export let value = '';
 	export let size = 'w-10 h-10';
+	export let rounded = '';
 
 	function onSelect(e: Event) {
 		dispatch('select', (e as CustomEvent).detail);
@@ -17,6 +18,8 @@
 	// $: console.log('value:', value);
 </script>
 
-<div class="overflow-hidden m-0 {size}">
+<div
+	class="overflow-hidden m-0 {size} {rounded} transition-all duration-200 focus-within:(scale-110 shadow-md shadow-surface-900/80)"
+>
 	<input type="color" bind:value class="p-0 w-[150%] h-[150%] m-[-25%]" />
 </div>
