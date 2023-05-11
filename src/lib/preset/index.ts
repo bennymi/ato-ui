@@ -8,17 +8,15 @@ import { animation, rules, shortcuts } from './_rules/index';
 
 export { colors } from './_theme/colors';
 
-export const presetAtoUI = (): Preset => {
-    return {
-        name: 'presetAtoUI',
-        theme: {
-            colors,
-            animation
-        },
-        rules,
-        shortcuts
-    }
-}
+export const presetAtoUI = (): Preset => ({
+    name: 'presetAtoUI',
+    theme: {
+        colors,
+        animation
+    },
+    rules,
+    shortcuts
+});
 
 // export const presetAtoUI = (): Preset => {
 //     let ato = presetWind();
