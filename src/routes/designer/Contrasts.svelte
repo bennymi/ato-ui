@@ -94,11 +94,11 @@
 	};
 </script>
 
-<div class="flex flex-col gap-2 [&>div>div]:(h-15 w-15 rounded-token-container)">
+<div class="flex flex-col gap-1 [&>div>div]:(h-10 w-10 rounded-token-container)">
 	{#each Object.keys(bg_colors) as palette}
-		<div class="flex gap-2 justify-center items-center">
+		<div class="flex gap-1 justify-center items-center">
 			{#each bg_colors[palette] as shade}
-				<div class={shade} />
+				<div class="flex justify-center items-center font-bold {shade}">1.0</div>
 			{/each}
 		</div>
 	{/each}
