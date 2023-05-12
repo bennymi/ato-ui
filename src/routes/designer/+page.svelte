@@ -180,10 +180,10 @@
 </svelte:head>
 
 <div class="custom-theme flex justify-center items-center">
-	<div class="w-[36rem] flex flex-col gap-4">
+	<div class="w-1/2 flex flex-col justify-center items-center gap-4">
 		<h2 class="text-surface-900-50 font-bold text-2xl">Select Your Colors</h2>
 		<div
-			class="flex justify-center items-center py-2 bg-white rounded-token-container border-1 border-surface-900/40-50/0"
+			class="flex justify-center items-center py-2 w-[36rem] bg-white rounded-token-container border-1 border-surface-900/40-50/0"
 		>
 			{#each theme_colors as c, i}
 				<div class="flex flex-col">
@@ -200,8 +200,8 @@
 				</div>
 			{/each}
 		</div>
-		<div class="bg-primary-secondary-tertiary w-full h-20 rounded-token-container" />
-		<div class="bg-animated-gradient w-full h-20 rounded-token-container" />
+		<div class="bg-primary-secondary-tertiary w-[36rem] h-20 rounded-token-container" />
+		<div class="bg-animated-gradient w-[36rem] h-20 rounded-token-container" />
 		<div class="text-center">
 			<div class="text-primary-500 font-bold">this is some text</div>
 		</div>
