@@ -2,17 +2,7 @@
  * Provided by @javisperez under the MIT license: https://github.com/javisperez/tailwindcolorshades/blob/master/src/composables/colors.ts
  */
 
-export type Palette = {
-	colors: {
-		[key: number]: string;
-	};
-};
-
-type Rgb = {
-	r: number;
-	g: number;
-	b: number;
-};
+import type { Rgb, Palette } from "./types.d";
 
 function hexToRgb(hex: string): Rgb | null {
 	const sanitizedHex = hex.replaceAll('##', '#');
@@ -77,11 +67,9 @@ function darken(hex: string, intensity: number): string {
 	return rgbToHex(r, g, b);
 }
 
-export default function generate_palette (baseColor: string): Palette {
+export default function generate_palette(baseColor: string): Palette {
 	const response: Palette = {
-		colors: {
-			500: `#${baseColor}`.replace('##', '#')
-		}
+		500: `#${baseColor}`.replace('##', '#')
 	};
 
 	const intensityMap: {
@@ -100,11 +88,11 @@ export default function generate_palette (baseColor: string): Palette {
 	};
 
 	[50, 100, 200, 300, 400].forEach((level) => {
-		response.colors[level] = lighten(baseColor, intensityMap[level]);
+		response[level] = lighten(baseColor, intensityMap[level]);
 	});
 
 	[600, 700, 800, 900, 950].forEach((level) => {
-		response.colors[level] = darken(baseColor, intensityMap[level]);
+		response[level] = darken(baseColor, intensityMap[level]);
 	});
 
 	return response as Palette;

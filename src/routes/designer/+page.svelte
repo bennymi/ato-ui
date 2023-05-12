@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { themeStore, custom_theme_hex } from '../stores';
 
-	import type { ThemeColor, Theme } from './types.d';
+	import type { ThemeColor, Theme, FullTheme } from './types.d';
+	import generate_palette from './colors';
 
 	import ColorPicker from './ColorPicker.svelte';
+	import Contrasts from './Contrasts.svelte';
 
 	$themeStore = 'ato';
 
@@ -32,7 +34,7 @@
 	}
 
 	function convert_theme(hex_theme: Theme) {
-		let rgb_theme: Theme = {};
+		let rgb_theme: Partial<Theme> = {};
 
 		theme_colors.forEach((c) => {
 			rgb_theme[c] = hex_to_rgb(hex_theme[c] as string);
@@ -41,10 +43,23 @@
 		return rgb_theme;
 	}
 
-	let themeRGB: Theme = convert_theme($custom_theme_hex);
+	let themeRGB: Partial<Theme> = convert_theme($custom_theme_hex);
+	let shades: Partial<FullTheme> = Object.fromEntries(
+		Object.keys($custom_theme_hex).map((c) => [
+			c,
+			generate_palette($custom_theme_hex[<ThemeColor>c])
+		])
+	);
 
 	$: {
 		themeRGB = convert_theme($custom_theme_hex);
+
+		shades = Object.fromEntries(
+			Object.keys($custom_theme_hex).map((c) => [
+				c,
+				generate_palette($custom_theme_hex[<ThemeColor>c])
+			])
+		);
 	}
 
 	$: customThemeCSS = `
@@ -67,25 +82,95 @@
 	--on-surface: 255, 255, 255;
 
 	/* Primary Colors */
-	--color-primary-500: ${themeRGB.primary};
+	--color-primary-50: ${hex_to_rgb(shades.primary![50])}; /* ${shades.primary![50]} */
+	--color-primary-100: ${hex_to_rgb(shades.primary![100])}; /* ${shades.primary![100]} */
+	--color-primary-200: ${hex_to_rgb(shades.primary![200])}; /* ${shades.primary![200]} */
+	--color-primary-300: ${hex_to_rgb(shades.primary![300])}; /* ${shades.primary![300]} */
+	--color-primary-400: ${hex_to_rgb(shades.primary![400])}; /* ${shades.primary![400]} */
+	--color-primary-500: ${hex_to_rgb(shades.primary![500])}; /* ${shades.primary![500]} */
+	--color-primary-600: ${hex_to_rgb(shades.primary![600])}; /* ${shades.primary![600]} */
+	--color-primary-700: ${hex_to_rgb(shades.primary![700])}; /* ${shades.primary![700]} */
+	--color-primary-800: ${hex_to_rgb(shades.primary![800])}; /* ${shades.primary![800]} */
+	--color-primary-900: ${hex_to_rgb(shades.primary![900])}; /* ${shades.primary![900]} */
+	--color-primary-950: ${hex_to_rgb(shades.primary![950])}; /* ${shades.primary![950]} */
 	
 	/* Secondary Colors */
-	--color-secondary-500: ${themeRGB.secondary};
+	--color-secondary-50: ${hex_to_rgb(shades.secondary![50])}; /* ${shades.secondary![50]} */
+	--color-secondary-100: ${hex_to_rgb(shades.secondary![100])}; /* ${shades.secondary![100]} */
+	--color-secondary-200: ${hex_to_rgb(shades.secondary![200])}; /* ${shades.secondary![200]} */
+	--color-secondary-300: ${hex_to_rgb(shades.secondary![300])}; /* ${shades.secondary![300]} */
+	--color-secondary-400: ${hex_to_rgb(shades.secondary![400])}; /* ${shades.secondary![400]} */
+	--color-secondary-500: ${hex_to_rgb(shades.secondary![500])}; /* ${shades.secondary![500]} */
+	--color-secondary-600: ${hex_to_rgb(shades.secondary![600])}; /* ${shades.secondary![600]} */
+	--color-secondary-700: ${hex_to_rgb(shades.secondary![700])}; /* ${shades.secondary![700]} */
+	--color-secondary-800: ${hex_to_rgb(shades.secondary![800])}; /* ${shades.secondary![800]} */
+	--color-secondary-900: ${hex_to_rgb(shades.secondary![900])}; /* ${shades.secondary![900]} */
+	--color-secondary-950: ${hex_to_rgb(shades.secondary![950])}; /* ${shades.secondary![950]} */
 	
 	/* Tertiary Colors */
-	--color-tertiary-500: ${themeRGB.tertiary};
+	--color-tertiary-50: ${hex_to_rgb(shades.tertiary![50])}; /* ${shades.tertiary![50]} */
+	--color-tertiary-100: ${hex_to_rgb(shades.tertiary![100])}; /* ${shades.tertiary![100]} */
+	--color-tertiary-200: ${hex_to_rgb(shades.tertiary![200])}; /* ${shades.tertiary![200]} */
+	--color-tertiary-300: ${hex_to_rgb(shades.tertiary![300])}; /* ${shades.tertiary![300]} */
+	--color-tertiary-400: ${hex_to_rgb(shades.tertiary![400])}; /* ${shades.tertiary![400]} */
+	--color-tertiary-500: ${hex_to_rgb(shades.tertiary![500])}; /* ${shades.tertiary![500]} */
+	--color-tertiary-600: ${hex_to_rgb(shades.tertiary![600])}; /* ${shades.tertiary![600]} */
+	--color-tertiary-700: ${hex_to_rgb(shades.tertiary![700])}; /* ${shades.tertiary![700]} */
+	--color-tertiary-800: ${hex_to_rgb(shades.tertiary![800])}; /* ${shades.tertiary![800]} */
+	--color-tertiary-900: ${hex_to_rgb(shades.tertiary![900])}; /* ${shades.tertiary![900]} */
+	--color-tertiary-950: ${hex_to_rgb(shades.tertiary![950])}; /* ${shades.tertiary![950]} */
 
 	/* Surface Colors */
-	--color-surface-500: ${themeRGB.surface};
+	--color-surface-50: ${hex_to_rgb(shades.surface![50])}; /* ${shades.surface![50]} */
+	--color-surface-100: ${hex_to_rgb(shades.surface![100])}; /* ${shades.surface![100]} */
+	--color-surface-200: ${hex_to_rgb(shades.surface![200])}; /* ${shades.surface![200]} */
+	--color-surface-300: ${hex_to_rgb(shades.surface![300])}; /* ${shades.surface![300]} */
+	--color-surface-400: ${hex_to_rgb(shades.surface![400])}; /* ${shades.surface![400]} */
+	--color-surface-500: ${hex_to_rgb(shades.surface![500])}; /* ${shades.surface![500]} */
+	--color-surface-600: ${hex_to_rgb(shades.surface![600])}; /* ${shades.surface![600]} */
+	--color-surface-700: ${hex_to_rgb(shades.surface![700])}; /* ${shades.surface![700]} */
+	--color-surface-800: ${hex_to_rgb(shades.surface![800])}; /* ${shades.surface![800]} */
+	--color-surface-900: ${hex_to_rgb(shades.surface![900])}; /* ${shades.surface![900]} */
+	--color-surface-950: ${hex_to_rgb(shades.surface![950])}; /* ${shades.surface![950]} */
 	
 	/* Success Colors */
-	--color-success-500: ${themeRGB.success};
+	--color-success-50: ${hex_to_rgb(shades.success![50])}; /* ${shades.success![50]} */
+	--color-success-100: ${hex_to_rgb(shades.success![100])}; /* ${shades.success![100]} */
+	--color-success-200: ${hex_to_rgb(shades.success![200])}; /* ${shades.success![200]} */
+	--color-success-300: ${hex_to_rgb(shades.success![300])}; /* ${shades.success![300]} */
+	--color-success-400: ${hex_to_rgb(shades.success![400])}; /* ${shades.success![400]} */
+	--color-success-500: ${hex_to_rgb(shades.success![500])}; /* ${shades.success![500]} */
+	--color-success-600: ${hex_to_rgb(shades.success![600])}; /* ${shades.success![600]} */
+	--color-success-700: ${hex_to_rgb(shades.success![700])}; /* ${shades.success![700]} */
+	--color-success-800: ${hex_to_rgb(shades.success![800])}; /* ${shades.success![800]} */
+	--color-success-900: ${hex_to_rgb(shades.success![900])}; /* ${shades.success![900]} */
+	--color-success-950: ${hex_to_rgb(shades.success![950])}; /* ${shades.success![950]} */
 	
 	/* Warning Colors */
-	--color-warning-500: ${themeRGB.warning};
+	--color-warning-50: ${hex_to_rgb(shades.warning![50])}; /* ${shades.warning![50]} */
+	--color-warning-100: ${hex_to_rgb(shades.warning![100])}; /* ${shades.warning![100]} */
+	--color-warning-200: ${hex_to_rgb(shades.warning![200])}; /* ${shades.warning![200]} */
+	--color-warning-300: ${hex_to_rgb(shades.warning![300])}; /* ${shades.warning![300]} */
+	--color-warning-400: ${hex_to_rgb(shades.warning![400])}; /* ${shades.warning![400]} */
+	--color-warning-500: ${hex_to_rgb(shades.warning![500])}; /* ${shades.warning![500]} */
+	--color-warning-600: ${hex_to_rgb(shades.warning![600])}; /* ${shades.warning![600]} */
+	--color-warning-700: ${hex_to_rgb(shades.warning![700])}; /* ${shades.warning![700]} */
+	--color-warning-800: ${hex_to_rgb(shades.warning![800])}; /* ${shades.warning![800]} */
+	--color-warning-900: ${hex_to_rgb(shades.warning![900])}; /* ${shades.warning![900]} */
+	--color-warning-950: ${hex_to_rgb(shades.warning![950])}; /* ${shades.warning![950]} */
 	
 	/* Error Colors */
-	--color-error-500: ${themeRGB.error};
+	--color-error-50: ${hex_to_rgb(shades.error![50])}; /* ${shades.error![50]} */
+	--color-error-100: ${hex_to_rgb(shades.error![100])}; /* ${shades.error![100]} */
+	--color-error-200: ${hex_to_rgb(shades.error![200])}; /* ${shades.error![200]} */
+	--color-error-300: ${hex_to_rgb(shades.error![300])}; /* ${shades.error![300]} */
+	--color-error-400: ${hex_to_rgb(shades.error![400])}; /* ${shades.error![400]} */
+	--color-error-500: ${hex_to_rgb(shades.error![500])}; /* ${shades.error![500]} */
+	--color-error-600: ${hex_to_rgb(shades.error![600])}; /* ${shades.error![600]} */
+	--color-error-700: ${hex_to_rgb(shades.error![700])}; /* ${shades.error![700]} */
+	--color-error-800: ${hex_to_rgb(shades.error![800])}; /* ${shades.error![800]} */
+	--color-error-900: ${hex_to_rgb(shades.error![900])}; /* ${shades.error![900]} */
+	--color-error-950: ${hex_to_rgb(shades.error![950])}; /* ${shades.error![950]} */
 }
 	`;
 </script>
@@ -120,6 +205,7 @@
 		<div class="text-center">
 			<div class="text-primary-500 font-bold">this is some text</div>
 		</div>
+		<Contrasts />
 	</div>
 </div>
 
