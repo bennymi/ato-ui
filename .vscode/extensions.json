@@ -7,5 +7,6 @@
         "bradlc.vscode-tailwindcss",
         "voorjaar.windicss-intellisense",
         "esbenp.prettier-vscode",
+        "zixuanchen.vitest-explorer"
     ]
 }
