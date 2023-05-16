@@ -10,20 +10,6 @@
 
 	$themeStore = 'ato';
 
-	function hex_to_rgb(hex: string) {
-		const m = hex.match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
-
-		if (m) {
-			const r = parseInt(m[1], 16);
-			const g = parseInt(m[2], 16);
-			const b = parseInt(m[3], 16);
-
-			return `${r}, ${g}, ${b}`;
-		}
-
-		return '';
-	}
-
 	let shades = Object.fromEntries(
 		theme_colors.map((c) => [c, generate_palette($custom_theme_hex[<ThemeColor>c])])
 	) as FullTheme;
