@@ -1,23 +1,14 @@
 <script lang="ts">
 	import { themeStore, custom_theme_hex } from '../stores';
 
-	import type { ThemeColor, Theme, FullTheme } from './types.d';
-	import generate_palette from './colors';
+	import type { ThemeColor, FullTheme } from './types.d';
+	import { theme_colors } from './constants';
+	import generate_palette, { create_css_colors } from './colors';
 
 	import ColorPicker from './ColorPicker.svelte';
 	import Contrasts from './Contrasts.svelte';
 
 	$themeStore = 'ato';
-
-	let theme_colors: ThemeColor[] = [
-		'primary',
-		'secondary',
-		'tertiary',
-		'surface',
-		'success',
-		'warning',
-		'error'
-	];
 
 	function hex_to_rgb(hex: string) {
 		const m = hex.match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
@@ -33,30 +24,14 @@
 		return '';
 	}
 
-	function convert_theme(hex_theme: Theme) {
-		let rgb_theme: Partial<Theme> = {};
-
-		theme_colors.forEach((c) => {
-			rgb_theme[c] = hex_to_rgb(hex_theme[c] as string);
-		});
-
-		return rgb_theme;
-	}
-
-	let shades: Partial<FullTheme> = Object.fromEntries(
-		Object.keys($custom_theme_hex).map((c) => [
-			c,
-			generate_palette($custom_theme_hex[<ThemeColor>c])
-		])
-	);
+	let shades = Object.fromEntries(
+		theme_colors.map((c) => [c, generate_palette($custom_theme_hex[<ThemeColor>c])])
+	) as FullTheme;
 
 	$: {
 		shades = Object.fromEntries(
-			Object.keys($custom_theme_hex).map((c) => [
-				c,
-				generate_palette($custom_theme_hex[<ThemeColor>c])
-			])
-		);
+			theme_colors.map((c) => [c, generate_palette($custom_theme_hex[<ThemeColor>c])])
+		) as FullTheme;
 	}
 
 	$: customThemeCSS = `
@@ -78,138 +53,7 @@
 	--on-error: 255, 255, 255;
 	--on-surface: 255, 255, 255;
 
-	/* Primary Colors */
-	--color-primary-50: ${hex_to_rgb(shades.primary![50].color)}; /* ${shades.primary![50].color} */
-	--color-primary-100: ${hex_to_rgb(shades.primary![100].color)}; /* ${shades.primary![100].color} */
-	--color-primary-200: ${hex_to_rgb(shades.primary![200].color)}; /* ${shades.primary![200].color} */
-	--color-primary-300: ${hex_to_rgb(shades.primary![300].color)}; /* ${shades.primary![300].color} */
-	--color-primary-400: ${hex_to_rgb(shades.primary![400].color)}; /* ${shades.primary![400].color} */
-	--color-primary-500: ${hex_to_rgb(shades.primary![500].color)}; /* ${shades.primary![500].color} */
-	--color-primary-600: ${hex_to_rgb(shades.primary![600].color)}; /* ${shades.primary![600].color} */
-	--color-primary-700: ${hex_to_rgb(shades.primary![700].color)}; /* ${shades.primary![700].color} */
-	--color-primary-800: ${hex_to_rgb(shades.primary![800].color)}; /* ${shades.primary![800].color} */
-	--color-primary-900: ${hex_to_rgb(shades.primary![900].color)}; /* ${shades.primary![900].color} */
-	--color-primary-950: ${hex_to_rgb(shades.primary![950].color)}; /* ${shades.primary![950].color} */
-	
-	/* Secondary Colors */
-	--color-secondary-50: ${hex_to_rgb(shades.secondary![50].color)}; /* ${
-		shades.secondary![50].color
-	} */
-	--color-secondary-100: ${hex_to_rgb(shades.secondary![100].color)}; /* ${
-		shades.secondary![100].color
-	} */
-	--color-secondary-200: ${hex_to_rgb(shades.secondary![200].color)}; /* ${
-		shades.secondary![200].color
-	} */
-	--color-secondary-300: ${hex_to_rgb(shades.secondary![300].color)}; /* ${
-		shades.secondary![300].color
-	} */
-	--color-secondary-400: ${hex_to_rgb(shades.secondary![400].color)}; /* ${
-		shades.secondary![400].color
-	} */
-	--color-secondary-500: ${hex_to_rgb(shades.secondary![500].color)}; /* ${
-		shades.secondary![500].color
-	} */
-	--color-secondary-600: ${hex_to_rgb(shades.secondary![600].color)}; /* ${
-		shades.secondary![600].color
-	} */
-	--color-secondary-700: ${hex_to_rgb(shades.secondary![700].color)}; /* ${
-		shades.secondary![700].color
-	} */
-	--color-secondary-800: ${hex_to_rgb(shades.secondary![800].color)}; /* ${
-		shades.secondary![800].color
-	} */
-	--color-secondary-900: ${hex_to_rgb(shades.secondary![900].color)}; /* ${
-		shades.secondary![900].color
-	} */
-	--color-secondary-950: ${hex_to_rgb(shades.secondary![950].color)}; /* ${
-		shades.secondary![950].color
-	} */
-	
-	/* Tertiary Colors */
-	--color-tertiary-50: ${hex_to_rgb(shades.tertiary![50].color)}; /* ${shades.tertiary![50].color} */
-	--color-tertiary-100: ${hex_to_rgb(shades.tertiary![100].color)}; /* ${
-		shades.tertiary![100].color
-	} */
-	--color-tertiary-200: ${hex_to_rgb(shades.tertiary![200].color)}; /* ${
-		shades.tertiary![200].color
-	} */
-	--color-tertiary-300: ${hex_to_rgb(shades.tertiary![300].color)}; /* ${
-		shades.tertiary![300].color
-	} */
-	--color-tertiary-400: ${hex_to_rgb(shades.tertiary![400].color)}; /* ${
-		shades.tertiary![400].color
-	} */
-	--color-tertiary-500: ${hex_to_rgb(shades.tertiary![500].color)}; /* ${
-		shades.tertiary![500].color
-	} */
-	--color-tertiary-600: ${hex_to_rgb(shades.tertiary![600].color)}; /* ${
-		shades.tertiary![600].color
-	} */
-	--color-tertiary-700: ${hex_to_rgb(shades.tertiary![700].color)}; /* ${
-		shades.tertiary![700].color
-	} */
-	--color-tertiary-800: ${hex_to_rgb(shades.tertiary![800].color)}; /* ${
-		shades.tertiary![800].color
-	} */
-	--color-tertiary-900: ${hex_to_rgb(shades.tertiary![900].color)}; /* ${
-		shades.tertiary![900].color
-	} */
-	--color-tertiary-950: ${hex_to_rgb(shades.tertiary![950].color)}; /* ${
-		shades.tertiary![950].color
-	} */
-
-	/* Surface Colors */
-	--color-surface-50: ${hex_to_rgb(shades.surface![50].color)}; /* ${shades.surface![50].color} */
-	--color-surface-100: ${hex_to_rgb(shades.surface![100].color)}; /* ${shades.surface![100].color} */
-	--color-surface-200: ${hex_to_rgb(shades.surface![200].color)}; /* ${shades.surface![200].color} */
-	--color-surface-300: ${hex_to_rgb(shades.surface![300].color)}; /* ${shades.surface![300].color} */
-	--color-surface-400: ${hex_to_rgb(shades.surface![400].color)}; /* ${shades.surface![400].color} */
-	--color-surface-500: ${hex_to_rgb(shades.surface![500].color)}; /* ${shades.surface![500].color} */
-	--color-surface-600: ${hex_to_rgb(shades.surface![600].color)}; /* ${shades.surface![600].color} */
-	--color-surface-700: ${hex_to_rgb(shades.surface![700].color)}; /* ${shades.surface![700].color} */
-	--color-surface-800: ${hex_to_rgb(shades.surface![800].color)}; /* ${shades.surface![800].color} */
-	--color-surface-900: ${hex_to_rgb(shades.surface![900].color)}; /* ${shades.surface![900].color} */
-	--color-surface-950: ${hex_to_rgb(shades.surface![950].color)}; /* ${shades.surface![950].color} */
-	
-	/* Success Colors */
-	--color-success-50: ${hex_to_rgb(shades.success![50].color)}; /* ${shades.success![50].color} */
-	--color-success-100: ${hex_to_rgb(shades.success![100].color)}; /* ${shades.success![100].color} */
-	--color-success-200: ${hex_to_rgb(shades.success![200].color)}; /* ${shades.success![200].color} */
-	--color-success-300: ${hex_to_rgb(shades.success![300].color)}; /* ${shades.success![300].color} */
-	--color-success-400: ${hex_to_rgb(shades.success![400].color)}; /* ${shades.success![400].color} */
-	--color-success-500: ${hex_to_rgb(shades.success![500].color)}; /* ${shades.success![500].color} */
-	--color-success-600: ${hex_to_rgb(shades.success![600].color)}; /* ${shades.success![600].color} */
-	--color-success-700: ${hex_to_rgb(shades.success![700].color)}; /* ${shades.success![700].color} */
-	--color-success-800: ${hex_to_rgb(shades.success![800].color)}; /* ${shades.success![800].color} */
-	--color-success-900: ${hex_to_rgb(shades.success![900].color)}; /* ${shades.success![900].color} */
-	--color-success-950: ${hex_to_rgb(shades.success![950].color)}; /* ${shades.success![950].color} */
-	
-	/* Warning Colors */
-	--color-warning-50: ${hex_to_rgb(shades.warning![50].color)}; /* ${shades.warning![50].color} */
-	--color-warning-100: ${hex_to_rgb(shades.warning![100].color)}; /* ${shades.warning![100].color} */
-	--color-warning-200: ${hex_to_rgb(shades.warning![200].color)}; /* ${shades.warning![200].color} */
-	--color-warning-300: ${hex_to_rgb(shades.warning![300].color)}; /* ${shades.warning![300].color} */
-	--color-warning-400: ${hex_to_rgb(shades.warning![400].color)}; /* ${shades.warning![400].color} */
-	--color-warning-500: ${hex_to_rgb(shades.warning![500].color)}; /* ${shades.warning![500].color} */
-	--color-warning-600: ${hex_to_rgb(shades.warning![600].color)}; /* ${shades.warning![600].color} */
-	--color-warning-700: ${hex_to_rgb(shades.warning![700].color)}; /* ${shades.warning![700].color} */
-	--color-warning-800: ${hex_to_rgb(shades.warning![800].color)}; /* ${shades.warning![800].color} */
-	--color-warning-900: ${hex_to_rgb(shades.warning![900].color)}; /* ${shades.warning![900].color} */
-	--color-warning-950: ${hex_to_rgb(shades.warning![950].color)}; /* ${shades.warning![950].color} */
-	
-	/* Error Colors */
-	--color-error-50: ${hex_to_rgb(shades.error![50].color)}; /* ${shades.error![50].color} */
-	--color-error-100: ${hex_to_rgb(shades.error![100].color)}; /* ${shades.error![100].color} */
-	--color-error-200: ${hex_to_rgb(shades.error![200].color)}; /* ${shades.error![200].color} */
-	--color-error-300: ${hex_to_rgb(shades.error![300].color)}; /* ${shades.error![300].color} */
-	--color-error-400: ${hex_to_rgb(shades.error![400].color)}; /* ${shades.error![400].color} */
-	--color-error-500: ${hex_to_rgb(shades.error![500].color)}; /* ${shades.error![500].color} */
-	--color-error-600: ${hex_to_rgb(shades.error![600].color)}; /* ${shades.error![600].color} */
-	--color-error-700: ${hex_to_rgb(shades.error![700].color)}; /* ${shades.error![700].color} */
-	--color-error-800: ${hex_to_rgb(shades.error![800].color)}; /* ${shades.error![800].color} */
-	--color-error-900: ${hex_to_rgb(shades.error![900].color)}; /* ${shades.error![900].color} */
-	--color-error-950: ${hex_to_rgb(shades.error![950].color)}; /* ${shades.error![950].color} */
+	${create_css_colors(<FullTheme>shades)}
 }
 	`;
 </script>

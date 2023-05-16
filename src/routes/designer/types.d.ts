@@ -23,11 +23,11 @@ export type Shade = Contrast & {
 }
 
 export type PaletteShades = {
-	[key in ShadeValues]?: Shade;
+	[key in ShadeValues]: Shade;
 }
 
 export type Palette = {
-	[key in ShadeValues]?: string;
+	[key in ShadeValues]: string;
 };
 
 export type Rgb = {

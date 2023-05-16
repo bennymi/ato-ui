@@ -4,7 +4,8 @@
 
 import tinycolor from 'tinycolor2';
 
-import type { Rgb, Palette, Contrast, PaletteShades, Shade, ShadeValues } from "./types.d";
+import type { Rgb, Palette, Contrast, PaletteShades, Shade, ShadeValues, FullTheme } from "./types.d";
+import { theme_colors, shade_values } from './constants';
 
 function hexToRgb(hex: string): Rgb | null {
 	const sanitizedHex = hex.replaceAll('##', '#');
@@ -21,6 +22,17 @@ function hexToRgb(hex: string): Rgb | null {
 		g: parseInt(g, 16),
 		b: parseInt(b, 16)
 	} as Rgb;
+}
+
+function hex_to_rgb_string(hex: string): string {
+	const rgb: Rgb | null = hexToRgb(hex);
+
+	if (rgb) {
+		const { r, g, b} = rgb;
+		return `${r}, ${g}, ${b}`;
+	}
+
+	return '';
 }
 
 function rgbToHex(r: number, g: number, b: number): string {
@@ -88,11 +100,9 @@ function find_best_contrast(hex: string): Contrast {
 }
 
 export default function generate_palette(baseColor: string): PaletteShades {
-	const response: Palette = {
+	const response: any = {
 		500: `#${baseColor}`.replace('##', '#')
 	};
-
-	const shade_values: ShadeValues[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
 	const intensityMap: {
 		[key: number]: number;
@@ -127,7 +137,7 @@ export default function generate_palette(baseColor: string): PaletteShades {
 		response[level] = darken(baseColor, intensityMap[level]);
 	});
 
-	let palette_shades: PaletteShades = {};
+	let palette_shades: any = {};
 
 	shade_values.forEach((v) => {
 		const contrast = find_best_contrast(<string>response[v]);
@@ -138,7 +148,31 @@ export default function generate_palette(baseColor: string): PaletteShades {
 		} satisfies Shade;
 	});
 
-	// console.log('tertiary-400:', tinycolor.readability('#378b63', '#000000'), tinycolor.readability('#378b63', "#06061f"))
-
 	return palette_shades satisfies PaletteShades;
+}
+
+export function create_css_colors(theme: FullTheme): string {
+	let css_string = '';
+
+	theme_colors.forEach((c) => {
+		if (c in theme) {
+			css_string += `/* ${c} colors */\n`
+			shade_values.forEach((v) => {
+				if (v in theme[c]) {
+					css_string += `--color-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.color)}; /* ${theme[c][v]?.color} */\n`
+				}
+			});
+
+			css_string += '\n';
+			shade_values.forEach((v) => {
+				if (v in theme[c]) {
+					css_string += `--on-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.onColor)}; /* ${theme[c][v]?.onColor} */\n`
+				}
+			});
+
+			css_string += '\n';
+		}
+	})
+
+	return css_string;
 }

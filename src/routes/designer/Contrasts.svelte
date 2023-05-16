@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { FullTheme, ShadeValues, ThemeColor } from './types.d';
+	import type { FullTheme, ThemeColor } from './types.d';
+	import { shade_values, theme_colors } from './constants';
 
 	export let shades: FullTheme;
 
@@ -106,15 +107,12 @@
 	// 	warning: 'hover:(bg-warning-50-warning-950)',
 	// 	error: 'hover:(bg-error-50-error-950)'
 	// };
-
-	let shade_numbers: ShadeValues[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-	let theme_colors: ThemeColor[] = <ThemeColor[]>Object.keys(bg_colors);
 </script>
 
 <div class="flex flex-col gap-1">
 	{#each theme_colors as palette}
 		<div class="flex gap-1 justify-center items-center">
-			{#each shade_numbers as shade}
+			{#each shade_values as shade}
 				<div
 					class="group flex justify-center items-center cursor-pointer h-12 w-12 rounded-token-container transition-all hover:()"
 					style="background: {shades[palette][shade].color};"
