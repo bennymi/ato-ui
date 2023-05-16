@@ -5,6 +5,8 @@
 	import RangeSlider from 'svelte-range-slider-pips';
 	import { slide } from 'svelte/transition';
 
+	import { custom_theme_hex } from '../stores';
+
 	export let shades: FullTheme;
 
 	let bg_colors: { [key in ThemeColor]: string[] } = {
@@ -113,9 +115,16 @@
 
 	let contrast_threshold = 21;
 	let show_slider = '';
+	let showNumbers = true;
 </script>
 
 <div class="flex gap-2 my-2">
+	<button
+		class="btn-sm btn-border-surface-tertiary-tertiary"
+		on:click={() => (showNumbers = !showNumbers)}
+	>
+		Toggle Numbers
+	</button>
 	<button
 		class="btn-sm btn-border-surface-tl-primary-secondary"
 		on:click={() => (contrast_threshold = 21)}>Show all</button
@@ -153,9 +162,11 @@
 							: ''}"
 						style="background: {color};"
 					>
-						<span class="transition-all group-hover:(scale-120)" style="color: {onColor};">
-							{contrast.toFixed(2)}
-						</span>
+						{#if showNumbers}
+							<span class="transition-all group-hover:(scale-120)" style="color: {onColor};">
+								{contrast.toFixed(2)}
+							</span>
+						{/if}
 					</div>
 				{/each}
 			</button>
@@ -166,9 +177,10 @@
 					transition:slide={{ duration: 250 }}
 				>
 					<div class="w-65">
+						<!-- values={[50, 60, 70]} -->
 						<RangeSlider
 							pips
-							values={[50, 60, 70]}
+							bind:values={$custom_theme_hex[palette].lightenValues}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}
 							--range-handle-focus={shades[palette][600].color}
@@ -179,7 +191,7 @@
 					<div class="w-65">
 						<RangeSlider
 							pips
-							values={[50, 60, 70]}
+							bind:values={$custom_theme_hex[palette].darkenValues}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}
 							--range-handle-focus={shades[palette][600].color}

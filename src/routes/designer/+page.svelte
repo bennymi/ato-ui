@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { themeStore, custom_theme_hex } from '../stores';
 
-	import type { ThemeColor, FullTheme } from './types.d';
+	import type { ThemeColor, FullTheme, LocalStorageTheme } from './types.d';
 	import { theme_colors } from './constants';
 	import generate_palette, { create_css_colors } from './colors';
 
@@ -10,15 +10,14 @@
 
 	$themeStore = 'ato';
 
-	let shades = Object.fromEntries(
-		theme_colors.map((c) => [c, generate_palette($custom_theme_hex[<ThemeColor>c])])
-	) as FullTheme;
-
-	$: {
-		shades = Object.fromEntries(
-			theme_colors.map((c) => [c, generate_palette($custom_theme_hex[<ThemeColor>c])])
+	const update_shades = (store: LocalStorageTheme) =>
+		Object.fromEntries(
+			theme_colors.map((c) => [c, generate_palette(store[<ThemeColor>c])])
 		) as FullTheme;
-	}
+
+	let shades = update_shades($custom_theme_hex);
+
+	$: shades = update_shades($custom_theme_hex);
 
 	$: custom_theme_css_variables = `
 :root .custom-theme {
@@ -66,7 +65,7 @@
 							{c}
 						</div>
 						<ColorPicker
-							bind:value={$custom_theme_hex[c]}
+							bind:value={$custom_theme_hex[c].color}
 							size="w-20 h-20"
 							rounded={i === 0
 								? 'rounded-l-token-container'
