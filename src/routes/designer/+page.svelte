@@ -32,7 +32,7 @@
 	/* On Colors */
 	--on-primary: 255, 255, 255;
 	--on-secondary: 0, 0, 0;
-	--on-tertiary: 255, 255, 255;
+	--on-tertiary: 0, 0, 0;
 	--on-success: 0, 0, 0;
 	--on-warning: 0, 0, 0;
 	--on-error: 255, 255, 255;
@@ -88,15 +88,17 @@
 				</span>
 			</h3>
 			<p class="text-justify">
-				The numbers show the contrast between the text color and the background color. By default
-				either <code>#fff</code> or <code>#000</code> is chosen, depending on which has the highest
-				contrast. You can read more about
+				The numbers show the contrast between the text color and the background color (<code
+					>#fff</code
+				>
+				or <code>#000</code> is chosen by default). You can read more about
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast"
 				>
 					accessibility contrast guidelines
 				</a>
-				here. Click on the buttons to see which contrasts do not meet the requirements.
+				here. Click on the buttons to see which contrasts do not meet the requirements and click on the
+				shades to make them lighter or darker.
 			</p>
 			<Contrasts bind:shades />
 		</div>
