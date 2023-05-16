@@ -167,6 +167,7 @@
 				>
 					<div class="w-65">
 						<RangeSlider
+							pips
 							values={[50, 60, 70]}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}
@@ -177,6 +178,7 @@
 					</div>
 					<div class="w-65">
 						<RangeSlider
+							pips
 							values={[50, 60, 70]}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}

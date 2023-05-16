@@ -51,6 +51,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.1.2
     version: 20.1.2
+  '@types/svelte-range-slider-pips':
+    specifier: ^2.0.0
+    version: 2.0.0
   '@types/tinycolor2':
     specifier: ^1.4.3
     version: 1.4.3
@@ -690,6 +693,12 @@ packages:
 
   /@types/semver@7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
+    dev: true
+
+  /@types/svelte-range-slider-pips@2.0.0:
+    resolution: {integrity: sha512-+Yq3xwyI0ViGZKdrsNpM8Wqa0wCnSBKc8NcRfYGiu22kVJ3Xr0gfiZATWMzZ2mryt/tQR8QgH2B782ogrZS1aw==}
+    dependencies:
+      svelte: 3.59.1
     dev: true
 
   /@types/tinycolor2@1.4.3:

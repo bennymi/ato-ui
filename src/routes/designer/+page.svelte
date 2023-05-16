@@ -20,7 +20,7 @@
 		) as FullTheme;
 	}
 
-	$: customThemeCSS = `
+	$: custom_theme_css_variables = `
 :root .custom-theme {
 	--theme-font-family-base: system-ui;
 	--theme-font-family-heading: system-ui;
@@ -45,7 +45,7 @@
 </script>
 
 <svelte:head>
-	{@html `<style>${customThemeCSS}</style>`}
+	{@html `<style>${custom_theme_css_variables}</style>`}
 </svelte:head>
 
 <div class="custom-theme flex justify-center items-center">
@@ -83,7 +83,7 @@
 
 		<div class="flex flex-col gap-2">
 			<h3 class="font-semibold text-3xl">
-				Update
+				Update shade
 				<span class="bg-surface-950-50 text-surface-50-950 rounded-token-container px-1">
 					contrasts
 				</span>
@@ -99,7 +99,7 @@
 				</a>
 				here. Click on the buttons to see which contrasts do not meet the requirements.
 			</p>
-			<Contrasts {shades} />
+			<Contrasts bind:shades />
 		</div>
 	</div>
 </div>
