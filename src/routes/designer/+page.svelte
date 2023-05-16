@@ -49,7 +49,9 @@
 </svelte:head>
 
 <div class="custom-theme flex justify-center items-center">
-	<div class="w-1/2 flex flex-col xl:flex-row justify-center gap-8 text-surface-900-50">
+	<div
+		class="w-1/2 flex flex-col xl:flex-row justify-center items-center gap-8 text-surface-900-50"
+	>
 		<div class="flex flex-col gap-4">
 			<h2 class="font-semibold text-4xl">
 				Select your
@@ -84,7 +86,13 @@
 			<p>
 				The numbers show the contrast between the text color and the background color. By default
 				either <code>#fff</code> or <code>#000</code> is chosen, depending on which has the highest
-				contrast. Contrast values are between 1 - 21 (<code>#000</code> and <code>#fff</code>).
+				contrast. You can read more about
+				<a
+					href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast"
+				>
+					accessibility contrast guidelines
+				</a>
+				here. Click on the buttons to see which contrasts do not meet the requirements.
 			</p>
 			<Contrasts {shades} />
 		</div>

@@ -107,21 +107,39 @@
 	// 	warning: 'hover:(bg-warning-50-warning-950)',
 	// 	error: 'hover:(bg-error-50-error-950)'
 	// };
+
+	let contrast_threshold = 21;
 </script>
+
+<div class="flex gap-2">
+	<button
+		class="btn-sm btn-border-surface-tl-primary-secondary"
+		on:click={() => (contrast_threshold = 21)}>All</button
+	>
+	<button
+		class="btn-sm btn-border-surface-tl-primary-secondary"
+		on:click={() => (contrast_threshold = 4)}>4+ (AA)</button
+	>
+	<button
+		class="btn-sm btn-border-surface-tl-primary-secondary"
+		on:click={() => (contrast_threshold = 7)}>7+ (AAA)</button
+	>
+</div>
 
 <div class="flex flex-col gap-1">
 	{#each theme_colors as palette}
 		<div class="flex gap-1 justify-center items-center">
 			{#each shade_values as shade}
+				{@const { contrast, color, onColor } = shades[palette][shade]}
 				<div
-					class="group flex justify-center items-center cursor-pointer h-12 w-12 rounded-token-container transition-all hover:()"
-					style="background: {shades[palette][shade].color};"
+					class="group flex justify-center items-center cursor-pointer h-12 w-12 rounded-token-container transition-all {contrast >=
+					contrast_threshold
+						? 'scale-90 opacity-50'
+						: ''}"
+					style="background: {color};"
 				>
-					<span
-						class="transition-all group-hover:(scale-120)"
-						style="color: {shades[palette][shade].onColor};"
-					>
-						{shades[palette][shade].contrast.toFixed(2)}
+					<span class="transition-all group-hover:(scale-120)" style="color: {onColor};">
+						{contrast.toFixed(2)}
 					</span>
 				</div>
 			{/each}
