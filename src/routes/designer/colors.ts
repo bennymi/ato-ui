@@ -104,31 +104,6 @@ export default function generate_palette(baseColor: ColorManipulation): PaletteS
 		500: `#${baseColor.color}`.replace('##', '#')
 	};
 
-	// const intensityMap: {
-	// 	[key: number]: number;
-	// } = {
-	// 	// 50: 0.95,
-	// 	// 100: 0.9,
-	// 	// 200: 0.75,
-	// 	// 300: 0.6,
-	// 	// 400: 0.3,
-	// 	// 600: 0.9,
-	// 	// 700: 0.75,
-	// 	// 800: 0.6,
-	// 	// 900: 0.49,
-    //     // 950: 0.44
-	// 	50: 0.95,
-	// 	100: 0.75,
-	// 	200: 0.5,
-	// 	300: 0.3,
-	// 	400: 0.15,
-	// 	600: 0.9,
-	// 	700: 0.8,
-	// 	800: 0.65,
-	// 	900: 0.55,
-    //     950: 0.4
-	// };
-
 	const lightenValues = baseColor.lightenValues.sort((a, b) => a - b);
 	const darkenValues = baseColor.darkenValues.sort((a, b) => a - b);
 
@@ -139,13 +114,6 @@ export default function generate_palette(baseColor: ColorManipulation): PaletteS
 	(<ShadeValues[]>[600, 700, 800, 900, 950]).forEach((level, i) => {
 		response[level] = darken(baseColor.color, (100 - darkenValues[i]) / 100);
 	});
-	// (<ShadeValues[]>[50, 100, 200, 300, 400]).forEach((level) => {
-	// 	response[level] = lighten(baseColor.color, intensityMap[level]);
-	// });
-
-	// (<ShadeValues[]>[600, 700, 800, 900, 950]).forEach((level) => {
-	// 	response[level] = darken(baseColor.color, intensityMap[level]);
-	// });
 
 	let palette_shades: any = {};
 

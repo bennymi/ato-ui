@@ -205,67 +205,6 @@
 	{/each}
 </div>
 
-<!-- <div class="flex flex-col gap-1">
-	{#each theme_colors as palette}
-		<div class="flex gap-1 justify-center items-center">
-			{#each bg_colors[palette] as shade}
-				<div
-					class="group flex justify-center items-center cursor-pointer h-10 w-10 rounded-token-container transition-all hover:() {shade}"
-				>
-					<span class="transition-all group-hover:(scale-120)">1.0</span>
-				</div>
-			{/each}
-		</div>
-	{/each}
-	<div class="flex gap-1 justify-center items-center">
-		<div class="h-10 w-10 rounded-token-container bg-teal-50" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-100" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-200" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-300" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-400" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-500" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-600" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-700" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-800" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-900" />
-		<div class="h-10 w-10 rounded-token-container bg-teal-950" />
-	</div>
-</div> -->
-
-<!-- <div class="flex flex-col gap-1 [&>div>div]:(h-10 w-10 rounded-token-container)">
-	{#each theme_colors as palette}
-		<div class="flex gap-1 justify-center items-center">
-			{#each bg_colors[palette] as shade}
-				<div
-					class="group relative flex justify-center items-center cursor-pointer transition-all hover:(rotate-90) {shade}"
-				>
-					<span class="absolute transition-all group-hover:(-rotate-90)">1.0</span>
-				</div>
-			{/each}
-		</div>
-	{/each}
-</div> -->
-
-<!-- <div class="relative flex w-full h-[calc(20.5rem)]">
-	<div class="bg-surface-950 w-1/2 h-full rounded-l-token-container" />
-	<div class="bg-surface-50 w-1/2 h-full rounded-r-token-container" />
-	<div
-		class="absolute top-0 left-0 right-0 bottom-0 m-auto flex flex-col gap-1 [&>div>div]:(h-10 w-10 rounded-token-container)"
-	>
-		{#each theme_colors as palette}
-			<div class="flex gap-1 justify-center items-center">
-				{#each bg_colors[palette] as shade}
-					<div
-						class="group relative flex justify-center items-center cursor-pointer transition-all hover:(rotate-90) {shade}"
-					>
-						<span class="absolute transition-all group-hover:(-rotate-90)">1.0</span>
-					</div>
-				{/each}
-			</div>
-		{/each}
-	</div>
-</div> -->
-
 <style>
 	:global(.rangeSlider) {
 		margin: 0;
