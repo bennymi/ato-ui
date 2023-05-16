@@ -82,8 +82,13 @@
 		</div>
 
 		<div class="flex flex-col gap-2">
-			<h3 class="font-semibold text-3xl">Update contrasts</h3>
-			<p>
+			<h3 class="font-semibold text-3xl">
+				Update
+				<span class="bg-surface-950-50 text-surface-50-950 rounded-token-container px-1">
+					contrasts
+				</span>
+			</h3>
+			<p class="text-justify">
 				The numbers show the contrast between the text color and the background color. By default
 				either <code>#fff</code> or <code>#000</code> is chosen, depending on which has the highest
 				contrast. You can read more about

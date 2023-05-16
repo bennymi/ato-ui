@@ -111,10 +111,10 @@
 	let contrast_threshold = 21;
 </script>
 
-<div class="flex gap-2">
+<div class="flex gap-2 my-2">
 	<button
 		class="btn-sm btn-border-surface-tl-primary-secondary"
-		on:click={() => (contrast_threshold = 21)}>All</button
+		on:click={() => (contrast_threshold = 21)}>Show all</button
 	>
 	<button
 		class="btn-sm btn-border-surface-tl-primary-secondary"
@@ -132,9 +132,9 @@
 			{#each shade_values as shade}
 				{@const { contrast, color, onColor } = shades[palette][shade]}
 				<div
-					class="group flex justify-center items-center cursor-pointer h-12 w-12 rounded-token-container transition-all {contrast >=
+					class="group flex justify-center items-center cursor-pointer h-12 w-12 rounded-token-container transition-all duration-400 {contrast >=
 					contrast_threshold
-						? 'scale-90 opacity-50'
+						? 'scale-80 opacity-50'
 						: ''}"
 					style="background: {color};"
 				>
