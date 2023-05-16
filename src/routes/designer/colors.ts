@@ -2,7 +2,9 @@
  * Provided by @javisperez under the MIT license: https://github.com/javisperez/tailwindcolorshades/blob/master/src/composables/colors.ts
  */
 
-import type { Rgb, Palette } from "./types.d";
+import tinycolor from 'tinycolor2';
+
+import type { Rgb, Palette, Contrast, PaletteShades, Shade, ShadeValues } from "./types.d";
 
 function hexToRgb(hex: string): Rgb | null {
 	const sanitizedHex = hex.replaceAll('##', '#');
@@ -67,10 +69,30 @@ function darken(hex: string, intensity: number): string {
 	return rgbToHex(r, g, b);
 }
 
-export default function generate_palette(baseColor: string): Palette {
+function find_best_contrast(hex: string): Contrast {
+	const black_contrast = tinycolor.readability(hex, '#000');
+	const white_contrast = tinycolor.readability(hex, '#fff');
+
+	let contrast = black_contrast;
+	let contrast_color = '#000000';
+
+	if (white_contrast > black_contrast) {
+		contrast = white_contrast;
+		contrast_color = '#ffffff';
+	}
+
+	return {
+		contrast,
+		onColor: contrast_color
+	}
+}
+
+export default function generate_palette(baseColor: string): PaletteShades {
 	const response: Palette = {
 		500: `#${baseColor}`.replace('##', '#')
 	};
+
+	const shade_values: ShadeValues[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
 	const intensityMap: {
 		[key: number]: number;
@@ -97,13 +119,26 @@ export default function generate_palette(baseColor: string): Palette {
         950: 0.4
 	};
 
-	[50, 100, 200, 300, 400].forEach((level) => {
+	(<ShadeValues[]>[50, 100, 200, 300, 400]).forEach((level) => {
 		response[level] = lighten(baseColor, intensityMap[level]);
 	});
 
-	[600, 700, 800, 900, 950].forEach((level) => {
+	(<ShadeValues[]>[600, 700, 800, 900, 950]).forEach((level) => {
 		response[level] = darken(baseColor, intensityMap[level]);
 	});
 
-	return response as Palette;
+	let palette_shades: PaletteShades = {};
+
+	shade_values.forEach((v) => {
+		const contrast = find_best_contrast(<string>response[v]);
+		
+		palette_shades[v] = {
+			color: <string>response[v],
+			...contrast
+		} satisfies Shade;
+	});
+
+	// console.log('tertiary-400:', tinycolor.readability('#378b63', '#000000'), tinycolor.readability('#378b63', "#06061f"))
+
+	return palette_shades satisfies PaletteShades;
 }

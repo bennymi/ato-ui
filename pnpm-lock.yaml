@@ -25,6 +25,9 @@ dependencies:
   '@unocss/transformer-directives':
     specifier: ^0.51.12
     version: 0.51.12
+  pnpm:
+    specifier: ^8.5.1
+    version: 8.5.1
 
 devDependencies:
   '@iconify-json/material-symbols':
@@ -48,6 +51,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.1.2
     version: 20.1.2
+  '@types/tinycolor2':
+    specifier: ^1.4.3
+    version: 1.4.3
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.59.5
     version: 5.59.5(@typescript-eslint/parser@5.59.5)(eslint@8.40.0)(typescript@5.0.4)
@@ -114,6 +120,9 @@ devDependencies:
   svelte-preprocess:
     specifier: ^5.0.3
     version: 5.0.3(postcss@8.4.23)(svelte@3.59.1)(typescript@5.0.4)
+  tinycolor2:
+    specifier: ^1.6.0
+    version: 1.6.0
   tslib:
     specifier: ^2.4.1
     version: 2.5.0
@@ -678,6 +687,10 @@ packages:
 
   /@types/semver@7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
+    dev: true
+
+  /@types/tinycolor2@1.4.3:
+    resolution: {integrity: sha512-Kf1w9NE5HEgGxCRyIcRXR/ZYtDv0V8FVPtYHwLxl0O+maGX0erE77pQlD0gpP+/KByMZ87mOA79SjifhSB3PjQ==}
     dev: true
 
   /@types/unist@2.0.6:
@@ -2681,6 +2694,12 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
+  /pnpm@8.5.1:
+    resolution: {integrity: sha512-W6elL7Nww0a/MCICkzpkbxW6f99TQuX4DuJoDjWp39X08PKDkEpg4cgj3d6EtgYADcdQWl/eM8NdlLJVE3RgpA==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    dev: false
+
   /postcss-load-config@3.1.4(postcss@8.4.23):
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
@@ -3307,6 +3326,10 @@ packages:
     dependencies:
       globalyzer: 0.1.0
       globrex: 0.1.2
+    dev: true
+
+  /tinycolor2@1.6.0:
+    resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
     dev: true
 
   /to-regex-range@5.0.1:

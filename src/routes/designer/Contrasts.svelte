@@ -1,5 +1,7 @@
 <script lang="ts">
-	import type { ThemeColor } from './types.d';
+	import type { FullTheme, ShadeValues, ThemeColor } from './types.d';
+
+	export let shades: FullTheme;
 
 	let bg_colors: { [key in ThemeColor]: string[] } = {
 		primary: [
@@ -95,20 +97,41 @@
 		]
 	};
 
-	let bg_gradients = {
-		primary: 'hover:(bg-primary-50-primary-950)',
-		secondary: 'hover:(bg-secondary-50-secondary-950)',
-		tertiary: 'hover:(bg-tertiary-50-tertiary-950)',
-		surface: 'hover:(bg-surface-50-surface-950)',
-		success: 'hover:(bg-success-50-success-950)',
-		warning: 'hover:(bg-warning-50-warning-950)',
-		error: 'hover:(bg-error-50-error-950)'
-	};
+	// let bg_gradients = {
+	// 	primary: 'hover:(bg-primary-50-primary-950)',
+	// 	secondary: 'hover:(bg-secondary-50-secondary-950)',
+	// 	tertiary: 'hover:(bg-tertiary-50-tertiary-950)',
+	// 	surface: 'hover:(bg-surface-50-surface-950)',
+	// 	success: 'hover:(bg-success-50-success-950)',
+	// 	warning: 'hover:(bg-warning-50-warning-950)',
+	// 	error: 'hover:(bg-error-50-error-950)'
+	// };
 
+	let shade_numbers: ShadeValues[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 	let theme_colors: ThemeColor[] = <ThemeColor[]>Object.keys(bg_colors);
 </script>
 
 <div class="flex flex-col gap-1">
+	{#each theme_colors as palette}
+		<div class="flex gap-1 justify-center items-center">
+			{#each shade_numbers as shade}
+				<div
+					class="group flex justify-center items-center cursor-pointer h-12 w-12 rounded-token-container transition-all hover:()"
+					style="background: {shades[palette][shade].color};"
+				>
+					<span
+						class="transition-all group-hover:(scale-120)"
+						style="color: {shades[palette][shade].onColor};"
+					>
+						{shades[palette][shade].contrast.toFixed(2)}
+					</span>
+				</div>
+			{/each}
+		</div>
+	{/each}
+</div>
+
+<!-- <div class="flex flex-col gap-1">
 	{#each theme_colors as palette}
 		<div class="flex gap-1 justify-center items-center">
 			{#each bg_colors[palette] as shade}
@@ -133,7 +156,7 @@
 		<div class="h-10 w-10 rounded-token-container bg-teal-900" />
 		<div class="h-10 w-10 rounded-token-container bg-teal-950" />
 	</div>
-</div>
+</div> -->
 
 <!-- <div class="flex flex-col gap-1 [&>div>div]:(h-10 w-10 rounded-token-container)">
 	{#each theme_colors as palette}
