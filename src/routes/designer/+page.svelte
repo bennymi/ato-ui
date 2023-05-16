@@ -63,48 +63,50 @@
 </svelte:head>
 
 <div class="custom-theme flex justify-center items-center">
-	<div class="w-1/2 flex flex-col justify-center items-center gap-4">
-		<h2 class="text-surface-900-50 font-semibold text-4xl">
-			Select Your
-			<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> Colors </span>
-		</h2>
-		<div
-			class="flex justify-center items-center py-2 w-[36rem] bg-white rounded-token-container border-1 border-surface-900/40-50/0"
-		>
-			{#each theme_colors as c, i}
-				<div class="flex flex-col">
-					<div class="capitalize font-semibold text-center mb-2 select-none">{c}</div>
-					<ColorPicker
-						bind:value={$custom_theme_hex[c]}
-						size="w-20 h-20"
-						rounded={i === 0
-							? 'rounded-l-token-container'
-							: i === theme_colors.length - 1
-							? 'rounded-r-token-container'
-							: ''}
-					/>
-				</div>
-			{/each}
+	<div class="w-1/2 flex flex-col xl:flex-row justify-center gap-8 text-surface-900-50">
+		<div class="flex flex-col gap-4">
+			<h2 class="font-semibold text-4xl">
+				Select your
+				<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> colors </span>
+			</h2>
+			<div
+				class="flex justify-center items-center py-2 w-[36rem] bg-white rounded-token-container border-1 border-surface-900/40-50/0"
+			>
+				{#each theme_colors as c, i}
+					<div class="flex flex-col">
+						<div class="text-surface-950 capitalize font-semibold text-center mb-2 select-none">
+							{c}
+						</div>
+						<ColorPicker
+							bind:value={$custom_theme_hex[c]}
+							size="w-20 h-20"
+							rounded={i === 0
+								? 'rounded-l-token-container'
+								: i === theme_colors.length - 1
+								? 'rounded-r-token-container'
+								: ''}
+						/>
+					</div>
+				{/each}
+			</div>
+			<div class="bg-primary-secondary-tertiary w-[36rem] h-20 xl:h-32 rounded-token-container" />
+			<div class="bg-animated-gradient w-[36rem] h-20 xl:h-32 rounded-token-container" />
 		</div>
-		<div class="bg-primary-secondary-tertiary w-[36rem] h-20 rounded-token-container" />
-		<div class="bg-animated-gradient w-[36rem] h-20 rounded-token-container" />
 
-		<Contrasts {shades} />
+		<div class="flex flex-col gap-2">
+			<h3 class="font-semibold text-3xl">Update contrasts</h3>
+			<p>
+				The numbers show the contrast between the text color and the background color. By default
+				either <code>#fff</code> or <code>#000</code> is chosen, depending on which has the highest
+				contrast. Contrast values are between 1 - 21 (<code>#000</code> and <code>#fff</code>).
+			</p>
+			<Contrasts {shades} />
+		</div>
 	</div>
 </div>
 
 <style>
 	.bg-animated-gradient {
-		/* background: linear-gradient(
-			to right,
-			#ee7752,
-			#e73c7e,
-			#23a6d5,
-			#23d5ab,
-			#23a6d5,
-			#e73c7e,
-			#ee7752
-		); */
 		background: linear-gradient(
 			to right,
 			rgb(var(--color-primary-500)),

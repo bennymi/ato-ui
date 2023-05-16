@@ -35,7 +35,7 @@
     @apply list-disc;
 }
 
-.prose > p > code {
+.prose > p > code, p > code {
     @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-token-container;
 }
 
