@@ -120,6 +120,9 @@ devDependencies:
   svelte-preprocess:
     specifier: ^5.0.3
     version: 5.0.3(postcss@8.4.23)(svelte@3.59.1)(typescript@5.0.4)
+  svelte-range-slider-pips:
+    specifier: ^2.1.1
+    version: 2.1.1
   tinycolor2:
     specifier: ^1.6.0
     version: 1.6.0
@@ -3281,6 +3284,10 @@ packages:
       strip-indent: 3.0.0
       svelte: 3.59.1
       typescript: 5.0.4
+    dev: true
+
+  /svelte-range-slider-pips@2.1.1:
+    resolution: {integrity: sha512-fLkhfnyEc4uMOCZCl8IPyC0e9lujrjqdSyrKw28Y8j99YUPZR+pHnSxde7PqhM0ST6eyO4ugh2nFnLZTIoG9aQ==}
     dev: true
 
   /svelte-transition@0.0.7:
