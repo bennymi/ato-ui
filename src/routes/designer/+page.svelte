@@ -43,7 +43,7 @@
 		return rgb_theme;
 	}
 
-	let themeRGB: Partial<Theme> = convert_theme($custom_theme_hex);
+	// let themeRGB: Partial<Theme> = convert_theme($custom_theme_hex);
 	let shades: Partial<FullTheme> = Object.fromEntries(
 		Object.keys($custom_theme_hex).map((c) => [
 			c,
@@ -52,7 +52,7 @@
 	);
 
 	$: {
-		themeRGB = convert_theme($custom_theme_hex);
+		// themeRGB = convert_theme($custom_theme_hex);
 
 		shades = Object.fromEntries(
 			Object.keys($custom_theme_hex).map((c) => [
@@ -181,7 +181,10 @@
 
 <div class="custom-theme flex justify-center items-center">
 	<div class="w-1/2 flex flex-col justify-center items-center gap-4">
-		<h2 class="text-surface-900-50 font-bold text-2xl">Select Your Colors</h2>
+		<h2 class="text-surface-900-50 font-semibold text-4xl">
+			Select Your
+			<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> Colors </span>
+		</h2>
 		<div
 			class="flex justify-center items-center py-2 w-[36rem] bg-white rounded-token-container border-1 border-surface-900/40-50/0"
 		>
@@ -202,9 +205,7 @@
 		</div>
 		<div class="bg-primary-secondary-tertiary w-[36rem] h-20 rounded-token-container" />
 		<div class="bg-animated-gradient w-[36rem] h-20 rounded-token-container" />
-		<div class="text-center">
-			<div class="text-primary-500 font-bold">this is some text</div>
-		</div>
+
 		<Contrasts />
 	</div>
 </div>
