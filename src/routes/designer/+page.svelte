@@ -17,6 +17,24 @@
 
 	let shades = update_shades($custom_theme_hex);
 
+	let options = {
+		container_radius: [
+			'0px',
+			'2px',
+			'4px',
+			'6px',
+			'8px',
+			'10px',
+			'12px',
+			'14px',
+			'16px',
+			'20px',
+			'24px'
+		]
+	};
+
+	let container_radius = '6px';
+
 	$: shades = update_shades($custom_theme_hex);
 
 	$: custom_theme_css_variables = `
@@ -26,7 +44,7 @@
 	--theme-font-color-base: 0, 0, 0;
 	--theme-font-color-dark: 255, 255, 255;
 	--theme-rounded-base: 6px;
-	--theme-rounded-container: 6px;
+	--theme-rounded-container: ${container_radius};
 	--theme-border-base: 1px;
 
 	/* On Colors */
@@ -47,7 +65,7 @@
 	{@html `<style>${custom_theme_css_variables}</style>`}
 </svelte:head>
 
-<div class="custom-theme flex justify-center items-center">
+<div class="custom-theme flex flex-col justify-center items-center gap-8 text-surface-900-50">
 	<div
 		class="w-1/2 flex flex-col xl:flex-row justify-center items-center gap-8 text-surface-900-50"
 	>
@@ -68,6 +86,7 @@
 							{c}
 						</div>
 						<ColorPicker
+							color={c}
 							bind:value={$custom_theme_hex[c].color}
 							size="w-14 h-14 sm:(w-16 h-16) md:(w-20 h-20)"
 							rounded={i === 0
@@ -111,9 +130,27 @@
 			<Contrasts bind:shades />
 		</div>
 	</div>
+
+	<div class="w-full">
+		<label>
+			<span>Container Radius</span>
+			<select bind:value={container_radius}>
+				{#each options.container_radius as rad}
+					<option value={rad}>{rad}</option>
+				{/each}
+				<!-- <option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option> -->
+			</select>
+		</label>
+	</div>
 </div>
 
 <style>
+	select {
+		@apply rounded-token-container bg-surface-100-950 outline-primary-500;
+	}
+
 	.bg-animated-gradient {
 		background: linear-gradient(
 			to right,
