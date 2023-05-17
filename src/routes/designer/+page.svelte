@@ -88,7 +88,7 @@
 		</div>
 
 		<!-- Shade Contrasts -->
-		<div class="flex flex-col gap-2">
+		<div class="flex flex-col items-center gap-2">
 			<h3 class="font-semibold text-3xl">
 				Update shade
 				<span class="bg-surface-950-50 text-surface-50-950 rounded-token-container px-1">

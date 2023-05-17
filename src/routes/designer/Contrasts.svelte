@@ -14,25 +14,27 @@
 	let showNumbers = true;
 </script>
 
-<div class="flex gap-2 my-2">
+<div class="flex gap-2 my-2 w-full justify-between">
 	<button
 		class="btn-sm btn-border-surface-tertiary-tertiary"
 		on:click={() => (showNumbers = !showNumbers)}
 	>
 		Toggle Numbers
 	</button>
-	<button
-		class="btn-sm btn-border-surface-tl-primary-secondary"
-		on:click={() => (contrast_threshold = 21)}>Show all</button
-	>
-	<button
-		class="btn-sm btn-border-surface-tl-primary-secondary"
-		on:click={() => (contrast_threshold = 4)}>4+ (AA)</button
-	>
-	<button
-		class="btn-sm btn-border-surface-tl-primary-secondary"
-		on:click={() => (contrast_threshold = 7)}>7+ (AAA)</button
-	>
+	<div>
+		<button
+			class="btn-sm btn-border-surface-tl-primary-secondary"
+			on:click={() => (contrast_threshold = 21)}>Show all</button
+		>
+		<button
+			class="btn-sm btn-border-surface-tl-primary-secondary"
+			on:click={() => (contrast_threshold = 4)}>4+ (AA)</button
+		>
+		<button
+			class="btn-sm btn-border-surface-tl-primary-secondary"
+			on:click={() => (contrast_threshold = 7)}>7+ (AAA)</button
+		>
+	</div>
 </div>
 
 <div class="flex flex-col gap-1">
