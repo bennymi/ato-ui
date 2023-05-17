@@ -3,20 +3,10 @@
  -->
 
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
-
 	export let value = '';
 	export let size = 'w-10 h-10';
 	export let rounded = '';
 	export let color = '';
-
-	function onSelect(e: Event) {
-		dispatch('select', (e as CustomEvent).detail);
-	}
-
-	// $: console.log('value:', value);
 </script>
 
 <div
