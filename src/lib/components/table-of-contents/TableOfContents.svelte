@@ -36,7 +36,7 @@
 	/** Set the component container styles (width, border, etc). */
 	export let container = 'border-l-2 border-surface-300/40';
 	/** Set the text color styles for inactive headings. */
-	export let inactiveText = 'text-surface-900-op60-50-op60';
+	export let inactiveText = 'text-surface-900/60-50/60';
 	/** Set the hover styles. ('hover:(bg-primary-500 text-surface-50)') */
 	export let hover = 'hover:(bg-primary-500 text-on-primary!)';
 	/** Set the header item radius styles. */

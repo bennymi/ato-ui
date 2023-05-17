@@ -5,38 +5,38 @@
 	const dispatch = createEventDispatcher();
 
 	/** Set the image source. */
-	export let src: string = '';
+	export let src = '';
 	/** Set the image alt value. */
-	export let alt: string = 'avatar';
+	export let alt = 'avatar';
 	/** Set the text value in case you don't have an image. The string automatically gets shortened to 4 characters. If you pass in separate words it will use the first letters of each word. */
-	export let text: string = '';
+	export let text = '';
 	/** Set the width and height of the avatar. */
-	export let size: string = 'w-16 h-16';
+	export let size = 'w-16 h-16';
 	/** Set the rounded shape. */
 	export let rounded: Rounded = 'rounded-token-base';
 	/** Set the border classes. You can also use this to apply hover effects: hover:(...). */
-	export let border: string = 'border-4 border-surface-800';
+	export let border = 'border-4 border-surface-800';
 	/** Set the background color, for when the text is being shown. Has no effect for when an image is being shown. */
-	export let background: string = 'bg-primary-500';
+	export let background = 'bg-primary-500';
 	/** Set the text styles. */
-	export let textStyles: string = 'font-bold text-on-primary';
+	export let textStyles = 'font-bold text-on-primary';
 
 	/** Show a badge. */
-	export let badge: boolean = false;
+	export let badge = false;
 	/** Set the badge color. */
-	export let badgeBackground: string = 'bg-green-500';
+	export let badgeBackground = 'bg-green-500';
 	/** Set the badge position. */
 	export let badgePosition: Position = 'bottom-right';
 	/** Show notifications. */
-	export let notifications: string = '';
+	export let notifications = '';
 	/** Set the notifications style. */
-	export let notificationsStyle: string = 'text-xs font-semibold';
+	export let notificationsStyle = 'text-xs font-semibold';
 	/** Specify an icon to show in the badge. Use UnoCSS css icons. */
-	export let badgeIcon: string = '';
+	export let badgeIcon = '';
 	/** Show a typing animation. */
-	export let typing: boolean = false;
+	export let typing = false;
 	/** Specify the animation to use. */
-	export let typingSpinner: string = 's-dots-primary-100';
+	export let typingSpinner = 's-dots-primary-100';
 
 	let positions: any = {
 		'bottom-right': {
@@ -61,9 +61,7 @@
 		let letters = text
 			.trim()
 			.split(/\s/g)
-			.map((item) => {
-				return item[0];
-			});
+			.map((item) => item[0]);
 
 		return letters.slice(0, 4).join('');
 	};
@@ -73,7 +71,7 @@
 	$: badgePos =
 		rounded === 'rounded-full'
 			? positions[badgePosition]['rounded-full']
-			: positions[badgePosition]['other'];
+			: positions[badgePosition].other;
 </script>
 
 <div class="avatar {size} {rounded} relative inline-flex justify-center items-center">

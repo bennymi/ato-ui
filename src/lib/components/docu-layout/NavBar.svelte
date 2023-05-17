@@ -139,7 +139,7 @@
 
 {#if showSidebar}
 	<div
-		class="fixed top-12 z-40 overflow-y-auto bg-inverse-surface-50-op40-surface-800-op70 backdrop-blur-md text-surface-400-900-200-50 xl:hidden {revealTOC
+		class="fixed top-12 z-40 overflow-y-auto bg-inverse-surface-50/40-surface-800/70 backdrop-blur-md text-surface-400-900-200-50 xl:hidden {revealTOC
 			? ''
 			: 'shadow-sm shadow-surface-200 dark:(shadow-md shadow-surface-900)'}"
 	>

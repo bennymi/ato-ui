@@ -1,6 +1,6 @@
 import type { Shortcut } from '@unocss/core';
 
-import { cso, reg_c, reg_c_sO_oO2, reg_oO2, reg_p, reg_s, reg_sO } from '../utils/regex';
+import { cso, reg_c, reg_c_sO_oO, reg_oO, reg_p, reg_s } from '../utils/regex';
 
 export const borderSCs: Shortcut[] = [
     // rounded regular
@@ -14,14 +14,14 @@ export const borderSCs: Shortcut[] = [
     ],
     [
         new RegExp(`^rounded-${reg_p}-token-base$`), 
-        ([_, side]) => `rounded-${side}-[var(--theme-rounded-base)]`,
+        ([_, side]: string[]) => `rounded-${side}-[var(--theme-rounded-base)]`,
         {
             autocomplete: `rounded-${reg_p}-token-base`
         }
     ],
     [
         new RegExp(`^rounded-${reg_p}-token-container$`),
-        ([_, side]) => `rounded-${side}-[var(--theme-rounded-container)]`,
+        ([_, side]: string[]) => `rounded-${side}-[var(--theme-rounded-container)]`,
         {
             autocomplete: `rounded-${reg_p}-token-container`
         }
@@ -29,8 +29,8 @@ export const borderSCs: Shortcut[] = [
 
     // Border light - dark
     [
-        new RegExp(`^border-${reg_c}-${reg_s}${reg_oO2}-${reg_s}${reg_oO2}$`),
-        ([_, c1, s1, o1, s2, o2]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c1, s2, o2)}`,
+        new RegExp(`^border-${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`),
+        ([_, c1, s1, o1, s2, o2]: string[]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c1, s2, o2)}`,
         {
             autocomplete: [
                 `border-inverse-${reg_c}-${reg_c}`,
@@ -42,8 +42,8 @@ export const borderSCs: Shortcut[] = [
 
     // Border inverse light - dark
     [
-        new RegExp(`^border-inverse-${reg_c_sO_oO2}-${reg_c_sO_oO2}$`),
-        ([_, c1, s1, o1, c2, s2, o2]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c2, s2, o2)}`,
+        new RegExp(`^border-inverse-${reg_c_sO_oO}-${reg_c_sO_oO}$`),
+        ([_, c1, s1, o1, c2, s2, o2]: string[]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
                 `border-inverse-${reg_c}-${reg_c}`,

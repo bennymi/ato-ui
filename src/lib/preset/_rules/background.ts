@@ -8,7 +8,7 @@ export const backgroundRules: Rule[] = [
     // Scrollbar
     [
         /^scrollbar-none$/,
-        ([n]) =>
+        ([n]: string[]) =>
         `
         .${n}::-webkit-scrollbar {
             display: none;
@@ -22,7 +22,7 @@ export const backgroundRules: Rule[] = [
     // Radial background gradients
     [
         new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2]) => ({
+        ([_, c1, s1, c2, s2]: string[]) => ({
           "background": `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})))`
         }),
         {
@@ -34,7 +34,7 @@ export const backgroundRules: Rule[] = [
     ],
     [
         new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2, c3, s3]) => ({
+        ([_, c1, s1, c2, s2, c3, s3]: string[]) => ({
           "background": `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})), rgb(var(--color-${cs(c3, s3)})))`
         }),
         {
@@ -59,7 +59,7 @@ export const backgroundSCs: Shortcut[] = [
     // Background Tokens
     [
         new RegExp(`^bg-${reg_c}-${reg_s}-${reg_s}$`), 
-        ([, b, s1, s2]) => `bg-${b}-${s1} dark:bg-${b}-${s2}`,
+        ([, b, s1, s2]: string[]) => `bg-${b}-${s1} dark:bg-${b}-${s2}`,
         {
             autocomplete: `bg-${reg_c}-${reg_s}-(${shadesJ})`
         }
@@ -68,7 +68,7 @@ export const backgroundSCs: Shortcut[] = [
     // Background Inverse Tokens
     [
         new RegExp(`^bg-inverse-(${allColorsJ})${reg_sO}${reg_oO}-(${allColorsJ})${reg_sO}${reg_oO}$`), 
-        ([, c1, s1, o1, c2, s2, o2]) => `bg-${cso(c1, s1, o1)} dark:bg-${cso(c2, s2, o2)}`,
+        ([, c1, s1, o1, c2, s2, o2]: string[]) => `bg-${cso(c1, s1, o1)} dark:bg-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
                 `bg-inverse-$colors-(${allColorsJ})`, 
@@ -81,14 +81,14 @@ export const backgroundSCs: Shortcut[] = [
     // Background gradients
     [
         new RegExp(`^bg${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
-        ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]) => `bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, o1)} via-${cso(c2, s2, o2)} to-${cso(c3, s3, o3)}`, 
+        ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]: string[]) => `bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, o1)} via-${cso(c2, s2, o2)} to-${cso(c3, s3, o3)}`, 
         {
             autocomplete: [`bg-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`]
         }
     ],
     [
         new RegExp(`^bg${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
-        ([, d, c1, s1, o1, c2, s2, o2]) => `bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, o1)} to-${cso(c2, s2, o2)}`, 
+        ([, d, c1, s1, o1, c2, s2, o2]: string[]) => `bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, o1)} to-${cso(c2, s2, o2)}`, 
         {
             autocomplete: [
                 `bg-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
