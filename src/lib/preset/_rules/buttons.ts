@@ -112,45 +112,47 @@ export const buttonRules: Rule[] = [
     // Button group regular
     [
         new RegExp(`^btn-group-${reg_c_sO_oO}$`),
-        ([name, c, s, o]: string[]) => `
-        .${name} {
-            display: inline-flex;
-            border-radius: var(--theme-rounded-base);
-        }
-        .${name} button, .${name} a {
-            display: inline-flex; 
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem; 
-            padding-left: 1rem;
-            padding-right: 1rem; 
-            transition-property: all; 
-            font-size: 0.875rem;
-            line-height: 1.25rem; 
-            font-weight: 700; 
-            justify-content: center; 
-            align-items: center; 
-            border: 1px solid rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
-            color: rgba(var(--on-${c}));
-            background: rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
-        }
-        .${name} button > * + *, .${name} a > * + * {
-            margin-left: 0.25rem;
-        }
-        .${name} button:hover, .${name} a:hover {
-            color: rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
-            background: rgba(var(--color-${cs(c, s)}), 0.1);
-        }
-        .${name} button:first-child, .${name} a:first-child {
-            border-top-left-radius: var(--theme-rounded-base);
-            border-bottom-left-radius: var(--theme-rounded-base);
-        }
-        .${name} button:last-child, .${name} a:last-child {
-            border-top-right-radius: var(--theme-rounded-base);
-            border-bottom-right-radius: var(--theme-rounded-base);
-        }
-        `
+        ([n, c, s, o]: string[]) => {
+            const name = n.replace('/', '\\/'); 
+            return `
+            .${name} {
+                display: inline-flex;
+                border-radius: var(--theme-rounded-base);
+            }
+            .${name} button, .${name} a {
+                display: inline-flex; 
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem; 
+                padding-left: 1rem;
+                padding-right: 1rem; 
+                transition-property: all; 
+                font-size: 0.875rem;
+                line-height: 1.25rem; 
+                font-weight: 700; 
+                justify-content: center; 
+                align-items: center; 
+                border: 1px solid rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
+                color: rgba(var(--on-${cs(c, '500')}));
+                background: rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
+            }
+            .${name} button > * + *, .${name} a > * + * {
+                margin-left: 0.25rem;
+            }
+            .${name} button:hover, .${name} a:hover {
+                color: rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
+                background: rgba(var(--color-${cs(c, s)}), 0.1);
+            }
+            .${name} button:first-child, .${name} a:first-child {
+                border-top-left-radius: var(--theme-rounded-base);
+                border-bottom-left-radius: var(--theme-rounded-base);
+            }
+            .${name} button:last-child, .${name} a:last-child {
+                border-top-right-radius: var(--theme-rounded-base);
+                border-bottom-right-radius: var(--theme-rounded-base);
+            }
+        `;
         // @apply space-x-1 hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
-    ],
+    }],
     // [
     //     new RegExp(`^btn-group-${reg_c_sO_oO}$`),
     //     ([_, c, s, o]) => `
@@ -188,7 +190,7 @@ export const buttonSCs: Shortcut[] = [
     // Button regular
     [
         new RegExp(`^btn-${reg_c}$`), 
-        ([, c]: string[]) => `${baseStyles} bg-${c}-500 text-on-${c} hover:bg-${c}-600 disabled:hover:bg-${c}-500`, 
+        ([, c]: string[]) => `${baseStyles} bg-${c}-500 text-on-${cs(c, '500')} hover:bg-${c}-600 disabled:hover:bg-${c}-500`, 
         {
             autocomplete: [`btn-(${themeColorsJ})`, 'btn-primary', 'btn-secondary', 'btn-tertiary']
         }
@@ -197,7 +199,7 @@ export const buttonSCs: Shortcut[] = [
     // Button glass
     [
         new RegExp(`^btn-glass-${reg_c_sO_oO}$`), 
-        ([, c, s, o]: string[]) => `${baseStyles} ${glassStyles} bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)} border-${cs(c, s)} hover:(bg-${cs(c, s)} text-on-${c}) disabled:hover:(bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)})`, 
+        ([, c, s, o]: string[]) => `${baseStyles} ${glassStyles} bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)} border-${cs(c, s)} hover:(bg-${cs(c, s)} text-on-${cs(c, '500')}) disabled:hover:(bg-${cso(c, s, `${o ?? glassOp}`)} text-${cs(c, s)})`, 
         {
             autocomplete: [`btn-glass-(${themeColorsJ})`, `btn-glass-(${themeColorsJ})-(${shadesJ})`]
         }
@@ -207,7 +209,7 @@ export const buttonSCs: Shortcut[] = [
         ([, d, c1, s1, o1, c2, s2, o2]: string[]) => 
             `${baseStyles} ${glassStyles} bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, `${o1 ?? glassOp}`)} to-${cso(c2, s2, `${o2 ?? glassOp}`)} 
             text-${cs(c1, s1)} border-${cs(c1, s1)} 
-            hover:(from-${cs(c1, s1)} to-${cs(c2, s2)} text-on-${c1}) 
+            hover:(from-${cs(c1, s1)} to-${cs(c2, s2)} text-on-${cs(c1, '500')}) 
             disabled:hover:(from-${cso(c1, s1, `${o1 ?? glassOp}`)} to-${cso(c2, s2, `${o2 ?? glassOp}`)})`, 
         {
             autocomplete: [`btn-glass-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`, `btn-glass-(${directionsJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`]
@@ -218,7 +220,7 @@ export const buttonSCs: Shortcut[] = [
         ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]: string[]) => 
             `${baseStyles} ${glassStyles} bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)}
             text-${cs(c1, s1)} border-${cs(c1, s1)} 
-            hover:(from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)} text-on-${c1}) 
+            hover:(from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)} text-on-${cs(c1, '500')}) 
             disabled:hover:(from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)} text-${cs(c1, s1)})`, 
         {
             autocomplete: [
@@ -231,14 +233,14 @@ export const buttonSCs: Shortcut[] = [
     // Button gradients
     [
         new RegExp(`^btn${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
-        ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]: string[]) => `${baseStyles} ${gradientStyles} bg-gradient-to-${d ?? default_dir} text-on-${c1} from-${cso(c1, s1, o1)} via-${cso(c2, s2, o2)} to-${cso(c3, s3, o3)}`, 
+        ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]: string[]) => `${baseStyles} ${gradientStyles} bg-gradient-to-${d ?? default_dir} text-on-${cs(c1, '500')} from-${cso(c1, s1, o1)} via-${cso(c2, s2, o2)} to-${cso(c3, s3, o3)}`, 
         {
             autocomplete: [`btn-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`]
         }
     ],
     [
         new RegExp(`^btn${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
-        ([, d, c1, s1, o1, c2, s2, o2]: string[]) => `${baseStyles} ${gradientStyles} bg-gradient-to-${d ?? default_dir} text-on-${c1} from-${cso(c1, s1, o1)} to-${cso(c2, s2, o2)}`, 
+        ([, d, c1, s1, o1, c2, s2, o2]: string[]) => `${baseStyles} ${gradientStyles} bg-gradient-to-${d ?? default_dir} text-on-${cs(c1, '500')} from-${cso(c1, s1, o1)} to-${cso(c2, s2, o2)}`, 
         {
             autocomplete: [
                 `btn-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
@@ -250,7 +252,7 @@ export const buttonSCs: Shortcut[] = [
     // Button gradient border
     [
         new RegExp(`^btn-border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([, bc, bs, bo, d, c1, s1, c2, s2]: string[]) => `${baseStyles} text-on-${bc} border-${name_c_sO_oO(bc, bs, bo)}-${d ?? default_dir}-${cs(c1, s1)}-${cs(c2, s2)} hover:(bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} to-${cs(c2, s2)})`,
+        ([, bc, bs, bo, d, c1, s1, c2, s2]: string[]) => `${baseStyles} text-on-${cs(bc, '500')} border-${name_c_sO_oO(bc, bs, bo)}-${d ?? default_dir}-${cs(c1, s1)}-${cs(c2, s2)} hover:(bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} to-${cs(c2, s2)})`,
         {
             autocomplete: [
                 `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
@@ -261,7 +263,7 @@ export const buttonSCs: Shortcut[] = [
     [
         new RegExp(`^btn-border-${reg_c_sO_oO}${reg_dO}-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
         ([, bc, bs, bo, d, c1, s1, c2, s2, c3, s3]: string[]) => 
-        `${baseStyles} text-on-${bc} border-${name_c_sO_oO(bc, bs, bo)}-${d ?? default_dir}-${cs(c1, s1)}-${cs(c2, s2)}-${cs(c3, s3)} hover:(bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)})`,
+        `${baseStyles} text-on-${cs(bc, '500')} border-${name_c_sO_oO(bc, bs, bo)}-${d ?? default_dir}-${cs(c1, s1)}-${cs(c2, s2)}-${cs(c3, s3)} hover:(bg-gradient-to-${d ?? default_dir} from-${cs(c1, s1)} via-${cs(c2, s2)} to-${cs(c3, s3)})`,
         {
             autocomplete: [
                 `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,

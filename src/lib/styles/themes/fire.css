@@ -9,13 +9,13 @@
 	--theme-rounded-container: 12px;
 	--theme-border-base: 1px;
 	/* =~= Theme On-X Colors =~= */
-	--on-primary: 255, 255, 255;
-	--on-secondary: 0, 0, 0;
-	--on-tertiary: 255, 255, 255;
-	--on-success: 0, 0, 0;
-	--on-warning: 0, 0, 0;
-	--on-error: 255, 255, 255;
-	--on-surface: 255, 255, 255;
+	--on-primary-500: 255, 255, 255;
+	--on-secondary-500: 0, 0, 0;
+	--on-tertiary-500: 255, 255, 255;
+	--on-success-500: 0, 0, 0;
+	--on-warning-500: 0, 0, 0;
+	--on-error-500: 255, 255, 255;
+	--on-surface-500: 255, 255, 255;
 	/* =~= Theme Colors  =~= */
 	/* primary | #a60707 */
 	--color-primary-50: 242, 218, 218; /* ⬅ #f2dada */

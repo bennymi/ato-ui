@@ -78,5 +78,5 @@ export function cso(c: string, s: string, o: string) {
 export function name_c_sO_oO(c: string, s='', o='') {
     // console.log(`${c}${s ? `-${s}` : ''}${o ? `/${o}` : ''}`);
     // return `${c}${s ? `-${s}` : ''}${o ? `\/${o}` : ''}`;
-    return `${c}${s ? `-${s}` : ''}${o ? `-op${o}` : ''}`;
+    return `${c}${s ? `-${s}` : ''}${o ? `/${o}` : ''}`;
 }
