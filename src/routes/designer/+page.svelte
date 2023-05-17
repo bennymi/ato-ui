@@ -9,7 +9,7 @@
 	import ColorPicker from './ColorPicker.svelte';
 	import Contrasts from './Contrasts.svelte';
 
-	$themeStore = 'ato';
+	$themeStore = 'custom-theme';
 
 	const update_shades = (store: LocalStorageColor) =>
 		Object.fromEntries(
@@ -132,17 +132,41 @@
 		</div>
 	</div>
 
+	<!-- Other theme values -->
 	<div class="w-full">
-		<div class="w-1/2">
+		<div
+			class="w-full bg-surface-50-600 px-4 py-2 border-1 border-surface-900/40-200/20 rounded-token-container"
+		>
+			<div class="flex items-center gap-2">
+				<label class="w-1/2">
+					<span>Button Radius</span>
+					<select bind:value={$custom_theme_store.btn_radius}>
+						{#each options.container_radius as rad}
+							<option value={rad}>{rad}</option>
+						{/each}
+					</select>
+				</label>
+				<div class="w-1/2 flex justify-center gap-4">
+					<button class="btn-primary">Click</button>
+					<button class="btn-primary-secondary-tertiary">Click</button>
+					<button class="btn-glass-primary-secondary">Click</button>
+					<button class="btn-border-surface-primary-secondary">Click</button>
+				</div>
+			</div>
+			<label>
+				<span>Icon Button Radius</span>
+				<select bind:value={$custom_theme_store.btn_icon_radius}>
+					{#each options.container_radius as rad}
+						<option value={rad}>{rad}</option>
+					{/each}
+				</select>
+			</label>
 			<label>
 				<span>Container Radius</span>
 				<select bind:value={$custom_theme_store.container_radius}>
 					{#each options.container_radius as rad}
 						<option value={rad}>{rad}</option>
 					{/each}
-					<!-- <option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option> -->
 				</select>
 			</label>
 		</div>
@@ -150,8 +174,16 @@
 </div>
 
 <style>
+	label {
+		@apply flex flex-col gap-2 mb-4;
+	}
+
+	label > span {
+		@apply font-bold;
+	}
+
 	select {
-		@apply rounded-token-container bg-surface-100-950 outline-primary-500;
+		@apply rounded-token-container bg-surface-50-900 outline-primary-500;
 	}
 
 	.bg-animated-gradient {
