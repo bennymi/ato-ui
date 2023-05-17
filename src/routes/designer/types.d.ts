@@ -11,16 +11,23 @@ export type ShadeValues = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 9
 
 type ColorManipulation = {
 	color: string,
-	lightenValues: number[],
-	darkenValues: number[],
+	lighten_values: number[],
+	darken_values: number[],
+}
+
+export type LocalStorageColor = {
+	[key in ThemeColor]: ColorManipulation;
 }
 
 export type LocalStorageTheme = {
-    [key in ThemeColor]: ColorManipulation;
+    colors: LocalStorageColor,
+	btn_radius: string,
+	btn_icon_radius: string,
+	container_radius: string
 };
 
 export type Contrast = {
-	onColor: string,
+	on_color: string,
 	contrast: number,
 }
 

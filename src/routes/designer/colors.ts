@@ -95,7 +95,7 @@ function find_best_contrast(hex: string): Contrast {
 
 	return {
 		contrast,
-		onColor: contrast_color
+		on_color: contrast_color
 	}
 }
 
@@ -104,15 +104,15 @@ export default function generate_palette(baseColor: ColorManipulation): PaletteS
 		500: `#${baseColor.color}`.replace('##', '#')
 	};
 
-	const lightenValues = baseColor.lightenValues.sort((a, b) => a - b);
-	const darkenValues = baseColor.darkenValues.sort((a, b) => a - b);
+	const lighten_values = baseColor.lighten_values.sort((a, b) => a - b);
+	const darken_values = baseColor.darken_values.sort((a, b) => a - b);
 
 	(<ShadeValues[]>[50, 100, 200, 300, 400]).forEach((level, i) => {
-		response[level] = lighten(baseColor.color, (100 - lightenValues[i]) / 100);
+		response[level] = lighten(baseColor.color, (100 - lighten_values[i]) / 100);
 	});
 
 	(<ShadeValues[]>[600, 700, 800, 900, 950]).forEach((level, i) => {
-		response[level] = darken(baseColor.color, (100 - darkenValues[i]) / 100);
+		response[level] = darken(baseColor.color, (100 - darken_values[i]) / 100);
 	});
 
 	let palette_shades: any = {};
@@ -144,7 +144,7 @@ export function create_css_colors(theme: FullTheme): string {
 			css_string += '\n';
 			shade_values.forEach((v) => {
 				if (v in theme[c]) {
-					css_string += `--on-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.onColor)}; /* ${theme[c][v]?.onColor} */\n`
+					css_string += `--on-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.on_color)}; /* ${theme[c][v]?.on_color} */\n`
 				}
 			});
 

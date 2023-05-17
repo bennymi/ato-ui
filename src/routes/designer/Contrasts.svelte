@@ -5,7 +5,7 @@
 	import RangeSlider from 'svelte-range-slider-pips';
 	import { slide } from 'svelte/transition';
 
-	import { custom_theme_hex } from '../stores';
+	import { custom_theme_store } from './stores';
 
 	export let shades: FullTheme;
 
@@ -52,7 +52,7 @@
 				aria-controls="slider-{palette}"
 			>
 				{#each shade_values as shade}
-					{@const { contrast, color, onColor } = shades[palette][shade]}
+					{@const { contrast, color, on_color } = shades[palette][shade]}
 					<div
 						class="group h-8 w-8 md:(h-12 w-12) flex justify-center items-center cursor-pointer rounded-token-container transition-all duration-400 {contrast >=
 						contrast_threshold
@@ -63,7 +63,7 @@
 						{#if showNumbers}
 							<span
 								class="transition-all text-sm md:text-base group-hover:(font-semibold md:font-bold)"
-								style="color: {onColor};"
+								style="color: {on_color};"
 							>
 								{contrast.toFixed(2)}
 							</span>
@@ -81,7 +81,7 @@
 						<!-- values={[50, 60, 70]} -->
 						<RangeSlider
 							pips
-							bind:values={$custom_theme_hex[palette].lightenValues}
+							bind:values={$custom_theme_store.colors[palette].lighten_values}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}
 							--range-handle-focus={shades[palette][600].color}
@@ -92,7 +92,7 @@
 					<div class="range-slider">
 						<RangeSlider
 							pips
-							bind:values={$custom_theme_hex[palette].darkenValues}
+							bind:values={$custom_theme_store.colors[palette].darken_values}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}
 							--range-handle-focus={shades[palette][600].color}

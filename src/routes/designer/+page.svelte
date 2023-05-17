@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { themeStore, custom_theme_hex } from '../stores';
+	import { themeStore } from '../stores';
+	import { custom_theme_store } from './stores';
 
-	import type { ThemeColor, FullTheme, LocalStorageTheme } from './types.d';
+	import type { ThemeColor, FullTheme, LocalStorageColor } from './types.d';
 	import { theme_colors } from './constants';
 	import generate_palette, { create_css_colors } from './colors';
 
@@ -10,12 +11,12 @@
 
 	$themeStore = 'ato';
 
-	const update_shades = (store: LocalStorageTheme) =>
+	const update_shades = (store: LocalStorageColor) =>
 		Object.fromEntries(
 			theme_colors.map((c) => [c, generate_palette(store[<ThemeColor>c])])
 		) as FullTheme;
 
-	let shades = update_shades($custom_theme_hex);
+	let shades = update_shades($custom_theme_store.colors);
 
 	let options = {
 		container_radius: [
@@ -33,18 +34,18 @@
 		]
 	};
 
-	let container_radius = '6px';
-
-	$: shades = update_shades($custom_theme_hex);
+	$: shades = update_shades($custom_theme_store.colors);
 
 	$: custom_theme_css_variables = `
 :root .custom-theme {
 	--theme-font-family-base: system-ui;
 	--theme-font-family-heading: system-ui;
+
 	--theme-font-color-base: 0, 0, 0;
 	--theme-font-color-dark: 255, 255, 255;
-	--theme-rounded-base: 6px;
-	--theme-rounded-container: ${container_radius};
+
+	--theme-rounded-base: ${$custom_theme_store.btn_radius};
+	--theme-rounded-container: ${$custom_theme_store.container_radius};
 	--theme-border-base: 1px;
 
 	/* On Colors */
@@ -87,7 +88,7 @@
 						</div>
 						<ColorPicker
 							color={c}
-							bind:value={$custom_theme_hex[c].color}
+							bind:value={$custom_theme_store.colors[c].color}
 							size="w-14 h-14 sm:(w-16 h-16) md:(w-20 h-20)"
 							rounded={i === 0
 								? 'rounded-l-token-container'
@@ -132,17 +133,19 @@
 	</div>
 
 	<div class="w-full">
-		<label>
-			<span>Container Radius</span>
-			<select bind:value={container_radius}>
-				{#each options.container_radius as rad}
-					<option value={rad}>{rad}</option>
-				{/each}
-				<!-- <option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option> -->
-			</select>
-		</label>
+		<div class="w-1/2">
+			<label>
+				<span>Container Radius</span>
+				<select bind:value={$custom_theme_store.container_radius}>
+					{#each options.container_radius as rad}
+						<option value={rad}>{rad}</option>
+					{/each}
+					<!-- <option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option> -->
+				</select>
+			</label>
+		</div>
 	</div>
 </div>
 
