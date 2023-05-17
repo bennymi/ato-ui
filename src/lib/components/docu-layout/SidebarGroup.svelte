@@ -12,7 +12,8 @@
 	export let groupTitle: string;
 	export let items: NavGroupItem[][];
 
-	let hideGroup = false;
+	let group_id = `ato-sidebar-group-${groupTitle.toLowerCase()}`;
+	let hide_group = false;
 
 	const handleClick = (sitePath: string) => {
 		dispatch('item-clicked', sitePath);
@@ -33,17 +34,20 @@
 				</h2>
 			</div>
 			<button
-				class="text-xl text-surface-600-900-300-50 {hideGroup
+				class="text-xl text-surface-600-900-300-50 {hide_group
 					? 'i-mdi-chevron-right'
 					: 'i-mdi-chevron-down'}"
-				on:click={() => (hideGroup = !hideGroup)}
+				on:click={() => (hide_group = !hide_group)}
+				aria-expanded={!hide_group}
+				aria-controls={group_id}
 			/>
 		</div>
 	{/if}
-	<!-- {#each items as { title, path, icon, hoverIcon, headless }} -->
+
 	{#each items as item, i}
-		{#if !hideGroup}
+		{#if !hide_group}
 			<div
+				id={group_id}
 				class="flex items-center gap-1"
 				transition:slide|local={{ duration: 100, delay: i * 60 }}
 			>
@@ -58,7 +62,6 @@
 					on:click={() => handleClick(item[0].sitePath)}
 					on:keydown
 				>
-					<!-- ? '!text-surface-900-50 font-semibold' -->
 					{#if item[0].icon}
 						<span class="text-lg {item[0].icon} {item[0].hoverIcon}" />
 					{/if}
@@ -68,8 +71,6 @@
 				</a>
 
 				{#if item.length === 2}
-					<!-- <span class="px-1 bg-surface-500 text-on-surface rounded-token-base">H</span>
-				<span class="px-1 bg-primary-500 text-on-primary rounded-token-base">S</span> -->
 					<a
 						href={`${item[0].sitePath}`}
 						class="group flex items-center p-1 rounded-token-base {active(item[0].sitePath)

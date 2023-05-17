@@ -59,7 +59,7 @@
 					items: data.tokens
 				},
 				{
-					groupTitle: 'Shortcuts',
+					groupTitle: 'UnoCSS',
 					groupIcon: 'i-vscode-icons-file-type-unocss',
 					items: data.shortcuts
 				},
