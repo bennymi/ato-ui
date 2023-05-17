@@ -38,7 +38,7 @@
 <div class="flex flex-col gap-1">
 	<div class="flex gap-1">
 		{#each shade_values as shade}
-			<span class="w-12 text-center font-bold">{shade}</span>
+			<span class="w-8 font-semibold md:(w-12 font-bold) text-center">{shade}</span>
 		{/each}
 	</div>
 	{#each theme_colors as palette}
@@ -52,14 +52,17 @@
 				{#each shade_values as shade}
 					{@const { contrast, color, onColor } = shades[palette][shade]}
 					<div
-						class="group flex justify-center items-center cursor-pointer h-12 w-12 rounded-token-container transition-all duration-400 {contrast >=
+						class="group h-8 w-8 md:(h-12 w-12) flex justify-center items-center cursor-pointer rounded-token-container transition-all duration-400 {contrast >=
 						contrast_threshold
 							? 'scale-80 opacity-50'
 							: ''}"
 						style="background: {color};"
 					>
 						{#if showNumbers}
-							<span class="transition-all group-hover:(scale-120)" style="color: {onColor};">
+							<span
+								class="transition-all text-sm md:text-base group-hover:(font-semibold md:font-bold)"
+								style="color: {onColor};"
+							>
 								{contrast.toFixed(2)}
 							</span>
 						{/if}
@@ -69,10 +72,10 @@
 			{#if show_slider === palette}
 				<div
 					id="slider-{palette}"
-					class="mb-4 mt-5 flex gap-12"
+					class="mb-4 mt-5 flex justify-center gap-8 [&>.range-slider]:(w-45) md:(gap-12 [&>.range-slider]:w-65)"
 					transition:slide={{ duration: 250 }}
 				>
-					<div class="w-65">
+					<div class="range-slider">
 						<!-- values={[50, 60, 70]} -->
 						<RangeSlider
 							pips
@@ -84,7 +87,7 @@
 						/>
 						<div class="font-semibold mt-2">Lighten</div>
 					</div>
-					<div class="w-65">
+					<div class="range-slider">
 						<RangeSlider
 							pips
 							bind:values={$custom_theme_hex[palette].darkenValues}

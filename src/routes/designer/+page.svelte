@@ -51,22 +51,25 @@
 	<div
 		class="w-1/2 flex flex-col xl:flex-row justify-center items-center gap-8 text-surface-900-50"
 	>
-		<div class="flex flex-col gap-4">
+		<!-- Select main theme colors -->
+		<div class="flex flex-col items-center gap-4">
 			<h2 class="font-semibold text-4xl">
 				Select your
 				<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> colors </span>
 			</h2>
 			<div
-				class="flex justify-center items-center py-2 w-[36rem] bg-white rounded-token-container border-1 border-surface-900/40-50/0"
+				class="flex justify-center items-center py-0.5 w-[24.75rem] sm:(py-1 w-[29rem]) md:(py-2 w-[36rem]) bg-white rounded-token-container border-1 border-surface-900/40-50/0"
 			>
 				{#each theme_colors as c, i}
 					<div class="flex flex-col">
-						<div class="text-surface-950 capitalize font-semibold text-center mb-2 select-none">
+						<div
+							class="text-surface-950 capitalize text-center mb-2 select-none text-xs sm:text-sm md:(font-semibold text-base)"
+						>
 							{c}
 						</div>
 						<ColorPicker
 							bind:value={$custom_theme_hex[c].color}
-							size="w-20 h-20"
+							size="w-14 h-14 sm:(w-16 h-16) md:(w-20 h-20)"
 							rounded={i === 0
 								? 'rounded-l-token-container'
 								: i === theme_colors.length - 1
@@ -76,10 +79,15 @@
 					</div>
 				{/each}
 			</div>
-			<div class="bg-primary-secondary-tertiary w-[36rem] h-20 xl:h-32 rounded-token-container" />
-			<div class="bg-animated-gradient w-[36rem] h-20 xl:h-32 rounded-token-container" />
+			<div
+				class="bg-primary-secondary-tertiary w-[24.75rem] h-14 sm:(w-[29rem] h-16) md:(w-[36rem] h-20) xl:h-32 rounded-token-container"
+			/>
+			<div
+				class="bg-animated-gradient w-[24.75rem] h-14 sm:(w-[29rem] h-16) md:(w-[36rem] h-20) xl:h-32 rounded-token-container"
+			/>
 		</div>
 
+		<!-- Shade Contrasts -->
 		<div class="flex flex-col gap-2">
 			<h3 class="font-semibold text-3xl">
 				Update shade
