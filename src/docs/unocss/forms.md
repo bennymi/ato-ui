@@ -1,5 +1,5 @@
 ---
-title: UnoCSS Forms
+title: Forms
 description: Button classes that can be used.
 ---
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { themeStore } from '../stores';
+	import { themeStore, customThemeCSSStore } from '../stores';
 	import { custom_theme_store } from './stores';
 
 	import type { ThemeColor, FullTheme, LocalStorageColor } from './types.d';
@@ -60,6 +60,8 @@
 	${create_css_colors(<FullTheme>shades)}
 }
 	`;
+
+	$: $customThemeCSSStore = custom_theme_css_variables;
 </script>
 
 <svelte:head>

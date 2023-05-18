@@ -18,7 +18,7 @@
 	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
 
 	import { darkTheme } from '$lib/stores/lightswitch';
-	import { themeStore } from './stores';
+	import { themeStore, customThemeCSSStore } from './stores';
 	import AtoUI from './AtoUI.svelte';
 
 	import { page } from '$app/stores';
@@ -46,7 +46,7 @@
 			navTitle: 'Components',
 			showSidebar: true,
 			basePath: '/docs',
-			landingPath: '/docs/components/avatar',
+			landingPath: '/docs/get-started/1-installation',
 			groups: [
 				{
 					groupTitle: 'Introduction',
@@ -106,7 +106,11 @@
 			: allGroupItems[currentPageIdx + 1][0];
 </script>
 
-<div class:dark={$darkTheme} class="{$themeStore} min-w-screen min-h-screen">
+<svelte:head>
+	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
+</svelte:head>
+
+<div id="ato-ui-docu" class:dark={$darkTheme} class="{$themeStore} min-w-screen min-h-screen">
 	<NavBar
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
