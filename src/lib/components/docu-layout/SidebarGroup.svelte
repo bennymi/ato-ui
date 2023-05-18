@@ -34,75 +34,83 @@
 				</h2>
 			</div>
 			<button
-				class="text-xl text-surface-600-900-300-50 {hide_group
-					? 'i-mdi-chevron-right'
-					: 'i-mdi-chevron-down'}"
+				class=""
 				on:click={() => (hide_group = !hide_group)}
 				aria-expanded={!hide_group}
 				aria-controls={group_id}
-			/>
+			>
+				<span class="sr-only"
+					>{`${hide_group ? 'show' : 'hide'} ${groupTitle} sidebar menu group`}</span
+				>
+				<span
+					class="text-xl text-surface-600-900-300-50 {hide_group
+						? 'i-mdi-chevron-right'
+						: 'i-mdi-chevron-down'}"
+				/>
+			</button>
 		</div>
 	{/if}
 
-	{#each items as item, i}
-		{#if !hide_group}
-			<div
-				id={group_id}
-				class="flex items-center gap-1"
-				transition:slide|local={{ duration: 100, delay: i * 60 }}
-			>
-				<a
-					href={item[0].sitePath}
-					class="group flex items-center gap-2 text-surface-600-900-300-50 hover:(font-semibold) {active(
-						item[0].sitePath
-					) ||
-					(item.length === 2 && active(`${item[1].sitePath}`))
-						? '!text-surface-900-50 font-semibold'
-						: ''}"
-					on:click={() => handleClick(item[0].sitePath)}
-					on:keydown
+	{#if !hide_group}
+		<div id={group_id}>
+			{#each items as item, i}
+				<div
+					class="flex items-center gap-1"
+					transition:slide|local={{ duration: 100, delay: i * 60 }}
 				>
-					{#if item[0].icon}
-						<span class="text-lg {item[0].icon} {item[0].hoverIcon}" />
-					{/if}
-					<span>
-						{item[0].title}
-					</span>
-				</a>
-
-				{#if item.length === 2}
 					<a
-						href={`${item[0].sitePath}`}
-						class="group flex items-center p-1 rounded-token-base {active(item[0].sitePath)
-							? 'bg-primary-500'
-							: 'bg-surface-500 '} hover:bg-primary-500"
+						href={item[0].sitePath}
+						class="group flex items-center gap-2 text-surface-600-900-300-50 hover:(font-semibold) {active(
+							item[0].sitePath
+						) ||
+						(item.length === 2 && active(`${item[1].sitePath}`))
+							? '!text-surface-900-50 font-semibold'
+							: ''}"
 						on:click={() => handleClick(item[0].sitePath)}
 						on:keydown
 					>
-						<span class="sr-only">{`Headless ${item[0].title} component`}</span>
-						<span
-							class="text-lg {active(item[0].sitePath)
-								? 'text-on-primary'
-								: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-outline-rounded"
-						/>
+						{#if item[0].icon}
+							<span class="text-lg {item[0].icon} {item[0].hoverIcon}" />
+						{/if}
+						<span>
+							{item[0].title}
+						</span>
 					</a>
-					<a
-						href={item[1].sitePath}
-						class="group flex items-center p-1 rounded-token-base {active(item[1].sitePath)
-							? 'bg-primary-500'
-							: 'bg-surface-500 '} hover:bg-primary-500"
-						on:click={() => handleClick(item[1].sitePath)}
-						on:keydown
-					>
-						<span class="sr-only">{`Styled ${item[1].title} component`}</span>
-						<span
-							class="text-lg {active(item[1].sitePath)
-								? 'text-on-primary'
-								: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-rounded"
-						/>
-					</a>
-				{/if}
-			</div>
-		{/if}
-	{/each}
+
+					{#if item.length === 2}
+						<a
+							href={`${item[0].sitePath}`}
+							class="group flex items-center p-1 rounded-token-base {active(item[0].sitePath)
+								? 'bg-primary-500'
+								: 'bg-surface-500 '} hover:bg-primary-500"
+							on:click={() => handleClick(item[0].sitePath)}
+							on:keydown
+						>
+							<span class="sr-only">{`Headless ${item[0].title} component`}</span>
+							<span
+								class="text-lg {active(item[0].sitePath)
+									? 'text-on-primary'
+									: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-outline-rounded"
+							/>
+						</a>
+						<a
+							href={item[1].sitePath}
+							class="group flex items-center p-1 rounded-token-base {active(item[1].sitePath)
+								? 'bg-primary-500'
+								: 'bg-surface-500 '} hover:bg-primary-500"
+							on:click={() => handleClick(item[1].sitePath)}
+							on:keydown
+						>
+							<span class="sr-only">{`Styled ${item[1].title} component`}</span>
+							<span
+								class="text-lg {active(item[1].sitePath)
+									? 'text-on-primary'
+									: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-rounded"
+							/>
+						</a>
+					{/if}
+				</div>
+			{/each}
+		</div>
+	{/if}
 </div>
