@@ -5,14 +5,14 @@ export async function load() {
     const glob_start = import.meta.glob('/src/docs/get-started/*.md', { eager: true });
     const glob_actions = import.meta.glob('/src/docs/actions/*.md', { eager: true });
     const glob_tokens = import.meta.glob('/src/docs/tokens/*.md', { eager: true });
-    const glob_shortcuts = import.meta.glob('/src/docs/shortcuts/*.md', { eager: true });
+    const glob_unocss = import.meta.glob('/src/docs/unocss/*.md', { eager: true });
     const glob_components = import.meta.glob('/src/docs/components/*.md', { eager: true });
 
     let articles: NavGroupItem[][] = [];
     let actions: NavGroupItem[][] = [];
     let components: NavGroupItem[][] = [];
     let tokens: NavGroupItem[][] = [];
-    let shortcuts: NavGroupItem[][] = [];
+    let unocss: NavGroupItem[][] = [];
 
     Object.keys(glob_actions).forEach((s) => {
         const file = glob_actions[s];
@@ -50,15 +50,15 @@ export async function load() {
         }
     });
 
-    Object.keys(glob_shortcuts).forEach((s) => {
-        const file = glob_shortcuts[s];
+    Object.keys(glob_unocss).forEach((s) => {
+        const file = glob_unocss[s];
         const slug = s.split('/').at(-1)?.replace('.md', '');
 
         if (file && typeof file === 'object' && 'metadata' in file && slug) {
             const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
-            const shortcut = { mdPath: s, sitePath: `/docs/shortcuts/${slug}`, ...metadata };
+            const shortcut = { mdPath: s, sitePath: `/docs/unocss/${slug}`, ...metadata };
 
-            shortcuts.push([shortcut]);
+            unocss.push([shortcut]);
         }
     });
 
@@ -95,7 +95,7 @@ export async function load() {
         articles,
         actions,
         tokens,
-        shortcuts,
+        unocss,
         components
 	}
 }

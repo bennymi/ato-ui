@@ -61,7 +61,7 @@
 				{
 					groupTitle: 'UnoCSS',
 					groupIcon: 'i-vscode-icons-file-type-unocss',
-					items: data.shortcuts
+					items: data.unocss
 				},
 				{
 					groupTitle: 'Actions',
