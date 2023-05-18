@@ -5,18 +5,18 @@
 	export let rawCode: string | null = null;
 	// export let highlightLines: string | null = null;
 
-	let copiedSuccessfully = false;
+	// let copiedSuccessfully = false;
 	let copyState = false;
 
-	let copyCode = async () => {
-		try {
-			const copiedCode = rawCode;
-			await navigator.clipboard.writeText(copiedCode ?? '');
-		} catch (e) {
-			console.log(e);
-		}
-		copiedSuccessfully = true;
-	};
+	// let copyCode = async () => {
+	// 	try {
+	// 		const copiedCode = rawCode;
+	// 		await navigator.clipboard.writeText(copiedCode ?? '');
+	// 	} catch (e) {
+	// 		console.log(e);
+	// 	}
+	// 	copiedSuccessfully = true;
+	// };
 	const handleCopy = () => {
 		// Add code to clipboard
 		navigator.clipboard.writeText(rawCode ?? '');

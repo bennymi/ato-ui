@@ -6,6 +6,8 @@
 	import { theme_colors } from './constants';
 	import generate_palette, { create_css_colors } from './colors';
 
+	import CodeBlock from '$lib/mdsvex/CodeBlock.svelte';
+
 	import ColorPicker from './ColorPicker.svelte';
 	import Contrasts from './Contrasts.svelte';
 
@@ -80,7 +82,7 @@
 	{@html `<style>${custom_theme_css_variables}</style>`}
 </svelte:head>
 
-<div class="absolute fixed bottom-5 right-5 2xl:(bottom-20 right-20)">
+<div class="absolute fixed bottom-5 right-5 2xl:(bottom-10 right-20)">
 	<button
 		class="btn-border-surface-bl-primary-secondary-success btn-md xl:btn-lg"
 		on:click={() => copy_to_clipboard(custom_theme_css_variables)}
@@ -104,7 +106,14 @@
 				Select your
 				<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> colors </span>
 			</h2>
-			<p class="text-justify">You can browse the rest of the website with this theme as well.</p>
+			<p class="text-justify">
+				You can browse the rest of the website with this theme as well. (1) First pick your theme
+				colors. (2) Next, check that the contrasts of the text colors on the theme colors meet the
+				AA or AAA requirements for all shades. (3) After that you can adjust other variables, such
+				as the radius of your buttons. (4) Finally, copy the CSS and the <code
+					>unocss.config.ts</code
+				> into your project.
+			</p>
 			<div
 				class="flex justify-center items-center py-0.5 w-[24.75rem] sm:(py-1 w-[29rem]) md:(py-2 w-[36rem]) bg-white rounded-token-container border-1 border-surface-900/40-50/0"
 			>

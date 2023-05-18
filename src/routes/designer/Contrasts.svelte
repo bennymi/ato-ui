@@ -10,7 +10,7 @@
 	export let shades: FullTheme;
 
 	let contrast_threshold = 22;
-	let show_slider = '';
+	let show_slider = 'primary';
 	let showNumbers = true;
 </script>
 
