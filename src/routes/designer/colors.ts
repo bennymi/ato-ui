@@ -132,23 +132,23 @@ export default function generate_palette(baseColor: ColorManipulation): PaletteS
 export function create_css_colors(theme: FullTheme): string {
 	let css_string = '';
 
-	theme_colors.forEach((c) => {
+	theme_colors.forEach((c, i) => {
 		if (c in theme) {
-			css_string += `/* ${c} colors */\n`
+			css_string += `\t/* ${c} colors */\n`
 			shade_values.forEach((v) => {
 				if (v in theme[c]) {
-					css_string += `--color-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.color)}; /* ${theme[c][v]?.color} */\n`
+					css_string += `\t--color-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.color)}; /* ${theme[c][v]?.color} */\n`
 				}
 			});
 
 			css_string += '\n';
 			shade_values.forEach((v) => {
 				if (v in theme[c]) {
-					css_string += `--on-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.on_color)}; /* ${theme[c][v]?.on_color} */\n`
+					css_string += `\t--on-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.on_color)}; /* ${theme[c][v]?.on_color} */\n`
 				}
 			});
 
-			css_string += '\n';
+			css_string += i === theme_colors.length - 1 ? '' : '\n';
 		}
 	})
 

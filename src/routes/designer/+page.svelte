@@ -17,6 +17,7 @@
 		) as FullTheme;
 
 	let shades = update_shades($custom_theme_store.colors);
+	let copy_state = false;
 
 	let options = {
 		container_radius: [
@@ -33,6 +34,17 @@
 			'24px'
 		]
 	};
+
+	function copy_to_clipboard(css: string) {
+		// Add code to clipboard
+		navigator.clipboard.writeText(css ?? '');
+
+		// Give feedback
+		copy_state = true;
+		setTimeout(() => {
+			copy_state = false;
+		}, 1500);
+	}
 
 	$: shades = update_shades($custom_theme_store.colors);
 
@@ -68,6 +80,20 @@
 	{@html `<style>${custom_theme_css_variables}</style>`}
 </svelte:head>
 
+<div class="absolute fixed bottom-5 right-5 2xl:(bottom-20 right-20)">
+	<button
+		class="btn-border-surface-bl-primary-secondary-success btn-md xl:btn-lg"
+		on:click={() => copy_to_clipboard(custom_theme_css_variables)}
+	>
+		<span
+			class={copy_state
+				? 'i-material-symbols-content-copy-rounded'
+				: 'i-material-symbols-content-copy-outline-rounded'}
+		/>
+		<span>Copy CSS</span>
+	</button>
+</div>
+
 <div class="custom-theme flex flex-col justify-center items-center gap-8 text-surface-900-50">
 	<div
 		class="w-1/2 flex flex-col xl:flex-row justify-center items-center gap-8 text-surface-900-50"
@@ -78,6 +104,7 @@
 				Select your
 				<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> colors </span>
 			</h2>
+			<p class="text-justify">You can browse the rest of the website with this theme as well.</p>
 			<div
 				class="flex justify-center items-center py-0.5 w-[24.75rem] sm:(py-1 w-[29rem]) md:(py-2 w-[36rem]) bg-white rounded-token-container border-1 border-surface-900/40-50/0"
 			>

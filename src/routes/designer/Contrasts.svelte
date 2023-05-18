@@ -9,7 +9,7 @@
 
 	export let shades: FullTheme;
 
-	let contrast_threshold = 21;
+	let contrast_threshold = 22;
 	let show_slider = '';
 	let showNumbers = true;
 </script>
@@ -24,7 +24,7 @@
 	<div>
 		<button
 			class="btn-sm btn-border-surface-tl-primary-secondary"
-			on:click={() => (contrast_threshold = 21)}>Show all</button
+			on:click={() => (contrast_threshold = 22)}>Show all</button
 		>
 		<button
 			class="btn-sm btn-border-surface-tl-primary-secondary"
