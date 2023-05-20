@@ -66,3 +66,17 @@ export type Rgb = {
 export type FullTheme = {
 	[key in ThemeColor]: PaletteShades;
 };
+
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
+
+export type Options = {
+	container_radius: string[],
+	btn_sizes: ButtonSize[],
+	btns: {
+		[key in ButtonSize]: {
+			py: number[],
+			px: number[],
+			font: number[]
+		}
+	}
+}

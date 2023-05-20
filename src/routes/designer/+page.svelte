@@ -5,6 +5,7 @@
 	import type { ThemeColor, FullTheme, LocalStorageColor } from './types.d';
 	import { theme_colors } from './constants';
 	import generate_palette, { create_css_colors } from './colors';
+	import { options } from './options';
 
 	import CodeBlock from '$lib/mdsvex/CodeBlock.svelte';
 
@@ -20,22 +21,6 @@
 
 	let shades = update_shades($new_theme.colors);
 	let copy_state = false;
-
-	let options = {
-		container_radius: [
-			'0px',
-			'2px',
-			'4px',
-			'6px',
-			'8px',
-			'10px',
-			'12px',
-			'14px',
-			'16px',
-			'20px',
-			'24px'
-		]
-	};
 
 	function copy_to_clipboard(css: string) {
 		// Add code to clipboard
@@ -215,33 +200,33 @@
 					{/each}
 				</select>
 			</label>
-			<div class="flex flex-col gap-4">
-				{#each ['Small buttons (btn-sm)', 'Medium buttons (btn-md)', 'Large buttons (btn-lg)', 'Extra large buttons (btn-xl)'] as btn}
+			<div class="flex gap-4">
+				{#each options.btn_sizes as size}
 					<div>
-						<div class="text-xl font-bold">{btn}</div>
+						<div class="text-xl font-bold">{options.btns[size].title}</div>
 						<!-- <div class="flex gap-2 [&>label]:(flex-1)"> -->
-						<div class="flex flex-col [&>label]:(w-24)">
+						<div class="flex flex-col [&>label]:(w-30)">
 							<label>
 								<span>p-x</span>
-								<select bind:value={$new_theme.container_radius}>
-									{#each options.container_radius as rad}
-										<option value={rad}>{rad}</option>
+								<select bind:value={$new_theme.btns[size].px}>
+									{#each options.btns[size].px as px}
+										<option value={px}>{px}rem</option>
 									{/each}
 								</select>
 							</label>
 							<label>
 								<span>p-y</span>
-								<select bind:value={$new_theme.container_radius}>
-									{#each options.container_radius as rad}
-										<option value={rad}>{rad}</option>
+								<select bind:value={$new_theme.btns[size].py}>
+									{#each options.btns[size].py as py}
+										<option value={py}>{py}rem</option>
 									{/each}
 								</select>
 							</label>
 							<label>
-								<span>Font size</span>
-								<select bind:value={$new_theme.container_radius}>
-									{#each options.container_radius as rad}
-										<option value={rad}>{rad}</option>
+								<span>Font weight</span>
+								<select bind:value={$new_theme.btns[size].font}>
+									{#each options.btns[size].font as weight}
+										<option value={weight}>{weight}</option>
 									{/each}
 								</select>
 							</label>
