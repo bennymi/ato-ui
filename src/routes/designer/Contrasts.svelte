@@ -75,7 +75,7 @@
 				<div
 					id="slider-{palette}"
 					class="mb-4 mt-5 flex justify-center gap-8 [&>.range-slider]:(w-45) md:(gap-12 [&>.range-slider]:w-65)"
-					transition:slide={{ duration: 250 }}
+					transition:slide|local={{ duration: 250 }}
 				>
 					<div class="range-slider">
 						<!-- values={[50, 60, 70]} -->

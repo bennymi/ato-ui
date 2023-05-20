@@ -4,7 +4,7 @@ import { persisted } from 'svelte-local-storage-store';
 import type { LocalStorageTheme } from "./types.d";
 
 const lighten_values = [5, 25, 50, 70, 85];
-const darken_values = [10, 20, 35, 45, 60];
+const darken_values = [10, 20, 40, 60, 70];
 
 export const new_theme: Writable<LocalStorageTheme> = persisted('ato-custom-theme-css', {
     colors: {

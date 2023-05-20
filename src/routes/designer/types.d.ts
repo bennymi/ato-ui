@@ -74,6 +74,7 @@ export type Options = {
 	btn_sizes: ButtonSize[],
 	btns: {
 		[key in ButtonSize]: {
+			title: string,
 			py: number[],
 			px: number[],
 			font: number[]

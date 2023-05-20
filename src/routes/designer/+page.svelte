@@ -200,12 +200,12 @@
 					{/each}
 				</select>
 			</label>
-			<div class="flex gap-4">
+			<div class="flex flex-col gap-4">
 				{#each options.btn_sizes as size}
 					<div>
 						<div class="text-xl font-bold">{options.btns[size].title}</div>
 						<!-- <div class="flex gap-2 [&>label]:(flex-1)"> -->
-						<div class="flex flex-col [&>label]:(w-30)">
+						<div class="flex gap-2 [&>label]:(w-30)">
 							<label>
 								<span>p-x</span>
 								<select bind:value={$new_theme.btns[size].px}>
