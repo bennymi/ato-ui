@@ -5,7 +5,7 @@
 	import RangeSlider from 'svelte-range-slider-pips';
 	import { slide } from 'svelte/transition';
 
-	import { custom_theme_store } from './stores';
+	import { new_theme } from './stores';
 
 	export let shades: FullTheme;
 
@@ -81,7 +81,7 @@
 						<!-- values={[50, 60, 70]} -->
 						<RangeSlider
 							pips
-							bind:values={$custom_theme_store.colors[palette].lighten_values}
+							bind:values={$new_theme.colors[palette].lighten_values}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}
 							--range-handle-focus={shades[palette][600].color}
@@ -92,7 +92,7 @@
 					<div class="range-slider">
 						<RangeSlider
 							pips
-							bind:values={$custom_theme_store.colors[palette].darken_values}
+							bind:values={$new_theme.colors[palette].darken_values}
 							--range-slider={shades[palette][200].color}
 							--range-handle-inactive={shades[palette][300].color}
 							--range-handle-focus={shades[palette][600].color}

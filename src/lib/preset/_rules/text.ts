@@ -1,8 +1,12 @@
-import type { Shortcut } from '@unocss/core';
+import type { Rule, Shortcut } from '@unocss/core';
 
 import { default_dir, reg_dO, reg_c, reg_s, reg_c_s, reg_c_sO, cs, reg_d, reg_oO, cso, reg_c_sO_oO } from '../utils/regex';
 
 const gradientClasses = 'bg-clip-text text-transparent';
+
+export const textRules: Rule[] = [
+    [/^font-weight-\[([-a-z]+)\]$/, ([_, w]) => ({ 'font-weight': `var(${w})` })]
+]
 
 export const textSCs: Shortcut[] = [
     // Text on base colours

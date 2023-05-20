@@ -9,7 +9,7 @@ import { imageRules } from './image';
 import { borderSCs } from './border';
 import { shadowSCs } from './shadow';
 import { spinnerRules, spinnerSCs } from './spinners';
-import { textSCs } from './text';
+import { textRules, textSCs } from './text';
 
 export { animation } from './animation';
 
@@ -19,6 +19,7 @@ export const rules: Rule[] = [
     ...buttonRules,
     ...imageRules,
     ...spinnerRules,
+    ...textRules,
 ];
 
 export const shortcuts: Shortcut[] = [

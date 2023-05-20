@@ -19,10 +19,24 @@ export type LocalStorageColor = {
 	[key in ThemeColor]: ColorManipulation;
 }
 
+type ButtonVariables = {
+	py: number,
+	px: number,
+	font: number,
+}
+
+type LocalStorageButtons = {
+	radius: string,
+	icon_radius: string,
+	sm: ButtonVariables,
+	md: ButtonVariables,
+	lg: ButtonVariables,
+	xl: ButtonVariables
+}
+
 export type LocalStorageTheme = {
     colors: LocalStorageColor,
-	btn_radius: string,
-	btn_icon_radius: string,
+	btns: LocalStorageButtons,
 	container_radius: string
 };
 

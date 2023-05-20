@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { themeStore, customThemeCSSStore } from '../stores';
-	import { custom_theme_store } from './stores';
+	import { new_theme } from './stores';
 
 	import type { ThemeColor, FullTheme, LocalStorageColor } from './types.d';
 	import { theme_colors } from './constants';
@@ -18,7 +18,7 @@
 			theme_colors.map((c) => [c, generate_palette(store[<ThemeColor>c])])
 		) as FullTheme;
 
-	let shades = update_shades($custom_theme_store.colors);
+	let shades = update_shades($new_theme.colors);
 	let copy_state = false;
 
 	let options = {
@@ -48,7 +48,7 @@
 		}, 1500);
 	}
 
-	$: shades = update_shades($custom_theme_store.colors);
+	$: shades = update_shades($new_theme.colors);
 
 	$: custom_theme_css_variables = `
 :root .custom-theme {
@@ -58,18 +58,26 @@
 	--theme-font-color-base: 0, 0, 0;
 	--theme-font-color-dark: 255, 255, 255;
 
-	--theme-rounded-base: ${$custom_theme_store.btn_radius};
-	--theme-rounded-container: ${$custom_theme_store.container_radius};
+	--theme-rounded-base: ${$new_theme.btns.radius};
+	--theme-rounded-container: ${$new_theme.container_radius};
 	--theme-border-base: 1px;
 
-	/* On Colors */
-	--on-primary: 255, 255, 255;
-	--on-secondary: 0, 0, 0;
-	--on-tertiary: 0, 0, 0;
-	--on-success: 0, 0, 0;
-	--on-warning: 0, 0, 0;
-	--on-error: 255, 255, 255;
-	--on-surface: 255, 255, 255;
+	/* Buttons */
+	--btn-sm-p-y: ${$new_theme.btns.sm.py}rem;
+	--btn-sm-p-x: ${$new_theme.btns.sm.px}rem;
+	--btn-sm-font-weight: ${$new_theme.btns.sm.font};
+	
+	--btn-md-p-y: ${$new_theme.btns.md.py}rem;
+	--btn-md-p-x: ${$new_theme.btns.md.px}rem;
+	--btn-md-font-weight: ${$new_theme.btns.md.font};
+
+	--btn-lg-p-y: ${$new_theme.btns.lg.py}rem;
+	--btn-lg-p-x: ${$new_theme.btns.lg.px}rem;
+	--btn-lg-font-weight: ${$new_theme.btns.lg.font};
+
+	--btn-xl-p-y: ${$new_theme.btns.xl.py}rem;
+	--btn-xl-p-x: ${$new_theme.btns.xl.px}rem;
+	--btn-xl-font-weight: ${$new_theme.btns.xl.font};
 
 	${create_css_colors(<FullTheme>shades)}
 }
@@ -77,6 +85,8 @@
 
 	$: $customThemeCSSStore = custom_theme_css_variables;
 </script>
+
+<div class="px-6" />
 
 <svelte:head>
 	{@html `<style>${custom_theme_css_variables}</style>`}
@@ -110,7 +120,7 @@
 				You can browse the rest of the website with this theme as well. (1) First pick your theme
 				colors. (2) Next, check that the contrasts of the text colors on the theme colors meet the
 				AA or AAA requirements for all shades. (3) After that you can adjust other variables, such
-				as the radius of your buttons. (4) Finally, copy the CSS and the <code
+				as the radius and size of your buttons. (4) Finally, copy the CSS and the <code
 					>unocss.config.ts</code
 				> into your project.
 			</p>
@@ -126,7 +136,7 @@
 						</div>
 						<ColorPicker
 							color={c}
-							bind:value={$custom_theme_store.colors[c].color}
+							bind:value={$new_theme.colors[c].color}
 							size="w-14 h-14 sm:(w-16 h-16) md:(w-20 h-20)"
 							rounded={i === 0
 								? 'rounded-l-token-container'
@@ -172,13 +182,11 @@
 
 	<!-- Other theme values -->
 	<div class="w-full">
-		<div
-			class="w-full bg-surface-50-600 px-4 py-2 border-1 border-surface-900/40-200/20 rounded-token-container"
-		>
+		<div class="w-full px-4 py-2 border-1 border-surface-900/40-200/20 rounded-token-container">
 			<div class="flex items-center gap-2">
 				<label class="w-1/2">
 					<span>Button Radius</span>
-					<select bind:value={$custom_theme_store.btn_radius}>
+					<select bind:value={$new_theme.btns.radius}>
 						{#each options.container_radius as rad}
 							<option value={rad}>{rad}</option>
 						{/each}
@@ -193,7 +201,7 @@
 			</div>
 			<label>
 				<span>Icon Button Radius</span>
-				<select bind:value={$custom_theme_store.btn_icon_radius}>
+				<select bind:value={$new_theme.btns.icon_radius}>
 					{#each options.container_radius as rad}
 						<option value={rad}>{rad}</option>
 					{/each}
@@ -201,12 +209,46 @@
 			</label>
 			<label>
 				<span>Container Radius</span>
-				<select bind:value={$custom_theme_store.container_radius}>
+				<select bind:value={$new_theme.container_radius}>
 					{#each options.container_radius as rad}
 						<option value={rad}>{rad}</option>
 					{/each}
 				</select>
 			</label>
+			<div class="flex flex-col gap-4">
+				{#each ['Small buttons (btn-sm)', 'Medium buttons (btn-md)', 'Large buttons (btn-lg)', 'Extra large buttons (btn-xl)'] as btn}
+					<div>
+						<div class="text-xl font-bold">{btn}</div>
+						<!-- <div class="flex gap-2 [&>label]:(flex-1)"> -->
+						<div class="flex flex-col [&>label]:(w-24)">
+							<label>
+								<span>p-x</span>
+								<select bind:value={$new_theme.container_radius}>
+									{#each options.container_radius as rad}
+										<option value={rad}>{rad}</option>
+									{/each}
+								</select>
+							</label>
+							<label>
+								<span>p-y</span>
+								<select bind:value={$new_theme.container_radius}>
+									{#each options.container_radius as rad}
+										<option value={rad}>{rad}</option>
+									{/each}
+								</select>
+							</label>
+							<label>
+								<span>Font size</span>
+								<select bind:value={$new_theme.container_radius}>
+									{#each options.container_radius as rad}
+										<option value={rad}>{rad}</option>
+									{/each}
+								</select>
+							</label>
+						</div>
+					</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 </div>

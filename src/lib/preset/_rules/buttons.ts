@@ -2,9 +2,20 @@ import type { Shortcut, Rule } from '@unocss/core';
 
 import { themeColorsJ, shadesJ } from '../../types/colors.d';
 import { directions, directionsJ } from '../../types/directions.d';
-import { sizes, sizesJ, type RulesDescription } from '../../types/types.d';
+import { sizesJ, type RulesDescription } from '../../types/types.d';
 
 import { reg_c, reg_c_sO, reg_c_sO_oO, cs, cso, name_c_sO_oO, reg_l, reg_dO, norm_op, parse_opacity } from '../utils/regex';
+
+const sizes: { [key: string]: string } = {
+    // 'sm': 'py-1 px-2 text-sm font-medium',
+    // 'md': 'py-1 px-3 font-medium',
+    // 'lg': 'py-2 px-4 text-lg font-semibold',
+    // 'xl': 'py-3 px-6 text-xl font-bold'
+    'sm': 'text-sm py-[--btn-sm-p-y] px-[--btn-sm-p-x] font-weight-[--btn-sm-font-weight]',
+    'md': 'py-[--btn-md-p-y] px-[--btn-md-p-x] font-weight-[--btn-md-font-weight]',
+    'lg': 'text-lg py-[--btn-lg-p-y] px-[--btn-lg-p-x] font-weight-[--btn-lg-font-weight]',
+    'xl': 'text-xl py-[--btn-xl-p-y] px-[--btn-xl-p-x] font-weight-[--btn-xl-font-weight]'
+};
 
 const baseStyles = `${sizes.md} inline-flex justify-center items-center space-x-1 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
 
