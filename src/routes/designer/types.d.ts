@@ -72,6 +72,8 @@ export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 export type Options = {
 	container_radius: string[],
 	btn_sizes: ButtonSize[],
+	btn_radius: string[],
+	btn_icon_radius: string[],
 	btns: {
 		[key in ButtonSize]: {
 			title: string,

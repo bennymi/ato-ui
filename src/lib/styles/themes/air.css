@@ -8,6 +8,10 @@
 	--theme-rounded-base: 8px;
 	--theme-rounded-container: 8px;
 	--theme-border-base: 1px;
+
+	--btn-radius: 8px;
+	--btn-icon-radius: 8px;
+
 	/* =~= Theme On-X Colors =~= */
 	--on-primary-500: 0, 0, 0;
 	--on-secondary-500: 255, 255, 255;

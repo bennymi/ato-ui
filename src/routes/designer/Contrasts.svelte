@@ -78,7 +78,6 @@
 					transition:slide|local={{ duration: 250 }}
 				>
 					<div class="range-slider">
-						<!-- values={[50, 60, 70]} -->
 						<RangeSlider
 							pips
 							bind:values={$new_theme.colors[palette].lighten_values}

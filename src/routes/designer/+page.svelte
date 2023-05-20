@@ -48,6 +48,9 @@
 	--theme-border-base: 1px;
 
 	/* Buttons */
+	--btn-radius: ${$new_theme.btns.radius};
+	--btn-icon-radius: ${$new_theme.btns.icon_radius};
+
 	--btn-sm-p-y: ${$new_theme.btns.sm.py}rem;
 	--btn-sm-p-x: ${$new_theme.btns.sm.px}rem;
 	--btn-sm-font-weight: ${$new_theme.btns.sm.font};
@@ -172,22 +175,25 @@
 				<label class="w-1/2">
 					<span>Button Radius</span>
 					<select bind:value={$new_theme.btns.radius}>
-						{#each options.container_radius as rad}
+						{#each options.btn_radius as rad}
 							<option value={rad}>{rad}</option>
 						{/each}
 					</select>
 				</label>
-				<div class="w-1/2 flex justify-center gap-4">
-					<button class="btn-primary">Click</button>
-					<button class="btn-primary-secondary-tertiary">Click</button>
-					<button class="btn-glass-primary-secondary">Click</button>
-					<button class="btn-border-surface-primary-secondary">Click</button>
+				<div class="w-1/2 flex justify-center items-center gap-4">
+					<button class="btn-primary btn-sm">Click</button>
+					<button class="btn-primary-secondary-tertiary btn-md">Click</button>
+					<button class="btn-glass-primary-secondary btn-lg">Click</button>
+					<button class="btn-border-surface-primary-secondary btn-xl">Click</button>
+					<button class="btn-primary btn-icon btn-lg">
+						<span class="i-material-symbols:notifications-active-rounded" />
+					</button>
 				</div>
 			</div>
 			<label>
 				<span>Icon Button Radius</span>
 				<select bind:value={$new_theme.btns.icon_radius}>
-					{#each options.container_radius as rad}
+					{#each options.btn_icon_radius as rad}
 						<option value={rad}>{rad}</option>
 					{/each}
 				</select>

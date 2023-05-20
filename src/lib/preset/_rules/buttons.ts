@@ -17,7 +17,9 @@ const sizes: { [key: string]: string } = {
     'xl': 'text-xl py-[--btn-xl-p-y] px-[--btn-xl-p-x] font-weight-[--btn-xl-font-weight]'
 };
 
-const baseStyles = `${sizes.md} inline-flex justify-center items-center space-x-1 rounded-token-base disabled:(opacity-80 cursor-not-allowed)`;
+const baseStyles = `${sizes.md} inline-flex justify-center items-center space-x-1 rounded-btn disabled:(opacity-80 cursor-not-allowed)`;
+
+const baseStylesIcon = `${sizes.md} inline-flex justify-center items-center space-x-1 rounded-btn-icon disabled:(opacity-80 cursor-not-allowed)`;
 
 const glassStyles = 'border-1';
 const glassOp = '25';
@@ -84,7 +86,7 @@ export const buttonRules: Rule[] = [
         ([name, c, s, o]: string[]) => `
         .${name} {
             display: inline-flex;
-            border-radius: var(--theme-rounded-base);
+            border-radius: var(--btn-radius);
         }
         .${name} button, .${name} a {
             display: inline-flex; 
@@ -110,12 +112,12 @@ export const buttonRules: Rule[] = [
             background: rgba(var(--color-${cs(c, s)}), 1);
         }
         .${name} button:first-child, .${name} a:first-child {
-            border-top-left-radius: var(--theme-rounded-base);
-            border-bottom-left-radius: var(--theme-rounded-base);
+            border-top-left-radius: var(--btn-radius);
+            border-bottom-left-radius: var(--btn-radius);
         }
         .${name} button:last-child, .${name} a:last-child {
-            border-top-right-radius: var(--theme-rounded-base);
-            border-bottom-right-radius: var(--theme-rounded-base);
+            border-top-right-radius: var(--btn-radius);
+            border-bottom-right-radius: var(--btn-radius);
         }
         `
     ],
@@ -128,7 +130,7 @@ export const buttonRules: Rule[] = [
             return `
             .${name} {
                 display: inline-flex;
-                border-radius: var(--theme-rounded-base);
+                border-radius: var(--btn-radius);
             }
             .${name} button, .${name} a {
                 display: inline-flex; 
@@ -154,12 +156,12 @@ export const buttonRules: Rule[] = [
                 background: rgba(var(--color-${cs(c, s)}), 0.1);
             }
             .${name} button:first-child, .${name} a:first-child {
-                border-top-left-radius: var(--theme-rounded-base);
-                border-bottom-left-radius: var(--theme-rounded-base);
+                border-top-left-radius: var(--btn-radius);
+                border-bottom-left-radius: var(--btn-radius);
             }
             .${name} button:last-child, .${name} a:last-child {
-                border-top-right-radius: var(--theme-rounded-base);
-                border-bottom-right-radius: var(--theme-rounded-base);
+                border-top-right-radius: var(--btn-radius);
+                border-bottom-right-radius: var(--btn-radius);
             }
         `;
         // @apply space-x-1 hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
@@ -195,7 +197,7 @@ export const buttonSCs: Shortcut[] = [
 
     // Icon button
     [
-        'btn-icon', `${baseStyles} aspect-square`
+        'btn-icon', `${baseStylesIcon} aspect-square`
     ],
 
     // Button regular

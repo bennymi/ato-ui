@@ -1,12 +1,24 @@
 import type { Shortcut } from '@unocss/core';
 
-import { cso, reg_c, reg_c_sO_oO, reg_oO, reg_p, reg_s } from '../utils/regex';
+import { cso, reg_c, reg_c_sO_oO, reg_oO, reg_p, reg_pO, reg_s } from '../utils/regex';
 
 export const borderSCs: Shortcut[] = [
     // rounded regular
     [
         `rounded-token-base`, 
         `rounded-[var(--theme-rounded-base)]`, 
+    ],
+    [
+        `rounded-token-container`,
+        `rounded-[var(--theme-rounded-container)]`
+    ],
+    [
+        new RegExp(`rounded${reg_pO}-btn`), 
+        ([_, side]) => `rounded-${side ? `${side}-` : ''}[var(--btn-radius)]`, 
+    ],
+    [
+        new RegExp(`rounded${reg_pO}-btn-icon`), 
+        ([_, side]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`, 
     ],
     [
         `rounded-token-container`,

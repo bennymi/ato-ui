@@ -22,8 +22,10 @@ export const default_dir = 'r';
 
 // ===== Regular Expressions
 export const reg_l = `(${sizesJ})`;
+export const reg_lO = `(?:-(${sizesJ}))?`;
 
 export const reg_p = `(${pos_j})`;
+export const reg_pO = `(?:-(${pos_j}))?`;
 
 export const reg_d = `(${directionsJ})`;
 export const reg_dO = `(?:-(${directionsJ}))?`;

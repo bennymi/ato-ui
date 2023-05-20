@@ -1,21 +1,24 @@
 import type { Options } from "./types";
 
+const radius = [
+    '0px',
+    '2px',
+    '4px',
+    '6px',
+    '8px',
+    '10px',
+    '12px',
+    '14px',
+    '16px',
+    '20px',
+    '24px'
+];
 
 export const options: Options = {
-    container_radius: [
-        '0px',
-        '2px',
-        '4px',
-        '6px',
-        '8px',
-        '10px',
-        '12px',
-        '14px',
-        '16px',
-        '20px',
-        '24px'
-    ],
+    container_radius: radius,
     btn_sizes: ['sm', 'md', 'lg', 'xl'],
+    btn_radius: [...radius, '9999px'],
+    btn_icon_radius: [...radius, '9999px'],
     btns: {
         sm: {
             title: 'Small buttons (btn-sm)',
