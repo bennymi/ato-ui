@@ -7,7 +7,7 @@ description: Available background tokens that allow you to easily set gradient o
 
 ## Background & Text
 
-`(color)-(shade)`: Sets the background color with the corresponding `text-on` color. 
+`{color}-{shade}`: Sets the background color with the corresponding `text-on` color. 
 
 Example: `primary-500` becomes `bg-primary-500 text-on-primary-500`.
 
@@ -21,7 +21,7 @@ Example: `primary-500` becomes `bg-primary-500 text-on-primary-500`.
 
 ## Light & Dark Mode
 
-`bg- (color)-(shade1)-(shade2)`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead. It also sets the appropriate text colors for the shades.
+`bg-{color}-{shade1}-{shade2}`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead. It also sets the appropriate text colors for the shades.
 
 Example: `bg-surface-50-950` becomes `surface-50 dark:surface-950`. Toggle the dark / light switch to see the changes.
 
@@ -35,7 +35,7 @@ Example: `bg-surface-50-950` becomes `surface-50 dark:surface-950`. Toggle the d
 
 ## Inverse Light & Dark Mode
 
-`bg-inverse- (color1)-(shade1)-(color2)-(shade2)`: Sets the first color with the first shade as the background color, and the 2nd color with the 2nd shade as the background color in dark mode. `shade` is always optional (`500` is the default).
+`bg-inverse-{color1}-{shade1}-{color2}-{shade2}`: Sets the first color with the first shade as the background color, and the 2nd color with the 2nd shade as the background color in dark mode. `shade` is always optional (`500` is the default).
 
 Example: `bg-inverse-primary-50-surface-800` becomes `bg-primary-50 dark:bg-surface-800`.
 
@@ -53,7 +53,7 @@ Example: `bg-inverse-primary-500/20-surface/33` or `bg-inverse-primary/20-surfac
 
 ## Gradients
 
-`bg-gradient- (direction)-(color1)-(shade1)-(color2)-(shade2)-(color3)-(shade3)`: Sets the background to be a gradient of the three colors in the specified direction. The direction and shades are optional. It's also okay to just use 2 colors. For each color you can also specify an opacity. 
+`bg-gradient-{direction}-{color1}-{shade1}-{color2}-{shade2}-{color3}-{shade3}`: Sets the background to be a gradient of the three colors in the specified direction. The direction and shades are optional. It's also okay to just use 2 colors. For each color you can also specify an opacity. 
 
 Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction is `r` if no direction is specified.
 
