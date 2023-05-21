@@ -21,14 +21,14 @@ Example: `primary-500` becomes `bg-primary-500 text-on-primary-500`.
 
 ## Light & Dark Mode
 
-`bg- (color)-(shade1)-(shade2)`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead.
+`bg- (color)-(shade1)-(shade2)`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead. It also sets the appropriate text colors for the shades.
 
-Example: `bg-surface-50-950` becomes `bg-surface-50 dark:bg-surface-950`. Toggle the dark / light switch to see the changes.
+Example: `bg-surface-50-950` becomes `surface-50 dark:surface-950`. Toggle the dark / light switch to see the changes.
 
 <div class="flex my-4">
-    {#each ['bg-primary-700-200 text-on-primary-700 dark:text-on-primary-200', 'bg-secondary-200-700 text-on-secondary-200 dark:text-on-secondary-700', 'bg-tertiary-700-300 text-on-tertiary-700 dark:text-on-tertiary-300'] as token}
+    {#each ['bg-primary-700-200', 'bg-secondary-200-700', 'bg-tertiary-700-300'] as token}
         <div class="h-20 flex-1 {token} flex justify-center items-center">
-            {token.split(' ')[0]}
+            {token}
         </div>
     {/each}
 </div>
