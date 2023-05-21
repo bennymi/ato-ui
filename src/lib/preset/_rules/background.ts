@@ -56,10 +56,16 @@ export const backgroundSCs: Shortcut[] = [
     //     }
     // ],
 
+    // Background + text on background
+    [
+        new RegExp(`^${reg_c}-${reg_s}$`),
+        ([_, c, s]) => `bg-${cs(c, s)} text-on-${cs(c, s)}`
+    ],
+
     // Background Tokens
     [
         new RegExp(`^bg-${reg_c}-${reg_s}-${reg_s}$`), 
-        ([, b, s1, s2]: string[]) => `bg-${b}-${s1} dark:bg-${b}-${s2}`,
+        ([, b, s1, s2]: string[]) => `bg-${cs(b, s1)} dark:bg-${cs(b, s2)}`,
         {
             autocomplete: `bg-${reg_c}-${reg_s}-(${shadesJ})`
         }
