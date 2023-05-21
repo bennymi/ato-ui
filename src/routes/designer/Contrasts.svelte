@@ -15,25 +15,16 @@
 </script>
 
 <div class="flex gap-2 my-2 w-full justify-between">
-	<button
-		class="btn-sm btn-border-surface-tertiary-tertiary"
-		on:click={() => (showNumbers = !showNumbers)}
-	>
+	<!-- class="btn-sm btn-border-surface-tertiary-tertiary" -->
+	<button class="btn-sm btn-primary" on:click={() => (showNumbers = !showNumbers)}>
 		Toggle Numbers
 	</button>
 	<div>
-		<button
-			class="btn-sm btn-border-surface-tl-primary-secondary"
-			on:click={() => (contrast_threshold = 22)}>Show all</button
+		<!-- class="btn-sm btn-border-surface-tl-primary-secondary" -->
+		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 22)}>Show all</button
 		>
-		<button
-			class="btn-sm btn-border-surface-tl-primary-secondary"
-			on:click={() => (contrast_threshold = 4)}>4+ (AA)</button
-		>
-		<button
-			class="btn-sm btn-border-surface-tl-primary-secondary"
-			on:click={() => (contrast_threshold = 7)}>7+ (AAA)</button
-		>
+		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 4)}>4+ (AA)</button>
+		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 7)}>7+ (AAA)</button>
 	</div>
 </div>
 

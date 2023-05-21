@@ -12,6 +12,22 @@
 	--btn-radius: 12px;
 	--btn-icon-radius: 12px;
 
+	--btn-sm-p-y: 0.25rem;
+	--btn-sm-p-x: 0.5rem;
+	--btn-sm-font-weight: 500;
+	
+	--btn-md-p-y: 0.25rem;
+	--btn-md-p-x: 0.75rem;
+	--btn-md-font-weight: 500;
+
+	--btn-lg-p-y: 0.5rem;
+	--btn-lg-p-x: 1rem;
+	--btn-lg-font-weight: 600;
+
+	--btn-xl-p-y: 0.75rem;
+	--btn-xl-p-x: 1rem;
+	--btn-xl-font-weight: 700;
+
 	/* =~= Theme On-X Colors =~= */
 	--on-primary-500: 255, 255, 255;
 	--on-secondary-500: 0, 0, 0;
