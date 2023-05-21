@@ -9,13 +9,13 @@
 	--theme-border-base: 1px;
     
 	/* =~= Theme On-X Colors =~= */
-	--on-primary: #FFFFFF;
-	--on-secondary: #000000;
-	--on-tertiary: #FFFFFF;
-	--on-success: #000000;
-	--on-warning: #000000;
-	--on-error: #FFFFFF;
-	--on-surface: #FFFFFF;
+	--on-primary-500: #FFFFFF;
+	--on-secondary-500: #000000;
+	--on-tertiary-500: #FFFFFF;
+	--on-success-500: #000000;
+	--on-warning-500: #000000;
+	--on-error-500: #FFFFFF;
+	--on-surface-500: #FFFFFF;
 
 	/* =~= Theme Colors  =~= */
 	/* primary | #4242ff */

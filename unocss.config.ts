@@ -9,8 +9,10 @@ import {
 import transformerDirectives from '@unocss/transformer-directives';
 import extractorSvelte from '@unocss/extractor-svelte';
 import presetIcons from '@unocss/preset-icons'
+import { presetForms } from '@julr/unocss-preset-forms'
 
-import { colors, presetAtoUI } from './src/lib/preset/index';
+// import { colors, presetAtoUI } from './src/lib/preset/index';
+import { presetAtoUI } from './src/lib/preset/index';
 
 export default defineConfig({
   extractors: [extractorSvelte],
@@ -31,7 +33,8 @@ export default defineConfig({
         },
     }),
     presetWind(),
-    presetAtoUI()
+    presetForms(),
+    presetAtoUI(),
   ],
   transformers: [
     transformerVariantGroup(),

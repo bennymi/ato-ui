@@ -8,14 +8,34 @@
 	--theme-rounded-base: 8px;
 	--theme-rounded-container: 8px;
 	--theme-border-base: 1px;
+
+	--btn-radius: 8px;
+	--btn-icon-radius: 8px;
+
+	--btn-sm-p-y: 0.25rem;
+	--btn-sm-p-x: 0.5rem;
+	--btn-sm-font-weight: 500;
+	
+	--btn-md-p-y: 0.25rem;
+	--btn-md-p-x: 0.75rem;
+	--btn-md-font-weight: 500;
+
+	--btn-lg-p-y: 0.5rem;
+	--btn-lg-p-x: 1rem;
+	--btn-lg-font-weight: 600;
+
+	--btn-xl-p-y: 0.75rem;
+	--btn-xl-p-x: 1rem;
+	--btn-xl-font-weight: 700;
+
 	/* =~= Theme On-X Colors =~= */
-	--on-primary: 0, 0, 0;
-	--on-secondary: 255, 255, 255;
-	--on-tertiary: 255, 255, 255;
-	--on-success: 0, 0, 0;
-	--on-warning: 0, 0, 0;
-	--on-error: 255, 255, 255;
-	--on-surface: 0, 0, 0;
+	--on-primary-500: 0, 0, 0;
+	--on-secondary-500: 255, 255, 255;
+	--on-tertiary-500: 255, 255, 255;
+	--on-success-500: 0, 0, 0;
+	--on-warning-500: 0, 0, 0;
+	--on-error-500: 255, 255, 255;
+	--on-surface-500: 0, 0, 0;
 	/* =~= Theme Colors  =~= */
 	/* primary | #f1ae1e */
 	--color-primary-50: 253, 243, 221; /* ⬅ #fdf3dd */

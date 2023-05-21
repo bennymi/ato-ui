@@ -5,14 +5,8 @@ export type Size = 'sm' | 'md' | 'lg' | 'xl';
 export type Rounded = 'rounded-token-base' | 'rounded-token-container' | 'rounded-none' | 'rounded-sm' | 'rounded-md' | 'rounded-lg' | 'rounded-xl' | 'rounded-2xl' | 'rounded-3xl' | 'rounded-full';
 export type Position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
-export const sizes: { [key: string]: string } = {
-    'sm': 'py-1 px-2 text-sm font-medium',
-    'md': 'py-1 px-3 font-medium',
-    'lg': 'py-2 px-4 text-lg font-semibold',
-    'xl': 'py-3 px-6 text-xl font-bold'
-};
-
-export const sizesJ = Object.keys(sizes).join('|');
+const sizes = ['sm', 'md', 'lg', 'xl'];
+export const sizesJ = sizes.join('|');
 
 export type ShortcutVariable = 'themeColors' | 'allColors' | 'shades' | 'directions' | 'sizes';
 
@@ -32,5 +26,5 @@ export const variablesDictionary = {
     allColors,
     shades,
     directions,
-    sizes: Object.keys(sizes),
+    sizes,
 };

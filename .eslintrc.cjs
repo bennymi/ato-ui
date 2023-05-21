@@ -58,6 +58,7 @@ module.exports = {
 		'no-return-assign': 0,
 		'no-inner-declarations': 0,
 		'no-plusplus': 0,
+		'no-nested-ternary': 0,
 		'import/extensions': 0,
 		'import/order': 0,
 		'import/no-extraneous-dependencies': 0,

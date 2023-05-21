@@ -55,7 +55,7 @@
 			{#each groups as { title, items }, i}
 				<div class="px-1 py-1">
 					{#if title}
-						<div class="text-sm px-2 py-1 text-surface-800-op80-200-op80 font-semibold">
+						<div class="text-sm px-2 py-1 text-surface-800/80-200/80 font-semibold">
 							{title}
 						</div>
 					{/if}

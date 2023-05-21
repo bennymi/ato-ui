@@ -15,9 +15,11 @@
 	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
 	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
-	import { darkTheme } from '$lib/stores/lightswitch';
-	import AtoUI from './AtoUI.svelte';
 	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
+
+	import { darkTheme } from '$lib/stores/lightswitch';
+	import { themeStore, customThemeCSSStore } from './stores';
+	import AtoUI from './AtoUI.svelte';
 
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
@@ -36,7 +38,6 @@
 
 	export let data: LayoutData;
 
-	let activeTheme = 'ato';
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
 
@@ -45,7 +46,7 @@
 			navTitle: 'Components',
 			showSidebar: true,
 			basePath: '/docs',
-			landingPath: '/docs/components/avatar',
+			landingPath: '/docs/get-started/1-installation',
 			groups: [
 				{
 					groupTitle: 'Introduction',
@@ -58,9 +59,9 @@
 					items: data.tokens
 				},
 				{
-					groupTitle: 'Shortcuts',
+					groupTitle: 'UnoCSS',
 					groupIcon: 'i-vscode-icons-file-type-unocss',
-					items: data.shortcuts
+					items: data.unocss
 				},
 				{
 					groupTitle: 'Actions',
@@ -105,7 +106,11 @@
 			: allGroupItems[currentPageIdx + 1][0];
 </script>
 
-<div class:dark={$darkTheme} class="{activeTheme} min-w-screen min-h-screen">
+<svelte:head>
+	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
+</svelte:head>
+
+<div id="ato-ui-docu" class:dark={$darkTheme} class="{$themeStore} min-w-screen min-h-screen">
 	<NavBar
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
@@ -115,7 +120,7 @@
 			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
 			{ icon: 'i-mdi-discord', link: '', title: 'Discord' }
 		]}
-		on:select={(event) => (activeTheme = event.detail.selected.toLowerCase())}
+		on:select={(event) => ($themeStore = event.detail.selected.toLowerCase())}
 	>
 		<svelte:fragment slot="title">
 			<a href="/" class="text-surface-900-50 text-3xl select-none">

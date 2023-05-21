@@ -35,10 +35,10 @@
     @apply list-disc;
 }
 
-.prose > p > code {
+.prose > p > code, p > code {
     @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-token-container;
 }
 
-.prose > p > a {
+.prose > p > a, p > a {
     @apply font-semibold text-secondary-500 hover:text-secondary-600 visited:text-secondary-700 hover:underline;
 }
