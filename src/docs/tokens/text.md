@@ -59,9 +59,9 @@ More examples: `text-inverse-primary-500/70-500-secondary-400/70-400`.
 
 Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction is `r` if no direction is specified.
 
-Examples: `text-gradient-br-primary-secondary-tertiary`.
+Examples: `text-gradient-br-primary-secondary-tertiary`, `text-gradient-tertiary-warning`.
 
 <div class="flex justify-center items-center border-1 border-surface-900/20-50/20 rounded-token-container mt-4 text-5xl">
     <span class="text-gradient-primary-secondary font-bold py-4">Easy.</span>
-    <span class="text-gradient-success-warning-error font-bold py-4">Elegant.</span>
+    <span class="text-gradient-tertiary-warning-error font-bold py-4">Elegant.</span>
 </div>
