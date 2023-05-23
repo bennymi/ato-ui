@@ -56,7 +56,7 @@ export const backgroundRules: Rule[] = [
 
             for (let i = 0; i < meshes.length; i++) {
                 const [ n, c, s, o, x, y ] = meshes[i];
-                
+
                 bg_image += `radial-gradient(at ${x}% ${y}%, rgba(var(--color-${cs(c, s)}), ${parse_opacity(o, '0.3')}) 0px, transparent 50%)`;
 
                 bg_image += i + 1 === meshes.length ? ';' : ', ';
@@ -110,14 +110,14 @@ export const backgroundSCs: Shortcut[] = [
 
     // Background gradients
     [
-        new RegExp(`^bg${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
+        new RegExp(`^bg-gradient${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
         ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]: string[]) => `bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, o1)} via-${cso(c2, s2, o2)} to-${cso(c3, s3, o3)}`, 
         {
             autocomplete: [`bg-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`]
         }
     ],
     [
-        new RegExp(`^bg${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
+        new RegExp(`^bg-gradient${reg_dO}-${reg_c_sO_oO}-${reg_c_sO_oO}$`), 
         ([, d, c1, s1, o1, c2, s2, o2]: string[]) => `bg-gradient-to-${d ?? default_dir} from-${cso(c1, s1, o1)} to-${cso(c2, s2, o2)}`, 
         {
             autocomplete: [

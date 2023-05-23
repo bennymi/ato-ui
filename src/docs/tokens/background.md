@@ -57,9 +57,9 @@ Example: `bg-inverse-primary-500/20-surface/33` or `bg-inverse-primary/20-surfac
 
 Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction is `r` if no direction is specified.
 
-<div class="flex justify-center items-center my-4 h-20 bg-primary-secondary text-on-primary">bg-primary-secondary</div>
+<div class="flex justify-center items-center my-4 h-20 bg-gradient-primary-secondary text-on-primary">bg-gradient-primary-secondary</div>
 
-<div class="flex justify-center items-center my-4 h-20 bg-tl-tertiary/10-secondary-700-primary/10 text-on-primary">bg-tl-tertiary/10-secondary-700-primary/10</div>
+<div class="flex justify-center items-center my-4 h-20 bg-gradient-tl-tertiary/10-secondary-700-primary/10 text-on-primary">bg-gradient-tl-tertiary/10-secondary-700-primary/10</div>
 
 ## Mesh Gradients
 
