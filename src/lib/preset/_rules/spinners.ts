@@ -10,17 +10,17 @@ import type { RulesDescription } from '../../types/types.d';
 
 import { reg_c_sO, cs } from '../utils/regex';
 
-const sqHoverBase = 'relative w-12 h-12 rotate-x-65 rotate-z-45 animate-layers1 animate-alternate after:(content-none absolute inset-0 animate-layerTr animate-alternate animate-delay-500)';
+const sqHoverBase = `relative w-12 h-12 rotate-x-65 rotate-z-45 animate-layers1 animate-alternate after:(content-[''] absolute inset-0 animate-layerTr animate-alternate animate-delay-500)`;
 
 const sqFlipBase = 'w-10 h-10 inline-block relative  box-border animate-flipXY';
 
 const barSlideBase = 'h-2.5 animate-barSlide';
-const barSlideBeforeAfter = 'absolute block content-none animate-barSlide h-2.5';
+const barSlideBeforeAfter = `absolute block content-[''] animate-barSlide h-2.5`;
 
-const rotSquaresBeforeAfter = 'content-none w-12 h-12 border-2 absolute top-0 left-0 box-border animate-rotateSquare360';
+const rotSquaresBeforeAfter = `content-[''] w-12 h-12 border-2 absolute top-0 left-0 box-border animate-rotateSquare360`;
 
 const dotsBase = 'rounded-full w-4 h-4 fill-mode-both animate-bblFadeInOut text-center';
-const dotsBeforeAfter = `content-none absolute`;
+const dotsBeforeAfter = `content-[''] absolute`;
 
 export const spinnerRules: Rule[] = [
     [
@@ -175,8 +175,8 @@ export const spinnerSCs: Shortcut[] = [
         new RegExp(`^s-squares-folding-${reg_c_sO}$`),
         ([_, c, s]: string[]) => `
             inline-block relative w-12 h-12 rotate-45
-            before:(content-none box-border w-6 h-6 absolute left-0 -top-6 folding-squares-${cs(c, s)})
-            after:(content-none box-border w-6 h-6 absolute left-0 top-0 shadow-md animate-foldingSquares2)
+            before:(content-[''] box-border w-6 h-6 absolute left-0 -top-6 folding-squares-${cs(c, s)})
+            after:(content-[''] box-border w-6 h-6 absolute left-0 top-0 shadow-md animate-foldingSquares2)
         `,
         {
             autocomplete: [

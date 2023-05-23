@@ -35,14 +35,6 @@ const mdsvexOptions = {
 			{
 				behavior: 'wrap',
 				test: ['h2', 'h3', 'h4', 'h5', 'h6']
-				// cotent: {
-				// 	type: 'element',
-				// 	tagName: 'span',
-				// 	properties: {
-				// 	  className: ['text-surface-500'],
-				// 	},
-				// 	children: [{ type: 'text', value: '#value' }]
-				//   }
 			}
 		]
 	],
