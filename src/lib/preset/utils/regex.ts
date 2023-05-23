@@ -35,6 +35,8 @@ export const reg_s = `(${shadesJ})`;
 export const reg_sO = `(?:-(${shadesJ}))?`;
 export const reg_oO = `(?:/(0|100|[1-9][0-9]?))?`;
 
+export const reg_100 = `(0|100|[1-9][0-9]?)`;
+
 export const reg_c_s = `${reg_c}-${reg_s}`;
 export const reg_c_sO = `${reg_c}${reg_sO}`;
 export const reg_c_sO_oO = `${reg_c}${reg_sO}${reg_oO}`;

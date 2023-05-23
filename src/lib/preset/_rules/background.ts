@@ -2,7 +2,8 @@ import type { Rule, Shortcut } from '@unocss/core';
 
 import { directionsJ } from '../../types/directions.d';
 import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
-import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_c_sO_oO, cso, reg_sO, reg_oO } from '../utils/regex';
+import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_c_sO_oO, cso, reg_sO, reg_oO, reg_100 } from '../utils/regex';
+import { parse_opacity } from '../utils/regex';
 
 export const backgroundRules: Rule[] = [
     // Scrollbar
@@ -42,6 +43,28 @@ export const backgroundRules: Rule[] = [
                 `bg-radial-${reg_c}-${reg_s}-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
                 `bg-radial-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
             ]
+        }
+    ],
+    // Mesh background
+    [
+        new RegExp(`^bg-mesh(?:-${reg_c_sO_oO}-x${reg_100}-y${reg_100})+$`),
+        (matches) => {
+            const regex = new RegExp(`${reg_c_sO_oO}-x${reg_100}-y${reg_100}`, 'g');
+            const meshes = [...matches[0].matchAll(regex)];
+
+            let bg_image = '';
+
+            for (let i = 0; i < meshes.length; i++) {
+                const [ n, c, s, o, x, y ] = meshes[i];
+                
+                bg_image += `radial-gradient(at ${x}% ${y}%, rgba(var(--color-${cs(c, s)}), ${parse_opacity(o, '0.3')}) 0px, transparent 50%)`;
+
+                bg_image += i + 1 === meshes.length ? ';' : ', ';
+            }
+
+            return {
+                "background-image": bg_image
+            };
         }
     ]
 ];

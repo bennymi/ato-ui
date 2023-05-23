@@ -60,3 +60,22 @@ Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction 
 <div class="flex justify-center items-center my-4 h-20 bg-primary-secondary text-on-primary">bg-primary-secondary</div>
 
 <div class="flex justify-center items-center my-4 h-20 bg-tl-tertiary/10-secondary-700-primary/10 text-on-primary">bg-tl-tertiary/10-secondary-700-primary/10</div>
+
+## Meshes
+
+`bg-mesh-{color}-{shade}/{opacity}-x{percentage}-y{percentage}`: This pattern creates a mesh gradient background. The `shade` and `opacity` are optional. For the shade the default is `500` and for the opacity the default is `30`. The `x` and `y` are the coordinates in percent (`0-100`) at which the color should be placed. You can add as many color points as you want.
+
+You additionally will want to set a background color for the container, for example using the light / dark token: `bg-surface-50-950`.
+
+Examples: `bg-mesh-primary/20-x5-y0`, `bg-mesh-secondary-400/20-x20-y20-success/10-x90-y90-tertiary-x0-y90`.
+
+<div class="flex justify-center items-center my-4 h-64 bg-mesh-primary/20-x4-y0-success-400/30-x95-y95 text-surface-950-50 bg-surface-50-500">bg-mesh-primary/20-x4-y0-success-400/30-x95-y95</div>
+
+```html
+<div 
+    class="min-h-screen bg-mesh-primary/20-x4-y0-success-x95-y95 text-surface-950-50 bg-surface-50-500">
+    This div has a background mesh gradient
+</div>
+```
+
+
