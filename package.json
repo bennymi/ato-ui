@@ -50,6 +50,8 @@
 		"prettier-plugin-svelte": "^2.10.0",
 		"publint": "^0.1.12",
 		"query-string": "^8.1.0",
+		"rehype-autolink-headings": "^6.1.1",
+		"rehype-slug": "^5.1.0",
 		"shiki": "^0.14.2",
 		"sveld": "^0.18.0",
 		"svelte": "^3.59.1",

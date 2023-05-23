@@ -2,7 +2,9 @@ import { allColors, themeColors, shades } from './colors.d';
 import { directions } from './directions.d';
 
 export type Size = 'sm' | 'md' | 'lg' | 'xl';
+
 export type Rounded = 'rounded-token-base' | 'rounded-token-container' | 'rounded-none' | 'rounded-sm' | 'rounded-md' | 'rounded-lg' | 'rounded-xl' | 'rounded-2xl' | 'rounded-3xl' | 'rounded-full';
+
 export type Position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
 const sizes = ['sm', 'md', 'lg', 'xl'];

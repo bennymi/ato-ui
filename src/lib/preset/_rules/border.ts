@@ -14,11 +14,11 @@ export const borderSCs: Shortcut[] = [
     ],
     [
         new RegExp(`rounded${reg_pO}-btn`), 
-        ([_, side]) => `rounded-${side ? `${side}-` : ''}[var(--btn-radius)]`, 
+        ([_, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-radius)]`, 
     ],
     [
         new RegExp(`rounded${reg_pO}-btn-icon`), 
-        ([_, side]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`, 
+        ([_, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`, 
     ],
     [
         `rounded-token-container`,
