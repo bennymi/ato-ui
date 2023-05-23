@@ -55,15 +55,6 @@ const config = {
 		// }
 	},
 	vitePlugin: {
-		// experimental: {
-		// 	inspector: false,
-		// 	holdMode: false,
-		// 	// toggleKeyCombo: 'control-shift-i',
-		// 	// show or hide the inspector option
-		// 	showToggleButton: 'always',
-		// 	// inspector position
-		// 	toggleButtonPos: 'top-right'
-		// },
 		inspector: true
 	}
 };
