@@ -61,7 +61,7 @@ Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction 
 
 <div class="flex justify-center items-center my-4 h-20 bg-tl-tertiary/10-secondary-700-primary/10 text-on-primary">bg-tl-tertiary/10-secondary-700-primary/10</div>
 
-## Meshes
+## Mesh Gradients
 
 `bg-mesh-{color}-{shade}/{opacity}-x{percentage}-y{percentage}`: This pattern creates a mesh gradient background. The `shade` and `opacity` are optional. For the shade the default is `500` and for the opacity the default is `30`. The `x` and `y` are the coordinates in percent (`0-100`) at which the color should be placed. You can add as many color points as you want.
 
@@ -78,4 +78,11 @@ Examples: `bg-mesh-primary/20-x5-y0`, `bg-mesh-secondary-400/20-x20-y20-success/
 </div>
 ```
 
+## Radial Gradients
+
+`bg-radial-{color1}-{shade1}-{color2}-{shade2}-{color3}-{shade3}`: This creates a radial background gradient. The third color is optional. The shades are also optional.
+
+Examples: `bg-radial-primary-secondary`, `bg-radial-primary-700-secondary-700-tertiary-700`.
+
+<div class="flex justify-center items-center my-4 h-64 bg-radial-primary-secondary-tertiary-700 text-on-primary">bg-radial-primary-secondary-tertiary-700</div>
 
