@@ -3,7 +3,15 @@ title: Background
 description: Available background tokens that allow you to easily set gradient or mesh backgrounds.
 ---
 
+<script>
+    import BackgroundDemo from './BackgroundDemo.svelte';
+</script>
+
 # Background Tokens
+
+## Demo
+
+<BackgroundDemo />
 
 ## Background & Text
 

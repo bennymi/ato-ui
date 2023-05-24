@@ -13,9 +13,15 @@ Please do not use Tailwind classes like `rounded-lg | rounded-xl` and so on in y
 
 `rounded-btn` can be used for buttons and elements that should look similar to buttons. The available [button classes](/docs/unocss/buttons) automatically already use this token.
 
+You can use all the position variants that you can also use in with regular Tailwind classes: `r | l | b | t | tl | tr | bl | br`.
+
+Examples: `rounded-l-btn`, `rounded-tr-btn`.
+
 ### rounded-container
 
 `rounded-container` can be used for any containers, such as form containers, hero containers, cards, etc. This class is also already used in a few of Ato-UI's available shortcuts.
+
+Examples: `rounded-r-container`, `rounded-bl-container`.
 
 ## Light & Dark Mode
 

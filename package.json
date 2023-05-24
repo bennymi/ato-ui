@@ -62,6 +62,7 @@
 		"svelte-range-slider-pips": "^2.1.1",
 		"tinycolor2": "^1.6.0",
 		"tslib": "^2.5.2",
+		"typeit": "^8.7.1",
 		"typescript": "^5.0.4",
 		"unocss": "^0.52.3",
 		"vite": "^4.3.8"

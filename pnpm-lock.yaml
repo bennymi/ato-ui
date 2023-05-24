@@ -141,6 +141,9 @@ devDependencies:
   tslib:
     specifier: ^2.5.2
     version: 2.5.2
+  typeit:
+    specifier: ^8.7.1
+    version: 8.7.1
   typescript:
     specifier: ^5.0.4
     version: 5.0.4
@@ -3535,6 +3538,11 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       is-typed-array: 1.1.10
+    dev: true
+
+  /typeit@8.7.1:
+    resolution: {integrity: sha512-Bx/O4NMz10NWh9FWYtVwV4XwGHF9UDJfpCZPJRtw2/oUcahFAStU8J0t19aroPfTV6s1UlS5ICoqilOqmEnh2Q==}
+    requiresBuild: true
     dev: true
 
   /typescript@4.9.5:
