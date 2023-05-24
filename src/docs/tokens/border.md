@@ -5,6 +5,18 @@ description: Available border tokens for theme roundedness or selecting border c
 
 # Border Tokens
 
+## Border Radius
+
+Please do not use Tailwind classes like `rounded-lg | rounded-xl` and so on in your application, and instead use the variables that you set up in your theme. This means that it will be easier for you to make changes down the road and assure a consistent look & feel across your entire application.
+
+### rounded-btn
+
+`rounded-btn` can be used for buttons and elements that should look similar to buttons. The available [button classes](/docs/unocss/buttons) automatically already use this token.
+
+### rounded-container
+
+`rounded-container` can be used for any containers, such as form containers, hero containers, cards, etc. This class is also already used in a few of Ato-UI's available shortcuts.
+
 ## Light & Dark Mode
 
 `border-{color}-{shade1}/{opacity1}-{shade2}/{opacity2}`: Sets the border color with shades 1 and 2 for light and dark mode respectively. The opacities are optional.
