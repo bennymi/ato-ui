@@ -7,7 +7,7 @@
 	export let activeBackground = 'bg-primary-500';
 	/** Bind to the checked status of the switch. */
 	export let checked = false;
-	/** Set the size of the toggle switch. */
+	/** Set the size of the toggle switch. Options: 'sm' | 'md' | 'lg'. */
 	export let size: 'sm' | 'md' | 'lg' = 'md';
 
 	const base_after_classes = `after:(content-[''] absolute bg-surface-50 ring-1 ring-surface-500/20 border rounded-btn transition-all)`;
