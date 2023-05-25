@@ -7,15 +7,15 @@
 	const classes = [
 		'bg-gradient-br-primary-700-secondary',
 		'bg-gradient-tl-primary-700-secondary',
-		'bg-gradient-br-primary-700-secondary-tertiary',
+		'bg-gradient-tl-primary-700-secondary-tertiary',
 		'bg-radial-primary-secondary',
 		'bg-radial-primary-warning-600',
 		'bg-primary-700',
-		'bg-primary-700 bg-mesh-primary/20-x4-y0-success-400/30-x50-y95',
-		'bg-surface-50/15-900 bg-mesh-primary/20-x4-y0-success-400/30-x50-y95',
-		'bg-surface-50/15-900 bg-mesh-primary/20-x4-y0-success-400/10-x100-y95',
-		'bg-surface-50/15-900 bg-mesh-primary/20-x4-y0-success-400/10-x100-y95-error/15-x98-y1',
-		'bg-surface-50/15-900 bg-mesh-primary/20-x4-y0-success-400/10-x100-y95-error/15-x0-y100'
+		'bg-primary-700 bg-mesh-primary/40-x4-y0-success-400/40-x50-y95',
+		'bg-surface-50/15-900/15 bg-mesh-primary/40-x4-y0-success-400/40-x50-y95',
+		'bg-surface-50/15-900 bg-mesh-primary/40-x4-y0-success-400/20-x100-y95',
+		'bg-surface-50/15-900 bg-mesh-primary/40-x4-y0-success-400/20-x100-y95-error/40-x98-y1',
+		'bg-surface-50/15-900 bg-mesh-primary/40-x4-y0-success-400/20-x100-y95-error/40-x0-y100'
 	];
 
 	let idx = -1;
@@ -52,13 +52,13 @@
 			.type('bg-primary-700')
 			.exec(increment)
 			.pause(PAUSE)
-			.type(' bg-mesh-primary/20-x4-y0-success-400/30-x50-y95')
+			.type(' bg-mesh-primary/40-x4-y0-success-400/40-x50-y95')
 			.exec(increment)
 			.pause(PAUSE)
 			.move(null, { to: 'START', instant: true, delay: 300 })
-			.move(12)
-			.delete(9)
-			.type('surface-50/15-9')
+			.move(14)
+			.delete(11)
+			.type('surface-50/15-900/15')
 			.exec(increment)
 			.pause(PAUSE)
 			.move(null, { to: 'END', instant: true, delay: 300 })
@@ -68,7 +68,7 @@
 			.exec(increment)
 			.pause(PAUSE)
 			.move(null, { to: 'END', instant: true, delay: 300 })
-			.type('-error/15-x98-y1')
+			.type('-error/40-x98-y1')
 			.exec(increment)
 			.pause(PAUSE)
 			.delete(5)
