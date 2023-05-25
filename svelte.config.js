@@ -4,9 +4,13 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
 // import shiki from 'shiki';
 
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+
 // import { join } from 'path';
 import { highlightCode } from './src/lib/mdsvex/highlight.js';
 import { mdsvexGlobalComponents } from './src/lib/mdsvex/global-components.js';
+
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -23,7 +27,17 @@ const mdsvexOptions = {
 		// 	return `{@html \`${html}\`}`;
 		// }
 		highlighter: highlightCode
-	}
+	},
+	rehypePlugins: [
+		rehypeSlug,
+		[
+			rehypeAutolinkHeadings,
+			{
+				behavior: 'wrap',
+				test: ['h2', 'h3', 'h4', 'h5', 'h6']
+			}
+		]
+	],
 };
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -55,15 +69,6 @@ const config = {
 		// }
 	},
 	vitePlugin: {
-		// experimental: {
-		// 	inspector: false,
-		// 	holdMode: false,
-		// 	// toggleKeyCombo: 'control-shift-i',
-		// 	// show or hide the inspector option
-		// 	showToggleButton: 'always',
-		// 	// inspector position
-		// 	toggleButtonPos: 'top-right'
-		// },
 		inspector: true
 	}
 };

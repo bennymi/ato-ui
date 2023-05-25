@@ -60,9 +60,22 @@ export default defineConfig({
 	plugins: [
     	sveld(),
 		sveltekit(),
-		// UnoCSS('./unocss.config.ts'),
 		UnoCSS({
-      		configFile: './unocss.config.ts'
+      		configFile: './unocss.config.ts',
+			configDeps: [
+				'./src/lib/preset/_theme/colors.ts',
+				'./src/lib/preset/_rules.animation.ts',
+				'./src/lib/preset/_rules.background.ts',
+				'./src/lib/preset/_rules.border.ts',
+				'./src/lib/preset/_rules.buttons.ts',
+				'./src/lib/preset/_rules.cards.ts',
+				'./src/lib/preset/_rules.chips.ts',
+				'./src/lib/preset/_rules.image.ts',
+				'./src/lib/preset/_rules.index.ts',
+				'./src/lib/preset/_rules.shadow.ts',
+				'./src/lib/preset/_rules.spinners.ts',
+				'./src/lib/preset/_rules.text.ts',
+			]
 			// extractors: [extractorSvelte()],
       // theme: {
       // },

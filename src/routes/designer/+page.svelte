@@ -113,7 +113,7 @@
 				> into your project.
 			</p>
 			<div
-				class="flex justify-center items-center py-0.5 w-[24.75rem] sm:(py-1 w-[29rem]) md:(py-2 w-[36rem]) bg-white rounded-token-container border-1 border-surface-900/40-50/0"
+				class="flex justify-center items-center py-0.5 w-[24.75rem] sm:(py-1 w-[29rem]) md:(py-2 w-[36rem]) bg-white rounded-container border-1 border-surface-900/40-50/0"
 			>
 				{#each theme_colors as c, i}
 					<div class="flex flex-col">
@@ -127,19 +127,19 @@
 							bind:value={$new_theme.colors[c].color}
 							size="w-14 h-14 sm:(w-16 h-16) md:(w-20 h-20)"
 							rounded={i === 0
-								? 'rounded-l-token-container'
+								? 'rounded-l-container'
 								: i === theme_colors.length - 1
-								? 'rounded-r-token-container'
+								? 'rounded-r-container'
 								: ''}
 						/>
 					</div>
 				{/each}
 			</div>
 			<div
-				class="bg-primary-secondary-tertiary w-[24.75rem] h-14 sm:(w-[29rem] h-16) md:(w-[36rem] h-20) xl:h-32 rounded-token-container"
+				class="bg-gradient-primary-secondary-tertiary w-[24.75rem] h-14 sm:(w-[29rem] h-16) md:(w-[36rem] h-20) xl:h-32 rounded-container"
 			/>
 			<div
-				class="bg-animated-gradient w-[24.75rem] h-14 sm:(w-[29rem] h-16) md:(w-[36rem] h-20) xl:h-32 rounded-token-container"
+				class="bg-animated-gradient w-[24.75rem] h-14 sm:(w-[29rem] h-16) md:(w-[36rem] h-20) xl:h-32 rounded-container"
 			/>
 		</div>
 
@@ -147,7 +147,7 @@
 		<div class="flex flex-col items-center gap-2">
 			<h3 class="font-semibold text-3xl">
 				Update shade
-				<span class="bg-surface-950-50 text-surface-50-950 rounded-token-container px-1">
+				<span class="bg-surface-950-50 text-surface-50-950 rounded-container px-1">
 					contrasts
 				</span>
 			</h3>
@@ -170,7 +170,7 @@
 
 	<!-- Other theme values -->
 	<div class="w-full">
-		<div class="w-full px-4 py-2 border-1 border-surface-900/40-200/20 rounded-token-container">
+		<div class="w-full px-4 py-2 border-1 border-surface-900/40-200/20 rounded-container">
 			<div class="flex items-center gap-2">
 				<label class="w-1/2">
 					<span>Button Radius</span>
@@ -254,7 +254,7 @@
 	}
 
 	select {
-		@apply rounded-token-container bg-surface-50-900 outline-primary-500;
+		@apply rounded-container bg-surface-50-900 outline-primary-500;
 	}
 
 	.bg-animated-gradient {

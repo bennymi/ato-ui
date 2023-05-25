@@ -13,9 +13,11 @@
 	/** Set the width and height of the avatar. */
 	export let size = 'w-16 h-16';
 	/** Set the rounded shape. */
-	export let rounded: Rounded = 'rounded-token-base';
-	/** Set the border classes. You can also use this to apply hover effects: hover:(...). */
-	export let border = 'border-4 border-surface-800';
+	export let rounded: Rounded = 'rounded-btn';
+	/** Set the border size. You can also use this to apply hover effects: hover:(...). */
+	export let borderSize = 'border-2';
+	/** Set the border color. You can also use this to apply hover effects: hover:(...). */
+	export let borderColor = 'border-surface-500-800';
 	/** Set the background color, for when the text is being shown. Has no effect for when an image is being shown. */
 	export let background = 'bg-primary-500';
 	/** Set the text styles. */
@@ -76,7 +78,7 @@
 
 <div class="avatar {size} {rounded} relative inline-flex justify-center items-center">
 	<div
-		class="avatar-image {size} {rounded} {border} {background} inline-flex justify-center items-center drag-none overflow-hidden"
+		class="avatar-image {size} {rounded} {borderSize} {borderColor} {background} inline-flex justify-center items-center drag-none overflow-hidden"
 		on:mouseenter={(event) => dispatch('avatar-mouseenter', event)}
 		on:mouseleave={(event) => dispatch('avatar-mouseleave', event)}
 		on:click={(event) => dispatch('avatar-click', event)}
@@ -90,14 +92,14 @@
 	</div>
 	{#if typing}
 		<span
-			class="avatar-typing absolute {badgePos} {badgeBackground} w-8 h-4 rounded-token-base border-2 border-surface-800 flex justify-center items-center"
+			class="avatar-typing absolute {badgePos} {badgeBackground} w-8 h-4 rounded-btn border-2 {borderColor} flex justify-center items-center"
 		>
 			<span class="inline-flex {typingSpinner} scale-[0.3]" />
 		</span>
 	{/if}
 	{#if badge && !typing}
 		<div
-			class="avatar-badge absolute w-5 h-5 rounded-lg border-2 border-surface-800 flex justify-center items-center {badgePos} {badgeBackground}"
+			class="avatar-badge absolute w-5 h-5 rounded-lg border-2 {borderColor} flex justify-center items-center {badgePos} {badgeBackground}"
 			on:mouseenter={(event) => dispatch('badge-mouseenter', event)}
 			on:mouseleave={(event) => dispatch('badge-mouseleave', event)}
 			on:click={(event) => dispatch('badge-click', event)}

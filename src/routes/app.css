@@ -7,6 +7,24 @@
     @apply w-full;
 }
 
+.prose > :is(h1, h2, h3, h4, h5, h6) > a {
+    position: relative;
+}
+
+.prose > :is(h2, h3, h4, h5, h6) > a:before {
+    content: '#';
+    position: absolute;
+    color: rgb(var(--color-primary-500));
+    left: -22px;
+    opacity: 0;
+    scale: 1.25;
+    transition: 0.25s all ease-in-out;
+}
+
+.prose > :is(h1, h2, h3, h4, h5, h6) > a:hover:before {
+    opacity: 1;
+}
+
 .prose > :is(h1, h2, h3, h4, h5, h6, p, ul) {
     @apply text-surface-900-50;
 }
@@ -36,7 +54,7 @@
 }
 
 .prose > p > code, p > code {
-    @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-token-container;
+    @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container;
 }
 
 .prose > p > a, p > a {

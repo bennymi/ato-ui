@@ -22,7 +22,7 @@
 	<div class="flex flex-col">
 		<div class="-m-1.5 overflow-x-auto">
 			<div class="p-1.5 min-w-full inline-block align-middle">
-				<div class="border rounded-token-container overflow-hidden border-primary-700/70">
+				<div class="border rounded-container overflow-hidden border-primary-700/70">
 					<table class="min-w-full table-fixed">
 						<thead class="bg-primary-500 text-on-primary">
 							<tr class="[&>th]:(px-6 py-3 text-left text-xs font-medium uppercase)">
