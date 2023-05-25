@@ -44,7 +44,7 @@ You can create a Table of Contents (ToC) by calling the `create_toc()` function 
 				<ul class="list-none text-left">
 					{#each $toc.headings as { heading, active, styles, icon }, i}
 						<li
-							class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 rounded-token-container hover:(bg-primary-500 text-on-primary!) {styles} {active
+							class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 rounded-container hover:(bg-primary-500 text-on-primary!) {styles} {active
 								? 'text-surface-900-50'
 								: 'text-surface-900-op60-50-op60'}"
 							on:click={() => scroll_to_element(heading)}

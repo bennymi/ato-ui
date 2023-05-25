@@ -40,7 +40,7 @@
 	/** Set the hover styles. ('hover:(bg-primary-500 text-surface-50)') */
 	export let hover = 'hover:(bg-primary-500 text-on-primary!)';
 	/** Set the header item radius styles. */
-	export let rounded = 'rounded-token-container';
+	export let rounded = 'rounded-container';
 	/** Set the active header styles. */
 	export let activeHeader = 'text-surface-900-50';
 	/** Pick the marker background color. */

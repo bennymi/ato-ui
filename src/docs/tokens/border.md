@@ -17,6 +17,10 @@ You can use all the position variants that you can also use in with regular Tail
 
 Examples: `rounded-l-btn`, `rounded-tr-btn`.
 
+### rounded-btn-icon
+
+`rounded-btn-icon` is used for icon buttons automatically. You probably don't need to use it anywhere else, but it's a class that exists.
+
 ### rounded-container
 
 `rounded-container` can be used for any containers, such as form containers, hero containers, cards, etc. This class is also already used in a few of Ato-UI's available shortcuts.
@@ -29,7 +33,7 @@ Examples: `rounded-r-container`, `rounded-bl-container`.
 
 Examples: `border-surface-700-200`, `border-surface-800/50-200/50`.
 
-<div class="flex justify-center items-center h-30 border-1 border-primary-500-400 rounded-token-container mt-4">
+<div class="flex justify-center items-center h-30 border-1 border-primary-500-400 rounded-container mt-4">
     <div class="font-bold text-surface-900-50">border-primary-500-400</div>
 </div>
 
@@ -39,6 +43,6 @@ Examples: `border-surface-700-200`, `border-surface-800/50-200/50`.
 
 Examples: `border-inverse-primary-secondary`, `border-inverse-surface/50-surface-200/40`.
 
-<div class="flex justify-center items-center h-30 border-1 border-inverse-primary/80-secondary-400/70 rounded-token-container mt-4">
+<div class="flex justify-center items-center h-30 border-1 border-inverse-primary/80-secondary-400/70 rounded-container mt-4">
     <div class="font-bold text-surface-900-50">border-inverse-primary/80-secondary-400/70</div>
 </div>

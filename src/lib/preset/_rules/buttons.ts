@@ -74,10 +74,10 @@ export const buttonRules: Rule[] = [
     //         @apply px-4 py-2 inline-flex justify-center items-center space-x-1 bg-${cso(c, s, '15')} transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
     //     }
     //     .${name} button:first-child, ${name} a:first-child {
-    //         @apply rounded-l-token-base;
+    //         @apply rounded-l-btn;
     //     }
     //     .${name} button:last-child, ${name} a:last-child {
-    //         @apply rounded-r-token-base;
+    //         @apply rounded-r-btn;
     //     }
     //     `
     // ],
@@ -176,10 +176,10 @@ export const buttonRules: Rule[] = [
     //         @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
     //     }
     //     .${name} button:first-child, ${name} a:first-child {
-    //         @apply rounded-l-token-base;
+    //         @apply rounded-l-btn;
     //     }
     //     .${name} button:last-child, ${name} a:last-child {
-    //         @apply rounded-r-token-base;
+    //         @apply rounded-r-btn;
     //     }
     //     `
     // ],

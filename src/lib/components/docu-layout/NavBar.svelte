@@ -96,7 +96,7 @@
 				</nav>
 			</div>
 			<div
-				class="flex flex justify-around w-full items-center bg-surface-100-700 py-4 rounded-token-container text-surface-900-50"
+				class="flex flex justify-around w-full items-center bg-surface-100-700 py-4 rounded-container text-surface-900-50"
 			>
 				<div class="z-60">
 					<DropMenu

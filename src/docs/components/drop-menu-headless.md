@@ -36,7 +36,7 @@ description: A headless dropdown menu that can be used to create a list of actio
 
 ## Usage
 
-<div class="w-full flex justify-center items-center pt-4 pb-60 px-2 rounded-token-container border-1 border-surface-500/30-200/30 my-4">
+<div class="w-full flex justify-center items-center pt-4 pb-60 px-2 rounded-container border-1 border-surface-500/30-200/30 my-4">
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />
 </div>
 

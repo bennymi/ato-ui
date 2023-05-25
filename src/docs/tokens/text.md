@@ -33,7 +33,7 @@ Example: `text-surface-200-50-700-950` becomes `text-surface-200 hover:text-surf
 
 More examples: `text-surface-950/70-950-50/80-50`.
 
-<div class="flex justify-center items-center h-30 border-1 border-surface-900/20-50/20 rounded-token-container mt-4">
+<div class="flex justify-center items-center h-30 border-1 border-surface-900/20-50/20 rounded-container mt-4">
     <div class="text-surface-900/50-900-50/50-50 font-bold cursor-pointer">Hover me (text-surface-900/50-900-50/50-50)</div>
 </div>
 
@@ -45,7 +45,7 @@ Example: `text-inverse-primary-secondary` becomes `text-primary-500 dark:text-se
 
 More examples: `text-inverse-primary/90-secondary-400/90`.
 
-<div class="flex justify-center items-center h-30 border-1 border-surface-900/20-50/20 rounded-token-container mt-4">
+<div class="flex justify-center items-center h-30 border-1 border-surface-900/20-50/20 rounded-container mt-4">
     <div class="text-inverse-primary-secondary font-bold">text-inverse-primary-secondary</div>
 </div>
 
@@ -57,7 +57,7 @@ Example: `text-inverse-primary-500-700-secondary-500-700` becomes `text-primary-
 
 More examples: `text-inverse-primary-500/70-500-secondary-400/70-400`.
 
-<div class="flex justify-center items-center h-30 border-1 border-surface-900/20-50/20 rounded-token-container mt-4">
+<div class="flex justify-center items-center h-30 border-1 border-surface-900/20-50/20 rounded-container mt-4">
     <div class="text-inverse-primary-500-700-secondary-500-700 font-bold">Hover me (text-inverse-primary-500-700-secondary-500-700)</div>
 </div>
 
@@ -69,7 +69,7 @@ Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction 
 
 Examples: `text-gradient-br-primary-secondary-tertiary`, `text-gradient-tertiary-warning`.
 
-<div class="flex justify-center items-center border-1 border-surface-900/20-50/20 rounded-token-container mt-4 text-5xl">
+<div class="flex justify-center items-center border-1 border-surface-900/20-50/20 rounded-container mt-4 text-5xl">
     <span class="text-gradient-primary-secondary font-bold py-4">Easy.</span>
     <span class="text-gradient-tertiary-warning-error font-bold py-4">Elegant.</span>
 </div>

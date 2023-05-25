@@ -80,7 +80,7 @@
 					{#if item.length === 2}
 						<a
 							href={`${item[0].sitePath}`}
-							class="group flex items-center p-1 rounded-token-base {active(item[0].sitePath)
+							class="group flex items-center p-1 rounded-btn {active(item[0].sitePath)
 								? 'bg-primary-500'
 								: 'bg-surface-500 '} hover:bg-primary-500"
 							on:click={() => handleClick(item[0].sitePath)}
@@ -95,7 +95,7 @@
 						</a>
 						<a
 							href={item[1].sitePath}
-							class="group flex items-center p-1 rounded-token-base {active(item[1].sitePath)
+							class="group flex items-center p-1 rounded-btn {active(item[1].sitePath)
 								? 'bg-primary-500'
 								: 'bg-surface-500 '} hover:bg-primary-500"
 							on:click={() => handleClick(item[1].sitePath)}

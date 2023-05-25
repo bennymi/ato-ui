@@ -5,11 +5,7 @@ import { cso, reg_c, reg_c_sO_oO, reg_oO, reg_p, reg_pO, reg_s } from '../utils/
 export const borderSCs: Shortcut[] = [
     // rounded regular
     [
-        `rounded-token-base`, 
-        `rounded-[var(--theme-rounded-base)]`, 
-    ],
-    [
-        `rounded-token-container`,
+        `rounded-container`,
         `rounded-[var(--theme-rounded-container)]`
     ],
     [
@@ -21,7 +17,7 @@ export const borderSCs: Shortcut[] = [
         ([_, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`, 
     ],
     [
-        `rounded-token-container`,
+        `rounded-container`,
         `rounded-[var(--theme-rounded-container)]`
     ],
     [
@@ -32,10 +28,10 @@ export const borderSCs: Shortcut[] = [
         }
     ],
     [
-        new RegExp(`^rounded-${reg_p}-token-container$`),
+        new RegExp(`^rounded-${reg_p}-container$`),
         ([_, side]: string[]) => `rounded-${side}-[var(--theme-rounded-container)]`,
         {
-            autocomplete: `rounded-${reg_p}-token-container`
+            autocomplete: `rounded-${reg_p}-container`
         }
     ],
 

@@ -49,7 +49,7 @@
 	});
 </script>
 
-<div class="mb-2">
+<div>
 	<pre
 		bind:this={block}
 		id="ato-type-it-bg-demo"
@@ -57,8 +57,6 @@
 	/>
 </div>
 
-<div class="flex justify-center items-center">
-	<span class="text-center text-6xl font-bold mb-4 {idx >= 0 ? classes[idx] : ''}">
-		Gradients
-	</span>
+<div class="flex justify-center items-center my-4">
+	<span class="text-center text-6xl font-bold {idx >= 0 ? classes[idx] : ''}"> Gradients </span>
 </div>

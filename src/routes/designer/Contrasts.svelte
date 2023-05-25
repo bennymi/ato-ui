@@ -45,7 +45,7 @@
 				{#each shade_values as shade}
 					{@const { contrast, color, on_color } = shades[palette][shade]}
 					<div
-						class="group h-8 w-8 md:(h-12 w-12) flex justify-center items-center cursor-pointer rounded-token-container transition-all duration-400 {contrast >=
+						class="group h-8 w-8 md:(h-12 w-12) flex justify-center items-center cursor-pointer rounded-container transition-all duration-400 {contrast >=
 						contrast_threshold
 							? 'scale-80 opacity-50'
 							: ''}"

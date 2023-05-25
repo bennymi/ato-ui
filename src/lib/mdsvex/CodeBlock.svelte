@@ -41,18 +41,18 @@
 </script>
 
 <div
-	class="AtoCodeBlock mt-4 overflow-y-auto rounded-token-container shadow-md shadow-primary-900 dark:shadow-primary-400"
+	class="AtoCodeBlock mt-4 overflow-y-auto rounded-container shadow-md shadow-primary-900 dark:shadow-primary-400"
 >
 	{#if showHeader}
 		<header
-			class="code-header rounded-t-token-container flex justify-between items-center p-2 pl-4 bg-surface-500 text-on-surface/80 text-xs font-bold"
+			class="code-header rounded-t-container flex justify-between items-center p-2 pl-4 bg-surface-500 text-on-surface/80 text-xs font-bold"
 		>
 			<!-- Language Text -->
 			<span class="code-block-language select-none">{tag}</span>
 
 			<!-- Copy Button -->
 			<button
-				class="code-block-copy-btn px-2 py-1 rounded-token-container transition-all duration-200 text-on-surface/70 hover:text-on-surface/95 hover:scale-110"
+				class="code-block-copy-btn px-2 py-1 rounded-container transition-all duration-200 text-on-surface/70 hover:text-on-surface/95 hover:scale-110"
 				on:click={handleCopy}
 				aria-label="copy code button"
 			>
@@ -75,7 +75,7 @@
 		</header>
 	{/if}
 	<div
-		class="code-block-code hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-token-container)"
+		class="code-block-code hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-container)"
 	>
 		{@html code}
 	</div>

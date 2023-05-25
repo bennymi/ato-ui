@@ -50,7 +50,7 @@
 	{#if $menu.expanded}
 		<div
 			use:menu.items
-			class="absolute right-0 mt-2 {width} origin-top-right rounded-token-container bg-inverse-white-surface-500 ring-1 ring-black ring-opacity-5 focus:outline-none shadow-lg shadow-surface-500/50-400/20"
+			class="absolute right-0 mt-2 {width} origin-top-right rounded-container bg-inverse-white-surface-500 ring-1 ring-black ring-opacity-5 focus:outline-none shadow-lg shadow-surface-500/50-400/20"
 		>
 			{#each groups as { title, items }, i}
 				<div class="px-1 py-1">
@@ -63,7 +63,7 @@
 						{@const active = $menu.active === item.text}
 						<button
 							use:menu.item
-							class="group flex gap-1 rounded-token-base items-center w-full px-2 py-2 text-sm font-medium {active
+							class="group flex gap-1 rounded-btn items-center w-full px-2 py-2 text-sm font-medium {active
 								? item.hoverStyle ?? hoverStyle
 								: textStyle}"
 						>
@@ -73,7 +73,7 @@
 					{/each}
 				</div>
 				{#if i !== groups.length - 1}
-					<hr class="border-inverse-surface-200/90-surface-100/40 mx-2 rounded-token-base" />
+					<hr class="border-inverse-surface-200/90-surface-100/40 mx-2 rounded-btn" />
 				{/if}
 			{/each}
 		</div>
