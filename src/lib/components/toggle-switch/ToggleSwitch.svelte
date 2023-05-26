@@ -20,7 +20,7 @@
 		},
 		md: {
 			out: 'w-11 h-6',
-			in: 'after:(w-5 h-5 top-[2px] left-[2px]) peer-checked:after:translate-x-full',
+			in: 'after:(w-5 h-5 top-[4px] left-[2px]) peer-checked:after:translate-x-full',
 			text: ''
 		},
 		lg: {

@@ -30,7 +30,7 @@ Switches use the `rounded-btn` class, so they change their shape based on the th
 
 ## Label
 
-<div class="w-full flex flex-col justify-center gap-4 p-4 items-center rounded-container border-1 border-surface-500/30-200/30 my-4">
+<div class="w-full flex flex-wrap justify-center gap-4 p-4 items-center rounded-container border-1 border-surface-500/30-200/30 my-4">
     <ToggleSwitch checked={true} size="sm" activeBackground="bg-secondary-500" label="Toggle" />
     <ToggleSwitch checked={true} size="lg" activeBackground="bg-secondary-500" label="Toggle" />
 </div>
@@ -41,12 +41,10 @@ Switches use the `rounded-btn` class, so they change their shape based on the th
 
 ## Sizes
 
-<div class="w-full flex flex-col justify-center gap-4 p-4 items-center rounded-container border-1 border-surface-500/30-200/30 my-4">
-    <div class="flex justify-center items-center gap-4">
+<div class="w-full flex flex-wrap justify-center gap-4 p-4 items-center rounded-container border-1 border-surface-500/30-200/30 my-4">
         <ToggleSwitch checked={true} size="sm" label="sm" />
         <ToggleSwitch checked={true} lable="md" label="md" />
         <ToggleSwitch checked={true} size="lg" label="lg" />
-    </div>
 </div>
 
 ```svelte

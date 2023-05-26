@@ -5,6 +5,8 @@
 	import RangeSlider from 'svelte-range-slider-pips';
 	import { slide } from 'svelte/transition';
 
+	import ToggleSwitch from '$lib/components/toggle-switch/ToggleSwitch.svelte';
+
 	import { new_theme } from './stores';
 
 	export let shades: FullTheme;
@@ -16,9 +18,10 @@
 
 <div class="flex gap-2 my-2 w-full justify-between">
 	<!-- class="btn-sm btn-border-surface-tertiary-tertiary" -->
-	<button class="btn-sm btn-primary" on:click={() => (showNumbers = !showNumbers)}>
+	<!-- <button class="btn-sm btn-primary" on:click={() => (showNumbers = !showNumbers)}>
 		Toggle Numbers
-	</button>
+	</button> -->
+	<ToggleSwitch bind:checked={showNumbers} label="Toggle Numbers" />
 	<div>
 		<!-- class="btn-sm btn-border-surface-tl-primary-secondary" -->
 		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 22)}>Show all</button
