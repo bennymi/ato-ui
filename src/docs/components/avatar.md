@@ -1,8 +1,11 @@
 ---
 title: Avatar
 description: An avatar component.
+component: components/avatar/Avatar.svelte
 ---
 <script lang="ts">
+	import PropsTable from './PropsTable.svelte';
+    import docs from '$lib/components/avatar/Avatar.svelte?raw&sveld';
 	import Avatar from '$lib/components/avatar/Avatar.svelte';
 
 	let typing = true;
@@ -78,3 +81,6 @@ description: An avatar component.
 	</div>
 </div>
 
+## Props
+
+<PropsTable props={docs.props} />
