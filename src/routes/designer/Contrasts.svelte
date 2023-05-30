@@ -21,7 +21,11 @@
 	<!-- <button class="btn-sm btn-primary" on:click={() => (showNumbers = !showNumbers)}>
 		Toggle Numbers
 	</button> -->
-	<ToggleSwitch bind:checked={showNumbers} label="Toggle Numbers" />
+	<ToggleSwitch
+		bind:checked={showNumbers}
+		label="Toggle Numbers"
+		labelClasses="font-bold text-surface-900-50"
+	/>
 	<div>
 		<!-- class="btn-sm btn-border-surface-tl-primary-secondary" -->
 		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 22)}>Show all</button
