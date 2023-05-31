@@ -59,6 +59,7 @@
 		<div
 			role="switch"
 			tabindex="0"
+			aria-label={label}
 			aria-checked={checked}
 			on:focus={() => (focused = true)}
 			on:blur={() => (focused = false)}

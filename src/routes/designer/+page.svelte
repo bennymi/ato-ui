@@ -185,7 +185,7 @@
 					<button class="btn-primary-secondary-tertiary btn-md">Click</button>
 					<button class="btn-glass-primary-secondary btn-lg">Click</button>
 					<button class="btn-border-surface-primary-secondary btn-xl">Click</button>
-					<button class="btn-primary btn-icon btn-lg">
+					<button class="btn-primary btn-icon btn-lg" aria-label="icon button example">
 						<span class="i-material-symbols:notifications-active-rounded" />
 					</button>
 				</div>
