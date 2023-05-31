@@ -19,6 +19,12 @@ description: Text tokens allow you to easily create gradient texts or select the
 
 Examples: `text-on-primary/20`, `text-on-surface-950/80`, `text-on-tertiary-600`.
 
+## Text-On Light & Dark Mode
+
+`text-on-{color}-{shade1}/{opacity1}-{shade2}/{opacity2}`: This sets the appropriate text on color for the background color and shade for both light and dark mode.The opacities are optional.
+
+Example: `text-on-surface-50-900` becomes `text-on-surface-50 dark:text-on-tertiary-900`.
+
 ## Light & Dark Mode
 
 `text-{color}-{shade}/{opacity}-{shade}/{opacity}`: In light mode the text is set with the color and the first shade, and in dark mode the second shade is used instead. The opacities are always optional.

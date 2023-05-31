@@ -6,32 +6,50 @@
 	import { slide } from 'svelte/transition';
 
 	import ToggleSwitch from '$lib/components/toggle-switch/ToggleSwitch.svelte';
+	import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
 
 	import { new_theme } from './stores';
+	import type { RadioItem } from '$lib/components/radio-group/types';
 
 	export let shades: FullTheme;
+
+	let items: RadioItem[] = [
+		{ value: 'all', label: 'Show All' },
+		{ value: 'aa', label: '4+ (AA)' },
+		{ value: 'aaa', label: '7+ (AAA)' }
+	];
 
 	let contrast_threshold = 22;
 	let show_slider = 'primary';
 	let showNumbers = true;
+
+	let contrast_group = 'all';
+
+	$: {
+		if (contrast_group === 'all') {
+			contrast_threshold = 22;
+		} else if (contrast_group === 'aa') {
+			contrast_threshold = 4;
+		} else if (contrast_group === 'aaa') {
+			contrast_threshold = 7;
+		}
+	}
 </script>
 
 <div class="flex gap-2 my-2 w-full justify-between">
-	<!-- class="btn-sm btn-border-surface-tertiary-tertiary" -->
-	<!-- <button class="btn-sm btn-primary" on:click={() => (showNumbers = !showNumbers)}>
-		Toggle Numbers
-	</button> -->
 	<ToggleSwitch
 		bind:checked={showNumbers}
 		label="Toggle Numbers"
 		labelClasses="font-bold text-surface-900-50"
 	/>
 	<div>
-		<!-- class="btn-sm btn-border-surface-tl-primary-secondary" -->
-		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 22)}>Show all</button
-		>
-		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 4)}>4+ (AA)</button>
-		<button class="btn-sm btn-secondary" on:click={() => (contrast_threshold = 7)}>7+ (AAA)</button>
+		<RadioGroup
+			{items}
+			bind:group={contrast_group}
+			name="contrast-guidelines"
+			size="sm"
+			bgActiveClasses="primary-500"
+		/>
 	</div>
 </div>
 

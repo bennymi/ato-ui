@@ -56,7 +56,6 @@
 		class="switch relative inline-block rounded-btn cursor-pointer transition-all duration-300 {bg_classes} {container_classes}"
 	>
 		<input bind:checked type="checkbox" class="peer display-none" />
-		<!-- rounded-[25px] -->
 		<div
 			role="switch"
 			tabindex="0"
