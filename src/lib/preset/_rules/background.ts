@@ -70,26 +70,22 @@ export const backgroundRules: Rule[] = [
 ];
 
 export const backgroundSCs: Shortcut[] = [
-    // Opacity
-    // [
-    //     new RegExp(`^bg-(${allColorsJ})(/[1-9][0-9]?|100)?$`), 
-    //     ([, b, op]) => `bg-${b} ${op ? 'bg-opacity-[' + parseInt(op.substring(1)) / 100 + ']' : ''}`,
-    //     {
-    //         autocomplete: `bg-(${allColorsJ})`
-    //     }
-    // ],
-
     // Background + text on background
     [
         new RegExp(`^${reg_c}-${reg_s}${reg_oO}$`),
         ([_, c, s, o]) => `bg-${cso(c, s, o)} text-on-${cs(c, s)}`
+    ],
+    [
+        new RegExp(`^${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`),
+        ([_, c, s1, o1, s2, o2]) => `bg-${cso(c, s1, o1)} text-on-${cs(c, s1)} dark:(bg-${cso(c, s2, o2)} text-on-${cs(c, s2)})`
     ],
 
     // Background Tokens
     // ([, b, s1, s2]: string[]) => `bg-${cs(b, s1)} dark:bg-${cs(b, s2)}`,
     [
         new RegExp(`^bg-${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`), 
-        ([, b, s1, o1, s2, o2]: string[]) => `${cs(b, s1)}${o1 ? `/${o1}` : ''} dark:${cs(b, s2)}${o2 ? `/${o2}` : ''}`,
+        ([, c, s1, o1, s2, o2]: string[]) => `bg-${cso(c, s1, o1)} dark:bg-${cso(c, s2, o2)}`,
+        // ([, b, s1, o1, s2, o2]: string[]) => `${cs(b, s1)}${o1 ? `/${o1}` : ''} dark:${cs(b, s2)}${o2 ? `/${o2}` : ''}`,
         {
             autocomplete: `bg-${reg_c}-${reg_s}-(${shadesJ})`
         }

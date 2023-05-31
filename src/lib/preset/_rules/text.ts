@@ -1,6 +1,6 @@
 import type { Rule, Shortcut } from '@unocss/core';
 
-import { default_dir, reg_dO, reg_c, reg_s, reg_c_s, reg_c_sO, cs, reg_d, reg_oO, cso, reg_c_sO_oO } from '../utils/regex';
+import { default_dir, reg_dO, reg_c, reg_s, reg_c_s, reg_c_sO, cs, reg_d, reg_oO, cso, reg_c_sO_oO, reg_c_s_oO, convert_opacity } from '../utils/regex';
 
 const gradientClasses = 'bg-clip-text text-transparent';
 
@@ -19,7 +19,14 @@ export const textSCs: Shortcut[] = [
     // ],
     [
         new RegExp(`^text-on-${reg_c_sO_oO}$`),
-        ([_, c, s, op]: string[]) => `text-[color:rgb(var(--on-${cs(c, s)}))]${op ? `/${op}` : ''}`,
+        ([_, c, s, op]: string[]) => `text-[color:rgb(var(--on-${cs(c, s)}))]${op ? `/${convert_opacity(op)}` : ''}`,
+        {
+            autocomplete: `text-on-${reg_c}/<num>`
+        }
+    ],
+    [
+        new RegExp(`^text-on-${reg_c_s_oO}-${reg_s}${reg_oO}$`),
+        ([_, c1, s1, o1, s2, o2]: string[]) => `text-[color:rgb(var(--on-${cs(c1, s1)}))]${o1 ? `/${convert_opacity(o1)}` : ''} dark:text-[color:rgb(var(--on-${cs(c1, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
         {
             autocomplete: `text-on-${reg_c}/<num>`
         }
