@@ -39,6 +39,7 @@ export const reg_100 = `(0|100|[1-9][0-9]?)`;
 
 export const reg_c_s = `${reg_c}-${reg_s}`;
 export const reg_c_sO = `${reg_c}${reg_sO}`;
+export const reg_c_s_oO = `${reg_c}-${reg_s}${reg_oO}`;
 export const reg_c_sO_oO = `${reg_c}${reg_sO}${reg_oO}`;
 
 // ===== Functions used for shortcuts
