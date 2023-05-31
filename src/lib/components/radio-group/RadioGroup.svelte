@@ -56,7 +56,7 @@
 			/>
 			<label
 				for={uid}
-				class="relative flex h-full gap-2 items-center justify-between cursor-pointer rounded-container {container_classes} shadow-md shadow-surface-900/30-50/20 focus:outline-none peer-focus:(ring-2 ring-white ring-offset-2 ring-offset-surface-300 ring-opacity-40) {active
+				class="relative flex h-full gap-2 items-center justify-between cursor-pointer rounded-container {container_classes} shadow-md shadow-surface-900/30-50/20 transition-all duration-300 focus:outline-none peer-focus:(ring-2 ring-white ring-offset-2 ring-offset-surface-300 ring-opacity-40) {active
 					? bgActiveClasses
 					: bgClasses}"
 			>

@@ -10,13 +10,6 @@ export const textRules: Rule[] = [
 
 export const textSCs: Shortcut[] = [
     // Text on base colours
-    // [
-    //     new RegExp(`^text-on-${reg_c}$`),
-    //     ([, c]: string[]) => `text-[color:rgb(var(--on-${c}))]`,
-    //     {
-    //         autocomplete: `text-on-$colors`
-    //     }
-    // ],
     [
         new RegExp(`^text-on-${reg_c_sO_oO}$`),
         ([_, c, s, op]: string[]) => `text-[color:rgb(var(--on-${cs(c, s)}))]${op ? `/${convert_opacity(op)}` : ''}`,
@@ -28,20 +21,11 @@ export const textSCs: Shortcut[] = [
         new RegExp(`^text-on-${reg_c_s_oO}-${reg_s}${reg_oO}$`),
         ([_, c1, s1, o1, s2, o2]: string[]) => `text-[color:rgb(var(--on-${cs(c1, s1)}))]${o1 ? `/${convert_opacity(o1)}` : ''} dark:text-[color:rgb(var(--on-${cs(c1, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
         {
-            autocomplete: `text-on-${reg_c}/<num>`
+            autocomplete: `text-on-${reg_c}-${reg_s}-${reg_s}/<num>`
         }
     ],
 
-    // Text with opacity values
-    // [
-    //     new RegExp(`^text-(${themeColorsJ})-(${shadesJ})(/[1-9][0-9]?|100)?$`), 
-    //     ([, t, c, d]) => `text-${t}-${c}${d ? ' opacity-[' + parseInt(d.substring(1)) / 100 + ']' : ''}`, 
-    //     {
-    //         autocomplete: [`text-(${themeColorsJ})-(${shadesJ})`]
-    //     }
-    // ],
-
-    // Text
+    // Text Light - Dark
     [
         new RegExp(`^text-${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`), 
         ([, c, s1, o1, s2, o2]: string[]) => `text-${cso(c, s1, o1)} dark:text-${cso(c, s2, o2)}`,
@@ -52,6 +36,8 @@ export const textSCs: Shortcut[] = [
             ]
         }
     ],
+
+    // Text Light - Dark + Hover
     [
         new RegExp(`^text-${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`), 
         ([, c, s1, o1, s2, o2, s3, o3, s4, o4]: string[]) => `text-${cso(c, s1, o1)} hover:text-${cso(c, s2, o2)} dark:(text-${cso(c, s3, o3)} hover:text-${cso(c, s4, o4)})`,
