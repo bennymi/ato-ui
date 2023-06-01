@@ -7,7 +7,7 @@
 	import generate_palette, { create_css_colors } from './colors';
 	import { options } from './options';
 
-	import CodeBlock from '$lib/mdsvex/CodeBlock.svelte';
+	// import CodeBlock from '$lib/mdsvex/CodeBlock.svelte';
 
 	import ColorPicker from './ColorPicker.svelte';
 	import Contrasts from './Contrasts.svelte';
