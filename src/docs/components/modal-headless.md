@@ -45,7 +45,7 @@ Please see the [HeadlessUI Modal](https://captaincodeman.github.io/svelte-headle
 </script>
 
 <button class="btn-primary" on:click={dialog.open}>
-	Open modal
+	Open dialog
 </button>
 
 {#if $dialog.expanded}
