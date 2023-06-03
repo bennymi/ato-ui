@@ -29,9 +29,9 @@ Example: `primary-500` becomes `bg-primary-500 text-on-primary-500`.
 
 ## Light & Dark Mode
 
-`bg-{color}-{shade1}-{shade2}`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead. It also sets the appropriate text colors for the shades.
+`bg-{color}-{shade1}-{shade2}`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead.
 
-Example: `bg-surface-50-950` becomes `surface-50 dark:surface-950`. Toggle the dark / light switch to see the changes.
+Example: `bg-surface-50-950` becomes `bg-surface-50 dark:bg-surface-950`. Toggle the dark / light switch to see the changes.
 
 <div class="flex my-4">
     {#each ['bg-primary-700-200', 'bg-secondary-200-700', 'bg-tertiary-700-300'] as token}
@@ -71,13 +71,15 @@ Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction 
 
 ## Mesh Gradients
 
-`bg-mesh-{color}-{shade}/{opacity}-x{percentage}-y{percentage}`: This pattern creates a mesh gradient background. The `shade` and `opacity` are optional. For the shade the default is `500` and for the opacity the default is `30`. The `x` and `y` are the coordinates in percent (`0-100`) at which the color should be placed. You can add as many color points as you want.
+`bg-mesh-{color}-{shade}/{opacity}-x{percentage}-y{percentage}`: This pattern creates a mesh gradient background. The `shade` and `opacity` are optional. For the shade the default is `500` and for the opacity the default is `30`. The `x` and `y` are the coordinates in percent and can be positive or negative values at which the color should be placed (`x50-y50`, `x110-y-10`). You can add as many color points as you want.
 
-You additionally will want to set a background color for the container, for example using the light / dark token: `bg-surface-50-950`.
+You additionally will want to set a background color for the container, for example using the light / dark token: `bg-surface-50-950` or with `surface-50-900` so that text colors are also already properly set.
 
 Examples: `bg-mesh-primary/20-x5-y0`, `bg-mesh-secondary-400/20-x20-y20-success/10-x90-y90-tertiary-x0-y90`.
 
 <div class="flex justify-center items-center my-4 h-64 bg-mesh-primary/20-x4-y0-success-400/30-x95-y95 text-surface-950-50 bg-surface-50-500">bg-mesh-primary/20-x4-y0-success-400/30-x95-y95</div>
+
+<div class="flex justify-center items-center my-4 h-64 bg-mesh-secondary/20-x4-y0-error-400/30-x125-y-25 surface-50-900">bg-mesh-secondary/20-x4-y0-error-400/30-x125-y-25</div>
 
 ```html
 <div 
