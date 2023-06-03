@@ -12,6 +12,7 @@ import { pos_j  } from '../../types/positions.d';
  * o = opacity
  * p = position
  * O = Optional
+ * num = negative and positive integers
  * name_... = class names
  */
 
@@ -36,6 +37,8 @@ export const reg_sO = `(?:-(${shadesJ}))?`;
 export const reg_oO = `(?:/(0|100|[1-9][0-9]?))?`;
 
 export const reg_100 = `(0|100|[1-9][0-9]?)`;
+
+export const reg_num = `(-?\\d+)`;
 
 export const reg_c_s = `${reg_c}-${reg_s}`;
 export const reg_c_sO = `${reg_c}${reg_sO}`;

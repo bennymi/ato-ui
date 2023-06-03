@@ -38,9 +38,9 @@
 		ariaLabel="Actions"
 		on:select={onSelect}
 		buttonStyle="secondary-500/90 hover:secondary-500"
+		activeStyle="secondary-500"
 		searchIcon="text-xl i-material-symbols-search-check-rounded"
 		selectIcon="text-xl i-material-symbols-check-small-rounded"
-		activeStyle="secondary-500"
 	/>
 	<Combobox
 		{options}
