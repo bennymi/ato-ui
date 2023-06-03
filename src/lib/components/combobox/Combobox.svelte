@@ -10,9 +10,9 @@
 	/** Set the width of the search bar. */
 	export let width = 'w-72 min-w-50';
 
-	/** Set the search icon. Example: 'i-material-symbols-cloud text-lg'. */
+	/** Set the search icon. Example: 'i-material-symbols-cloud text-lg|xl'. */
 	export let searchIcon = '';
-	/** Set the select icon. Example: 'i-material-symbols-cloud text-lg'. */
+	/** Set the select icon. Example: 'i-material-symbols-cloud text-lg|xl'. */
 	export let selectIcon = '';
 
 	/** Set the button styles. */
