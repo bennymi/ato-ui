@@ -11,6 +11,8 @@
 	export let collapseIcon = '';
 	/** Set the button styles. */
 	export let buttonStyle = 'primary-200 hover:primary-300';
+	/** Set the expanded panel style. */
+	export let panelStyle = 'text-sm text-surface-900';
 
 	// Assign a unique identifier for the component.
 	const componentId = crypto.randomUUID();
@@ -80,11 +82,7 @@
 		{/if}
 	</button>
 	{#if $accordion_item.expanded}
-		<div
-			use:accordion_item.panel
-			class="px-4 pt-4 pb-2 text-sm text-surface-500"
-			transition:slide|local
-		>
+		<div use:accordion_item.panel class="px-4 pt-4 pb-2 {panelStyle}" transition:slide|local>
 			<slot name="content" />
 		</div>
 	{/if}
