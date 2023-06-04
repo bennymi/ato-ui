@@ -3,7 +3,7 @@
 	import AccordionItem from '$lib/components/accordion/AccordionItem.svelte';
 </script>
 
-<Accordion collapse>
+<Accordion collapse width="w-50">
 	<AccordionItem label="refund policy" open>
 		<svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
 		<svelte:fragment slot="content"
