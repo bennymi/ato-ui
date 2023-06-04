@@ -7,8 +7,10 @@
 	export let open = false;
 	/** Set the aria label. */
 	export let label: string;
+	/** Set the collapse icon that should be used. */
+	export let collapseIcon = '';
 	/** Set the button styles. */
-	export let buttonStyles = 'primary-200 hover:primary-300';
+	export let buttonStyle = 'primary-200 hover:primary-300';
 
 	// Assign a unique identifier for the component.
 	const componentId = crypto.randomUUID();
@@ -56,15 +58,26 @@
 <div>
 	<button
 		use:accordion_item.button
-		class="flex w-full justify-between rounded-btn px-4 py-2 text-left text-sm font-medium transition-all {buttonStyles} focus:outline-none focus-visible:(ring ring-primary-500 ring-opacity-75)"
+		class="flex w-full justify-between rounded-btn px-4 py-2 text-left text-sm font-medium transition-all {buttonStyle} focus:outline-none focus-visible:(ring ring-primary-500 ring-opacity-75)"
 		on:click={handleClick}
 	>
 		<span><slot name="title" /></span>
-		<span
-			class="transition-all duration-300 text-lg i-mdi-chevron-up {$accordion_item.expanded
-				? 'rotate-180'
-				: ''}"
-		/>
+		{#if collapseIcon}
+			<span
+				class="transition-all duration-300 text-lg {collapseIcon} {$accordion_item.expanded
+					? 'rotate-180'
+					: ''}"
+			/>
+		{:else}
+			<span class="transition-all duration-300 {$accordion_item.expanded ? 'rotate-180' : ''}">
+				<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6l-6 6l1.41 1.41Z"
+					/></svg
+				>
+			</span>
+		{/if}
 	</button>
 	{#if $accordion_item.expanded}
 		<div

@@ -11,7 +11,7 @@
 			you in full, no questions asked.</svelte:fragment
 		>
 	</AccordionItem>
-	<AccordionItem label="technical support" buttonStyles="secondary-200 hover:secondary-300">
+	<AccordionItem label="technical support" buttonStyle="secondary-200 hover:secondary-300">
 		<svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
 		<svelte:fragment slot="content">No.</svelte:fragment>
 	</AccordionItem>
