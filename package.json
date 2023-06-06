@@ -27,6 +27,7 @@
 	"devDependencies": {
 		"@iconify-json/material-symbols": "^1.1.45",
 		"@iconify-json/mdi": "^1.1.52",
+		"@iconify-json/svg-spinners": "^1.1.1",
 		"@iconify-json/vscode-icons": "^1.1.25",
 		"@julr/unocss-preset-forms": "^0.0.5",
 		"@sveltejs/adapter-auto": "^2.1.0",

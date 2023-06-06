@@ -36,6 +36,9 @@ devDependencies:
   '@iconify-json/mdi':
     specifier: ^1.1.52
     version: 1.1.52
+  '@iconify-json/svg-spinners':
+    specifier: ^1.1.1
+    version: 1.1.1
   '@iconify-json/vscode-icons':
     specifier: ^1.1.25
     version: 1.1.25
@@ -438,6 +441,12 @@ packages:
 
   /@iconify-json/mdi@1.1.52:
     resolution: {integrity: sha512-tLzpFcmoGw1/jHcl+BshUd4bqvP4755OUluaARsuKskTp2aIPIAkRQOhzJGpry9CZ0i82z0alq4HrKrp9uvj4A==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/svg-spinners@1.1.1:
+    resolution: {integrity: sha512-Zoe9Pw8Ljfx4dYX5+7Bl8VrerReqJfv1OGee0+Tclg9FWw0Bqrd5TfNseRvXYWNXVIHt+V13uzcTfzpfSTi9Lw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

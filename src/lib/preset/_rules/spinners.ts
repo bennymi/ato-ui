@@ -8,19 +8,21 @@ import type { Rule, Shortcut } from '@unocss/core';
 import { themeColorsJ, shadesJ } from '../../types/colors.d';
 import type { RulesDescription } from '../../types/types.d';
 
-import { reg_c_sO, cs } from '../utils/regex';
+import { reg_c_sO, cs, reg_whO, dim } from '../utils/regex';
 
-const sqHoverBase = `relative w-12 h-12 rotate-x-65 rotate-z-45 animate-layers1 animate-alternate after:(content-[''] absolute inset-0 animate-layerTr animate-alternate animate-delay-500)`;
+const sqHoverBase = `inline-block relative rounded-container rotate-x-65 rotate-z-45 animate-layers1 animate-alternate after:(content-[''] rounded-container absolute inset-0 animate-layerTr animate-alternate animate-delay-500)`;
 
-const sqFlipBase = 'w-10 h-10 inline-block relative  box-border animate-flipXY';
+const sqFlipBase = 'inline-block relative rounded-container box-border animate-flipXY';
+const sqFlip_WH = '10';
 
-const barSlideBase = 'h-2.5 animate-barSlide';
-const barSlideBeforeAfter = `absolute block content-[''] animate-barSlide h-2.5`;
+// const barSlideBase = 'h-2.5 animate-barSlide';
+// const barSlideBeforeAfter = `absolute block content-[''] animate-barSlide h-2.5`;
 
-const rotSquaresBeforeAfter = `content-[''] w-12 h-12 border-2 absolute top-0 left-0 box-border animate-rotateSquare360`;
+const rotSquaresBeforeAfter = `content-[''] border-2 absolute top-0 left-0 box-border animate-rotateSquare360`;
 
-const dotsBase = 'rounded-full w-4 h-4 fill-mode-both animate-bblFadeInOut text-center';
-const dotsBeforeAfter = `content-[''] absolute`;
+// const dotsBase = 'rounded-full fill-mode-both animate-bblFadeInOut text-center';
+// const dotsBeforeAfter = `content-[''] absolute`;
+// const dots_WH = '4';
 
 export const spinnerRules: Rule[] = [
     [
@@ -42,8 +44,8 @@ export const spinnerRules: Rule[] = [
 export const spinnerSCs: Shortcut[] = [
     // Regular spinner
     [
-        new RegExp(`^s-circle-${reg_c_sO}$`),
-        ([_, c, s]: string[]) => `inline-block w-12 h-12 border-2 border-solid border-${cs(c, s)} border-b-transparent box-border rounded-full animate-rotate360`,
+        new RegExp(`^s${reg_whO}-circle-${reg_c_sO}$`),
+        ([_, wh, c, s]: string[]) => `inline-block ${dim(wh)} border-2 border-solid border-${cs(c, s)} border-b-transparent box-border rounded-full animate-rotate360`,
         {
             autocomplete: [
                 `s-circle-(${themeColorsJ})`,
@@ -52,8 +54,8 @@ export const spinnerSCs: Shortcut[] = [
         }
     ],
     [
-        new RegExp(`^s-circle-split-${reg_c_sO}$`),
-        ([_, c, s]: string[]) => `inline-block w-12 h-12 border-2 border-solid border-${cs(c, s)} border-y-transparent box-border rounded-full animate-rotate360`,
+        new RegExp(`^s${reg_whO}-circle-split-${reg_c_sO}$`),
+        ([_, wh, c, s]: string[]) => `inline-block ${dim(wh)} border-2 border-solid border-${cs(c, s)} border-y-transparent box-border rounded-full animate-rotate360`,
         {
             autocomplete: [
                 `s-circle-split-(${themeColorsJ})`,
@@ -63,35 +65,35 @@ export const spinnerSCs: Shortcut[] = [
     ],
 
     // Dots fading in and out
-    [
-        new RegExp(`^s-dots-${reg_c_sO}$`),
-        ([_, c, s]: string[]) => `${dotsBase} bg-${cs(c, s)} relative animate-delay-300
-            before:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c, s)} -left-6)
-            after:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c, s)} left-6 animate-delay-600)`,
-        {
-            autocomplete: [
-                `s-dots-(${themeColorsJ})`,
-                `s-dots-(${themeColorsJ})-(${shadesJ})`
-            ]
-        }
-    ],
-    [
-        new RegExp(`^s-dots-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2, c3, s3]: string[]) => `${dotsBase} bg-${cs(c2, s2)} relative animate-delay-300
-            before:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c1, s1)} -left-6)
-            after:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c3, s3)} left-6 animate-delay-600)`,
-        {
-            autocomplete: [
-                `s-dots-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `s-dots-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
-            ]
-        }
-    ],
+    // [
+    //     new RegExp(`^s${reg_whO}-dots-${reg_c_sO}$`),
+    //     ([_, wh, c, s]: string[]) => `${dotsBase} ${dim(wh, dots_WH)} bg-${cs(c, s)} relative animate-delay-300
+    //         before:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c, s)} -left-6)
+    //         after:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c, s)} left-6 animate-delay-600)`,
+    //     {
+    //         autocomplete: [
+    //             `s-dots-(${themeColorsJ})`,
+    //             `s-dots-(${themeColorsJ})-(${shadesJ})`
+    //         ]
+    //     }
+    // ],
+    // [
+    //     new RegExp(`^s${reg_whO}-dots-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
+    //     ([_, wh, c1, s1, c2, s2, c3, s3]: string[]) => `${dotsBase} ${dim(wh, dots_WH)} bg-${cs(c2, s2)} relative animate-delay-300
+    //         before:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c1, s1)} -left-6)
+    //         after:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c3, s3)} left-6 animate-delay-600)`,
+    //     {
+    //         autocomplete: [
+    //             `s-dots-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+    //             `s-dots-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
+    //         ]
+    //     }
+    // ],
 
     // Hovering squares
     [
-        new RegExp(`^s-squares-hover-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2, c3, s3]: string[]) => `${sqHoverBase} text-${cs(c1, s1)} bg-${cs(c2, s2)} after:(bg-${cs(c3, s3)}/75)`,
+        new RegExp(`^s${reg_whO}-squares-hover-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
+        ([_, wh, c1, s1, c2, s2, c3, s3]: string[]) => `${sqHoverBase} ${dim(wh)} text-${cs(c1, s1)} bg-${cs(c2, s2)} after:(bg-${cs(c3, s3)}/75)`,
         {
             autocomplete: [
                 `s-squares-hover-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
@@ -102,8 +104,8 @@ export const spinnerSCs: Shortcut[] = [
 
     // Flipping Square
     [
-        new RegExp(`^s-squares-flip-${reg_c_sO}$`),
-        ([_, c, s]: string[]) => `${sqFlipBase} bg-${cs(c, s)}`,
+        new RegExp(`^s${reg_whO}-squares-flip-${reg_c_sO}$`),
+        ([_, wh, c, s]: string[]) => `${sqFlipBase} ${dim(wh, sqFlip_WH)} bg-${cs(c, s)}`,
         {
             autocomplete: [
                 `s-squares-flip-(${themeColorsJ})`,
@@ -111,47 +113,47 @@ export const spinnerSCs: Shortcut[] = [
             ]
         }
     ],
-    [
-        // With 2 gradients
-        new RegExp(`^s-squares-flip-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2]: string[]) => `${sqFlipBase} bg-radial-${c1}${s1 ? `-${s1}` : ''}-${c2}${s2 ? `-${s2}` : ''}`,
-        {
-            autocomplete: [
-                `s-squares-flip-(${themeColorsJ})-(${themeColorsJ})`,
-                `s-squares-flip-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
-            ]
-        }
-    ],
-    [
-        // With 3 gradients
-        new RegExp(`^s-squares-flip-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2, c3, s3]: string[]) => `${sqFlipBase} bg-radial-${c1}${s1 ? `-${s1}` : ''}-${c2}${s2 ? `-${s2}` : ''}-${c3}${s3 ? `-${s3}` : ''}`,
-        {
-            autocomplete: [
-                `s-squares-flip-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `s-squares-flip-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
-            ]
-        }
-    ],
+    // [
+    //     // With 2 gradients
+    //     new RegExp(`^s${reg_whO}-squares-flip-${reg_c_sO}-${reg_c_sO}$`),
+    //     ([_, wh, c1, s1, c2, s2]: string[]) => `${sqFlipBase} ${dim(wh, sqFlip_WH)} bg-radial-${c1}${s1 ? `-${s1}` : ''}-${c2}${s2 ? `-${s2}` : ''}`,
+    //     {
+    //         autocomplete: [
+    //             `s-squares-flip-(${themeColorsJ})-(${themeColorsJ})`,
+    //             `s-squares-flip-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
+    //         ]
+    //     }
+    // ],
+    // [
+    //     // With 3 gradients
+    //     new RegExp(`^s${reg_whO}-squares-flip-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
+    //     ([_, wh, c1, s1, c2, s2, c3, s3]: string[]) => `${sqFlipBase} ${dim(wh, sqFlip_WH)} bg-radial-${c1}${s1 ? `-${s1}` : ''}-${c2}${s2 ? `-${s2}` : ''}-${c3}${s3 ? `-${s3}` : ''}`,
+    //     {
+    //         autocomplete: [
+    //             `s-squares-flip-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+    //             `s-squares-flip-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
+    //         ]
+    //     }
+    // ],
 
     // Horizontal bars
-    [
-        new RegExp(`^s-bars-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2, c3, s3]: string[]) => `bg-${cs(c2, s2)} ${barSlideBase} w-12 rounded-md
-        before:(bg-${cs(c1, s1)} ${barSlideBeforeAfter} rounded-md -top-5 left-2.5 w-10) 
-        after:(bg-${cs(c3, s3)} ${barSlideBeforeAfter} rounded-md -bottom-5 w-9)`,
-        {
-            autocomplete: [
-                `s-squares-hover-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
-                `s-squares-hover-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
-            ]
-        }
-    ],
+    // [
+    //     new RegExp(`^s-bars-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
+    //     ([_, c1, s1, c2, s2, c3, s3]: string[]) => `bg-${cs(c2, s2)} ${barSlideBase} w-12 rounded-md
+    //     before:(bg-${cs(c1, s1)} ${barSlideBeforeAfter} rounded-md -top-5 left-2.5 w-10) 
+    //     after:(bg-${cs(c3, s3)} ${barSlideBeforeAfter} rounded-md -bottom-5 w-9)`,
+    //     {
+    //         autocomplete: [
+    //             `s-squares-hover-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
+    //             `s-squares-hover-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
+    //         ]
+    //     }
+    // ],
 
     // Shape shifting square
     [
-        new RegExp(`^s-corners-${reg_c_sO}$`),
-        ([_, c, s]: string[]) => `relative w-12 h-12 bg-${cs(c, s)} animate-squareShapeShift`,
+        new RegExp(`^s${reg_whO}-corners-${reg_c_sO}$`),
+        ([_, wh, c, s]: string[]) => `relative inline-block ${dim(wh)} bg-${cs(c, s)} animate-squareShapeShift`,
         {
             autocomplete: [
                 `s-corners-(${themeColorsJ})`,
@@ -160,8 +162,8 @@ export const spinnerSCs: Shortcut[] = [
         }
     ],
     [
-        new RegExp(`^s-corners-outline-${reg_c_sO}$`),
-        ([_, c, s]: string[]) => `relative w-12 h-12 border-4 border-${cs(c, s)} animate-squareShapeShift`,
+        new RegExp(`^s${reg_whO}-corners-outline-${reg_c_sO}$`),
+        ([_, wh, c, s]: string[]) => `relative inline-block ${dim(wh)} border-4 border-${cs(c, s)} animate-squareShapeShift`,
         {
             autocomplete: [
                 `s-corners-outline-(${themeColorsJ})`,
@@ -171,28 +173,28 @@ export const spinnerSCs: Shortcut[] = [
     ],
 
     // Folding squares
-    [
-        new RegExp(`^s-squares-folding-${reg_c_sO}$`),
-        ([_, c, s]: string[]) => `
-            inline-block relative w-12 h-12 rotate-45
-            before:(content-[''] box-border w-6 h-6 absolute left-0 -top-6 folding-squares-${cs(c, s)})
-            after:(content-[''] box-border w-6 h-6 absolute left-0 top-0 shadow-md animate-foldingSquares2)
-        `,
-        {
-            autocomplete: [
-                `s-squares-folding-(${themeColorsJ})`,
-                `s-squares-folding-(${themeColorsJ})-(${shadesJ})`
-            ]
-        }
-    ],
+    // [
+    //     new RegExp(`^s-squares-folding-${reg_c_sO}$`),
+    //     ([_, c, s]: string[]) => `
+    //         inline-block relative w-12 h-12 rotate-45
+    //         before:(content-[''] box-border w-6 h-6 absolute left-0 -top-6 folding-squares-${cs(c, s)})
+    //         after:(content-[''] box-border w-6 h-6 absolute left-0 top-0 shadow-md animate-foldingSquares2)
+    //     `,
+    //     {
+    //         autocomplete: [
+    //             `s-squares-folding-(${themeColorsJ})`,
+    //             `s-squares-folding-(${themeColorsJ})-(${shadesJ})`
+    //         ]
+    //     }
+    // ],
 
     // 2 Rotating squares
     [
-        new RegExp(`^s-squares-rotate-${reg_c_sO}$`),
-        ([_, c1, s1]: string[]) => `
-            w-12 h-12 relative inline-block 
-            before:(${rotSquaresBeforeAfter} border-${cs(c1, s1)})
-            after:(${rotSquaresBeforeAfter} border-${cs(c1, s1)} animate-reverse)`,
+        new RegExp(`^s${reg_whO}-squares-rotate-${reg_c_sO}$`),
+        ([_, wh, c1, s1]: string[]) => `
+            ${dim(wh)} relative inline-block 
+            before:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c1, s1)})
+            after:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c1, s1)} animate-reverse)`,
         {
             autocomplete: [
                 `s-squares-rotate-(${themeColorsJ})`,
@@ -201,11 +203,11 @@ export const spinnerSCs: Shortcut[] = [
         }
     ],
     [
-        new RegExp(`^s-squares-rotate-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2]: string[]) => `
-            w-12 h-12 relative inline-block 
-            before:(${rotSquaresBeforeAfter} border-${cs(c1, s1)})
-            after:(${rotSquaresBeforeAfter} border-${cs(c2, s2)} animate-reverse)`,
+        new RegExp(`^s${reg_whO}-squares-rotate-${reg_c_sO}-${reg_c_sO}$`),
+        ([_, wh, c1, s1, c2, s2]: string[]) => `
+            ${dim(wh)} relative inline-block 
+            before:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c1, s1)})
+            after:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c2, s2)} animate-reverse)`,
         {
             autocomplete: [
                 `s-squares-rotate-(${themeColorsJ})-(${themeColorsJ})`,
