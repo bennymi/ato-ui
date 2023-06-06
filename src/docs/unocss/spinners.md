@@ -46,7 +46,7 @@ description: Allows you to easily add spinners to your website when loading data
 
 There is an [svg-spinners](https://icones.js.org/collection/svg-spinners) iconify library with 46 additional spinners, which you can easily add to your project: `pnpm add -D @iconify-json/svg-spinners`.
 
-To customize these spinners colors use regular Tailwind classes to modify the size and color.
+To customize these spinners use regular Tailwind classes to modify the size and color.
 
 Example: `w-12 h-12 text-primary-500 i-svg-spinners-blocks-scale`.
 
