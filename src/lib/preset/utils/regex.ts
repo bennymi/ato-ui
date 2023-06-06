@@ -11,6 +11,9 @@ import { pos_j  } from '../../types/positions.d';
  * s = shade
  * o = opacity
  * p = position
+ * wh = width & height
+ * w = width
+ * h = height
  * O = Optional
  * num = negative and positive integers
  * name_... = class names
@@ -35,6 +38,8 @@ export const reg_c = `(${themeColorsJ})`;
 export const reg_s = `(${shadesJ})`;
 export const reg_sO = `(?:-(${shadesJ}))?`;
 export const reg_oO = `(?:/(0|100|[1-9][0-9]?))?`;
+
+export const reg_whO = `(?:-wh(\\d+))?`;
 
 export const reg_100 = `(0|100|[1-9][0-9]?)`;
 
@@ -80,6 +85,14 @@ export function cso(c: string, s: string, o: string) {
     }
 
     return `${c}-${so(s, o)}`;
+}
+
+export function dim(wh: string, default_wh='12') {
+    if (wh) {
+        return `w-${wh} h-${wh}`;
+    }
+
+    return `w-${default_wh} h-${default_wh}`;
 }
 
 // ===== Functions used only for specifying class names in rules
