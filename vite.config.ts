@@ -12,6 +12,9 @@ import sveltePreprocess from 'svelte-preprocess';
 import * as svelte from 'svelte/compiler';
 import qs from 'query-string';
 
+import { readdirSync } from 'fs';
+import { extname, join } from 'path';
+
 function sveld() {
 	return {
 		name: 'vite-plugin-sveld',
@@ -56,27 +59,18 @@ function sveld() {
 
 // import { colors, presetAtoUI } from './src/lib/preset/index';
 
+function getAllConfigFiles(dir: string) {
+	const files = readdirSync(dir);
+	return files.filter((file) => extname(file) === '.ts').map((file) => join(dir, file));
+}
+
 export default defineConfig({
 	plugins: [
     	sveld(),
 		sveltekit(),
 		UnoCSS({
       		configFile: './unocss.config.ts',
-			configDeps: [
-				'./src/lib/preset/_theme/colors.ts',
-				'./src/lib/preset/_rules/animation.ts',
-				'./src/lib/preset/_rules/background.ts',
-				'./src/lib/preset/_rules/border.ts',
-				'./src/lib/preset/_rules/buttons.ts',
-				'./src/lib/preset/_rules/cards.ts',
-				'./src/lib/preset/_rules/chips.ts',
-				'./src/lib/preset/_rules/image.ts',
-				'./src/lib/preset/_rules/index.ts',
-				'./src/lib/preset/_rules/shadow.ts',
-				'./src/lib/preset/_rules/spinners.ts',
-				'./src/lib/preset/_rules/svg.ts',
-				'./src/lib/preset/_rules/text.ts',
-			]
+			configDeps: getAllConfigFiles('./src/lib/preset/_rules')
 			// extractors: [extractorSvelte()],
       // theme: {
       // },

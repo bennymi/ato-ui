@@ -8,8 +8,6 @@
 import { escapeSvelte } from "mdsvex";
 import shiki from 'shiki';
 
-import { join } from 'path';
-
 /** at type {import('mdsvex').MdsvexOptions[HighlighterOptions][Highlighter]} */
 // export async function highlightCode(code: string | undefined, lang: string | undefined, meta: string | undefined): Promise<string> {
 
