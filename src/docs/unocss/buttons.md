@@ -35,7 +35,21 @@ description: Button classes that can be used.
 	<button class="btn-glass-tl-tertiary-primary-secondary btn-xl">xl</button>
 </div>
 
-## Icon Buttons
+## Glass
+
+## Gradient Border
+
+<div class="flex justify-center items-center flex-wrap gap-4">
+	<button class="btn-border-surface-800-br-primary-secondary">Gradient border</button>
+	<button class="btn-border-surface-800-br-primary-secondary" disabled>Gradient disabled</button>
+	<button class="btn-border-surface-800-br-primary-secondary-success">3 Gradient border</button>
+	<button class="btn-border-surface-800-br-primary-secondary-success" disabled>3 Gradient disabled</button>
+	<button class="btn-border-surface-800/90-br-primary-secondary-success"
+		>3 Gradient border (op90)</button
+	>
+</div>
+
+## Icon
 <div class="flex justify-center items-center flex-wrap gap-4">
 	<button class="btn-br-primary-secondary btn-xl">
 		<span class="i-material-symbols:notifications-active-rounded" />
@@ -82,6 +96,34 @@ description: Button classes that can be used.
 			<span>Fire</span>
 		</button>
 	</div>
+	<div class="btn-group-vertical-error">
+		<button>
+			<span class="text-xl i-material-symbols:water-drop-rounded" />
+			<span>Water</span>
+		</button>
+		<button disabled>
+			<span class="text-xl i-material-symbols:globe-uk" />
+			<span>Earth</span>
+		</button>
+		<button>
+			<span class="text-xl i-mdi:fire" />
+			<span>Fire</span>
+		</button>
+	</div>
+	<div class="btn-group-vertical-success">
+		<a>
+			<span class="text-xl i-material-symbols:water-drop-rounded" />
+			<span>Water</span>
+		</a>
+		<a>
+			<span class="text-xl i-material-symbols:globe-uk" />
+			<span>Earth</span>
+		</a>
+		<a>
+			<span class="text-xl i-mdi:fire" />
+			<span>Fire</span>
+		</a>
+	</div>
 	<div class="btn-group-outline-secondary">
 		<button>
 			<span class="text-xl i-material-symbols:water-drop-rounded" />
@@ -96,16 +138,16 @@ description: Button classes that can be used.
 			<span>Fire</span>
 		</button>
 	</div>
-	<div class="btn-group-outline-primary-200">
-		<button class="hover:(text-primary-900)!">
+	<div class="btn-group-outline-tertiary">
+		<button>
 			<span class="text-xl i-material-symbols:water-drop-rounded" />
 			<span>Water</span>
 		</button>
-		<button class="hover:(text-primary-900)!">
+		<button>
 			<span class="text-xl i-material-symbols:globe-uk" />
 			<span>Earth</span>
 		</button>
-		<button class="hover:(text-primary-900)!">
+		<button>
 			<span class="text-xl i-mdi:fire" />
 			<span>Fire</span>
 		</button>
