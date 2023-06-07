@@ -82,7 +82,7 @@ description: Button classes that can be used.
 
 ### Outline
 <section class="flex flex-col gap-4 justify-center items-center">
-	<div class="btn-group-error/90">
+	<div class="btn-group-error">
 		<button>
 			<span class="text-xl i-material-symbols:water-drop-rounded" />
 			<span>Water</span>
@@ -97,6 +97,20 @@ description: Button classes that can be used.
 		</button>
 	</div>
 	<div class="btn-group-vertical-error">
+		<button>
+			<span class="text-xl i-material-symbols:water-drop-rounded" />
+			<span>Water</span>
+		</button>
+		<button disabled>
+			<span class="text-xl i-material-symbols:globe-uk" />
+			<span>Earth</span>
+		</button>
+		<button>
+			<span class="text-xl i-mdi:fire" />
+			<span>Fire</span>
+		</button>
+	</div>
+	<div class="btn-group-vertical-outline-error">
 		<button>
 			<span class="text-xl i-material-symbols:water-drop-rounded" />
 			<span>Water</span>

@@ -66,135 +66,6 @@ export const buttonRules: Rule[] = [
             ]
         }
     ],
-
-    // Button group outline
-    // [
-    //     new RegExp(`^btn-group-outline-${reg_c_sO_oO}$`),
-    //     ([_, c, s, o]) => `
-    //     .${name} {
-    //         @apply inline-flex rounded-lg;
-    //     }
-    //     .${name} button, .${name} a {
-    //         @apply px-4 py-2 inline-flex justify-center items-center space-x-1 bg-${cso(c, s, '15')} transition-all border border-${cso(c, s, o)} text-${cso(c, s, o)} text-sm font-bold hover:(bg-${cso(c, s, o)} text-on-${c}) focus:ring-2;
-    //     }
-    //     .${name} button:first-child, ${name} a:first-child {
-    //         @apply rounded-l-btn;
-    //     }
-    //     .${name} button:last-child, ${name} a:last-child {
-    //         @apply rounded-r-btn;
-    //     }
-    //     `
-    // ],
-    [
-        new RegExp(`^btn-group-outline-${reg_c_sO_oO}$`),
-        ([name, c, s, o]: string[]) => `
-        .${name} {
-            display: inline-flex;
-            border-radius: var(--btn-radius);
-        }
-        .${name} button, .${name} a {
-            display: inline-flex; 
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem; 
-            padding-left: 1rem;
-            padding-right: 1rem; 
-            transition-property: all; 
-            font-size: 0.875rem;
-            line-height: 1.25rem; 
-            font-weight: 700; 
-            justify-content: center; 
-            align-items: center; 
-            border: 1px solid rgba(var(--color-${cs(c, s)}), 1);
-            color: rgba(var(--on-color-${cs(c, s)}), 1);
-            background: rgba(var(--color-${cs(c, s)}), ${parse_opacity(o, '0.55')});
-        }
-        .${name} button:active, .${name} a:active {
-            --un-translate-y: 0.125rem;
-            transform:translateX(var(--un-translate-x)) translateY(var(--un-translate-y)) translateZ(var(--un-translate-z)) rotate(var(--un-rotate)) rotateX(var(--un-rotate-x)) rotateY(var(--un-rotate-y)) rotateZ(var(--un-rotate-z)) skewX(var(--un-skew-x)) skewY(var(--un-skew-y)) scaleX(var(--un-scale-x)) scaleY(var(--un-scale-y)) scaleZ(var(--un-scale-z));
-        }
-        .${name} button > * + *, .${name} a > * + * {
-            margin-left: 0.25rem;
-        }
-        .${name} button:hover, .${name} a:hover {
-            color: rgba(var(--on-${c}), 1);
-            background: rgba(var(--color-${cs(c, s)}), 1);
-        }
-        .${name} button:first-child, .${name} a:first-child {
-            border-top-left-radius: var(--btn-radius);
-            border-bottom-left-radius: var(--btn-radius);
-        }
-        .${name} button:last-child, .${name} a:last-child {
-            border-top-right-radius: var(--btn-radius);
-            border-bottom-right-radius: var(--btn-radius);
-        }
-        `
-    ],
-
-    // Button group regular
-    [
-        new RegExp(`^btn-group-${reg_c_sO_oO}$`),
-        ([n, c, s, o]: string[]) => {
-            const name = n.replace('/', '\\/'); 
-            return `
-            .${name} {
-                display: inline-flex;
-                border-radius: var(--btn-radius);
-            }
-            .${name} button, .${name} a {
-                display: inline-flex; 
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem; 
-                padding-left: 1rem;
-                padding-right: 1rem; 
-                transition-property: all; 
-                font-size: 0.875rem;
-                line-height: 1.25rem; 
-                font-weight: 700; 
-                justify-content: center; 
-                align-items: center; 
-                border: 1px solid rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
-                color: rgba(var(--on-${cs(c, s)}));
-                background: rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)});
-            }
-            .${name} button:active, .${name} a:active {
-                --un-translate-y: 0.125rem;
-                transform:translateX(var(--un-translate-x)) translateY(var(--un-translate-y)) translateZ(var(--un-translate-z)) rotate(var(--un-rotate)) rotateX(var(--un-rotate-x)) rotateY(var(--un-rotate-y)) rotateZ(var(--un-rotate-z)) skewX(var(--un-skew-x)) skewY(var(--un-skew-y)) scaleX(var(--un-scale-x)) scaleY(var(--un-scale-y)) scaleZ(var(--un-scale-z));
-            }
-            .${name} button > * + *, .${name} a > * + * {
-                margin-left: 0.25rem;
-            }
-            .${name} button:hover, .${name} a:hover {
-                /** color: rgba(var(--color-${cs(c, s)}), ${parse_opacity(o)}); **/
-                background: rgba(var(--color-${cs(c, s)}), 0.65);
-            }
-            .${name} button:first-child, .${name} a:first-child {
-                border-top-left-radius: var(--btn-radius);
-                border-bottom-left-radius: var(--btn-radius);
-            }
-            .${name} button:last-child, .${name} a:last-child {
-                border-top-right-radius: var(--btn-radius);
-                border-bottom-right-radius: var(--btn-radius);
-            }
-        `;
-        // @apply space-x-1 hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
-    }],
-    // [
-    //     new RegExp(`^btn-group-${reg_c_sO_oO}$`),
-    //     ([_, c, s, o]) => `
-    //     .${name} {
-    //         @apply inline-flex rounded-lg;
-    //     }
-    //     .${name} button, ${name} a {
-    //         @apply px-4 py-2 inline-flex justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${c} text-sm font-bold hover:(bg-transparent text-${cso(c, s, o)}) focus:ring-2;
-    //     }
-    //     .${name} button:first-child, ${name} a:first-child {
-    //         @apply rounded-l-btn;
-    //     }
-    //     .${name} button:last-child, ${name} a:last-child {
-    //         @apply rounded-r-btn;
-    //     }
-    //     `
-    // ],
 ];
 
 export const buttonSCs: Shortcut[] = [
@@ -306,21 +177,21 @@ export const buttonSCs: Shortcut[] = [
         }
     ],
 
-    // Button group vertical
+    // Button group horizontal & vertical & outline
     [
-        new RegExp(`btn-group-vertical-${reg_c_sO_oO}`),
-        ([_, c, s, o]: string[]) => `
-            inline-flex rounded-btn flex-col cursor-pointer
-            [&>button,&>a]:(px-4 py-2 inline-flex gap-1 justify-center items-center space-x-1 transition-all border border-${cso(c, s, o)} bg-${cso(c, s, o)} text-on-${cs(c, s)} text-sm font-bold)
-            [&>button:disabled,&>a:disabled]:(cursor-not-allowed text-on-${cso(c, s, '65')} opacity-25)
-            [&>button:disabled:hover,&>a:disabled:hover]:(bg-${cso(c, s, o)} text-on-${cs(c, s)})
-            [&>button:hover,&>a:hover]:(bg-${cso(c, s, '65')})
-            [&>button:active,&>a:active]:(translate-x-1)
+        new RegExp(`btn-group(?:-(vertical))?(?:-(outline))?-${reg_c_sO}`),
+        ([_, vert, out, c, s]: string[]) => `
+            inline-flex ${vert ? 'flex-col' : ''} rounded-btn cursor-pointer
+            [&>button,&>a]:(px-4 py-2 inline-flex gap-1 justify-center items-center transition-all border border-${cs(c, s)} bg-${cso(c, s, out ? '55' : '100')} text-on-${cs(c, s)} text-sm font-bold)
+            [&>button:disabled,&>a:disabled]:(cursor-not-allowed text-on-${cso(c, s, '55')} opacity-25)
+            [&>button:disabled:hover,&>a:disabled:hover]:(bg-${cs(c, s)} text-on-${cs(c, s)})
+            [&>button:hover,&>a:hover]:(bg-${cso(c, s, out ? '100' : '65')})
+            [&>button:active,&>a:active]:(translate-${vert ? 'x' : 'y'}-1)
             [&>button:focus,&>a:focus]:(ring-2)
-            [&>button:first-child,&>a:first-child]:(rounded-t-[var(--btn-radius)])
-            [&>button:last-child,&>a:last-child]:(rounded-b-[var(--btn-radius)])
+            [&>button:first-child,&>a:first-child]:(rounded-${vert ? 't' : 'l'}-[var(--btn-radius)])
+            [&>button:last-child,&>a:last-child]:(rounded-${vert ? 'b' : 'r'}-[var(--btn-radius)])
         `
-    ]
+    ],
 ];
 
 export const buttonDescriptions: RulesDescription[] = [
