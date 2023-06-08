@@ -25,6 +25,7 @@
 		"svelte": "^3.54.0"
 	},
 	"devDependencies": {
+		"@grail-ui/svelte": "^0.9.4",
 		"@iconify-json/material-symbols": "^1.1.46",
 		"@iconify-json/mdi": "^1.1.52",
 		"@iconify-json/svg-spinners": "^1.1.1",
