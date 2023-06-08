@@ -30,6 +30,9 @@ dependencies:
     version: 8.6.1
 
 devDependencies:
+  '@grail-ui/svelte':
+    specifier: ^0.9.4
+    version: 0.9.4(svelte@3.59.1)
   '@iconify-json/material-symbols':
     specifier: ^1.1.46
     version: 1.1.46
@@ -411,6 +414,26 @@ packages:
   /@eslint/js@8.42.0:
     resolution: {integrity: sha512-6SWlXpWU5AvId8Ac7zjzmIOqMOba/JWY8XZ4A7q7Gn1Vlfg/SFFIlrtHXt9nPn4op9ZPAkl91Jao+QQv3r/ukw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@floating-ui/core@1.2.6:
+    resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
+    dev: true
+
+  /@floating-ui/dom@1.2.9:
+    resolution: {integrity: sha512-sosQxsqgxMNkV3C+3UqTS6LxP7isRLwX8WMepp843Rb3/b0Wz8+MdUkxJksByip3C2WwLugLHN1b4ibn//zKwQ==}
+    dependencies:
+      '@floating-ui/core': 1.2.6
+    dev: true
+
+  /@grail-ui/svelte@0.9.4(svelte@3.59.1):
+    resolution: {integrity: sha512-+g+LYOWI50Q+U8OlO8bBVfKc3T4wyM0rfH3KGgmXiefgGkrT8urfKrSKvLKa9BvAOBVyf89MjYhhxG3zsl4b+w==}
+    peerDependencies:
+      svelte: 3.x
+    dependencies:
+      '@floating-ui/dom': 1.2.9
+      focus-trap: 7.4.3
+      svelte: 3.59.1
     dev: true
 
   /@humanwhocodes/config-array@0.11.10:
@@ -1923,6 +1946,12 @@ packages:
 
   /flatted@3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
+    dev: true
+
+  /focus-trap@7.4.3:
+    resolution: {integrity: sha512-BgSSbK4GPnS2VbtZ50VtOv1Sti6DIkj3+LkVjiWMNjLeAp1SH1UlLx3ULu/DCu4vq5R4/uvTm+zrvsMsuYmGLg==}
+    dependencies:
+      tabbable: 6.1.2
     dev: true
 
   /for-each@0.3.3:
@@ -3458,6 +3487,10 @@ packages:
     dependencies:
       '@pkgr/utils': 2.3.1
       tslib: 2.5.3
+    dev: true
+
+  /tabbable@6.1.2:
+    resolution: {integrity: sha512-qCN98uP7i9z0fIS4amQ5zbGBOq+OSigYeGvPy7NDk8Y9yncqDZ9pRPgfsc2PJIVM9RrJj7GIfuRgmjoUU9zTHQ==}
     dev: true
 
   /tapable@2.2.1:
