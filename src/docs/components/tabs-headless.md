@@ -1,6 +1,6 @@
 ---
 title: Tabs
-description: A headless tabs component.
+description: A headless tabs component, to easily switch between different views.
 ---
 
 <script>

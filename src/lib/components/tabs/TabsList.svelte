@@ -33,6 +33,10 @@
 		(typeof $disabled === 'boolean' && $disabled) ||
 		(typeof $disabled === 'string' && $disabled === key) ||
 		(typeof $disabled === 'object' && $disabled.includes(key));
+
+	$: if ($active) {
+		activeTab = $active;
+	}
 </script>
 
 <div use:useTabs {...$rootAttrs} class="w-full">
