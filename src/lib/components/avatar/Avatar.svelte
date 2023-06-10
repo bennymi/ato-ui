@@ -37,8 +37,13 @@
 	export let badgeIcon = '';
 	/** Show a typing animation. */
 	export let typing = false;
-	/** Specify the animation to use. */
-	export let typingSpinner = 's-dots-primary-100';
+	/** Specify the animation to use when typing is activated. Should be an iconify icon. If nothing is specified a default spinner is used. */
+	export let typingSpinner = '';
+	// export let typingSpinner = 's-dots-primary-100';
+	/** Set the color of the default typing spinner. */
+	export let defaultSpinnerColor = 'fill-black';
+	/** Set the size of the typing spinner container. */
+	export let spinnerContainerSize = 'w-8 h-4';
 
 	let positions: any = {
 		'bottom-right': {
@@ -91,11 +96,46 @@
 		{/if}
 	</div>
 	{#if typing}
-		<span
-			class="avatar-typing absolute {badgePos} {badgeBackground} w-8 h-4 rounded-btn border-2 {borderColor} flex justify-center items-center"
-		>
-			<span class="inline-flex {typingSpinner} scale-[0.3]" />
-		</span>
+		{#if typingSpinner}
+			<span
+				class="avatar-typing absolute {badgePos} {badgeBackground} {spinnerContainerSize} rounded-btn border-2 {borderColor} flex justify-center items-center"
+			>
+				<span class="inline-flex {typingSpinner}" />
+			</span>
+		{:else}
+			<span
+				class="avatar-typing absolute {badgePos} {badgeBackground} w-8 h-4 rounded-btn border-2 {borderColor} flex justify-center items-center"
+			>
+				<svg class="inline-flex h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<circle class={defaultSpinnerColor} cx="4" cy="12" r="3">
+						<animate
+							id="svgSpinners3DotsScale0"
+							attributeName="r"
+							begin="0;svgSpinners3DotsScale1.end-0.25s"
+							dur="0.75s"
+							values="3;.2;3"
+						/>
+					</circle>
+					<circle class={defaultSpinnerColor} cx="12" cy="12" r="3">
+						<animate
+							attributeName="r"
+							begin="svgSpinners3DotsScale0.end-0.6s"
+							dur="0.75s"
+							values="3;.2;3"
+						/>
+					</circle>
+					<circle class={defaultSpinnerColor} cx="20" cy="12" r="3">
+						<animate
+							id="svgSpinners3DotsScale1"
+							attributeName="r"
+							begin="svgSpinners3DotsScale0.end-0.45s"
+							dur="0.75s"
+							values="3;.2;3"
+						/>
+					</circle>
+				</svg>
+			</span>
+		{/if}
 	{/if}
 	{#if badge && !typing}
 		<div

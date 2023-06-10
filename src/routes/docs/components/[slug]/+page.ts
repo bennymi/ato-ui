@@ -3,7 +3,7 @@ import type { EntryGenerator, PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	try {
-		const documentation = await import(/* @vite-ignore */`../../../../docs/components/${params.slug}.md`);
+		const documentation = await import(/* @vite-ignore */`../../../../docs/guides/components/${params.slug}.md`);
 
 		return {
 			slug: params.slug,
@@ -20,7 +20,7 @@ type Slug = {
 }
 
 export const entries = (() => {
-	const glob_components = import.meta.glob('/src/docs/components/*.md');
+	const glob_components = import.meta.glob('/src/docs/guides/components/*.md');
 
 	const slugs = Object.keys(glob_components).map((slug) => { 
 		const split = slug.split('/').at(-1);

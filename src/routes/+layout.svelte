@@ -10,10 +10,8 @@
 	import 'uno.css';
 	import './app.css';
 
-	import NavBar from '$lib/components/docu-layout/NavBar.svelte';
-	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
-	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
-	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
+	import { NavBar, Sidebar, BottomNav } from '../docs/layout';
+	import type { Navigation, NavGroupItem } from '../docs/layout/types';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
 
@@ -23,6 +21,8 @@
 
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 
 	const themes: DropMenuGroup[] = [
 		{
@@ -35,8 +35,6 @@
 			]
 		}
 	];
-
-	export let data: LayoutData;
 
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
@@ -63,11 +61,11 @@
 					groupIcon: 'i-vscode-icons-file-type-unocss',
 					items: data.unocss
 				},
-				{
-					groupTitle: 'Actions',
-					groupIcon: 'i-mdi-target',
-					items: data.actions
-				},
+				// {
+				// 	groupTitle: 'Actions',
+				// 	groupIcon: 'i-mdi-target',
+				// 	items: data.actions
+				// },
 				{
 					groupTitle: 'Svelte',
 					groupIcon: 'i-vscode-icons-file-type-svelte',
@@ -84,6 +82,14 @@
 		}
 	];
 
+	const default_seo = {
+		title: 'Ato UI',
+		description:
+			'A component UI library for Svelte and UnoCSS offering both styled and headless components.',
+		keywords:
+			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer'
+	};
+
 	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
 
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
@@ -91,6 +97,22 @@
 	$: currentPageIdx = allGroupItems?.findIndex(
 		(v) => v.findIndex((item) => item.sitePath && item.sitePath === $page.url.pathname) >= 0
 	);
+
+	$: isComponentPage = currentNavPage?.navTitle === 'Components';
+	$: isDesignerPage = currentNavPage?.navTitle === 'Designer';
+	$: hasStyledAndHeadless =
+		isComponentPage &&
+		allGroupItems &&
+		currentPageIdx &&
+		allGroupItems[currentPageIdx].length === 2;
+	$: isHeadlessPage = $page.url.pathname.includes('-headless');
+
+	$: activePage =
+		!isDesignerPage && allGroupItems
+			? allGroupItems[currentPageIdx ?? 0][hasStyledAndHeadless && !isHeadlessPage ? 1 : 0]
+			: {};
+
+	$: activeSEO = { ...default_seo, ...activePage };
 
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
@@ -107,6 +129,27 @@
 </script>
 
 <svelte:head>
+	<title>{`${activeSEO.title}${activeSEO.title.includes('Ato') ? '' : ' | Ato UI'}`}</title>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={activeSEO.title} />
+	<meta name="keywords" content={activeSEO.keywords} />
+	<meta name="description" content={activeSEO.description} />
+	<meta name="author" content="Benedikt Mielke" />
+
+	<meta name="theme-color" content="currentColor" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Open Graph - https://ogp.me/ -->
+	<meta property="og:site_name" content="Ato UI" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ato-ui.vercel.app{$page.url.pathname}" />
+	<meta property="og:locale" content="en_US" />
+	<meta
+		property="og:title"
+		content={`${activeSEO.title}${activeSEO.title.includes('Ato') ? '' : ' | Ato UI'}`}
+	/>
+	<meta property="og:description" content={activeSEO.description} />
+
 	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
 </svelte:head>
 

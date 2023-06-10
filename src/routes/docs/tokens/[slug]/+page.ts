@@ -3,7 +3,7 @@ import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	try {
-		const documentation = await import(/* @vite-ignore */`../../../../docs/tokens/${params.slug}.md`)
+		const documentation = await import(/* @vite-ignore */`../../../../docs/guides/tokens/${params.slug}.md`)
 
 		return {
 			content: documentation.default,

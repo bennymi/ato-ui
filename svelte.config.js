@@ -8,8 +8,8 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 // import { join } from 'path';
-import { highlightCode } from './src/lib/mdsvex/highlight.js';
-import { mdsvexGlobalComponents } from './src/lib/mdsvex/global-components.js';
+import { highlightCode } from './src/docs/mdsvex/highlight.js';
+import { mdsvexGlobalComponents } from './src/docs/mdsvex/global-components.js';
 
 
 /** @type {import('mdsvex').MdsvexOptions} */
@@ -48,7 +48,7 @@ const config = {
 	preprocess: [
 		vitePreprocess(),
 		mdsvexGlobalComponents({
-			dir: `$lib/mdsvex`,
+			dir: `/src/docs/mdsvex`,
 			list: [
 				['CodeBlock', 'CodeBlock.svelte'],
 				['CodeDisplay', 'CodeDisplay.svelte']
