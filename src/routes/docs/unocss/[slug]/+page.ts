@@ -3,7 +3,7 @@ import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	try {
-		const documentation = await import(/* @vite-ignore */`../../../../docs/unocss/${params.slug}.md`)
+		const documentation = await import(/* @vite-ignore */`../../../../docs/guides/unocss/${params.slug}.md`)
 
 		return {
 			content: documentation.default,

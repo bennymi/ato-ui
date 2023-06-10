@@ -3,28 +3,28 @@ import type { NavGroupItem } from '../docs/layout/types.d';
 export async function load() {
 
     const glob_start = import.meta.glob('/src/docs/guides/get-started/*.md', { eager: true });
-    const glob_actions = import.meta.glob('/src/docs/guides/actions/*.md', { eager: true });
+    // const glob_actions = import.meta.glob('/src/docs/guides/actions/*.md', { eager: true });
     const glob_tokens = import.meta.glob('/src/docs/guides/tokens/*.md', { eager: true });
     const glob_unocss = import.meta.glob('/src/docs/guides/unocss/*.md', { eager: true });
     const glob_components = import.meta.glob('/src/docs/guides/components/*.md', { eager: true });
 
     let articles: NavGroupItem[][] = [];
-    let actions: NavGroupItem[][] = [];
+    // let actions: NavGroupItem[][] = [];
     let components: NavGroupItem[][] = [];
     let tokens: NavGroupItem[][] = [];
     let unocss: NavGroupItem[][] = [];
 
-    Object.keys(glob_actions).forEach((s) => {
-        const file = glob_actions[s];
-        const slug = s.split('/').at(-1)?.replace('.md', '');
+    // Object.keys(glob_actions).forEach((s) => {
+    //     const file = glob_actions[s];
+    //     const slug = s.split('/').at(-1)?.replace('.md', '');
 
-        if (file && typeof file === 'object' && 'metadata' in file && slug) {
-            const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
-            const action = { mdPath: s, sitePath: `/docs/actions/${slug}`, ...metadata };
+    //     if (file && typeof file === 'object' && 'metadata' in file && slug) {
+    //         const metadata = file.metadata as Omit<NavGroupItem, 'mdPath' | 'sitePath'>;
+    //         const action = { mdPath: s, sitePath: `/docs/actions/${slug}`, ...metadata };
 
-            actions.push([action]);
-        }
-    });
+    //         actions.push([action]);
+    //     }
+    // });
 
     Object.keys(glob_start).forEach((s) => {
         const file = glob_start[s];
@@ -73,7 +73,6 @@ export async function load() {
             const metadata = file.metadata as Omit<NavGroupItem, 'sitePath' | 'mdPath' | 'component'>;
             
             const component = { mdPath: c, component: name, sitePath: `/docs/components/${slug}`, ...metadata };
-
             
             const idx = components.findIndex((v) => v.findIndex((item) => item.component === name) >= 0);
             
@@ -93,7 +92,7 @@ export async function load() {
     
 	return {
         articles,
-        actions,
+        // actions,
         tokens,
         unocss,
         components

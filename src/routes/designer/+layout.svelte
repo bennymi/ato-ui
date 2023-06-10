@@ -1,4 +1,14 @@
 <svelte:head>
+	<title>Designer | Ato UI</title>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Designer" />
+	<meta name="description" content="Create your own custom Ato UI CSS theme." />
+	<meta name="author" content="Benedikt Mielke" />
+
+	<!-- Open Graph - https://ogp.me/ -->
+	<meta property="og:title" content="Designer | Ato UI" />
+	<meta property="og:description" content="Create your own custom Ato UI CSS theme." />
+
 	<style>
 		#ato-ui-docu.dark > div {
 			background-color: rgb(var(--color-surface-800));
