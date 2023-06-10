@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { NavIcon, Navigation, NavGroup } from './types';
-	import type { DropMenuGroup } from '../dropdown-menu/types';
-	import { darkTheme } from '../../stores/lightswitch';
-	import TableOfContents from '../table-of-contents/TableOfContents.svelte';
-	import DropMenu from '../dropdown-menu/DropMenu.svelte';
+	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
+	import { darkTheme } from '$lib/stores/lightswitch';
+	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
+	import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
 	// import HamburgerMenu from './HamburgerMenu.svelte';
 	import HamburgerMenu from './HamburgerMenu.svelte';
 	import SidebarGroup from './SidebarGroup.svelte';

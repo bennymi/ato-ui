@@ -5,6 +5,7 @@ description: A headless avatar component.
 
 # Avatar | Headless
 
+## Example
 
 ```svelte
 <script lang="ts">

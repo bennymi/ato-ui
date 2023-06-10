@@ -10,10 +10,8 @@
 	import 'uno.css';
 	import './app.css';
 
-	import NavBar from '$lib/components/docu-layout/NavBar.svelte';
-	import Sidebar from '$lib/components/docu-layout/Sidebar.svelte';
-	import BottomNav from '$lib/components/docu-layout/BottomNav.svelte';
-	import type { Navigation, NavGroupItem } from '$lib/components/docu-layout/types';
+	import { NavBar, Sidebar, BottomNav } from '../docs/layout';
+	import type { Navigation, NavGroupItem } from '../docs/layout/types';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
 

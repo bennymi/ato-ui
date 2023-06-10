@@ -1,12 +1,12 @@
-import type { NavGroupItem } from '$lib/components/docu-layout/types.js';
+import type { NavGroupItem } from '../docs/layout/types.d';
 
 export async function load() {
 
-    const glob_start = import.meta.glob('/src/docs/get-started/*.md', { eager: true });
-    const glob_actions = import.meta.glob('/src/docs/actions/*.md', { eager: true });
-    const glob_tokens = import.meta.glob('/src/docs/tokens/*.md', { eager: true });
-    const glob_unocss = import.meta.glob('/src/docs/unocss/*.md', { eager: true });
-    const glob_components = import.meta.glob('/src/docs/components/*.md', { eager: true });
+    const glob_start = import.meta.glob('/src/docs/guides/get-started/*.md', { eager: true });
+    const glob_actions = import.meta.glob('/src/docs/guides/actions/*.md', { eager: true });
+    const glob_tokens = import.meta.glob('/src/docs/guides/tokens/*.md', { eager: true });
+    const glob_unocss = import.meta.glob('/src/docs/guides/unocss/*.md', { eager: true });
+    const glob_components = import.meta.glob('/src/docs/guides/components/*.md', { eager: true });
 
     let articles: NavGroupItem[][] = [];
     let actions: NavGroupItem[][] = [];

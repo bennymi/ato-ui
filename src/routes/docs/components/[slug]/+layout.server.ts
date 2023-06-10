@@ -1,7 +1,7 @@
 
 export async function load({ params }) {
 
-    const glob_components = import.meta.glob('/src/docs/components/*.md');
+    const glob_components = import.meta.glob('/src/docs/guides/components/*.md');
 
     let components: string[] = Object.keys(glob_components).filter((v) => v.includes(params.slug.replace('-headless', '')));
 
