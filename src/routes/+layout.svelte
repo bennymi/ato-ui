@@ -113,8 +113,6 @@
 			: {};
 
 	$: activeSEO = { ...default_seo, ...activePage };
-	$: console.log('active page', activePage);
-	$: console.log('active seo', activeSEO);
 
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
@@ -137,6 +135,9 @@
 	<meta name="keywords" content={activeSEO.keywords} />
 	<meta name="description" content={activeSEO.description} />
 	<meta name="author" content="Benedikt Mielke" />
+
+	<meta name="theme-color" content="currentColor" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Open Graph - https://ogp.me/ -->
 	<meta property="og:site_name" content="Ato UI" />
