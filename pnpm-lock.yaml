@@ -31,11 +31,11 @@ dependencies:
 
 devDependencies:
   '@grail-ui/svelte':
-    specifier: ^0.9.4
-    version: 0.9.4(svelte@3.59.1)
+    specifier: ^0.9.6
+    version: 0.9.6(svelte@3.59.1)
   '@iconify-json/material-symbols':
-    specifier: ^1.1.46
-    version: 1.1.46
+    specifier: ^1.1.47
+    version: 1.1.47
   '@iconify-json/mdi':
     specifier: ^1.1.52
     version: 1.1.52
@@ -58,8 +58,8 @@ devDependencies:
     specifier: ^2.0.0
     version: 2.0.2(svelte@3.59.1)(typescript@5.1.3)
   '@types/node':
-    specifier: ^20.2.5
-    version: 20.2.5
+    specifier: ^20.2.6
+    version: 20.2.6
   '@types/svelte-range-slider-pips':
     specifier: ^2.0.0
     version: 2.0.0
@@ -158,7 +158,7 @@ devDependencies:
     version: 0.53.1(postcss@8.4.24)(rollup@2.79.1)(vite@4.3.9)
   vite:
     specifier: ^4.3.9
-    version: 4.3.9(@types/node@20.2.5)
+    version: 4.3.9(@types/node@20.2.6)
 
 packages:
 
@@ -426,8 +426,8 @@ packages:
       '@floating-ui/core': 1.2.6
     dev: true
 
-  /@grail-ui/svelte@0.9.4(svelte@3.59.1):
-    resolution: {integrity: sha512-+g+LYOWI50Q+U8OlO8bBVfKc3T4wyM0rfH3KGgmXiefgGkrT8urfKrSKvLKa9BvAOBVyf89MjYhhxG3zsl4b+w==}
+  /@grail-ui/svelte@0.9.6(svelte@3.59.1):
+    resolution: {integrity: sha512-6QPq0wkRVFV4p4hfC/4T2999py3VgiFcRBpREZo6aLBil/NHLhozqUE8oStrGYHvgPNZyaSueDNj/7xHowxrYA==}
     peerDependencies:
       svelte: 3.x
     dependencies:
@@ -456,8 +456,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify-json/material-symbols@1.1.46:
-    resolution: {integrity: sha512-pnScG6pH66WtkSWYXDn8hcn/TLuXMXc9KIKDFEKa0p9wm3bPBJnA2XAzlwBn+f0iSDk4fLyV2MwiFu/vs9ZEcA==}
+  /@iconify-json/material-symbols@1.1.47:
+    resolution: {integrity: sha512-+y0r2zJRe1OBReVlP8e88otQHiyS8g1xQ0s0fR2m1QYF3ObQdlvtItWOjTNOmCNm0mWvE4V7brn4xIAvR5rY4g==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -660,7 +660,7 @@ packages:
       svelte: 3.59.1
       tiny-glob: 0.2.9
       undici: 5.22.1
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.2.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -692,7 +692,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.4.1(svelte@3.59.1)(vite@4.3.9)
       debug: 4.3.4
       svelte: 3.59.1
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.2.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -711,7 +711,7 @@ packages:
       magic-string: 0.30.0
       svelte: 3.59.1
       svelte-hmr: 0.15.2(svelte@3.59.1)
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.2.6)
       vitefu: 0.2.4(vite@4.3.9)
     transitivePeerDependencies:
       - supports-color
@@ -743,8 +743,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@20.2.5:
-    resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
+  /@types/node@20.2.6:
+    resolution: {integrity: sha512-GQBWUtGoefMEOx/vu+emHEHU5aw6JdDoEtZhoBrHFPZbA/YNRFfN996XbBASEWdvmLSLyv9FKYppYGyZjCaq/g==}
     dev: true
 
   /@types/pug@2.0.6:
@@ -754,7 +754,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 20.2.5
+      '@types/node': 20.2.6
     dev: true
 
   /@types/sass@1.45.0:
@@ -1098,7 +1098,7 @@ packages:
       chokidar: 3.5.3
       fast-glob: 3.2.12
       magic-string: 0.30.0
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.2.6)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -3731,7 +3731,7 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
-  /vite@4.3.9(@types/node@20.2.5):
+  /vite@4.3.9(@types/node@20.2.6):
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3756,7 +3756,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.2.5
+      '@types/node': 20.2.6
       esbuild: 0.17.19
       postcss: 8.4.24
       rollup: 3.23.0
@@ -3772,7 +3772,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.2.6)
     dev: true
 
   /vscode-oniguruma@1.7.0:

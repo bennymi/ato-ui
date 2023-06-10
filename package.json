@@ -25,8 +25,8 @@
 		"svelte": "^3.54.0"
 	},
 	"devDependencies": {
-		"@grail-ui/svelte": "^0.9.4",
-		"@iconify-json/material-symbols": "^1.1.46",
+		"@grail-ui/svelte": "^0.9.6",
+		"@iconify-json/material-symbols": "^1.1.47",
 		"@iconify-json/mdi": "^1.1.52",
 		"@iconify-json/svg-spinners": "^1.1.1",
 		"@iconify-json/vscode-icons": "^1.1.25",
@@ -34,7 +34,7 @@
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.20.2",
 		"@sveltejs/package": "^2.0.0",
-		"@types/node": "^20.2.5",
+		"@types/node": "^20.2.6",
 		"@types/svelte-range-slider-pips": "^2.0.0",
 		"@types/tinycolor2": "^1.4.3",
 		"@typescript-eslint/eslint-plugin": "^5.59.9",
