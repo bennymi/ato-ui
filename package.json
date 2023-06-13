@@ -34,11 +34,11 @@
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.20.2",
 		"@sveltejs/package": "^2.0.0",
-		"@types/node": "^20.2.6",
+		"@types/node": "^20.3.1",
 		"@types/svelte-range-slider-pips": "^2.0.0",
 		"@types/tinycolor2": "^1.4.3",
-		"@typescript-eslint/eslint-plugin": "^5.59.9",
-		"@typescript-eslint/parser": "^5.59.9",
+		"@typescript-eslint/eslint-plugin": "^5.59.11",
+		"@typescript-eslint/parser": "^5.59.11",
 		"@unocss/preset-icons": "^0.53.1",
 		"eslint": "^8.42.0",
 		"eslint-config-airbnb-base": "^15.0.0",
@@ -59,7 +59,7 @@
 		"svelte": "^3.59.1",
 		"svelte-check": "^3.4.3",
 		"svelte-headlessui": "^0.0.16",
-		"svelte-local-storage-store": "^0.4.0",
+		"svelte-local-storage-store": "^0.5.0",
 		"svelte-preprocess": "^5.0.4",
 		"svelte-range-slider-pips": "^2.1.1",
 		"tinycolor2": "^1.6.0",
@@ -81,6 +81,6 @@
 		"@unocss/preset-wind": "^0.53.1",
 		"@unocss/reset": "^0.53.1",
 		"@unocss/transformer-directives": "^0.53.1",
-		"pnpm": "^8.6.1"
+		"pnpm": "^8.6.2"
 	}
 }
