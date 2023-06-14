@@ -8,11 +8,11 @@
 	export let title: string | null = null;
 	export let rawCode: string | null = null;
 	export let showHeader = true;
+	export let showCode = false;
 	// export let highlightLines: string | null = null;
 
 	// let copiedSuccessfully = false;
 	let copyState = false;
-	let showCode = false;
 
 	let code_id = crypto.randomUUID();
 
@@ -52,7 +52,7 @@
 >
 	{#if showHeader}
 		<header
-			class="code-header rounded-t-container flex justify-between items-center p-2 pl-4 surface-300 dark:surface-500 text-xs font-bold"
+			class="code-header rounded-t-container flex justify-between items-center p-2 pl-4 surface-400 dark:surface-500 text-xs font-bold"
 		>
 			<!-- Language Text -->
 			<span class="code-block-language select-none">{tag}</span>

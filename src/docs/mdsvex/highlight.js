@@ -36,17 +36,19 @@ export async function highlightCode(code, lang, meta) {
     let title = null;
     let display = false;
     let showHeader = '';
+    let showCode = false;
     // let line_numbers = null;
 
     if (meta) {
         title = meta.match(/title="?(.*?)"/)?.[1];
         showHeader = meta.match(/showHeader="?(.*?)"/)?.[1];
         display = meta.includes('display');
+        showCode = meta.includes('showCode');
         // line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
     }
 
     const dark_html = escapeSvelte(dark_highlighter.codeToHtml(code ?? '', { lang }));
     const light_html = escapeSvelte(light_highlighter.codeToHtml(code ?? '', { lang }));
 
-    return display ? `<CodeDisplay>${code}</CodeDisplay>` : `<CodeBlock darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(light_html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''} showHeader={${!(showHeader === 'false')}} />`;
+    return display ? `<CodeDisplay>${code}</CodeDisplay>` : `<CodeBlock darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(light_html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''} showHeader={${!(showHeader === 'false')}} showCode={${showCode}} />`;
 }

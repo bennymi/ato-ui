@@ -22,16 +22,16 @@
 	<div class="flex flex-col">
 		<div class="-m-1.5 overflow-x-auto">
 			<div class="p-1.5 min-w-full inline-block align-middle">
-				<div class="border rounded-container overflow-hidden border-primary-700/70">
+				<div class="border rounded-container overflow-hidden border-surface-400">
 					<table class="min-w-full table-fixed">
-						<thead class="bg-primary-500 text-on-primary">
+						<thead class="surface-400">
 							<tr class="[&>th]:(px-6 py-3 text-left text-xs font-medium uppercase)">
 								<th scope="col">Prop</th>
 								<th scope="col">Default</th>
 								<th scope="col">Description</th>
 							</tr>
 						</thead>
-						<tbody class="divide-y divide-primary-500/50">
+						<tbody class="divide-y divide-surface-400">
 							{#each props as { name, value, description }}
 								<tr
 									class="[&>td]:(px-6 py-4 whitespace-nowrap text-sm font-medium text-surface-900-50)"

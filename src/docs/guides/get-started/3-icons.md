@@ -15,19 +15,19 @@ hoverIcon: group-hover:i-mdi-emoticon-wink
 
 We use the [UnoCSS Icons preset](https://unocss.dev/presets/icons) for our icons, which gives you access to all [iconify](https://iconify.design/) icons as CSS classes. Here's a quick start, but head over to the official documentation to see how it works.
 
-```shell
+```shell showCode
 pnpm add -D @unocss/preset-icons
 ```
 
 You can then simply install icon collections like so:
 
-```shell
+```shell showCode
 pnpm add -D @iconify-json/[the-collection-you-want]
 ```
 
 For example, if you want to get the `material-symbols` icons:
 
-```shell
+```shell showCode
 pnpm add -D @iconify-json/material-symbols
 ```
 

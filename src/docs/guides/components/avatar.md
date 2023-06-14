@@ -104,7 +104,7 @@ You can set the text for the avatar if you do not have an image. Text will be au
 </Usage>
 
 ```svelte
-<Avatar text="George R.R. Martin" />
+<Avatar text="George R. R. Martin" />
 ```
 
 ## Size
