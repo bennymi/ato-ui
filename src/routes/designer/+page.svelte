@@ -102,7 +102,7 @@
 		<div class="flex flex-col items-center gap-4">
 			<h2 class="font-semibold text-4xl">
 				Select your
-				<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> colors </span>
+				<span class="font-extrabold text-gradient-primary-secondary-tertiary"> colors </span>
 			</h2>
 			<p class="text-justify">
 				You can browse the rest of the website with this theme as well. (1) First pick your theme
