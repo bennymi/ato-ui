@@ -4,6 +4,10 @@ description: Ato-UI is a component and UI library for Svelte / SvelteKit and Uno
 icon: i-material-symbols:question-mark-rounded
 ---
 
+<script>
+    import BackgroundDemo from '../tokens/BackgroundDemo.svelte';
+</script>
+
 # Why Ato-UI?
 
 ## Why Ato-UI?
@@ -35,6 +39,10 @@ There are common patterns that we constantly use in Tailwind for defining contra
 These shortcuts should also be intuitive and quick to grasp, so rather than feeling like something completely new to learn, they instead feel like a natural extension of the Tailwind classes we are already familiar with.
 
 Ato UI provides a preset that works with UnoCSS's `presetWind` to do exactly that. You can read more about individual shortcuts in the [Tokens](/docs/tokens/background) page.
+
+### Background Demo
+
+<BackgroundDemo />
 
 ### Dark & Light Mode
 

@@ -2,12 +2,10 @@ import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
 import { mdsvex } from 'mdsvex';
-// import shiki from 'shiki';
 
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-// import { join } from 'path';
 import { highlightCode } from './src/docs/mdsvex/highlight.js';
 import { mdsvexGlobalComponents } from './src/docs/mdsvex/global-components.js';
 
@@ -15,19 +13,9 @@ import { mdsvexGlobalComponents } from './src/docs/mdsvex/global-components.js';
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	extensions: ['.md'],
-	// highlight: {
-	// 	// highlighter: async (code, lang='text') => {
-	// 	// 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
-	// 	// 	const t = await shiki.loadTheme(join(process.cwd(),'./theme-synthwave84.json'));
-
-	// 	// 	const highlighter = await shiki.getHighlighter({
-	// 	// 		theme: t
-	// 	// 	});
-	// 	// 	const html = escapeSvelte(highlighter.codeToHtml(code, { lang }));
-	// 	// 	return `{@html \`${html}\`}`;
-	// 	// }
-	// 	highlighter: highlightCode
-	// },
+	highlight: {
+		highlighter: highlightCode
+	},
 	rehypePlugins: [
 		rehypeSlug,
 		[

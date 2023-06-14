@@ -8,8 +8,22 @@
 import { escapeSvelte } from "mdsvex";
 import shiki from 'shiki';
 
-/** at type {import('mdsvex').MdsvexOptions[HighlighterOptions][Highlighter]} */
-// export async function highlightCode(code: string | undefined, lang: string | undefined, meta: string | undefined): Promise<string> {
+// 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
+// 	const t = await shiki.loadTheme(join(process.cwd(),'./theme-synthwave84.json'));
+
+// 	const highlighter = await shiki.getHighlighter({
+// 		theme: t
+// 	});
+
+const dark_highlighter = await shiki.getHighlighter({
+    theme: 'github-dark',
+    langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
+});
+
+const light_highlighter = await shiki.getHighlighter({
+    theme: 'github-light',
+    langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
+});
 
 /**
  *
@@ -31,15 +45,8 @@ export async function highlightCode(code, lang, meta) {
         // line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
     }
 
-    // const t = await shiki.loadTheme(join(process.cwd(),'./src/lib/mdsvex/theme-synthwave84.json'));
+    const dark_html = escapeSvelte(dark_highlighter.codeToHtml(code ?? '', { lang }));
+    const light_html = escapeSvelte(light_highlighter.codeToHtml(code ?? '', { lang }));
 
-    const highlighter = await shiki.getHighlighter({
-        theme: 'github-dark'
-    });
-
-    const html = escapeSvelte(highlighter.codeToHtml(code ?? '', { lang }));
-
-    // console.log('raw-code:', code);
-
-    return display ? `<CodeDisplay>${code}</CodeDisplay>` : `<CodeBlock code={${JSON.stringify(html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''} showHeader={${!(showHeader === 'false')}} />`;
+    return display ? `<CodeDisplay>${code}</CodeDisplay>` : `<CodeBlock darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(light_html)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''} showHeader={${!(showHeader === 'false')}} />`;
 }
