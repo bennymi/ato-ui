@@ -15,7 +15,7 @@ description: An accessible modal component with a backdrop.
 
 # Dialog (Modal)
 
-## Usage
+## Example
 
 <Usage padding="py-20">
     <Modal bind:showModal buttonText="Open dialog" zIndex="z-999">

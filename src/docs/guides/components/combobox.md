@@ -23,7 +23,7 @@ description: A combobox component with autocomplete.
 
 # Combobox (Autocomplete)
 
-## Usage
+## Example
 
 <Usage padding="pt-2 pb-62">
     <Combobox

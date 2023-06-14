@@ -35,7 +35,7 @@ description: A headless dropdown menu that can be used to create a list of actio
 
 # Dropdown Menu | Headless
 
-## Usage
+## Example
 
 <Usage padding="pt-4 pb-60">
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />

@@ -38,7 +38,7 @@ description: Create a list of actions that is available through a dropdown menu.
 
 # Dropdown Menu
 
-## Usage
+## Example
 
 <Usage padding="pt-4 pb-60">
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />

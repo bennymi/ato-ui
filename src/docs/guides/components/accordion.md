@@ -14,7 +14,7 @@ description: A simple accordion component.
 
 # Accordion
 
-## Usage
+## Example
 
 <Usage height="h-60">
     <Accordion collapse>

@@ -24,7 +24,7 @@ description: A headless tabs component, to easily switch between different views
 
 # Tabs | Headless
 
-## Usage
+## Example
 
 <Usage>
 	<!-- <div class="surface-500 w-full p-2 rounded-container"> -->

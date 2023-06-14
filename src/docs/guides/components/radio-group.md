@@ -28,7 +28,7 @@ description: A radio group example for Svelte.
 
 # Radio Group | Headless
 
-## Usage
+## Example
 
 <Usage padding="py-20">
     <RadioGroup {items} name="group-1" {activeIcon} {group} />

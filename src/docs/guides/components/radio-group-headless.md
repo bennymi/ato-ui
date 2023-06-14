@@ -25,7 +25,7 @@ description: A headless radio group example.
 
 # Radio Group | Headless
 
-## Usage
+## Example
 
 <Usage padding="py-20">
     <RadioGroup {items} name="group-1" {activeIcon} bind:group />

@@ -11,7 +11,7 @@ description: A headless accordion component.
 
 # Accordion | Headless
 
-## Usage
+## Example
 
 <Usage height="h-60">
     <Accordion collapse>

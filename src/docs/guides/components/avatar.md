@@ -13,7 +13,7 @@ component: components/avatar/Avatar.svelte
 	let typing = true;
 </script>
 
-## Usage
+## Example
 
 <Usage>
 	<button

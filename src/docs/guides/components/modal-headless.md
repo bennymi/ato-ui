@@ -14,7 +14,7 @@ description: An accessible headless modal component.
 
 # Dialog (Modal) | Headless
 
-## Usage
+## Example
 
 <Usage padding="py-20">
     <Modal bind:showModal buttonText="Open dialog" zIndex="z-999">

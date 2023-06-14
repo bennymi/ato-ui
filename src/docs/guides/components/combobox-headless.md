@@ -21,7 +21,7 @@ description: A headless combobox component with autocomplete.
 
 # Combobox (Autocomplete) | Headless
 
-## Usage
+## Example
 
 <Usage padding="pt-2 pb-62">
     <Combobox

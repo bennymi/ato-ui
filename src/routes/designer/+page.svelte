@@ -37,12 +37,6 @@
 
 	$: custom_theme_css_variables = `
 :root .custom-theme {
-	--theme-font-family-base: system-ui;
-	--theme-font-family-heading: system-ui;
-
-	--theme-font-color-base: 0, 0, 0;
-	--theme-font-color-dark: 255, 255, 255;
-
 	--theme-rounded-base: ${$new_theme.btns.radius};
 	--theme-rounded-container: ${$new_theme.container_radius};
 	--theme-border-base: 1px;
