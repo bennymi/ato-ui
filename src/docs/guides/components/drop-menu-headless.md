@@ -4,6 +4,7 @@ description: A headless dropdown menu that can be used to create a list of actio
 ---
 
 <script>
+    import Usage from '../Usage.svelte';
     import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
 
     const groups = [
@@ -36,9 +37,9 @@ description: A headless dropdown menu that can be used to create a list of actio
 
 ## Usage
 
-<div class="w-full flex justify-center items-center pt-4 pb-60 px-2 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="pt-4 pb-60">
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />
-</div>
+</Usage>
 
 Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/menu/) documentation or the Github page for our [Styled Menu](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/dropdown-menu/DropMenu.svelte) to see how to create a menu. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 

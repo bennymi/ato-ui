@@ -4,6 +4,7 @@ description: An accessible headless modal component.
 ---
 
 <script>
+    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/modal/Modal.svelte?raw&sveld';
     import Modal from '$lib/components/modal/Modal.svelte';
@@ -15,7 +16,7 @@ description: An accessible headless modal component.
 
 ## Usage
 
-<div class="w-full flex justify-center items-center py-20 px-2 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-20">
     <Modal bind:showModal buttonText="Open dialog" zIndex="z-999">
         <div
             class="w-full max-w-md transform overflow-hidden rounded-container surface-50 p-6 text-left align-middle shadow-xl transition-all"
@@ -32,7 +33,7 @@ description: An accessible headless modal component.
             </div>
         </div>
     </Modal>
-</div>
+</Usage>
 
 Please see the [HeadlessUI Modal](https://captaincodeman.github.io/svelte-headlessui/dialog/) documentation or the Github page for our [Styled Menu](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/modal/Modal.svelte) to see how to create a modal. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 

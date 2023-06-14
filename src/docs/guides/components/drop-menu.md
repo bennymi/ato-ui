@@ -5,6 +5,7 @@ description: Create a list of actions that is available through a dropdown menu.
 ---
 
 <script>
+    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/dropdown-menu/DropMenu.svelte?raw&sveld';
     import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
@@ -39,9 +40,9 @@ description: Create a list of actions that is available through a dropdown menu.
 
 ## Usage
 
-<div class="w-full flex justify-center items-center pt-4 pb-60 px-2 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="pt-4 pb-60">
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />
-</div>
+</Usage>
 
 You can customize the button that opens the menu by passing in a button class to the `buttonClass` prop, for example `"btn-primary-secondary"`. Pass in the individual items through the `groups` prop. Each group can have a `title` as well as `items`. For each group item you can set a `text` as well as an optional `icon`. For each item you can also overwrite the default `hoverStyle` and `iconStyle` (check the last group item below with the delete action for an example of this). 
 

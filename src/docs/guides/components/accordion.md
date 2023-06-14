@@ -4,6 +4,7 @@ description: A simple accordion component.
 ---
 
 <script>
+    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import accordion_docs from '$lib/components/accordion/Accordion.svelte?raw&sveld';
     import accordion_item_docs from '$lib/components/accordion/AccordionItem.svelte?raw&sveld';
@@ -15,7 +16,7 @@ description: A simple accordion component.
 
 ## Usage
 
-<div class="w-full flex justify-center items-center px-2 h-60 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage height="h-60">
     <Accordion collapse>
         <AccordionItem label="refund policy" open>
             <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
@@ -29,7 +30,7 @@ description: A simple accordion component.
             <svelte:fragment slot="content">No.</svelte:fragment>
         </AccordionItem>
     </Accordion>
-</div>
+</Usage>
 
 ```svelte
 <script lang="ts">
@@ -56,7 +57,7 @@ description: A simple accordion component.
 
 The `collapse` prop allows you to set whether multiple accordion items are allowed to be open at the same time. If `collapse = true` it will close other items if a new one is opened. By default `collapse = false`.
 
-<div class="w-full flex justify-center items-center px-2 h-60 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage height="h-60">
     <Accordion>
         <AccordionItem label="refund policy" open>
             <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
@@ -70,7 +71,7 @@ The `collapse` prop allows you to set whether multiple accordion items are allow
             <svelte:fragment slot="content">No.</svelte:fragment>
         </AccordionItem>
     </Accordion>
-</div>
+</Usage>
 
 ```svelte
 <Accordion collapse={false}>
@@ -82,7 +83,7 @@ The `collapse` prop allows you to set whether multiple accordion items are allow
 
 You can change an item's button styles with the `buttonStyle` prop.
 
-<div class="w-full flex justify-center items-center px-2 h-60 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage height="h-60">
     <Accordion>
         <AccordionItem label="refund policy" buttonStyle="success-200 hover:success-300">
             <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
@@ -96,7 +97,7 @@ You can change an item's button styles with the `buttonStyle` prop.
             <svelte:fragment slot="content">No.</svelte:fragment>
         </AccordionItem>
     </Accordion>
-</div>
+</Usage>
 
 ```svelte
 <Accordion>
@@ -113,7 +114,7 @@ You can change an item's button styles with the `buttonStyle` prop.
 
 You can change the item's default collapse icon with the `collapseIcon` prop by passing it an iconify icon.
 
-<div class="w-full flex justify-center items-center px-2 h-60 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage height="h-60">
     <Accordion>
         <AccordionItem label="refund policy" collapseIcon="i-material-symbols-local-fire-department-rounded">
             <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
@@ -127,7 +128,7 @@ You can change the item's default collapse icon with the `collapseIcon` prop by 
             <svelte:fragment slot="content">No.</svelte:fragment>
         </AccordionItem>
     </Accordion>
-</div>
+</Usage>
 
 ```svelte
 <Accordion>
