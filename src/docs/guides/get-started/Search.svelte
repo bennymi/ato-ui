@@ -158,6 +158,8 @@
 			</div>
 		{/each}
 	</div>
-	<!-- {:else}
-	<div class="min-h-screen w-full" /> -->
+{:else}
+	<div class="font-bold text-lg text-surface-900-50 mb-2">
+		No results shown. Type something or select a filter.
+	</div>
 {/if}
