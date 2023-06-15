@@ -30,7 +30,7 @@
 		{
 			icon: 'i-mdi-emoticon-wink',
 			title: 'CSS Icons',
-			description: 'Ease to use icons, thanks to iconify and UnoCSS.'
+			description: 'Easy to use icons, thanks to iconify and UnoCSS.'
 		},
 		{
 			icon: 'i-mdi-dots-grid',

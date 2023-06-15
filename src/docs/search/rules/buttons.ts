@@ -14,7 +14,7 @@ export const buttonDescriptions: RulesDescription[] = [
     // Button with icon
     {
         rule: 'btn-icon',
-        description: 'Creates an icon button with equal height and width.',
+        description: 'Creates an icon button with equal height and width. Use this class in combination with another button class, such as: btn-primary.',
         keywords: ['button', 'icons'],
         variablesUsed: [],
         classes: [],
