@@ -9,7 +9,7 @@ export const buttonDescriptions: RulesDescription[] = [
         keywords: ['button'],
         variablesUsed: ['sizes'],
         classes: [],
-        examples: ['btn-primary btn-sm', 'btn-md', 'btn-lg', 'btn-xl']
+        examples: ['btn-sm', 'btn-md', 'btn-lg', 'btn-xl']
     },
     // Button with icon
     {
