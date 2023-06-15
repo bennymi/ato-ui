@@ -37,4 +37,9 @@ icon: i-material-symbols:search-rounded
 
 # Search
 
+<div class="flex rounded-container mb-4 font-semibold">
+	<div class="warning-900 rounded-l-container p-2">Note</div>
+	<div class="warning-500 rounded-r-container p-2">This page is a WIP and currently only shows button classes.</div>
+</div>
+
 <Search />
