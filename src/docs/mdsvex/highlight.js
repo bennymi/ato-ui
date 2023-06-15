@@ -25,6 +25,20 @@ const light_highlighter = await shiki.getHighlighter({
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 
+
+/**
+ *
+ * @param {string | undefined} code the code that gets parsed
+ * @param {string | undefined} lang the language the code is written in
+ */
+export function get_highlighted_html(code, lang) {
+    // console.log('get_html', dark_highlighter);
+    return {
+        dark_html: escapeSvelte(dark_highlighter.codeToHtml(code ?? '', { lang })),
+        light_html: escapeSvelte(light_highlighter.codeToHtml(code ?? '', { lang })),
+    }
+}
+
 /**
  *
  * @param {string | undefined} code the code that gets parsed

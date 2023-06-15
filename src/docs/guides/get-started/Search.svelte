@@ -1,62 +1,43 @@
 <script lang="ts">
+	// import { highlightCode } from '../../mdsvex/highlight';
+	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { descriptions } from '../../search';
+	import { generate_css, get_uno_generator_configs } from '../../search/utils';
+	import type { UnoGenerator } from 'unocss';
 
-	import { createGenerator } from '@unocss/core';
-
-	import { presetUno, presetWind } from 'unocss';
-
-	import presetIcons from '@unocss/preset-icons';
-	import { presetForms } from '@julr/unocss-preset-forms';
-
-	// import { colors, presetAtoUI } from './src/lib/preset/index';
-	import { presetAtoUI } from '$lib/preset/index';
-	import { onMount } from 'svelte';
-
-	export const unocss_config = {
-		presets: [
-			presetUno(),
-			presetIcons({
-				extraProperties: {
-					display: 'inline-block',
-					'vertical-align': 'middle'
-				}
-			}),
-			presetWind(),
-			presetForms(),
-			presetAtoUI()
-		]
-	};
+	import CodeBlock from '../../mdsvex/CodeBlock.svelte';
 
 	let search = '';
-
-	let regexExample = /g&/;
-
-	const uno = createGenerator(unocss_config);
-	let generate: any;
-	let prettier: typeof import('prettier/standalone')['format'];
-	let prettierParserCSS: typeof import('prettier/parser-postcss');
-	let prettierFormat: any;
+	let uno: UnoGenerator;
+	let example = '';
+	let example_css = '';
+	let dark_html = '';
+	let light_html = '';
 
 	onMount(async () => {
-		generate = await uno.generate(new Set(['btn-primary']), { preflights: false, minify: true });
+		uno = await get_uno_generator_configs();
+		// highlightCode = (await import('../../mdsvex/highlight')).highlightCode;
 
-		await Promise.all([
-			import('prettier/standalone').then((r) => (prettier = r.format)),
-			import('prettier/parser-postcss').then((r) => (prettierParserCSS = r.default))
-		]);
-
-		prettierFormat = prettier(generate.css, {
-			parser: 'css',
-			plugins: [prettierParserCSS],
-			printWidth: Infinity
-		});
+		// console.log(highlightCode);
 	});
 
-	// console.log('uno:', uno);
+	async function get_highlighted_html() {
+		const response = await fetch('/api/highlight', {
+			method: 'POST',
+			body: JSON.stringify({ code: example_css, lang: 'css' }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 
-	$: console.log('generate:', generate);
-	$: console.log('prettierFormat:', prettierFormat);
+		if (response.status === 200) {
+			const html = await response.json();
+
+			dark_html = html.dark_html;
+			light_html = html.light_html;
+		}
+	}
 
 	const updated_descriptions = descriptions
 		.map((v) => ({
@@ -68,7 +49,30 @@
 	$: filtered_list = updated_descriptions.filter((v) =>
 		v.concatenated.includes(search.toLowerCase())
 	);
+
+	$: if (uno) {
+		generate_css(uno, example).then((response) => {
+			example_css = response.trim();
+		});
+	}
+
+	$: if (example_css) {
+		get_highlighted_html();
+	}
 </script>
+
+{#if example_css && dark_html && light_html}
+	<div class="mb-8">
+		<CodeBlock
+			darkCode={dark_html}
+			lightCode={light_html}
+			lang="css"
+			rawCode={example_css}
+			showCode={true}
+			height="[&>pre]:(h-fit max-h-50)"
+		/>
+	</div>
+{/if}
 
 <input
 	type="text"
@@ -95,6 +99,23 @@
 			</div>
 			<hr class="mx-1 border-1 rounded-container border-surface-400-200 my-2" />
 			<div>{description}</div>
+			<div class="font-bold my-1">Examples</div>
+			<div class="flex gap-2">
+				{#each examples as ex}
+					<button
+						class="px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container inline-flex"
+						on:click={() => {
+							if (example === ex) {
+								example = '';
+							} else {
+								example = ex;
+							}
+						}}
+					>
+						{ex}
+					</button>
+				{/each}
+			</div>
 		</div>
 	{/each}
 </div>

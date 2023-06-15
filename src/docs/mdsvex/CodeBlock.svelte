@@ -9,6 +9,8 @@
 	export let rawCode: string | null = null;
 	export let showHeader = true;
 	export let showCode = false;
+	export let height = 'h-full';
+
 	// export let highlightLines: string | null = null;
 
 	// let copiedSuccessfully = false;
@@ -99,7 +101,7 @@
 	{#if showCode}
 		<div
 			id={code_id}
-			class="code-block-code hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-container)"
+			class="code-block-code {height} hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-container)"
 			transition:slide|local={{ duration: 300 }}
 		>
 			{#if $darkTheme}
