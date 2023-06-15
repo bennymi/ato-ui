@@ -14,7 +14,7 @@ import { presetForms } from '@julr/unocss-preset-forms'
 // import { colors, presetAtoUI } from './src/lib/preset/index';
 import { presetAtoUI } from './src/lib/preset/index';
 
-export default defineConfig({
+export const unocss_config = {
   extractors: [extractorSvelte],
   theme: {
     // colors: {
@@ -40,4 +40,6 @@ export default defineConfig({
     transformerVariantGroup(),
     transformerDirectives()
   ],
-})
+};
+
+export default defineConfig(unocss_config)

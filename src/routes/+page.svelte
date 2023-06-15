@@ -25,7 +25,7 @@
 			- icons: thanks to UnoCSS icons can be easily added with CSS
 			- customizable
 			- themeable
-			- 
+			- built on top of accessible headless libraries which adhere to WAI-ARIA standards
 		-->
 	</section>
 </div>
