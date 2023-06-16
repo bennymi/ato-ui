@@ -1,6 +1,6 @@
 # Ato-UI
 
-The atomic UI component library for Svelte and UnoCSS.
+The elemental atomic UI component library for Svelte and UnoCSS.
 
 ## 🚀 Getting Started
 
@@ -11,11 +11,12 @@ pnpm add -D ato-ui
 ```
 
 ## ✨ Features
-- ⚛️ Many components (... and many more to come)
+- 🦄 Headless + Styled components
+- 🎨 Themeable with an easy to use designers page
 - 🎯 Written in TypeScript
-- 🎪 Interactive documentation
-- 🛰️ Dynamic CSS classes thanks to UnoCSS
-- 🎨 Customizable components
+- 👍 Strict adherence to [WAI-ARIA guidelines](https://www.w3.org/WAI/ARIA/apg/) (built on top of accessible headless libraries)
+- 🛰️ Convenient shortcuts & tokens thanks to UnoCSS
+- 😃 CSS icons thanks to iconify and UnoCSS
 
 ## 👋 Community
 - Discord
@@ -31,6 +32,8 @@ The following amazing projects made this library possible and / or heavily inspi
 - [UnoCSS](https://github.com/unocss/unocss)
 - [HeadlessUI](https://github.com/CaptainCodeman/svelte-headlessui)
 - [GrailUI](https://github.com/grail-ui/grail-ui)
+- [Melt UI](https://github.com/melt-ui/melt-ui)
 - [MDsveX](https://github.com/pngwn/mdsvex)
-- [Tailwind](https://github.com/tailwindlabs/tailwindcss)
+- [TailwindCSS](https://github.com/tailwindlabs/tailwindcss)
+- [WindiCSS](https://windicss.org/)
 - [Skeleton](https://github.com/skeletonlabs/skeleton)

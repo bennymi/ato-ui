@@ -56,10 +56,11 @@
 			The elemental ato(mic) UI component library for Svelte, built with UnoCSS.
 		</div>
 	</section>
+
 	<section class="my-12 md:my-20 flex justify-center items-center gap-8 flex-wrap">
 		{#each cards as { icon, title, description }}
 			<div
-				class="group h-34 w-70 rounded-lg shadow-lg shadow-surface-400/70 transition duration-150 ease-in-out hover:(surface-400-800 shadow-primary-700)"
+				class="group h-34 w-70 rounded-lg shadow-lg shadow-surface-400/70 transition-all duration-300 ease-in-out hover:(surface-400-800 shadow-primary-700 scale-105)"
 			>
 				<div class="mx-4 py-4">
 					<div class="mb-1">
