@@ -1,23 +1,13 @@
-import { UnoGenerator, createGenerator } from '@unocss/core';
+import { type UnoGenerator, createGenerator } from '@unocss/core';
 
-import { presetUno, presetWind } from 'unocss';
-
-import presetIcons from '@unocss/preset-icons';
-import { presetForms } from '@julr/unocss-preset-forms';
+import { presetWind } from '@unocss/preset-wind';
 
 import { presetAtoUI } from '$lib/preset/index';
 
 export const unocss_config = {
     presets: [
-        presetUno(),
-        presetIcons({
-            extraProperties: {
-                display: 'inline-block',
-                'vertical-align': 'middle'
-            }
-        }),
+        // presetUno(),
         presetWind(),
-        presetForms(),
         presetAtoUI()
     ]
 };
