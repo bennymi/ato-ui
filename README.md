@@ -23,7 +23,7 @@ pnpm add -D ato-ui
 
 ## 🔑 Contributions
 
-Check out the Contributions guide first. PRs are welcomed. Find an open issue you can work on and come discuss it with us on discord.
+Developers interested in contributing should read the [Code of Conduct](./CODE_OF_CONDUCT.md) and the Contribution Guide. PRs are welcomed. Find an open issue you can work on and come discuss it with us on discord.
 
 ## 🌸 Credits
 
