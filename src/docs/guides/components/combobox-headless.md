@@ -4,6 +4,7 @@ description: A headless combobox component with autocomplete.
 ---
 
 <script>
+	import Usage from '../Usage.svelte';
     import Combobox from '$lib/components/combobox/Combobox.svelte';
 
     const options = [
@@ -13,15 +14,16 @@ description: A headless combobox component with autocomplete.
 		'Sokka',
 		'Appa',
 		'Zuko',
-		'Iroh'
+		'Iroh',
+		'Momo'
 	];
 </script>
 
 # Combobox (Autocomplete) | Headless
 
-## Usage
+## Example
 
-<div class="w-full flex justify-center items-center pt-2 pb-62 px-2 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="pt-2 pb-62">
     <Combobox
 		{options}
 		selected={options[0]}
@@ -29,7 +31,7 @@ description: A headless combobox component with autocomplete.
 		searchIcon="text-xl i-material-symbols-search-check-rounded"
 		selectIcon="text-xl i-material-symbols-check-small-rounded"
 	/>
-</div>
+</Usage>
 
 Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/combobox/) documentation or the Github page for our [Styled Combobox](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/combobox/Combobox.svelte) to see how to create a combobox. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 

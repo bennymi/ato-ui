@@ -30,7 +30,7 @@ description: A tabs component, to easily switch between different views.
 
 Tabs allow you to switch between different views.
 
-## Usage
+## Example
 
 <Usage>
     <TabsList activeTab="styled" {tabHeaders}>

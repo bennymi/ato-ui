@@ -37,12 +37,6 @@
 
 	$: custom_theme_css_variables = `
 :root .custom-theme {
-	--theme-font-family-base: system-ui;
-	--theme-font-family-heading: system-ui;
-
-	--theme-font-color-base: 0, 0, 0;
-	--theme-font-color-dark: 255, 255, 255;
-
 	--theme-rounded-base: ${$new_theme.btns.radius};
 	--theme-rounded-container: ${$new_theme.container_radius};
 	--theme-border-base: 1px;
@@ -82,7 +76,7 @@
 
 <div class="absolute fixed bottom-5 right-5 2xl:(bottom-10 right-20)">
 	<button
-		class="btn-border-surface-bl-primary-secondary-success btn-md xl:btn-lg"
+		class="btn-border-surface-bl-primary-secondary btn-md xl:btn-lg"
 		on:click={() => copy_to_clipboard(custom_theme_css_variables)}
 	>
 		<span
@@ -102,7 +96,7 @@
 		<div class="flex flex-col items-center gap-4">
 			<h2 class="font-semibold text-4xl">
 				Select your
-				<span class="font-extrabold text-gradient-br-primary-secondary-tertiary"> colors </span>
+				<span class="font-extrabold text-gradient-primary-secondary-tertiary"> colors </span>
 			</h2>
 			<p class="text-justify">
 				You can browse the rest of the website with this theme as well. (1) First pick your theme
@@ -170,9 +164,18 @@
 
 	<!-- Other theme values -->
 	<div class="w-full">
-		<div class="w-full px-4 py-2 border-1 border-surface-900/40-200/20 rounded-container">
-			<div class="flex items-center gap-2">
-				<label class="w-1/2">
+		<div class="w-full p-4 border-1 border-surface-900/40-200/20 rounded-container">
+			<div class="flex justify-center items-center gap-4 mb-12">
+				<button class="btn-glass-primary btn-sm">Click</button>
+				<button class="btn-glass-secondary btn-md">Click</button>
+				<button class="btn-glass-tertiary btn-lg">Click</button>
+				<button class="btn-glass-success btn-xl">Click</button>
+				<button class="btn-primary btn-icon btn-lg" aria-label="icon button example">
+					<span class="i-material-symbols:notifications-active-rounded" />
+				</button>
+			</div>
+			<div class="flex gap-1 [&>label]:(w-1/3)">
+				<label>
 					<span>Button Radius</span>
 					<select bind:value={$new_theme.btns.radius}>
 						{#each options.btn_radius as rad}
@@ -180,38 +183,28 @@
 						{/each}
 					</select>
 				</label>
-				<div class="w-1/2 flex justify-center items-center gap-4">
-					<button class="btn-primary btn-sm">Click</button>
-					<button class="btn-primary-secondary-tertiary btn-md">Click</button>
-					<button class="btn-glass-primary-secondary btn-lg">Click</button>
-					<button class="btn-border-surface-primary-secondary btn-xl">Click</button>
-					<button class="btn-primary btn-icon btn-lg" aria-label="icon button example">
-						<span class="i-material-symbols:notifications-active-rounded" />
-					</button>
-				</div>
+				<label>
+					<span>Icon Button Radius</span>
+					<select bind:value={$new_theme.btns.icon_radius}>
+						{#each options.btn_icon_radius as rad}
+							<option value={rad}>{rad}</option>
+						{/each}
+					</select>
+				</label>
+				<label>
+					<span>Container Radius</span>
+					<select bind:value={$new_theme.container_radius}>
+						{#each options.container_radius as rad}
+							<option value={rad}>{rad}</option>
+						{/each}
+					</select>
+				</label>
 			</div>
-			<label>
-				<span>Icon Button Radius</span>
-				<select bind:value={$new_theme.btns.icon_radius}>
-					{#each options.btn_icon_radius as rad}
-						<option value={rad}>{rad}</option>
-					{/each}
-				</select>
-			</label>
-			<label>
-				<span>Container Radius</span>
-				<select bind:value={$new_theme.container_radius}>
-					{#each options.container_radius as rad}
-						<option value={rad}>{rad}</option>
-					{/each}
-				</select>
-			</label>
-			<div class="flex flex-col gap-4">
+			<div class="flex flex-wrap gap-1">
 				{#each options.btn_sizes as size}
-					<div>
+					<div class="w-full flex flex-col">
 						<div class="text-xl font-bold">{options.btns[size].title}</div>
-						<!-- <div class="flex gap-2 [&>label]:(flex-1)"> -->
-						<div class="flex gap-2 [&>label]:(w-30)">
+						<div class="flex gap-1 w-full [&>label]:(w-1/3)">
 							<label>
 								<span>p-x</span>
 								<select bind:value={$new_theme.btns[size].px}>

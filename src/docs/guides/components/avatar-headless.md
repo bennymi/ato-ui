@@ -3,9 +3,23 @@ title: Avatar
 description: A headless avatar component.
 ---
 
+<script lang="ts">
+	import Usage from '../Usage.svelte';
+	import Avatar from '$lib/components/avatar/Avatar.svelte';
+</script>
+
 # Avatar | Headless
 
 ## Example
+
+<Usage>
+	<Avatar
+		src="/corgi-avatar.jpg"
+		rounded="rounded-none"
+		badgeBackground="bg-secondary-500"
+		border="border-4 border-surface-800 hover:(border-primary-500)"
+	/>
+</Usage>
 
 ```svelte
 <script lang="ts">

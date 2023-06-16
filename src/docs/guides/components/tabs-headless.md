@@ -24,14 +24,16 @@ description: A headless tabs component, to easily switch between different views
 
 # Tabs | Headless
 
-## Usage
+## Example
 
 <Usage>
-    <TabsList activeTab="styled" {tabHeaders}>
+	<!-- <div class="surface-500 w-full p-2 rounded-container"> -->
+	<TabsList activeTab="styled" {tabHeaders}>
 		<Tab key="styled">Styled Content</Tab>
 		<Tab key="headless">Headless Content</Tab>
 		<Tab key="extra">Extra Content</Tab>
 	</TabsList>
+	<!-- </div> -->
 </Usage>
 
 Please see the [GrailUI](https://grail-ui.vercel.app/svelte/tabs) documentation for how to create tabs. 

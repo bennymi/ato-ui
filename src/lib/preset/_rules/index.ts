@@ -5,6 +5,7 @@ import { backgroundRules, backgroundSCs } from './background';
 import { buttonRules, buttonSCs } from './buttons';
 import { cardSCs } from './cards';
 import { chipSCs } from './chips';
+import { convenienceSCs } from './convenience';
 import { imageRules } from './image';
 import { borderSCs } from './border';
 import { shadowSCs } from './shadow';
@@ -28,6 +29,7 @@ export const shortcuts: Shortcut[] = [
     ...buttonSCs,
     ...cardSCs,
     ...chipSCs,
+    ...convenienceSCs,
     ...borderSCs,
     ...shadowSCs,
     ...spinnerSCs,

@@ -5,6 +5,7 @@ component: components/toggle-switch/ToggleSwitch.svelte
 ---
 
 <script>
+    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/toggle-switch/ToggleSwitch.svelte?raw&sveld';
     import ToggleSwitch from '$lib/components/toggle-switch/ToggleSwitch.svelte';
@@ -18,11 +19,11 @@ Switches use the `rounded-btn` class, so they change their shape based on the th
 
 ## Colors
 
-<div class="w-full flex flex-wrap p-4 justify-center gap-4 items-center rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-12">
     {#each active_colors as color}
         <ToggleSwitch checked={true} activeBackground={color} label={color} />
     {/each}
-</div>
+</Usage>
 
 ```svelte
 <ToggleSwitch bind:checked activeBackground="bg-success-500" />
@@ -30,25 +31,25 @@ Switches use the `rounded-btn` class, so they change their shape based on the th
 
 ## Label
 
-<div class="w-full flex flex-wrap justify-center gap-4 p-4 items-center rounded-container border-1 border-surface-500/30-200/30 my-4">
-    <ToggleSwitch checked={true} size="sm" activeBackground="bg-secondary-500" label="Toggle" />
-    <ToggleSwitch checked={true} size="lg" activeBackground="bg-secondary-500" label="Toggle" />
-</div>
+<Usage padding="py-12">
+    <ToggleSwitch checked={true} label="On / Off" />
+    <ToggleSwitch checked={true} label="Light / Dark" />
+</Usage>
 
 ```svelte
-<ToggleSwitch bind:checked activeBackground="bg-success-500" label="Toggle" />
+<ToggleSwitch bind:checked label="Toggle" />
 ```
 
 ## Sizes
 
-<div class="w-full flex flex-wrap justify-center gap-4 p-4 items-center rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-12">
         <ToggleSwitch checked={true} size="sm" label="sm" />
         <ToggleSwitch checked={true} lable="md" label="md" />
         <ToggleSwitch checked={true} size="lg" label="lg" />
-</div>
+</Usage>
 
 ```svelte
-<ToggleSwitch bind:checked activeBackground="bg-success-500" size="lg" />
+<ToggleSwitch bind:checked size="lg" />
 ```
 
 ## Props

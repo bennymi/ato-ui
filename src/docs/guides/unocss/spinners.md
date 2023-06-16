@@ -3,13 +3,17 @@ title: Spinners / Loaders
 description: Allows you to easily add spinners to your website when loading data.
 ---
 
+<script>
+	import Usage from '../Usage.svelte';
+</script>
+
 # Spinners / Loaders
 
 ## Examples
 
 <!-- <div class="flex justify-center items-center">
 	<div class="flex justify-center items-center gap-x-32 gap-y-20 flex-wrap"> -->
-<div class="w-full flex flex-wrap gap-x-16 gap-y-4 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-12">
 	<!-- Regular circle -->
 	<span class="s-circle-primary" />
 	<span class="s-circle-split-primary" />
@@ -38,7 +42,7 @@ description: Allows you to easily add spinners to your website when loading data
 	<!-- 2 Squares rotating -->
 	<span class="s-squares-rotate-primary" />
 	<span class="s-squares-rotate-primary-secondary" />
-</div>
+</Usage>
 	<!-- </div>
 </div> -->
 
@@ -50,7 +54,8 @@ To customize these spinners use regular Tailwind classes to modify the size and 
 
 Example: `w-12 h-12 text-primary-500 i-svg-spinners-blocks-scale`.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<!-- <div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono"> -->
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span class="mr-2 w-12 h-12 text-primary-500 i-svg-spinners-blocks-wave" />
 		i-svg-spinners-blocks-wave
@@ -75,13 +80,13 @@ Example: `w-12 h-12 text-primary-500 i-svg-spinners-blocks-scale`.
 		<span class="mr-2 w-12 h-12 text-error-500 i-svg-spinners-pulse-rings-multiple" />
 		i-svg-spinners-pulse-rings-multiple
 	</div>
-</div>
+</Usage>
 
 ## Size
 
 You can set the size of each spinner by setting the width and height after the the `s-` prefix. For example: `s-wh15-circle-secondary`, `s-wh20-flip-tertiary`. This will set the width and height to `w-15 h-15` and `w-20 h-20` respectively.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span class="mr-2 s-squares-rotate-primary-secondary" />
 		s-squares-rotate-primary-secondary
@@ -94,7 +99,7 @@ You can set the size of each spinner by setting the width and height after the t
 		<span class="mr-2 s-wh20-squares-rotate-primary-secondary" />
 		s-wh20-squares-rotate-primary-secondary
 	</div>
-</div>
+</Usage>
 
 ## Colors & Variations
 
@@ -106,7 +111,7 @@ Pattern: `s-circle-{color}`.
 
 You can change the border type and size of circles by using regular Tailwind classes like: `border-dashed`,  `border-spotted`, `border-6`, and `border-8`.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span class="mr-2 s-wh8-circle-secondary border-dotted border-4" />
 		s-wh8-circle-secondary border-dotted border-4
@@ -115,42 +120,42 @@ You can change the border type and size of circles by using regular Tailwind cla
 		<span class="mr-2 s-wh8-circle-secondary border-dashed border-4" />
 		s-wh8-circle-secondary border-dashed border-4
 	</div>
-</div>
+</Usage>
 
 ### Circle Split
 
 Pattern: `s-circle-split-{color}`.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span class="mr-2 s-wh8-circle-split-secondary" />
 		s-wh8-circle-split-secondary
 	</div>
-</div>
+</Usage>
 
 ### Squares Hover
 
 Pattern: `s-squares-hover-{color1}-{color2}-{color3}`. You can set the colors of all three layers.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span
 			class="s-wh12-squares-hover-tertiary-secondary-primary"
 		/>
 		<span>s-squares-hover-tertiary-secondary-primary</span>
 	</div>
-</div>
+</Usage>
 
 ### Squares Rotate
 
 Pattern: `s-squares-hover-{color1}-{color2}`. You can set the colors of both rotating squares. The second color is optional.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span class="s-squares-rotate-primary-secondary" />
 		s-squares-rotate-primary-secondary
 	</div>
-</div>
+</Usage>
 
 ### Corners
 
@@ -158,7 +163,7 @@ Pattern: `s-corners-{color}`.
 
 You can also change the background with some additional classes such as:`bg-gradient-primary-secondary-tertiary`.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span class="s-wh10-corners-primary" />
 		s-corners-primary
@@ -167,15 +172,15 @@ You can also change the background with some additional classes such as:`bg-grad
 		<span class="s-wh10-corners-primary bg-gradient-error-tertiary-primary" />
 		s-corners-primary bg-gradient-error-tertiary-primary
 	</div>
-</div>
+</Usage>
 
 ### Corners Outline
 
 Pattern: `s-corners-outline-{color}`.
 
-<div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono">
+<Usage padding="py-12 font-mono" column={true}>
 	<div>
 		<span class="s-wh10-corners-outline-primary" />
 		s-corners-outline-primary
 	</div>
-</div>
+</Usage>

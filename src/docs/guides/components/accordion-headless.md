@@ -4,15 +4,16 @@ description: A headless accordion component.
 ---
 
 <script>
+	import Usage from '../Usage.svelte';
     import Accordion from '$lib/components/accordion/Accordion.svelte';
     import AccordionItem from '$lib/components/accordion/AccordionItem.svelte';
 </script>
 
 # Accordion | Headless
 
-## Usage
+## Example
 
-<div class="w-full flex justify-center items-center px-2 h-60 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage height="h-60">
     <Accordion collapse>
         <AccordionItem label="refund policy" open>
             <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
@@ -26,7 +27,7 @@ description: A headless accordion component.
             <svelte:fragment slot="content">No.</svelte:fragment>
         </AccordionItem>
     </Accordion>
-</div>
+</Usage>
 
 Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/disclosure/) documentation or the Github page for our [Styled Accordion](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/accordion/Accordion.svelte) to see how to create an Accordion. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 

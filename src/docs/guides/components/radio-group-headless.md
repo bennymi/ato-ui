@@ -4,6 +4,7 @@ description: A headless radio group example.
 ---
 
 <script>
+	import Usage from '../Usage.svelte';
     import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
 
 	let items = [
@@ -24,11 +25,11 @@ description: A headless radio group example.
 
 # Radio Group | Headless
 
-## Usage
+## Example
 
-<div class="w-full flex justify-center items-center py-20 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-20">
     <RadioGroup {items} name="group-1" {activeIcon} bind:group />
-</div>
+</Usage>
 
 Here is an example using Ato UI's tokens, however also feel free to see [HeadlessUI's Radio Group example](https://captaincodeman.github.io/svelte-headlessui/radio-group/).
 

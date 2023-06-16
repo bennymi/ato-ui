@@ -5,6 +5,7 @@ description: A radio group example for Svelte.
 ---
 
 <script>
+    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
     import docs from '$lib/components/radio-group/RadioGroup.svelte?raw&sveld';
@@ -27,11 +28,11 @@ description: A radio group example for Svelte.
 
 # Radio Group | Headless
 
-## Usage
+## Example
 
-<div class="w-full flex justify-center items-center py-20 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-20">
     <RadioGroup {items} name="group-1" {activeIcon} {group} />
-</div>
+</Usage>
 
 ```svelte
 <script lang="ts">
@@ -60,12 +61,12 @@ description: A radio group example for Svelte.
 
 You can change the active and inactive colors with the `bgActiveClasses` and `bgClasses` props.
 
-<div class="w-full flex flex-col gap-4 justify-center items-center py-20 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-20" column="true">
     <RadioGroup {items} name="color-1" size="sm" {activeIcon} bgActiveClasses="primary-500" />
     <RadioGroup {items} name="color-2" size="sm" {activeIcon} bgActiveClasses="secondary-500" />
     <RadioGroup {items} name="color-3" size="sm" {activeIcon} bgActiveClasses="tertiary-500" />
     <RadioGroup {items} name="color-4" size="sm" {activeIcon} bgActiveClasses="success-500" />
-</div>
+</Usage>
 
 ```svelte
 <RadioGroup
@@ -81,9 +82,9 @@ You can change the active and inactive colors with the `bgActiveClasses` and `bg
 
 You can change the active icon that is used when an option is selected, by passing an icon `i-` through the `activeIcon` prop. Also make sure that the color of the icon is set properly so it is visible with the active color you have selected by using the `text-on-` tokens.
 
-<div class="w-full flex flex-col gap-4 justify-center items-center py-20 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-20">
     <RadioGroup {items} name="color-2" bgActiveClasses="secondary-500" activeIcon="text-on-secondary i-material-symbols-star-rounded" />
-</div>
+</Usage>
 
 ```svelte
 <RadioGroup
@@ -100,11 +101,11 @@ You can change the active icon that is used when an option is selected, by passi
 
 You can change the size of the groups with the `size` prop by selecting `sm`, `md`, or `lg`.
 
-<div class="w-full flex flex-col gap-4 justify-center items-center py-20 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-20" column="true">
     <RadioGroup {items} name="size-sm" size="sm" {activeIcon} />
     <RadioGroup {items} name="size-md" size="md" {activeIcon} />
     <RadioGroup {items} name="size-lg" size="lg" {activeIcon} />
-</div>
+</Usage>
 
 ```svelte
 <RadioGroup

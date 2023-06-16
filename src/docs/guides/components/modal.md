@@ -5,6 +5,7 @@ description: An accessible modal component with a backdrop.
 ---
 
 <script>
+    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/modal/Modal.svelte?raw&sveld';
     import Modal from '$lib/components/modal/Modal.svelte';
@@ -14,9 +15,9 @@ description: An accessible modal component with a backdrop.
 
 # Dialog (Modal)
 
-## Usage
+## Example
 
-<div class="w-full flex justify-center items-center py-20 px-2 rounded-container border-1 border-surface-500/30-200/30 my-4">
+<Usage padding="py-20">
     <Modal bind:showModal buttonText="Open dialog" zIndex="z-999">
         <div
             class="w-full max-w-md transform overflow-hidden rounded-container surface-50 p-6 text-left align-middle shadow-xl transition-all"
@@ -33,7 +34,7 @@ description: An accessible modal component with a backdrop.
             </div>
         </div>
     </Modal>
-</div>
+</Usage>
 
 You can open and close the modal by binding the `showModal` prop and setting it to `true` or `false`.
 
