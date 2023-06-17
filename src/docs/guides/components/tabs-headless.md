@@ -40,7 +40,7 @@ Please see the [GrailUI](https://grail-ui.vercel.app/svelte/tabs) documentation 
 
 Here's an example of our [Styled Tabs](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/tabs). Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 
-```svelte
+```svelte showCode=true
 <script lang="ts">
 	import { createTabs } from '@grail-ui/svelte';
 	

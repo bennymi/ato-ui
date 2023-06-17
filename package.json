@@ -1,6 +1,7 @@
 {
 	"name": "ato-ui",
-	"version": "0.0.1",
+	"version": "0.1.0",
+	"author": "bennymi <https://github.com/bennymi>",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -11,6 +12,29 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"typescript",
+		"unocss",
+		"tailwindcss",
+		"tailwind",
+		"windicss",
+		"components",
+		"component",
+		"ui",
+		"headless",
+		"component-library",
+		"themes"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bennymi/ato-ui.git"
+	},
+	"bugs": {
+		"url": "https://github.com/bennymi/ato-ui/issues"
 	},
 	"exports": {
 		".": {
@@ -25,7 +49,6 @@
 		"svelte": "^3.54.0"
 	},
 	"devDependencies": {
-		"@grail-ui/svelte": "^0.9.6",
 		"@iconify-json/material-symbols": "^1.1.48",
 		"@iconify-json/mdi": "^1.1.52",
 		"@iconify-json/svg-spinners": "^1.1.1",
@@ -49,7 +72,6 @@
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-import-resolver-typescript": "^3.5.5",
 		"eslint-plugin-svelte": "^2.30.0",
-		"esm-env": "^1.0.0",
 		"mdsvex": "^0.10.6",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",
@@ -61,7 +83,6 @@
 		"sveld": "^0.18.1",
 		"svelte": "^3.59.1",
 		"svelte-check": "^3.4.3",
-		"svelte-headlessui": "^0.0.16",
 		"svelte-local-storage-store": "^0.5.0",
 		"svelte-preprocess": "^5.0.4",
 		"svelte-range-slider-pips": "^2.1.1",
@@ -76,10 +97,12 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
+		"@grail-ui/svelte": "^0.9.6",
 		"@unocss/core": "^0.53.1",
 		"@unocss/preset-uno": "^0.53.1",
 		"@unocss/preset-wind": "^0.53.1",
 		"@unocss/reset": "^0.53.1",
-		"pnpm": "^8.6.2"
+		"esm-env": "^1.0.0",
+		"svelte-headlessui": "^0.0.16"
 	}
 }

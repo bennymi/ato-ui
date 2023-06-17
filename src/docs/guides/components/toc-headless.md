@@ -9,7 +9,7 @@ description: A headless table of contents component.
 
 You can create a Table of Contents (ToC) by calling the `create_toc()` function with the id of the container in which the content is. The headings and active headings can then be accessed through the `$toc.headings` store which you can iterate over like in the example below. The `icon` inside the `$toc.headings` elements are the ones you can pass to the `create_toc()` function with the `headingIndentationStyles` parameter. You can see an example of that in the [Styled ToC](http://localhost:5173/docs/components/toc) documentation.
 
-```svelte
+```svelte showCode=true
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';

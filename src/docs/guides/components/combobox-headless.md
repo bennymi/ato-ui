@@ -35,7 +35,7 @@ description: A headless combobox component with autocomplete.
 
 Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/combobox/) documentation or the Github page for our [Styled Combobox](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/combobox/Combobox.svelte) to see how to create a combobox. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 
-```svelte
+```svelte showCode=true
 <script lang="ts">
 	import { createCombobox } from 'svelte-headlessui';
 

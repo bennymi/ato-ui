@@ -24,7 +24,7 @@ export const unocss_config = {
     // }
   },
   presets: [
-    presetUno(),
+    // presetUno(),
     presetAttributify(),
     presetIcons({
         extraProperties: {

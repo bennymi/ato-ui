@@ -13,7 +13,7 @@
 	import { NavBar, Sidebar, BottomNav } from '../docs/layout';
 	import type { Navigation, NavGroupItem } from '../docs/layout/types';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
-	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
+	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
 
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import { themeStore, customThemeCSSStore } from './stores';

@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { createDialog } from 'svelte-headlessui';
 	import { fade } from 'svelte/transition';
-	import type { BackdropTransition } from './types';
+	import type { BackdropTransition } from './types.d';
 
 	const dispatcher = createEventDispatcher();
 
