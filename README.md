@@ -19,11 +19,11 @@ pnpm add -D ato-ui
 - 😃 Pure CSS icons of all your favourite icon sets thanks to iconify and UnoCSS
 
 ## 👋 Community
-- [Discord](https://discord.gg/bGHtEZpj)
+- [Discord](https://discord.gg/7PXN3fs3tN)
 
 ## 🔑 Contributions
 
-Developers interested in contributing should read the [Code of Conduct](./CODE_OF_CONDUCT.md) and the Contribution Guide. PRs are welcomed. Find an open issue you can work on and come discuss it with us on discord.
+Developers interested in contributing should read the [Code of Conduct](./CODE_OF_CONDUCT.md) and the [Contribution Guide](./CONTRIBUTING.md). PRs are welcomed. Find an open issue you can work on and come discuss it with us on discord.
 
 ## 🌸 Credits
 
