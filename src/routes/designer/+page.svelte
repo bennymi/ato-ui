@@ -37,9 +37,7 @@
 
 	$: custom_theme_css_variables = `
 :root .custom-theme {
-	--theme-rounded-base: ${$new_theme.btns.radius};
-	--theme-rounded-container: ${$new_theme.container_radius};
-	--theme-border-base: 1px;
+	--ato-container-radius: ${$new_theme.container_radius};
 
 	/* Buttons */
 	--btn-radius: ${$new_theme.btns.radius};

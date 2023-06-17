@@ -21,7 +21,7 @@ description: A headless avatar component.
 	/>
 </Usage>
 
-```svelte
+```svelte showCode=true
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 

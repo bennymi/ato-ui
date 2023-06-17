@@ -1,6 +1,7 @@
 import { derived, writable, type Writable } from "svelte/store";
 import type { Visibility } from "./types";
 
+// TODO
 export function observe(target: string): Visibility {
 
     let isVisible: Writable<boolean> = writable(false);

@@ -37,7 +37,7 @@ description: An accessible headless modal component.
 
 Please see the [HeadlessUI Modal](https://captaincodeman.github.io/svelte-headlessui/dialog/) documentation or the Github page for our [Styled Menu](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/modal/Modal.svelte) to see how to create a modal. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 
-```svelte
+```svelte showCode=true
 <script lang="ts">
 	import { createDialog } from 'svelte-headlessui';
     import { slide } from 'svelte/transition';

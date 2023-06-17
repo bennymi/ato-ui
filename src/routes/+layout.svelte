@@ -13,7 +13,7 @@
 	import { NavBar, Sidebar, BottomNav } from '../docs/layout';
 	import type { Navigation, NavGroupItem } from '../docs/layout/types';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
-	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types.d';
+	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
 
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import { themeStore, customThemeCSSStore } from './stores';
@@ -161,7 +161,7 @@
 		{themes}
 		icons={[
 			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
-			{ icon: 'i-mdi-discord', link: '', title: 'Discord' }
+			{ icon: 'i-mdi-discord', link: 'https://discord.gg/bGHtEZpj', title: 'Discord' }
 		]}
 		on:select={(event) => ($themeStore = event.detail.selected.toLowerCase())}
 	>

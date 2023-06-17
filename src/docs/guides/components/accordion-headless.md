@@ -31,7 +31,7 @@ description: A headless accordion component.
 
 Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/disclosure/) documentation or the Github page for our [Styled Accordion](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/accordion/Accordion.svelte) to see how to create an Accordion. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
 
-```svelte
+```svelte showCode=true
 <script lang="ts">
 	import { createDisclosure } from 'svelte-headlessui';
 	import { slide } from 'svelte/transition';

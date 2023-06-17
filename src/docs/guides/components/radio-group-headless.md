@@ -33,7 +33,7 @@ description: A headless radio group example.
 
 Here is an example using Ato UI's tokens, however also feel free to see [HeadlessUI's Radio Group example](https://captaincodeman.github.io/svelte-headlessui/radio-group/).
 
-```svelte
+```svelte showCode=true
 <script lang="ts">
 	/** Name attribute of radio inputs. */
 	let name = 'group-1';

@@ -6,7 +6,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { createMenu } from 'svelte-headlessui';
 
-	import type { DropMenuGroup } from './types.d';
+	import type { DropMenuGroup } from './types';
 
 	const dispatch = createEventDispatcher();
 
