@@ -1,6 +1,6 @@
 {
 	"name": "ato-ui",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "A component UI library for Svelte, SvelteKit, and UnoCSS.",
 	"author": "Benedikt Mielke",
 	"homepage": "https://ato-ui.vercel.app/",
@@ -45,13 +45,19 @@
 			"svelte": "./dist/index.js",
 			"default": "./dist/index.js"
 		},
-		"./preset": "./dist/preset",
+		"./preset": {
+			"types": "./dist/preset/index.d.ts",
+			"default": "./dist/preset/index.js"
+		},
 		"./themes/*": "./dist/styles/themes/*"
 	},
 	"typesVersions": {
 		">4.0": {
 			"index.d.ts": [
 				"./dist/index.d.ts"
+			],
+			"preset": [
+				"./dist/preset/index.d.ts"
 			]
 		}
 	},

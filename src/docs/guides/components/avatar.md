@@ -89,7 +89,7 @@ component: components/avatar/Avatar.svelte
 
 ```svelte
 <script lang="ts">
-	import Avatar from 'ato-ui';
+	import { Avatar } from 'ato-ui';
 </script>
 
 <Avatar src="/corgi-avatar.jpg" />
