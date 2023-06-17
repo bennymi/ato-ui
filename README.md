@@ -39,6 +39,7 @@ The following amazing projects made this library possible and / or heavily inspi
 - [MDsveX](https://github.com/pngwn/mdsvex)
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss)
 - [WindiCSS](https://windicss.org/)
+- [Shiki](https://github.com/shikijs/shiki)
 
 ## License
 
