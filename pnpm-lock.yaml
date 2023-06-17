@@ -1,26 +1,27 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
-  '@unocss/core':
-    specifier: ^0.53.1
-    version: 0.53.1
-  '@unocss/preset-uno':
-    specifier: ^0.53.1
-    version: 0.53.1
+  '@grail-ui/svelte':
+    specifier: ^0.9.6
+    version: 0.9.6(svelte@3.59.1)
   '@unocss/preset-wind':
     specifier: ^0.53.1
     version: 0.53.1
   '@unocss/reset':
     specifier: ^0.53.1
     version: 0.53.1
-  pnpm:
-    specifier: ^8.6.2
-    version: 8.6.2
+  esm-env:
+    specifier: ^1.0.0
+    version: 1.0.0
+  svelte-headlessui:
+    specifier: ^0.0.16
+    version: 0.0.16
 
 devDependencies:
-  '@grail-ui/svelte':
-    specifier: ^0.9.6
-    version: 0.9.6(svelte@3.59.1)
   '@iconify-json/material-symbols':
     specifier: ^1.1.48
     version: 1.1.48
@@ -63,10 +64,16 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^5.59.11
     version: 5.59.11(eslint@8.43.0)(typescript@5.1.3)
+  '@unocss/core':
+    specifier: ^0.53.1
+    version: 0.53.1
   '@unocss/extractor-svelte':
     specifier: ^0.53.1
     version: 0.53.1
   '@unocss/preset-icons':
+    specifier: ^0.53.1
+    version: 0.53.1
+  '@unocss/preset-uno':
     specifier: ^0.53.1
     version: 0.53.1
   '@unocss/transformer-directives':
@@ -90,9 +97,6 @@ devDependencies:
   eslint-plugin-svelte:
     specifier: ^2.30.0
     version: 2.30.0(eslint@8.43.0)(svelte@3.59.1)
-  esm-env:
-    specifier: ^1.0.0
-    version: 1.0.0
   mdsvex:
     specifier: ^0.10.6
     version: 0.10.6(svelte@3.59.1)
@@ -126,9 +130,6 @@ devDependencies:
   svelte-check:
     specifier: ^3.4.3
     version: 3.4.3(postcss@8.4.24)(svelte@3.59.1)
-  svelte-headlessui:
-    specifier: ^0.0.16
-    version: 0.0.16
   svelte-local-storage-store:
     specifier: ^0.5.0
     version: 0.5.0(svelte@3.59.1)
@@ -415,13 +416,13 @@ packages:
 
   /@floating-ui/core@1.2.6:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
-    dev: true
+    dev: false
 
   /@floating-ui/dom@1.2.9:
     resolution: {integrity: sha512-sosQxsqgxMNkV3C+3UqTS6LxP7isRLwX8WMepp843Rb3/b0Wz8+MdUkxJksByip3C2WwLugLHN1b4ibn//zKwQ==}
     dependencies:
       '@floating-ui/core': 1.2.6
-    dev: true
+    dev: false
 
   /@grail-ui/svelte@0.9.6(svelte@3.59.1):
     resolution: {integrity: sha512-6QPq0wkRVFV4p4hfC/4T2999py3VgiFcRBpREZo6aLBil/NHLhozqUE8oStrGYHvgPNZyaSueDNj/7xHowxrYA==}
@@ -431,7 +432,7 @@ packages:
       '@floating-ui/dom': 1.2.9
       focus-trap: 7.4.3
       svelte: 3.59.1
-    dev: true
+    dev: false
 
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
@@ -1027,6 +1028,7 @@ packages:
       '@unocss/core': 0.53.1
       '@unocss/preset-mini': 0.53.1
       '@unocss/preset-wind': 0.53.1
+    dev: true
 
   /@unocss/preset-web-fonts@0.53.1:
     resolution: {integrity: sha512-UwAYDkdIVwydw1UxXFVQ7HufzIPxY6Nf3ATb3cKgC134xLNGxbzIQx7DQRFSGe6hmqYC2S86U+URayboGlL1iA==}
@@ -1816,7 +1818,6 @@ packages:
 
   /esm-env@1.0.0:
     resolution: {integrity: sha512-Cf6VksWPsTuW01vU9Mk/3vRue91Zevka5SjyNf3nEpokFRuqt/KjUQoGAwq9qMmhpLTHmXzSIrFRw8zxWzmFBA==}
-    dev: true
 
   /espree@9.5.2:
     resolution: {integrity: sha512-7OASN1Wma5fum5SrNhFMAMJxOUAbhyfQ8dQ//PJaJbNw0URTPWqIghHWt1MmAANKhHZIYOHruW4Kw4ruUWOdGw==}
@@ -1955,7 +1956,7 @@ packages:
     resolution: {integrity: sha512-BgSSbK4GPnS2VbtZ50VtOv1Sti6DIkj3+LkVjiWMNjLeAp1SH1UlLx3ULu/DCu4vq5R4/uvTm+zrvsMsuYmGLg==}
     dependencies:
       tabbable: 6.1.2
-    dev: true
+    dev: false
 
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -2842,12 +2843,6 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pnpm@8.6.2:
-    resolution: {integrity: sha512-Dmgwe+T34Xr6UYaTLXSphPS7ok4h2EPkaHQEH6j7USoAk21CzueAdD1nQLkWJwDnZkJucho0LbKntJ+9B5xlUQ==}
-    engines: {node: '>=16.14'}
-    hasBin: true
-    dev: false
-
   /postcss-load-config@3.1.4(postcss@8.4.24):
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
@@ -3336,7 +3331,7 @@ packages:
     resolution: {integrity: sha512-/jzHXYmVOEl/pI5PekjwwrZJTUBzasSYEAYt4gOxFf4g+3RoHv24NTlNryu+kkE5024ZZlyoeTwO3ClibMxIUA==}
     dependencies:
       svelte-transition: 0.0.7
-    dev: true
+    dev: false
 
   /svelte-hmr@0.15.2(svelte@3.59.1):
     resolution: {integrity: sha512-q/bAruCvFLwvNbeE1x3n37TYFb3mTBJ6TrCq6p2CoFbSTNhDE9oAtEfpy+wmc9So8AG0Tja+X0/mJzX9tSfvIg==}
@@ -3462,7 +3457,7 @@ packages:
 
   /svelte-transition@0.0.7:
     resolution: {integrity: sha512-YMbl+eIkzeYKBz6E/I8KI8RMezhqB38t2B/Mx8BotmtiN+5wnKath7CWDc+8U9zKGJ/iUYHmx4MwQjIzo05nVg==}
-    dev: true
+    dev: false
 
   /svelte2tsx@0.6.10(svelte@3.59.1)(typescript@5.1.3):
     resolution: {integrity: sha512-7CtUexhSHppSpLwVX7yI9OxJp7+esCNTuOF/CaVxWTgWp88QF/2/dCbpND/cTZmBxht5cFFQBwoLXXqFLdYe3Q==}
@@ -3479,7 +3474,6 @@ packages:
   /svelte@3.59.1:
     resolution: {integrity: sha512-pKj8fEBmqf6mq3/NfrB9SLtcJcUvjYSWyePlfCqN9gujLB25RitWK8PvFzlwim6hD/We35KbPlRteuA6rnPGcQ==}
     engines: {node: '>= 8'}
-    dev: true
 
   /synckit@0.8.5:
     resolution: {integrity: sha512-L1dapNV6vu2s/4Sputv8xGsCdAVlb5nRDMFU/E27D44l5U6cw1g0dGd45uLc+OXjNMmF4ntiMdCimzcjFKQI8Q==}
@@ -3491,7 +3485,7 @@ packages:
 
   /tabbable@6.1.2:
     resolution: {integrity: sha512-qCN98uP7i9z0fIS4amQ5zbGBOq+OSigYeGvPy7NDk8Y9yncqDZ9pRPgfsc2PJIVM9RrJj7GIfuRgmjoUU9zTHQ==}
-    dev: true
+    dev: false
 
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
