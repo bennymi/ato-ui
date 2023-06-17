@@ -6,7 +6,14 @@ export const borderSCs: Shortcut[] = [
     // rounded regular
     [
         `rounded-container`,
-        `rounded-[var(--theme-rounded-container)]`
+        `rounded-[var(--ato-container-radius)]`
+    ],
+    [
+        new RegExp(`^rounded-${reg_p}-container$`),
+        ([_, side]: string[]) => `rounded-${side}-[var(--ato-container-radius)]`,
+        {
+            autocomplete: `rounded-${reg_p}-container`
+        }
     ],
     [
         new RegExp(`rounded${reg_pO}-btn`), 
@@ -15,24 +22,6 @@ export const borderSCs: Shortcut[] = [
     [
         new RegExp(`rounded${reg_pO}-btn-icon`), 
         ([_, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`, 
-    ],
-    [
-        `rounded-container`,
-        `rounded-[var(--theme-rounded-container)]`
-    ],
-    [
-        new RegExp(`^rounded-${reg_p}-token-base$`), 
-        ([_, side]: string[]) => `rounded-${side}-[var(--theme-rounded-base)]`,
-        {
-            autocomplete: `rounded-${reg_p}-token-base`
-        }
-    ],
-    [
-        new RegExp(`^rounded-${reg_p}-container$`),
-        ([_, side]: string[]) => `rounded-${side}-[var(--theme-rounded-container)]`,
-        {
-            autocomplete: `rounded-${reg_p}-container`
-        }
     ],
 
     // Border light - dark

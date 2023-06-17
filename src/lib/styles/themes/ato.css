@@ -1,8 +1,6 @@
 
 :root .ato {
-	--theme-rounded-base: 6px;
-	--theme-rounded-container: 6px;
-	--theme-border-base: 1px;
+	--ato-container-radius: 6px;
 
 	/* Buttons */
 	--btn-radius: 6px;

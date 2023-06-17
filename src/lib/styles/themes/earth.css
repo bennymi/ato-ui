@@ -1,8 +1,6 @@
 
 :root .earth {
-	--theme-rounded-base: 2px;
-	--theme-rounded-container: 2px;
-	--theme-border-base: 1px;
+	--ato-container-radius: 2px;
 
 	/* Buttons */
 	--btn-radius: 2px;

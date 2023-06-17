@@ -19,7 +19,7 @@ pnpm add -D ato-ui
 - 😃 Pure CSS icons of all your favourite icon sets thanks to iconify and UnoCSS
 
 ## 👋 Community
-- Discord
+- [Discord](https://discord.gg/bGHtEZpj)
 
 ## 🔑 Contributions
 
@@ -32,8 +32,8 @@ The following amazing projects made this library possible and / or heavily inspi
 - [UnoCSS](https://github.com/unocss/unocss)
 - [Headless UI](https://github.com/CaptainCodeman/svelte-headlessui)
 - [Grail UI](https://github.com/grail-ui/grail-ui)
-- [Melt UI](https://github.com/melt-ui/melt-ui)
 - [Skeleton](https://github.com/skeletonlabs/skeleton)
+- [Melt UI](https://github.com/melt-ui/melt-ui)
 - [Onu UI](https://github.com/onu-ui/onu-ui)
 - [Anu](https://github.com/jd-solanki/anu)
 - [MDsveX](https://github.com/pngwn/mdsvex)

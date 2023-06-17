@@ -1,8 +1,6 @@
 
 :root .water {
-	--theme-rounded-base: 9999px;
-	--theme-rounded-container: 12px;
-	--theme-border-base: 1px;
+	--ato-container-radius: 12px;
 
 	/* Buttons */
 	--btn-radius: 9999px;

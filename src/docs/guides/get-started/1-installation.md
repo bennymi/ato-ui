@@ -6,10 +6,73 @@ icon: i-material-symbols-rocket-launch-rounded
 
 # Installation
 
+Use the package manager of your choice. Here is the `pnpm` install:
 
+```shell showCode=true
+pnpm add -D ato-ui
+```
 
 ## Dependencies
 
+We rely on some dependencies, so make sure they are also installed.
+
+```shell showCode=true
+pnpm add -D unocss @unocss/core @unocss/preset-wind @unocss/preset-icons @unocss/reset svelte-headlessui @grail-ui/svelte
+```
+
+## UnoCSS Config
+
+Create a `unocss.config.ts` file.
+
+```typescript showCode=true title="unocss.config.ts"
+import { defineConfig } from 'unocss';
+import presetWind from '@unocss/preset-wind';
+
+import { presetAtoUI } from 'ato-ui';
+
+export default defineConfig({
+  presets: [
+    presetWind(),
+    presetAtoUI(),
+  ],
+})
+```
+
+## Vite Config
+
+Set up your `vite.config.ts` file.
+
+```typescript showCode=true title="vite.config.ts"
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+import UnoCSS from 'unocss/vite';
+
+export default defineConfig({
+	plugins: [
+		sveltekit(),
+		UnoCSS({
+      		configFile: './unocss.config.ts',
+		})
+	]
+});
+```
+
+## Update Layout
+
+Next we need to setup the root `+layout.svelte` file by importing `uno.css`. You can also do [style resetting](https://unocss.dev/guide/style-reset) like tailwind does. 
+
+You can then import a theme from `ato-ui/styles/themes/...` or use a custom one that you created in our [designer](/designer) page.
+
+```svelte showCode=true title="./src/routes/+layout.svelte"
+<script lang="ts">
+	import 'ato-ui/styles/themes/ato.css';
+
+	import '@unocss/reset/tailwind.css';
+	import 'uno.css';
+</script>
+
+<slot />
+```
 
 ## Recommended VSCode Extensions
 

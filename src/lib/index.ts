@@ -1,14 +1,14 @@
 // Reexport your entry components here
 
-// Preset
-export { presetAtoUI } from './preset';
-
 // Types
 export type { DropMenuGroup } from './components/dropdown-menu/types';
 export type { BackdropTransition } from './components/modal/types.d';
 export type { RadioItem } from './components/radio-group/types.d';
 export type { TOCIndentStyles  } from './components/table-of-contents/types.d';
 export type { TabHeader } from './components/tabs/types';
+
+// Preset
+export { presetAtoUI } from './preset/index';
 
 // Components
 export { default as Accordion } from './components/accordion/Accordion.svelte';
