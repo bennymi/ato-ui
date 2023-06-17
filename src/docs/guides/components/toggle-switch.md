@@ -26,6 +26,12 @@ Switches use the `rounded-btn` class, so they change their shape based on the th
 </Usage>
 
 ```svelte
+<script lang="ts">
+    import { ToggleSwitch } from 'ato-ui';
+
+    let checked = false;
+</script>
+
 <ToggleSwitch bind:checked activeBackground="bg-success-500" />
 ```
 

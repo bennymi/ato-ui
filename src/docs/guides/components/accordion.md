@@ -34,8 +34,7 @@ description: A simple accordion component.
 
 ```svelte
 <script lang="ts">
-	import Accordion from 'ato-ui';
-	import AccordionItem from 'ato-ui';
+	import { Accordion, AccordionItem } from 'ato-ui';
 </script>
 
 <Accordion collapse>

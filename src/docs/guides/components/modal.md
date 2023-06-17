@@ -40,7 +40,7 @@ You can open and close the modal by binding the `showModal` prop and setting it 
 
 ```svelte
 <script lang="ts">
-	import Modal from '$lib/components/modal/Modal.svelte';
+	import { Modal } from 'ato-ui';
 
 	let showModal = false;
 </script>

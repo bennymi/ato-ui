@@ -16,7 +16,7 @@ If you put the table of contents (ToC) in the layout file where the content for 
 
 ```svelte
 <script lang="ts">
-    import TableOfContents from 'ato-ui';
+    import { TableOfContents } from 'ato-ui';
 </script>
 
 <TableOfContents target="#content" />

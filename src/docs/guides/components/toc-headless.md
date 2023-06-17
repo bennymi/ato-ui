@@ -14,8 +14,8 @@ You can create a Table of Contents (ToC) by calling the `create_toc()` function 
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	import type { Heading, TOCIndentStyles, ToC, TOCType } from './types';
-	import { default_indentation_styles, create_toc, scroll_to_element } from './toc';
+	import type { Heading, TOCIndentStyles, ToC, TOCType } from 'ato-ui';
+	import { default_indentation_styles, create_toc, scroll_to_element } from 'ato-ui';
 
 	export let target = '';
 	export let excludeHeadings: Heading[] = [];

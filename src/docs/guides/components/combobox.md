@@ -37,7 +37,7 @@ description: A combobox component with autocomplete.
 
 ```svelte
 <script lang="ts">
-	import Combobox from 'ato-ui';
+	import { Combobox } from 'ato-ui';
 
 	const options = [
 		'Aang',

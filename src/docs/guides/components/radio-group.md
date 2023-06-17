@@ -36,8 +36,7 @@ description: A radio group example for Svelte.
 
 ```svelte
 <script lang="ts">
-    import RadioGroup from 'ato-ui';
-	import type { RadioItem } from 'ato-ui';
+    import { RadioGroup, type RadioItem } from 'ato-ui';
 
 	export let shades: FullTheme;
 
