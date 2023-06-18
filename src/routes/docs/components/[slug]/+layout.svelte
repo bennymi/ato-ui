@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	// import { page } from '$app/stores';
 
-	export let data;
+	// export let data;
 
-	let { styledExists, headlessExists } = data;
+	// let { styledExists, headlessExists } = data;
 
-	$: pageIsHeadless = $page.url.pathname.includes('-headless');
-	$: styledPath = styledExists ? $page.url.pathname.replace('-headless', '') : '';
-	$: headlessPath = headlessExists ? `${$page.url.pathname.replace('-headless', '')}-headless` : '';
+	// $: pageIsHeadless = $page.url.pathname.includes('-headless');
+	// $: styledPath = styledExists ? $page.url.pathname.replace('-headless', '') : '';
+	// $: headlessPath = headlessExists ? `${$page.url.pathname.replace('-headless', '')}-headless` : '';
 </script>
 
-{#if styledExists && headlessExists}
+<!-- {#if styledExists && headlessExists}
 	<nav
 		class="flex justify-center items-center w-full mb-4 [&>a]:(min-w-40 flex justify-center items-center gap-1 text-xl font-bold px-2 py-1 transition-all duration-150)"
 	>
@@ -29,6 +29,6 @@
 			<span>Headless</span>
 		</a>
 	</nav>
-{/if}
+{/if} -->
 
 <slot />
