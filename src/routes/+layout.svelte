@@ -153,7 +153,7 @@
 	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
 </svelte:head>
 
-<div id="ato-ui-docu" class:dark={$darkTheme} class="{$themeStore} min-w-screen min-h-screen">
+<div id="ato-ui-docu" class:dark={$darkTheme} class="{$themeStore} min-h-screen">
 	<NavBar
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}

@@ -74,7 +74,7 @@
 							class="block h-0.5 max-w-0 rounded-btn bg-secondary-500 transition-all duration-500 group-hover:max-w-full"
 						/>
 					</div>
-					<p class="font-sans text-sm group-hover:text-on-surface-400-800">
+					<p class="font-sans text-sm">
 						{description}
 					</p>
 				</div>
