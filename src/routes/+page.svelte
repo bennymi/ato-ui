@@ -60,7 +60,7 @@
 	<section class="my-12 md:my-20 flex justify-center items-center gap-8 flex-wrap">
 		{#each cards as { icon, title, description }}
 			<div
-				class="group h-34 w-70 rounded-lg shadow-lg shadow-surface-400/70 transition-all duration-300 ease-in-out hover:(surface-400-800 shadow-primary-700 scale-105)"
+				class="group h-34 w-70 rounded-container shadow-lg shadow-surface-400/70 transition-all duration-300 ease-in-out hover:(surface-400-800 shadow-primary-700 scale-105)"
 			>
 				<div class="mx-4 py-4">
 					<div class="mb-1">
@@ -71,7 +71,7 @@
 							</span>
 						</div>
 						<span
-							class="block h-0.5 max-w-0 rounded-lg bg-secondary-500 transition-all duration-500 group-hover:max-w-full"
+							class="block h-0.5 max-w-0 rounded-btn bg-secondary-500 transition-all duration-500 group-hover:max-w-full"
 						/>
 					</div>
 					<p class="font-sans text-sm group-hover:text-on-surface-400-800">
