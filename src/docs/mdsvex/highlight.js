@@ -30,13 +30,17 @@ const dark_highlighter = await shiki.getHighlighter({
     themes: ["github-dark"],
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
+// .then((value) => console.log('dark_highlighter:', value.getTheme()));
 
 const light_highlighter = await shiki.getHighlighter({
     theme: github_light,
     themes: ['github-light'],
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
+// .then((value) => console.log('light_highlighter:', value.getTheme()));
 
+// console.log('dark_highlighter', JSON.stringify(dark_highlighter, null, 4));
+// console.log('light_highlighter', JSON.stringify(light_highlighter, null, 4));
 
 /**
  *

@@ -1,16 +1,18 @@
 
-import { readFileSync } from 'fs';
+// import { readFileSync } from 'fs';
 import { escapeSvelte } from 'mdsvex';
 import shiki from 'shiki';
 
+import { github_dark } from './github-dark';
+
 const dark_highlighter = await shiki.getHighlighter({
-    theme: JSON.parse(readFileSync('static/shiki/github-dark.json', 'utf-8')),
+    theme: JSON.parse(JSON.stringify(github_dark)),
     themes: ["github-dark"],
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 
 const light_highlighter = await shiki.getHighlighter({
-    theme: JSON.parse(readFileSync('static/shiki/github-light.json', 'utf-8')),
+    theme: JSON.parse(JSON.stringify(github_dark)),
     themes: ['github-light'],
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
