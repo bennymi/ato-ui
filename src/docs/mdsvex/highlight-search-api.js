@@ -3,17 +3,17 @@
 import { escapeSvelte } from 'mdsvex';
 import shiki from 'shiki';
 
-import { github_dark } from './github-dark';
+// import { github_dark } from './github-dark';
 
 const dark_highlighter = await shiki.getHighlighter({
-    theme: JSON.parse(JSON.stringify(github_dark)),
-    themes: ["github-dark"],
+    // theme: JSON.parse(JSON.stringify(github_dark)),
+    theme: 'github-dark',
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 
 const light_highlighter = await shiki.getHighlighter({
-    theme: JSON.parse(JSON.stringify(github_dark)),
-    themes: ['github-light'],
+    // theme: JSON.parse(JSON.stringify(github_dark)),
+    theme: 'github-light',
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 
@@ -25,7 +25,7 @@ const light_highlighter = await shiki.getHighlighter({
 export function get_highlighted_html(code, lang) {
     // console.log('get_html', dark_highlighter);
     return {
-        dark_html: escapeSvelte(dark_highlighter.codeToHtml(code ?? '', { lang })),
-        light_html: escapeSvelte(light_highlighter.codeToHtml(code ?? '', { lang })),
+        dark_html: escapeSvelte(dark_highlighter.codeToHtml(code ?? '', { lang, theme: 'github-dark' })),
+        light_html: escapeSvelte(light_highlighter.codeToHtml(code ?? '', { lang, theme: 'github-light' })),
     }
 }
