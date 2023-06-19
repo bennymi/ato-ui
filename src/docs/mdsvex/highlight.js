@@ -10,14 +10,9 @@ import { join } from "path";
 import shiki from 'shiki';
 
 // 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
-// 	const t = await shiki.loadTheme(join(process.cwd(),'./theme-synthwave84.json'));
 
-// 	const highlighter = await shiki.getHighlighter({
-// 		theme: t
-// 	});
-
-const github_dark = await shiki.loadTheme(join(process.cwd(), './src/docs/mdsvex/github-dark.json'));
-const github_light = await shiki.loadTheme(join(process.cwd(), './src/docs/mdsvex/github-light.json'));
+const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-dark.json'));
+const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-light.json'));
 
 const dark_highlighter = await shiki.getHighlighter({
     theme: github_dark,
