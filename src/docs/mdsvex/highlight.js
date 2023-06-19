@@ -6,6 +6,7 @@
  */
 
 import { escapeSvelte } from "mdsvex";
+import { join } from "path";
 import shiki from 'shiki';
 
 // 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
@@ -15,13 +16,16 @@ import shiki from 'shiki';
 // 		theme: t
 // 	});
 
+const github_dark = await shiki.loadTheme(join(process.cwd(), './src/docs/mdsvex/github-dark.json'));
+const github_light = await shiki.loadTheme(join(process.cwd(), './src/docs/mdsvex/github-light.json'));
+
 const dark_highlighter = await shiki.getHighlighter({
-    theme: 'github-dark',
+    theme: github_dark,
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 
 const light_highlighter = await shiki.getHighlighter({
-    theme: 'github-light',
+    theme: github_light,
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 
