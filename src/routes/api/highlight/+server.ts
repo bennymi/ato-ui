@@ -1,7 +1,7 @@
 import type { RequestHandler } from "./$types";
 import { json } from "@sveltejs/kit";
 
-import { get_highlighted_html } from "../../../docs/mdsvex/highlight";
+import { get_highlighted_html } from "../../../docs/mdsvex/highlight-search-api";
 
 export const POST: RequestHandler = async ({ request }) => {
     const { code, lang } = await request.json();
