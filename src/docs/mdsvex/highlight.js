@@ -9,10 +9,21 @@ import { escapeSvelte } from "mdsvex";
 import { join } from "path";
 import shiki from 'shiki';
 
+import github_dark from 'shiki/themes/github-dark.json' assert { type: 'json' };
+import github_light from 'shiki/themes/github-light.json' assert { type: 'json' };
+
+
+// console.log('shiki dark:', dark);
 // 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
 
-const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-dark.json'));
-const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-light.json'));
+// const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-dark.json'));
+// const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-light.json'));
+// const github_dark = await shiki.loadTheme('/shiki/github-dark.json');
+// const github_light = await shiki.loadTheme('/shiki/github-light.json');
+
+// console.log('shiki github dark', github_dark);
+// const github_dark = shiki.loadTheme();
+// const github_light = await shiki.loadTheme(join(process.cwd(), light));
 
 const dark_highlighter = await shiki.getHighlighter({
     theme: github_dark,
