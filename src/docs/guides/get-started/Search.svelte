@@ -1,10 +1,32 @@
+<script context="module" lang="ts">
+	import { browser } from '$app/environment';
+	import { getHighlighter } from 'shiki';
+
+	export const dark_highlighter = await getHighlighter({
+		theme: 'github-dark',
+		langs: ['css'],
+		paths: browser
+			? { languages: '/shiki/languages', themes: '/shiki/themes', wasm: '/shiki/wasm/' }
+			: undefined
+	});
+
+	export const light_highlighter = await getHighlighter({
+		theme: 'github-dark',
+		langs: ['css'],
+		paths: browser
+			? { languages: '/shiki/languages', themes: '/shiki/themes', wasm: '/shiki/wasm/' }
+			: undefined
+	});
+</script>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
+	import type { UnoGenerator } from 'unocss';
+
 	import { descriptions } from '../../search';
 	import { keywords as filter_values } from '../../search/types';
 	import { generate_css, get_uno_generator_configs } from '../../search/utils';
-	import type { UnoGenerator } from 'unocss';
 
 	import CodeBlock from '../../mdsvex/CodeBlock.svelte';
 
@@ -20,21 +42,24 @@
 		uno = await get_uno_generator_configs();
 	});
 
-	async function get_highlighted_html() {
-		const response = await fetch('/api/highlight', {
-			method: 'POST',
-			body: JSON.stringify({ code: example_css, lang: 'css' }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
+	// async function get_highlighted_html() {
+	function get_highlighted_html() {
+		dark_html = dark_highlighter.codeToHtml(example_css, { lang: 'css' });
+		light_html = light_highlighter.codeToHtml(example_css, { lang: 'css' });
+		// const response = await fetch('/api/highlight', {
+		// 	method: 'POST',
+		// 	body: JSON.stringify({ code: example_css, lang: 'css' }),
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	}
+		// });
 
-		if (response.status === 200) {
-			const html = await response.json();
+		// if (response.status === 200) {
+		// 	const html = await response.json();
 
-			dark_html = html.dark_html;
-			light_html = html.light_html;
-		}
+		// 	dark_html = html.dark_html;
+		// 	light_html = html.light_html;
+		// }
 	}
 
 	const updated_descriptions = descriptions
