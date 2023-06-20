@@ -2,11 +2,11 @@
 // import { readFileSync } from 'fs';
 import { escapeSvelte } from 'mdsvex';
 import shiki from 'shiki';
-import { base } from '$app/paths';
+// import { base } from '$app/paths';
 
 // import { github_dark } from './github-dark';
 
-shiki.setCDN(`${base}/shiki/`);
+// shiki.setCDN(`${base}/shiki/`);
 
 const dark_highlighter = await shiki.getHighlighter({
     // theme: JSON.parse(JSON.stringify(github_dark)),
