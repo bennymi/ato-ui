@@ -1,22 +1,25 @@
 <script context="module" lang="ts">
 	import { browser } from '$app/environment';
-	import { getHighlighter } from 'shiki';
+	import { getHighlighter, type Highlighter } from 'shiki';
 
-	export const dark_highlighter = await getHighlighter({
+	let dark_highlighter: Highlighter;
+	let light_highlighter: Highlighter;
+
+	await getHighlighter({
 		theme: 'github-dark',
 		langs: ['css'],
 		paths: browser
-			? { languages: '/shiki/languages', themes: '/shiki/themes', wasm: '/shiki/wasm/' }
+			? { languages: '/shiki/languages/', themes: '/shiki/themes/', wasm: '/shiki/wasm/' }
 			: undefined
-	});
+	}).then((value) => (dark_highlighter = value));
 
-	export const light_highlighter = await getHighlighter({
+	await getHighlighter({
 		theme: 'github-dark',
 		langs: ['css'],
 		paths: browser
-			? { languages: '/shiki/languages', themes: '/shiki/themes', wasm: '/shiki/wasm/' }
+			? { languages: '/shiki/languages/', themes: '/shiki/themes/', wasm: '/shiki/wasm/' }
 			: undefined
-	});
+	}).then((value) => (light_highlighter = value));
 </script>
 
 <script lang="ts">

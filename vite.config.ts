@@ -21,5 +21,8 @@ export default defineConfig({
       		configFile: './unocss.config.ts',
 			configDeps: getAllConfigFiles('./src/lib/preset/_rules')
 		})
-	]
+	],
+	build: {
+		target: 'esnext'
+	}
 });

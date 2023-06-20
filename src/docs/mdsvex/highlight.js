@@ -14,8 +14,10 @@ import shiki from 'shiki';
 // console.log('shiki dark:', dark);
 // 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
 
-const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-dark.json'));
-const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-light.json'));
+const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/themes/github-dark.json'));
+const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/themes/github-light.json'));
+// const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-dark.json'));
+// const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-light.json'));
 // const github_dark = await shiki.loadTheme('/shiki/github-dark.json');
 // const github_light = await shiki.loadTheme('/shiki/github-light.json');
 
