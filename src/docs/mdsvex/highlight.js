@@ -14,8 +14,8 @@ import shiki from 'shiki';
 // console.log('shiki dark:', dark);
 // 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
 
-const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/themes/github-dark.json'));
-const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/themes/github-light.json'));
+// const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/themes/github-dark.json'));
+// const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/themes/github-light.json'));
 // const github_dark = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-dark.json'));
 // const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/github-light.json'));
 // const github_dark = await shiki.loadTheme('/shiki/github-dark.json');
@@ -26,15 +26,13 @@ const github_light = await shiki.loadTheme(join(process.cwd(), 'static/shiki/the
 // const github_light = await shiki.loadTheme(join(process.cwd(), light));
 
 const dark_highlighter = await shiki.getHighlighter({
-    theme: github_dark,
-    themes: ["github-dark"],
+    theme: 'github-dark',
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 // .then((value) => console.log('dark_highlighter:', value.getTheme()));
 
 const light_highlighter = await shiki.getHighlighter({
-    theme: github_light,
-    themes: ['github-light'],
+    theme: 'github-light',
     langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell']
 });
 // .then((value) => console.log('light_highlighter:', value.getTheme()));
