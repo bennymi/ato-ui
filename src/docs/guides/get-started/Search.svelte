@@ -1,25 +1,22 @@
 <script context="module" lang="ts">
 	import { browser } from '$app/environment';
-	import { getHighlighter, type Highlighter } from 'shiki';
+	import { getHighlighter } from 'shiki';
 
-	let dark_highlighter: Highlighter;
-	let light_highlighter: Highlighter;
-
-	await getHighlighter({
+	export const dark_shiki = await getHighlighter({
 		theme: 'github-dark',
 		langs: ['css'],
 		paths: browser
 			? { languages: '/shiki/languages/', themes: '/shiki/themes/', wasm: '/shiki/wasm/' }
 			: undefined
-	}).then((value) => (dark_highlighter = value));
+	});
 
-	await getHighlighter({
+	export const light_shiki = await getHighlighter({
 		theme: 'github-dark',
 		langs: ['css'],
 		paths: browser
 			? { languages: '/shiki/languages/', themes: '/shiki/themes/', wasm: '/shiki/wasm/' }
 			: undefined
-	}).then((value) => (light_highlighter = value));
+	});
 </script>
 
 <script lang="ts">
@@ -47,8 +44,8 @@
 
 	// async function get_highlighted_html() {
 	function get_highlighted_html() {
-		dark_html = dark_highlighter.codeToHtml(example_css, { lang: 'css' });
-		light_html = light_highlighter.codeToHtml(example_css, { lang: 'css' });
+		dark_html = dark_shiki.codeToHtml(example_css, { lang: 'css' });
+		light_html = light_shiki.codeToHtml(example_css, { lang: 'css' });
 		// const response = await fetch('/api/highlight', {
 		// 	method: 'POST',
 		// 	body: JSON.stringify({ code: example_css, lang: 'css' }),
