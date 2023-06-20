@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import { setCDN, setWasm } from 'shiki';
-
 	import { descriptions } from '../../search';
 	import { keywords as filter_values } from '../../search/types';
 	import { generate_css, get_uno_generator_configs } from '../../search/utils';
@@ -20,11 +18,6 @@
 
 	onMount(async () => {
 		uno = await get_uno_generator_configs();
-
-		const responseWasm = await fetch('https://unpkg.com/shiki/dist/onig.wasm');
-		const wasmArrayBuffer = await responseWasm.arrayBuffer();
-		setWasm(wasmArrayBuffer);
-		setCDN('https://unpkg.com/shiki/');
 	});
 
 	async function get_highlighted_html() {

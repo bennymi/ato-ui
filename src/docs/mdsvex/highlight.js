@@ -1,8 +1,6 @@
 /**
  * Adapted from the gitpod-io repo: https://github.com/gitpod-io/website/blob/main/src/lib/utils/highlight.js
  * 
- * Theme is from: https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
- * 
  */
 
 import { escapeSvelte } from "mdsvex";
