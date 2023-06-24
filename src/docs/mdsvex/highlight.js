@@ -19,8 +19,8 @@ import('shiki')
         // r.setCDN('/static/shiki/');
         r.setCDN('https://unpkg.com/browse/shiki@0.14.2/')
         // const wasmBuffer = await fetch('/shiki/dist/onig.wasm').then(res => res.arrayBuffer());
-        // const wasmBuffer = await fetch('https://unpkg.com/shiki/dist/onig.wasm').then(res => res.arrayBuffer());
-        // r.setWasm(wasmBuffer);
+        const wasmBuffer = await fetch('https://unpkg.com/shiki/dist/onig.wasm').then(res => res.arrayBuffer());
+        r.setWasm(wasmBuffer);
         dark_highlighter = await r.getHighlighter({ theme: 'github-dark', langs });
         light_highlighter = await r.getHighlighter({ theme: 'github-light', langs });
     });
