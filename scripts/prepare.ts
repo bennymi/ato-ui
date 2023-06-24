@@ -5,6 +5,8 @@
 import fs from 'fs-extra';
 import fg from 'fast-glob';
 
+import { presetAtoUI } from '../src/lib/preset/index';
+
 const dereference = process.platform === 'win32' ? true : undefined
 
 const { copy, remove } = fs
