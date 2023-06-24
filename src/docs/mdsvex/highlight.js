@@ -25,9 +25,9 @@ const langs = ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell'];
 //         light_highlighter = await r.getHighlighter({ theme: 'github-light', langs });
 //     });
 
-shiki.setCDN('https://unpkg.com/browse/shiki@0.14.2/');
-const wasmBuffer = await fetch('https://unpkg.com/browse/shiki@0.14.2/dist/onig.wasm').then(res => res.arrayBuffer());
-shiki.setWasm(wasmBuffer);
+// shiki.setCDN('https://unpkg.com/browse/shiki@0.14.2/');
+// const wasmBuffer = await fetch('https://unpkg.com/browse/shiki@0.14.2/dist/onig.wasm').then(res => res.arrayBuffer());
+// shiki.setWasm(wasmBuffer);
 
 
 // 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
@@ -39,18 +39,12 @@ shiki.setWasm(wasmBuffer);
 
 const dark_highlighter = await shiki.getHighlighter({
     theme: 'github-dark',
-    langs,
-    paths: {
-        themes: '/shiki/themes'
-    }
+    langs
 });
 
 const light_highlighter = await shiki.getHighlighter({
     theme: 'github-light',
-    langs,
-    paths: {
-        themes: '/shiki/themes'
-    }
+    langs
 });
 
 

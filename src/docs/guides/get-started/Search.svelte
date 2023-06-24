@@ -23,7 +23,8 @@
 	async function get_highlighted_html() {
 		const response = await fetch('/api/highlight', {
 			method: 'POST',
-			body: JSON.stringify({ code: example_css, lang: 'css' }),
+			// body: JSON.stringify({ code: example_css, lang: 'css' }),
+			body: JSON.stringify({ example }),
 			headers: {
 				'Content-Type': 'application/json'
 			}

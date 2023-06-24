@@ -6,8 +6,9 @@
 	"homepage": "https://ato-ui.vercel.app/",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "tsx ./scripts/prepare.ts && vite build && npm run package",
+		"build": "tsx ./scripts/highlight.ts && vite build && npm run package",
 		"prepare": "tsx ./scripts/prepare.ts",
+		"highlight": "tsx ./scripts/highlight.ts",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",
@@ -77,6 +78,7 @@
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.20.4",
 		"@sveltejs/package": "^2.0.0",
+		"@types/fs-extra": "^11.0.1",
 		"@types/node": "^20.3.1",
 		"@types/prettier": "^2.7.3",
 		"@types/svelte-range-slider-pips": "^2.0.0",
