@@ -6,24 +6,29 @@
  */
 
 import { escapeSvelte } from "mdsvex";
-// import shiki from 'shiki';
+import shiki from 'shiki';
 
 // let shiki;
-let dark_highlighter;
-let light_highlighter;
+// let dark_highlighter;
+// let light_highlighter;
 
 const langs = ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell'];
 
-import('shiki')
-    .then(async (r) => {
-        // r.setCDN('/static/shiki/');
-        r.setCDN('https://unpkg.com/browse/shiki@0.14.2/')
-        // const wasmBuffer = await fetch('/shiki/dist/onig.wasm').then(res => res.arrayBuffer());
-        const wasmBuffer = await fetch('https://unpkg.com/browse/shiki@0.14.2/dist/onig.wasm').then(res => res.arrayBuffer());
-        r.setWasm(wasmBuffer);
-        dark_highlighter = await r.getHighlighter({ theme: 'github-dark', langs });
-        light_highlighter = await r.getHighlighter({ theme: 'github-light', langs });
-    });
+// import('shiki')
+//     .then(async (r) => {
+//         // r.setCDN('/static/shiki/');
+//         r.setCDN('https://unpkg.com/browse/shiki@0.14.2/')
+//         // const wasmBuffer = await fetch('/shiki/dist/onig.wasm').then(res => res.arrayBuffer());
+//         const wasmBuffer = await fetch('https://unpkg.com/browse/shiki@0.14.2/dist/onig.wasm').then(res => res.arrayBuffer());
+//         r.setWasm(wasmBuffer);
+//         dark_highlighter = await r.getHighlighter({ theme: 'github-dark', langs });
+//         light_highlighter = await r.getHighlighter({ theme: 'github-light', langs });
+//     });
+
+shiki.setCDN('https://unpkg.com/browse/shiki@0.14.2/');
+const wasmBuffer = await fetch('https://unpkg.com/browse/shiki@0.14.2/dist/onig.wasm').then(res => res.arrayBuffer());
+shiki.setWasm(wasmBuffer);
+
 
 // 	// https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
 // 	const t = await shiki.loadTheme(join(process.cwd(),'./theme-synthwave84.json'));
@@ -32,15 +37,15 @@ import('shiki')
 // 		theme: t
 // 	});
 
-// const dark_highlighter = await shiki.getHighlighter({
-//     theme: 'github-dark',
-//     langs
-// });
+const dark_highlighter = await shiki.getHighlighter({
+    theme: 'github-dark',
+    langs
+});
 
-// const light_highlighter = await shiki.getHighlighter({
-//     theme: 'github-light',
-//     langs
-// });
+const light_highlighter = await shiki.getHighlighter({
+    theme: 'github-light',
+    langs
+});
 
 
 /**
