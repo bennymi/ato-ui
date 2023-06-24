@@ -8,7 +8,7 @@
 import { escapeSvelte } from "mdsvex";
 // import shiki from 'shiki';
 
-let shiki;
+// let shiki;
 let dark_highlighter;
 let light_highlighter;
 
@@ -16,7 +16,11 @@ const langs = ['svelte', 'typescript', 'html', 'css', 'javascript', 'shell'];
 
 import('shiki')
     .then(async (r) => {
-        r.setCDN('/static/shiki/');
+        // r.setCDN('/static/shiki/');
+        r.setCDN('https://unpkg.com/browse/shiki@0.14.2/')
+        // const wasmBuffer = await fetch('/shiki/dist/onig.wasm').then(res => res.arrayBuffer());
+        // const wasmBuffer = await fetch('https://unpkg.com/shiki/dist/onig.wasm').then(res => res.arrayBuffer());
+        // r.setWasm(wasmBuffer);
         dark_highlighter = await r.getHighlighter({ theme: 'github-dark', langs });
         light_highlighter = await r.getHighlighter({ theme: 'github-light', langs });
     });
@@ -47,7 +51,7 @@ import('shiki')
 export function get_highlighted_html(code, lang) {
     // console.log('get_html', dark_highlighter);
     if (!(dark_highlighter && light_highlighter)) return { dark_html: '', light_html: '' }
-    
+
     return {
         dark_html: escapeSvelte(dark_highlighter.codeToHtml(code ?? '', { lang })),
         light_html: escapeSvelte(light_highlighter.codeToHtml(code ?? '', { lang })),
