@@ -39,12 +39,18 @@ shiki.setWasm(wasmBuffer);
 
 const dark_highlighter = await shiki.getHighlighter({
     theme: 'github-dark',
-    langs
+    langs,
+    paths: {
+        themes: '/shiki/themes'
+    }
 });
 
 const light_highlighter = await shiki.getHighlighter({
     theme: 'github-light',
-    langs
+    langs,
+    paths: {
+        themes: '/shiki/themes'
+    }
 });
 
 
