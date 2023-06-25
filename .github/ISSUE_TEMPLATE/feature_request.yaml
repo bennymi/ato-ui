@@ -1,0 +1,22 @@
+name: 🌟 Feature Request
+description: Tell us what you would like to see added or improved.
+labels: []
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the feature.
+  - type: textarea
+    id: examples
+    attributes:
+      label: Add examples
+      description: Share links to examples of what you want to see.
+  - type: dropdown
+    id: category
+    attributes:
+      label: What kind of request is it related to?
+      options:
+        - 'UnoCSS'
+        - 'Component'
+        - 'Docs'
+        - 'Enhancement'

@@ -1,0 +1,24 @@
+name: 🐞 Bug
+description: Report an issue
+labels: [🐞 bug]
+body:
+- type: textarea
+  attributes:
+    label: Describe the bug
+    description: A clear description of the problem you're experiencing.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Reproduction steps
+    description: Describe how to reproduce the issue.
+    placeholder: |
+      1. ...
+      2. ...
+  validations:
+    required: false
+- type: input
+  id: reproduction
+  attributes:
+    label: Link to Reproduction
+    description: A minimal SvelteLab / Stackblitz reproduction.
