@@ -107,13 +107,12 @@
 				class="rounded-container p-4 border-2 bg-surface-50-600 backdrop-blur-sm transition-all duration-200 border-surface-100-900 hover:(border-primary-500 bg-mesh-primary-x50-y105-primary-x115-y105-primary-x-15-y105)"
 				transition:slide={{ duration: 200 }}
 			>
-				<div
+				<button
 					class="px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container inline-block cursor-pointer select-none"
 					on:click|self={() => (example = example === examples[0] ? '' : examples[0])}
-					on:keydown
 				>
 					{rule}
-				</div>
+				</button>
 				<hr class="mx-1 border-1 rounded-container border-surface-400-200 my-2" />
 				<div>{description}</div>
 				<div class="inline-flex justify-center items-center gap-2">
