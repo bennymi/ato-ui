@@ -56,7 +56,7 @@
 			{#each items as item, i}
 				<div
 					class="flex items-center gap-1"
-					transition:slide|local={{ duration: 100, delay: i * 60 }}
+					transition:slide={{ duration: 100, delay: i * 60 }}
 				>
 					<a
 						href={item[0].sitePath}

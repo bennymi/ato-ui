@@ -82,7 +82,7 @@
 		{/if}
 	</button>
 	{#if $accordion_item.expanded}
-		<div use:accordion_item.panel class="px-4 pt-4 pb-2 {panelStyle}" transition:slide|local>
+		<div use:accordion_item.panel class="px-4 pt-4 pb-2 {panelStyle}" transition:slide>
 			<slot name="content" />
 		</div>
 	{/if}

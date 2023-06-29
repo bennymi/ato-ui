@@ -39,6 +39,11 @@
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
 
+	const socials = [
+		{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
+		{ icon: 'i-mdi-discord', link: 'https://discord.gg/7PXN3fs3tN', title: 'Discord' }
+	];
+
 	const navigation: Navigation = [
 		{
 			navTitle: 'Components',
@@ -159,10 +164,7 @@
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		groups={currentNavPage ? currentNavPage?.groups : []}
 		{themes}
-		icons={[
-			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
-			{ icon: 'i-mdi-discord', link: 'https://discord.gg/7PXN3fs3tN', title: 'Discord' }
-		]}
+		icons={socials}
 		on:select={(event) => ($themeStore = event.detail.selected.toLowerCase())}
 	>
 		<svelte:fragment slot="title">

@@ -89,7 +89,7 @@ export async function load() {
             }
         }
     });
-    
+
 	return {
         articles,
         // actions,

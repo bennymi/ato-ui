@@ -29,7 +29,8 @@ module.exports = {
 	],
 	settings: {
 		'import/parsers': {
-			'@typescript-eslint/parser': ['.cjs', '.js', '.ts'],
+			'@typescript-eslint/parser': ['.js', '.ts'],
+			// '@typescript-eslint/parser': ['.cjs', '.js', '.ts'],
 		},
 		'import/resolver': {
 			typescript: {
@@ -85,14 +86,12 @@ module.exports = {
 				leadingUnderscore: 'allow',
 				trailingUnderscore: 'allow',
 			  },
-			
 			  {
 				selector: 'variable',
 				format: ['camelCase', 'snake_case', 'UPPER_CASE'],
 				leadingUnderscore: 'allow',
 				trailingUnderscore: 'allow',
 			  },
-			
 			  {
 				selector: 'typeLike',
 				format: ['PascalCase'],

@@ -7,7 +7,8 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 import { highlightCode } from './src/docs/mdsvex/highlight.js';
-import { mdsvexGlobalComponents } from './src/docs/mdsvex/global-components.js';
+// import { mdsvexGlobalComponents } from './src/docs/mdsvex/global-components.js';
+import svelteGlobalComponents from './src/docs/mdsvex/svelte-global-components.js';
 
 
 /** @type {import('mdsvex').MdsvexOptions} */
@@ -34,16 +35,24 @@ const config = {
 	// for more information about preprocessors
 	extensions: ['.svelte', '.md'],
 	preprocess: [
+		mdsvex(mdsvexOptions),
+		svelteGlobalComponents({components: [
+			{
+				name: 'CodeBlock',
+				location: '/src/docs/mdsvex/CodeBlock.svelte',
+				importPaths: ['src/docs/guides/']
+			}
+		]}),
 		vitePreprocess(),
-		mdsvexGlobalComponents({
-			dir: `/src/docs/mdsvex`,
-			list: [
-				['CodeBlock', 'CodeBlock.svelte'],
-				['CodeDisplay', 'CodeDisplay.svelte']
-			],
-			extensions: ['.md']
-		}),
-		mdsvex(mdsvexOptions)
+		// mdsvexGlobalComponents({
+		// 	dir: `/src/docs/mdsvex`,
+		// 	list: [
+		// 		['CodeBlock', 'CodeBlock.svelte'],
+		// 		['CodeDisplay', 'CodeDisplay.svelte']
+		// 	],
+		// 	extensions: ['.md']
+		// }),
+		
 	],
 
 	kit: {

@@ -102,7 +102,7 @@
 		<div
 			id={code_id}
 			class="code-block-code {height} hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-container)"
-			transition:slide|local={{ duration: 300 }}
+			transition:slide={{ duration: 300 }}
 		>
 			{#if $darkTheme}
 				{@html darkCode}

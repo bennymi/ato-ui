@@ -114,18 +114,20 @@
 			<nav class="ato-toc-list">
 				<ul class={listClasses}>
 					{#each $toc.headings as { heading, active, styles, icon }, i}
-						<li
-							class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 {styles} {active
-								? activeHeader
-								: inactiveText} {hover} {rounded}"
-							on:click={() => handleClick(heading)}
-							on:keypress
-							bind:this={list_elements[i]}
-						>
-							{#if icon}
-								<span class={icon} />
-							{/if}
-							{heading.innerText}
+						<li>
+							<button
+								class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 {styles} {active
+									? activeHeader
+									: inactiveText} {hover} {rounded}"
+								on:click={() => handleClick(heading)}
+								on:keypress
+								bind:this={list_elements[i]}
+							>
+								{#if icon}
+									<span class={icon} />
+								{/if}
+								{heading.innerText}
+							</button>
 						</li>
 					{/each}
 				</ul>
