@@ -75,10 +75,6 @@ export async function load() {
             const component = { mdPath: c, component: name, sitePath: `/docs/components/${slug}`, ...metadata };
             
             const idx = components.findIndex((v) => v.findIndex((item) => item.component === name) >= 0);
-            
-            // console.log('component', component);
-            // console.log('component', components);
-            // console.log('idx', idx);
 
             if (idx >= 0 && headless) {
                 components[idx].unshift(component);

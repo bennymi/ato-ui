@@ -65,7 +65,7 @@
 		"dist"
 	],
 	"peerDependencies": {
-		"svelte": "^4.0.0"
+		"svelte": ">=4"
 	},
 	"devDependencies": {
 		"@iconify-json/material-symbols": "^1.1.49",
