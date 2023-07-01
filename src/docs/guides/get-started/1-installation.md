@@ -4,10 +4,6 @@ description: Describes how to set up your project to use Ato-UI and UnoCSS.
 icon: i-material-symbols-rocket-launch-rounded
 ---
 
-<!-- <script>
-	import CodeBlock from '../../mdsvex/CodeBlock.svelte';
-</script> -->
-
 # Installation
 
 Use the package manager of your choice. Here is the `pnpm` install:

@@ -116,7 +116,7 @@
 					{#each $toc.headings as { heading, active, styles, icon }, i}
 						<li>
 							<button
-								class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 {styles} {active
+								class="ato-toc-heading px-4 py-1 cursor-pointer flex items-center gap-1 transition duration-200 text-left {styles} {active
 									? activeHeader
 									: inactiveText} {hover} {rounded}"
 								on:click={() => handleClick(heading)}
@@ -126,7 +126,7 @@
 								{#if icon}
 									<span class={icon} />
 								{/if}
-								{heading.innerText}
+								<span>{heading.innerText}</span>
 							</button>
 						</li>
 					{/each}

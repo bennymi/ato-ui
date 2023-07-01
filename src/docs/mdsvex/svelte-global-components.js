@@ -32,15 +32,15 @@ const svelteGlobalComponents = (globalOptions) => ({
 
         if (filename?.includes('.md') && relevant.length > 0) {
             let contextModule = '<script context="module">';
-            // const hasModuleContext = /^<script context="module">/.test(content);
+
             const hasModuleContext = content.indexOf(contextModule);
 
             if (hasModuleContext === -1) {
-                code = `<script context="module">\n`;
+                code = `${contextModule}\n`;
 
-                relevant.forEach((item) => code += `\timport ${item.name} from '${item.location}';`);
+                relevant.forEach((item) => code += `\timport ${item.name} from '${item.location}';\n`);
 
-                code += `\n</script>\n${content}`;
+                code += `</script>\n${content}`;
             } else {
                 const s = new MagicString(content);
                 const idx = content.indexOf(contextModule);
