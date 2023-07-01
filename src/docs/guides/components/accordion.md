@@ -4,7 +4,6 @@ description: A simple accordion component.
 ---
 
 <script>
-    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import accordion_docs from '$lib/components/accordion/Accordion.svelte?raw&sveld';
     import accordion_item_docs from '$lib/components/accordion/AccordionItem.svelte?raw&sveld';

@@ -3,10 +3,6 @@ title: Spinners / Loaders
 description: Allows you to easily add spinners to your website when loading data.
 ---
 
-<script>
-	import Usage from '../Usage.svelte';
-</script>
-
 # Spinners / Loaders
 
 ## Examples

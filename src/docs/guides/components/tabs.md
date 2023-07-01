@@ -4,11 +4,9 @@ description: A tabs component, to easily switch between different views.
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
     import tabs_list_docs from '$lib/components/tabs/TabsList.svelte?raw&sveld';
     import tab_docs from '$lib/components/tabs/Tab.svelte?raw&sveld';
 
-    import Usage from '../Usage.svelte';
     import { TabsList, Tab } from '$lib/components';
 
 	const tabHeaders = [

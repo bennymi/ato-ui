@@ -4,7 +4,6 @@ description: A headless radio group example.
 ---
 
 <script>
-	import Usage from '../Usage.svelte';
     import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
 
 	let items = [

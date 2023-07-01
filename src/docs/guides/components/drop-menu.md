@@ -5,7 +5,6 @@ description: Create a list of actions that is available through a dropdown menu.
 ---
 
 <script>
-    import Usage from '../Usage.svelte';
     import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/dropdown-menu/DropMenu.svelte?raw&sveld';
     import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';

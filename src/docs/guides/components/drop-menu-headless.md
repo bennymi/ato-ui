@@ -4,7 +4,6 @@ description: A headless dropdown menu that can be used to create a list of actio
 ---
 
 <script>
-    import Usage from '../Usage.svelte';
     import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
 
     const groups = [

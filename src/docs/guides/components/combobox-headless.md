@@ -4,7 +4,6 @@ description: A headless combobox component with autocomplete.
 ---
 
 <script>
-	import Usage from '../Usage.svelte';
     import Combobox from '$lib/components/combobox/Combobox.svelte';
 
     const options = [

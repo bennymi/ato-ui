@@ -3,10 +3,6 @@ title: Buttons
 description: Button classes that can be used.
 ---
 
-<script>
-	import Usage from '../Usage.svelte';
-</script>
-
 # Buttons
 
 ## Examples

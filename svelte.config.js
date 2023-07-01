@@ -10,7 +10,6 @@ import { highlightCode } from './src/docs/mdsvex/highlight.js';
 // import { mdsvexGlobalComponents } from './src/docs/mdsvex/global-components.js';
 import svelteGlobalComponents from './src/docs/mdsvex/svelte-global-components.js';
 
-
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	extensions: ['.md'],
@@ -26,7 +25,7 @@ const mdsvexOptions = {
 				test: ['h2', 'h3', 'h4', 'h5', 'h6']
 			}
 		]
-	],
+	]
 };
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -36,14 +35,21 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: [
 		mdsvex(mdsvexOptions),
-		svelteGlobalComponents({components: [
-			{
-				name: 'CodeBlock',
-				location: '/src/docs/mdsvex/CodeBlock.svelte',
-				importPaths: ['src/docs/guides/']
-			}
-		]}),
-		vitePreprocess(),
+		svelteGlobalComponents({
+			components: [
+				{
+					name: 'CodeBlock',
+					location: '/src/docs/mdsvex/CodeBlock.svelte',
+					importPaths: ['src/docs/guides/']
+				},
+				{
+					name: 'Usage',
+					location: '/src/docs/mdsvex/Usage.svelte',
+					importPaths: ['src/docs/guides/']
+				}
+			]
+		}),
+		vitePreprocess()
 		// mdsvexGlobalComponents({
 		// 	dir: `/src/docs/mdsvex`,
 		// 	list: [
@@ -52,7 +58,6 @@ const config = {
 		// 	],
 		// 	extensions: ['.md']
 		// }),
-		
 	],
 
 	kit: {

@@ -4,7 +4,6 @@ description: A headless tabs component, to easily switch between different views
 ---
 
 <script>
-    import Usage from '../Usage.svelte';
     import { TabsList, Tab } from '$lib/components';
 
 	const tabHeaders = [

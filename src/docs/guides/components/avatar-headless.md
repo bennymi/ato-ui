@@ -4,7 +4,6 @@ description: A headless avatar component.
 ---
 
 <script lang="ts">
-	import Usage from '../Usage.svelte';
 	import Avatar from '$lib/components/avatar/Avatar.svelte';
 </script>
 

@@ -5,10 +5,6 @@ icon: i-mdi-emoticon-outline
 hoverIcon: group-hover:i-mdi-emoticon-wink
 ---
 
-<script>
-    import Usage from '../Usage.svelte';
-</script>
-
 # UnoCSS Icons
 
 ## Examples

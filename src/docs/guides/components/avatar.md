@@ -5,7 +5,6 @@ component: components/avatar/Avatar.svelte
 ---
 
 <script lang="ts">
-	import Usage from '../Usage.svelte';
 	import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/avatar/Avatar.svelte?raw&sveld';
 	import Avatar from '$lib/components/avatar/Avatar.svelte';
