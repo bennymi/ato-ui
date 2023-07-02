@@ -52,26 +52,53 @@ export function handleExample(code, lang) {
 
 	let args = '';
 	let example = '';
-	let show = '';
+	let example_code = '';
 
-	if (tabs.length === 4) {
-		[args, example, , show] = tabs;
+	if (tabs.length === 2) {
+		[args, example] = tabs;
 
 		const hasHeight = args.match(/h-(\d+)/g);
 
 		const height = hasHeight ? `height="${hasHeight[0]}"` : '';
 
-		const highlighted_html = get_highlighted_html(show, lang);
+		const highlighted_html = get_highlighted_html(example, lang);
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Usage ${height}>
-			${example}
-		</Usage>
-		<CodeBlock ${height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		<Example ${height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
 			light_html
-		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} />
+		)}} rawCode={${JSON.stringify(code)}}>
+			${example}
+		</Example>
 		`;
+	}
+
+	if (tabs.length === 4) {
+		[args, example, , example_code] = tabs;
+
+		const hasHeight = args.match(/h-(\d+)/g);
+
+		const height = hasHeight ? `height="${hasHeight[0]}"` : '';
+
+		const highlighted_html = get_highlighted_html(example_code, lang);
+		const { dark_html, light_html } = highlighted_html;
+
+		return `
+		<Example ${height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+			light_html
+		)}} rawCode={${JSON.stringify(code)}}>
+			${example}
+		</Example>
+		`;
+
+		// return `
+		// <Usage ${height}>
+		// 	${example}
+		// </Usage>
+		// <CodeBlock ${height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		// 	light_html
+		// )}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} />
+		// `;
 	}
 
 	const highlighted_html = get_highlighted_html(code, lang);

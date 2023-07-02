@@ -5,7 +5,7 @@
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"],
 			"$app": ["./node_modules/@sveltejs/kit/types"],
-			"$app/*": ["./node_modules/@sveltejs/kit/types/ambient.d.ts"]
+			"$app/*": ["./node_modules/@sveltejs/kit/types/ambient.d.ts"],
 		},
 		"allowJs": true,
 		"checkJs": true,

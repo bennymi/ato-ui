@@ -46,6 +46,11 @@ const config = {
 					name: 'Usage',
 					location: '/src/docs/mdsvex/Usage.svelte',
 					importPaths: ['src/docs/guides/']
+				},
+				{
+					name: 'Example',
+					location: '/src/docs/mdsvex/Example.svelte',
+					importPaths: ['src/docs/guides/']
 				}
 			]
 		}),
