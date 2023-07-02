@@ -10,10 +10,10 @@ description: A headless accordion component.
 
 # Accordion | Headless
 
-## Tests
+## Example
 
-```svelte example
-<!-- tab:example h-60 -->
+```svelte example title="+page.svelte" height="h-80"
+<!-- tab:example -->
 <Accordion collapse>
 	<AccordionItem label="refund policy" open>
 		<svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
@@ -27,29 +27,7 @@ description: A headless accordion component.
 		<svelte:fragment slot="content">No.</svelte:fragment>
 	</AccordionItem>
 </Accordion>
-```
-
-## Example
-
-<Usage height="h-60">
-    <Accordion collapse>
-        <AccordionItem label="refund policy" open>
-            <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
-            <svelte:fragment slot="content"
-                >If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund
-                you in full, no questions asked.</svelte:fragment
-            >
-        </AccordionItem>
-        <AccordionItem label="technical support" buttonStyles="secondary-200 hover:secondary-300">
-            <svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
-            <svelte:fragment slot="content">No.</svelte:fragment>
-        </AccordionItem>
-    </Accordion>
-</Usage>
-
-Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/disclosure/) documentation or the Github page for our [Styled Accordion](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/accordion/Accordion.svelte) to see how to create an Accordion. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.
-
-```svelte showCode=true
+<!-- tab:code -->
 <script lang="ts">
 	import { createDisclosure } from 'svelte-headlessui';
 	import { slide } from 'svelte/transition';
@@ -101,3 +79,5 @@ Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/d
 	</div>
 </div>
 ```
+
+Please see the [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/disclosure/) documentation or the Github page for our [Styled Accordion](https://github.com/bennymi/ato-ui/blob/main/src/lib/components/accordion/Accordion.svelte) to see how to create an Accordion. Remember to use Ato UI's tokens to style things like your `background`, `text`, `border`, etc.

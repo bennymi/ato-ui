@@ -39,66 +39,95 @@ export function get_highlighted_html(code, lang) {
 }
 
 /**
+ * @typedef MetaArgs
+ * @type {Object}
+ * @property {string} title
+ * @property {string} height
+ * @property {boolean} showCode
+ * @property {boolean} showHeader
+ * @property {boolean} isExample
+ */
+
+/**
  *
- * @param {string} code the code that gets parsed
- * @param {string} lang the language the code is written in
+ * @param {string | undefined} meta
+ * @returns {MetaArgs}
+ */
+function getMetaArgs(meta) {
+	let title = '';
+	let height = '';
+	let showCode = false;
+	let showHeader = false;
+	let isExample = false;
+
+	if (meta) {
+		title = meta.match(/title="?(.*?)"/)?.[1] ?? '';
+		height = meta.match(/height="?(.*?)"/)?.[1] ?? '';
+		showCode = meta.includes('showCode');
+		showHeader = meta.includes('showHeader');
+		isExample = meta.includes('example');
+	}
+
+	return {
+		title,
+		height,
+		showCode,
+		showHeader,
+		isExample
+	};
+}
+
+/**
+ *
+ * @param {string | undefined} code the code that gets parsed
+ * @param {string | undefined} lang the language the code is written in
+ * @param {MetaArgs} meta_args the extra arguments passed to the highlight block
  * @returns {string}
  */
-export function handleExample(code, lang) {
+export function handleExample(code, lang, meta_args) {
+	if (!code) return '';
+
 	const tabs = code
 		.split(new RegExp('<!-- (?:tab:(.*)) -->', 'g'))
 		.map((v) => v.trim())
 		.filter((v) => v);
 
-	let args = '';
+	// let args = '';
 	let example = '';
 	let example_code = '';
 
+	const { title, height } = meta_args;
+
+	const container_height = height ? `height="${height}"` : '';
+
 	if (tabs.length === 2) {
-		[args, example] = tabs;
-
-		const hasHeight = args.match(/h-(\d+)/g);
-
-		const height = hasHeight ? `height="${hasHeight[0]}"` : '';
+		[, example] = tabs;
 
 		const highlighted_html = get_highlighted_html(example, lang);
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Example ${height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		<Example ${container_height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
 			light_html
-		)}} rawCode={${JSON.stringify(code)}}>
+		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
 			${example}
 		</Example>
 		`;
 	}
 
 	if (tabs.length === 4) {
-		[args, example, , example_code] = tabs;
-
-		const hasHeight = args.match(/h-(\d+)/g);
-
-		const height = hasHeight ? `height="${hasHeight[0]}"` : '';
+		[, example, , example_code] = tabs;
 
 		const highlighted_html = get_highlighted_html(example_code, lang);
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Example ${height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		<Example ${container_height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
 			light_html
-		)}} rawCode={${JSON.stringify(code)}}>
+		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
 			${example}
 		</Example>
 		`;
-
-		// return `
-		// <Usage ${height}>
-		// 	${example}
-		// </Usage>
-		// <CodeBlock ${height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
-		// 	light_html
-		// )}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} />
-		// `;
 	}
 
 	const highlighted_html = get_highlighted_html(code, lang);
@@ -117,34 +146,36 @@ export function handleExample(code, lang) {
  * @returns {Promise<string>}
  */
 export async function highlightCode(code, lang, meta) {
-	let title = null;
-	let display = false;
-	let showHeader = '';
-	let showCode = false;
-	let isExample = false;
-	// let line_numbers = null;
+	// let title = null;
+	// let display = false;
+	// let showHeader = '';
+	// let showCode = false;
+	// let isExample = false;
+	// // let line_numbers = null;
 
-	if (meta) {
-		title = meta.match(/title="?(.*?)"/)?.[1];
-		showHeader = meta.match(/showHeader="?(.*?)"/)?.[1];
-		display = meta.includes('display');
-		showCode = meta.includes('showCode');
-		isExample = meta.includes('example');
-		// line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
-	}
+	// if (meta) {
+	// 	title = meta.match(/title="?(.*?)"/)?.[1];
+	// 	showHeader = meta.match(/showHeader="?(.*?)"/)?.[1];
+	// 	display = meta.includes('display');
+	// 	showCode = meta.includes('showCode');
+	// 	isExample = meta.includes('example');
+	// 	// line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
+	// }
+
+	const meta_args = getMetaArgs(meta);
+
+	const { title, showCode, showHeader, isExample } = meta_args;
 
 	if (isExample) {
-		return handleExample(code, lang);
+		return handleExample(code, lang, meta_args);
 	}
 
 	const highlighted_html = get_highlighted_html(code, lang);
 	const { dark_html, light_html } = highlighted_html;
 
-	return display
-		? `<CodeDisplay>${code}</CodeDisplay>`
-		: `<CodeBlock darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
-				light_html
-		  )}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${
-				title ? `title={"${title}"}` : ''
-		  } showHeader={${!(showHeader === 'false')}} showCode={${showCode}} />`;
+	return `<CodeBlock darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		light_html
+	)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${
+		title ? `title={"${title}"}` : ''
+	} showHeader={${showHeader}} showCode={${showCode}} />`;
 }
