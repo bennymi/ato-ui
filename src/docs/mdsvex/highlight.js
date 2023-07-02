@@ -43,6 +43,7 @@ export function get_highlighted_html(code, lang) {
  * @type {Object}
  * @property {string} title
  * @property {string} height
+ * @property {boolean} column
  * @property {boolean} showCode
  * @property {boolean} showHeader
  * @property {boolean} isExample
@@ -59,6 +60,7 @@ function getMetaArgs(meta) {
 	let showCode = false;
 	let showHeader = false;
 	let isExample = false;
+	let column = false;
 
 	if (meta) {
 		title = meta.match(/title="?(.*?)"/)?.[1] ?? '';
@@ -66,11 +68,13 @@ function getMetaArgs(meta) {
 		showCode = meta.includes('showCode');
 		showHeader = meta.includes('showHeader');
 		isExample = meta.includes('example');
+		column = meta.includes('column');
 	}
 
 	return {
 		title,
 		height,
+		column,
 		showCode,
 		showHeader,
 		isExample
@@ -146,22 +150,6 @@ export function handleExample(code, lang, meta_args) {
  * @returns {Promise<string>}
  */
 export async function highlightCode(code, lang, meta) {
-	// let title = null;
-	// let display = false;
-	// let showHeader = '';
-	// let showCode = false;
-	// let isExample = false;
-	// // let line_numbers = null;
-
-	// if (meta) {
-	// 	title = meta.match(/title="?(.*?)"/)?.[1];
-	// 	showHeader = meta.match(/showHeader="?(.*?)"/)?.[1];
-	// 	display = meta.includes('display');
-	// 	showCode = meta.includes('showCode');
-	// 	isExample = meta.includes('example');
-	// 	// line_numbers = meta.match(/lines="?(.*?)"/)?.[1];
-	// }
-
 	const meta_args = getMetaArgs(meta);
 
 	const { title, showCode, showHeader, isExample } = meta_args;
