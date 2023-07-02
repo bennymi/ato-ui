@@ -47,7 +47,7 @@
 	$: tag = title ?? lang.toUpperCase();
 </script>
 
-<div>
+<div class="mt-2">
 	<div class="flex justify-between items-center h-12">
 		{#if showCode}
 			<div
@@ -62,6 +62,7 @@
 					<button
 						class="rounded-container w-10 h-10 {bg} border-1 border-surface-900-50 inline-flex justify-center items-center focus:scale-110"
 						on:click={() => (activeBackground = bg)}
+						aria-label="change background of example to class {bg}"
 					>
 						<!-- in:fade|global={{ duration: i * 70 }}
                         out:fade|global={{ duration: (backgrounds.length * 70) - i * 70 }} -->
