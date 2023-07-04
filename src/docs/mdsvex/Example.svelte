@@ -27,7 +27,7 @@
 		{ bg: 'bg-gradient-br-primary-700/70-tertiary-700/70', text: 'text-on-primary-700' },
 		{
 			bg: 'bg-mesh-primary/40-x0-y0-secondary/40-x100-y0-tertiary/40-x100-y100-success/40-x0-y100',
-			text: 'text-on-primary-900 dark:text-on-surface-900'
+			text: 'text-on-surface-50 dark:text-on-surface-900'
 		}
 	];
 
