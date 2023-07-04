@@ -43,9 +43,9 @@
 					>{`${hide_group ? 'show' : 'hide'} ${groupTitle} sidebar menu group`}</span
 				>
 				<span
-					class="text-xl text-surface-600-900-300-50 {hide_group
-						? 'i-mdi-chevron-right'
-						: 'i-mdi-chevron-down'}"
+					class="text-xl text-surface-600-900-300-50 i-mdi-chevron-right transition-all {hide_group
+						? ''
+						: 'rotate-90'}"
 				/>
 			</button>
 		</div>
