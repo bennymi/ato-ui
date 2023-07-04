@@ -17,6 +17,7 @@
 	let code_id = crypto.randomUUID();
 
 	let backgrounds = [
+		{ bg: '', text: 'text-surface-900-50' },
 		{ bg: 'bg-surface-50', text: 'text-on-surface-50' },
 		{ bg: 'bg-surface-900', text: 'text-on-surface-900' },
 		{ bg: 'bg-primary-700', text: 'text-on-primary-700' },
@@ -90,9 +91,9 @@
 	<div class="rounded-container border-1 border-surface-500/30-200/30">
 		{#if !showCode}
 			<div
-				class="ato-example w-full flex {height} {padding} {activeBackground} {column
+				class="ato-example w-full {height} {padding} {activeBackground} {column
 					? 'flex-col'
-					: ''} flex-wrap gap-x-16 gap-y-4 justify-center items-center rounded-container"
+					: ''} flex flex-wrap gap-x-8 gap-y-4 justify-center items-center rounded-container"
 			>
 				<slot />
 			</div>

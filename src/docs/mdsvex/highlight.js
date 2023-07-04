@@ -104,7 +104,7 @@ export function handleExample(code, lang, meta_args) {
 	let example = '';
 	let example_code = '';
 
-	const { title, height, hidePalette } = meta_args;
+	const { title, height, hidePalette, column } = meta_args;
 
 	const container_height = height ? `height="${height}"` : '';
 
@@ -116,7 +116,7 @@ export function handleExample(code, lang, meta_args) {
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Example ${container_height} hidePalette={${hidePalette}} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		<Example ${container_height} column={${column}} hidePalette={${hidePalette}} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
 			light_html
 		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
 			${example}
@@ -131,7 +131,7 @@ export function handleExample(code, lang, meta_args) {
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Example ${container_height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		<Example ${container_height} column={${column}} hidePalette={${hidePalette}} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
 			light_html
 		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
 			${example}

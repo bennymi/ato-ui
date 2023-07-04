@@ -9,7 +9,7 @@ UnoCSS has a [community preset](https://github.com/Julien-R44/unocss-preset-form
 
 To install simply:
 
-```shell showCode=true
+```shell hideHeader
 pnpm add -D @julr/unocss-preset-forms
 ```
 
