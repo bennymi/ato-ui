@@ -52,9 +52,9 @@
 	{/if}
 
 	{#if !hide_group}
-		<div id={group_id}>
+		<div id={group_id} transition:slide={{ duration: 300 }}>
 			{#each items as item, i}
-				<div class="flex items-center gap-1" transition:slide={{ duration: 100, delay: i * 60 }}>
+				<div class="flex items-center gap-1">
 					<a
 						href={item[0].sitePath}
 						class="group flex items-center gap-2 px-1 rounded-btn text-surface-700-900-200-50 hover:(ring-2 ring-primary-500 text-surface-900-50) {active(
