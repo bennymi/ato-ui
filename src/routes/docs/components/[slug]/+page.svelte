@@ -4,7 +4,7 @@
 	export let data;
 
 	let unavailableStyle = 'text-surface-500-100 opacity-50 cursor-not-allowed';
-	let inactiveStyle = 'text-surface-800-100 hover:primary-500/80';
+	let inactiveStyle = 'text-surface-800-100 hover:primary-500/80!';
 
 	$: pageIsHeadless = $page.url.pathname.includes('-headless');
 	$: styledPath = data.styledExists ? $page.url.pathname.replace('-headless', '') : '';

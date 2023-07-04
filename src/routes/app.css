@@ -58,6 +58,6 @@
 }
 
 .prose > p > a, p > a, li > a {
-    @apply font-semibold secondary-500 rounded-container px-1 visited:secondary-900 hover:underline;
+    @apply font-semibold secondary-500 rounded-container px-1 visited:secondary-800 hover:underline;
     /* @apply font-semibold text-secondary-500 hover:text-secondary-600 visited:text-secondary-700 hover:underline; */
 }
