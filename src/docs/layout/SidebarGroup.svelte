@@ -57,7 +57,7 @@
 				<div class="flex items-center gap-1" transition:slide={{ duration: 100, delay: i * 60 }}>
 					<a
 						href={item[0].sitePath}
-						class="group flex items-center gap-2 px-1 rounded-btn text-surface-700-900-200-50 hover:(ring-2 ring-primary-500) {active(
+						class="group flex items-center gap-2 px-1 rounded-btn text-surface-700-900-200-50 hover:(ring-2 ring-primary-500 text-surface-900-50) {active(
 							item[0].sitePath
 						) ||
 						(item.length === 2 && active(`${item[1].sitePath}`))
@@ -74,7 +74,7 @@
 						</span>
 					</a>
 
-					{#if item.length === 2}
+					<!-- {#if item.length === 2}
 						<a
 							href={`${item[0].sitePath}`}
 							class="group flex items-center p-1 rounded-btn {active(item[0].sitePath)
@@ -105,7 +105,7 @@
 									: 'text-on-surface'} group-hover:text-on-primary i-material-symbols-water-drop-rounded"
 							/>
 						</a>
-					{/if}
+					{/if} -->
 				</div>
 			{/each}
 		</div>
