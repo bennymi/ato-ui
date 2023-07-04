@@ -32,6 +32,8 @@
 
 	let activeBackground = backgrounds[backgrounds.length - 1].bg;
 
+	let bg_group_name = `color-picker-${crypto.randomUUID()}`;
+
 	const handleCopy = () => {
 		// Add code to clipboard
 		navigator.clipboard.writeText(rawCode ?? '');
@@ -43,6 +45,7 @@
 		}, 1500);
 	};
 
+	$: updated_bgs = backgrounds.map((item) => ({ ...item, uid: crypto.randomUUID() }));
 	$: tag = title ?? lang.toUpperCase();
 </script>
 
@@ -56,19 +59,27 @@
 			</div>
 		{:else}
 			<div class="flex justify-center items-center gap-1">
-				{#each backgrounds as { bg, text }, i}
+				{#each updated_bgs as { bg, text, uid }}
 					{@const isActive = bg === activeBackground}
-					<button
-						class="rounded-container w-10 h-10 {bg} border-1 border-surface-900-50 inline-flex justify-center items-center focus:scale-110"
-						on:click={() => (activeBackground = bg)}
-						aria-label="change background of example to class {bg}"
-					>
-						<!-- in:fade|global={{ duration: i * 70 }}
-                        out:fade|global={{ duration: (backgrounds.length * 70) - i * 70 }} -->
-						{#if isActive}
-							<span class="{text} text-2xl i-material-symbols-check-circle-rounded" />
-						{/if}
-					</button>
+					<div class="relative w-10 h-10">
+						<input
+							id={uid}
+							class="absolute opacity-0 w-0 h-0 peer"
+							type="radio"
+							bind:group={activeBackground}
+							name={bg_group_name}
+							value={bg}
+							aria-label="change background color of example panel"
+						/>
+						<label
+							for={uid}
+							class="rounded-container w-10 h-10 {bg} cursor-pointer border-1 border-surface-900-50 inline-flex justify-center items-center peer-focus:scale-110"
+						>
+							{#if isActive}
+								<span class="{text} text-2xl i-material-symbols-check-circle-rounded" />
+							{/if}
+						</label>
+					</div>
 				{/each}
 			</div>
 		{/if}
