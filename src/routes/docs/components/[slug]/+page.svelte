@@ -37,3 +37,4 @@
 </nav>
 
 <svelte:component this={data.content} />
+
