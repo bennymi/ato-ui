@@ -8,7 +8,7 @@ icon: i-material-symbols-rocket-launch-rounded
 
 Use the package manager of your choice. Here is the `pnpm` install:
 
-```shell showCode=true
+```shell hideHeader
 pnpm add -D ato-ui
 ```
 
@@ -16,7 +16,7 @@ pnpm add -D ato-ui
 
 We rely on some dependencies, so make sure they are also installed.
 
-```shell showCode=true
+```shell hideHeader
 pnpm add -D unocss @unocss/core @unocss/preset-wind @unocss/preset-icons @unocss/reset svelte-headlessui @grail-ui/svelte
 ```
 
@@ -24,7 +24,7 @@ pnpm add -D unocss @unocss/core @unocss/preset-wind @unocss/preset-icons @unocss
 
 Create a `unocss.config.ts` file.
 
-```typescript showCode=true title="unocss.config.ts"
+```typescript title="unocss.config.ts"
 import { defineConfig } from 'unocss';
 import presetWind from '@unocss/preset-wind';
 
@@ -42,7 +42,7 @@ export default defineConfig({
 
 Set up your `vite.config.ts` file.
 
-```typescript showCode=true title="vite.config.ts"
+```typescript title="vite.config.ts"
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
@@ -65,7 +65,7 @@ You can then import a theme from `ato-ui/themes/...` or use a custom one that yo
 
 Our themes also all have a class name that is the same as the css file name, so make sure to add it to a wrapping `div`. You can see all our themes in our [styles repo page](https://github.com/bennymi/ato-ui/tree/main/src/lib/styles/themes).
 
-```svelte showCode=true title="./src/routes/+layout.svelte"
+```svelte title="./src/routes/+layout.svelte"
 <script lang="ts">
 	import 'ato-ui/themes/ato.css';
 

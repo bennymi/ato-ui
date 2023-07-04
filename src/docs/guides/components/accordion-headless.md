@@ -12,7 +12,7 @@ description: A headless accordion component.
 
 ## Example
 
-```svelte example title="+page.svelte" height="h-80"
+```svelte example height="h-80"
 <!-- tab:example -->
 <Accordion collapse>
 	<AccordionItem label="refund policy" open>

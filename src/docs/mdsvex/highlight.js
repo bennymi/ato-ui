@@ -44,8 +44,9 @@ export function get_highlighted_html(code, lang) {
  * @property {string} title
  * @property {string} height
  * @property {boolean} column
- * @property {boolean} showCode
- * @property {boolean} showHeader
+ * @property {boolean} hideCode
+ * @property {boolean} hideHeader
+ * @property {boolean} hidePalette
  * @property {boolean} isExample
  */
 
@@ -57,16 +58,18 @@ export function get_highlighted_html(code, lang) {
 function getMetaArgs(meta) {
 	let title = '';
 	let height = '';
-	let showCode = false;
-	let showHeader = false;
+	let hideCode = false;
+	let hideHeader = false;
+	let hidePalette = false;
 	let isExample = false;
 	let column = false;
 
 	if (meta) {
 		title = meta.match(/title="?(.*?)"/)?.[1] ?? '';
 		height = meta.match(/height="?(.*?)"/)?.[1] ?? '';
-		showCode = meta.includes('showCode');
-		showHeader = meta.includes('showHeader');
+		hideCode = meta.includes('hideCode');
+		hideHeader = meta.includes('hideHeader');
+		hidePalette = meta.includes('hidePalette');
 		isExample = meta.includes('example');
 		column = meta.includes('column');
 	}
@@ -75,8 +78,9 @@ function getMetaArgs(meta) {
 		title,
 		height,
 		column,
-		showCode,
-		showHeader,
+		hideCode,
+		hideHeader,
+		hidePalette,
 		isExample
 	};
 }
@@ -100,18 +104,19 @@ export function handleExample(code, lang, meta_args) {
 	let example = '';
 	let example_code = '';
 
-	const { title, height } = meta_args;
+	const { title, height, hidePalette } = meta_args;
 
 	const container_height = height ? `height="${height}"` : '';
 
-	if (tabs.length === 2) {
-		[, example] = tabs;
+	if (tabs.length === 1 || tabs.length === 2) {
+		// [, example] = tabs;
+		example = tabs.length === 1 ? tabs[0] : tabs[1];
 
 		const highlighted_html = get_highlighted_html(example, lang);
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Example ${container_height} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
+		<Example ${container_height} hidePalette={${hidePalette}} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
 			light_html
 		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
 			${example}
@@ -152,7 +157,7 @@ export function handleExample(code, lang, meta_args) {
 export async function highlightCode(code, lang, meta) {
 	const meta_args = getMetaArgs(meta);
 
-	const { title, showCode, showHeader, isExample } = meta_args;
+	const { title, hideCode, hideHeader, isExample } = meta_args;
 
 	if (isExample) {
 		return handleExample(code, lang, meta_args);
@@ -165,5 +170,5 @@ export async function highlightCode(code, lang, meta) {
 		light_html
 	)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${
 		title ? `title={"${title}"}` : ''
-	} showHeader={${showHeader}} showCode={${showCode}} />`;
+	} hideHeader={${hideHeader}} hideCode={${hideCode}} />`;
 }

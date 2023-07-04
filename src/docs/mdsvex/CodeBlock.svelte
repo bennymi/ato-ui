@@ -7,8 +7,8 @@
 	export let lightCode: string | null = null;
 	export let title: string | null = null;
 	export let rawCode: string | null = null;
-	export let showHeader = true;
-	export let showCode = false;
+	export let hideHeader = false;
+	export let hideCode = false;
 	export let height = 'h-full';
 
 	// export let highlightLines: string | null = null;
@@ -52,7 +52,7 @@
 <div
 	class="AtoCodeBlock mt-4 overflow-y-auto rounded-container shadow-md shadow-primary-900 dark:shadow-primary-400"
 >
-	{#if showHeader}
+	{#if !hideHeader}
 		<header
 			class="code-header rounded-t-container flex justify-between items-center p-2 pl-4 surface-400 dark:surface-500 text-xs font-bold"
 		>
@@ -85,12 +85,12 @@
 				<button
 					class="code-block-hide-btn px-2 py-1 rounded-container transition-all duration-200 hover:scale-110"
 					aria-label="show / hide code"
-					aria-expanded={showCode}
+					aria-expanded={hideCode}
 					aria-controls={code_id}
-					on:click={() => (showCode = !showCode)}
+					on:click={() => (hideCode = !hideCode)}
 				>
 					<span
-						class="text-xl {showCode
+						class="text-xl {hideCode
 							? 'i-material-symbols-code-rounded'
 							: 'i-material-symbols-code-off-rounded'}"
 					/>
@@ -98,17 +98,36 @@
 			</div>
 		</header>
 	{/if}
-	{#if showCode}
-		<div
-			id={code_id}
-			class="code-block-code {height} hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-container)"
-			transition:slide={{ duration: 300 }}
-		>
-			{#if $darkTheme}
-				{@html darkCode}
-			{:else}
-				{@html lightCode}
+	{#if !hideCode}
+		<div class="ato-code-block relative overflow-y-auto rounded-container">
+			{#if hideHeader}
+				<button
+					class="code-block-copy-btn absolute right-1 top-1 z-10 rounded-container surface-100-500 w-8 h-8 inline-flex justify-center items-center group"
+					on:click={handleCopy}
+					aria-label="copy code"
+				>
+					{#if copyState}
+						<span
+							class="i-material-symbols-content-copy-rounded text-2xl transition-all duration-200 group-hover:(scale-120) group-focus:scale-120"
+						/>
+					{:else}
+						<span
+							class="i-material-symbols-content-copy-outline-rounded text-2xl transition-all duration-200 group-hover:(scale-120) group-focus:scale-120"
+						/>
+					{/if}
+				</button>
 			{/if}
+			<div
+				id={code_id}
+				class="code-block-code {height} hide-scrollbar [&>pre]:(px-4 py-2 overflow-x-scroll rounded-b-container)"
+				transition:slide={{ duration: 300 }}
+			>
+				{#if $darkTheme}
+					{@html darkCode}
+				{:else}
+					{@html lightCode}
+				{/if}
+			</div>
 		</div>
 	{/if}
 </div>

@@ -77,9 +77,7 @@ You additionally will want to set a background color for the container, for exam
 
 Examples: `bg-mesh-primary/20-x5-y0`, `bg-mesh-secondary-400/20-x20-y20-success/10-x90-y90-tertiary-x0-y90`.
 
-<div class="flex justify-center items-center my-4 h-64 bg-mesh-primary/20-x4-y0-success-400/30-x95-y95 text-surface-950-50 bg-surface-50-500">bg-mesh-primary/20-x4-y0-success-400/30-x95-y95</div>
-
-<div class="flex justify-center items-center my-4 h-64 bg-mesh-secondary/20-x4-y0-error-400/30-x125-y-25 surface-50-900">bg-mesh-secondary/20-x4-y0-error-400/30-x125-y-25</div>
+<div class="flex justify-center items-center my-4 h-64 bg-mesh-secondary/20-x4-y0-error-400-x125-y-25 surface-50-900">bg-mesh-secondary/20-x4-y0-error-400-x125-y-25</div>
 
 ```html
 <div 

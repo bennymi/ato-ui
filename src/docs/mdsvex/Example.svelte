@@ -7,6 +7,7 @@
 	export let lightCode: string | null = null;
 	export let title: string | null = null;
 	export let rawCode: string | null = null;
+	export let hidePalette = false;
 	export let showCode = false;
 	export let height = 'h-full';
 	export let padding = 'p-4';
@@ -30,7 +31,8 @@
 		}
 	];
 
-	let activeBackground = backgrounds[backgrounds.length - 1].bg;
+	// let activeBackground = backgrounds[backgrounds.length - 1].bg;
+	let activeBackground = backgrounds[0].bg;
 
 	let bg_group_name = `color-picker-${crypto.randomUUID()}`;
 
@@ -57,7 +59,7 @@
 			>
 				{tag}
 			</div>
-		{:else}
+		{:else if !hidePalette}
 			<div class="flex justify-center items-center gap-1">
 				{#each updated_bgs as { bg, text, uid }}
 					{@const isActive = bg === activeBackground}
@@ -97,7 +99,7 @@
 		{:else}
 			<div class="ato-code-block relative overflow-y-auto rounded-container">
 				<button
-					class="code-block-copy-btn absolute right-1 top-1 z-10 rounded-container text-surface-900-50 w-8 h-8 inline-flex justify-center items-center group"
+					class="code-block-copy-btn absolute right-1 top-1 z-10 rounded-container surface-100-500 w-8 h-8 inline-flex justify-center items-center group"
 					on:click={handleCopy}
 					aria-label="copy code"
 				>
