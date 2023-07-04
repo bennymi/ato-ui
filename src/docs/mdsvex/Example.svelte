@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fade, fly } from 'svelte/transition';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import { ToggleSwitch } from '$lib';
 
