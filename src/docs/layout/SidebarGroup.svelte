@@ -54,17 +54,14 @@
 	{#if !hide_group}
 		<div id={group_id}>
 			{#each items as item, i}
-				<div
-					class="flex items-center gap-1"
-					transition:slide={{ duration: 100, delay: i * 60 }}
-				>
+				<div class="flex items-center gap-1" transition:slide={{ duration: 100, delay: i * 60 }}>
 					<a
 						href={item[0].sitePath}
-						class="group flex items-center gap-2 text-surface-700-900-200-50 hover:(font-semibold) {active(
+						class="group flex items-center gap-2 px-1 rounded-btn text-surface-700-900-200-50 hover:(ring-2 ring-primary-500) {active(
 							item[0].sitePath
 						) ||
 						(item.length === 2 && active(`${item[1].sitePath}`))
-							? '!text-surface-900-50 font-semibold'
+							? 'primary-500!'
 							: ''}"
 						on:click={() => handleClick(item[0].sitePath)}
 						on:keydown
