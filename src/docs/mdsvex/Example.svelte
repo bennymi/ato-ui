@@ -36,7 +36,7 @@
 
 	// let activeBackground = backgrounds[backgrounds.length - 1].bg;
 	let activeBackground = backgrounds[0].bg;
-	
+
 	let uuid = crypto.randomUUID();
 	let palette_id = `palette-${uuid}`;
 	let bg_group_name = `color-picker-${uuid}`;
@@ -57,6 +57,7 @@
 </script>
 
 <div class="mt-2">
+	<!-- Header -->
 	<div class="flex justify-between items-center h-12">
 		<ToggleSwitch bind:checked={showCode} label="Show Code" />
 		{#if showCode}
@@ -113,6 +114,8 @@
 			</div>
 		{/if}
 	</div>
+
+	<!-- Content -->
 	<div class="rounded-container border-1 border-surface-500/30-200/30">
 		{#if !showCode}
 			<div
