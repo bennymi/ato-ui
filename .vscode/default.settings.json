@@ -1,6 +1,22 @@
 {
-	"eslint.validate": ["javascript", "typescript", "svelte"],
-	"editor.codeActionsOnSave": {
-    	"source.fixAll.eslint": true
-    }
+	"eslint.validate": [
+		"javascript",
+		"typescript",
+		"svelte"
+	],
+	"[javascript]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		}
+	},
+	"[typescript]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		}
+	},
+	"[svelte]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		}
+	}
 }

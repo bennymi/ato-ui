@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import { ToggleSwitch } from '$lib';
 
@@ -13,6 +14,7 @@
 	export let padding = 'p-4';
 	export let column = false;
 
+	let openPalette = false;
 	let copyState = false;
 	let code_id = crypto.randomUUID();
 
@@ -34,8 +36,10 @@
 
 	// let activeBackground = backgrounds[backgrounds.length - 1].bg;
 	let activeBackground = backgrounds[0].bg;
-
-	let bg_group_name = `color-picker-${crypto.randomUUID()}`;
+	
+	let uuid = crypto.randomUUID();
+	let palette_id = `palette-${uuid}`;
+	let bg_group_name = `color-picker-${uuid}`;
 
 	const handleCopy = () => {
 		// Add code to clipboard
@@ -54,6 +58,7 @@
 
 <div class="mt-2">
 	<div class="flex justify-between items-center h-12">
+		<ToggleSwitch bind:checked={showCode} label="Show Code" />
 		{#if showCode}
 			<div
 				class="px-2 py-1 rounded-container select-none primary-500 font-semibold font-mono flex items-center justify-center"
@@ -61,32 +66,52 @@
 				{tag}
 			</div>
 		{:else if !hidePalette}
-			<div class="flex justify-center items-center gap-1">
-				{#each updated_bgs as { bg, text, uid }}
-					{@const isActive = bg === activeBackground}
-					<div class="relative w-10 h-10">
-						<input
-							id={uid}
-							class="absolute opacity-0 w-0 h-0 peer"
-							type="radio"
-							bind:group={activeBackground}
-							name={bg_group_name}
-							value={bg}
-							aria-label="change background color of example panel"
-						/>
-						<label
-							for={uid}
-							class="rounded-container w-10 h-10 {bg} cursor-pointer border-1 border-surface-900-50 inline-flex justify-center items-center peer-focus:scale-110"
-						>
-							{#if isActive}
-								<span class="{text} text-2xl i-material-symbols-check-circle-rounded" />
-							{/if}
-						</label>
+			<div class="flex justify-center items-center gap-2">
+				{#if openPalette}
+					<div
+						id={palette_id}
+						class="flex justify-center items-center gap-1"
+						transition:slide={{ duration: 200, axis: 'x' }}
+					>
+						{#each updated_bgs as { bg, text, uid }}
+							{@const isActive = bg === activeBackground}
+							<div class="relative w-10 h-10">
+								<input
+									id={uid}
+									class="absolute opacity-0 w-0 h-0 peer"
+									type="radio"
+									bind:group={activeBackground}
+									name={bg_group_name}
+									value={bg}
+									aria-label="change background color of example panel"
+								/>
+								<label
+									for={uid}
+									class="rounded-container w-10 h-10 {bg} cursor-pointer border-1 border-surface-900-50 inline-flex justify-center items-center peer-focus:scale-110"
+								>
+									{#if isActive}
+										<span class="{text} text-2xl i-material-symbols-check-circle-rounded" />
+									{/if}
+								</label>
+							</div>
+						{/each}
 					</div>
-				{/each}
+				{/if}
+				<button
+					class="rounded-btn surface-100-500 w-10 h-10 inline-flex justify-center items-center group hover:primary-500 focus:primary-500"
+					on:click={() => (openPalette = !openPalette)}
+					aria-label="show palette"
+					aria-expanded={openPalette}
+					aria-controls={palette_id}
+				>
+					<span
+						class="i-mdi-palette-swatch text-2xl transition-all duration-200 {openPalette
+							? 'rotate-90'
+							: ''}"
+					/>
+				</button>
 			</div>
 		{/if}
-		<ToggleSwitch bind:checked={showCode} label="Show Code" />
 	</div>
 	<div class="rounded-container border-1 border-surface-500/30-200/30">
 		{#if !showCode}

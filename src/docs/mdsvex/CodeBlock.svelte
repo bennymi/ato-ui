@@ -108,11 +108,11 @@
 				>
 					{#if copyState}
 						<span
-							class="i-material-symbols-content-copy-rounded text-2xl transition-all duration-200 group-hover:(scale-120) group-focus:scale-120"
+							class="i-material-symbols-content-copy-rounded text-2xl transition-all duration-200 group-hover:(scale-110) group-focus:scale-110"
 						/>
 					{:else}
 						<span
-							class="i-material-symbols-content-copy-outline-rounded text-2xl transition-all duration-200 group-hover:(scale-120) group-focus:scale-120"
+							class="i-material-symbols-content-copy-outline-rounded text-2xl transition-all duration-200 group-hover:(scale-110) group-focus:scale-110"
 						/>
 					{/if}
 				</button>
