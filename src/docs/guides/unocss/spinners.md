@@ -80,7 +80,7 @@ Example: `w-12 h-12 text-primary-500 i-svg-spinners-blocks-scale`.
 
 ## Size
 
-You can set the size of each spinner by setting the width and height after the the `s-` prefix. For example: `s-wh15-circle-secondary`, `s-wh20-flip-tertiary`. This will set the width and height to `w-15 h-15` and `w-20 h-20` respectively.
+You can set the size of each spinner by setting the width and height after the `s-` prefix. For example: `s-wh15-circle-secondary`, `s-wh20-flip-tertiary`. This will set the width and height to `w-15 h-15` and `w-20 h-20` respectively.
 
 ```svelte example column
 <div class="text-surface-900-50 font-mono flex flex-col gap-2">
