@@ -5,8 +5,8 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
-		'airbnb-base',
-		'airbnb-typescript/base',
+		// 'airbnb-base',
+		// 'airbnb-typescript/base',
 		'prettier'
 	],
 	plugins: ['@typescript-eslint', 'import'],

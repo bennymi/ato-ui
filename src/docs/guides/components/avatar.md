@@ -7,7 +7,8 @@ component: components/avatar/Avatar.svelte
 <script lang="ts">
 	import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/avatar/Avatar.svelte?raw&sveld';
-	import Avatar from '$lib/components/avatar/Avatar.svelte';
+
+	import { ToggleSwitch, Avatar } from '$lib';
 
 	let typing = true;
 </script>
@@ -17,10 +18,7 @@ component: components/avatar/Avatar.svelte
 ## Example
 
 <Usage>
-	<button
-		class="btn-glass-primary mb-4 btn-lg"
-		on:click={() => (typing = !typing)}>Typing On/Off</button
-	>
+	<ToggleSwitch bind:checked={typing} label="Typing" />
 	<div class="flex flex-wrap justify-center items-center gap-8">
 		<Avatar
 			src="/corgi-avatar.jpg"
@@ -276,27 +274,27 @@ Also pass in a text color for it. Some spinners are not suited for this since th
 
 ## Events
 
-### avatar-mouseenter
+### `avatar-mouseenter`
 
 This event is emitted when the mouse enters the avatar container.
 
-### avatar-mouseleave
+### `avatar-mouseleave`
 
 This event is emitted when the mouse leaves the avatar container.
 
-### avatar-click
+### `avatar-click`
 
 This event is emitted when the avatar is clicked.
 
-### badge-mouseenter
+### `badge-mouseenter`
 
 This event is emitted when the mouse enters the badge container.
 
-### badge-mouseleave
+### `badge-mouseleave`
 
 This event is emitted when the mouse leaves the badge container.
 
-### badge-click
+### `badge-click`
 
 This event is emitted when the badge is clicked.
 

@@ -71,7 +71,7 @@
 				{#if openPalette}
 					<div
 						id={palette_id}
-						class="flex justify-center items-center gap-1"
+						class="grid grid-cols-4 gap-1 md:(flex justify-center items-center gap-1)"
 						transition:slide={{ duration: 200, axis: 'x' }}
 					>
 						{#each updated_bgs as { bg, text, uid }}
