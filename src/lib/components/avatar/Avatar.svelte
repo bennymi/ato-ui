@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import { createAvatar } from '@melt-ui/svelte';
 	import type { Rounded, Position } from '../../types/types.d';
 
 	const dispatch = createEventDispatcher();
 
 	/** Set the image source. */
 	export let src = '';
+	/** The number of milliseconds to wait before rendering the fallback image. */
+	export let delayMs = 0;
 	/** Set the image alt value. */
 	export let alt = 'avatar';
 	/** Set the text value in case you don't have an image. The string automatically gets shortened to 4 characters. If you pass in separate words it will use the first letters of each word. */
@@ -44,6 +47,12 @@
 	export let defaultSpinnerColor = 'fill-black';
 	/** Set the size of the typing spinner container. */
 	export let spinnerContainerSize = 'w-8 h-4';
+
+	/** Melt builder */
+	$: ({ image, fallback } = createAvatar({
+		src,
+		delayMs
+	}));
 
 	let positions: any = {
 		'bottom-right': {
@@ -89,11 +98,8 @@
 		on:click={(event) => dispatch('avatar-click', event)}
 		on:keydown
 	>
-		{#if src}
-			<img class="{size} {rounded} drag-none transition-all hover:(scale-110)" {src} {alt} />
-		{:else}
-			<span class={textStyles}>{formattedText}</span>
-		{/if}
+		<img class="{size} {rounded} drag-none transition-all hover:(scale-110)" {...$image} {alt} />
+		<span {...$fallback} class={textStyles}>{formattedText}</span>
 	</div>
 	{#if typing}
 		{#if typingSpinner}

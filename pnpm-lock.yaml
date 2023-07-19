@@ -8,6 +8,9 @@ dependencies:
   '@grail-ui/svelte':
     specifier: ^0.9.6
     version: 0.9.6(svelte@3.59.1)
+  '@melt-ui/svelte':
+    specifier: ^0.23.2
+    version: 0.23.2(svelte@3.59.1)
   '@unocss/preset-wind':
     specifier: ^0.53.1
     version: 0.53.1
@@ -448,10 +451,20 @@ packages:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
     dev: false
 
+  /@floating-ui/core@1.3.1:
+    resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
+    dev: false
+
   /@floating-ui/dom@1.2.9:
     resolution: {integrity: sha512-sosQxsqgxMNkV3C+3UqTS6LxP7isRLwX8WMepp843Rb3/b0Wz8+MdUkxJksByip3C2WwLugLHN1b4ibn//zKwQ==}
     dependencies:
       '@floating-ui/core': 1.2.6
+    dev: false
+
+  /@floating-ui/dom@1.4.5:
+    resolution: {integrity: sha512-96KnRWkRnuBSSFbj0sFGwwOUd8EkiecINVl0O9wiZlZ64EkpyAOG3Xc2vKKNJmru0Z7RqWNymA+6b8OZqjgyyw==}
+    dependencies:
+      '@floating-ui/core': 1.3.1
     dev: false
 
   /@grail-ui/svelte@0.9.6(svelte@3.59.1):
@@ -568,6 +581,18 @@ packages:
       mini-svg-data-uri: 1.4.4
       unocss: 0.53.1(postcss@8.4.24)(rollup@2.79.1)(vite@4.3.9)
     dev: true
+
+  /@melt-ui/svelte@0.23.2(svelte@3.59.1):
+    resolution: {integrity: sha512-HUYS57Z+DY2A7T0DcOpWdjv6e+xtZPO79UYRZ4sN7ifAxa7oxMZ0K8BfrK68r8BLAjKZQUknRUs2d/leu7IT9w==}
+    peerDependencies:
+      svelte: '>=3 <5'
+    dependencies:
+      '@floating-ui/core': 1.3.1
+      '@floating-ui/dom': 1.4.5
+      focus-trap: 7.4.3
+      nanoid: 4.0.2
+      svelte: 3.59.1
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2704,6 +2729,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
+
+  /nanoid@4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
 
   /natural-compare-lite@1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
