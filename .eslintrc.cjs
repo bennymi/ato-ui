@@ -2,46 +2,43 @@ module.exports = {
 	root: true,
 	parser: '@typescript-eslint/parser',
 	extends: [
-		'eslint:recommended', 
-		'plugin:@typescript-eslint/recommended', 
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
 		'airbnb-base',
 		'airbnb-typescript/base',
-		'prettier',
+		'prettier'
 	],
-	plugins: [
-		'@typescript-eslint',
-		'import'
-	],
+	plugins: ['@typescript-eslint', 'import'],
 	ignorePatterns: [], // ['*.cjs'],
 	overrides: [
 		{
 			files: ['**/*.svelte'],
 			parser: 'svelte-eslint-parser',
 			parserOptions: {
-				parser: '@typescript-eslint/parser',
+				parser: '@typescript-eslint/parser'
 			},
 			rules: {
 				'import/no-named-as-default': 0,
-				'import/no-named-as-default-member': 0,
-			},
-		},
+				'import/no-named-as-default-member': 0
+			}
+		}
 	],
 	settings: {
 		'import/parsers': {
-			'@typescript-eslint/parser': ['.cjs', '.js', '.ts'],
+			'@typescript-eslint/parser': ['.cjs', '.js', '.ts']
 		},
 		'import/resolver': {
 			typescript: {
-				alwaysTryTypes: true,
-			},
-		},
+				alwaysTryTypes: true
+			}
+		}
 	},
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020,
 		extraFileExtensions: ['.svelte'],
-		project: './tsconfig.json',
+		project: './tsconfig.json'
 	},
 	env: {
 		browser: true,
@@ -67,8 +64,8 @@ module.exports = {
 		'import/no-unresolved': 'warn',
 		'no-unused-vars': 'off',
 		'@typescript-eslint/no-loop-func': 0,
-    	'@typescript-eslint/no-unused-vars': 'warn',
-    	'@typescript-eslint/no-throw-literal': 'warn',
+		'@typescript-eslint/no-unused-vars': 'warn',
+		'@typescript-eslint/no-throw-literal': 'warn',
 		// 'import-no-duplicates-prefix-resolved-path/no-duplicates': [
 		// 	'error',
 		// 	{
@@ -83,20 +80,20 @@ module.exports = {
 				selector: 'default',
 				format: ['camelCase', 'PascalCase', 'snake_case', 'UPPER_CASE'],
 				leadingUnderscore: 'allow',
-				trailingUnderscore: 'allow',
-			  },
-			
-			  {
+				trailingUnderscore: 'allow'
+			},
+
+			{
 				selector: 'variable',
 				format: ['camelCase', 'snake_case', 'UPPER_CASE'],
 				leadingUnderscore: 'allow',
-				trailingUnderscore: 'allow',
-			  },
-			
-			  {
+				trailingUnderscore: 'allow'
+			},
+
+			{
 				selector: 'typeLike',
-				format: ['PascalCase'],
-			  },
+				format: ['PascalCase']
+			}
 		]
 		// '@typescript-eslint/naming-convention': {
 		// 	format: [
@@ -106,5 +103,5 @@ module.exports = {
 		// 		 'UPPER_CASE'
 		// 	]
 		// }
-	},
+	}
 };

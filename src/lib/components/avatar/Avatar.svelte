@@ -98,7 +98,7 @@
 		on:click={(event) => dispatch('avatar-click', event)}
 		on:keydown
 	>
-		<img class="{size} {rounded} drag-none transition-all hover:(scale-110)" {...$image} {alt} />
+		<img {...$image} {alt} class="{size} {rounded} drag-none transition-all hover:(scale-110)" />
 		<span {...$fallback} class={textStyles}>{formattedText}</span>
 	</div>
 	{#if typing}
