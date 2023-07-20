@@ -49,10 +49,10 @@
 	export let spinnerContainerSize = 'w-8 h-4';
 
 	/** Melt builder */
-	$: ({ image, fallback } = createAvatar({
+	const { image, fallback } = createAvatar({
 		src,
 		delayMs
-	}));
+	});
 
 	let positions: any = {
 		'bottom-right': {
