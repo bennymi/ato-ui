@@ -34,16 +34,16 @@ Developers interested in contributing should read the [Code of Conduct](./CODE_O
 The following amazing projects made this library possible and / or heavily inspired features:
 
 - [UnoCSS](https://github.com/unocss/unocss)
-- [Headless UI](https://github.com/CaptainCodeman/svelte-headlessui)
-- [Grail UI](https://github.com/grail-ui/grail-ui)
-- [Skeleton](https://github.com/skeletonlabs/skeleton)
 - [Melt UI](https://github.com/melt-ui/melt-ui)
+- [Skeleton](https://github.com/skeletonlabs/skeleton)
 - [Onu UI](https://github.com/onu-ui/onu-ui)
 - [Anu](https://github.com/jd-solanki/anu)
 - [MDsveX](https://github.com/pngwn/mdsvex)
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss)
 - [WindiCSS](https://windicss.org/)
 - [Shiki](https://github.com/shikijs/shiki)
+- [Headless UI](https://github.com/CaptainCodeman/svelte-headlessui)
+- [Grail UI](https://github.com/grail-ui/grail-ui)
 
 ## License
 

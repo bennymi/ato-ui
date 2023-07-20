@@ -8,7 +8,9 @@
 
 	$: pageIsHeadless = $page.url.pathname.includes('-headless');
 	$: styledPath = data.styledExists ? $page.url.pathname.replace('-headless', '') : '';
-	$: headlessPath = data.headlessExists ? `${$page.url.pathname.replace('-headless', '')}-headless` : '';
+	$: headlessPath = data.headlessExists
+		? `${$page.url.pathname.replace('-headless', '')}-headless`
+		: '';
 </script>
 
 <svelte:head>
@@ -27,20 +29,27 @@
 	>
 		<a
 			href={data.headlessExists ? headlessPath : '#'}
-			class="rounded-l-btn {!data.headlessExists ? unavailableStyle : pageIsHeadless ? 'primary-500' : inactiveStyle}"
+			class="rounded-l-btn {!data.headlessExists
+				? unavailableStyle
+				: pageIsHeadless
+				? 'primary-500'
+				: inactiveStyle}"
 		>
-		<span class="i-material-symbols-water-drop-outline-rounded" />
-		<span>Headless</span>
+			<span class="i-material-symbols-water-drop-outline-rounded" />
+			<span>Headless</span>
 		</a>
 		<a
 			href={data.styledExists ? styledPath : '#'}
-			class="rounded-r-btn {!data.styledExists ? unavailableStyle : pageIsHeadless ? inactiveStyle: 'primary-500'}"
+			class="rounded-r-btn {!data.styledExists
+				? unavailableStyle
+				: pageIsHeadless
+				? inactiveStyle
+				: 'primary-500'}"
 		>
-		<span class="i-material-symbols-water-drop-rounded" />
-		<span>Styled</span>
+			<span class="i-material-symbols-water-drop-rounded" />
+			<span>Styled</span>
 		</a>
 	</nav>
 </div>
 
 <svelte:component this={data.content} />
-
