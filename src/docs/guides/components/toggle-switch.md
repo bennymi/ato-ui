@@ -12,8 +12,6 @@ component: components/toggle-switch/ToggleSwitch.svelte
     const active_colors = ['bg-primary-500', 'bg-secondary-500', 'bg-tertiary-500', 'bg-success-500', 'bg-warning-500', 'bg-error-500'];
 </script>
 
-# Toggle Switch
-
 Switches use the `rounded-btn` class, so they change their shape based on the theme variables. See the props table for all available ways of customizing the component.
 
 ## Colors

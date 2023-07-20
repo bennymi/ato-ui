@@ -11,9 +11,7 @@ description: An accessible headless modal component.
     let showModal = false;
 </script>
 
-# Dialog (Modal) | Headless
-
-## Example
+## Preview
 
 <Usage padding="py-20">
     <Modal bind:showModal buttonText="Open dialog" zIndex="z-999">

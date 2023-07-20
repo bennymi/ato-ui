@@ -4,7 +4,6 @@
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
-	// import HamburgerMenu from './HamburgerMenu.svelte';
 	import HamburgerMenu from './HamburgerMenu.svelte';
 	import SidebarGroup from './SidebarGroup.svelte';
 	import { page } from '$app/stores';
@@ -29,11 +28,11 @@
 	<div class="AtoNavBarTitle">
 		<slot name="title"><!-- optional fallback --></slot>
 	</div>
-
+	
 	<div class="flex gap-2 justify-between items-center">
 		<nav class="AtoNavBarMenu space-x-4 text-surface-900-50 hidden md:inline-flex">
 			{#each navigation as { navTitle, landingPath }}
-				<a class="font-semibold hover:text-primary-500" href={landingPath}>{navTitle}</a>
+				<a class="font-bold transition-all duration-200 hover:(text-primary-500)" href={landingPath}>{navTitle}</a>
 			{/each}
 		</nav>
 		<div class="hidden md:inline-flex">

@@ -18,9 +18,7 @@ description: A headless combobox component with autocomplete.
 	];
 </script>
 
-# Combobox (Autocomplete) | Headless
-
-## Example
+## Preview
 
 <Usage padding="pt-2 pb-62">
     <Combobox

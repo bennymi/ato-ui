@@ -7,9 +7,7 @@ description: A headless avatar component.
 	import Avatar from '$lib/components/avatar/Avatar.svelte';
 </script>
 
-# Avatar | Headless
-
-## Example
+## Preview
 
 <Usage>
 	<Avatar

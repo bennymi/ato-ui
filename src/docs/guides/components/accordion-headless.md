@@ -8,9 +8,7 @@ description: A headless accordion component.
     import AccordionItem from '$lib/components/accordion/AccordionItem.svelte';
 </script>
 
-# Accordion | Headless
-
-## Example
+## Preview
 
 ```svelte example height="h-80"
 <!-- tab:example -->

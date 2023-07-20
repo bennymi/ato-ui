@@ -25,11 +25,9 @@ description: A tabs component, to easily switch between different views.
 	];
 </script>
 
-# Tabs
-
 Tabs allow you to switch between different views.
 
-## Example
+## Preview
 
 <Usage>
     <TabsList activeTab="styled" {tabHeaders}>

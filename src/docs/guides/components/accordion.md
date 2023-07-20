@@ -11,9 +11,7 @@ description: A simple accordion component.
     import AccordionItem from '$lib/components/accordion/AccordionItem.svelte';
 </script>
 
-# Accordion
-
-## Example
+## Preview
 
 ```svelte example height="h-60"
 <!-- tab:example -->

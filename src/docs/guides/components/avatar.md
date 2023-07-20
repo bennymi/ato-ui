@@ -13,9 +13,7 @@ component: components/avatar/Avatar.svelte
 	let typing = true;
 </script>
 
-# Avatar
-
-## Example
+## Preview
 
 <Usage>
 	<ToggleSwitch bind:checked={typing} label="Typing" />

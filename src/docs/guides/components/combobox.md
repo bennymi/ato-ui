@@ -20,9 +20,7 @@ description: A combobox component with autocomplete.
 	];
 </script>
 
-# Combobox (Autocomplete)
-
-## Example
+## Preview
 
 <Usage padding="pt-2 pb-62">
     <Combobox

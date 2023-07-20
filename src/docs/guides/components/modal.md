@@ -12,9 +12,7 @@ description: An accessible modal component with a backdrop.
     let showModal = false;
 </script>
 
-# Dialog (Modal)
-
-## Example
+## Preview
 
 <Usage padding="py-20">
     <Modal bind:showModal buttonText="Open dialog" zIndex="z-999">

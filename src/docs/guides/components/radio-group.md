@@ -25,9 +25,7 @@ description: A radio group example for Svelte.
 	let activeIcon = 'i-material-symbols-check-circle-outline-rounded text-on-primary';
 </script>
 
-# Radio Group | Headless
-
-## Example
+## Preview
 
 <Usage padding="py-20">
     <RadioGroup {items} name="group-1" {activeIcon} {group} />

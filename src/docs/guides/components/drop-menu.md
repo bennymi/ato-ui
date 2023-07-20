@@ -35,9 +35,7 @@ description: Create a list of actions that is available through a dropdown menu.
     ]
 </script>
 
-# Dropdown Menu
-
-## Example
+## Preview
 
 <Usage padding="pt-4 pb-60">
     <DropMenu {groups} width="w-[150px]" buttonIcon="i-mdi-chevron-down" />

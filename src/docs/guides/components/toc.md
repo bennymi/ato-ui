@@ -8,9 +8,7 @@ description: Create a table of contents for a target container element, so that 
     import docs from '$lib/components/table-of-contents/TableOfContents.svelte?raw&sveld';
 </script>
 
-# Table of Contents
-
-## Example
+## Preview
 
 If you put the table of contents (ToC) in the layout file where the content for which the ToC should be created is updated with each page, you will have to wrap the table of contents in a `{#key ...}` block. Check out the props section to see how you can customize the component.
 
