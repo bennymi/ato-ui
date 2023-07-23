@@ -5,7 +5,7 @@
 	"author": "Benedikt Mielke",
 	"homepage": "https://ato-ui.vercel.app/",
 	"scripts": {
-		"dev": "tsx ./scripts/prepare.ts && vite dev",
+		"dev": "vite dev",
 		"build": "tsx ./scripts/prepare.ts && vite build && npm run package",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
