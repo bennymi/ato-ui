@@ -36,7 +36,7 @@
 				: inactiveStyle}"
 		>
 			<span class="i-material-symbols-water-drop-outline-rounded" />
-			<span>Headless</span>
+			<span class={!data.headlessExists ? 'line-through' : ''}>Headless</span>
 		</a>
 		<a
 			href={data.styledExists ? styledPath : '#'}
@@ -47,7 +47,7 @@
 				: 'primary-500'}"
 		>
 			<span class="i-material-symbols-water-drop-rounded" />
-			<span>Styled</span>
+			<span class={!data.styledExists ? 'line-through' : ''}>Styled</span>
 		</a>
 	</nav>
 </div>
