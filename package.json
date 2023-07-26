@@ -6,7 +6,8 @@
 	"homepage": "https://ato-ui.vercel.app/",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "tsx ./scripts/prepare.ts && vite build && npm run package",
+		"build": "vite build && npm run package",
+		"create-highlights": "tsx ./scripts/prepare.ts",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",
@@ -25,7 +26,6 @@
 		"tailwind",
 		"windicss",
 		"components",
-		"component",
 		"ui",
 		"headless",
 		"component-library",
