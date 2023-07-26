@@ -23,7 +23,15 @@ pnpm add -D ato-ui
 - 😃 Pure CSS icons of all your favourite icon sets thanks to iconify and [UnoCSS](https://github.com/unocss/unocss)
 
 ## 👋 Community
-- [Discord](https://discord.gg/7PXN3fs3tN)
+
+Want to discuss something with us? Come join us on [Discord](https://discord.gg/7PXN3fs3tN), we would love to see you there.
+
+<a href="https://discord.gg/7PXN3fs3tN" alt="Ato UI Discord community">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://invidget.switchblade.xyz/7PXN3fs3tN">
+  <img alt="Ato UI Discord community" src="https://invidget.switchblade.xyz/7PXN3fs3tN?theme=dark">
+</picture>
+</a>
 
 ## ⚒️ Contributions
 
