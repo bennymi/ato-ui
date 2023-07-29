@@ -1,11 +1,9 @@
 import {
   defineConfig,
-  presetAttributify,
-  presetUno,
   presetWind,
-  transformerVariantGroup
 } from 'unocss';
 
+import transformerVariantGroup from '@unocss/transformer-variant-group';
 import transformerDirectives from '@unocss/transformer-directives';
 import extractorSvelte from '@unocss/extractor-svelte';
 import presetIcons from '@unocss/preset-icons'
@@ -24,8 +22,6 @@ export const unocss_config = {
     // }
   },
   presets: [
-    // presetUno(),
-    presetAttributify(),
     presetIcons({
         extraProperties: {
             'display': 'inline-block',

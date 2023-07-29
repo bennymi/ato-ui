@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { createTabs } from '@grail-ui/svelte';
-	import type { TabHeader } from './types';
 	import { setContext } from 'svelte';
+	import { createTabs } from '@melt-ui/svelte';
+	import type { TabHeader } from './types';
 
 	/** Set the key of the tab that should be active by default. */
 	export let activeTab: string;
@@ -21,31 +21,26 @@
 	/** Set how the headers should be aligned with the justify property. */
 	export let justifyHeaders = 'justify-center';
 
-	const { useTabs, active, disabled, rootAttrs, listAttrs, triggerAttrs, contentAttrs } =
-		createTabs({
-			value: activeTab,
-			disabled: disabledTabs
-		});
+	const { root, list, content, trigger } = createTabs({
+		value: activeTab
+	});
 
-	setContext('contentAttrs', contentAttrs);
+	$: isDisabled = (key: string) =>
+		((typeof disabledTabs === 'boolean' && disabledTabs) ||
+		 (typeof disabledTabs !== 'boolean' && disabledTabs.includes(key)));
 
-	const is_disabled = (key: string) =>
-		(typeof $disabled === 'boolean' && $disabled) ||
-		(typeof $disabled === 'string' && $disabled === key) ||
-		(typeof $disabled === 'object' && $disabled.includes(key));
-
-	$: if ($active) {
-		activeTab = $active;
-	}
+	setContext('content', content);
 </script>
 
-<div use:useTabs {...$rootAttrs} class="w-full">
-	<div {...$listAttrs} class="w-full flex {justifyHeaders} items-center mb-4 {borderStyle}">
+<div {...$root} use:root class="w-full">
+	<div {...$list} use:list class="w-full flex {justifyHeaders} items-center mb-4 {borderStyle}">
 		{#each tabHeaders as item}
-			{@const activated = $active === item.key}
-			{@const deactivated = is_disabled(item.key)}
+			{@const activated = activeTab === item.key}
+			{@const deactivated = isDisabled(item.key)}
 			<button
-				{...$triggerAttrs(item.key)}
+				{...$trigger({ value: item.key, disabled: deactivated })}
+				use:trigger
+				on:click={() => (activeTab = item.key)}
 				class="px-2 py-1 {headerWidth} inline-flex gap-1 justify-center items-center shadow-md shadow-surface-900/20 transition-all duration-150 font-semibold rounded-t-btn focus:(ring-2 ring-surface-300 ring-offset-2) {deactivated
 					? 'opacity-70 cursor-not-allowed'
 					: ''} {activated ? activeStyle : inactiveStyle}"

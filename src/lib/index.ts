@@ -8,6 +8,8 @@ export type { Heading, TOCIndentStyles, ToC, TOCType } from './components/table-
 export type { TabHeader } from './components/tabs/types';
 
 // Components
+export * from './components';
+
 export { default as Accordion } from './components/accordion/Accordion.svelte';
 export { default as AccordionItem } from './components/accordion/AccordionItem.svelte';
 export { default as Avatar } from './components/avatar/Avatar.svelte';
@@ -16,8 +18,6 @@ export { default as DropMenu } from './components/dropdown-menu/DropMenu.svelte'
 export { default as Modal } from './components/modal/Modal.svelte';
 export { default as RadioGroup } from './components/radio-group/RadioGroup.svelte';
 export { default as TableOfContents } from './components/table-of-contents/TableOfContents.svelte';
-export { default as TabsList } from './components/tabs/TabsList.svelte';
-export { default as Tab } from './components/tabs/Tab.svelte';
 export { default as ToggleSwitch } from './components/toggle-switch/ToggleSwitch.svelte';
 
 // Headless
