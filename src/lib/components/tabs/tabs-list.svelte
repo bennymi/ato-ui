@@ -21,7 +21,7 @@
 	/** Set how the headers should be aligned with the justify property. */
 	export let justifyHeaders = 'justify-center';
 
-	const { root, list, content, trigger } = createTabs({
+	const { value, root, list, content, trigger } = createTabs({
 		value: activeTab
 	});
 
@@ -30,17 +30,20 @@
 		 (typeof disabledTabs !== 'boolean' && disabledTabs.includes(key)));
 
 	setContext('content', content);
+
+	$: {
+		activeTab = $value;
+	}
 </script>
 
 <div {...$root} use:root class="w-full">
 	<div {...$list} use:list class="w-full flex {justifyHeaders} items-center mb-4 {borderStyle}">
 		{#each tabHeaders as item}
-			{@const activated = activeTab === item.key}
+			{@const activated = $value === item.key}
 			{@const deactivated = isDisabled(item.key)}
 			<button
 				{...$trigger({ value: item.key, disabled: deactivated })}
 				use:trigger
-				on:click={() => (activeTab = item.key)}
 				class="px-2 py-1 {headerWidth} inline-flex gap-1 justify-center items-center shadow-md shadow-surface-900/20 transition-all duration-150 font-semibold rounded-t-btn focus:(ring-2 ring-surface-300 ring-offset-2) {deactivated
 					? 'opacity-70 cursor-not-allowed'
 					: ''} {activated ? activeStyle : inactiveStyle}"
