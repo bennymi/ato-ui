@@ -17,7 +17,7 @@ pnpm add -D ato-ui
 We rely on some dependencies, so make sure they are also installed.
 
 ```shell hideHeader
-pnpm add -D unocss @unocss/core @unocss/preset-wind @unocss/preset-icons @unocss/reset svelte-headlessui @grail-ui/svelte
+pnpm add -D unocss @unocss/core @unocss/preset-wind @unocss/preset-icons @unocss/reset svelte-headlessui @melt-ui/svelte
 ```
 
 ## UnoCSS Config
@@ -27,13 +27,26 @@ Create a `unocss.config.ts` file.
 ```typescript title="unocss.config.ts"
 import { defineConfig } from 'unocss';
 import presetWind from '@unocss/preset-wind';
+import transformerVariantGroup from '@unocss/transformer-variant-group';
+import transformerDirectives from '@unocss/transformer-directives';
+import presetIcons from '@unocss/preset-icons'
 
 import { presetAtoUI } from 'ato-ui';
 
 export default defineConfig({
   presets: [
+	presetIcons({
+        extraProperties: {
+            'display': 'inline-block',
+            'vertical-align': 'middle',
+        },
+    }),
     presetWind(),
     presetAtoUI(),
+  ],
+  transformers: [
+    transformerVariantGroup(),
+    transformerDirectives()
   ],
 })
 ```

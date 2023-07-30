@@ -7,6 +7,7 @@
     @apply w-full text-surface-900-50;
 }
 
+/* 
 .prose > :is(h1, h2, h3, h4, h5, h6) > a {
     position: relative;
 }
@@ -21,7 +22,7 @@
     transition: 0.25s all ease-in-out;
 }
 
-/* .prose > :is(h1, h2, h3, h4, h5, h6) > a:hover:before {
+.prose > :is(h1, h2, h3, h4, h5, h6) > a:hover:before {
     opacity: 1;
 }
 

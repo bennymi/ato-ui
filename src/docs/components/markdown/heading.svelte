@@ -54,15 +54,12 @@
 <div class="relative text-surface-900-50">
     {#if headerTag === 'h1'}
         <h1
-            id={headerId}
             class="{hClasses}"
             on:mouseenter={enterHeader}
             on:mouseleave={leaveHeader}
             {...$$restProps}
         >
-            <a href="#{headerId}">
-                <slot />
-            </a>
+            <slot />
         </h1>
     {:else if headerTag === 'h2'}
         <h2
@@ -126,7 +123,7 @@
         </h6>
     {/if}
 
-	{#if showCopyButton}
+	{#if showCopyButton && headerTag !== 'h1'}
 		<button
 			on:click={copyUrl}
 			on:mouseenter={() => (hoveringButton = true)}
