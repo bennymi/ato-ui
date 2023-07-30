@@ -1,8 +1,8 @@
 <!-- MDsveX Layout Component -->
 <script context="module">
-	import { h2 } from '$docs/components/markdown';
+	import { h1, h2, h3, h4, h5, h6 } from '$docs/components/markdown';
 
-	export { h2 };
+	export { h1, h2, h3, h4, h5, h6 };
 </script>
 
 <slot />

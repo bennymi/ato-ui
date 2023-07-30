@@ -1,14 +1,11 @@
 import { resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { visit } from 'unist-util-visit';
-// import rehypeSlug from 'rehype-slug';
-// import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 import { highlightCode } from './src/docs/mdsvex/highlight.js';
 
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-
 
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = {
@@ -18,33 +15,20 @@ export const mdsvexOptions = {
 		highlighter: highlightCode
 	},
     rehypePlugins: [
-        rehypeTest
+        rehypeCustomHeadings
 	],
-	// rehypePlugins: [
-	// 	rehypeSlug,
-	// 	[
-	// 		rehypeAutolinkHeadings,
-	// 		{
-	// 			behavior: 'wrap',
-	// 			test: ['h2', 'h3', 'h4', 'h5', 'h6']
-	// 		}
-	// 	]
-	// ]
 };
 
-
-function rehypeTest() {
+function rehypeCustomHeadings() {
 	return async (tree) => {
-		// Replace `Component.pre` tags with regular `pre` tags.
-		// This enables us to use rehype-pretty-code with our custom `pre` component.
+		// Pass some extra parameters to our custom header tags.
+		const hTags = ['Components.h1', 'Components.h2', 'Components.h3', 'Components.h4', 'Components.h5', 'Components.h6'];
+
 		visit(tree, (node) => {
-            if (node?.type === 'element' && node?.tagName === 'Components.h2') {
-                // console.log('Node:', node);
-                node.properties['content'] = node.children[0].value;
+            if (node?.type === 'element' && hTags.includes(node?.tagName)) {
+				node.properties['content'] = node.children[0].value;
+                node.properties['headerTag'] = node.tagName.split('.')[1];
             }
-			// if (node?.type === 'element' && node?.tagName === 'Components.pre') {
-			// 	node.tagName = 'pre';
-			// }
 		});
 	};
 }

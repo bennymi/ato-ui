@@ -9,6 +9,8 @@
 	export let disabledTabs: boolean | string[] = [];
 	/** Set the tab headers. For each header provide a key, a title, and optionally an iconify icon. */
 	export let tabHeaders: TabHeader[];
+	/** Aria label for the tabs. */
+	export let ariaLabel: string;
 
 	/** Set the border style. */
 	export let borderStyle = 'border-b-1 border-surface-100-200';
@@ -37,7 +39,11 @@
 </script>
 
 <div {...$root} use:root class="w-full">
-	<div {...$list} use:list class="w-full flex {justifyHeaders} items-center mb-4 {borderStyle}">
+	<div 
+		{...$list} use:list 
+		class="w-full flex {justifyHeaders} items-center mb-4 {borderStyle}"
+		aria-label={ariaLabel}
+	>
 		{#each tabHeaders as item}
 			{@const activated = $value === item.key}
 			{@const deactivated = isDisabled(item.key)}

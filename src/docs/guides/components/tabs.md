@@ -28,7 +28,7 @@ description: A set of panels that allow you to switch between different views.
 ## Preview
 
 <Usage>
-    <TabsList activeTab="styled" {tabHeaders}>
+    <TabsList activeTab="styled" {tabHeaders} ariaLabel="preview">
 		<Tab key="styled">Styled Content</Tab>
 		<Tab key="headless">Headless Content</Tab>
 		<Tab key="extra">Extra Content</Tab>
@@ -56,7 +56,7 @@ description: A set of panels that allow you to switch between different views.
 	];
 </script>
 
-<TabsList bind:activeTab {tabHeaders}>
+<TabsList bind:activeTab {tabHeaders} ariaLabel="preview">
     <Tab key="styled">Styled Content</Tab>
     <Tab key="headless">Headless Content</Tab>
     <Tab key="extra">Extra Content</Tab>
@@ -73,7 +73,7 @@ You can disable tabs by passing in a list of strings to the `disabledTabs` prop.
 
 
 <Usage>
-    <TabsList activeTab="styled" {tabHeaders} disabledTabs={['extra']}>
+    <TabsList activeTab="styled" {tabHeaders} disabledTabs={['extra']} ariaLabel="disabled tabs example">
 		<Tab key="styled">Styled Content</Tab>
 		<Tab key="headless">Headless Content</Tab>
 		<Tab key="extra">Extra Content</Tab>
@@ -81,7 +81,7 @@ You can disable tabs by passing in a list of strings to the `disabledTabs` prop.
 </Usage>
 
 ```svelte
-<TabsList {activeTab} {tabHeaders} disabledTabs={['extra']} >
+<TabsList {activeTab} {tabHeaders} disabledTabs={['extra']} ariaLabel="disabled tabs example">
     <Tab key="styled">Styled Content</Tab>
     <Tab key="headless">Headless Content</Tab>
     <Tab key="extra">Extra Content</Tab>
@@ -93,7 +93,7 @@ You can disable tabs by passing in a list of strings to the `disabledTabs` prop.
 You can adjust the headers spacings using the `justifyHeaders` prop.
 
 <Usage>
-    <TabsList activeTab="styled" {tabHeaders} justifyHeaders="justify-around">
+    <TabsList activeTab="styled" {tabHeaders} justifyHeaders="justify-around" ariaLabel="spacing example">
 		<Tab key="styled">Styled Content</Tab>
 		<Tab key="headless">Headless Content</Tab>
 		<Tab key="extra">Extra Content</Tab>
@@ -101,7 +101,7 @@ You can adjust the headers spacings using the `justifyHeaders` prop.
 </Usage>
 
 ```svelte
-<TabsList {activeTab} {tabHeaders} justifyHeaders="justify-around" >
+<TabsList {activeTab} {tabHeaders} justifyHeaders="justify-around" ariaLabel="spacing example">
     <Tab key="styled">Styled Content</Tab>
     <Tab key="headless">Headless Content</Tab>
     <Tab key="extra">Extra Content</Tab>
