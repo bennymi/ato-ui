@@ -4,7 +4,7 @@
 } */
 
 .prose {
-    @apply w-full;
+    @apply w-full text-surface-900-50;
 }
 
 .prose > :is(h1, h2, h3, h4, h5, h6) > a {
@@ -21,7 +21,7 @@
     transition: 0.25s all ease-in-out;
 }
 
-.prose > :is(h1, h2, h3, h4, h5, h6) > a:hover:before {
+/* .prose > :is(h1, h2, h3, h4, h5, h6) > a:hover:before {
     opacity: 1;
 }
 
@@ -43,7 +43,12 @@
 
 .prose > h4 {
     @apply my-4 text-xl font-bold;
+} 
+
+.prose > p > a, p > a, li > a {
+    @apply font-semibold secondary-500 rounded-container px-1 visited:secondary-800 hover:underline;
 }
+*/
 
 .prose > p {
     @apply text-justify mt-4;
@@ -55,9 +60,4 @@
 
 .prose > p > code, p > code, li > code {
     @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container;
-}
-
-.prose > p > a, p > a, li > a {
-    @apply font-semibold secondary-500 rounded-container px-1 visited:secondary-800 hover:underline;
-    /* @apply font-semibold text-secondary-500 hover:text-secondary-600 visited:text-secondary-700 hover:underline; */
 }

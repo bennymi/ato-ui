@@ -15,16 +15,17 @@ export const mdsvexOptions = {
 		highlighter: highlightCode
 	},
     rehypePlugins: [
-        rehypeCustomHeadings
+        rehypeCustomComponents
 	],
 };
 
-function rehypeCustomHeadings() {
+function rehypeCustomComponents() {
+	// @ts-ignore:next-line
 	return async (tree) => {
-		// Pass some extra parameters to our custom header tags.
 		const hTags = ['Components.h1', 'Components.h2', 'Components.h3', 'Components.h4', 'Components.h5', 'Components.h6'];
 
 		visit(tree, (node) => {
+			// Check h tags, and pass some extra parameters to the custom components.
             if (node?.type === 'element' && hTags.includes(node?.tagName)) {
 				node.properties['content'] = node.children[0].value;
                 node.properties['headerTag'] = node.tagName.split('.')[1];
