@@ -8,7 +8,7 @@ description: A set of panels that allow you to switch between different views.
     import tabs_list_docs from '$lib/components/tabs/tabs-list.svelte?raw&sveld';
     import tab_docs from '$lib/components/tabs/tabs.svelte?raw&sveld';
 
-	import { TabsList, Tab } from '@ato-ui';
+	import { TabsList, Tab } from 'ato-ui';
 
 	const tabHeaders = [
 		{
@@ -24,8 +24,6 @@ description: A set of panels that allow you to switch between different views.
 		{ key: 'extra', title: 'Extra' }
 	];
 </script>
-
-Tabs allow you to switch between different views.
 
 ## Preview
 

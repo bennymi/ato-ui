@@ -4,7 +4,7 @@ description: A set of panels that allow you to switch between different views.
 ---
 
 <script>
-	import { TabsList, Tab } from '@ato-ui';
+	import { TabsList, Tab } from 'ato-ui';
 
 	const tabHeaders = [
 		{
