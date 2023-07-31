@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type { NavIcon, Navigation, NavGroup } from './types';
+	import { fade, slide } from 'svelte/transition';
+	import { page } from '$app/stores';
+
+	import type { NavIcon, Navigation, NavGroup } from '$components';
+	import { HamburgerMenu, SidebarGroup } from '$components';
+
 	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
 	import { darkTheme } from '$lib/stores/lightswitch';
 	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
-	import HamburgerMenu from './HamburgerMenu.svelte';
-	import SidebarGroup from './SidebarGroup.svelte';
-	import { page } from '$app/stores';
-	import { fade, slide } from 'svelte/transition';
 
 	export let navigation: Navigation = [];
 	export let icons: NavIcon[] = [];
@@ -28,11 +29,13 @@
 	<div class="AtoNavBarTitle">
 		<slot name="title"><!-- optional fallback --></slot>
 	</div>
-	
+
 	<div class="flex gap-2 justify-between items-center">
 		<nav class="AtoNavBarMenu space-x-4 text-surface-900-50 hidden md:inline-flex">
 			{#each navigation as { navTitle, landingPath }}
-				<a class="font-bold transition-all duration-200 hover:(text-primary-500)" href={landingPath}>{navTitle}</a>
+				<a class="font-bold transition-all duration-200 hover:(text-primary-500)" href={landingPath}
+					>{navTitle}</a
+				>
 			{/each}
 		</nav>
 		<div class="hidden md:inline-flex">

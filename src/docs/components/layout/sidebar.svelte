@@ -2,8 +2,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	import SidebarGroup from './SidebarGroup.svelte';
-	import type { NavGroup } from './types';
+	import { SidebarGroup, type NavGroup } from '$components';
 
 	export let showSidebar = true;
 	export let groups: NavGroup[];

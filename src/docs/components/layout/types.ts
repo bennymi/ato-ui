@@ -21,7 +21,7 @@ export type NavGroup = {
     hideTitle?: boolean,
     groupIcon?: string,
     items: NavGroupItem[][],
-    components?: ComponentItem[],
+    // components?: ComponentItem[],
 }
 
 export type NavPage = {

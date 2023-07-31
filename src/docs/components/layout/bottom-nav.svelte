@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { NavGroupItem } from './types.d';
+	import type { NavGroupItem } from './types';
 
 	export let previous: NavGroupItem | null = null;
 	export let next: NavGroupItem | null = null;
