@@ -17,17 +17,17 @@ const config = {
 			components: [
 				{
 					name: 'CodeBlock',
-					location: '/src/docs/mdsvex/CodeBlock.svelte',
+					location: '/src/docs/components/CodeBlock.svelte',
 					importPaths: ['src/docs/guides/']
 				},
 				{
 					name: 'Usage',
-					location: '/src/docs/mdsvex/Usage.svelte',
+					location: '/src/docs/components/Usage.svelte',
 					importPaths: ['src/docs/guides/']
 				},
 				{
 					name: 'Example',
-					location: '/src/docs/mdsvex/Example.svelte',
+					location: '/src/docs/components/Example.svelte',
 					importPaths: ['src/docs/guides/']
 				}
 			]

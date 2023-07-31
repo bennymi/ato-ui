@@ -4,7 +4,7 @@ description: A combobox component with autocomplete.
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
+    import { PropsTable } from '$components';
     import docs from '$lib/components/combobox/Combobox.svelte?raw&sveld';
     import Combobox from '$lib/components/combobox/Combobox.svelte';
 

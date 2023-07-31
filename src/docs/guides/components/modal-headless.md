@@ -4,7 +4,6 @@ description: An accessible headless modal component.
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
     import docs from '$lib/components/modal/Modal.svelte?raw&sveld';
     import Modal from '$lib/components/modal/Modal.svelte';
 

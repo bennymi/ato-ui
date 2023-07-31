@@ -5,7 +5,7 @@ description: A radio group example for Svelte.
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
+    import { PropsTable } from '$components';
     import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
     import docs from '$lib/components/radio-group/RadioGroup.svelte?raw&sveld';
 

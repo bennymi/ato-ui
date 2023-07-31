@@ -4,7 +4,7 @@ description: A simple accordion component.
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
+    import { PropsTable } from '$components';
     import accordion_docs from '$lib/components/accordion/Accordion.svelte?raw&sveld';
     import accordion_item_docs from '$lib/components/accordion/AccordionItem.svelte?raw&sveld';
     import Accordion from '$lib/components/accordion/Accordion.svelte';

@@ -5,7 +5,7 @@ component: components/avatar/Avatar.svelte
 ---
 
 <script lang="ts">
-	import PropsTable from './PropsTable.svelte';
+	import { PropsTable } from '$components';
     import docs from '$lib/components/avatar/Avatar.svelte?raw&sveld';
 
 	import { ToggleSwitch, Avatar } from '$lib';

@@ -4,7 +4,7 @@ description: Create a table of contents for a target container element, so that 
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
+    import { PropsTable } from '$components';
     import docs from '$lib/components/table-of-contents/TableOfContents.svelte?raw&sveld';
 </script>
 

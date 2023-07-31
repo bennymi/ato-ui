@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import { descriptions } from '../../search';
-	import { keywords as filter_values } from '../../search/types';
-	import { generate_css, get_uno_generator_configs } from '../../search/utils';
+	import { descriptions } from '$docs/search';
+	import { keywords as filter_values } from '$docs/search/types';
+	import { generate_css, get_uno_generator_configs } from '$docs/search/utils';
 	import type { UnoGenerator } from 'unocss';
 
-	import CodeBlock from '../../mdsvex/CodeBlock.svelte';
+	import CodeBlock from '$components/CodeBlock.svelte';
 
 	let search = '';
 	let uno: UnoGenerator;
@@ -145,7 +145,7 @@
 						<CodeBlock
 							darkCode={dark_html}
 							lightCode={light_html}
-							showHeader={false}
+							hideHeader={true}
 							title={`CSS for: ${example}`}
 							lang="css"
 							rawCode={example_css}

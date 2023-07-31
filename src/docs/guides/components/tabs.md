@@ -4,7 +4,7 @@ description: A set of panels that allow you to switch between different views.
 ---
 
 <script>
-	import PropsTable from './PropsTable.svelte';
+	import { PropsTable } from '$components';
     import tabs_list_docs from '$lib/components/tabs/tabs-list.svelte?raw&sveld';
     import tab_docs from '$lib/components/tabs/tabs.svelte?raw&sveld';
 

@@ -7,7 +7,7 @@ icon: i-material-symbols:search-rounded
  -->
 
 <script>
-    import Search from './Search.svelte';
+    import { Search } from '$components';
 </script>
 
 <svelte:head>

@@ -5,7 +5,7 @@ description: An accessible modal component with a backdrop.
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
+    import { PropsTable } from '$components';
     import docs from '$lib/components/modal/Modal.svelte?raw&sveld';
     import Modal from '$lib/components/modal/Modal.svelte';
 

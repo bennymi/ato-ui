@@ -5,7 +5,7 @@ component: components/toggle-switch/ToggleSwitch.svelte
 ---
 
 <script>
-    import PropsTable from './PropsTable.svelte';
+    import { PropsTable } from '$components';
     import docs from '$lib/components/toggle-switch/ToggleSwitch.svelte?raw&sveld';
     import ToggleSwitch from '$lib/components/toggle-switch/ToggleSwitch.svelte';
 
