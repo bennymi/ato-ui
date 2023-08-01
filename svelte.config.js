@@ -1,7 +1,7 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
-import { mdsvex } from 'mdsvex';
+import { mdsvex } from '@huntabyte/mdsvex';
 import { mdsvexOptions } from './mdsvex.config.js';
 
 import svelteGlobalComponents from './src/docs/mdsvex/svelte-global-components.js';

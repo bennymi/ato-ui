@@ -8,5 +8,5 @@ export { default as h5 } from './heading.svelte';
 export { default as h6 } from './heading.svelte';
 
 export { default as p } from './p.svelte';
-
+export { default as pre } from'./pre.svelte';
 export { default as ul } from './ul.svelte';
