@@ -7,6 +7,7 @@
     @apply w-full text-surface-900-50;
 }
 
+
 /* 
 .prose > :is(h1, h2, h3, h4, h5, h6) > a {
     position: relative;
@@ -61,4 +62,63 @@
 
 .prose > p > code, p > code, li > code {
     @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container;
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(var(--color-surface-950)) transparent;
+	/* scrollbar-color: rgba(var(--color-primary-500)) transparent; */
+}
+
+/* Other browsers */
+*::-webkit-scrollbar {
+	width: 0.75rem;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: rgba(var(--color-surface-950));
+	background-clip: padding-box;
+	border-radius: 0.5rem;
+	border: 0.25rem solid transparent;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: rgba(var(--color-surface-500));
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+/* Firefox */
+body {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(var(--color-primary-900)) transparent;
+}
+
+/* Other browsers */
+body::-webkit-scrollbar {
+	width: 0.75rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(var(--color-surface-900));
+}
+
+body::-webkit-scrollbar-thumb {
+	background: rgba(var(--color-surface-500));
+	background-clip: padding-box;
+	border-radius: 0.5rem;
+	border: 0.25rem solid transparent;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: rgba(var(--color-surface-500));
+	background-clip: padding-box;
 }

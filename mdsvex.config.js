@@ -60,25 +60,11 @@ function rehypeCustomComponents() {
 		const hTags = ['Components.h1', 'Components.h2', 'Components.h3', 'Components.h4', 'Components.h5', 'Components.h6'];
 
 		visit(tree, (node, index, parent) => {
-
-			// if (node?.type === 'raw') {
-			// 	console.log('node:', node);
-			// }
-
 			// Check h tags, and pass some extra parameters to the custom components.
             if (node?.type === 'element' && hTags.includes(node?.tagName)) {
 				node.properties['content'] = node.children[0].value;
                 node.properties['headerTag'] = node.tagName.split('.')[1];
-				// console.log('custom components');
             }
-
-			// else if (node?.type === 'element' && node?.tagName === 'code') {
-			// 	console.log('code:', node);
-			// }
-			
-			// else if (node?.type === 'element' && ['pre', 'Components.pre'].includes(node?.tagName)) {
-			// 	console.log('node.tagName: pre |', node);
-			// }
 		});
 	};
 }
@@ -96,14 +82,33 @@ function rehypeComponentPreToPre() {
 	};
 }
 
+/**
+ * Escapes the html string of code blocks so we can pass
+ * it on to our custom `Component.pre` element.
+ * @param {string} html 
+ * @returns {string}
+ */
+function escapeHtml(html) {
+	return html.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+}
+
 function rehypePreToComponentPre() {
 	// @ts-ignore:next-line
 	return async (tree) => {
-		// Replace `pre` tags with our custom `Component.pre` tags.
-		// This enables us to use rehype-pretty-code with our custom `pre` component.
+		/**
+		 * Replace `pre` tags with our custom `Component.pre` tags.
+		 * This enables us to use rehype-pretty-code with our custom `pre` component.
+		 * We also add the raw html string as a parameter for the copy button.
+		 */
 		visit(tree, (node) => {
 			if (node?.type === 'element' && node?.tagName === 'pre') {
 				node.tagName = 'Components.pre';
+
+				if (node?.children.length > 0) {
+					const value = node.children[0].value.trim();
+					const rawHTMLString = value.substring(8, value.length - 2);
+					node.properties['rawHTMLString'] = escapeHtml(rawHTMLString);
+				}
 			}
 		});
 	};
@@ -145,23 +150,15 @@ function rehypeRenderCode() {
 					return;
 				}
 
-				// const codeString = toHtml(codeEl, {
-				// 	allowDangerousCharacters: true,
-				// 	allowDangerousHtml: true,
-				// });
 				const codeString = tabsToSpaces(
 					toHtml(codeEl, {
 						allowDangerousCharacters: true,
 						allowDangerousHtml: true,
 					})
 				);
-				// if (codeString.includes('script') && codeString.includes('TableOfContents')) {
-				// 	console.log('codeString:', codeString);
-				// 	console.log('\n-------------------\n');
-				// }
 
 				codeEl.type = 'raw';
-				codeEl.value = `{@html \`${escapeSvelte(codeString)}\`}`.trim();
+				codeEl.value = `{@html \`${escapeSvelte(codeString)}\`}`;
 			}
 		});
 	};
