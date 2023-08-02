@@ -68,12 +68,11 @@
 * {
 	scrollbar-width: thin;
 	scrollbar-color: rgba(var(--color-surface-950)) transparent;
-	/* scrollbar-color: rgba(var(--color-primary-500)) transparent; */
 }
 
 /* Other browsers */
 *::-webkit-scrollbar {
-	width: 0.75rem;
+	width: 1rem;
 }
 
 *::-webkit-scrollbar-track {
@@ -104,7 +103,7 @@ body {
 
 /* Other browsers */
 body::-webkit-scrollbar {
-	width: 0.75rem;
+	width: 1rem;
 }
 
 body::-webkit-scrollbar-track {

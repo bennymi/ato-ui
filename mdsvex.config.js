@@ -3,6 +3,7 @@
  */
 
 import { resolve } from 'path';
+import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { visit } from 'unist-util-visit';
 import { toHtml } from 'hast-util-to-html';
@@ -16,7 +17,10 @@ import { highlightCode } from './src/docs/mdsvex/highlight.js';
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const prettyCodeOptions = {
-	theme: 'github-dark',
+	// theme: 'github-dark',
+	theme: JSON.parse(
+		readFileSync(resolve(__dirname, './static/moonlight-2-theme.json'), 'utf-8')
+	),
 	keepBackground: false,
 	// @ts-ignore:next-line
 	onVisitLine(node) {
