@@ -7,6 +7,28 @@
     @apply w-full text-surface-900-50;
 }
 
+[data-highlighted-line] {
+	/* @apply bg-surface-400/80; */
+	background: rgba(var(--color-surface-400), 0.75);
+	box-shadow: -5px 0 0px 0 rgba(var(--color-primary-300));
+}
+
+pre > code {
+	display: grid;
+}
+
+[data-chars-id] {
+	@apply shadow-none p-1 border-b-2 rounded-btn;
+  }
+  
+  [data-chars-id] span {
+	@apply !text-inherit;
+  }
+  
+  [data-chars-id='v'] {
+	@apply !text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold;
+  }
+
 
 /* 
 .prose > :is(h1, h2, h3, h4, h5, h6) > a {
@@ -64,6 +86,7 @@
     @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container;
 }
 
+/* ---------------------------- Scrollbars ---------------------------- */
 /* Firefox */
 * {
 	scrollbar-width: thin;

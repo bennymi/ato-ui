@@ -34,7 +34,7 @@
 <div class="relative">
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -->
 	<pre
-		class="mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-container border border-surface-500/50 bg-surface-900/90-900/60 p-4 {className} {activeStyles}"
+		class="mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-container border border-surface-500/50 bg-surface-900/90-900/60 py-4 px-0.5 {className} {activeStyles}"
 		tabindex="0"
 		{...$$restProps}>
 <slot />
