@@ -8,7 +8,7 @@ icon: i-material-symbols-rocket-launch-rounded
 
 Use the package manager of your choice. Here is the `pnpm` install:
 
-```shell hideHeader
+```bash
 pnpm add -D ato-ui
 ```
 
@@ -16,13 +16,13 @@ pnpm add -D ato-ui
 
 We rely on some dependencies, so make sure they are also installed.
 
-```shell hideHeader
+```bash
 pnpm add -D unocss @unocss/core @unocss/preset-wind @unocss/preset-icons @unocss/reset svelte-headlessui @melt-ui/svelte
 ```
 
 ## UnoCSS Config
 
-Create a `unocss.config.ts` file.
+Create a `unocss.config.ts` file with all the required presets and transformers.
 
 ```typescript title="unocss.config.ts"
 import { defineConfig } from 'unocss';
@@ -53,7 +53,7 @@ export default defineConfig({
 
 ## Vite Config
 
-Set up your `vite.config.ts` file.
+Set up your `vite.config.ts` file, by importing UnoCSS and passing it the location of the config file.
 
 ```typescript title="vite.config.ts"
 import { sveltekit } from '@sveltejs/kit/vite';
@@ -72,11 +72,7 @@ export default defineConfig({
 
 ## Update Layout
 
-Next we need to setup the root `+layout.svelte` file by importing `uno.css`. You can also do [style resetting](https://unocss.dev/guide/style-reset) like tailwind does. 
-
-You can then import a theme from `ato-ui/themes/...` or use a custom one that you created in our [designer](/designer) page.
-
-Our themes also all have a class name that is the same as the css file name, so make sure to add it to a wrapping `div`. You can see all our themes in our [styles repo page](https://github.com/bennymi/ato-ui/tree/main/src/lib/styles/themes).
+Next we need to setup the root `+layout.svelte` file by importing `uno.css`. You can also do [style resetting](https://unocss.dev/guide/style-reset) like tailwind does. You can then import a theme from `ato-ui/themes/...` or use a custom one that you created in our [designer](/designer) page. Our themes also all have a class name that is the same as the css file name, so make sure to add it to a wrapping `div`. You can see all our themes in our [styles repo page](https://github.com/bennymi/ato-ui/tree/main/src/lib/styles/themes).
 
 ```svelte title="./src/routes/+layout.svelte"
 <script lang="ts">
@@ -93,6 +89,4 @@ Our themes also all have a class name that is the same as the css file name, so 
 
 ## Recommended VSCode Extensions
 
-We recommend installing a few VSCode extensions to make the development experience more enjoyable. The [Unocss extension](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) and the [Iconify Intellisense extension](https://marketplace.visualstudio.com/items?itemName=antfu.iconify).
-
-If you have the Tailwind extension installed you probably also want to disable it for projects in which you are using UnoCSS, since the extensions might not work together well.
+We recommend installing a few VSCode extensions to make the development experience more enjoyable: the [Unocss extension](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) and the [Iconify Intellisense extension](https://marketplace.visualstudio.com/items?itemName=antfu.iconify). If you have the Tailwind extension installed you probably also want to disable it for projects in which you are using UnoCSS, since the extensions might not work together well.

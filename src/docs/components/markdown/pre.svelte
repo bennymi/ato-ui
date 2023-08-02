@@ -5,7 +5,7 @@
 	let className: string | undefined | null = undefined;
 	export { className as class };
 
-	export let rawHTMLString: string = '';
+	// export let rawHTMLString: string = '';
 
 	let codeElement: HTMLElement;
 	// let copyString = '';
@@ -42,7 +42,7 @@
 	// }
 </script>
 
-<div class="relative bg-surface-800">
+<div class="relative bg-surface-800 rounded-container">
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -- flex is for removing the whitespaces -->
 	<pre
 		bind:this={codeElement}
