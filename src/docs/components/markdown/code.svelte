@@ -3,6 +3,6 @@
 	export { className as class };
 </script>
 
-<p class="mb-4 leading-7 text-justify selection:(text-on-primary bg-primary-500/70) {className}" {...$$restProps}>
+<code class="px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container {className}" {...$$restProps}>
 	<slot />
-</p>
+</code>

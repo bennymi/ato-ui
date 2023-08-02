@@ -108,11 +108,11 @@ function rehypePreToComponentPre() {
 			if (node?.type === 'element' && node?.tagName === 'pre') {
 				node.tagName = 'Components.pre';
 
-				if (node?.children.length > 0) {
-					const value = node.children[0].value.trim();
-					const rawHTMLString = value.substring(8, value.length - 2);
-					node.properties['rawHTMLString'] = escapeHtml(rawHTMLString);
-				}
+				// if (node?.children.length > 0) {
+				// 	const value = node.children[0].value.trim();
+				// 	const rawHTMLString = value.substring(8, value.length - 2);
+				// 	node.properties['rawHTMLString'] = escapeHtml(rawHTMLString);
+				// }
 			}
 		});
 	};

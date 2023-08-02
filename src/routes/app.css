@@ -9,7 +9,8 @@
 
 [data-highlighted-line] {
 	/* @apply bg-surface-400/80; */
-	background: rgba(var(--color-surface-400), 0.75);
+	/* background: rgba(var(--color-surface-400), 1); */
+	@apply bg-surface-950/60;
 	box-shadow: -5px 0 0px 0 rgba(var(--color-primary-300));
 }
 
@@ -19,15 +20,15 @@ pre > code {
 
 [data-chars-id] {
 	@apply shadow-none p-1 border-b-2 rounded-btn;
-  }
-  
-  [data-chars-id] span {
+}
+
+[data-chars-id] span {
 	@apply !text-inherit;
-  }
-  
-  [data-chars-id='v'] {
+}
+
+[data-chars-id='v'] {
 	@apply !text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold;
-  }
+}
 
 
 /* 
@@ -83,7 +84,7 @@ pre > code {
 */
 
 .prose > p > code, p > code, li > code {
-    @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container;
+    --at-apply: "apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container selection:(text-on-primary bg-primary-500/70)";
 }
 
 /* ---------------------------- Scrollbars ---------------------------- */

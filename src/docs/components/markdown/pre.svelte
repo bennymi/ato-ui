@@ -7,13 +7,20 @@
 
 	export let rawHTMLString: string = '';
 
-	let copyString = '';
+	let codeElement: HTMLElement;
+	// let copyString = '';
 	let copyState = false;
-	let activeStyles = 'hover:(text-primary-300 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px]) focus:(text-primary-300 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px])';
+
+	const focusStyles = 'focus:(text-primary-300 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px])';
+	let activeStylesContainer = `shadow-[rgba(var(--color-surface-900))_0px_0px_2px_2px] hover:(text-primary-300) ${focusStyles}`;
+	let activeStylesBtn = `hover:(text-primary-300 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px]) ${focusStyles}`;
 
 	const handleCopy = () => {
 		// Add code to clipboard
-		navigator.clipboard.writeText(copyString ?? '');
+		// navigator.clipboard.writeText(copyString ?? '');
+		if (codeElement) {
+			navigator.clipboard.writeText(codeElement.innerText ?? '');
+		}
 
 		// Give feedback
 		copyState = true;
@@ -22,26 +29,30 @@
 		}, 1500);
 	};
 
-	$: if (rawHTMLString && browser) {
-		const code = new DOMParser().parseFromString(rawHTMLString, 'text/xml');
+	// $: if (codeElement) {
+	// 	codeElement.
+	// }
 
-		if (code.documentElement) {
-			copyString = code.documentElement.textContent ?? '';
-		}
-	}
+	// $: if (rawHTMLString && browser) {
+	// 	const code = new DOMParser().parseFromString(rawHTMLString, 'text/xml');
+
+	// 	if (code.documentElement) {
+	// 		copyString = code.documentElement.textContent ?? '';
+	// 	}
+	// }
 </script>
 
-<div class="relative">
-	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -->
+<div class="relative bg-surface-800">
+	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -- flex is for removing the whitespaces -->
 	<pre
-		class="mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-container border border-surface-500/50 bg-surface-900/90-900/60 py-4 px-0.5 {className} {activeStyles}"
+		bind:this={codeElement}
+		class="flex mb-4 mt-6 h-fit max-h-[650px] overflow-x-auto rounded-container border border-surface-500/50 py-4 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
 		tabindex="0"
 		{...$$restProps}>
 <slot />
 	</pre>
-	
 	<button
-		class="absolute right-4 top-4 z-10 text-2xl w-8 h-8 text-surface-50 transition-all bg-surface-950/80 aspect-square rounded-btn {activeStyles}"
+		class="absolute right-4 top-4 z-10 text-2xl w-8 h-8 text-surface-50 transition-all bg-surface-950/80 aspect-square rounded-btn  {activeStylesBtn}"
 		aria-label="copy code"
 		on:click={handleCopy}
 		data-code-copy
@@ -59,7 +70,7 @@
 </div>
 
 <style>
-	/* [data-code-copy] {
-		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	} */
+	pre > :global(code > span > span::selection), pre > :global(code > span::selection) {
+		--at-apply: "text-inherit bg-surface-800/90";
+	}
 </style>
