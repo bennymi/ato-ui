@@ -54,7 +54,7 @@
 <slot />
 	</pre>
 	{#if title}
-		<span class="select-none transition-all font-mono absolute right-2 -top-3.5 z-10 bg-surface-950/80 px-1 text-on-surface-950 ring-1 ring-primary-300 rounded-container">{title}</span>
+		<span class="transition-all font-mono absolute right-2 -top-3.5 z-10 bg-surface-950/90 px-1 text-on-surface-950 ring-1 ring-primary-300 rounded-container">{title}</span>
 	{/if}
 	<button
 		class="absolute right-4 top-4 z-10 text-2xl w-8 h-8 text-surface-50 transition-all bg-surface-950/80 aspect-square rounded-btn {activeStylesBtn}"
@@ -77,6 +77,6 @@
 <style>
 	pre > :global(code > span > span::selection),
 	pre > :global(code > span::selection) {
-		--at-apply: 'text-inherit bg-surface-800/90';
+		--at-apply: 'text-inherit bg-surface-950/95';
 	}
 </style>

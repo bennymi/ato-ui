@@ -37,7 +37,7 @@ const prettyCodeOptions = {
 		return getHighlighter({
 			...options,
 			langs: BUNDLED_LANGUAGES.filter(({ id }) => {
-				return ['svelte', 'typescript', 'css', 'javascript', 'bash', 'shell'].includes(id);
+				return ['svelte', 'typescript', 'html', 'css', 'javascript', 'bash', 'shell'].includes(id);
 			}),
 		});
 	},
@@ -139,7 +139,7 @@ function rehypeHandleMetadata() {
 				if (preElement.tagName !== 'pre' || !('data-rehype-pretty-code-title' in titleElement.properties)) {
 					return;
 				}
-				
+
 				if (titleElement.children.length > 0 && 'value' in titleElement.children[0]) {
 					preElement.properties['title'] = titleElement.children[0].value;
 					node.children.shift();

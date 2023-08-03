@@ -105,7 +105,7 @@ Ato-UI's spinners can be customized with different colors. Each one is a bit dif
 
 ### Circle
 
-Pattern: `s-circle-{color}`.
+Pattern: `s-circle-[color]`.
 
 You can change the border type and size of circles by using regular Tailwind classes like: `border-dashed`,  `border-spotted`, `border-6`, and `border-8`.
 
@@ -124,7 +124,7 @@ You can change the border type and size of circles by using regular Tailwind cla
 
 ### Circle Split
 
-Pattern: `s-circle-split-{color}`.
+Pattern: `s-circle-split-[color]`.
 
 ```svelte example column
 <div class="text-surface-900-50 font-mono flex flex-col gap-2">
@@ -137,7 +137,7 @@ Pattern: `s-circle-split-{color}`.
 
 ### Squares Hover
 
-Pattern: `s-squares-hover-{color1}-{color2}-{color3}`. You can set the colors of all three layers.
+Pattern: `s-squares-hover-[color1]-[color2]-[color3]`. You can set the colors of all three layers.
 
 ```svelte example column
 <div class="text-surface-900-50 font-mono flex flex-col gap-2">
@@ -152,7 +152,7 @@ Pattern: `s-squares-hover-{color1}-{color2}-{color3}`. You can set the colors of
 
 ### Squares Rotate
 
-Pattern: `s-squares-hover-{color1}-{color2}`. You can set the colors of both rotating squares. The second color is optional.
+Pattern: `s-squares-hover-[color1]-[color2]`. You can set the colors of both rotating squares. The second color is optional.
 
 ```svelte example column
 <div class="text-surface-900-50 font-mono flex flex-col gap-2">
@@ -165,7 +165,7 @@ Pattern: `s-squares-hover-{color1}-{color2}`. You can set the colors of both rot
 
 ### Corners
 
-Pattern: `s-corners-{color}`. 
+Pattern: `s-corners-[color]`. 
 
 You can also change the background with some additional classes such as:`bg-gradient-primary-secondary-tertiary`.
 
@@ -184,7 +184,7 @@ You can also change the background with some additional classes such as:`bg-grad
 
 ### Corners Outline
 
-Pattern: `s-corners-outline-{color}`.
+Pattern: `s-corners-outline-[color]`.
 
 ```svelte example column
 <div class="text-surface-900-50 font-mono flex flex-col gap-2">

@@ -15,7 +15,7 @@ description: Available background tokens that allow you to easily set gradient o
 
 ## Background & Text
 
-`{color}-{shade}`: Sets the background color with the corresponding `text-on` color. 
+`[color]-[shade]`: Sets the background color with the corresponding `text-on` color. 
 
 Example: `primary-500` becomes `bg-primary-500 text-on-primary-500`.
 
@@ -29,7 +29,7 @@ Example: `primary-500` becomes `bg-primary-500 text-on-primary-500`.
 
 ## Light & Dark Mode
 
-`bg-{color}-{shade1}-{shade2}`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead.
+`bg-[color]-[shade1]-[shade2]`: In light mode the background is set with the color and the first shade, and in dark mode the second shade is used instead.
 
 Example: `bg-surface-50-950` becomes `bg-surface-50 dark:bg-surface-950`. Toggle the dark / light switch to see the changes.
 
@@ -43,7 +43,7 @@ Example: `bg-surface-50-950` becomes `bg-surface-50 dark:bg-surface-950`. Toggle
 
 ## Inverse Light & Dark Mode
 
-`bg-inverse-{color1}-{shade1}-{color2}-{shade2}`: Sets the first color with the first shade as the background color, and the 2nd color with the 2nd shade as the background color in dark mode. `shade` is always optional (`500` is the default).
+`bg-inverse-[color1]-[shade1]-[color2]-[shade2]`: Sets the first color with the first shade as the background color, and the 2nd color with the 2nd shade as the background color in dark mode. `shade` is always optional (`500` is the default).
 
 Example: `bg-inverse-primary-50-surface-800` becomes `bg-primary-50 dark:bg-surface-800`.
 
@@ -61,7 +61,7 @@ Example: `bg-inverse-primary-500/20-surface/33` or `bg-inverse-primary/20-surfac
 
 ## Gradients
 
-`bg-gradient-{direction}-{color1}-{shade1}-{color2}-{shade2}-{color3}-{shade3}`: Sets the background to be a gradient of the three colors in the specified direction. The direction and shades are optional. It's also okay to just use 2 colors. For each color you can also specify an opacity. 
+`bg-gradient-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`: Sets the background to be a gradient of the three colors in the specified direction. The direction and shades are optional. It's also okay to just use 2 colors. For each color you can also specify an opacity. 
 
 Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction is `r` if no direction is specified.
 
@@ -71,7 +71,7 @@ Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction 
 
 ## Mesh Gradients
 
-`bg-mesh-{color}-{shade}/{opacity}-x{percentage}-y{percentage}`: This pattern creates a mesh gradient background. The `shade` and `opacity` are optional. For the shade the default is `500` and for the opacity the default is `30`. The `x` and `y` are the coordinates in percent and can be positive or negative values at which the color should be placed (`x50-y50`, `x110-y-10`). You can add as many color points as you want.
+`bg-mesh-[color]-[shade]/[opacity]-x[percentage]-y[percentage]`: This pattern creates a mesh gradient background. The `shade` and `opacity` are optional. For the shade the default is `500` and for the opacity the default is `30`. The `x` and `y` are the coordinates in percent and can be positive or negative values at which the color should be placed (`x50-y50`, `x110-y-10`). You can add as many color points as you want.
 
 You additionally will want to set a background color for the container, for example using the light / dark token: `bg-surface-50-950` or with `surface-50-900` so that text colors are also already properly set.
 
@@ -88,7 +88,7 @@ Examples: `bg-mesh-primary/20-x5-y0`, `bg-mesh-secondary-400/20-x20-y20-success/
 
 ## Radial Gradients
 
-`bg-radial-{color1}-{shade1}-{color2}-{shade2}-{color3}-{shade3}`: This creates a radial background gradient. The third color is optional. The shades are also optional.
+`bg-radial-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`: This creates a radial background gradient. The third color is optional. The shades are also optional.
 
 Examples: `bg-radial-primary-secondary`, `bg-radial-primary-700-secondary-700-tertiary-700`.
 

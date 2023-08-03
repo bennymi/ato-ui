@@ -23,8 +23,8 @@
 	/** Set how the headers should be aligned with the justify property. */
 	export let justifyHeaders = 'justify-center';
 
-	const { value, root, list, content, trigger } = createTabs({
-		value: activeTab
+	const { elements: { value, root, list, content, trigger} } = createTabs({
+		defaultValue: activeTab
 	});
 
 	$: isDisabled = (key: string) =>

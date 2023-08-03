@@ -77,7 +77,7 @@ description: Button classes that can be used.
 
 ## Size
 
-Pattern: `btn-{size}`. 
+Pattern: `btn-[size]`. 
 
 `size` can be `sm | md | lg | xl`.
 
@@ -91,7 +91,7 @@ Pattern: `btn-{size}`.
 
 ## Glass
 
-Pattern: `btn-glass-{color}-{shade}`.
+Pattern: `btn-glass-[color]-[shade]`.
 
 The shade is optional.
 
@@ -106,7 +106,7 @@ The shade is optional.
 
 ### Glass Gradients
 
-Pattern: `btn-glass-{direction}-{color1}-{shade1}-{color2}-{shade2}-{color3}-{shade3}`.
+Pattern: `btn-glass-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`.
 
 For each color you can also specify an opacity if you want. The shades are always optional and the third color is also optional.
 
@@ -120,7 +120,7 @@ For each color you can also specify an opacity if you want. The shades are alway
 
 ## Gradient Border
 
-Pattern: `btn-border-{base_color}-{base_shade}-{direction}-{color1}-{shade1}-{color2}-{shade2}-{color3}-{shade3}`.
+Pattern: `btn-border-[base_color]-[base_shade]-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`.
 
 The base color and shade are the background overlay color of the button. You can add an opacity to overwrite the deafault opacity to it.
 
@@ -167,7 +167,7 @@ Allows you to group children button or anchor elements together.
 
 ### Regular
 
-Pattern: `btn-group-{color}-{shade}`.
+Pattern: `btn-group-[color]-[shade]`.
 
 Creates a horizontal button group with the given color and shade. The shade is optional.
 
@@ -205,7 +205,7 @@ Creates a horizontal button group with the given color and shade. The shade is o
 
 ### Vertical
 
-Pattern: `btn-group-vertical-{color}-{shade}`.
+Pattern: `btn-group-vertical-[color]-[shade]`.
 
 Creates a vertical button group with the given color and shade. The shade is optional.
 
@@ -243,7 +243,7 @@ Creates a vertical button group with the given color and shade. The shade is opt
 
 ### Outline
 
-Pattern: `btn-group-outline-{color}-{shade}` or `btn-group-vertical-outline-{color}-{shade}`.
+Pattern: `btn-group-outline-[color]-[shade]` or `btn-group-vertical-outline-[color]-[shade]`.
 
 Create a button group with outlines. This works for both horizontal and vertical groups. Shades are optional.
 

@@ -7,7 +7,7 @@ description: Available tokens related to SVGs, such as fill and stroke color.
 
 ## On-Colors
 
-`fill-on-{color}-{shade}/{opacity}`, `stroke-on-{color}-{shade}/{opacity}`: Applies the fill or stroke color that is best suited for being on the specified color. Shade and opacity are optional.
+`fill-on-[color]-[shade]/[opacity]`, `stroke-on-[color]-[shade]/[opacity]`: Applies the fill or stroke color that is best suited for being on the specified color. Shade and opacity are optional.
 
 Example: `fill-on-primary` becomes `fill-[color:rgb(var(--on-primary-500))]`.
 
