@@ -34,6 +34,9 @@ devDependencies:
   '@huntabyte/mdsvex':
     specifier: ^0.16.8
     version: 0.16.8(svelte@4.1.2)
+  '@iconify-json/logos':
+    specifier: ^1.1.33
+    version: 1.1.33
   '@iconify-json/material-symbols':
     specifier: ^1.1.53
     version: 1.1.53
@@ -678,6 +681,12 @@ packages:
       prismjs: 1.29.0
       svelte: 4.1.2
       vfile-message: 2.0.4
+    dev: true
+
+  /@iconify-json/logos@1.1.33:
+    resolution: {integrity: sha512-XHnob/dyib1oCaHZV0yRLXUfGQAr46pTuO/Y+jx9ImVBVb5jyZfJ+PLgro5pp8fyQkXWV2vq7pdR0yP5s4gcvg==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify-json/material-symbols@1.1.53:
@@ -1885,7 +1894,7 @@ packages:
     dependencies:
       debug: 3.2.7
       is-core-module: 2.12.1
-      resolve: 1.22.3
+      resolve: 1.22.2
     transitivePeerDependencies:
       - supports-color
     dev: true

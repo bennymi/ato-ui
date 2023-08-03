@@ -69,6 +69,7 @@
 	},
 	"devDependencies": {
 		"@huntabyte/mdsvex": "^0.16.8",
+		"@iconify-json/logos": "^1.1.33",
 		"@iconify-json/material-symbols": "^1.1.53",
 		"@iconify-json/mdi": "^1.1.53",
 		"@iconify-json/svg-spinners": "^1.1.1",

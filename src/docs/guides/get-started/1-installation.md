@@ -4,13 +4,15 @@ description: Describes how to set up your project to use Ato-UI and UnoCSS.
 icon: i-material-symbols-rocket-launch-rounded
 ---
 
+<script>
+	import { InstallationTabs } from '$components';
+</script>
+
 # Installation
 
-Use the package manager of your choice. Here is the `pnpm` install:
+Use the package manager of your choice.
 
-```bash
-pnpm add -D ato-ui
-```
+<InstallationTabs />
 
 ## Dependencies
 

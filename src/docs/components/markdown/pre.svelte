@@ -48,16 +48,16 @@
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -- flex is for removing the whitespaces -->
 	<pre
 		bind:this={codeElement}
-		class="flex mb-4 mt-6 h-fit max-h-[650px] overflow-x-auto rounded-container border border-surface-500/50 py-4 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
+		class="flex mb-4 mt-6 h-fit max-h-[650px] overflow-x-auto rounded-container border border-surface-300/50 py-3 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
 		tabindex="0"
 		{...$$restProps}>
 <slot />
 	</pre>
 	{#if title}
-		<span class="transition-all font-mono absolute right-2 -top-3.5 z-10 bg-surface-950/90 px-1 text-on-surface-950 ring-1 ring-primary-300 rounded-container">{title}</span>
+		<span class="transition-all select-none font-mono absolute right-12 -top-3.5 z-10 bg-surface-950/90 px-1 text-on-surface-950 ring-1 ring-primary-300 rounded-container">{title}</span>
 	{/if}
 	<button
-		class="absolute right-4 top-4 z-10 text-2xl w-8 h-8 text-surface-50 transition-all bg-surface-950/80 aspect-square rounded-btn {activeStylesBtn}"
+		class="absolute right-2 top-2 z-10 text-2xl w-8 h-8 text-surface-50 transition-all bg-surface-950/80 aspect-square rounded-btn {activeStylesBtn}"
 		aria-label="copy code"
 		on:click={handleCopy}
 		data-code-copy
