@@ -6,12 +6,14 @@
 	export { className as class };
 
 	// export let rawHTMLString: string = '';
+	export let title = '';
 
 	let codeElement: HTMLElement;
 	// let copyString = '';
 	let copyState = false;
 
-	const focusStyles = 'focus:(text-primary-300 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px])';
+	const focusStyles =
+		'focus:(text-primary-300 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px])';
 	let activeStylesContainer = `shadow-[rgba(var(--color-surface-900))_0px_0px_2px_2px] hover:(text-primary-300) ${focusStyles}`;
 	let activeStylesBtn = `hover:(text-primary-300 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px]) ${focusStyles}`;
 
@@ -51,8 +53,11 @@
 		{...$$restProps}>
 <slot />
 	</pre>
+	{#if title}
+		<span class="select-none transition-all font-mono absolute right-2 -top-3.5 z-10 bg-surface-950/80 px-1 text-on-surface-950 ring-1 ring-primary-300 rounded-container">{title}</span>
+	{/if}
 	<button
-		class="absolute right-4 top-4 z-10 text-2xl w-8 h-8 text-surface-50 transition-all bg-surface-950/80 aspect-square rounded-btn  {activeStylesBtn}"
+		class="absolute right-4 top-4 z-10 text-2xl w-8 h-8 text-surface-50 transition-all bg-surface-950/80 aspect-square rounded-btn {activeStylesBtn}"
 		aria-label="copy code"
 		on:click={handleCopy}
 		data-code-copy
@@ -70,7 +75,8 @@
 </div>
 
 <style>
-	pre > :global(code > span > span::selection), pre > :global(code > span::selection) {
-		--at-apply: "text-inherit bg-surface-800/90";
+	pre > :global(code > span > span::selection),
+	pre > :global(code > span::selection) {
+		--at-apply: 'text-inherit bg-surface-800/90';
 	}
 </style>

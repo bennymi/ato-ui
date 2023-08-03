@@ -29,6 +29,10 @@ const prettyCodeOptions = {
 		}
 	},
 	// @ts-ignore:next-line
+	onVisitTitle(node) {
+		// console.log('title:', node);
+	},
+	// @ts-ignore:next-line
 	getHighlighter: (options) => {
 		return getHighlighter({
 			...options,
@@ -50,7 +54,7 @@ export const mdsvexOptions = {
 		rehypeCustomComponents,
 		rehypeComponentPreToPre,
 		[rehypePrettyCode, prettyCodeOptions],
-		// rehypeHandleMetadata,
+		rehypeHandleMetadata,
 		rehypeRenderCode,
 		rehypePreToComponentPre,
 
@@ -108,11 +112,14 @@ function rehypePreToComponentPre() {
 			if (node?.type === 'element' && node?.tagName === 'pre') {
 				node.tagName = 'Components.pre';
 
+				
 				// if (node?.children.length > 0) {
+				// 	console.log('\n\nnode:', node);
+				// 	console.log('\n\nnode.children[0]:', node?.children[0], '\n------------------------');
+				// }
 				// 	const value = node.children[0].value.trim();
 				// 	const rawHTMLString = value.substring(8, value.length - 2);
 				// 	node.properties['rawHTMLString'] = escapeHtml(rawHTMLString);
-				// }
 			}
 		});
 	};
@@ -127,13 +134,15 @@ function rehypeHandleMetadata() {
 					return;
 				}
 
+				const titleElement = node.children[0];
 				const preElement = node.children.at(-1);
-				if (preElement.tagName !== 'pre') {
+				if (preElement.tagName !== 'pre' || !('data-rehype-pretty-code-title' in titleElement.properties)) {
 					return;
 				}
-
-				if (node.children.at(0).tagName === 'div') {
-					node.properties['data-metadata'] = '';
+				
+				if (titleElement.children.length > 0 && 'value' in titleElement.children[0]) {
+					preElement.properties['title'] = titleElement.children[0].value;
+					node.children.shift();
 				}
 			}
 		});
