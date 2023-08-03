@@ -15,7 +15,7 @@ description: Text tokens allow you to easily create gradient texts or select the
 
 ## Text-On Colors
 
-`text-on-[color]-[shade]/[opacity]`: This sets the appropriate text color for the background color and shade, so if you have a background of `bg-primary-900` for example, and want to put text on it, then you could use `text-on-primary-900`. The shade and opacity are optional. We also provide a token for that which is described in the [Background Tokens](/docs/tokens/background) documentation to make this simpler by just writing `primary-900`.
+`text-on-[color]-[shade]/[opacity]`: This sets the appropriate text color for the background color and shade, so if you have a background of `bg-primary-900` for example, and want to put text on it, then you could use `text-on-primary-900`. The shade and opacity are optional. We also provide a token for that which is described in the [Background Tokens](/docs/tokens/background#background--text) documentation to make this simpler by just writing `primary-900`.
 
 Examples: `text-on-primary/20`, `text-on-surface-950/80`, `text-on-tertiary-600`.
 
