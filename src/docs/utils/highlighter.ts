@@ -8,12 +8,12 @@ import { unified, type Processor, type ParserFunction } from 'unified';
 import { visit } from 'unist-util-visit';
 import { fileURLToPath } from 'url';
 
-const __dirname = fileURLToPath(new URL('../../../', import.meta.url));
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const prettyCodeOptions = {
 	// theme: 'github-dark',
 	theme: JSON.parse(
-		readFileSync(resolve(__dirname, './static/moonlight-2-theme.json'), 'utf-8')
+		readFileSync(resolve(__dirname, './moonlight-2-theme.json'), 'utf-8')
 	),
 	keepBackground: false,
 	// @ts-ignore:next-line
@@ -21,7 +21,7 @@ const prettyCodeOptions = {
 		// if (node.children.length === 0) {
 		// 	node.children = { type: 'text', value: ' ' };
 		// }
-		console.log('onVisitLine:', node);
+		// console.log('onVisitLine:', node);
 	},
 	// @ts-ignore:next-line
 	onVisitTitle(node) {

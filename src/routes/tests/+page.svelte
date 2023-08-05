@@ -5,7 +5,7 @@
 
 	const { previewsCode, previewsSnippets } = data;
 
-	$: if (previewsSnippets) console.log('data:', previewsSnippets);
+	// $: if (previewsSnippets) console.log('data:', previewsSnippets);
 </script>
 
 {#if previewsSnippets}
