@@ -13,7 +13,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const prettyCodeOptions = {
 	// theme: 'github-dark',
 	theme: JSON.parse(
-		readFileSync(resolve(__dirname, './moonlight-2-theme.json'), 'utf-8')
+		readFileSync(resolve(__dirname, '../../../static/moonlight-2-theme.json'), 'utf-8')
 	),
 	keepBackground: false,
 	// @ts-ignore:next-line
