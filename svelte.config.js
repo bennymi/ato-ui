@@ -15,11 +15,11 @@ const config = {
 		mdsvex(mdsvexOptions),
 		svelteGlobalComponents({
 			components: [
-				{
-					name: 'CodeBlock',
-					location: '/src/docs/components/CodeBlock.svelte',
-					importPaths: ['src/docs/guides/']
-				},
+				// {
+				// 	name: 'CodeBlock',
+				// 	location: '/src/docs/components/CodeBlock.svelte',
+				// 	importPaths: ['src/docs/guides/']
+				// },
 				{
 					name: 'Usage',
 					location: '/src/docs/components/Usage.svelte',

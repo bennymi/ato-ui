@@ -10,17 +10,11 @@ icon: i-material-symbols-rocket-launch-rounded
 
 # Installation
 
+## Installation
+
 Use the package manager of your choice.
 
 <InstallationTabs />
-
-## Dependencies
-
-We rely on some dependencies, so make sure they are also installed.
-
-```bash
-pnpm add -D unocss @unocss/core @unocss/preset-wind @unocss/preset-icons @unocss/reset svelte-headlessui @melt-ui/svelte
-```
 
 ## UnoCSS Config
 
@@ -76,8 +70,9 @@ export default defineConfig({
 
 Next we need to setup the root `+layout.svelte` file by importing `uno.css`. You can also do [style resetting](https://unocss.dev/guide/style-reset) like tailwind does. You can then import a theme from `ato-ui/themes/...` or use a custom one that you created in our [designer](/designer) page. Our themes also all have a class name that is the same as the css file name, so make sure to add it to a wrapping `div`. You can see all our themes in our [styles repo page](https://github.com/bennymi/ato-ui/tree/main/src/lib/styles/themes).
 
-```svelte title="./src/routes/+layout.svelte"
+```svelte title="./src/routes/+layout.svelte" {3,9}
 <script lang="ts">
+	// Import your theme here.
 	import 'ato-ui/themes/ato.css';
 
 	import '@unocss/reset/tailwind.css';
@@ -85,7 +80,7 @@ Next we need to setup the root `+layout.svelte` file by importing `uno.css`. You
 </script>
 
 <div class="ato">
-    <slot />
+	<slot />	
 </div>
 ```
 

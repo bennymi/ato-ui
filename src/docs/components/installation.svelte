@@ -35,7 +35,7 @@
 	>
 		{#each tabs as { name, icon }}
 			<button {...$trigger(name)} use:trigger class="flex gap-2 justify-center items-center font-semibold py-2 px-3 rounded-container surface-400 border-surface-400 border-1">
-				<span class="{icon}" />
+				<span class="text-lg {icon}" />
 				<span>{name}</span>
 			</button>
 		{/each}

@@ -4,7 +4,7 @@ description: Available background tokens that allow you to easily set gradient o
 ---
 
 <script>
-    import BackgroundDemo from './BackgroundDemo.svelte';
+    import { BackgroundDemo } from '$components';
 </script>
 
 # Background Tokens

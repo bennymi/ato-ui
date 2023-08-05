@@ -31,6 +31,8 @@
 		}, 1500);
 	};
 
+	$: if (codeElement) console.log('codeElement:', codeElement);
+
 	// $: if (codeElement) {
 	// 	codeElement.
 	// }
@@ -48,11 +50,9 @@
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -- flex is for removing the whitespaces -->
 	<pre
 		bind:this={codeElement}
-		class="flex mb-4 mt-6 h-fit max-h-[650px] overflow-x-auto rounded-container border border-surface-300/50 py-3 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
+		class="mb-4 mt-6 h-fit max-h-[650px] overflow-x-auto rounded-container border border-surface-300/50 py-3 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
 		tabindex="0"
-		{...$$restProps}>
-<slot />
-	</pre>
+		{...$$restProps}><slot /></pre>
 	{#if title}
 		<span class="transition-all select-none font-mono absolute right-12 -top-3.5 z-10 bg-surface-950/90 px-1 text-on-surface-950 ring-1 ring-primary-300 rounded-container">{title}</span>
 	{/if}

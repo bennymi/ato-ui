@@ -4,7 +4,7 @@ description: Text tokens allow you to easily create gradient texts or select the
 ---
 
 <script>
-    import TextDemo from './TextDemo.svelte';
+    import { TextDemo } from '$components';
 </script>
 
 # Text Tokens

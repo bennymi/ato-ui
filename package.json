@@ -79,8 +79,7 @@
 		"@sveltejs/kit": "^1.22.4",
 		"@sveltejs/package": "^2.2.0",
 		"@types/fs-extra": "^11.0.1",
-		"@types/node": "^20.4.6",
-		"@types/prettier": "^3.0.0",
+		"@types/node": "^20.4.7",
 		"@types/svelte-range-slider-pips": "^2.0.0",
 		"@types/tinycolor2": "^1.4.3",
 		"@typescript-eslint/eslint-plugin": "^6.2.1",
@@ -122,13 +121,13 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@melt-ui/svelte": "^0.31.1",
+		"@melt-ui/svelte": "^0.32.1",
 		"@unocss/preset-wind": "^0.54.1",
 		"@unocss/reset": "^0.54.1",
 		"@unocss/transformer-directives": "^0.54.1",
 		"@unocss/transformer-variant-group": "^0.54.1",
 		"esm-env": "^1.0.0",
-		"svelte-headlessui": "^0.0.20",
+		"svelte-headlessui": "^0.0.21",
 		"unocss": "^0.54.1"
 	}
 }

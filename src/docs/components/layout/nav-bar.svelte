@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fade, slide } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 
 	import type { NavIcon, Navigation, NavGroup } from '$components';
@@ -61,10 +61,10 @@
 		>
 			{#if $darkTheme}
 				<span class="sr-only">Dark mode</span>
-				<span class="i-material-symbols-dark-mode-rounded text-2xl" />
+				<span in:fly={{ y: -10 }} class="i-material-symbols-dark-mode-rounded text-2xl" />
 			{:else}
 				<span class="sr-only">Light mode</span>
-				<span class="i-material-symbols-light-mode text-2xl" />
+				<span in:fly={{ y: 10 }} class="i-material-symbols-light-mode text-2xl" />
 			{/if}
 		</button>
 		{#if icons.length > 0}
