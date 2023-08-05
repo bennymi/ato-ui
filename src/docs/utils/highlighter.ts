@@ -50,7 +50,10 @@ async function getShikiHighlighter(fetcher?: typeof fetch) {
 	}
 
 	const shikiHighlighter = await getHighlighter({
-		theme: 'github-dark',
+		// theme: 'github-dark',
+		theme: JSON.parse(
+			readFileSync(resolve(__dirname, '../../../static/moonlight-2-theme.json'), 'utf-8')
+		),
 		langs: ['svelte'],
 	});
 	return shikiHighlighter;
