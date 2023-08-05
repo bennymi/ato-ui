@@ -3,18 +3,17 @@ import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
 import { themeStore } from '$docs/utils/stores';
 
 export const load = async ({ params, fetch }) => {
-	// Init the highlighter
-	// await getStoredHighlighter(fetch);
     const previewsCode = import.meta.glob(`/src/docs/previews/**/*.svelte`, {
 		as: 'raw',
 		eager: true,
 	});
 
     let theme = get(themeStore);
+
 	if (!theme) {
-		// return currTheme;
         const response = await fetch('/moonlight-2-theme.json');
         theme = await response.json();
+
         themeStore.set(theme);
 	}
 

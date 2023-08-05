@@ -127,9 +127,6 @@ devDependencies:
   query-string:
     specifier: ^8.1.0
     version: 8.1.0
-  rehype-parse:
-    specifier: ^8.0.4
-    version: 8.0.4
   rehype-pretty-code:
     specifier: ^0.10.0
     version: 0.10.0(shiki@0.14.3)
@@ -3384,15 +3381,6 @@ packages:
       call-bind: 1.0.2
       define-properties: 1.2.0
       functions-have-names: 1.2.3
-    dev: true
-
-  /rehype-parse@8.0.4:
-    resolution: {integrity: sha512-MJJKONunHjoTh4kc3dsM1v3C9kGrrxvA3U8PxZlP2SjH8RNUSrb+lF7Y0KVaUDnGH2QZ5vAn7ulkiajM9ifuqg==}
-    dependencies:
-      '@types/hast': 2.3.5
-      hast-util-from-parse5: 7.1.2
-      parse5: 6.0.1
-      unified: 10.1.2
     dev: true
 
   /rehype-pretty-code@0.10.0(shiki@0.14.3):
