@@ -83,6 +83,12 @@ function rehypeComponentPreToPre() {
 		// Replace `Component.pre` tags with regular `pre` tags.
 		// This enables us to use rehype-pretty-code with our custom `pre` component.
 		visit(tree, (node) => {
+
+			// if (node?.data && 'meta' in node?.data) {
+			// 	console.log('node:', node, '\n');
+			// 	console.log('data:', node?.data, '\n-------------------------');
+			// }
+
 			if (node?.type === 'element' && node?.tagName === 'Components.pre') {
 				node.tagName = 'pre';
 			}

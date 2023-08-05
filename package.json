@@ -100,6 +100,7 @@
 		"prettier-plugin-svelte": "^3.0.3",
 		"publint": "^0.2.0",
 		"query-string": "^8.1.0",
+		"rehype-parse": "^8.0.4",
 		"rehype-pretty-code": "^0.10.0",
 		"shiki": "^0.14.3",
 		"shiki-es": "^0.14.0",
@@ -114,6 +115,7 @@
 		"tsx": "^3.12.7",
 		"typeit": "^8.7.1",
 		"typescript": "^5.1.6",
+		"unified": "^10.1.2",
 		"unist-util-visit": "^5.0.0",
 		"vite": "^4.4.8"
 	},
