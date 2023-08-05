@@ -9,7 +9,8 @@ import { visit } from 'unist-util-visit';
 import { fileURLToPath } from 'url';
 
 import { get } from 'svelte/store';
-import { highlighterStore } from './stores';
+import { highlighterStore, themeStore } from './stores';
+import type { IShikiTheme } from 'shiki';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -44,27 +45,46 @@ const prettyCodeOptions = {
 	// },
 };
 
-async function getShikiHighlighter(fetcher?: typeof fetch) {
+
+async function getHighlighterTheme(fetcher: typeof fetch) {
+	const currTheme = get(themeStore);
+	if (currTheme) {
+		return currTheme;
+	}
+
+	const response = await fetch('/moonlight-2-theme.json');
+    const themeJson = await response.json();
+
+	themeStore.set(themeJson);
+    return themeJson;
+}
+
+async function getShikiHighlighter(fetcher: typeof fetch, theme: IShikiTheme) {
 	if (fetcher && typeof window !== 'undefined') {
 		window.fetch = fetcher;
 	}
 
+	// const theme = await getHighlighterTheme(fetcher);
+
+	// console.log('theme:', theme);
+
 	const shikiHighlighter = await getHighlighter({
 		// theme: 'github-dark',
-		theme: JSON.parse(
-			readFileSync(resolve(__dirname, '../../../static/moonlight-2-theme.json'), 'utf-8')
-		),
+		// theme: JSON.parse(
+		// 	readFileSync(resolve(__dirname, '../../../static/moonlight-2-theme.json'), 'utf-8')
+		// ),
+		theme,
 		langs: ['svelte'],
 	});
 	return shikiHighlighter;
 }
 
-export async function getStoredHighlighter(fetcher?: typeof fetch) {
+export async function getStoredHighlighter(fetcher: typeof fetch, theme: IShikiTheme) {
 	const currHighlighter = get(highlighterStore);
 	if (currHighlighter) {
 		return currHighlighter;
 	}
-	const shikiHighlighter = await getShikiHighlighter(fetcher);
+	const shikiHighlighter = await getShikiHighlighter(fetcher, theme);
 	highlighterStore.set(shikiHighlighter);
 	return shikiHighlighter;
 }
@@ -77,10 +97,10 @@ function stringify(this: Processor, options = {}) {
 	}
 }
 
-export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch }) {
-	const { code, lang, fetcher } = args;
+export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch, theme: IShikiTheme }) {
+	const { code, lang, fetcher, theme } = args;
 
-	await getStoredHighlighter(fetcher);
+	await getStoredHighlighter(fetcher, theme);
 
     const file = await unified()
 		.use(rehypeCustomParser)

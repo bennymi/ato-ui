@@ -5,6 +5,8 @@
 
 	const { previewsCode, previewsSnippets } = data;
 
+	// $: console.log(themeJson);
+
 	// $: if (previewsSnippets) console.log('data:', previewsSnippets);
 </script>
 
