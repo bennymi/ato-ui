@@ -8,13 +8,16 @@ import { unified, type Processor, type ParserFunction } from 'unified';
 import { visit } from 'unist-util-visit';
 import { fileURLToPath } from 'url';
 
+import { get } from 'svelte/store';
+import { highlighterStore } from './stores';
+
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const prettyCodeOptions = {
 	// theme: 'github-dark',
-	theme: JSON.parse(
-		readFileSync(resolve(__dirname, '../../../static/moonlight-2-theme.json'), 'utf-8')
-	),
+	// theme: JSON.parse(
+	// 	readFileSync(resolve(__dirname, '../../../static/moonlight-2-theme.json'), 'utf-8')
+	// ),
 	keepBackground: false,
 	// @ts-ignore:next-line
 	onVisitLine(node) {
@@ -29,14 +32,39 @@ const prettyCodeOptions = {
 	},
 	// @ts-ignore:next-line
 	getHighlighter: (options) => {
-		return getHighlighter({
-			...options,
-			langs: BUNDLED_LANGUAGES.filter(({ id }) => {
-				return ['svelte'].includes(id);
-			}),
-		});
-	},
+		return getStoredHighlighter();
+	}
+	// getHighlighter: (options) => {
+	// 	return getHighlighter({
+	// 		...options,
+	// 		langs: BUNDLED_LANGUAGES.filter(({ id }) => {
+	// 			return ['svelte'].includes(id);
+	// 		}),
+	// 	});
+	// },
 };
+
+async function getShikiHighlighter(fetcher?: typeof fetch) {
+	if (fetcher && typeof window !== 'undefined') {
+		window.fetch = fetcher;
+	}
+
+	const shikiHighlighter = await getHighlighter({
+		theme: 'github-dark',
+		langs: ['svelte'],
+	});
+	return shikiHighlighter;
+}
+
+export async function getStoredHighlighter(fetcher?: typeof fetch) {
+	const currHighlighter = get(highlighterStore);
+	if (currHighlighter) {
+		return currHighlighter;
+	}
+	const shikiHighlighter = await getShikiHighlighter(fetcher);
+	highlighterStore.set(shikiHighlighter);
+	return shikiHighlighter;
+}
 
 function stringify(this: Processor, options = {}) {
 	this.Compiler = compiler;
@@ -46,14 +74,19 @@ function stringify(this: Processor, options = {}) {
 	}
 }
 
-export async function getHighlightedPreviews(args: { code: string, lang: string }) {
-	const { code, lang } = args;
+export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch }) {
+	const { code, lang, fetcher } = args;
+
+	await getStoredHighlighter(fetcher);
 
     const file = await unified()
 		.use(rehypeCustomParser)
         .use(rehypePrettyCode, prettyCodeOptions)
         .use(rehypeCustom)
-		.use(stringify)
+		.use(stringify, {
+			allowDangerousHtml: true,
+			allowDangerousCharacters: true,
+		})
         .process(code);
 
     return String(file);
@@ -84,7 +117,7 @@ function rehypeCustomParser() {
 
 	Object.assign(this, {Parser: parser})
 	
-	function parser(doc: string, file) {
+	function parser(doc: string) {
 		// console.log('doc:', doc);
 		// console.log('file:', file);
 		return{

@@ -11,7 +11,7 @@ export const load = async ({ params, fetch }) => {
     const previewsSnippets: string[] = [];
 
     Object.keys(previewsCode).forEach(async (key) => {
-        const snippet = await getHighlightedPreviews({ code: previewsCode[key], lang: 'svelte' });
+        const snippet = await getHighlightedPreviews({ code: previewsCode[key], lang: 'svelte', fetcher: fetch });
         previewsSnippets.push(snippet);
     });
 
