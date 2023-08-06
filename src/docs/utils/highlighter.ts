@@ -9,7 +9,7 @@ import { highlighterStore } from './stores';
 import type { IShikiTheme } from 'shiki';
 
 
-async function getShikiHighlighter(theme: IShikiTheme, fetcher?: typeof fetch) {
+async function getShikiHighlighter(theme: IShikiTheme | string, fetcher?: typeof fetch) {
 	if (fetcher && typeof window !== 'undefined') {
 		window.fetch = fetcher;
 	}
@@ -21,7 +21,7 @@ async function getShikiHighlighter(theme: IShikiTheme, fetcher?: typeof fetch) {
 	return shikiHighlighter;
 }
 
-export async function getStoredHighlighter(theme: IShikiTheme, fetcher?: typeof fetch) {
+export async function getStoredHighlighter(theme: IShikiTheme | string, fetcher?: typeof fetch) {
 	const currHighlighter = get(highlighterStore);
 	if (currHighlighter) {
 		return currHighlighter;
@@ -38,11 +38,12 @@ function stringify(this: Processor, options = {}) {
 	this.Compiler = compiler;
 
 	function compiler(tree: Node): string {
+		// @ts-ignore:next-line
 		return toHtml(tree, options);
 	}
 }
 
-export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch, theme: IShikiTheme }) {
+export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch, theme: IShikiTheme | string }) {
 	const { code, lang, fetcher, theme } = args;
 
 	// await getStoredHighlighter(theme, fetcher);
@@ -51,10 +52,6 @@ export async function getHighlightedPreviews(args: { code: string, lang: string,
 		.use(rehypeCustomParser)
         .use(rehypePrettyCode, {
 			keepBackground: false,
-			// @ts-ignore:next-line
-			onVisitTitle(node) {
-				// console.log('title:', node);
-			},
 			// @ts-ignore:next-line
 			getHighlighter: (options) => {
 				return getStoredHighlighter(theme, fetcher);
