@@ -12,17 +12,6 @@
 	/** Aria label for the tabs. */
 	export let ariaLabel: string;
 
-	/** Set the border style. */
-	export let borderStyle = 'border-b-1 border-surface-100-200';
-	/** Set the active header styles. */
-	export let activeStyle = 'primary-500';
-	/** Set the in-active header styles. */
-	export let inactiveStyle = 'text-surface-900-50 hover:primary-500/60';
-	/** Set the header width. */
-	export let headerWidth = 'min-w-40';
-	/** Set how the headers should be aligned with the justify property. */
-	export let justifyHeaders = 'justify-center';
-
 	const { elements: { root, list, content, trigger}, states: { value } } = createTabs({
 		defaultValue: activeTab
 	});
@@ -41,7 +30,7 @@
 <div {...$root} use:root class="w-full">
 	<div 
 		{...$list} use:list 
-		class="w-full flex {justifyHeaders} items-center mb-4 {borderStyle}"
+		class="w-full flex justify-center items-center mb-4 border-b-1 border-surface-100-200"
 		aria-label={ariaLabel}
 	>
 		{#each tabHeaders as item}
@@ -50,9 +39,15 @@
 			<button
 				{...$trigger({ value: item.key, disabled: deactivated })}
 				use:trigger
-				class="px-2 py-1 {headerWidth} inline-flex gap-1 justify-center items-center shadow-md shadow-surface-900/20 transition-all duration-150 font-semibold rounded-t-btn focus:(ring-2 ring-surface-300 ring-offset-2) {deactivated
-					? 'opacity-70 cursor-not-allowed'
-					: ''} {activated ? activeStyle : inactiveStyle}"
+				class="px-2 py-1 min-w-40 inline-flex gap-1 justify-center items-center 
+					shadow-md shadow-surface-900/20 transition-all duration-150 font-semibold 
+					rounded-t-btn focus:(ring-2 ring-surface-300 ring-offset-2) 
+					{deactivated
+						? 'opacity-70 cursor-not-allowed'
+						: ''} 
+					{activated 
+						? 'primary-500' 
+						: 'text-surface-900-50 hover:primary-500/60'}"
 			>
 				<span class={item.icon} />
 				<span>{item.title}</span>

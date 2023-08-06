@@ -8,6 +8,31 @@
 	$: message = $page.status === 404 ? 'Page not found' : 'Something went wrong';
 </script>
 
+<svelte:head>
+	<style>
+		#ato-ui-docu.dark > div {
+			background-color: rgb(var(--color-surface-800));
+			background-image: radial-gradient(
+					at 0% 0%,
+					rgba(var(--color-primary-500), 0.35) 0px,
+					transparent 50%
+				),
+				radial-gradient(at 100% 100%, rgba(var(--color-secondary-500), 0.3) 0px, transparent 50%),
+				radial-gradient(at 0% 100%, rgba(var(--color-surface-600), 0.3) 0px, transparent 50%);
+		}
+		#ato-ui-docu > div {
+			background-color: rgb(var(--color-surface-50));
+			background-image: radial-gradient(
+					at 0% 0%,
+					rgba(var(--color-primary-500), 0.35) 0px,
+					transparent 50%
+				),
+				radial-gradient(at 100% 100%, rgba(var(--color-tertiary-500), 0.3) 0px, transparent 50%),
+				radial-gradient(at 0% 100%, rgba(var(--color-surface-100), 0.3) 0px, transparent 50%);
+		}
+	</style>
+</svelte:head>
+
 <main class="min-h-full w-full text-surface-900-50">
 	<div class="text-center flex flex-col justify-center items-center">
 		<svg class="select-none">
@@ -17,6 +42,7 @@
 			</symbol>
 
 			<g class="g-ants">
+				<use xlink:href="#s-text" class="text-copy"></use>
 				<use xlink:href="#s-text" class="text-copy"></use>
 				<use xlink:href="#s-text" class="text-copy"></use>
 				<use xlink:href="#s-text" class="text-copy"></use>
@@ -43,7 +69,7 @@
 		stroke-dasharray: 6% 29%;
 		stroke-width: 4px;
 		stroke-dashoffset: 0%;
-		animation: stroke-offset 4.5s infinite linear;
+		animation: stroke-offset 5.5s infinite linear;
 	}
 
 	.text-copy:nth-child(1) {
@@ -59,6 +85,11 @@
 	.text-copy:nth-child(3) {
 		stroke: rgb(var(--color-tertiary-500));
 		animation-delay: -3s;
+	}
+
+	.text-copy:nth-child(4) {
+		stroke: rgb(var(--color-warning-500));
+		animation-delay: -4s;
 	}
 
 	@keyframes stroke-offset {

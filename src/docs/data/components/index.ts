@@ -17,7 +17,7 @@ export const componentsList = [
     'tabs',
     'toc-headless',
     'toc',
-    'toggle-switch-headless',
+    // 'toggle-switch-headless',
     'toggle-switch',
 ];
 

@@ -5,6 +5,7 @@ import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
 import { themeStore } from '$docs/utils/stores';
 
 import { componentsList, isComponent } from '$docs/data/components';
+import { getAllPreviewSnippets } from '$docs/utils/preview';
 
 
 export const entries = (() => {
@@ -31,22 +32,26 @@ export const load = async ({ params,  fetch }) => {
 	}
 
     // Get the files.
-    const previewsCode = import.meta.glob(`/src/docs/previews/**/*.svelte`, {
-		as: 'raw',
-		eager: true,
-	});
+    // const previewsCode = import.meta.glob(`/src/docs/previews/**/*.svelte`, {
+	// 	as: 'raw',
+	// 	eager: true,
+	// });
 
-    // Get the highlighted HTML for each file.
-    const previewsSnippets: string[] = [];
+    // console.log('raw files:', Object.keys(previewsCode));
 
-    Object.keys(previewsCode).forEach(async (key) => {
-        const snippet = await getHighlightedPreviews({ code: previewsCode[key], lang: 'svelte', fetcher: fetch, theme: theme ?? 'github-dark' });
-        previewsSnippets.push(snippet);
-    });
+    // // Get the highlighted HTML for each file.
+    // const previewsSnippets: string[] = [];
+
+    // Object.keys(previewsCode).forEach(async (key) => {
+    //     const snippet = await getHighlightedPreviews({ code: previewsCode[key], lang: 'svelte', fetcher: fetch, theme: theme ?? 'github-dark' });
+    //     previewsSnippets.push(snippet);
+    // });
+
+    const previewSnippets = await getAllPreviewSnippets({ slug, theme: theme ?? 'github-dark' });
 
 	return {
-        previewsCode,
-        previewsSnippets,
+        // previewsCode,
+        previewSnippets,
 		// snippets: getAllPreviewSnippets({ slug: params.name, fetcher: fetch }),
 	};
 };
