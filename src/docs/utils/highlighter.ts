@@ -7,6 +7,7 @@ import { unified, type Processor } from 'unified';
 import { get } from 'svelte/store';
 import { highlighterStore } from './stores';
 import type { IShikiTheme } from 'shiki';
+import type { FileHighlights } from '$docs/data/types';
 
 
 async function getShikiHighlighter(theme: IShikiTheme | string, fetcher?: typeof fetch) {
@@ -43,13 +44,37 @@ function stringify(this: Processor, options = {}) {
 	}
 }
 
-export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch, theme: IShikiTheme | string }) {
-	const { code, lang, fetcher, theme } = args;
+function createMetaString(fileHighlights: FileHighlights | null): string {
+	if (!fileHighlights) return '';
+
+	const { lines, words } = fileHighlights;
+
+	let meta = '';
+
+	if (lines) {
+		meta = `{${lines}}`;
+	}
+
+	if (words) {
+		words.forEach((item) => {
+			const { strings, id } = item;
+
+			strings.forEach((string) => meta = `${meta} /${string}/#${id}`);
+		});
+	}
+
+	return meta;
+}
+
+export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch, theme: IShikiTheme | string, fileHighlights: FileHighlights | null }) {
+	const { code, lang, fetcher, theme, fileHighlights } = args;
+
+	const meta = createMetaString(fileHighlights);
 
 	// await getStoredHighlighter(theme, fetcher);
 
     const file = await unified()
-		.use(rehypeCustomParser, { lang })
+		.use(rehypeCustomParser, { lang, meta })
         .use(rehypePrettyCode, {
 			keepBackground: false,
 			// @ts-ignore:next-line
@@ -70,8 +95,8 @@ export async function getHighlightedPreviews(args: { code: string, lang: string,
 /**
  * Source: https://github.com/rehypejs/rehype/blob/main/packages/rehype-parse/lib/index.js
  */
-function rehypeCustomParser(this: Processor, args: { lang: string }) {
-	const { lang } = args;
+function rehypeCustomParser(this: Processor, args: { lang: string, meta: string }) {
+	const { lang, meta } = args;
 	Object.assign(this, {Parser: parser});
 
 	// meta example: data: { meta: '{5,6,14,18} /surface/#v' }
@@ -90,7 +115,7 @@ function rehypeCustomParser(this: Processor, args: { lang: string }) {
 					value: doc
 				}
 				],
-				data: { meta: '{5}' }
+				data: { meta }
 			}]
 		}
 	}

@@ -30,6 +30,10 @@ pre > code {
 	@apply !text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold;
 }
 
+[data-chars-id='builder'] {
+	@apply !text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold;
+}
+
 
 /* 
 .prose > :is(h1, h2, h3, h4, h5, h6) > a {

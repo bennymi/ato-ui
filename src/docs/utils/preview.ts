@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { IShikiTheme } from 'shiki';
 import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
+import type { ExampleHighlights, FileHighlights } from '$docs/data/types';
 
 // export async function getMainPreviewComponent(slug: string) {
 // 	if (!isBuilderName(slug)) {
@@ -71,6 +72,13 @@ function getFileName(key: string) {
     return '';
 }
 
+function getFileHighlights(foldername: string, filename: string, highlights: ExampleHighlights): FileHighlights | null {
+    if (!(foldername in highlights)) return null;
+    if (!(filename in highlights[foldername])) return null;
+
+    return highlights[foldername][filename];
+}
+
 export type PreviewTab = {
     title: string;
     file: string;
@@ -78,8 +86,8 @@ export type PreviewTab = {
 
 export type PreviewExamples = Record<string, PreviewTab[]>;
 
-export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiTheme | string }) {
-    const { slug, theme } = args;
+export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiTheme | string, highlights: ExampleHighlights }) {
+    const { slug, theme, highlights } = args;
 
     // Get the files.
     const rawFiles = import.meta.glob(`/src/docs/previews/**/*.{css,svelte,ts}`, {
@@ -102,8 +110,10 @@ export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiT
             const filetype = getFileType(key);
 
             if (!filename || !foldername || !filetype) throw error(404);
+            
+            const fileHighlights = getFileHighlights(foldername, filename, highlights);
 
-            const snippet = await getHighlightedPreviews({ code: rawFiles[key].trim(), lang: filetype, fetcher: fetch, theme: theme });
+            const snippet = await getHighlightedPreviews({ code: rawFiles[key].trim(), lang: filetype, fetcher: fetch, theme: theme, fileHighlights });
 
             // Add folder to examples.
             if (!(foldername in previewSnippets)) {

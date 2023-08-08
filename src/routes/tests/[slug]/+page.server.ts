@@ -4,7 +4,7 @@ import type { EntryGenerator } from './$types';
 import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
 import { themeStore } from '$docs/utils/stores';
 
-import { componentsList, isComponent } from '$docs/data/components';
+import { componentsList, isComponent, componentsData } from '$docs/data/components';
 import { getAllPreviewSnippets } from '$docs/utils/preview';
 
 
@@ -47,7 +47,7 @@ export const load = async ({ params,  fetch }) => {
     //     previewsSnippets.push(snippet);
     // });
 
-    const previewSnippets = await getAllPreviewSnippets({ slug, theme: theme ?? 'github-dark' });
+    const previewSnippets = await getAllPreviewSnippets({ slug, theme: theme ?? 'github-dark', highlights: componentsData[slug].highlights });
 
 	return {
         // previewsCode,

@@ -1,4 +1,5 @@
-
+import type { ComponentsData } from "../types";
+import { tabsHeadlessData } from "./tabs-headless";
 
 export const componentsList = [
     'accordion-headless',
@@ -21,8 +22,11 @@ export const componentsList = [
     'toggle-switch',
 ];
 
-
-export function isComponent(key: string) {
-    return componentsList.includes(key);
+export const componentsData: ComponentsData = {
+    'tabs-headless': tabsHeadlessData
 }
 
+export function isComponent(key: string) {
+    // return componentsList.includes(key);
+    return key in componentsData;
+}
