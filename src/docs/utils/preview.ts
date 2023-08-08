@@ -1,5 +1,6 @@
-import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
+import { error } from '@sveltejs/kit';
 import type { IShikiTheme } from 'shiki';
+import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
 
 // export async function getMainPreviewComponent(slug: string) {
 // 	if (!isBuilderName(slug)) {
@@ -22,10 +23,11 @@ import type { IShikiTheme } from 'shiki';
 
 // 	return mainPreview.default;
 // }
+const PATH_LENGTH = 7;
 
 function isSlugFile(slug: string, key: string) {
     const splitPath = key.split('/');
-    if (splitPath && splitPath.length > 0) {
+    if (splitPath && splitPath.length === PATH_LENGTH) {
         return slug === splitPath[4];
     }
 
@@ -34,65 +36,97 @@ function isSlugFile(slug: string, key: string) {
 
 function isMainFile(key: string) {
     const splitPath = key.split('/');
-    if (splitPath && splitPath.length > 0) {
-        return splitPath.at(-1) === 'app.svelte';
+    if (splitPath && splitPath.length === PATH_LENGTH) {
+        return splitPath.at(-1)?.toLowerCase() === 'app.svelte';
     }
 
     return false;
 }
 
+function getFileType(key: string) {
+    const splitPath = key.split('/');
+    if (splitPath && splitPath.length === PATH_LENGTH) {
+        const filetype = splitPath.at(-1)?.split('.').at(-1);
+        return filetype === 'ts' ? 'typescript' : filetype;
+    }
+
+    return '';
+}
+
+function getFolderName(key: string) {
+    const splitPath = key.split('/');
+    if (splitPath && splitPath.length === PATH_LENGTH) {
+        return splitPath[5];
+    }
+
+    return '';
+}
+
 function getFileName(key: string) {
     const splitPath = key.split('/');
-    if (splitPath && splitPath.length > 0) {
+    if (splitPath && splitPath.length === PATH_LENGTH) {
         return splitPath.at(-1);
     }
 
     return '';
 }
 
-type PreviewTab = {
+export type PreviewTab = {
     title: string;
     file: string;
 }
 
-type PreviewSnippets = {
-    main: string;
-    files: PreviewTab[];
-}
+export type PreviewExamples = Record<string, PreviewTab[]>;
 
 export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiTheme | string }) {
     const { slug, theme } = args;
-    
+
     // Get the files.
-    const rawFiles = import.meta.glob(`/src/docs/previews/**/*.svelte`, {
+    const rawFiles = import.meta.glob(`/src/docs/previews/**/*.{css,svelte,ts}`, {
 		as: 'raw',
 		eager: true,
 	});
 
     // Get the highlighted HTML for each file.
-    const previewSnippets: PreviewSnippets = {
-        main: '',
-        files: [],
-    };
+    // const previewSnippets: PreviewTab[] = [];
+    const previewSnippets: PreviewExamples = {};
 
-    Object.keys(rawFiles).forEach(async (key) => {
+    let mainExists = false;
+
+    const keys = Object.keys(rawFiles);
+
+    for await (const key of keys) {
         if (isSlugFile(slug, key)) {
-            const snippet = await getHighlightedPreviews({ code: rawFiles[key], lang: 'svelte', fetcher: fetch, theme: theme });
+            const foldername = getFolderName(key);
+            const filename = getFileName(key);
+            const filetype = getFileType(key);
 
+            if (!filename || !foldername || !filetype) throw error(404);
+
+            const snippet = await getHighlightedPreviews({ code: rawFiles[key].trim(), lang: filetype, fetcher: fetch, theme: theme });
+
+            // Add folder to examples.
+            if (!(foldername in previewSnippets)) {
+                previewSnippets[foldername] = [];
+            }
+
+            const file = { title: filename, file: snippet };
+
+            // Add file to example.
             if (isMainFile(key)) {
-                previewSnippets.main = snippet;
-            } else {
-                const filename = getFileName(key);
+                // previewSnippets.main = snippet;
+                previewSnippets[foldername].unshift(file);
 
-                if (filename) {
-                    previewSnippets.files.push({
-                        title: filename,
-                        file: snippet
-                    });
-                }
+                if (foldername.toLowerCase() === 'main') mainExists = true;
+            } else {
+                previewSnippets[foldername].push(file);
             }
         }
-    });
+    }
+
+    if (!mainExists) {
+        throw error(404);
+    }
 
     return previewSnippets;
 }

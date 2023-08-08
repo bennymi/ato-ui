@@ -49,7 +49,7 @@ export async function getHighlightedPreviews(args: { code: string, lang: string,
 	// await getStoredHighlighter(theme, fetcher);
 
     const file = await unified()
-		.use(rehypeCustomParser)
+		.use(rehypeCustomParser, { lang })
         .use(rehypePrettyCode, {
 			keepBackground: false,
 			// @ts-ignore:next-line
@@ -70,7 +70,8 @@ export async function getHighlightedPreviews(args: { code: string, lang: string,
 /**
  * Source: https://github.com/rehypejs/rehype/blob/main/packages/rehype-parse/lib/index.js
  */
-function rehypeCustomParser(this: Processor) {
+function rehypeCustomParser(this: Processor, args: { lang: string }) {
+	const { lang } = args;
 	Object.assign(this, {Parser: parser});
 
 	// meta example: data: { meta: '{5,6,14,18} /surface/#v' }
@@ -82,7 +83,7 @@ function rehypeCustomParser(this: Processor) {
 			children: [{
 				type: 'element',
 				tagName: 'code',
-				properties: { className: [ 'language-svelte' ] },
+				properties: { className: [ `language-${lang}` ] },
 				children: [
 				{
 					type: 'text',
