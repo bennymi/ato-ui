@@ -1,9 +1,8 @@
 import { get } from 'svelte/store';
 import { error } from '@sveltejs/kit';
-import type { EntryGenerator } from './$types';
-import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
-import { themeStore } from '$docs/utils/stores';
+import type { EntryGenerator, PageServerLoad } from './$types';
 
+import { themeStore } from '$docs/utils/stores';
 import { componentsList, isComponent, componentsData } from '$docs/data/components';
 import { getAllPreviewSnippets } from '$docs/utils/preview';
 
@@ -14,7 +13,7 @@ export const entries = (() => {
 }) satisfies EntryGenerator;
 
 
-export const load = async ({ params,  fetch }) => {
+export const load = (async ({ params,  fetch }) => {
     const { slug } = params;
 
 	if (!isComponent(slug)) {
@@ -54,4 +53,4 @@ export const load = async ({ params,  fetch }) => {
         previewSnippets,
 		// snippets: getAllPreviewSnippets({ slug: params.name, fetcher: fetch }),
 	};
-};
+}) satisfies PageServerLoad;

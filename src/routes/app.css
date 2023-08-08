@@ -18,12 +18,16 @@ pre > code {
 	display: grid;
 }
 
-[data-chars-id] {
+/* [data-chars-id] {
 	@apply shadow-none p-1 border-b-2 rounded-btn;
-}
+} */
 
-[data-chars-id] span {
+/* [data-chars-id] span {
 	@apply !text-inherit;
+} */
+
+[data-chars-id] {
+	@apply p-1 rounded-btn;
 }
 
 [data-chars-id='v'] {
@@ -31,8 +35,13 @@ pre > code {
 }
 
 [data-chars-id='builder'] {
-	@apply !text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold;
+	/* @apply !text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold; */
+	@apply bg-yellow-800/50 font-semibold;
 }
+
+/* [data-chars-id='builder'] > span {
+	@apply font-bold;
+} */
 
 
 /* 

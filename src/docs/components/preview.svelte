@@ -14,14 +14,16 @@
 		[] find a nice way to show and hide code
  -->
 
-<div>
-	<slot />
-</div>
+<div class="preview">
+	<div>
+		<slot />
+	</div>
 
-<div class="text-surface-900-50 text-lg">
-	{tabs}
-</div>
+	<div class="text-surface-900-50 text-lg">
+		{tabs}
+	</div>
 
-<CodeBlock>
-	{@html previewSnippets[1].file}
-</CodeBlock>
+	<CodeBlock>
+		{@html previewSnippets[1].file}
+	</CodeBlock>
+</div>

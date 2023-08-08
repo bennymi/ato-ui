@@ -1,7 +1,12 @@
 import { error } from '@sveltejs/kit';
 import type { IShikiTheme } from 'shiki';
+import type { SvelteComponent } from 'svelte';
+
 import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
 import type { ExampleHighlights, FileHighlights } from '$docs/data/types';
+
+
+const PATH_LENGTH = 7;
 
 // export async function getMainPreviewComponent(slug: string) {
 // 	if (!isBuilderName(slug)) {
@@ -24,7 +29,6 @@ import type { ExampleHighlights, FileHighlights } from '$docs/data/types';
 
 // 	return mainPreview.default;
 // }
-const PATH_LENGTH = 7;
 
 function isSlugFile(slug: string, key: string) {
     const splitPath = key.split('/');
@@ -86,6 +90,10 @@ export type PreviewTab = {
 
 export type PreviewExamples = Record<string, PreviewTab[]>;
 
+/**
+ * Returns all highlighted code files for each example
+ * of the specified slug route.
+ */
 export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiTheme | string, highlights: ExampleHighlights }) {
     const { slug, theme, highlights } = args;
 
@@ -109,7 +117,7 @@ export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiT
             const filename = getFileName(key);
             const filetype = getFileType(key);
 
-            if (!filename || !foldername || !filetype) throw error(404);
+            if (!filename || !foldername || !filetype) throw error(500);
             
             const fileHighlights = getFileHighlights(foldername, filename, highlights);
 
@@ -135,8 +143,62 @@ export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiT
     }
 
     if (!mainExists) {
-        throw error(404);
+        throw error(500);
     }
 
     return previewSnippets;
+}
+
+export type PreviewComponents = Record<string, SvelteComponent>;
+
+export type PreviewFile = {
+	default: SvelteComponent;
+};
+
+/**
+ * Returns the main 'app.svelte' component for every example
+ * folder within the specified slug route from inside the 
+ * previews folder.
+ */
+export async function getAllPreviewComponents(args: { slug: string }) {
+    const { slug } = args;
+
+    // Get the files.
+    const rawFiles = import.meta.glob(`/src/docs/previews/**/app.svelte`);
+
+    const previewComponents: PreviewComponents = {};
+
+    let mainExists = false;
+
+    const keys = Object.keys(rawFiles);
+
+    for await (const key of keys) {
+        if (isSlugFile(slug, key)) {
+            const foldername = getFolderName(key);
+            const filename = getFileName(key);
+            const filetype = getFileType(key);
+
+            if (!filename || !foldername || !filetype) throw error(500);
+
+            // console.log('rawFiles[key]:', rawFiles[key]);
+            const previewComponent = (await rawFiles[key]()) as PreviewFile;
+
+            // console.log('preview comp:', previewComponent);
+            // Add component to example.
+            if ('default' in previewComponent) {
+                previewComponents[foldername] = previewComponent.default;
+
+                if (foldername.toLowerCase() === 'main') mainExists = true;
+            }
+            // if (isMainFile(key)) {
+            //     const documentation = await import(/* @vite-ignore */`../../../../docs/guides/components/${params.slug}.md`);
+            // }
+        }
+    }
+
+    if (!mainExists) {
+        throw error(500);
+    }
+
+    return previewComponents;
 }
