@@ -9,9 +9,10 @@
 
 	/** Set the active header styles. */
 	// let activeStyle = 'primary-500';
-	let activeStyle = 'shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px]';
+	let activeStyle = 'surface-500/90 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px]';
+	let focusStyles = 'focus:(ring-2 ring-surface-300 ring-offset-2)';
 	/** Set the in-active header styles. */
-	let inactiveStyle = 'text-surface-900-50 hover:primary-500/60';
+	let inactiveStyle = 'ring-1 ring-surface-300 text-surface-900-50 hover:surface-500/60';
 
 	const {
 		elements: { root, list, content, trigger },
@@ -20,14 +21,10 @@
 		defaultValue: 'app.svelte'
 	});
 
-	// const {
-	// 	elements: { root: switchRoot, input: switchInput },
-	// 	states: { checked: switchChecked },
-	// } = createSwitch();
-
-	const { elements: switchElements, states: switchStates } = createSwitch();
-	const { root: switchRoot, input: switchInput } = switchElements;
-	const { checked: switchChecked } = switchStates;
+	const {
+		elements: { root: switchRoot, input: switchInput },
+		states: { checked: switchChecked },
+	} = createSwitch();
 
 	type FileTypes = 'css' | 'svelte' | 'ts';
 
@@ -43,7 +40,7 @@
 		return fileType ? icons[<FileTypes>fileType] : '';
 	}
 
-	$: if (switchChecked) console.log('checked:', $switchChecked);
+	// $: if (switchChecked) console.log('checked:', $switchChecked);
 </script>
 
 <!-- 
@@ -53,7 +50,7 @@
 		[] find a nice way to show and hide code
  -->
 
-<PreviewSwitch />
+<!-- <PreviewSwitch /> -->
 
 <form>
 	<div class="flex items-center">
@@ -66,8 +63,8 @@
 		>
 			<span
 				class="block h-5 w-5 translate-x-0.5 rounded-full bg-white
-						transition-transform will-change-transform translate-x-[22px]
-						{$switchChecked ? 'translate-x-[22px]' : ''}"
+						transition-transform will-change-transform
+						{$switchChecked ? 'translate-x-5.5' : ''}"
 			/>
 			<input {...$switchInput} use:switchInput />
 		</button>
@@ -90,17 +87,22 @@
 
 			<!-- File tabs -->
 			<div {...$list} use:list class="w-full flex items-center" aria-label="preview snippet files">
-				{#each previewSnippets as { title }}
+				{#each previewSnippets as { title }, i}
+					{@const isLast = i === previewSnippets.length - 1}
 					{@const activated = $value === title}
 					<button
 						{...$trigger({ value: title })}
 						use:trigger
-						class="px-2 py-1 inline-flex gap-1 justify-center items-center font-semibold rounded-t-container focus:(ring-2 ring-surface-300 ring-offset-2)
+						class="px-2 py-1 inline-flex gap-1 justify-center items-center font-semibold rounded-t-container {focusStyles}
 							{activated ? activeStyle : inactiveStyle}"
 					>
 						<span class="text-lg {getIcon(title)}" />
 						<span>{title}</span>
 					</button>
+
+					{#if !isLast}
+
+					{/if}
 				{/each}
 			</div>
 		</div>
