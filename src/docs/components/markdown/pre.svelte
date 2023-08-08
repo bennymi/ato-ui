@@ -29,8 +29,6 @@
 			copyState = false;
 		}, 1500);
 	};
-
-	$: if (codeElement) console.log('codeElement:', codeElement);
 </script>
 
 <div class="relative bg-surface-800 {containerRounded}">

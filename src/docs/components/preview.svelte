@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { createTabs } from '@melt-ui/svelte';
+	import { createSwitch, createTabs } from '@melt-ui/svelte';
+
 	import { pre as CodeBlock, PreviewTabs } from '$components';
+	import { default as PreviewSwitch } from './preview-switch.svelte';
 	import type { PreviewTab } from '$docs/utils/preview';
 
 	export let previewSnippets: PreviewTab[] = [];
@@ -18,18 +20,30 @@
 		defaultValue: 'app.svelte'
 	});
 
+	// const {
+	// 	elements: { root: switchRoot, input: switchInput },
+	// 	states: { checked: switchChecked },
+	// } = createSwitch();
+
+	const { elements: switchElements, states: switchStates } = createSwitch();
+	const { root: switchRoot, input: switchInput } = switchElements;
+	const { checked: switchChecked } = switchStates;
+
 	type FileTypes = 'css' | 'svelte' | 'ts';
 
 	const icons: Record<FileTypes, string> = {
-		'svelte': 'i-vscode-icons-file-type-svelte',
-		'css': 'i-vscode-icons-file-type-css',
-		'ts': 'i-vscode-icons-file-type-typescript-official'
-	}
+		svelte: 'i-vscode-icons-file-type-svelte',
+		css: 'i-vscode-icons-file-type-css',
+		ts: 'i-vscode-icons-file-type-typescript-official'
+	};
 
 	function getIcon(filename: string) {
 		const fileType = filename.split('.').at(-1);
-		return icons[fileType];
+
+		return fileType ? icons[<FileTypes>fileType] : '';
 	}
+
+	$: if (switchChecked) console.log('checked:', $switchChecked);
 </script>
 
 <!-- 
@@ -39,8 +53,31 @@
 		[] find a nice way to show and hide code
  -->
 
+<PreviewSwitch />
+
+<form>
+	<div class="flex items-center">
+		<label class="pr-4 leading-none text-white" for="airplane-mode"> Airplane mode </label>
+		<button
+			{...$switchRoot}
+			use:switchRoot
+			class="relative h-6 w-11 cursor-default rounded-full bg-yellow-800 transition-colors data-[state=checked]:bg-yellow-950"
+			id="airplane-mode"
+		>
+			<span
+				class="block h-5 w-5 translate-x-0.5 rounded-full bg-white
+						transition-transform will-change-transform translate-x-[22px]
+						{$switchChecked ? 'translate-x-[22px]' : ''}"
+			/>
+			<input {...$switchInput} use:switchInput />
+		</button>
+	</div>
+</form>
+
 <div class="preview">
-	<div class="mb-4 h-96 flex justify-center items-center rounded-container bg-gradient-br-primary-tertiary">
+	<div
+		class="mb-4 h-96 flex justify-center items-center rounded-container bg-gradient-br-primary-tertiary"
+	>
 		<slot />
 	</div>
 
@@ -52,12 +89,7 @@
 			<!-- Toggle show code -->
 
 			<!-- File tabs -->
-			<div
-				{...$list}
-				use:list
-				class="w-full flex items-center"
-				aria-label="preview snippet files"
-			>
+			<div {...$list} use:list class="w-full flex items-center" aria-label="preview snippet files">
 				{#each previewSnippets as { title }}
 					{@const activated = $value === title}
 					<button
@@ -84,3 +116,15 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	/* .transition-transform {
+		transition-property: transform;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
+	}
+
+	.will-change-transform {
+		will-change: transform;
+	} */
+</style>
