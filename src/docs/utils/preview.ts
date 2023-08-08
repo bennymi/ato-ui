@@ -180,19 +180,19 @@ export async function getAllPreviewComponents(args: { slug: string }) {
 
             if (!filename || !foldername || !filetype) throw error(500);
 
-            // console.log('rawFiles[key]:', rawFiles[key]);
+            /**
+             * import.meta.glob returns an import function for each key.
+             * Call the function and await the response to get the 
+             * component.
+             */
             const previewComponent = (await rawFiles[key]()) as PreviewFile;
 
-            // console.log('preview comp:', previewComponent);
             // Add component to example.
             if ('default' in previewComponent) {
                 previewComponents[foldername] = previewComponent.default;
 
                 if (foldername.toLowerCase() === 'main') mainExists = true;
             }
-            // if (isMainFile(key)) {
-            //     const documentation = await import(/* @vite-ignore */`../../../../docs/guides/components/${params.slug}.md`);
-            // }
         }
     }
 

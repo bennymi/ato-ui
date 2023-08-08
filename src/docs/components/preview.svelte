@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { pre as CodeBlock } from '$components';
+	import { pre as CodeBlock, PreviewTabs } from '$components';
 	import type { PreviewTab } from '$docs/utils/preview';
 
 	export let previewSnippets: PreviewTab[] = [];
-
-	let tabs = previewSnippets.map((item) => item.title);
 </script>
 
 <!-- 
@@ -15,15 +13,9 @@
  -->
 
 <div class="preview">
-	<div>
+	<div class="mb-4 h-96 flex justify-center items-center bg-gradient-br-primary-tertiary">
 		<slot />
 	</div>
 
-	<div class="text-surface-900-50 text-lg">
-		{tabs}
-	</div>
-
-	<CodeBlock>
-		{@html previewSnippets[1].file}
-	</CodeBlock>
+	<PreviewTabs {previewSnippets} />
 </div>

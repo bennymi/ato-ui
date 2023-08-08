@@ -5,11 +5,11 @@
 	let className: string | undefined | null = undefined;
 	export { className as class };
 
-	// export let rawHTMLString: string = '';
 	export let title = '';
+	export let containerMargin = 'mb-4 mt-6';
+	export let containerRounded = 'rounded-container';
 
 	let codeElement: HTMLElement;
-	// let copyString = '';
 	let copyState = false;
 
 	const focusStyles =
@@ -19,7 +19,6 @@
 
 	const handleCopy = () => {
 		// Add code to clipboard
-		// navigator.clipboard.writeText(copyString ?? '');
 		if (codeElement) {
 			navigator.clipboard.writeText(codeElement.innerText ?? '');
 		}
@@ -32,25 +31,13 @@
 	};
 
 	$: if (codeElement) console.log('codeElement:', codeElement);
-
-	// $: if (codeElement) {
-	// 	codeElement.
-	// }
-
-	// $: if (rawHTMLString && browser) {
-	// 	const code = new DOMParser().parseFromString(rawHTMLString, 'text/xml');
-
-	// 	if (code.documentElement) {
-	// 		copyString = code.documentElement.textContent ?? '';
-	// 	}
-	// }
 </script>
 
-<div class="relative bg-surface-800 rounded-container">
+<div class="relative bg-surface-800 {containerRounded}">
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -- flex is for removing the whitespaces -->
 	<pre
 		bind:this={codeElement}
-		class="mb-4 mt-6 h-fit max-h-[650px] overflow-x-auto rounded-container border border-surface-300/50 py-3 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
+		class="{containerMargin} h-fit max-h-[650px] overflow-x-auto {containerRounded} border border-surface-300/50 py-3 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
 		tabindex="0"
 		{...$$restProps}><slot /></pre>
 	{#if title}
