@@ -18,4 +18,6 @@
 			<svelte:component this={mainPreview} />
 		</Preview>
 	{/if}
+
+	<div class="h-96 my-96" />
 </div>

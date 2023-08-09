@@ -22,9 +22,10 @@ export default defineConfig({
 			configDeps: getAllConfigFiles('./src/lib/preset/_rules')
 		})
 	],
+	// https://github.com/mswjs/msw/discussions/1440#discussioncomment-6124922
 	// build: {
 	// 	rollupOptions: {
-			
+	// 		plugins:
 	// 	}
 	// }
 });

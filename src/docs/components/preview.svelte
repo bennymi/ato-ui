@@ -1,18 +1,14 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition';
 	import { createSwitch, createTabs } from '@melt-ui/svelte';
 
 	import { pre as CodeBlock, PreviewTabs } from '$components';
-	import { default as PreviewSwitch } from './preview-switch.svelte';
+	import { Switch } from '$lib/components';
 	import type { PreviewTab } from '$docs/utils/preview';
 
 	export let previewSnippets: PreviewTab[] = [];
 
-	/** Set the active header styles. */
-	// let activeStyle = 'primary-500';
-	let activeStyle = 'surface-500/90 shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px]';
-	let focusStyles = 'focus:(ring-2 ring-surface-300 ring-offset-2)';
-	/** Set the in-active header styles. */
-	let inactiveStyle = 'ring-1 ring-surface-300 text-surface-900-50 hover:surface-500/60';
+	let showCode = false;
 
 	const {
 		elements: { root, list, content, trigger },
@@ -39,8 +35,6 @@
 
 		return fileType ? icons[<FileTypes>fileType] : '';
 	}
-
-	// $: if (switchChecked) console.log('checked:', $switchChecked);
 </script>
 
 <!-- 
@@ -50,83 +44,65 @@
 		[] find a nice way to show and hide code
  -->
 
-<!-- <PreviewSwitch /> -->
-
-<form>
-	<div class="flex items-center">
-		<label class="pr-4 leading-none text-white" for="airplane-mode"> Airplane mode </label>
-		<button
-			{...$switchRoot}
-			use:switchRoot
-			class="relative h-6 w-11 cursor-default rounded-full bg-yellow-800 transition-colors data-[state=checked]:bg-yellow-950"
-			id="airplane-mode"
-		>
-			<span
-				class="block h-5 w-5 translate-x-0.5 rounded-full bg-white
-						transition-transform will-change-transform
-						{$switchChecked ? 'translate-x-5.5' : ''}"
-			/>
-			<input {...$switchInput} use:switchInput />
-		</button>
-	</div>
-</form>
-
-<div class="preview">
+<div class="preview overflow-hide">
 	<div
-		class="mb-4 h-96 flex justify-center items-center rounded-container bg-gradient-br-primary-tertiary"
+		class="my-2 h-96 flex justify-center items-center rounded-container bg-gradient-br-primary-tertiary"
 	>
 		<slot />
 	</div>
 
 	<!-- <PreviewTabs {previewSnippets} /> -->
 	<div {...$root} use:root class="w-full">
+		<!-- <div class="flex justify-between items-center gap-2"> -->
 		<div>
+			<!-- Toggle show code -->
+			<Switch 
+				label="Show code"
+				bind:checked={showCode}
+				hideLabel={true}
+				activeBackground="bg-primary-500" 
+				labelPosition="right" 
+				activeIcon="text-surface-900 text-lg i-material-symbols-code-rounded"
+				inactiveIcon="text-surface-900 text-lg i-material-symbols-code-off-rounded"    
+			/>
+
 			<!-- Change color -->
 
-			<!-- Toggle show code -->
-
 			<!-- File tabs -->
-			<div {...$list} use:list class="w-full flex items-center" aria-label="preview snippet files">
-				{#each previewSnippets as { title }, i}
-					{@const isLast = i === previewSnippets.length - 1}
-					{@const activated = $value === title}
-					<button
-						{...$trigger({ value: title })}
-						use:trigger
-						class="px-2 py-1 inline-flex gap-1 justify-center items-center font-semibold rounded-t-container {focusStyles}
-							{activated ? activeStyle : inactiveStyle}"
-					>
-						<span class="text-lg {getIcon(title)}" />
-						<span>{title}</span>
-					</button>
+			{#if showCode}
+				<div {...$list} use:list class="mt-2 w-full flex items-center overflow-auto rounded-t-container" aria-label="preview snippet files" transition:slide>
+					{#each previewSnippets as { title }, i}
+						{@const isLast = i === previewSnippets.length - 1}
+						{@const activated = $value === title}
+						<button
+							{...$trigger({ value: title })}
+							use:trigger
+							class="px-2 py-1 inline-flex shrink-0 gap-1 justify-center items-center font-semibold rounded-t-container
+								focus:(ring-1 ring-surface-300 ring-offset-1)
+								{activated 
+									? 'surface-400/90' 
+									: 'surface-600 hover:surface-300/60'}"
+						>
+							<span class="text-lg {getIcon(title)}" />
+							<span>{title}</span>
+						</button>
+						
+						<!-- shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px] -->
+					{/each}
+				</div>
+			{/if}
+		</div>
 
-					{#if !isLast}
-
-					{/if}
+		{#if showCode}
+			<div transition:slide>
+				{#each previewSnippets as { title, file }}
+					<div {...$content(title)} use:content tabindex="-1">
+						<CodeBlock containerMargin="mb-4" containerRounded="rounded-b-container">
+							{@html file}
+						</CodeBlock>
+					</div>
 				{/each}
 			</div>
-		</div>
-
-		<div>
-			{#each previewSnippets as { title, file }}
-				<div {...$content(title)} use:content>
-					<CodeBlock containerMargin="mb-4" containerRounded="rounded-b-container">
-						{@html file}
-					</CodeBlock>
-				</div>
-			{/each}
-		</div>
+		{/if}
 	</div>
 </div>
-
-<style>
-	/* .transition-transform {
-		transition-property: transform;
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		transition-duration: 150ms;
-	}
-
-	.will-change-transform {
-		will-change: transform;
-	} */
-</style>
