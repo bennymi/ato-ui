@@ -1,5 +1,5 @@
 
-:root .fire {
+:root [data-theme="fire"] {
 	--ato-container-radius: 6px;
 
 	/* Buttons */

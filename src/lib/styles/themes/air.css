@@ -1,5 +1,5 @@
 
-:root .air {
+:root [data-theme="air"] {
 	--ato-container-radius: 4px;
 
 	/* Buttons */

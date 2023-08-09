@@ -1,5 +1,5 @@
 
-:root .water {
+:root [data-theme="water"] {
 	--ato-container-radius: 12px;
 
 	/* Buttons */

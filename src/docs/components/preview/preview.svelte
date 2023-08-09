@@ -46,38 +46,38 @@
 
 <div class="preview overflow-hide">
 	<div
-		class="my-2 h-96 flex justify-center items-center rounded-container bg-gradient-br-primary-tertiary"
+		class="h-96 flex justify-center items-center rounded-container bg-gradient-br-primary-tertiary"
 	>
 		<slot />
 	</div>
 
-	<!-- <PreviewTabs {previewSnippets} /> -->
 	<div {...$root} use:root class="w-full">
-		<!-- <div class="flex justify-between items-center gap-2"> -->
 		<div>
 			<!-- Toggle show code -->
-			<Switch 
-				label="Show code"
-				bind:checked={showCode}
-				hideLabel={true}
-				activeBackground="bg-primary-500" 
-				labelPosition="right" 
-				activeIcon="text-surface-900 text-lg i-material-symbols-code-rounded"
-				inactiveIcon="text-surface-900 text-lg i-material-symbols-code-off-rounded"    
-			/>
+			<div class="mt-2 mb-1">
+				<Switch 
+					label="Show code"
+					bind:checked={showCode}
+					hideLabel={false}
+					activeBackground="bg-primary-500" 
+					labelPosition="right" 
+					activeIcon="text-surface-900 text-lg i-material-symbols-code-rounded"
+					inactiveIcon="text-surface-900 text-lg i-material-symbols-code-off-rounded"    
+				/>
+			</div>
 
 			<!-- Change color -->
 
 			<!-- File tabs -->
 			{#if showCode}
-				<div {...$list} use:list class="mt-2 w-full flex items-center overflow-auto rounded-t-container" aria-label="preview snippet files" transition:slide>
+				<div {...$list} use:list class="py-1 px-1 w-full flex gap-0.5 items-center overflow-auto rounded-t-container" aria-label="preview snippet files" transition:slide>
 					{#each previewSnippets as { title }, i}
 						{@const isLast = i === previewSnippets.length - 1}
 						{@const activated = $value === title}
 						<button
 							{...$trigger({ value: title })}
 							use:trigger
-							class="px-2 py-1 inline-flex shrink-0 gap-1 justify-center items-center font-semibold rounded-t-container
+							class="px-2 py-1 inline-flex shrink-0 gap-1 justify-center items-center font-semibold rounded-container
 								focus:(ring-1 ring-surface-300 ring-offset-1)
 								{activated 
 									? 'surface-400/90' 
@@ -86,8 +86,6 @@
 							<span class="text-lg {getIcon(title)}" />
 							<span>{title}</span>
 						</button>
-						
-						<!-- shadow-[rgba(var(--color-primary-300))_0px_0px_2px_2px] -->
 					{/each}
 				</div>
 			{/if}
@@ -97,7 +95,7 @@
 			<div transition:slide>
 				{#each previewSnippets as { title, file }}
 					<div {...$content(title)} use:content tabindex="-1">
-						<CodeBlock containerMargin="mb-4" containerRounded="rounded-b-container">
+						<CodeBlock containerMargin="mb-4" >
 							{@html file}
 						</CodeBlock>
 					</div>

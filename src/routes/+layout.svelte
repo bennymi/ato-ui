@@ -20,6 +20,7 @@
 	import { themeStore, customThemeCSSStore } from './stores';
 	import AtoUI from './AtoUI.svelte';
 
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 
@@ -96,6 +97,21 @@
 			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer'
 	};
 
+	// Update data-theme attribute when theme changes.
+	$: if (browser) {
+		document.body.setAttribute('data-theme', $themeStore);
+	}
+
+	// Update dark mode.
+	$: if (browser) {
+		const documentClasses = document.documentElement.classList;
+		if ($darkTheme) {
+			documentClasses.add('dark');
+		} else {
+			documentClasses.remove('dark');
+		}
+	}
+
 	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
 
 	$: allGroupItems = currentNavPage?.groups.map((g) => g.items).flat();
@@ -159,7 +175,7 @@
 	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
 </svelte:head>
 
-<div id="ato-ui-docu" class:dark={$darkTheme} class="{$themeStore} min-h-screen">
+<div id="ato-ui-docu" class="min-h-screen">
 	<NavBar
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
