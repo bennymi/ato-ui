@@ -10,7 +10,7 @@
 
 <svelte:head>
 	<style>
-		#ato-ui-docu.dark > div {
+		.dark #ato-ui-docu > div {
 			background-color: rgb(var(--color-surface-800));
 			background-image: radial-gradient(
 					at 0% 0%,

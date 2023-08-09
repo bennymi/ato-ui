@@ -1,36 +1,48 @@
 <!-- @unocss-include -->
 <script lang="ts">
-	import { createPopover } from '@melt-ui/svelte';
+	import { createPopover, createRadioGroup } from '@melt-ui/svelte';
+	import { generateId } from '@melt-ui/svelte/internal/helpers';
 	import { fade } from 'svelte/transition';
 
-	import { PreviewPalette } from '$components';
+	const defaultBackground = 'bg-gradient-br-primary-tertiary';
 
-	/** Define whether to hide the popover arrow. */
-	export let hideArrow = false;
+	export let backgroundClass = defaultBackground;
 
 	const {
 		elements: { trigger, content, arrow, close },
 		states: { open }
 	} = createPopover({ forceVisible: true });
 
+	const {
+		elements: { root, item },
+		helpers: { isChecked },
+		states: { value }
+	} = createRadioGroup({
+		defaultValue: defaultBackground
+	});
+
+	const uniqueId = generateId();
+
 	let backgroundOptions = [
-		{ bg: 'bg-surface-900-50', text: 'text-surface-900-50' },
+		{ bg: 'bg-surface-900-50', text: 'text-surface-50-900' },
 		{ bg: 'bg-primary-700', text: 'text-on-primary-700' },
 		{ bg: 'bg-secondary-700', text: 'text-on-secondary-700' },
 		{ bg: 'bg-tertiary-700', text: 'text-on-tertiary-700' },
-		{ bg: 'bg-success-700', text: 'text-on-warning-700' },
+		{ bg: 'bg-success-700', text: 'text-on-success-700' },
 		{ bg: 'bg-warning-700', text: 'text-on-warning-700' },
 		{ bg: 'bg-error-700', text: 'text-on-error-700' },
-		{ bg: 'bg-gradient-br-primary-tertiary', text: 'text-on-primary-700' },
+		{ bg: defaultBackground, text: 'text-on-primary-700' },
 		{
 			bg: 'bg-mesh-primary/40-x0-y0-secondary/40-x100-y0-tertiary/40-x100-y100-success/40-x0-y100',
-			text: 'text-on-surface-50 dark:text-on-surface-900'
+			text: 'text-surface-900'
+			// text: 'text-on-surface-50 dark:text-on-surface-900'
 		}
 	];
+	
+	$: backgroundClass = $value;
 </script>
 
-<button type="button" class="trigger" {...$trigger} use:trigger aria-label="Update dimensions">
-	<!-- <span class="text-2xl transition-all {$open ? 'i-mdi-palette-swatch-variant' : 'i-mdi-palette-swatch'}" /> -->
+<button type="button" class="inline-flex h-7 w-7 items-center justify-center rounded-btn p-0 text-sm transition-colors hover:primary-400 focus-visible:(ring ring-primary-400 ring-offset-2) {$open ? 'primary-500 bg-mesh-primary-x0-y0-secondary-x100-y0-tertiary-x100-y100-warning-x0-y100' : 'surface-300 dark:surface-400'}" {...$trigger} use:trigger aria-label="Update preview background color">
 	<span
 		class="text-2xl transition-all {$open
 			? 'i-mdi-palette-swatch-variant -rotate-360'
@@ -40,34 +52,23 @@
 </button>
 
 {#if $open}
-	<div {...$content} use:content transition:fade={{ duration: 100 }} class="content">
-		{#if !hideArrow}
-			<div {...$arrow} use:arrow />
-		{/if}
-
-		<PreviewPalette />
-
-		<button class="close" {...$close} use:close>
-			<span class="i-material-symbols-cancel-rounded" />
-		</button>
+	<div {...$content} use:content transition:fade={{ duration: 100 }} class="content z-10 rounded-container bg-surface-50 border-1 border-surface-200-600 p-4 shadow-sm">
+		<!-- <PreviewPalette /> -->
+		<div {...$root} use:root class="grid grid-cols-3 gap-1.5" aria-label="View density">
+			{#each backgroundOptions as { bg, text }, i}
+				{@const itemId = `palette-${uniqueId}-${i}`}
+				<button
+					{...$item(bg)}
+					use:item
+					class="inline-flex justify-center items-center h-10 w-10 cursor-default rounded-btn hover:scale-110 ring-1 ring-surface-800 {bg}"
+					id={itemId}
+					aria-label={bg}
+				>
+					{#if $isChecked(bg)}
+						<span class="{text} text-2xl i-material-symbols-check-circle-rounded" />
+					{/if}
+				</button>
+			{/each}
+		</div>
 	</div>
 {/if}
-
-<style>
-
-	label {
-		--at-apply: 'w-[75px] text-sm text-neutral-700';
-	}
-
-	.trigger {
-		--at-apply: 'inline-flex h-9 w-9 items-center justify-center rounded-btn surface-300 p-0 text-sm transition-colors hover:surface-400 focus-visible:(ring ring-primary-400 ring-offset-2)';
-	}
-
-	.close {
-		--at-apply: 'absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full text-primary-900 transition-colors hover:bg-primary-500/10 focus-visible:(ring ring-primary-400 ring-offset-2) bg-white p-0 text-sm font-medium';
-	}
-
-	.content {
-		--at-apply: 'z-10 w-60 rounded-container bg-surface-50-800 border-1 border-surface-200-600 p-5 shadow-sm';
-	}
-</style>

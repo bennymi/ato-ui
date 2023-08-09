@@ -12,6 +12,14 @@
 	import ColorPicker from './ColorPicker.svelte';
 	import Contrasts from './Contrasts.svelte';
 
+	/**
+	 * TODO:
+	 * [ ] add theme name
+	 * [ ] be able to store themes
+	 * [ ] switches should have a separate rounded variable
+	 * [ ] ...
+	*/
+
 	$themeStore = 'custom-theme';
 
 	const update_shades = (store: LocalStorageColor) =>
@@ -36,7 +44,7 @@
 	$: shades = update_shades($new_theme.colors);
 
 	$: custom_theme_css_variables = `
-:root .custom-theme {
+:root [data-theme="custom-theme"] {
 	--ato-container-radius: ${$new_theme.container_radius};
 
 	/* Buttons */

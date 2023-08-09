@@ -2,13 +2,14 @@
 	import { slide } from 'svelte/transition';
 	import { createSwitch, createTabs } from '@melt-ui/svelte';
 
-	import { pre as CodeBlock, PreviewTabs } from '$components';
+	import { pre as CodeBlock, PreviewPopover } from '$components';
 	import { Switch } from '$lib/components';
 	import type { PreviewTab } from '$docs/utils/preview';
 
 	export let previewSnippets: PreviewTab[] = [];
 
 	let showCode = false;
+	let backgroundClass = 'bg-gradient-br-primary-tertiary';
 
 	const {
 		elements: { root, list, content, trigger },
@@ -37,16 +38,9 @@
 	}
 </script>
 
-<!-- 
-	TODOs:
-		[X] multiple previews for one docs page -> have a main folder and any other examples in different ones
-		[X] be able to load not just .svelte files into the preview tabs but also .ts files
-		[] find a nice way to show and hide code
- -->
-
 <div class="preview overflow-hide">
 	<div
-		class="h-96 flex justify-center items-center rounded-container bg-gradient-br-primary-tertiary"
+		class="h-[450px] flex justify-center items-center rounded-container {backgroundClass}"
 	>
 		<slot />
 	</div>
@@ -54,7 +48,7 @@
 	<div {...$root} use:root class="w-full">
 		<div>
 			<!-- Toggle show code -->
-			<div class="mt-2 mb-1">
+			<div class="mt-2 mb-1 px-1 flex justify-between items-center">
 				<Switch 
 					label="Show code"
 					bind:checked={showCode}
@@ -64,9 +58,10 @@
 					activeIcon="text-surface-900 text-lg i-material-symbols-code-rounded"
 					inactiveIcon="text-surface-900 text-lg i-material-symbols-code-off-rounded"    
 				/>
-			</div>
 
-			<!-- Change color -->
+				<!-- Change background color -->
+				<PreviewPopover bind:backgroundClass />
+			</div>
 
 			<!-- File tabs -->
 			{#if showCode}
