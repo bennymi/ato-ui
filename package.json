@@ -84,10 +84,10 @@
 		"@types/tinycolor2": "^1.4.3",
 		"@typescript-eslint/eslint-plugin": "^6.3.0",
 		"@typescript-eslint/parser": "^6.3.0",
-		"@unocss/core": "^0.54.3",
-		"@unocss/extractor-svelte": "^0.54.3",
-		"@unocss/preset-icons": "^0.54.3",
-		"@unocss/preset-uno": "^0.54.3",
+		"@unocss/core": "^0.55.0",
+		"@unocss/extractor-svelte": "^0.55.0",
+		"@unocss/preset-icons": "^0.55.0",
+		"@unocss/preset-uno": "^0.55.0",
 		"eslint": "^8.46.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-import-resolver-typescript": "^3.6.0",
@@ -122,13 +122,13 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@melt-ui/svelte": "^0.34.2",
-		"@unocss/preset-wind": "^0.54.3",
-		"@unocss/reset": "^0.54.3",
-		"@unocss/transformer-directives": "^0.54.3",
-		"@unocss/transformer-variant-group": "^0.54.3",
+		"@melt-ui/svelte": "^0.34.3",
+		"@unocss/preset-wind": "^0.55.0",
+		"@unocss/reset": "^0.55.0",
+		"@unocss/transformer-directives": "^0.55.0",
+		"@unocss/transformer-variant-group": "^0.55.0",
 		"esm-env": "^1.0.0",
 		"svelte-headlessui": "^0.0.21",
-		"unocss": "^0.54.3"
+		"unocss": "^0.55.0"
 	}
 }

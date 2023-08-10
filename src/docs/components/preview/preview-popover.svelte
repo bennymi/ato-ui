@@ -34,7 +34,7 @@
 		{ bg: 'bg-error-700', text: 'text-on-error-700' },
 		{ bg: defaultBackground, text: 'text-on-primary-700' },
 		{
-			bg: 'bg-mesh-primary/40-x0-y0-secondary/40-x100-y0-tertiary/40-x100-y100-success/40-x0-y100',
+			bg: 'bg-surface-900/20-50/20 bg-mesh-primary/60-x0-y0-secondary/60-x100-y0-tertiary/60-x100-y100-success/60-x0-y100',
 			text: 'text-surface-900'
 			// text: 'text-on-surface-50 dark:text-on-surface-900'
 		}

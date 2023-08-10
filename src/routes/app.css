@@ -97,10 +97,10 @@ pre > code {
 */
 
 .prose > p > code, p > code, li > code {
-    --at-apply: "apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container selection:(text-on-primary bg-primary-500/70)";
+    --at-apply: "px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container selection:(text-on-primary bg-primary-500/70)";
 }
 
-/* ---------------------------- Scrollbars ---------------------------- */
+/* --- Scrollbars --- */
 /* Firefox */
 * {
 	scrollbar-width: thin;

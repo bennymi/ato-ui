@@ -215,9 +215,10 @@ export type Metadata = {
 
 export type DocsComponentData = {
     content: SvelteComponent | null;
-    meta: Metadata | null;
+    meta: Metadata;
     styledExists?: boolean;
     headlessExists?: boolean;
+    githubPath: string;
 };
 
 /**
@@ -231,9 +232,8 @@ export async function getDocsData(args: { slug: string, isComponent: boolean }) 
     // Get the files.
     const rawFiles = import.meta.glob(`/src/docs/guides/**/*.md`);
 
-    const docsComponentData: DocsComponentData = {
+    const docsComponentData: Partial<DocsComponentData> = {
         content: null,
-        meta: null
     };
 
     const keys = Object.keys(rawFiles);
@@ -241,6 +241,7 @@ export async function getDocsData(args: { slug: string, isComponent: boolean }) 
     for await (const key of keys) {
         if (isDocsPage(slug, key)) {
 
+            docsComponentData.githubPath = key;
             const docsComponent = (await rawFiles[key]()) as PreviewFile;
 
             if ('default' in docsComponent) {
@@ -253,7 +254,7 @@ export async function getDocsData(args: { slug: string, isComponent: boolean }) 
         }
     }
 
-    if (!docsComponentData.content) {
+    if (!docsComponentData.content || !docsComponentData.meta || !docsComponentData.githubPath) {
         throw error(500);
     }
 

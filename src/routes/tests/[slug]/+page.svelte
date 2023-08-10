@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 
-	const { previewSnippets, previewComponents, content, meta, headlessExists, styledExists } = data;
+	const { previewSnippets, previewComponents, content, meta, headlessExists, styledExists, githubPath, componentsData } = data;
 
 	type Component = $$Generic<typeof SvelteComponent>;
 
@@ -16,7 +16,7 @@
 <!-- <div class="w-1/2 overflow-scroll pl-0.5 text-surface-900-50">
 </div> -->
 
-<DocsHeader isComponent={true} {meta} {headlessExists} {styledExists} />
+<DocsHeader isComponent={true} {meta} {headlessExists} {styledExists} {githubPath} dependencies={componentsData.dependencies} />
 
 <h1 class="hidden">Preview</h1>
 

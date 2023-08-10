@@ -1,7 +1,7 @@
-import type { ExampleHighlights } from "../types";
+import type { ExampleHighlights, Dependency } from "../types";
 
 const highlights: ExampleHighlights = {
-    'main': {
+    main: {
         'tabs-list.svelte': {
             lines: '3,15-17',
             words: [{ strings: ['$root', 'use:root', '$list', 'use:list', '$trigger', 'use:trigger'], id: 'builder' }],
@@ -9,6 +9,11 @@ const highlights: ExampleHighlights = {
     }
 }
 
+const dependencies: Dependency[] = [
+    "@melt-ui/svelte"
+]
+
 export const tabsHeadlessData = {
-    highlights
+    highlights,
+    dependencies
 }
