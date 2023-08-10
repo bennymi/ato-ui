@@ -18,7 +18,8 @@
 		helpers: { isChecked },
 		states: { value }
 	} = createRadioGroup({
-		defaultValue: defaultBackground
+		defaultValue: defaultBackground,
+		orientation: 'horizontal'
 	});
 
 	const uniqueId = generateId();
@@ -52,7 +53,7 @@
 </button>
 
 {#if $open}
-	<div {...$content} use:content transition:fade={{ duration: 100 }} class="content z-10 rounded-container bg-surface-50 border-1 border-surface-200-600 p-4 shadow-sm">
+	<div {...$content} use:content transition:fade={{ duration: 100 }} class="content z-10 rounded-container bg-surface-50 border-1 border-surface-200-600 p-2 shadow-sm">
 		<!-- <PreviewPalette /> -->
 		<div {...$root} use:root class="grid grid-cols-3 gap-1.5" aria-label="View density">
 			{#each backgroundOptions as { bg, text }, i}

@@ -38,7 +38,7 @@
 	}
 </script>
 
-<div class="preview overflow-hide">
+<div class="preview overflow-hide my-8">
 	<div
 		class="h-[450px] flex justify-center items-center rounded-container {backgroundClass}"
 	>
@@ -87,7 +87,7 @@
 		</div>
 
 		{#if showCode}
-			<div transition:slide>
+			<div transition:slide class="px-0.5">
 				{#each previewSnippets as { title, file }}
 					<div {...$content(title)} use:content tabindex="-1">
 						<CodeBlock containerMargin="mb-4" >

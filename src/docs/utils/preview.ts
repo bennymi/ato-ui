@@ -86,7 +86,7 @@ function getFileHighlights(foldername: string, filename: string, highlights: Exa
 export type PreviewTab = {
     title: string;
     file: string;
-}
+};
 
 export type PreviewExamples = Record<string, PreviewTab[]>;
 
@@ -201,4 +201,70 @@ export async function getAllPreviewComponents(args: { slug: string }) {
     }
 
     return previewComponents;
+}
+
+
+function isDocsPage(slug: string, key: string) {
+    return key.includes(`${slug}.md`);
+}
+
+export type Metadata = {
+    title: string;
+    description: string;
+}
+
+export type DocsComponentData = {
+    content: SvelteComponent | null;
+    meta: Metadata | null;
+    styledExists?: boolean;
+    headlessExists?: boolean;
+};
+
+/**
+ * Get the markdown documentation related information,
+ * so the markdown as a component, as well as the 
+ * meta data (title, description, etc.).
+ */
+export async function getDocsData(args: { slug: string, isComponent: boolean }) {
+    const { slug, isComponent } = args;
+
+    // Get the files.
+    const rawFiles = import.meta.glob(`/src/docs/guides/**/*.md`);
+
+    const docsComponentData: DocsComponentData = {
+        content: null,
+        meta: null
+    };
+
+    const keys = Object.keys(rawFiles);
+
+    for await (const key of keys) {
+        if (isDocsPage(slug, key)) {
+
+            const docsComponent = (await rawFiles[key]()) as PreviewFile;
+
+            if ('default' in docsComponent) {
+                docsComponentData.content = docsComponent.default;
+            }
+
+            if ('metadata' in docsComponent) {
+                docsComponentData.meta = docsComponent.metadata as Metadata;
+            }
+        }
+    }
+
+    if (!docsComponentData.content) {
+        throw error(500);
+    }
+
+    if (isComponent) {
+        let components = keys
+            .filter((v) => v.includes(slug.replace('-headless', '')))
+            .map((v) => v.split('/').at(-1)?.split('.')[0]);
+
+        docsComponentData.headlessExists = components.includes(slug.replace('-headless', ''));
+        docsComponentData.styledExists = components.includes(`${slug.replace('-headless', '')}-headless`);
+    }
+
+    return docsComponentData;
 }

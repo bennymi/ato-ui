@@ -3,35 +3,8 @@ title: Tabs
 description: A set of panels that allow you to switch between different views.
 ---
 
-<script>
-	import { TabsList, Tab } from 'ato-ui';
-
-	const tabHeaders = [
-		{
-			key: 'styled',
-			title: 'Styled',
-			icon: 'text-xl i-material-symbols-water-drop-rounded'
-		},
-		{
-			key: 'headless',
-			title: 'Headless',
-			icon: 'text-xl i-material-symbols-water-drop-outline-rounded'
-		},
-		{ key: 'extra', title: 'Extra' }
-	];
-</script>
-
-## Preview
-
-<Usage>
-	<TabsList activeTab="styled" {tabHeaders}>
-		<Tab key="styled">Styled Content</Tab>
-		<Tab key="headless">Headless Content</Tab>
-		<Tab key="extra">Extra Content</Tab>
-	</TabsList>
-</Usage>
-
 Check out the [Melt UI](https://www.melt-ui.com/docs/builders/tabs) documentation for a detailed description of the tabs builder API.
+
 
 ```svelte showCode=true
 <script lang="ts">
@@ -68,7 +41,6 @@ Check out the [Melt UI](https://www.melt-ui.com/docs/builders/tabs) documentatio
 </script>
 
 <div {...$root} use:root class="w-full">
-    <!-- Headers -->
 	<div {...$list} use:list class="w-full flex justify-center items-center mb-4 border-b-1 border-surface-100-200">
 		{#each tabHeaders as item}
 			{@const activated = activeTab === item.key}
@@ -91,7 +63,6 @@ Check out the [Melt UI](https://www.melt-ui.com/docs/builders/tabs) documentatio
 		{/each}
 	</div>
 	
-    <!-- Tab Content -->
     <div {...$content('styled')} use:content>
         Styled content
     </div>

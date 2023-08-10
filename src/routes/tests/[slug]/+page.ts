@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 
 import type { PageLoad } from './$types';
 import { componentsList, isComponent, componentsData } from '$docs/data/components';
-import { getAllPreviewComponents } from '$docs/utils/preview';
+import { getAllPreviewComponents, getDocsData } from '$docs/utils/preview';
 
 export const load = (async ({ params, data }) => {
     const { slug } = params;
@@ -12,10 +12,12 @@ export const load = (async ({ params, data }) => {
 	}
 
     const previewComponents = await getAllPreviewComponents({ slug });
+    const docsComponentData = await getDocsData({ slug, isComponent: true });
 
     return {
         ...data,
         previewComponents,
+        ...docsComponentData,
         componentsData: componentsData[slug],
     };
 }) satisfies PageLoad;
