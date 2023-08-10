@@ -175,7 +175,8 @@
 	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
 </svelte:head>
 
-<div id="ato-ui-docu" class="min-h-screen">
+<!-- Also include data-theme here to avoid FOUC (Flash Of Unstyled Content) on page reloads. -->
+<div id="ato-ui-docu" class="min-h-screen" data-theme={$themeStore}>
 	<NavBar
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
