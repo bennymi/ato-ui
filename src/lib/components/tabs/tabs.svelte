@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-    import type { CreateTabsReturn } from '@melt-ui/svelte';
+    import type { Tabs } from '@melt-ui/svelte';
 
 	/** 
      * Provide the key of the tab content. 
@@ -8,7 +8,7 @@
      * */
 	export let key: string;
 
-	const content: CreateTabsReturn['content'] =
+	const content: Tabs['elements']['content'] =
 		getContext('content');
 </script>
 

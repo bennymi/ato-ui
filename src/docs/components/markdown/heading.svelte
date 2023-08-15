@@ -18,10 +18,10 @@
     const headerClasses = {
         h1: { size: 'text-4xl', classes: 'mb-4 font-bold' },
         h2: { size: 'text-2xl', classes: 'mb-3 mt-12 pb-1 font-semibold border-b border-surface-300/50' },
-        h3: { size: 'text-xl', classes: 'mb-2 mt-12 pb-1 font-bold' },
-        h4: { size: 'text-lg', classes: 'mb-1 mt-8 pb-1 font-bold' },
-        h5: { size: 'text-lg', classes: 'mb-1 mt-8 pb-1 font-semibold' },
-        h6: { size: 'text-base', classes: 'mb-1 mt-8 font-semibold' },
+        h3: { size: 'text-xl', classes: 'mb-2 mt-8 pb-1 font-bold' },
+        h4: { size: 'text-lg', classes: 'mb-1 mt-6 pb-1 font-bold' },
+        h5: { size: 'text-lg', classes: 'mb-1 mt-6 pb-1 font-semibold' },
+        h6: { size: 'text-base', classes: 'mb-1 mt-6 font-semibold' },
     };
 
     function enterHeader() {

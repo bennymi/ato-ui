@@ -39,6 +39,11 @@ pre > code {
 	@apply bg-yellow-800/50 font-semibold;
 }
 
+[data-chars-id='prop'] {
+	/* @apply !text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold; */
+	@apply bg-yellow-800/50 font-semibold;
+}
+
 /* [data-chars-id='builder'] > span {
 	@apply font-bold;
 } */

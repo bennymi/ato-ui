@@ -77,6 +77,7 @@ function getFileName(key: string) {
 }
 
 function getFileHighlights(foldername: string, filename: string, highlights: ExampleHighlights): FileHighlights | null {
+    if (!highlights) return null;
     if (!(foldername in highlights)) return null;
     if (!(filename in highlights[foldername])) return null;
 

@@ -1,5 +1,6 @@
 import type { ComponentsData } from "../types";
 import { tabsHeadlessData } from "./tabs-headless";
+import { tabsData } from "./tabs";
 
 export const componentsList = [
     'accordion-headless',
@@ -23,7 +24,8 @@ export const componentsList = [
 ];
 
 export const componentsData: ComponentsData = {
-    'tabs-headless': tabsHeadlessData
+    'tabs-headless': tabsHeadlessData,
+    'tabs': tabsData
 }
 
 export function isComponent(key: string) {
