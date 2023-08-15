@@ -6,7 +6,7 @@ description: A set of panels that allow you to switch between different views.
 Check out the [Melt UI](https://www.melt-ui.com/docs/builders/tabs) documentation for a detailed description of the tabs builder API.
 
 
-```svelte showCode=true
+```svelte
 <script lang="ts">
 	import { createTabs } from '@melt-ui/svelte';
 

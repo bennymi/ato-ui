@@ -33,7 +33,7 @@
 	<div class="flex gap-2 justify-between items-center">
 		<nav class="AtoNavBarMenu space-x-4 text-surface-900-50 hidden md:inline-flex">
 			{#each navigation as { navTitle, landingPath }}
-				<a class="font-bold transition-all duration-200 hover:(text-primary-500)" href={landingPath}
+				<a class="font-semibold transition-all duration-200 hover:underline" href={landingPath}
 					>{navTitle}</a
 				>
 			{/each}

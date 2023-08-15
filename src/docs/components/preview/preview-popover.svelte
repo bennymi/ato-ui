@@ -9,7 +9,7 @@
 	export let backgroundClass = defaultBackground;
 
 	const {
-		elements: { trigger, content, arrow, close },
+		elements: { trigger, content },
 		states: { open }
 	} = createPopover({ forceVisible: true });
 
@@ -39,11 +39,19 @@
 			// text: 'text-on-surface-50 dark:text-on-surface-900'
 		}
 	];
-	
+
 	$: backgroundClass = $value;
 </script>
 
-<button type="button" class="inline-flex h-7 w-7 items-center justify-center rounded-btn p-0 text-sm transition-colors hover:primary-400 focus-visible:(ring ring-primary-400 ring-offset-2) {$open ? 'primary-500 bg-mesh-primary-x0-y0-secondary-x100-y0-tertiary-x100-y100-warning-x0-y100' : 'surface-300 dark:surface-400'}" {...$trigger} use:trigger aria-label="Update preview background color">
+<button
+	type="button"
+	class="inline-flex h-7 w-7 items-center justify-center rounded-btn p-0 text-sm transition-colors hover:primary-400 focus-visible:(ring ring-primary-400 ring-offset-2) {$open
+		? 'primary-500 bg-mesh-primary-x0-y0-secondary-x100-y0-tertiary-x100-y100-warning-x0-y100'
+		: 'surface-300 dark:surface-400'}"
+	{...$trigger}
+	use:trigger
+	aria-label="Update preview background color"
+>
 	<span
 		class="text-2xl transition-all {$open
 			? 'i-mdi-palette-swatch-variant -rotate-360'
@@ -53,7 +61,12 @@
 </button>
 
 {#if $open}
-	<div {...$content} use:content transition:fade={{ duration: 100 }} class="content z-10 rounded-container bg-surface-50 border-1 border-surface-200-600 p-2 shadow-sm">
+	<div
+		{...$content}
+		use:content
+		transition:fade={{ duration: 100 }}
+		class="content z-10 rounded-container bg-surface-100/10 border-1 border-surface-200-600 p-2 shadow-md backdrop-blur-sm"
+	>
 		<!-- <PreviewPalette /> -->
 		<div {...$root} use:root class="grid grid-cols-3 gap-1.5" aria-label="View density">
 			{#each backgroundOptions as { bg, text }, i}
