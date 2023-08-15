@@ -51,6 +51,7 @@ export const load = (async ({ params,  fetch }) => {
 	return {
         // previewsCode,
         previewSnippets,
+        componentsData: componentsData[slug],
 		// snippets: getAllPreviewSnippets({ slug: params.name, fetcher: fetch }),
 	};
 }) satisfies PageServerLoad;

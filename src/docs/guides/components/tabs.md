@@ -52,13 +52,3 @@ You can adjust the headers spacings using the `justifyHeaders` prop.
     <Tab key="extra">Extra Content</Tab>
 </TabsList>
 ```
-
-## API
-
-### TabsList
-
-<PropsTable props={tabs_list_docs.props} />
-
-### Tabs
-
-<PropsTable props={tab_docs.props} />

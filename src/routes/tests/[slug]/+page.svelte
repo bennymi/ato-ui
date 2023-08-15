@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 
-	const {
+	$: ({
 		previewSnippets,
 		previewComponents,
 		content,
@@ -14,7 +14,7 @@
 		styledExists,
 		githubPath,
 		componentsData
-	} = data;
+	} = data);
 
 	type Component = $$Generic<typeof SvelteComponent>;
 
