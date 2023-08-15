@@ -212,6 +212,7 @@ function isDocsPage(slug: string, key: string) {
 export type Metadata = {
     title: string;
     description: string;
+    icon?: string;
 }
 
 export type DocsComponentData = {

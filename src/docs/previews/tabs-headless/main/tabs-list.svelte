@@ -39,7 +39,7 @@
 			<button
 				{...$trigger({ value: item.key, disabled: deactivated })}
 				use:trigger
-				class="px-2 py-1 min-w-40 inline-flex gap-1 justify-center items-center 
+				class="px-2 py-1 min-w-20 md:min-w-40 inline-flex gap-1 justify-center items-center 
 					shadow-md shadow-surface-900/20 transition-all duration-150 font-semibold 
 					rounded-t-btn focus:(ring-2 ring-surface-300 ring-offset-2) 
 					{deactivated

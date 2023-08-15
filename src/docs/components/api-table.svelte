@@ -25,16 +25,16 @@
                     ? 'shadow-[rgba(var(--color-error-500))_-4px_0px_0px_0px]'
                     : ''}"
                 >
-                    <div class="flex gap-1 font-mono">
-                        <div class="px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit">
+                    <div class="flex gap-1 font-mono overflow-auto">
+                        <div class="shrink-0 px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit">
                             {name}
                         </div>
                         <div>:</div>
                         <!-- TODO: add tooltip on type -> shows options -->
-                        <div class="px-2 bg-surface-400 text-on-surface-400 rounded-container">{type}</div>
+                        <div class="shrink-0 px-2 bg-surface-400 text-on-surface-400 rounded-container">{type}</div>
                         {#if defaultValue}
                             <div>=</div>
-                            <div class="px-2 bg-secondary-500 text-on-secondary-500 rounded-container">{defaultValue}</div>
+                            <div class="shrink-0 px-2 bg-secondary-500 text-on-secondary-500 rounded-container">{defaultValue}</div>
                         {/if}
                     </div>
                     <div>
