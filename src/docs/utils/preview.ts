@@ -264,8 +264,8 @@ export async function getDocsData(args: { slug: string, isComponent: boolean }) 
             .filter((v) => v.includes(slug.replace('-headless', '')))
             .map((v) => v.split('/').at(-1)?.split('.')[0]);
 
-        docsComponentData.headlessExists = components.includes(slug.replace('-headless', ''));
-        docsComponentData.styledExists = components.includes(`${slug.replace('-headless', '')}-headless`);
+        docsComponentData.styledExists = components.includes(slug.replace('-headless', ''));
+        docsComponentData.headlessExists = components.includes(`${slug.replace('-headless', '')}-headless`);
     }
 
     return docsComponentData;

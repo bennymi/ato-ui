@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import { createSwitch, createTabs } from '@melt-ui/svelte';
+	import { createTabs } from '@melt-ui/svelte';
 
 	import { pre as CodeBlock, PreviewPopover } from '$components';
 	import { Switch } from '$lib/components';
@@ -17,11 +17,6 @@
 	} = createTabs({
 		defaultValue: 'app.svelte'
 	});
-
-	const {
-		elements: { root: switchRoot, input: switchInput },
-		states: { checked: switchChecked },
-	} = createSwitch();
 
 	type FileTypes = 'css' | 'svelte' | 'ts';
 

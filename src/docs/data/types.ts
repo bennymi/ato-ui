@@ -27,6 +27,7 @@ export type Prop = {
     required?: boolean;
     description: string;
     isStyle?: boolean;
+    options?: string;
 }
 
 export type APIProp = {

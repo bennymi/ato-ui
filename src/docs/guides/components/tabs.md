@@ -3,31 +3,27 @@ title: Tabs
 description: A set of panels that allow you to switch between different views.
 ---
 
-<script>
-	import { PropsTable } from '$components';
-    import tabs_list_docs from '$lib/components/tabs/tabs-list.svelte?raw&sveld';
-    import tab_docs from '$lib/components/tabs/tabs.svelte?raw&sveld';
-
-	import { TabsList, Tab } from 'ato-ui';
-
-	const tabHeaders = [
-		{
-			key: 'styled',
-			title: 'Styled',
-			icon: 'text-xl i-material-symbols-water-drop-rounded'
-		},
-		{
-			key: 'headless',
-			title: 'Headless',
-			icon: 'text-xl i-material-symbols-water-drop-outline-rounded'
-		},
-		{ key: 'extra', title: 'Extra' }
-	];
-</script>
-
 ## Active Tab
 
 You can set the active tab by passing the key of the tab to the `activeTab` prop. You can also bind to this prop if you want to do something when it changes.
+
+```svelte /activeTab/#prop
+<script lang="ts">
+	import { TabsList, Tab, type TabHeader } from 'ato-ui';
+
+	let activeTab = 'styled';
+
+	const tabHeaders: TabHeader = [
+		// ...
+	];
+
+	$: console.log(activeTab);
+</script>
+
+<TabsList bind:activeTab {tabHeaders} disabledTabs={['extra']} ariaLabel="disabled tabs example">
+    <!-- ... -->
+</TabsList>
+```
 
 ## Disable Tabs
 

@@ -1,7 +1,7 @@
-<script>
-	import { TabsList, Tab } from 'ato-ui';
+<script lang="ts">
+	import { TabsList, Tab, type TabHeader } from 'ato-ui';
 
-	const tabHeaders = [
+	const tabHeaders: TabHeader = [
 		{
 			key: 'styled',
 			title: 'Styled',

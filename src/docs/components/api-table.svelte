@@ -19,8 +19,8 @@
         </Heading>
 
         <div class="flex flex-col gap-2">
-            {#each props as { name, type, description, required, isStyle, defaultValue }}
-                <div class="flex flex-col gap-1 surface-100 dark:surface-500 p-4 rounded-container hover:(ring-1 ring-primary-500) 
+            {#each props as { name, type, description, options, required, isStyle, defaultValue }}
+                <div class="flex flex-col gap-2 surface-100 dark:surface-500 p-4 rounded-container hover:(ring-1 ring-primary-500) 
                 {required 
                     ? 'shadow-[rgba(var(--color-error-500))_-4px_0px_0px_0px]'
                     : ''}"
@@ -30,6 +30,7 @@
                             {name}
                         </div>
                         <div>:</div>
+                        <!-- TODO: add tooltip on type -> shows options -->
                         <div class="px-2 bg-surface-400 text-on-surface-400 rounded-container">{type}</div>
                         {#if defaultValue}
                             <div>=</div>

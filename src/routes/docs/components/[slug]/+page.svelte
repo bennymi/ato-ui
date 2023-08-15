@@ -1,55 +1,47 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import type { SvelteComponent } from 'svelte';
+	import type { PageData } from './$types';
+	import { DocsHeader, Preview, APITable } from '$components';
 
-	export let data;
+	export let data: PageData;
 
-	let unavailableStyle = 'text-surface-500-100 opacity-50 cursor-not-allowed';
-	let inactiveStyle = 'text-surface-800-100 hover:primary-500/80!';
+	$: ({
+		previewSnippets,
+		previewComponents,
+		content,
+		meta,
+		headlessExists,
+		styledExists,
+		githubPath,
+		componentsData
+	} = data);
 
-	$: pageIsHeadless = $page.url.pathname.includes('-headless');
-	$: styledPath = data.styledExists ? $page.url.pathname.replace('-headless', '') : '';
-	$: headlessPath = data.headlessExists
-		? `${$page.url.pathname.replace('-headless', '')}-headless`
-		: '';
+	type Component = $$Generic<typeof SvelteComponent>;
+
+	$: mainPreview = previewComponents.main as unknown as Component;
+	$: docsComponent = content as unknown as Component;
 </script>
 
-<svelte:head>
-	<title>{data.meta.title}{data.slug.includes('-headless') ? ' - Headless' : ''} | Ato-UI</title>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content={data.meta.title} />
-</svelte:head>
+<!-- <div class="w-1/2 overflow-scroll pl-0.5 text-surface-900-50">
+</div> -->
 
-<div class="text-surface-900-50">
-	<h1 class="text-4xl font-bold">{data.meta.title}</h1>
+<DocsHeader
+	isComponent={true}
+	{meta}
+	{headlessExists}
+	{styledExists}
+	{githubPath}
+	dependencies={componentsData.dependencies}
+/>
 
-	<p class="text-surface-800-100 my-2">{data.meta.description}</p>
+<h1 class="hidden">Preview</h1>
 
-	<nav
-		class="flex items-center rounded-btn border-1 border-primary-500 w-fit [&>a]:(flex justify-center items-center gap-1 font-semibold p-1 min-w-34 transition-all duration-150)"
-	>
-		<a
-			href={data.headlessExists ? headlessPath : '#'}
-			class="rounded-l-btn {!data.headlessExists
-				? unavailableStyle
-				: pageIsHeadless
-				? 'primary-500'
-				: inactiveStyle}"
-		>
-			<span class="i-material-symbols-water-drop-outline-rounded" />
-			<span class={!data.headlessExists ? 'line-through' : ''}>Headless</span>
-		</a>
-		<a
-			href={data.styledExists ? styledPath : '#'}
-			class="rounded-r-btn {!data.styledExists
-				? unavailableStyle
-				: pageIsHeadless
-				? inactiveStyle
-				: 'primary-500'}"
-		>
-			<span class="i-material-symbols-water-drop-rounded" />
-			<span class={!data.styledExists ? 'line-through' : ''}>Styled</span>
-		</a>
-	</nav>
-</div>
+{#if 'main' in previewSnippets && 'main' in previewComponents}
+	<Preview previewSnippets={previewSnippets.main}>
+		<svelte:component this={mainPreview} />
+	</Preview>
+{/if}
 
-<svelte:component this={data.content} />
+<svelte:component this={docsComponent} {previewSnippets} {previewComponents} />
+
+<APITable {componentsData} />

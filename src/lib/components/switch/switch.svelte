@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { createSwitch } from '@melt-ui/svelte';
 	import { generateId } from '@melt-ui/svelte/internal/helpers'; 
-
+	import type { SwitchLabelPosition, SwitchSize } from './types';
 
 	/** Set the toggle text. */
 	export let label: string;
@@ -13,22 +13,23 @@
 	/** Define if the label should be hidden. It will still be available for screen readers. */
 	export let hideLabel = false;
 	/** Set the label position (left or right). */
-	export let labelPosition: 'left' | 'right' = 'left';
+	export let labelPosition: SwitchLabelPosition = 'left';
+	/** Bind to the checked status of the switch. */
+	export let checked = false;
+	/** Define whether or not the switch is disabled. */
+	export let disabled = false;
+	/** Set the size of the toggle switch. Options: 'sm' | 'md' | 'lg'. */
+	export let size: SwitchSize = 'md';
+
 	/** Set label styles. */
 	export let labelStyles = 'px-2 text-surface-900-50';
 	/** Set the in-active background classes. */
 	export let background = 'bg-surface-300-400';
 	/** Set the active background classes. */
 	export let activeBackground = 'bg-primary-500';
-	/** Bind to the checked status of the switch. */
-	export let checked = false;
-	/** Define whether or not the switch is disabled. */
-	export let disabled = false;
-	/** Set the size of the toggle switch. Options: 'sm' | 'md' | 'lg'. */
-	export let size: 'sm' | 'md' | 'lg' = 'md';
 	/** Set the inactive icon (optional). You can also set the icon size and color here. Example: "text-surface-900 text-lg i-material-symbols-dark-mode-rounded". */
 	export let inactiveIcon = '';
-	/** Set the active icon (optional). You can also set the icon size and color here. Example: "text-surface-900 text-lg i-material-symbols-clear-day-rounded" */
+	/** Set the active icon (optional). You can also set the icon size and color here. Example: "text-surface-900 text-lg i-material-symbols-clear-day-rounded". */
 	export let activeIcon = '';
 
 	const {

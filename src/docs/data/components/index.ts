@@ -1,4 +1,6 @@
 import type { ComponentsData } from "../types";
+
+import { switchData } from './switch';
 import { tabsHeadlessData } from "./tabs-headless";
 import { tabsData } from "./tabs";
 
@@ -15,15 +17,16 @@ export const componentsList = [
     'modal',
     'radio-group-headless',
     'radio-group',
+    'switch',
     'tabs-headless',
     'tabs',
     'toc-headless',
     'toc',
     // 'toggle-switch-headless',
-    'toggle-switch',
 ];
 
 export const componentsData: ComponentsData = {
+    'switch': switchData,
     'tabs-headless': tabsHeadlessData,
     'tabs': tabsData
 }
