@@ -10,8 +10,6 @@ description: A checkbox, which allows users to change between two states.
     export let previewComponents;
 </script>
 
-Switches use the `rounded-btn` class, so they change their shape based on the theme variables. See the props table for all available ways of customizing the component.
-
 ## Colors
 
 The background colors of the switch can be changed with the `background` and `activeBackground` props.

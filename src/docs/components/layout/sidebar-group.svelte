@@ -54,16 +54,17 @@
 	{#if !hide_group}
 		<div id={group_id} transition:slide={{ duration: 300 }}>
 			{#each items as item, i}
+				{@const hasTwoItems = item.length === 2}
 				<div class="flex items-center gap-1">
 					<a
-						href={item[0].sitePath}
+						href={hasTwoItems ? item[1].sitePath : item[0].sitePath}
 						class="group flex items-center gap-2 px-1 rounded-btn text-surface-700-900-200-50 hover:(ring-2 ring-primary-500) {active(
 							item[0].sitePath
 						) ||
-						(item.length === 2 && active(`${item[1].sitePath}`))
+						(hasTwoItems && active(`${item[1].sitePath}`))
 							? 'primary-500!'
 							: ''}"
-						on:click={() => handleClick(item[0].sitePath)}
+						on:click={() => handleClick(hasTwoItems ? item[1].sitePath : item[0].sitePath)}
 						on:keydown
 					>
 						{#if item[0].icon}

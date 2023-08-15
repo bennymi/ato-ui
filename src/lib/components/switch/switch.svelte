@@ -41,7 +41,6 @@
 	} = createSwitch({ disabled, name, required, defaultChecked: checked });
 
 	let uniqueId = generateId();
-	let focused = false;
 
 	const sizes = {
 		sm: {
