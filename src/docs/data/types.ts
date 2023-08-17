@@ -25,6 +25,9 @@ export type Prop = {
     type: string;
     defaultValue?: string;
     description: string;
+    required?: boolean;
+    isStyle?: boolean;
+    isIcon?: boolean;
 }
 
 export type ComponentAPIExtraInfo = {
