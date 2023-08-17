@@ -24,8 +24,8 @@ export type Prop = {
     name: string;
     type: string;
     defaultValue?: string;
-    required?: boolean;
     description: string;
+    required?: boolean;
     isStyle?: boolean;
     options?: string;
 }
