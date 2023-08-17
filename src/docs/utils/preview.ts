@@ -95,7 +95,7 @@ export type PreviewExamples = Record<string, PreviewTab[]>;
  * Returns all highlighted code files for each example
  * of the specified slug route.
  */
-export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiTheme | string, highlights: ExampleHighlights }) {
+export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiTheme | string, highlights: ExampleHighlights | undefined }) {
     const { slug, theme, highlights } = args;
 
     // Get the files.

@@ -13,7 +13,8 @@
 		headlessExists,
 		styledExists,
 		githubPath,
-		componentsData
+		componentData,
+		componentAPI
 	} = data);
 
 	type Component = $$Generic<typeof SvelteComponent>;
@@ -31,7 +32,7 @@
 	{headlessExists}
 	{styledExists}
 	{githubPath}
-	dependencies={componentsData.dependencies}
+	dependencies={componentData.dependencies}
 />
 
 <h1 class="hidden">Preview</h1>
@@ -44,4 +45,4 @@
 
 <svelte:component this={docsComponent} {previewSnippets} {previewComponents} />
 
-<APITable {componentsData} />
+<APITable {componentData} {componentAPI} />

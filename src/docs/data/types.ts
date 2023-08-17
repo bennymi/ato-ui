@@ -25,9 +25,13 @@ export type Prop = {
     type: string;
     defaultValue?: string;
     description: string;
-    required?: boolean;
-    isStyle?: boolean;
-    options?: string;
+}
+
+export type ComponentAPIExtraInfo = {
+    component: string;
+    required?: string[];
+    styles?: string[]; // Props that are used for styling.
+    icons?: string[]; // Props that allow the user to pass icons.
 }
 
 export type APIProp = {
@@ -38,7 +42,10 @@ export type APIProp = {
 export type Data = {
     highlights?: ExampleHighlights;
     dependencies?: Dependency[];
-    componentProps?: APIProp[];
+    apiExtraInfo?: ComponentAPIExtraInfo[];
+    // componentProps?: APIProp[];
 }
 
 export type ComponentsData = Record<string, Data>;
+
+export type ComponentsAPI = Record<string, APIProp[]>;
