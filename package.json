@@ -5,7 +5,7 @@
 	"author": "Benedikt Mielke",
 	"homepage": "https://ato-ui.vercel.app/",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "tsx ./scripts/api-docs.ts vite dev",
 		"build": "vite build && npm run package",
 		"create-highlights": "tsx ./scripts/prepare.ts",
 		"preview": "vite preview",
