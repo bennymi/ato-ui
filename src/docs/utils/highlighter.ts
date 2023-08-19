@@ -1,6 +1,18 @@
 
+/**
+ * Copy rehype-pretty-code into separate folder because of bundle errors.
+ * Packages installed for this rehype (remove them when issue is solved):
+ * 	- parse-numeric-range
+ *  - rehype-parse
+ *  - hash-obj
+ *  - hast
+ *  - @types/hast
+ *  - hast-util-to-string
+ */
+
+// import rehypePrettyCode from 'rehype-pretty-code';
+import rehypePrettyCode from './rehype-pretty-code';
 import { toHtml } from 'hast-util-to-html';
-import rehypePrettyCode from 'rehype-pretty-code';
 import { getHighlighter } from 'shiki-es';
 import { unified, type Processor } from 'unified';
 

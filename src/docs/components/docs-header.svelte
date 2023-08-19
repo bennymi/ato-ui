@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import type { Dependency } from '$docs/data';
+	import type { Dependency } from '$docs/data/types';
 	import type { Metadata } from '$docs/utils/preview';
 
 	export let meta: Metadata | undefined;

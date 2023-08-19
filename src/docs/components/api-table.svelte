@@ -31,8 +31,6 @@
 
 	let filter: 'all' | 'required' | 'function' | 'style' | 'icon' = 'all';
 
-	$: console.log('filters:', filter);
-
 	$: ({ apiExtraInfo } = componentData);
 
 	let apis: APIProp[] = [];
@@ -40,7 +38,7 @@
 	$: {
 		const newAPIs: APIProp[] = [];
 
-		componentAPI.forEach((component) => {
+		componentAPI?.forEach((component) => {
 			const props: typeof component.props = [];
 
 			const idx = apiExtraInfo?.findIndex((item) => item.component === component.component);
@@ -58,7 +56,7 @@
 				return;
 			}
 
-			component.props.forEach((prop) => {
+			component.props?.forEach((prop) => {
 				const required = apiExtraInfo![idx].required?.includes(prop.name) ?? false;
 				const isStyle = apiExtraInfo![idx].styles?.includes(prop.name) ?? false;
 				const isIcon = apiExtraInfo![idx].icons?.includes(prop.name) ?? false;
@@ -122,7 +120,7 @@
 				/>
 				<label
 					for="prop-filter-{i}"
-					class="inline-flex items-center justify-center gap-2 px-2 py-1 ring-0.5 rounded-btn cursor-pointer {active
+					class="inline-flex items-center justify-center gap-2 px-2 py-1 ring-0.5 rounded-btn cursor-pointer hover:primary-500/80 {active
 						? 'primary-500 ring-primary-500'
 						: 'surface-100 dark:surface-500 ring-surface-200/50'}"
 				>
@@ -150,7 +148,7 @@
 					{required ? 'shadow-[rgba(var(--color-error-500))_-4px_0px_0px_0px]' : ''}"
 					>
 						<div
-							class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 inline-flex justify-center items-center rounded-container p-1 surface-100 dark:surface-500 ring-0.5 ring-surface-200/50"
+							class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 inline-flex justify-center items-center rounded-container p-1 surface-100 dark:surface-500 ring-1 ring-surface-200/50"
 						>
 							{#if isStyle}
 								<span class="text-xl i-material-symbols-format-color-fill-rounded" />

@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 
 import type { PageLoad } from './$types';
-import { componentsList, isComponent } from '$docs/data/components';
+import { isComponent } from '$docs/data/components';
 import { getAllPreviewComponents, getDocsData } from '$docs/utils/preview';
 
 export const load = (async ({ params, data }) => {
