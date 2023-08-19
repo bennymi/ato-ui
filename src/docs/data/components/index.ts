@@ -1,5 +1,6 @@
 import type { ComponentsData } from "../types";
 
+import { radioGroupHeadlessData } from "./radio-group-headless";
 import { switchHeadlessData } from './switch-headless';
 import { switchData } from './switch';
 import { tabsHeadlessData } from "./tabs-headless";
@@ -16,7 +17,7 @@ export const componentsList = [
     // 'drop-menu',
     // 'modal-headless',
     // 'modal',
-    // 'radio-group-headless',
+    'radio-group-headless',
     // 'radio-group',
     'switch-headless',
     'switch',
@@ -27,6 +28,7 @@ export const componentsList = [
 ];
 
 export const componentsData: ComponentsData = {
+    'radio-group-headless': radioGroupHeadlessData,
     'switch-headless': switchHeadlessData,
     'switch': switchData,
     'tabs-headless': tabsHeadlessData,

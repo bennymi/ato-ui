@@ -42,11 +42,22 @@ export type APIProp = {
     props: Prop[];
 }
 
+/**
+ * For some components we have multiple different versions,
+ * so in the docs we need to define which components belong to
+ * which group.
+ */
+export type ComponentGroup = {
+    group: string;
+    components: string[];
+}
+
 export type Data = {
     highlights?: ExampleHighlights;
     dependencies?: Dependency[];
     apiExtraInfo?: ComponentAPIExtraInfo[];
     // componentProps?: APIProp[];
+    groups?: ComponentGroup[];
 }
 
 export type ComponentsData = Record<string, Data>;

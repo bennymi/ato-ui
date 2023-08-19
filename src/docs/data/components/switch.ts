@@ -7,7 +7,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         styles: ['labelStyles', 'background', 'activeBackground'],
         icons: ['inactiveIcon', 'activeIcon']
     },
-]
+];
 
 // const componentProps: APIProp[] = [
 //     {
