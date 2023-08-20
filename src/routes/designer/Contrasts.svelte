@@ -9,7 +9,7 @@
 	import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
 
 	import { new_theme } from './stores';
-	import type { RadioItem } from '$lib/components/radio-group/types';
+	import type { RadioItem } from 'ato-ui/components/radio-group/types';
 
 	export let shades: FullTheme;
 

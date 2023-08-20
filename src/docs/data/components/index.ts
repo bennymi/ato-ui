@@ -6,6 +6,7 @@ import { switchHeadlessData } from './switch-headless';
 import { switchData } from './switch';
 import { tabsHeadlessData } from "./tabs-headless";
 import { tabsData } from "./tabs";
+import { tocHeadlessData } from './table-of-contents-headless';
 
 export const componentsList = [
     // 'accordion-headless',
@@ -24,6 +25,8 @@ export const componentsList = [
     'switch',
     'tabs-headless',
     'tabs',
+    'table-of-contents-headless',
+    'table-of-contents'
     // 'toc-headless',
     // 'toc',
 ];
@@ -34,7 +37,8 @@ export const componentsData: ComponentsData = {
     'switch-headless': switchHeadlessData,
     'switch': switchData,
     'tabs-headless': tabsHeadlessData,
-    'tabs': tabsData
+    'tabs': tabsData,
+    'table-of-contents-headless': tocHeadlessData
 }
 
 export function isComponent(key: string) {

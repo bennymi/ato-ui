@@ -10,7 +10,7 @@
 	/** The group to bind to. Use this to set the default selected value here. */
 	export let group: string;
 	/** The radio items. */
-	export let items: RadioItem[] = [];
+	export let items: RadioItem[];
 	/** Set the size of the radio buttons. Options: 'sm' | 'md' | 'lg'. */
 	export let size: RadioItemSize = 'md';
 	/** Set the active icon that appears when an item is selected. Example: 'i-material-symbols-check-circle-outline text-on-primary'. */

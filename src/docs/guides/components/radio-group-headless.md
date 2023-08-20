@@ -1,6 +1,6 @@
 ---
 title: Radio Group
-description: A headless radio group example.
+description: A set of checkable buttons, where only one of the buttons can be selected at a time.
 ---
 
 

@@ -1,7 +1,6 @@
 ---
 title: Radio Group
-component: components/radio-group/RadioGroup.svelte
-description: A radio group example for Svelte.
+description: A set of checkable buttons, where only one of the buttons can be selected at a time.
 ---
 
 <script>
