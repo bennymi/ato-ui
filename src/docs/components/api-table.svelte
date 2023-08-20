@@ -60,12 +60,14 @@
 				const required = apiExtraInfo![idx].required?.includes(prop.name) ?? false;
 				const isStyle = apiExtraInfo![idx].styles?.includes(prop.name) ?? false;
 				const isIcon = apiExtraInfo![idx].icons?.includes(prop.name) ?? false;
+				const isFunction = ((!isStyle && !isIcon) || apiExtraInfo![idx].function?.includes(prop.name)) ?? false;
 
 				props.push({
 					...prop,
 					required,
 					isIcon,
-					isStyle
+					isStyle,
+					isFunction
 				});
 			});
 
@@ -99,8 +101,8 @@
 							component: component.component,
 							props
 						};
-					})
-					.filter((component) => component.props.length > 0);
+					});
+					// .filter((component) => component.props.length > 0);
 </script>
 
 {#if componentAPI}
@@ -138,48 +140,75 @@
 			</Heading>
 
 			<div class="flex flex-col gap-2">
-				{#each props as { name, type, description, defaultValue, isIcon, isStyle, required }}
-					<!-- {@const required = isRequired(component, name)}
-					{@const isStyle = isStyleProp(component, name)}
-					{@const isIcon = isIconProp(component, name)} -->
-					<div
-						transition:slide
-						class="relative flex flex-col gap-2 surface-100 dark:surface-500 p-4 rounded-container ring-0.5 ring-surface-200/50 hover:(ring-primary-500)
-					{required ? 'shadow-[rgba(var(--color-error-500))_-4px_0px_0px_0px]' : ''}"
-					>
-						<div
-							class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 inline-flex justify-center items-center rounded-container p-1 surface-100 dark:surface-500 ring-1 ring-surface-200/50"
-						>
-							{#if isStyle}
-								<span class="text-xl i-material-symbols-format-color-fill-rounded" />
-							{:else if isIcon}
-								<span class="text-xl i-mdi-emoticon-wink-outline" />
-							{:else}
-								<span class="text-xl i-material-symbols-functions-rounded" />
-							{/if}
-						</div>
-						<div class="flex justify-left items-center gap-1 font-mono overflow-auto ml-2">
-							<div class="shrink-0 px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit">
-								{name}
-							</div>
-							<div>:</div>
-							<!-- TODO: add tooltip on type -> shows options -->
-							<div class="shrink-0 px-2 bg-surface-400 text-on-surface-400 rounded-container">
-								{type}
-							</div>
-							{#if defaultValue}
-								<div>=</div>
-								<div class="shrink-0 px-2 bg-secondary-500 text-on-secondary-500 rounded-container">
-									{defaultValue}
-								</div>
-							{/if}
-						</div>
-						<div class="ml-2">
-							{description}
-						</div>
+				{#if props.length === 0}
+					<div class="rounded-container error-500 p-2 flex justify-left items-center gap-2">
+						<span class="i-material-symbols-error-circle-rounded text-2xl" />
+						<span class="text-xl font-semibold">
+							No props matching the applied filter.
+						</span>
 					</div>
-				{/each}
+				{:else}
+					{#each props as { name, type, description, defaultValue, isIcon, isStyle, isFunction, required }}
+						<div
+							class:required
+							transition:slide
+							class="relative flex flex-col gap-2 surface-100 dark:surface-500 p-4 rounded-container ring-0.5 ring-surface-200/50 hover:(ring-primary-500)
+						"
+						>
+							<!-- <div
+								class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 inline-flex justify-center items-center rounded-container p-1 surface-100 dark:surface-500 ring-1 ring-surface-200/50"
+							>
+								{#if isStyle}
+									<span class="text-xl i-material-symbols-format-color-fill-rounded" />
+								{:else if isIcon}
+									<span class="text-xl i-mdi-emoticon-wink-outline" />
+								{:else}
+									<span class="text-xl i-material-symbols-functions-rounded" />
+								{/if}
+							</div> -->
+							<div
+								class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 inline-flex flex-col gap-1 justify-center items-center rounded-container p-1 surface-100 dark:surface-500 ring-1 ring-surface-200/50"
+							>
+								{#if isFunction}
+									<span class="text-xl i-material-symbols-functions-rounded" />
+								{/if}
+								{#if isStyle}
+									<span class="text-xl i-material-symbols-format-color-fill-rounded" />
+								{/if}
+								{#if isIcon}
+									<span class="text-xl i-mdi-emoticon-wink-outline" />
+								{/if}
+							</div>
+							<div class="flex justify-left items-center gap-1 font-mono overflow-auto ml-2">
+								<div class="shrink-0 px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit">
+									{name}
+								</div>
+								<div>:</div>
+								<!-- TODO: add tooltip on type -> shows options -->
+								<div class="shrink-0 px-2 bg-surface-400 text-on-surface-400 rounded-container">
+									{type}
+								</div>
+								{#if defaultValue}
+									<div>=</div>
+									<div class="shrink-0 px-2 bg-secondary-500 text-on-secondary-500 rounded-container">
+										{defaultValue}
+									</div>
+								{/if}
+							</div>
+							<div class="ml-2">
+								{description}
+							</div>
+						</div>
+					{/each}
+				{/if}
 			</div>
 		</div>
 	{/each}
 {/if}
+
+<style>
+	.required {
+		/* shadow-[rgba(var(--color-error-500))_-4px_0px_0px_0px] */
+		box-shadow: -4px 0 0 0 rgba(var(--color-error-500)), 4px 0 0 0 rgba(var(--color-error-500));
+	}
+</style>

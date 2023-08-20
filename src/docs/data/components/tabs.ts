@@ -90,7 +90,9 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
     {
         component: 'TabsList',
         required: ['activeTab', 'tabHeaders', 'ariaLabel'],
-        styles: ['borderStyle', 'activeStyle', 'inactiveStyle', 'headerWidth', 'justifyHeaders']
+        styles: ['borderStyle', 'activeStyle', 'inactiveStyle', 'headerWidth', 'justifyHeaders'],
+        icons: ['tabHeaders'],
+        function: ['tabHeaders']
     },
     {
         component: 'Tab',

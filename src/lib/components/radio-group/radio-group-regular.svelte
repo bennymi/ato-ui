@@ -4,7 +4,7 @@
 	import type {
 		RadioGroupOrientation,
 		RegularRadioItem,
-		RegularRadioItemSize,
+		RadioItemSize,
 		RegularRadioItemSizeDefinitions
 	} from './types';
 
@@ -23,7 +23,7 @@
 	/** Define whether or not the focus should loop back to the first item when the last item is reached. */
 	export let loop = true;
 	/** Set the size of the radio items. */
-	export let size: RegularRadioItemSize = 'md';
+	export let size: RadioItemSize = 'md';
 
 	/** Set the active color. */
 	export let activeColor = 'bg-primary-500';

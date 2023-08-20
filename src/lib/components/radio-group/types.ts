@@ -11,8 +11,8 @@ export type RegularRadioItem = {
     label: string;
 }
 
-export type RegularRadioItemSize = 'sm' | 'md' | 'lg';
+export type RadioItemSize = 'sm' | 'md' | 'lg';
 
 export type RadioGroupOrientation = 'horizontal' | 'vertical';
 
-export type RegularRadioItemSizeDefinitions = Record<RegularRadioItemSize, { out: string, in: string, text: string }>;
+export type RegularRadioItemSizeDefinitions = Record<RadioItemSize, { out: string, in: string, text: string }>;

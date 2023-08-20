@@ -5,113 +5,35 @@ description: A radio group example for Svelte.
 ---
 
 <script>
-    import { PropsTable } from '$components';
-    import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
-    import docs from '$lib/components/radio-group/RadioGroup.svelte?raw&sveld';
+    import { Preview } from '$components';
 
-	let items = [
-		{
-			value: 'startup',
-			label: 'Startup',
-			// subLabel: 'This is a startup',
-			icon: 'i-material-symbols-alarm-on-rounded'
-		},
-		{ value: 'business', label: 'Business' },
-		{ value: 'enterprise', label: 'Enterprise' }
-	];
-
-    let group = 'startup';
-
-	let activeIcon = 'i-material-symbols-check-circle-outline-rounded text-on-primary';
+    export let previewSnippets;
+    export let previewComponents;
 </script>
 
-## Preview
+We have two different versions for the Radio Group. A more classical (`RadioGroupRegular`) one that might be better for use inside forms, and a more fancy one (`RadioGroup`). They have slightly different APIs, so reference the [API](#api) section below to see how to implement them.
 
-<Usage padding="py-20">
-    <RadioGroup {items} name="group-1" {activeIcon} {group} />
-</Usage>
-
-```svelte
-<script lang="ts">
-    import { RadioGroup, type RadioItem } from 'ato-ui';
-
-	export let shades: FullTheme;
-
-    let group = 'startup';
-
-	let items: RadioItem[] = [
-		{ value: 'startup', label: 'Startup', icon: 'i-material-symbols-alarm-on-rounded' },
-		{ value: 'business', label: 'Business' },
-		{ value: 'enterprise', label: 'Enterprise' }
-	];
-</script>
-
-<RadioGroup
-    {items}
-    bind:group
-    name="group-select"
-/>
-```
 
 ## Colors
 
-You can change the active and inactive colors with the `bgActiveClasses` and `bgClasses` props.
+You can change the active and inactive colors with the `bgActiveStyles` and `bgStyles` props.
 
-<Usage padding="py-20" column="true">
-    <RadioGroup {items} name="color-1" size="sm" {activeIcon} bgActiveClasses="primary-500" />
-    <RadioGroup {items} name="color-2" size="sm" {activeIcon} bgActiveClasses="secondary-500" />
-    <RadioGroup {items} name="color-3" size="sm" {activeIcon} bgActiveClasses="tertiary-500" />
-    <RadioGroup {items} name="color-4" size="sm" {activeIcon} bgActiveClasses="success-500" />
-</Usage>
-
-```svelte
-<RadioGroup
-    {items}
-    bind:group
-    name="group-select"
-    bgActiveClasses="secondary-500"
-    bgClasses="surface-800-50"
-/>
-```
+<Preview previewSnippets={previewSnippets['colors']}>
+    <svelte:component this={previewComponents['colors']} />
+</Preview>
 
 ## Active Icon
 
-You can change the active icon that is used when an option is selected, by passing an icon `i-` through the `activeIcon` prop. Also make sure that the color of the icon is set properly so it is visible with the active color you have selected by using the `text-on-` tokens.
+You can change the active icon that is used when an option is selected, by passing an icon through the `activeIcon` prop.
 
-<Usage padding="py-20">
-    <RadioGroup {items} name="color-2" bgActiveClasses="secondary-500" activeIcon="text-on-secondary i-material-symbols-star-rounded" />
-</Usage>
-
-```svelte
-<RadioGroup
-    {items}
-    bind:group
-    name="group-select"
-    bgActiveClasses="secondary-500"
-    bgClasses="surface-800-50"
-    activeIcon="text-on-secondary i-material-symbols-star-rounded"
-/>
-```
+<Preview previewSnippets={previewSnippets['active-icon']}>
+    <svelte:component this={previewComponents['active-icon']} />
+</Preview>
 
 ## Size
 
 You can change the size of the groups with the `size` prop by selecting `sm`, `md`, or `lg`.
 
-<Usage padding="py-20" column="true">
-    <RadioGroup {items} name="size-sm" size="sm" {activeIcon} />
-    <RadioGroup {items} name="size-md" size="md" {activeIcon} />
-    <RadioGroup {items} name="size-lg" size="lg" {activeIcon} />
-</Usage>
-
-```svelte
-<RadioGroup
-    {items}
-    bind:group
-    name="group-select"
-    size="sm"
-/>
-```
-
-## Props
-
-<PropsTable props={docs.props} />
+<Preview previewSnippets={previewSnippets['size']}>
+    <svelte:component this={previewComponents['size']} />
+</Preview>

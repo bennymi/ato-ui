@@ -5,7 +5,8 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         component: 'Switch',
         required: ['label'],
         styles: ['labelStyles', 'background', 'activeBackground'],
-        icons: ['inactiveIcon', 'activeIcon']
+        icons: ['inactiveIcon', 'activeIcon'],
+        function: ['label', 'name', 'required', 'hideLabel', 'labelPosition', 'checked', 'disabled', 'size']
     },
 ];
 

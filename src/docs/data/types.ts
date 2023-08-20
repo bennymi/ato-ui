@@ -28,6 +28,7 @@ export type Prop = {
     required?: boolean;
     isStyle?: boolean;
     isIcon?: boolean;
+    isFunction?: boolean;
 }
 
 export type ComponentAPIExtraInfo = {
@@ -35,6 +36,7 @@ export type ComponentAPIExtraInfo = {
     required?: string[];
     styles?: string[]; // Props that are used for styling.
     icons?: string[]; // Props that allow the user to pass icons.
+    function?: string[]; // Props that are function related.
 }
 
 export type APIProp = {
