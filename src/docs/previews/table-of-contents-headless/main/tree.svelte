@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
 	import type {
 		TableOfContentsItem,
 		CreateTableOfContentsReturn
@@ -9,8 +8,6 @@
 	export let activeHeadingIdxs: number[];
 	export let item: CreateTableOfContentsReturn['item'];
 	export let level = 1;
-
-	const { contentStyles, activeStyles } = getContext('toc-styles');
 </script>
 
 <ul class="m-0 list-none {level !== 1 ? 'pl-4' : ''}">
@@ -22,7 +19,7 @@
 					href="#{heading.id}"
 					{...$item(heading.id)} use:item
 					class="inline-block no-underline transition-colors 
-						{active ? activeStyles : contentStyles}"
+						{active ? 'text-surface-900-50' : 'text-surface-700-800-200-100'}"
 				>
 					{heading.title}
 				</a>

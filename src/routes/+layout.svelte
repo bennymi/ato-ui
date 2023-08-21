@@ -139,7 +139,9 @@
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
 			? null
-			: allGroupItems[currentPageIdx - 1][0];
+			: allGroupItems[currentPageIdx - 1].length === 2 
+				? allGroupItems[currentPageIdx - 1][1]
+				: allGroupItems[currentPageIdx - 1][0];
 
 	$: nextPage =
 		!allGroupItems ||
@@ -147,7 +149,9 @@
 		currentPageIdx < 0 ||
 		currentPageIdx === allGroupItems.length - 1
 			? null
-			: allGroupItems[currentPageIdx + 1][0];
+			: allGroupItems[currentPageIdx + 1].length === 2
+				? allGroupItems[currentPageIdx + 1][1]
+				: allGroupItems[currentPageIdx + 1][0];
 </script>
 
 <svelte:head>

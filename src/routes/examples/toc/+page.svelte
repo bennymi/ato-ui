@@ -1,31 +1,31 @@
 <script lang="ts">
 	import { TOC } from 'ato-ui';
 
-    const scrollFn = (id) => {
-        /**
-         * Here we're overwriting the default scroll function
-         * so that we only scroll within the ToC preview
-         * container, instead of the entire page.
-         */
-        const container = document.getElementById('toc-preview');
-        const element = document.getElementById(id);
+	const scrollFn = (id) => {
+		/**
+		 * Here we're overwriting the default scroll function
+		 * so that we only scroll within the ToC preview
+		 * container, instead of the entire page.
+		 */
+		const container = document.getElementById('toc-preview');
+		const element = document.getElementById(id);
 
-        if (container && element) {
-            container.scrollTo({
-                top: element.offsetTop - container.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    };
+		if (container && element) {
+			container.scrollTo({
+				top: element.offsetTop - container.offsetTop,
+				behavior: 'smooth'
+			});
+		}
+	};
 
-    const headingFilterFn = (heading) => {
-        // console.log('heading:', heading);
-        return !heading.hasAttribute('data-toc-ignore');
-    };
+	const headingFilterFn = (heading) => {
+		// console.log('heading:', heading);
+		return !heading.hasAttribute('data-toc-ignore');
+	};
 </script>
 
 <div class="grid h-[18rem] grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-	<div id="toc-preview" class="space-y-2 overflow-y-auto rounded-lg bg-white p-4 text-neutral-900">
+	<div id="toc-preview" class="space-y-2 overflow-y-auto rounded-container p-4 text-surface-900-50">
 		<h2>First Heading</h2>
 		<p>This is the first heading.</p>
 		<h3>Sub-Heading</h3>
@@ -63,11 +63,11 @@
 		</p>
 	</div>
 
-	<div class="overflow-y-auto rounded-lg bg-white p-4">
+	<div class="overflow-y-auto rounded-container p-4">
 		<TOC
 			selector="#toc-preview"
 			exclude={['h1', 'h4', 'h5', 'h6']}
-            activeType="highest"
+			activeType="highest"
 			{headingFilterFn}
 			{scrollFn}
 		/>

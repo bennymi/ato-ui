@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { setContext } from 'svelte';
 	import { default as Tree } from './toc-tree.svelte';
 	import { createTableOfContents } from '@melt-ui/svelte';
 
@@ -29,7 +29,11 @@
 	export let scrollFn: ToCScrollFn | null = null;
 
 	/** Set the styles for the label header. */
-	export let labelStyles = 'font-semibold text-neutral-900';
+	export let labelStyles = 'font-semibold text-surface-900-50';
+	/** Set the content link styles. */
+	export let contentStyles = 'text-surface-700-800-200-100';
+	/** Set the active content link styles. */
+	export let activeStyles = 'text-surface-900-50';
 
 	const args = {
 		selector,
@@ -37,33 +41,34 @@
 		activeType,
 		scrollOffset,
 		scrollBehaviour,
-		...(headingFilterFn && {headingFilterFn}),
-		...(scrollFn && {scrollFn})
-	}
+		...(headingFilterFn && { headingFilterFn }),
+		...(scrollFn && { scrollFn })
+	};
 
 	const { activeHeadingIdxs, headingsTree, item } = createTableOfContents(args);
 
-	let nav: HTMLElement;
+	setContext('toc-styles', {
+		contentStyles,
+		activeStyles
+	});
 
-	// onMount(() => {
-	// 	const liElements = nav.querySelectorAll("li");
+	// let nav: HTMLElement;
+	// let liElements;
 
-	// 	console.log('liElements:', liElements);
-	// });
-
-	$: if (nav) {
-		console.log(nav);
-		const liElements = nav.querySelectorAll('li');
-
-		console.log('document:', document.querySelectorAll("li"));
-
-		console.log(liElements);
-	}
+	// $: {
+	// 	if (nav) {
+	// 		console.log('nav:', nav);
+	// 		const ulElement = nav.querySelectorAll('ul');
+	// 		liElements = ulElement[0].querySelectorAll('li');
+	// 		console.log(liElements);
+	// 		console.log('document:', document.querySelectorAll('li'));
+	// 	}
+	// }
 </script>
 
 <div class="ato-toc">
 	<p class={labelStyles}>{label}</p>
-	<nav bind:this={nav}>
+	<nav>
 		<Tree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
 	</nav>
 </div>
