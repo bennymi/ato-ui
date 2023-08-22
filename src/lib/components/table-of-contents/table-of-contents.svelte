@@ -8,7 +8,8 @@
 		ToCActiveType,
 		ToCScrollBehaviour,
 		ToCHeadingFilterFn,
-		ToCScrollFn
+		ToCScrollFn,
+		ToCTreeContext
 	} from './types';
 
 	/** Set the header label of the ToC. */
@@ -47,7 +48,7 @@
 
 	const { activeHeadingIdxs, headingsTree, item } = createTableOfContents(args);
 
-	setContext('toc-styles', {
+	setContext<ToCTreeContext>('toc-styles', {
 		contentStyles,
 		activeStyles
 	});

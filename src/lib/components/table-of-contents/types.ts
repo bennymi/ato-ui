@@ -14,3 +14,8 @@ export type ToCScrollBehaviour = 'smooth' | 'instant';
 export type ToCHeadingFilterFn = (heading: HTMLHeadingElement) => boolean;
 
 export type ToCScrollFn = (id: string) => void;
+
+export type ToCTreeContext = {
+	contentStyles: string;
+	activeStyles: string;
+}

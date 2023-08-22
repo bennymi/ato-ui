@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { TOC } from 'ato-ui';
 
-	const scrollFn = (id) => {
+	const scrollFn = (id: string) => {
 		/**
 		 * Here we're overwriting the default scroll function
 		 * so that we only scroll within the ToC preview
@@ -18,7 +18,7 @@
 		}
 	};
 
-	const headingFilterFn = (heading) => {
+	const headingFilterFn = (heading: HTMLElement) => {
 		// console.log('heading:', heading);
 		return !heading.hasAttribute('data-toc-ignore');
 	};

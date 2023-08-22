@@ -4,7 +4,7 @@ const highlights: ExampleHighlights = {
     main: {
         'app.svelte': {
             lines: '',
-            words: [{ strings: ['createTableOfContents'], id: 'builder' }],
+            words: [{ strings: ['createTableOfContents', '<Tree'], id: 'builder' }],
         },
         'tree.svelte': {
             lines: '',

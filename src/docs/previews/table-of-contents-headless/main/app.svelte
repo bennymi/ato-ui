@@ -27,6 +27,7 @@
 </script>
 
 <div class="grid h-[18rem] grid-cols-1 mx-2 gap-2 sm:grid-cols-2">
+	<!-- Page Content -->
 	<div
 		id="toc-preview"
 		class="space-y-2 overflow-y-auto rounded-container bg-surface-50-800 p-4 text-surface-900-50"
@@ -47,18 +48,19 @@
 		</p>
 		<h2>Accessible by Design</h2>
 		<p>
-			Ato UI is built on top of Melt UI, an accessible headless library that follows WAI-ARIA design 
-			paterns and takes care of all the nitty-gritty details like aria attributes, role management,
-			focus handling, and keyboard navigation. You can read more about it on the official 
-			Melt UI docs website, where each builder has a thorough description of implemented accessibility
+			Ato UI is built on top of Melt UI, an accessible headless library that follows WAI-ARIA design
+			patterns and takes care of all the nitty-gritty details like aria attributes, role management,
+			focus handling, and keyboard navigation. You can read more about it on the official Melt UI
+			docs website, where each builder has a thorough description of implemented accessibility
 			features.
 		</p>
 		<h2>Styled Components</h2>
 		<p>
 			Our styled components offer additional functionalities on top of Melt UI builders, while also
-			still trying to stay flexible and support customization. This is done through our theme designer,
-			which controls the color palette as well as things like border radiuses and text colors, as well as
-			through style props that components offer, where you can overwrite default component looks.
+			staying flexible and offering ways to customize each component. This is done through our theme
+			designer, which controls the color palette as well as things like border radiuses and text
+			colors, as well as through style props that components offer, where you can overwrite default
+			component styles.
 		</p>
 		<h2>Open & Extensible</h2>
 		<p>
@@ -68,6 +70,7 @@
 		</p>
 	</div>
 
+	<!-- Table of Contents -->
 	<div class="overflow-y-auto rounded-container p-4 bg-surface-50-800">
 		<p class="font-semibold text-surface-900-50">On This Page</p>
 		<nav>
