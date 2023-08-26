@@ -1,5 +1,7 @@
 import type { ComponentsData } from "../types";
 
+import { dialogHeadlessData } from './dialog-headless';
+import { dialogData } from './dialog';
 import { radioGroupHeadlessData } from "./radio-group-headless";
 import { radioGroupData } from "./radio-group";
 import { switchHeadlessData } from './switch-headless';
@@ -20,6 +22,8 @@ export const componentsList = [
     // 'drop-menu',
     // 'modal-headless',
     // 'modal',
+    'dialog-headless',
+    'dialog',
     'radio-group-headless',
     'radio-group',
     'switch-headless',
@@ -28,11 +32,11 @@ export const componentsList = [
     'tabs',
     'table-of-contents-headless',
     'table-of-contents'
-    // 'toc-headless',
-    // 'toc',
 ];
 
 export const componentsData: ComponentsData = {
+    'dialog-headless': dialogHeadlessData,
+    'dialog': dialogData,
     'radio-group-headless': radioGroupHeadlessData,
     'radio-group': radioGroupData,
     'switch-headless': switchHeadlessData,

@@ -7,7 +7,8 @@
 
 	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
 	import { darkTheme } from '$lib/stores/lightswitch';
-	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
+	// import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
+	import { TOC } from '$components';
 	import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
 
 	export let navigation: Navigation = [];
@@ -188,14 +189,15 @@
 				class="flex justify-end px-4 pb-4 md:px-10 lg:px-[100px] shadow shadow-md shadow-primary-700/50"
 			>
 				{#key pathname}
-					<TableOfContents
+					<!-- <TableOfContents
 						target="#AtoContent"
 						showLabel={false}
 						tocType="lowest-parents"
 						hover="hover:(text-surface-900-50)"
 						markerBackground="bg-secondary-500"
 						on:heading-clicked={() => (revealTOC = false)}
-					/>
+					/> -->
+					<TOC scrollOffset={90} />
 				{/key}
 			</div>
 		{/if}

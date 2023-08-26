@@ -199,7 +199,7 @@
 									</div>
 								{/if}
 							</div>
-							<div class="ml-2 text-justify">
+							<div class="ml-2 text-justify selection:(text-on-primary bg-primary-500/70)">
 								{description}
 							</div>
 						</div>

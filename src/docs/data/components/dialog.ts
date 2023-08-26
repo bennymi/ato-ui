@@ -10,15 +10,13 @@ const highlights: ExampleHighlights = {
 
 const apiExtraInfo: ComponentAPIExtraInfo[] = [
     {
-        component: 'TOC',
-        required: ['selector'],
-        styles: ['labelStyles', 'contentStyles', 'activeStyles'],
-        function: ['']
+        component: 'Dialog',
+        required: ['open'],
+        styles: ['overlayStyle', 'containerStyle', 'zIndex', 'position'],
     }
 ]
 
-export const tocData: Data = {
+export const dialogData: Data = {
     highlights,
-    // componentProps
     apiExtraInfo
 }
