@@ -35,7 +35,7 @@
 	dependencies={componentData.dependencies}
 />
 
-<h1 class="hidden">Preview</h1>
+<!-- <h2 class="opacity-0 text-[1px] my-0 py-0">Preview</h2> -->
 
 {#if 'main' in previewSnippets && 'main' in previewComponents}
 	<Preview previewSnippets={previewSnippets.main}>

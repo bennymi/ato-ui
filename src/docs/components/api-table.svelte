@@ -30,10 +30,14 @@
 	];
 
 	let filter: 'all' | 'required' | 'function' | 'style' | 'icon' = 'all';
+	let apis: APIProp[] = [];
+
+	function resetFilter(componentData: Data): void {
+		filter = 'all';
+	}
 
 	$: ({ apiExtraInfo } = componentData);
-
-	let apis: APIProp[] = [];
+	$: resetFilter(componentData);
 
 	$: {
 		const newAPIs: APIProp[] = [];
@@ -195,7 +199,7 @@
 									</div>
 								{/if}
 							</div>
-							<div class="ml-2">
+							<div class="ml-2 text-justify">
 								{description}
 							</div>
 						</div>

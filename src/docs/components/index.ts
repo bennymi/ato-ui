@@ -10,3 +10,4 @@ export { default as DocsHeader } from './docs-header.svelte';
 export { default as InstallationTabs } from './installation.svelte';
 export { default as PropsTable } from './props-table.svelte';
 export { default as Search } from './search.svelte';
+export { default as TOC } from './toc.svelte';

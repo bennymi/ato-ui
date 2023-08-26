@@ -59,14 +59,8 @@
 			Our styled components offer additional functionalities on top of Melt UI builders, while also
 			staying flexible and offering ways to customize each component. This is done through our theme
 			designer, which controls the color palette as well as things like border radiuses and text
-			colors, as well as through style props that components offer, where you can overwrite default
+			colors, and through style props that components offer, where you can overwrite default
 			component styles.
-		</p>
-		<h2>Open & Extensible</h2>
-		<p>
-			Melt UI embraces your desire for customization. The builder architecture is open and flexible,
-			allowing you to tinker with every aspect of the components. Wrap them, extend their
-			functionality, or add event listener and props to tailor them to your exact needs.
 		</p>
 	</div>
 

@@ -13,7 +13,8 @@
 	import { NavBar, Sidebar, BottomNav } from '$components';
 	import type { Navigation, NavGroupItem } from '$components';
 
-	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
+	// import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
+	import { TOC } from '$components';
 	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
 
 	import { darkTheme } from '$lib/stores/lightswitch';
@@ -208,13 +209,14 @@
 	>
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key $page.url.pathname}
-				<div class="hidden xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">
-					<TableOfContents
+				<div class="hidden text-left xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">
+					<!-- <TableOfContents
 						target="#AtoContent"
 						tocType="lowest-parents"
 						hover="hover:(text-surface-900-50)"
 						markerBackground="bg-secondary-500"
-					/>
+					/> -->
+					<TOC />
 				</div>
 			{/key}
 		{/if}
