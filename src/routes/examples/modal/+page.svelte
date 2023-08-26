@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Modal from '$lib/components/modal/Modal.svelte';
 	import { slide } from 'svelte/transition';
 
@@ -63,4 +63,4 @@
 			</div>
 		</div>
 	</div>
-{/if} -->
+{/if} --> -->

@@ -18,10 +18,10 @@ You can change the transitions of the dialog overlay and container opening and c
 <script lang="ts">
     import { writable } from 'svelte/store';
     import { slide } from 'svelte/transition';
-    import { Dialog } from 'ato-ui';
+    import { Dialog, type DialogTransition } from 'ato-ui';
 
     let open = writable(false);
-    let containerTransition = {
+    let containerTransition: DialogTransition = {
         trans: slide,
         options: { duration: 200 }
     }

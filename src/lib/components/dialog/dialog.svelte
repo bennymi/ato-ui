@@ -6,7 +6,10 @@
 
 	/** A writable store that controls whether or not the dialog is open. */
 	export let open: Writable<boolean>;
-	/** The role attribute of the dialog element. */
+	/** The role attribute of the dialog element. An alert dialog should be used to display content 
+	 * that is critical to the user's workflow, whereas a dialog should be used to display content 
+	 * that isn't critical to the user's workflow.
+	 */
 	export let role: DialogRole = 'dialog';
 	/** Whether or not to close the dialog when the user clicks outside of it. */
 	export let closeOnOutsideClick: boolean = true;
@@ -14,8 +17,6 @@
 	export let preventScroll: boolean = true;
 	/** Whether the dialog is open by default or not. */
 	export let defaultOpen: boolean = false;
-	/** Center modal. */
-	export let center = true;
 	/** Set the overlay transition. */
 	export let overlayTransition: DialogTransition = {
 		trans: fade,
@@ -26,11 +27,13 @@
 		trans: fade,
 		options: { duration: 150 }
 	}
+	/** Center modal. */
+	export let center = true;
 
+	/** Set the position of the modal. This only has effect if the center prop is set to false. */
+	export let position = 'left-0 top-0';
 	/** Set the z-index. */
 	export let zIndex = 'z-50';
-	/** Set the position of the modal if it center = false. */
-	export let position = 'left-0 top-0';
 	/** Set overlay style. */
 	export let overlayStyle = 'bg-surface-800/40-300/40 backdrop-blur-sm';
 	/** Set the container style. */
