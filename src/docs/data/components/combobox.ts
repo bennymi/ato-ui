@@ -10,13 +10,13 @@ const highlights: ExampleHighlights = {
 
 const apiExtraInfo: ComponentAPIExtraInfo[] = [
     {
-        component: 'Dialog',
-        required: ['open'],
-        styles: ['overlayStyle', 'containerStyle', 'zIndex', 'position'],
+        component: 'Combobox',
+        required: [''],
+        styles: [''],
     }
 ]
 
-export const dialogData: Data = {
+export const comboboxData: Data = {
     highlights,
     apiExtraInfo
 }
