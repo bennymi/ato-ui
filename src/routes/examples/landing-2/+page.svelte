@@ -76,7 +76,7 @@
 		</div>
 	</section>
 
-	<section class="mt-4 mb-12 md:(mt-12 mb-20) flex justify-center items-center gap-8 flex-wrap">
+	<section class="mt-4 mb-0 md:(mt-12 mb-0) flex justify-center items-center gap-8 flex-wrap">
 		{#each cards as { icon, title, description }}
 			<div
 				class="group h-34 w-70 rounded-container shadow-lg shadow-surface-400/70 transition-all duration-300 ease-in-out hover:(surface-50/80-800/80 shadow-primary-700 scale-105) backdrop-blur-sm"

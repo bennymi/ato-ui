@@ -15,21 +15,21 @@
 	let particles = [...Array(number)].map((item, i) => ({
 		z: randInt(0, 360),
 		y: randInt(0, 360),
-		hue: (40 / number) * i + 0,
         color: `rgb(var(--color-${color}-${i < number / 3 ? '700' : i < 2 * number / 3 ? '500' : '300'}))`
 	}));
 </script>
 
-<div class="wrap" style={`--wrap-delay: ${delay}s;`}>
-    {#each particles as { z, y, hue, color }, i}
+<div 
+    class="wrap overflow-hide" 
+    style={`
+        --wrap-delay: ${delay}s; 
+        --particle-size: ${size}px;
+    `}>
+    {#each particles as { z, y, color }, i}
         <div
-            class="c"
+            class="particle"
             style={`
-                --particle-size: ${size}px;
-                --base-hue: ${hue}; 
-                --rotate-z-n: -${z}deg; 
                 --rotate-z: ${z}deg; 
-                --rotate-y: ${y}deg; 
                 --animation-delay: ${0.01 * i}s;
                 background-color: ${color};
             `}
@@ -39,15 +39,12 @@
 
 <style>
 	:root {
-        --orb-size-small: 135px;
-		--orb-size: 155px;
+        --orb-size-small: 140px;
+		--orb-size: 160px;
 		--orb-size-end: 600px;
 		--particle-size: 3px;
 		--time: 14s;
-		--base-hue: 0;
-		--rotate-z-n: -1deg;
 		--rotate-z: 1deg;
-		--rotate-y: 1deg;
 		--animation-delay: 0.1s;
         --wrap-delay: 0s;
 	}
@@ -64,7 +61,7 @@
         animation-delay: var(--wrap-delay);
 	}
 
-	.c {
+	.particle {
 		position: absolute;
 		width: var(--particle-size);
 		height: var(--particle-size);
@@ -84,50 +81,27 @@
 		20% {
 			opacity: 1;
 		}
-        /* 30% {
-			transform: rotateY(var(--rotate-y)) translateX(var(--orb-size)) rotateZ(var(--rotate-z));
-		}
-		80% {
-			transform: rotateY(var(--rotate-y)) translateX(var(--orb-size)) rotateZ(var(--rotate-z));
-			opacity: 1;
-		}
-		100% {
-			transform: rotateY(var(--rotate-y)) translateX(var(--orb-size-end)) rotateZ(var(--rotate-z));
-		} */
-        /* --------------- */
-		/* 30% {
-			transform: rotate(var(--rotate-y)) translateX(var(--orb-size)) rotateX(var(--rotate-z));
-		}
-		80% {
-			transform: rotateY(var(--rotate-y)) translateX(var(--orb-size)) rotateX(var(--rotate-z));
-			opacity: 1;
-		}
-		100% {
-			transform: rotateY(var(--rotate-y)) translateX(var(--orb-size-end)) rotateX(var(--rotate-z));
-		} */
 		30% {
-			transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size));
+			transform: rotateZ(var(--rotate-z)) translateX(var(--orb-size));
 		}
 		40% {
-			transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size-small));
+			transform: rotateZ(var(--rotate-z)) translateX(var(--orb-size-small));
 		}
 		50% {
-			transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size));
+			transform: rotateZ(var(--rotate-z)) translateX(var(--orb-size));
 		}
 		60% {
-			transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size-small));
+			transform: rotateZ(var(--rotate-z)) translateX(var(--orb-size-small));
 		}
 		70% {
-			transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size));
+			transform: rotateZ(var(--rotate-z)) translateX(var(--orb-size));
 		}
 		80% {
-			transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size));
+			transform: rotateZ(var(--rotate-z)) translateX(var(--orb-size));
 			opacity: 1;
 		}
 		100% {
-			transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size-end));
-			/* transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size-end)) translateZ(40px) translateY(20px); */
-			/* transform: rotateZ(var(--rotate-y)) translateX(var(--orb-size-end)) translateY(50px) translateZ(40px); */
+			transform: rotateZ(var(--rotate-z)) translateX(var(--orb-size-end));
 		}
 	}
 </style>
