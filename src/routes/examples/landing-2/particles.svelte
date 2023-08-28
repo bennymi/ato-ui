@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { themeStore } from '../../stores';
-	import Ring from './Ring.svelte';
+	import Ring from './ring.svelte';
 </script>
 
 <div class="text-9xl text-center">
