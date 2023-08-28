@@ -46,37 +46,17 @@
 	<style>
 		.dark #ato-ui-docu > div {
 			background-color: rgb(var(--color-surface-800));
-			background-image: 
-				/* radial-gradient(
-					at 0% 0%,
-					rgba(var(--color-surface-400), 0.4) 0px,
-					transparent 50%
-				), */
-				radial-gradient(
-					at 50% 0%,
-					rgba(var(--color-surface-400), 0.2) 0px,
-					transparent 50%
-				),
-				radial-gradient(at 100% 100%, rgba(var(--color-secondary-700), 0.3) 0px, transparent 50%),
-				radial-gradient(at 0% 100%, rgba(var(--color-primary-700), 0.3) 0px, transparent 50%);
-				/* radial-gradient(at 0% 96%, rgba(var(--color-surface-700), 0.3) 0px, transparent 50%); */
 		}
 		#ato-ui-docu > div {
 			background-color: rgb(var(--color-surface-50));
 			background-image: 
-				/* radial-gradient(
-					at 0% 0%,
-					rgba(var(--color-surface-400), 0.4) 0px,
-					transparent 50%
-				), */
 				radial-gradient(
 					at 50% 0%,
-					rgba(var(--color-surface-400), 0.2) 0px,
+					rgba(var(--color-surface-400), 0.25) 0px,
 					transparent 50%
 				),
-				radial-gradient(at 100% 96%, rgba(var(--color-tertiary-700), 0.3) 0px, transparent 50%),
+				radial-gradient(at 100% 100%, rgba(var(--color-secondary-700), 0.3) 0px, transparent 50%),
 				radial-gradient(at 0% 100%, rgba(var(--color-primary-500), 0.3) 0px, transparent 50%);
-				/* radial-gradient(at 0% 96%, rgba(var(--color-surface-200), 0.3) 0px, transparent 50%); */
 		}
 	</style>
 </svelte:head>
@@ -85,7 +65,7 @@
 	<section class="select-none">
 		<Particles />
 
-		<div class="font-bold text-xl mt-10">
+		<div class="font-bold text-xl text-center mt-10">
 			The elemental UI component library for Svelte, built with UnoCSS and Melt.
 		</div>
 	</section>
