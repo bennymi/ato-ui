@@ -1,4 +1,4 @@
-
+import type { TransitionConfig } from "svelte/transition";
 import type { DropdownMenu } from '@melt-ui/svelte';
 
 type GroupItem = {
@@ -18,3 +18,8 @@ export type DropMenuGroup = {
 export type DropdownMenuContext = {
 
 };
+
+export type DropdownMenuTransition = {
+    trans: (node: Element, options: any) => TransitionConfig,
+    options: any
+}
