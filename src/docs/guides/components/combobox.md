@@ -35,7 +35,7 @@ You can add a select icon with the `selectIcon` prop.
 
 ## Debounce
 
-The debounce time represents the time taken in between a key stroke in the input field and the search taking place. For a larger list of items it might improve performance to increase the debounce time, to avoid too many searches from happening.
+The debounce time represents the time taken in between a key stroke in the input field and the search taking place. If the debounce time is 1 second, then a search will only take place if there has been no keyboard inputs for 1 second. For a larger list of items this might help improve performance, since it avoids too many searches from happening.
 
 <Preview previewSnippets={previewSnippets['debounce']}>
 	<svelte:component this={previewComponents['debounce']} />

@@ -10,12 +10,14 @@
 	export let hideLabel = false;
 	/** A writable store that can be used to get or update the selected item. */
 	export let selected: ComboboxSelectedStore;
-	/** Pass the list of items that are available as options. */
+	/** Pass the list of items that are available as options. Individual items can be disabled. Check the ComboboxItem type for more details. */
 	export let items: ComboboxItem[];
 	/** Set the default selected item. */
 	export let defaultSelected: ComboboxItem | null = null;
 	/** Set the input placeholder. */
 	export let placeholder = '';
+	/** Whether or not to prevent scrolling of the document when the combobox is open. */
+	export let preventScroll = false;
 	/** Set the message that shows when no result is returned from a search. */
 	export let noResultsMessage = 'No results found';
 	/** Whether the combobox is open by default or not. */
@@ -68,7 +70,8 @@
 		defaultOpen,
 		loop,
 		debounce,
-		selected
+		selected,
+		preventScroll
 	});
 </script>
 

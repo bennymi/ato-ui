@@ -5,7 +5,6 @@ export type ComboboxItem = {
     value: string;
     subtitle?: string;
     disabled?: boolean;
-    icon?: string;
 }
 
 export type ComboboxSelectedStore = Writable<ComboboxOption<ComboboxItem>>;

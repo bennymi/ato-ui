@@ -4,7 +4,7 @@
 		Combobox,
 		type ComboboxItem,
 		type ComboboxSelectedStore
-	} from '$lib/components/combobox';
+	} from 'ato-ui';
 
 	let items: ComboboxItem[] = [
 		{
@@ -52,8 +52,6 @@
 
 	let selected: ComboboxSelectedStore = writable();
 	let selectIcon = 'i-material-symbols-check-small-rounded text-on-primary-500';
-
-	$: console.log('page selected:', $selected);
 </script>
 
 <div class="bg-surface-50-600 p-4 rounded-container">

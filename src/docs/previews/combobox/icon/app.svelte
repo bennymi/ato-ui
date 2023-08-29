@@ -4,7 +4,7 @@
 		Combobox,
 		type ComboboxItem,
 		type ComboboxSelectedStore
-	} from '$lib/components/combobox';
+	} from 'ato-ui';
 
 	let items: ComboboxItem[] = [
 		{
