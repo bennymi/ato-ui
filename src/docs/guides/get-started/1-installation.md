@@ -5,12 +5,14 @@ icon: i-material-symbols-rocket-launch-rounded
 ---
 
 <script>
-	import { InstallationTabs } from '$components';
+	import { InstallationTabs, ConstructionBanner } from '$components';
 </script>
 
 # Installation
 
 ## Installation
+
+<ConstructionBanner />
 
 Use the package manager of your choice.
 
