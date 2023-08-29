@@ -66,7 +66,7 @@
 		<Particles />
 
 		<div class="font-bold text-xl text-center mt-10">
-			The elemental UI component library for Svelte, built with UnoCSS and Melt.
+			The elemental UI component library for Svelte, built with UnoCSS and Melt UI.
 		</div>
 	</section>
 

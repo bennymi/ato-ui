@@ -1,10 +1,12 @@
+![Ato UI](./static/seo/ato-ui-banner-resized.png "Ato UI")
+
 # Ato UI
 
 [![npm-version](https://img.shields.io/npm/v/ato-ui?logo=npm&color=cc3534&style=flat-square)](https://www.npmjs.com/package/ato-ui)
 [![license](https://img.shields.io/badge/license-MIT-%23bada55?style=flat-square)](https://github.com/bennymi/ato-ui/blob/main/LICENSE)
 [![discord](https://dcbadge.vercel.app/api/server/7PXN3fs3tN?style=flat-square)](https://discord.gg/7PXN3fs3tN)
 
-The elemental component UI library for Svelte and UnoCSS.
+The elemental UI component library for Svelte, built with UnoCSS and Melt UI.
 
 ## 🚀 Getting Started
 
@@ -39,7 +41,7 @@ Developers interested in contributing should read the [Code of Conduct](./CODE_O
 
 ## 🌸 Credits
 
-The following amazing projects made this library possible and / or heavily inspired features:
+The following amazing projects made this library possible and / or inspired features:
 
 - [UnoCSS](https://github.com/unocss/unocss)
 - [Melt UI](https://github.com/melt-ui/melt-ui)
@@ -50,8 +52,6 @@ The following amazing projects made this library possible and / or heavily inspi
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss)
 - [WindiCSS](https://windicss.org/)
 - [Shiki](https://github.com/shikijs/shiki)
-- [Headless UI](https://github.com/CaptainCodeman/svelte-headlessui)
-- [Grail UI](https://github.com/grail-ui/grail-ui)
 
 ## License
 
