@@ -2,8 +2,6 @@
     import { setContext } from 'svelte';
     import { createAccordion } from '@melt-ui/svelte';
 
-    // import type { AccordionType } from './types';
-
     /** If true, multiple accordion items can be open at the same time. */
     export let multiple = false;
     /** Whether or not the accordion is disabled. */
