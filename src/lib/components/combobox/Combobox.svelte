@@ -1,104 +1,153 @@
 <script lang="ts">
-	import { createCombobox } from 'svelte-headlessui';
+	import { fly } from 'svelte/transition';
+	import { createCombobox, type ComboboxFilterFunction } from '@melt-ui/svelte';
 
-	/** Set the options that are selectable. */
-	export let options: string[];
-	/** Set the value that should be selected. */
-	export let selected: string;
-	/** Set the aria label of the input. */
-	export let ariaLabel: string;
-	/** Set the width of the search bar. */
-	export let width = 'w-72 min-w-50';
+	import type { ComboboxItem, ComboboxSelectedStore } from './types';
 
-	/** Set the search icon. Example: 'i-material-symbols-cloud text-lg|xl'. */
-	export let searchIcon = '';
-	/** Set the select icon. Example: 'i-material-symbols-cloud text-lg|xl'. */
+	/** Set the label of the combobox. */
+	export let label: string;
+	/** Hide label. The hidden label is still available to screen readers. */
+	export let hideLabel = false;
+	/** A writable store that can be used to get or update the selected item. */
+	export let selected: ComboboxSelectedStore;
+	/** Pass the list of items that are available as options. Individual items can be disabled. Check the ComboboxItem type for more details. */
+	export let items: ComboboxItem[];
+	/** Set the default selected item. */
+	export let defaultSelected: ComboboxItem | null = null;
+	/** Set the input placeholder. */
+	export let placeholder = '';
+	/** Whether or not to prevent scrolling of the document when the combobox is open. */
+	export let preventScroll = false;
+	/** Set the message that shows when no result is returned from a search. */
+	export let noResultsMessage = 'No results found';
+	/** Whether the combobox is open by default or not. */
+	export let defaultOpen = false;
+	/** Whether or not the focus should loop back to the first item when the last item is reached. */
+	export let loop = false;
+	/** The debounce time in milliseconds for the input value. This represents the time taken
+	 * in between a key stroke in the input field and the search taking place. For a larger list
+	 * of items it might improve performance to increase the debounce time, to avoid too many searches.
+	 */
+	export let debounce = 0;
+
+	/** Set the select icon if you want one. */
 	export let selectIcon = '';
 
-	/** Set the button styles. */
-	export let buttonStyle = 'primary-500/90 hover:primary-500';
-	/** Set the active list element styles. Use tokens such as 'primary-500'. */
-	export let activeStyle = 'primary-500';
-	/** Set the in-active list element styles. */
-	export let inactiveStyle = 'text-surface-900';
+	/** Set the label styles. */
+	export let labelStyle = 'text-sm font-medium text-surface-900-50';
+	/** Set the input styles. */
+	export let inputStyle = 'surface-50-800 border-1 border-surface-400/80';
+	/** Set the active item styles. */
+	export let activeStyle = 'primary-500/80';
+	/** Set the width of the input. */
+	export let width = '';
+	/** Set the background styles of the opened combobox. */
+	export let comboboxBgStyle = 'surface-50-500';
+	/** Set the border styles of the opened combobox. */
+	export let comboboxBorderStyle = 'shadow-lg shadow-surface-500/50-300/50';
+	/** Set the style of the no result message. */
+	export let noResultStyle = '';
 
-	const combobox = createCombobox({ label: ariaLabel, selected });
+	const filterFunction: ComboboxFilterFunction<ComboboxItem> = ({ itemValue, input }) => {
+		const normalize = (str: string) => str.normalize().toLowerCase();
+		const normalizedInput = normalize(input);
 
-	$: filtered = options.filter((item) =>
-		item
-			.toLowerCase()
-			.replace(/\s+/g, '')
-			.includes($combobox.filter.toLowerCase().replace(/\s+/g, ''))
-	);
+		return (
+			normalizedInput === '' ||
+			normalize(itemValue.value).includes(normalizedInput) ||
+			(!!itemValue.subtitle && normalize(itemValue.subtitle).includes(normalizedInput))
+		);
+	};
+
+	const {
+		elements: { menu, input, option, label: comboboxLabel },
+		states: { open, isEmpty },
+		helpers: { isSelected }
+	} = createCombobox({
+		filterFunction,
+		forceVisible: true,
+		...(defaultSelected && { defaultSelected: { value: defaultSelected } }),
+		defaultOpen,
+		loop,
+		debounce,
+		selected,
+		preventScroll
+	});
 </script>
 
-<div class={width}>
-	<div class="relative mt-1">
-		<div
-			class="flex w-full cursor-default overflow-hidden rounded-container text-left shadow-md shadow-surface-900/40 focus:outline-none focus-visible:(ring-2 ring-white ring-opacity-75 ring-offset-2 ring-offset-primary-300)"
-		>
-			<input
-				use:combobox.input
-				on:select
-				class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-surface-900 focus:ring-0 transition-all"
-				value={$combobox.selected}
-			/>
-			<button
-				use:combobox.button
-				type="button"
-				class="flex justify-center items-center px-2 rounded-r-container transition-all {buttonStyle}"
-			>
-				{#if searchIcon}
-					<span class={searchIcon} />
-				{:else}
-					<!-- i-material-symbols-search-check-rounded -->
-					<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-						><path
-							fill="currentColor"
-							d="M8.925 9.7L10.9 7.725q.225-.225.525-.225t.525.225q.225.225.225.538t-.225.537l-2.5 2.5q-.225.225-.525.225T8.4 11.3L7.05 9.95q-.225-.225-.225-.537t.225-.538q.225-.225.525-.225t.525.225l.825.825ZM20.3 20.3q-.275.275-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.612 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7ZM9.5 14q1.875 0 3.188-1.313T14 9.5q0-1.875-1.313-3.188T9.5 5Q7.625 5 6.312 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z"
-						/></svg
-					>
-				{/if}
-			</button>
-		</div>
+<div class="flex flex-col gap-1">
+	<!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
+	<label {...$comboboxLabel} use:comboboxLabel class={hideLabel ? 'sr-only' : ''}>
+		<span class={labelStyle}>{label}</span>
+	</label>
 
-		{#if $combobox.expanded}
-			<ul
-				use:combobox.items
-				class="absolute mt-1 max-h-60 w-full overflow-auto rounded-container bg-white py-1 text-base shadow-lg ring-1 ring-surface-900/10 focus:outline-none"
+	<div class="relative w-fit">
+		<input
+			{...$input}
+			use:input
+			class="flex h-10 {width} items-center justify-between rounded-container
+                px-3 pr-12 {inputStyle}"
+			{placeholder}
+		/>
+		<div
+			class="absolute right-2 top-1/2 z-10 -translate-y-1/2 h-10 flex justify-center items-center text-primary-900"
+		>
+			<svg
+				class="w-6 h-6 transition-all {$open ? 'rotate-90' : '-rotate-90'}"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				><path
+					fill="#888888"
+					d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l3.9-3.9Z"
+				/></svg
 			>
-				{#each filtered as value}
-					{@const active = $combobox.active === value}
-					{@const select = $combobox.selected === value}
-					<li
-						class="relative cursor-default select-none py-2 pl-10 pr-4 {active
-							? activeStyle
-							: inactiveStyle}"
-						use:combobox.item={{ value }}
-					>
-						<span class="block truncate {select ? 'font-medium' : 'font-normal'}">{value}</span>
-						{#if select}
-							<span class="absolute inset-y-0 left-0 flex items-center pl-3">
-								{#if selectIcon}
-									<span class={selectIcon} />
-								{:else}
-									<!-- i-material-symbols-check-small-rounded -->
-									<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-										><path
-											fill="currentColor"
-											d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l1.9 1.9Z"
-										/></svg
-									>
-								{/if}
-							</span>
-						{/if}
-					</li>
-				{:else}
-					<li class="relative cursor-default select-none py-2 pl-10 pr-4 text-surface-900">
-						<span class="block truncate font-normal">Nothing found</span>
-					</li>
-				{/each}
-			</ul>
-		{/if}
+		</div>
 	</div>
 </div>
+
+{#if $open}
+	<ul
+		class="z-10 flex max-h-[300px] flex-col overflow-hidden rounded-container {comboboxBorderStyle}"
+		{...$menu}
+		use:menu
+		transition:fly={{ duration: 150, y: -5 }}
+	>
+		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+		<div
+			class="flex max-h-full flex-col gap-0 overflow-y-auto px-2 py-2 {comboboxBgStyle}"
+			tabindex="0"
+		>
+			{#each items as item, index (index)}
+				{@const active = $isSelected(item)}
+				<li
+					{...$option({
+						value: item,
+						label: item.value,
+						disabled: !!item.disabled
+					})}
+					use:option
+					class="relative scroll-my-2 rounded-container py-2 pl-4 pr-4
+                    data-[disabled]:opacity-60
+					{active ? activeStyle : ''}"
+				>
+					{#if active && selectIcon}
+						<div class="check absolute inset-y-0 left-2 flex items-center">
+							<span class="text-2xl {selectIcon}" />
+						</div>
+					{/if}
+					<div class={selectIcon ? 'pl-6' : ''}>
+						<span class="font-medium">{item.value}</span>
+						{#if item.subtitle}
+							<span class="block text-sm opacity-75">{item.subtitle}</span>
+						{/if}
+					</div>
+				</li>
+			{/each}
+			{#if $isEmpty}
+				<li class="relative cursor-pointer rounded-container py-1 pl-8 pr-4 {noResultStyle}">
+					{noResultsMessage}
+				</li>
+			{/if}
+		</div>
+	</ul>
+{/if}

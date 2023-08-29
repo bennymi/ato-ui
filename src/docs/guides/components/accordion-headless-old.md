@@ -1,6 +1,5 @@
 ---
-title: Accordion
-description: A headless accordion component.
+
 ---
 
 <script>

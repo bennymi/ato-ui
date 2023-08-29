@@ -1,19 +1,55 @@
 <script lang="ts">
-	import { setAccordionOptions } from './context';
+    import { setContext } from 'svelte';
+    import { createAccordion } from '@melt-ui/svelte';
 
-	/** By default more than one accordion item can be opened. */
-	export let collapse = false;
-	/** Set the accordion width. */
-	export let width = 'w-full max-w-md';
-	/** Set the background style. */
-	export let bgStyle = 'bg-white';
+    // import type { AccordionType } from './types';
 
-	// Set the context API for all accordion items.
-	setAccordionOptions({ collapse });
+    /** If true, multiple accordion items can be open at the same time. */
+    export let multiple = false;
+    /** Whether or not the accordion is disabled. */
+    export let disabled = false;
+    /** Allows you to set a default open item, by passing in the key of an item. */
+    export let defaultValue: string | null = null;
+
+    /** Set the width of the accordion. */
+    export let width = 'w-full';
+    /** Set the accordion container styles. */
+    export let containerStyle = 'surface-50-600 shadow-lg shadow-surface-500/50-300/50 p-2';
+    /** Set the disabled styles. */
+    export let disabledStyle = 'opacity-70 cursor-not-allowed';
+
+    const {
+        elements: { content, item, trigger, root },
+        helpers: { isSelected },
+        options
+    } = createAccordion({
+        forceVisible: true,
+        multiple,
+        disabled,
+        ...(defaultValue && { defaultValue })
+    });
+
+    setContext('accordion', {
+        content,
+        item,
+        trigger,
+        isSelected,
+        disabled,
+        disabledStyle
+    });
+
+    const { multiple: optionMultiple, disabled: optionDisabled } = options;
+
+    // Update options
+    $: {
+        $optionMultiple = multiple;
+        $optionDisabled = disabled;
+    }
 </script>
 
 <div
-	class="{width} {bgStyle} rounded-container shadow-md shadow-surface-900/40 p-2 flex flex-col gap-2"
+    {...$root}
+    class="rounded-container flex flex-col gap-1 {width} {containerStyle}"
 >
-	<slot />
+    <slot />
 </div>

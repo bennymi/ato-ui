@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Accordion from '$lib/components/accordion/Accordion.svelte';
-	import AccordionItem from '$lib/components/accordion/AccordionItem.svelte';
+	// import Accordion from 'ato-ui/components/accordion/AccordionOld.svelte';
+	// import AccordionItem from '$lib/components/accordion/AccordionItem.svelte';
 </script>
 
-<Accordion collapse width="w-50">
+<!-- <Accordion collapse width="w-50">
 	<AccordionItem label="refund policy" open>
 		<svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
 		<svelte:fragment slot="content"
@@ -15,4 +15,4 @@
 		<svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
 		<svelte:fragment slot="content">No.</svelte:fragment>
 	</AccordionItem>
-</Accordion>
+</Accordion> -->

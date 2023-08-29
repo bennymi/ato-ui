@@ -1,5 +1,7 @@
 import type { ComponentsData } from "../types";
 
+import { accordionHeadlessData } from "./accordion-headless";
+import { accordionData } from "./accordion";
 import { comboboxHeadlessData } from "./combobox-headless";
 import { comboboxData } from "./combobox";
 import { dialogHeadlessData } from './dialog-headless';
@@ -14,8 +16,8 @@ import { tocHeadlessData } from './table-of-contents-headless';
 import { tocData } from './table-of-contents';
 
 export const componentsList = [
-    // 'accordion-headless',
-    // 'accordion',
+    'accordion-headless',
+    'accordion',
     // 'avatar-headless',
     // 'avatar',
     // 'drop-menu-headless',
@@ -35,6 +37,8 @@ export const componentsList = [
 ];
 
 export const componentsData: ComponentsData = {
+    'accordion-headless': accordionHeadlessData,
+    'accordion': accordionData,
     'combobox-headless': comboboxHeadlessData,
     'combobox': comboboxData,
     'dialog-headless': dialogHeadlessData,
