@@ -1,7 +1,7 @@
 ---
-title: Dropdown Menu
-description: A headless dropdown menu that can be used to create a list of actions availble through clicking a button.
 ---
+<!-- title: Dropdown Menu
+description: A headless dropdown menu that can be used to create a list of actions availble through clicking a button. -->
 
 <script>
     import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';

@@ -6,6 +6,8 @@ import { comboboxHeadlessData } from "./combobox-headless";
 import { comboboxData } from "./combobox";
 import { dialogHeadlessData } from './dialog-headless';
 import { dialogData } from './dialog';
+import { dropdownMenuHeadlessData } from './dropdown-menu-headless';
+import { dropdownMenuData } from './dropdown-menu';
 import { radioGroupHeadlessData } from "./radio-group-headless";
 import { radioGroupData } from "./radio-group";
 import { switchHeadlessData } from './switch-headless';
@@ -20,8 +22,8 @@ export const componentsList = [
     'accordion',
     // 'avatar-headless',
     // 'avatar',
-    // 'drop-menu-headless',
-    // 'drop-menu',
+    'dropdown-menu-headless',
+    'dropdown-menu',
     'combobox-headless',
     'combobox',
     'dialog-headless',
@@ -43,6 +45,8 @@ export const componentsData: ComponentsData = {
     'combobox': comboboxData,
     'dialog-headless': dialogHeadlessData,
     'dialog': dialogData,
+    'dropdown-menu-headless': dropdownMenuHeadlessData,
+    'dropdown-menu': dropdownMenuData,
     'radio-group-headless': radioGroupHeadlessData,
     'radio-group': radioGroupData,
     'switch-headless': switchHeadlessData,

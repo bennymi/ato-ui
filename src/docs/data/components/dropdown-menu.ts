@@ -10,7 +10,7 @@ const highlights: ExampleHighlights = {
         'app.svelte': {
             words: [
                 {
-                    strings: ['titleBgStyle'],
+                    strings: [''],
                     id: 'prop'
                 }
             ]
@@ -21,16 +21,16 @@ const highlights: ExampleHighlights = {
 const apiExtraInfo: ComponentAPIExtraInfo[] = [
     {
         component: 'Accordion',
-        styles: ['width', 'containerStyle'],
+        styles: [''],
     },
     {
         component: 'AccordionItem',
-        required: ['key'],
-        styles: ['titleStyle', 'titleBgStyle', 'contentStyle', 'disabledStyle'],
+        required: [''],
+        styles: [''],
     },
 ]
 
-export const accordionData: Data = {
+export const dropdownMenuData: Data = {
     highlights,
     apiExtraInfo
 }

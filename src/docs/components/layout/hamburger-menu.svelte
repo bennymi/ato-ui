@@ -1,5 +1,5 @@
 <!-- 
-	Credit goes for this Hamburger Menu goes to Mikael Ainalem: https://codepen.io/ainalem/pen/wvKOEMV
+	Credit for this Hamburger Menu goes to Mikael Ainalem: https://codepen.io/ainalem/pen/wvKOEMV
  -->
 
 <script lang="ts">

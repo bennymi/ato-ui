@@ -43,7 +43,7 @@
 		{
 			icon: 'i-mdi-dots-grid',
 			title: 'Tokens & Shortcuts',
-			description: 'Helpful shortcuts make it simpler to design projects with fewer CSS classes.'
+			description: 'Helpful shortcuts make it simpler to create consistent UIs with fewer CSS classes.'
 		}
 	];
 </script>

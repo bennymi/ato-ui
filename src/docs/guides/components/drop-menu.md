@@ -1,12 +1,9 @@
 ---
-title: Dropdown Menu
-component: components/dropdown-menu/DropMenu.svelte
-description: Create a list of actions that is available through a dropdown menu.
 ---
+<!-- title: Dropdown Menu
+description: Create a list of actions that is available through a dropdown menu. -->
 
 <script>
-    import { PropsTable } from '$components';
-    import docs from '$lib/components/dropdown-menu/DropMenu.svelte?raw&sveld';
     import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
 
     const groups = [
@@ -96,7 +93,3 @@ When a menu item is clicked, it emits a `select` event with the clicked item.
     on:select={(event) => console.log('selected:', event.detail)} 
 />
 ```
-
-## Props
-
-<PropsTable props={docs.props} />
