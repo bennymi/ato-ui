@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-    import { Combobox, type ComboboxItem, type ComboboxSelectedStore } from '$lib/components/combobox';
+	import {
+		Combobox,
+		type ComboboxItem,
+		type ComboboxSelectedStore
+	} from '$lib/components/combobox';
 
-    let items: ComboboxItem[] = [
+	let items: ComboboxItem[] = [
 		{
 			subtitle: 'Harper Lee',
 			value: 'To Kill a Mockingbird'
@@ -14,7 +18,7 @@
 		},
 		{
 			subtitle: 'Alexandre Dumas',
-			value: 'The Count of Monte Cristo',
+			value: 'The Count of Monte Cristo'
 		},
 		{
 			subtitle: 'Oscar Wilde',
@@ -46,9 +50,16 @@
 		}
 	];
 
-	let selected: ComboboxSelectedStore = writable({ value: undefined });
-
-	$: console.log('page selected:', $selected);
+	let selected: ComboboxSelectedStore = writable();
+	let selectIcon = 'i-material-symbols-check-small-rounded text-on-primary-500';
 </script>
 
-<Combobox {items} label="Choose your favourite book" debounce={1000} bind:selected />
+<div class="bg-surface-50-600 p-4 rounded-container">
+	<Combobox
+		{items}
+		label="Choose your favourite book"
+		placeholder="Favourite book"
+		bind:selected
+		width="w-64"
+	/>
+</div>

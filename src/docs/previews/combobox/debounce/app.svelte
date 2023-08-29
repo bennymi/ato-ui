@@ -56,12 +56,14 @@
 	$: console.log('page selected:', $selected);
 </script>
 
-<Combobox
-	{items}
-	label="Choose your favourite book"
-	placeholder="Favourite book"
-	width="w-64"
-	{selectIcon}
-	debounce={0}
-	bind:selected
-/>
+<div class="bg-surface-50-600 p-4 rounded-container">
+	<Combobox
+		{items}
+		label="Choose your favourite book"
+		placeholder="Favourite book"
+		bind:selected
+		width="w-64"
+		{selectIcon}
+		debounce={500}
+	/>
+</div>

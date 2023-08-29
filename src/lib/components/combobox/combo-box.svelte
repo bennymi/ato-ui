@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { writable, type Writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
 	import { createCombobox, type ComboboxFilterFunction } from '@melt-ui/svelte';
 
@@ -14,7 +13,7 @@
 	/** Pass the list of items that are available as options. */
 	export let items: ComboboxItem[];
 	/** Set the default selected item. */
-	export let defaultSelected: ComboboxItem = undefined;
+	export let defaultSelected: ComboboxItem | null = null;
 	/** Set the input placeholder. */
 	export let placeholder = '';
 	/** Set the message that shows when no result is returned from a search. */
@@ -32,6 +31,8 @@
 	/** Set the select icon if you want one. */
 	export let selectIcon = '';
 
+	/** Set the label styles. */
+	export let labelStyle = 'text-sm font-medium text-surface-900-50';
 	/** Set the input styles. */
 	export let inputStyle = 'surface-50-800 border-1 border-surface-400/80';
 	/** Set the active item styles. */
@@ -58,7 +59,7 @@
 
 	const {
 		elements: { menu, input, option, label: comboboxLabel },
-		states: { open, isEmpty, inputValue },
+		states: { open, isEmpty },
 		helpers: { isSelected }
 	} = createCombobox({
 		filterFunction,
@@ -69,27 +70,22 @@
 		debounce,
 		selected
 	});
-
-	// $: console.log('value:', $inputValue);
-	// $: console.log('selected:', $selected);
-	// $: console.log('is selected:', $isSelected($selected));
 </script>
 
 <div class="flex flex-col gap-1">
 	<!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
 	<label {...$comboboxLabel} use:comboboxLabel class={hideLabel ? 'sr-only' : ''}>
-		<span class="text-sm font-medium text-surface-900-50">{label}</span>
+		<span class={labelStyle}>{label}</span>
 	</label>
 
 	<div class="relative w-fit">
 		<input
 			{...$input}
 			use:input
-			class="flex h-10 {width} items-center justify-between rounded-container bg-white
-                px-3 pr-12 text-black {inputStyle}"
+			class="flex h-10 {width} items-center justify-between rounded-container
+                px-3 pr-12 {inputStyle}"
 			{placeholder}
 		/>
-                <!-- px-3 pr-12 text-black border-1 border-surface-400/50" -->
 		<div
 			class="absolute right-2 top-1/2 z-10 -translate-y-1/2 h-10 flex justify-center items-center text-primary-900"
 		>
@@ -107,7 +103,6 @@
 </div>
 
 {#if $open}
-		<!-- class="z-10 flex max-h-[300px] flex-col overflow-hidden rounded-container border-1 border-surface-400/50" -->
 	<ul
 		class="z-10 flex max-h-[300px] flex-col overflow-hidden rounded-container {comboboxBorderStyle}"
 		{...$menu}
@@ -130,15 +125,14 @@
 					use:option
 					class="relative scroll-my-2 rounded-container py-2 pl-4 pr-4
                     data-[disabled]:opacity-60
-					{active ? activeStyle : '' }"
+					{active ? activeStyle : ''}"
 				>
 					{#if active && selectIcon}
-						<!-- <div class="check absolute left-2 top-1/2 z-10"> -->
-						<div class="check absolute inset-y-0 left-0 flex items-center">
+						<div class="check absolute inset-y-0 left-2 flex items-center">
 							<span class="text-2xl {selectIcon}" />
 						</div>
 					{/if}
-					<div class="{selectIcon ? 'pl-6' : ''}">
+					<div class={selectIcon ? 'pl-6' : ''}>
 						<span class="font-medium">{item.value}</span>
 						{#if item.subtitle}
 							<span class="block text-sm opacity-75">{item.subtitle}</span>
@@ -147,19 +141,10 @@
 				</li>
 			{/each}
 			{#if $isEmpty}
-				<li
-					class="relative cursor-pointer rounded-container py-1 pl-8 pr-4 {noResultStyle}"
-				>
+				<li class="relative cursor-pointer rounded-container py-1 pl-8 pr-4 {noResultStyle}">
 					{noResultsMessage}
 				</li>
 			{/if}
 		</div>
 	</ul>
 {/if}
-
-<style lang="postcss">
-	.check {
-		@apply absolute left-2 top-1/2 text-primary-500;
-		translate: 0 calc(-50% + 1px);
-	}
-</style>

@@ -1,5 +1,6 @@
 import type { ComponentsData } from "../types";
 
+import { comboboxHeadlessData } from "./combobox-headless";
 import { comboboxData } from "./combobox";
 import { dialogHeadlessData } from './dialog-headless';
 import { dialogData } from './dialog';
@@ -23,6 +24,7 @@ export const componentsList = [
     // 'drop-menu',
     // 'modal-headless',
     // 'modal',
+    'combobox-headless',
     'combobox',
     'dialog-headless',
     'dialog',
@@ -37,6 +39,7 @@ export const componentsList = [
 ];
 
 export const componentsData: ComponentsData = {
+    'combobox-headless': comboboxHeadlessData,
     'combobox': comboboxData,
     'dialog-headless': dialogHeadlessData,
     'dialog': dialogData,

@@ -5,14 +5,35 @@ const highlights: ExampleHighlights = {
         'app.svelte': {
             lines: ''
         }
+    },
+    debounce: {
+        'app.svelte': {
+            words: [
+                {
+                    strings: ['debounce'],
+                    id: 'prop'
+                }
+            ]
+        }
+    },
+    icon: {
+        'app.svelte': {
+            words: [
+                {
+                    strings: ['selectIcon'],
+                    id: 'prop'
+                }
+            ]
+        }
     }
 };
 
 const apiExtraInfo: ComponentAPIExtraInfo[] = [
     {
         component: 'Combobox',
-        required: [''],
-        styles: [''],
+        required: ['label', 'selected'],
+        icons: ['selectIcon'],
+        styles: ['labelStyle', 'inputStyle', 'activeStyle', 'width', 'comboboxBgStyle', 'comboboxBorderStyle', 'noResultStyle'],
     }
 ]
 
