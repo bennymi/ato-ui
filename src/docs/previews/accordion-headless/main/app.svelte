@@ -48,7 +48,7 @@
 
 <div
     {...$root}
-    class="rounded-container flex flex-col gap-1 w-92 surface-50-600 shadow-lg shadow-surface-500/50-300/50 p-2"
+    class="rounded-container flex flex-col gap-1 w-80 md:w-96 surface-50-600 shadow-lg shadow-surface-500/50-300/50 p-2"
 >
     {#each items as {key, title, itemContent, icon}}
         <div

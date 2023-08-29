@@ -42,7 +42,7 @@
     ];
 </script>
 
-<Accordion width="w-92" >
+<Accordion width="w-80 md:w-96" >
     {#each items as { title, content, key, titleBgStyle, icon }}
         <AccordionItem {key} {titleBgStyle} >
             <svelte:fragment slot="title">
