@@ -47,8 +47,9 @@
 	];
 
 	let selected: ComboboxSelectedStore = writable({ value: undefined });
+	let selectIcon = 'i-material-symbols-check-small-rounded text-on-primary-500';
 
 	$: console.log('page selected:', $selected);
 </script>
 
-<Combobox {items} label="Choose your favourite book" debounce={1000} bind:selected />
+<Combobox {items} label="Choose your favourite book" placeholder="Favourite book" width="w-64" {selectIcon} debounce={0} bind:selected />

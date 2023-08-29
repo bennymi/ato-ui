@@ -7,6 +7,8 @@
 
 	/** Set the label of the combobox. */
 	export let label: string;
+	/** Hide label. The hidden label is still available to screen readers. */
+	export let hideLabel = false;
 	/** A writable store that can be used to get or update the selected item. */
 	export let selected: ComboboxSelectedStore;
 	/** Pass the list of items that are available as options. */
@@ -27,8 +29,21 @@
 	 */
 	export let debounce = 0;
 
+	/** Set the select icon if you want one. */
+	export let selectIcon = '';
+
+	/** Set the input styles. */
+	export let inputStyle = 'surface-50-800 border-1 border-surface-400/80';
 	/** Set the active item styles. */
-	export let activeStyle = '';
+	export let activeStyle = 'primary-500/80';
+	/** Set the width of the input. */
+	export let width = '';
+	/** Set the background styles of the opened combobox. */
+	export let comboboxBgStyle = 'surface-50-500';
+	/** Set the border styles of the opened combobox. */
+	export let comboboxBorderStyle = 'shadow-lg shadow-surface-500/50-300/50';
+	/** Set the style of the no result message. */
+	export let noResultStyle = '';
 
 	const filterFunction: ComboboxFilterFunction<ComboboxItem> = ({ itemValue, input }) => {
 		const normalize = (str: string) => str.normalize().toLowerCase();
@@ -62,7 +77,7 @@
 
 <div class="flex flex-col gap-1">
 	<!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
-	<label {...$comboboxLabel} use:comboboxLabel>
+	<label {...$comboboxLabel} use:comboboxLabel class={hideLabel ? 'sr-only' : ''}>
 		<span class="text-sm font-medium text-surface-900-50">{label}</span>
 	</label>
 
@@ -70,10 +85,11 @@
 		<input
 			{...$input}
 			use:input
-			class="flex h-10 items-center justify-between rounded-container bg-white
-                px-3 pr-12 text-black border-1 border-surface-400/50"
+			class="flex h-10 {width} items-center justify-between rounded-container bg-white
+                px-3 pr-12 text-black {inputStyle}"
 			{placeholder}
 		/>
+                <!-- px-3 pr-12 text-black border-1 border-surface-400/50" -->
 		<div
 			class="absolute right-2 top-1/2 z-10 -translate-y-1/2 h-10 flex justify-center items-center text-primary-900"
 		>
@@ -91,19 +107,20 @@
 </div>
 
 {#if $open}
+		<!-- class="z-10 flex max-h-[300px] flex-col overflow-hidden rounded-container border-1 border-surface-400/50" -->
 	<ul
-		class="z-10 flex max-h-[300px] flex-col overflow-hidden rounded-container"
+		class="z-10 flex max-h-[300px] flex-col overflow-hidden rounded-container {comboboxBorderStyle}"
 		{...$menu}
 		use:menu
 		transition:fly={{ duration: 150, y: -5 }}
 	>
 		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 		<div
-			class="flex max-h-full flex-col gap-0 overflow-y-auto bg-white px-2 py-2 text-black"
+			class="flex max-h-full flex-col gap-0 overflow-y-auto px-2 py-2 {comboboxBgStyle}"
 			tabindex="0"
 		>
 			{#each items as item, index (index)}
-				<!-- TODO: {@const active = $isSelected(item)} -> set highlighting -->
+				{@const active = $isSelected(item)}
 				<li
 					{...$option({
 						value: item,
@@ -111,22 +128,17 @@
 						disabled: !!item.disabled
 					})}
 					use:option
-					class="relative cursor-pointer scroll-my-2 rounded-container py-2 pl-4 pr-4
-                    data-[highlighted]:bg-primary-200 data-[highlighted]:text-primary-900
-                    data-[disabled]:opacity-50"
+					class="relative scroll-my-2 rounded-container py-2 pl-4 pr-4
+                    data-[disabled]:opacity-60
+					{active ? activeStyle : '' }"
 				>
-					{#if $isSelected(item)}
-						<!-- <div class="check"> -->
-							<!-- <Check class="square-4" /> -->
-							<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-								><path
-									fill="#888888"
-									d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l1.9 1.9Z"
-								/></svg
-							>
-						<!-- </div> -->
+					{#if active && selectIcon}
+						<!-- <div class="check absolute left-2 top-1/2 z-10"> -->
+						<div class="check absolute inset-y-0 left-0 flex items-center">
+							<span class="text-2xl {selectIcon}" />
+						</div>
 					{/if}
-					<div>
+					<div class="{selectIcon ? 'pl-6' : ''}">
 						<span class="font-medium">{item.value}</span>
 						{#if item.subtitle}
 							<span class="block text-sm opacity-75">{item.subtitle}</span>
@@ -136,8 +148,7 @@
 			{/each}
 			{#if $isEmpty}
 				<li
-					class="relative cursor-pointer rounded-container py-1 pl-8 pr-4
-                    data-[highlighted]:bg-primary-100 data-[highlighted]:text-primary-700"
+					class="relative cursor-pointer rounded-container py-1 pl-8 pr-4 {noResultStyle}"
 				>
 					{noResultsMessage}
 				</li>
