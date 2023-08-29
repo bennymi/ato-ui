@@ -4,8 +4,8 @@
 	let cards: { icon: string; title: string; description: string }[] = [
 		{
 			icon: 'i-mdi-palette-swatch',
-			title: 'Themeable',
-			description: 'Create custom themes for your project with our designer page.'
+			title: 'Theme-able',
+			description: 'Easily create custom themes for your project with our designer page.'
 		},
 		{
 			icon: 'i-material-symbols-accessibility-new-rounded',
@@ -23,6 +23,12 @@
 			title: 'Headless Components',
 			description:
 				'We provide examples of headless components built with our design tokens for maximum customizability.'
+		},
+		{
+			icon: 'i-mdi-theme-light-dark',
+			title: 'Dark + Light Mode',
+			description:
+				'Styled components support dark / light mode out of the box.'
 		},
 		{
 			icon: 'i-vscode-icons-file-type-unocss',
