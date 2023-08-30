@@ -28,20 +28,39 @@ export type Prop = {
     required?: boolean;
     isStyle?: boolean;
     isIcon?: boolean;
+    isTransition?: boolean;
     isFunction?: boolean;
+}
+
+export type ComponentEvents = {
+    name: string;
+    description: string;
+    type: string;
+}
+
+export type ComponentSlots = {
+    name: string;
+    description: string;
 }
 
 export type ComponentAPIExtraInfo = {
     component: string;
-    required?: string[];
+    updatedName?: string; // You can update the name of the component.
+    required?: string[]; // Props that are required.
     styles?: string[]; // Props that are used for styling.
     icons?: string[]; // Props that allow the user to pass icons.
-    function?: string[]; // Props that are function related.
+    transitions?: string[]; // Props that are transitions.
+    function?: string[]; // Props that are functionality related. This is the default, so you only need to fill in props that can be multiple things at once.
+    events?: ComponentEvents[];
+    slots?: ComponentSlots[];
 }
 
 export type APIProp = {
     component: string;
+    oldName: string;
     props: Prop[];
+    events?: ComponentEvents[];
+    slots?: ComponentSlots[];
 }
 
 /**
@@ -64,4 +83,4 @@ export type Data = {
 
 export type ComponentsData = Record<string, Data>;
 
-export type ComponentsAPI = Record<string, APIProp[]>;
+// export type ComponentsAPI = Record<string, APIProp[]>;

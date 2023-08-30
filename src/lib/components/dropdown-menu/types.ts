@@ -1,8 +1,8 @@
-import type { Writable } from 'svelte/stores';
+import type { Writable } from 'svelte/store';
 import type { TransitionConfig } from "svelte/transition";
 import type { 
     DropdownMenuElements, 
-    DropdownMenuBuilters, 
+    DropdownMenuBuilders, 
     DropdownMenuRadioGroup 
 } from '@melt-ui/svelte';
 
@@ -18,14 +18,18 @@ export type DropMenuGroup = {
     items: GroupItem[];
 };
 
+export type DropdownMenuCheckboxCheckedChangeEvent = CustomEvent<{ curr: boolean, next: boolean }>;
+export type DropdownMenuRadioGroupChangeEvent = CustomEvent<{ curr: string, next: string }>;
+export type DropdownMenuRadioGroupItemClickEvent = CustomEvent<{ value: string, originalEvent: CustomEvent }>;
+
 // ---------------------------------------
 
 export type DropdownMenuContext = {
     item: DropdownMenuElements['item'];
     separator: DropdownMenuElements['separator'];
-    createSubmenu: DropdownMenuBuilters['createSubmenu'];
-    createMenuRadioGroup: DropdownMenuBuilters['createMenuRadioGroup'];
-    createCheckboxItem: DropdownMenuBuilters['createCheckboxItem'];
+    createSubmenu: DropdownMenuBuilders['createSubmenu'];
+    createMenuRadioGroup: DropdownMenuBuilders['createMenuRadioGroup'];
+    createCheckboxItem: DropdownMenuBuilders['createCheckboxItem'];
     itemDisabledStyle: string;
     itemStyle: string;
     menuContainerStyle: string;
@@ -33,7 +37,7 @@ export type DropdownMenuContext = {
 
 export type DropdownMenuRadioGroupContext = {
     radioItem: DropdownMenuRadioGroup['elements']['radioItem'];
-    isChecked: vDropdownMenuRadioGroup['helpers']['isChecked'];
+    isChecked: DropdownMenuRadioGroup['helpers']['isChecked'];
     checkedIcon: string;
     activeStyle: string;
     inactiveStyle: string;

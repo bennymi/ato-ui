@@ -28,6 +28,8 @@
                             ? itemStyle : inheritedItemStyle;
 </script>
 
-<div class="item {itemClasses}" {...$item} use:item data-disabled={disabled || null} >
-	<slot />
+<div class="item {itemClasses}" {...$item} use:item data-disabled={disabled || null} on:m-click>
+    <div class="ml-4 mr-2">
+	    <slot />
+    </div>
 </div>

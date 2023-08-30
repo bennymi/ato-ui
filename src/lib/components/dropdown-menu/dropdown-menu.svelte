@@ -27,7 +27,7 @@
      * Set the global item styles for when the item is not disabled. 
      * You can overwrite this for each individual item in the item component.
     */
-    export let itemStyle = 'px-2 py-1 select-none rounded-container hover:(primary-500)';
+    export let itemStyle = 'px-2 py-1 select-none rounded-container hover:(primary-500/90) focus:(primary-500/90)';
     /** 
      * Set the styles for the disabled item. 
      * You can overwite this for each individual item in the item component.

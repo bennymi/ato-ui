@@ -8,6 +8,8 @@
     export let disabled = false;
     /** The transition for the submenu opening and closing. */
     export let transition: DropdownMenuTransition = { trans: fly, options: { duration: 150 } };
+    /** Show an arrow from the submenu to the trigger. */
+    export let hideArrow = false;
 
     /** Set the width of the submenu. */
     export let width = 'w-fit min-w-40';
@@ -29,18 +31,22 @@
     $: $submenuDisabled = disabled;
 </script>
 
-<div class="item {disabled ? itemDisabledStyle : itemStyle}" {...$subTrigger} use:subTrigger>
-    <slot name="submenu-trigger" />
+<div class="item {disabled ? itemDisabledStyle : itemStyle}" {...$subTrigger} use:subTrigger on:m-click>
+    <div class="ml-4 mr-2">
+        <slot name="submenu-trigger" />
+    </div>
 </div>
 
 {#if $subOpen}
     <div
-        class="dropdown-menu-submenu rounded-container p-2 {width} {menuContainerStyle}"
+        class="dropdown-menu-submenu rounded-container ml-1 p-2 {width} {menuContainerStyle}"
         {...$subMenu} use:subMenu
         transition:trans={options}
     >
         <slot name="submenu" />
 
-        <div {...$subArrow} use:subArrow />
+        {#if !hideArrow}
+            <div {...$subArrow} use:subArrow />
+        {/if}
     </div>
 {/if}

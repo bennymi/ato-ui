@@ -26,10 +26,14 @@
 		{
 			value: 'icon',
 			icon: 'i-mdi-emoticon-wink-outline'
+		},
+		{
+			value: 'transition',
+			icon: 'i-mdi-transition'
 		}
 	];
 
-	let filter: 'all' | 'required' | 'function' | 'style' | 'icon' = 'all';
+	let filter: 'all' | 'required' | 'function' | 'style' | 'icon' | 'transition' = 'all';
 	let apis: APIProp[] = [];
 
 	function resetFilter(componentData: Data): void {
@@ -50,11 +54,13 @@
 			if (!apiExtraInfo || idx === undefined || idx === -1) {
 				newAPIs.push({
 					component: component.component,
+					oldName: component.component,
 					props: component.props.map((prop) => ({
 						...prop,
 						required: false,
 						isIcon: false,
-						isStyle: false
+						isStyle: false,
+						isTransition: false,
 					}))
 				});
 				return;
@@ -64,24 +70,34 @@
 				const required = apiExtraInfo![idx].required?.includes(prop.name) ?? false;
 				const isStyle = apiExtraInfo![idx].styles?.includes(prop.name) ?? false;
 				const isIcon = apiExtraInfo![idx].icons?.includes(prop.name) ?? false;
-				const isFunction = ((!isStyle && !isIcon) || apiExtraInfo![idx].function?.includes(prop.name)) ?? false;
+				const isTransition = apiExtraInfo![idx].transitions?.includes(prop.name) ?? false;
+				const isFunction = ((!isStyle && !isIcon && !isTransition) || apiExtraInfo![idx].function?.includes(prop.name)) ?? false;
 
 				props.push({
 					...prop,
 					required,
 					isIcon,
 					isStyle,
+					isTransition,
 					isFunction
 				});
 			});
 
 			newAPIs.push({
-				component: component.component,
+				component: apiExtraInfo[idx].updatedName ?? component.component,
+				oldName: component.component,
 				props
 			});
 		});
 
-		apis = newAPIs;
+		// apis = newAPIs;
+		apiExtraInfo?.forEach(({ component, events, slots }) => {
+			const idx = newAPIs?.findIndex((item) => item.oldName === component);
+
+			if (idx === undefined || idx === -1) return;
+
+			apis.push({ ...newAPIs[idx], events: events, slots: slots });
+		});
 	}
 
 	$: filteredAPIs =
@@ -97,6 +113,8 @@
 							props = component.props.filter((prop) => prop.isIcon);
 						} else if (filter === 'style') {
 							props = component.props.filter((prop) => prop.isStyle);
+						} else if (filter === 'transition') {
+							props = component.props.filter((prop) => prop.isTransition);
 						} else {
 							props = component.props.filter((prop) => !prop.isIcon && !prop.isStyle);
 						}
@@ -152,7 +170,7 @@
 						</span>
 					</div>
 				{:else}
-					{#each props as { name, type, description, defaultValue, isIcon, isStyle, isFunction, required }}
+					{#each props as { name, type, description, defaultValue, isIcon, isStyle, isTransition, isFunction, required }}
 						<div
 							class:required
 							transition:slide
@@ -181,6 +199,9 @@
 								{/if}
 								{#if isIcon}
 									<span class="text-xl i-mdi-emoticon-wink-outline" />
+								{/if}
+								{#if isTransition}
+									<span class="text-xl i-mdi-transition" />
 								{/if}
 							</div>
 							<div class="flex justify-left items-center gap-1 font-mono overflow-auto ml-2">

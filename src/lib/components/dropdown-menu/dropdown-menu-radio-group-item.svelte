@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
+    import { getContext, createEventDispatcher } from 'svelte';
+    import type { MeltEvent } from '@melt-ui/svelte/internals/types';
 
     import type { DropdownMenuRadioGroupContext, DropdownMenuContext } from './types';
 
@@ -13,12 +14,16 @@
     */
     export let itemStyle = '';
 
+    const dispatch = createEventDispatcher();
+
+    function handleClickEvent(e: MeltEvent<T>) {
+        dispatch('m-click', { value, originalEvent: e.detail.originalEvent })
+    }
+
     const { 
         radioItem, 
         isChecked, 
-        checkedIcon, 
-        activeStyle, 
-        inactiveStyle 
+        checkedIcon
     } = getContext<DropdownMenuRadioGroupContext>('dropdown-menu-radio-group');
 
     const { itemStyle: inheritedItemStyle } = getContext<DropdownMenuContext>('dropdown-menu');
@@ -28,7 +33,8 @@
 
 <div
     {...$radioItem({ value })} use:radioItem
-    class="dropdown-menu-radio-item relative {itemClasses}" 
+    class="dropdown-menu-radio-item relative {itemClasses}"
+    on:m-click={handleClickEvent}
 >
     <div class="dropdown-menu-radio-check absolute inset-y-0 left-1 inline-flex items-center">
         {#if $isChecked(value)}
