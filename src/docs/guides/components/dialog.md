@@ -3,13 +3,6 @@ title: Dialog
 description: A window overlaid on the rest of the page.
 ---
 
-<script>
-    import { Preview } from '$components';
-
-    export let previewSnippets;
-    export let previewComponents;
-</script>
-
 ## Transitions
 
 You can change the transitions of the dialog overlay and container opening and closing by using the `overlayTransition` and `containerTransition` props and passing it an object with a Svelte transition function along with the options that should be passed to it.

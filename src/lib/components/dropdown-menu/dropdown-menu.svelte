@@ -1,140 +1,76 @@
 <script lang="ts">
+    import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
     import { fly } from 'svelte/transition';
     import { createDropdownMenu } from '@melt-ui/svelte';
-    // import { AlignJustify, ChevronRight, Check } from 'lucide-svelte';
 
+    import type { DropdownMenuOpenStore } from './types';
+
+    /** Set the aria label of the trigger button. */
+    export let ariaLabel: string;
+    /** */
+    export let open: DropdownMenuOpenStore;
     /** Whether or not to prevent scrolling of the document when the dropdown menu is open. */
     export let preventScroll = false;
     /** Show arrow pointing at trigger. */
     export let showArrow = false;
+
+    /** Set the trigger button styles. */
+    export let btnStyle = 'btn-primary';
+    /** Set the width of the menu. */
+    export let width = 'w-fill';
+    /** Set the menu background styles. */
+    export let menuBgStyle = 'surface-50-500';
+    /** Set the menu border styles. */
+    export let menuBorderStyle = 'shadow-lg shadow-surface-500/50-300/50';
+    /** set the item styles for when the item is not disabled. */
+    export let itemStyle = 'px-2 py-1';
+    /** Set the styles for the disabled item. */
+    export let itemDisabledStyle = 'text-surface-300 cursor-not-allowed';
     
     const settingsSync = writable(true);
     const hideMeltUI = writable(false);
     
     const {
         elements: { trigger, menu, item, separator, arrow },
-        builders: { createSubmenu, createMenuRadioGroup, createCheckboxItem },
-        states: { open },
+        builders: { createSubmenu, createMenuRadioGroup, createCheckboxItem }
     } = createDropdownMenu({
         forceVisible: true,
-        preventScroll
+        preventScroll,
+        open
     });
-    
-    const {
-        elements: { subMenu, subTrigger },
-        states: { subOpen },
-    } = createSubmenu();
-    
-    const {
-        elements: { radioGroup, radioItem },
-        helpers: { isChecked },
-    } = createMenuRadioGroup({
-        defaultValue: 'Hunter Johnston',
+
+    setContext('dropdown-menu', {
+        item,
+        separator,
+        createSubmenu,
+        createMenuRadioGroup,
+        createCheckboxItem,
+        itemDisabledStyle,
+        itemStyle
     });
-    
-    const {
-        elements: { checkboxItem },
-    } = createCheckboxItem({
-        checked: settingsSync,
-    });
-    
-    const {
-        elements: { checkboxItem: checkboxItemA },
-    } = createCheckboxItem({
-        checked: hideMeltUI,
-    });
-    
-    const personsArr = [
-        'Hunter Johnston',
-        'Thomas G. Lopes',
-        'Adrian Gonz',
-        'Franck Poingt',
-    ];
 </script>
  
 <button
     type="button"
-    class="trigger btn-primary"
+    class="trigger {btnStyle}"
     {...$trigger} use:trigger
-    aria-label="Update dimensions"
+    aria-label={ariaLabel}
 >
-    <!-- <AlignJustify class="square-4" /> -->
-    Open Popover
+    <slot name="dropdown-menu-trigger" />
 </button>
  
 {#if $open}
     <div 
         {...$menu} use:menu
-        class="menu" 
+        class="dropdown-menu rounded-container flex flex-col {width} {menuBgStyle} {menuBorderStyle}" 
         transition:fly={{ duration: 150, y: -10 }}
     >
-        <div class="item" {...$item} use:item>About Melt UI</div>
-        <div class="item" {...$item} use:item>Check for Updates...</div>
-        <div class="separator" {...$separator} use:separator />
-        <div class="item" {...$checkboxItem} use:checkboxItem>
-            <div class="check">
-                {#if $settingsSync}
-                    <!-- <Check class="square-4" /> -->
-                {/if}
-            </div>
-            Settings Sync is On
-        </div>
+        <slot name="dropdown-menu-content" />
 
-        <div class="item" {...$subTrigger} use:subTrigger>
-            Profiles
-            <div class="rightSlot">
-                <!-- <ChevronRight class="square-4" /> -->
-            </div>
-        </div>
-
-        {#if $subOpen}
-            <div
-                class="menu subMenu"
-                {...$subMenu} use:subMenu
-                transition:fly={{ x: -50, duration: 150 }}
-            >
-                <div class="text">People</div>
-
-                <div {...$radioGroup} use:radioGroup>
-                    {#each personsArr as person}
-                        <div class="item" {...$radioItem({ value: person })} use:radioItem>
-                            <div class="check">
-                                {#if $isChecked(person)}
-                                    <div class="dot" />
-                                {/if}
-                            </div>
-                            {person}
-                        </div>
-                    {/each}
-                </div>
-            </div>
+        {#if showArrow}
+            <div {...$arrow} use:arrow />
         {/if}
-
-        <div {...$separator} use:separator class="separator" />
-    
-        <div class="item" {...$checkboxItemA} use:checkboxItemA>
-            <div class="check">
-                {#if $hideMeltUI}
-                    <!-- <Check class="square-4" /> -->
-                {/if}
-            </div>
-            Hide Melt UI
-            <div class="rightSlot">⌘H</div>
-        </div>
-
-        <div class="item" {...$item} use:item data-disabled>
-            Show All Components
-            <div class="rightSlot">⇧⌘N</div>
-        </div>
-
-        <div {...$separator} use:separator class="separator" />
-            <div class="item" {...$item} use:item>
-            Quit Melt UI
-            <div class="rightSlot">⌘Q</div>
-        </div>
-
-        <div {...$arrow} use:arrow />
     </div>
 {/if}
  
