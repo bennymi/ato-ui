@@ -4,7 +4,7 @@
     import type { DropdownMenuContext } from './types';
 
     /** Set the styles for the separator. */
-    export let separatorStyle = 'm-2 h-1 bg-surface-400/50';
+    export let separatorStyle = 'm-2 h-0.5 bg-surface-300/70';
 
     const { separator } = getContext<DropdownMenuContext>('dropdown-menu');
 </script>

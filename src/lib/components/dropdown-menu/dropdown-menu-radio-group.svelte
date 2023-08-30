@@ -32,6 +32,8 @@
         activeStyle,
         inactiveStyle
     });
+
+    $: console.log('value:', $value);
 </script>
 
 <div {...$radioGroup} use:radioGroup>

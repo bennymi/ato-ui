@@ -9,14 +9,12 @@
     /** The transition for the submenu opening and closing. */
     export let transition: DropdownMenuTransition = { trans: fly, options: { duration: 150 } };
 
-    /** Set the submenu container styles. */
-    export let containerStyle = 'surface-50-500 border-1 border-surface-400/80';
     /** Set the width of the submenu. */
     export let width = 'w-fit min-w-40';
 
     const { trans, options } = transition;
 
-    const { createSubmenu, itemDisabledStyle, itemStyle } = getContext<DropdownMenuContext>('dropdown-menu');
+    const { createSubmenu, itemDisabledStyle, itemStyle, menuContainerStyle } = getContext<DropdownMenuContext>('dropdown-menu');
 
     const {
         elements: { subMenu, subTrigger, subArrow },
@@ -37,7 +35,7 @@
 
 {#if $subOpen}
     <div
-        class="dropdown-menu-submenu rounded-container {width} {containerStyle}"
+        class="dropdown-menu-submenu rounded-container p-2 {width} {menuContainerStyle}"
         {...$subMenu} use:subMenu
         transition:trans={options}
     >

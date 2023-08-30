@@ -1,5 +1,6 @@
 <script lang="ts">
     import { writable } from 'svelte/store';
+    import { fly } from 'svelte/transition';
     import { Dropdown } from 'ato-ui';
 
     let themes = ['Ato', 'Air', 'Earth', 'Fire', 'Water'];
@@ -29,9 +30,11 @@
                 Add theme
             </Dropdown.Item>
 
-            <Dropdown.Submenu>
+            <Dropdown.Submenu
+                transition={{ trans: fly, options: { x: -50, duration: 150 }}}
+            >
                 <svelte:fragment slot="submenu-trigger">
-                    <div class="flex justify-around items-center">
+                    <div class="flex justify-between items-center gap-4">
                         <span>Select a theme</span>
                         <span class="text-lg i-material-symbols-chevron-right-rounded" />
                     </div>
@@ -51,7 +54,9 @@
 
             <Dropdown.Separator />
 
-            <Dropdown.Item>
+            <Dropdown.Item
+                itemStyle="px-2 py-1 select-none rounded-container hover:(error-500)"
+            >
                 Delete theme
             </Dropdown.Item>
         </svelte:fragment>

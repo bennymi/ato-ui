@@ -6,14 +6,28 @@
     /** Set whether or not the item is disabled. */
     export let disabled = false;
 
-    /** set the item styles for when the item is not disabled. */
-    export let itemStyle = 'px-2 py-1';
-    /** Set the styles for the disabled item. */
-    export let disabledStyle = 'text-surface-300 cursor-not-allowed';
+    /** 
+     * Set the item styles for when the item is not disabled. 
+     * You can use this to overwrite the global itemStyle prop set in the
+     * Dropdown.Menu component.
+    */
+    export let itemStyle = '';
+    /** 
+     * Set the styles for the disabled item. 
+     * You can use this to overwrite the global itemDisabledStyle prop set
+     * in the Dropdown.Menu component.
+    */
+    export let itemDisabledStyle = '';
 
-	const { item } = getContext<DropdownMenuContext>('dropdown-menu');
+	const { item, itemDisabledStyle: inheritedDisabledStyle, itemStyle: inheritedItemStyle } = getContext<DropdownMenuContext>('dropdown-menu');
+
+    $: itemClasses = disabled 
+                        ? itemDisabledStyle 
+                            ? itemDisabledStyle : inheritedDisabledStyle
+                        : itemStyle 
+                            ? itemStyle : inheritedItemStyle;
 </script>
 
-<div class="item {disabled ? disabledStyle : itemStyle}" {...$item} use:item data-disabled={disabled || null} >
+<div class="item {itemClasses}" {...$item} use:item data-disabled={disabled || null} >
 	<slot />
 </div>

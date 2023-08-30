@@ -28,6 +28,7 @@ export type DropdownMenuContext = {
     createCheckboxItem: DropdownMenuBuilters['createCheckboxItem'];
     itemDisabledStyle: string;
     itemStyle: string;
+    menuContainerStyle: string;
 };
 
 export type DropdownMenuRadioGroupContext = {

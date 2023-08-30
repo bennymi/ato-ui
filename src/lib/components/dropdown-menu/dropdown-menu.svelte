@@ -22,14 +22,18 @@
     /** Set the menu background styles. */
     export let menuBgStyle = 'surface-50-500';
     /** Set the menu border styles. */
-    export let menuBorderStyle = 'shadow-lg shadow-surface-500/50-300/50';
-    /** set the item styles for when the item is not disabled. */
-    export let itemStyle = 'px-2 py-1';
-    /** Set the styles for the disabled item. */
+    export let menuBorderStyle = 'border-1 border-surface-300/70 shadow-md shadow-surface-500/50-300/50';
+    /** 
+     * Set the global item styles for when the item is not disabled. 
+     * You can overwrite this for each individual item in the item component.
+    */
+    export let itemStyle = 'px-2 py-1 select-none rounded-container hover:(primary-500)';
+    /** 
+     * Set the styles for the disabled item. 
+     * You can overwite this for each individual item in the item component.
+     * */
     export let itemDisabledStyle = 'text-surface-300 cursor-not-allowed';
     
-    const settingsSync = writable(true);
-    const hideMeltUI = writable(false);
     
     const {
         elements: { trigger, menu, item, separator, arrow },
@@ -47,7 +51,8 @@
         createMenuRadioGroup,
         createCheckboxItem,
         itemDisabledStyle,
-        itemStyle
+        itemStyle,
+        menuContainerStyle: `${menuBgStyle} ${menuBorderStyle}`
     });
 </script>
  
@@ -63,7 +68,7 @@
 {#if $open}
     <div 
         {...$menu} use:menu
-        class="dropdown-menu rounded-container flex flex-col {width} {menuBgStyle} {menuBorderStyle}" 
+        class="dropdown-menu rounded-container flex flex-col p-2 {width} {menuBgStyle} {menuBorderStyle}" 
         transition:fly={{ duration: 150, y: -10 }}
     >
         <slot name="dropdown-menu-content" />
