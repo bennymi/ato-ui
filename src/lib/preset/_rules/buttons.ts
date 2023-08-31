@@ -182,10 +182,10 @@ export const buttonSCs: Shortcut[] = [
         new RegExp(`btn-group(?:-(vertical))?(?:-(outline))?-${reg_c_sO}`),
         ([_, vert, out, c, s]: string[]) => `
             inline-flex ${vert ? 'flex-col' : ''} rounded-btn cursor-pointer
-            [&>button,&>a]:(px-4 py-2 inline-flex gap-1 justify-center items-center transition-all border-1 border-${cs(c, s)} bg-${cso(c, s, out ? '55' : '100')} text-on-${cs(c, s)} text-sm font-bold)
+            [&>button,&>a]:(px-4 py-2 inline-flex gap-1 justify-center items-center transition-all border-1 border-${cs(c, s)} bg-${cso(c, s, out ? '80' : '100')} text-on-${cs(c, s)} text-sm font-bold)
             [&>button:disabled,&>a:disabled]:(cursor-not-allowed text-on-${cs(c, s)} opacity-25)
             [&>button:disabled:hover,&>a:disabled:hover]:(bg-${cs(c, s)} text-on-${cs(c, s)})
-            [&>button:hover,&>a:hover]:(bg-${cso(c, s, out ? '100' : '65')})
+            [&>button:hover,&>a:hover]:(bg-${cso(c, s, out ? '100' : '70')})
             [&>button:active,&>a:active]:(translate-${vert ? 'x' : 'y'}-1)
             [&>button:focus,&>a:focus]:(ring-2)
             [&>button:first-child,&>a:first-child]:(rounded-${vert ? 't' : 'l'}-[var(--btn-radius)])

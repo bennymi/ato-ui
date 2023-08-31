@@ -54,11 +54,7 @@ For each color you can also specify an opacity if you want. The shades are alway
 
 Pattern: `btn-border-[base_color]-[base_shade]-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`.
 
-The base color and shade are the background overlay color of the button. You can add an opacity to overwrite the deafault opacity to it.
-
-The `direction` can be: `l | r | t | b | bl | br | tl | tr`. If you do not provide a direction `r` will be chosen.
-
-The 3 color values are for the gradient. For each color you can optionally define a shade. Shade `500` is the default.
+The base color and shade are the background overlay color of the button. You can add an opacity to overwrite the deafault opacity to it. The `direction` can be: `l | r | t | b | bl | br | tl | tr`. If you do not provide a direction `r` will be chosen. The 3 color values are for the gradient. For each color you can optionally define a shade. Shade `500` is the default.
 
 <Preview previewSnippets={previewSnippets['gradient-border']}>
     <svelte:component this={previewComponents['gradient-border']} />

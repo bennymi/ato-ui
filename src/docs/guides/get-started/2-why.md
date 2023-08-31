@@ -16,13 +16,14 @@ icon: i-material-symbols:question-mark-rounded
 - 🎨 easily integrate different themes into your website
 - 🌈 provides styled components for components which you do not want to style yourself
 - 🦄 headless code examples with Ato UI's design tokens for maximum flexibility
+- 💜 all components follow web accessibility standards because it's built with [Melt UI](https://www.melt-ui.com/)
 - 🌸 build on top of [UnoCSS](https://unocss.dev/) and the [Wind preset](https://unocss.dev/presets/wind) (Tailwind + Windi CSS), but does not require Tailwind
 
 ## Why UnoCSS?
 
 - 😉 pure CSS icons
 - 💪 flexible classes defined through regular expressions are perfect for creating a themeable website
-- 🍻 [variant group preset](https://unocss.dev/transformers/variant-group) that allows you to group classes efficiently `dark:(` `...` `)` or `hover:(` `...` `)`
+- ⚡ [variant group preset](https://unocss.dev/transformers/variant-group) that allows you to group classes efficiently
 
 ## Goals
 
