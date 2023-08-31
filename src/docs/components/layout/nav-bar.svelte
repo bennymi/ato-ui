@@ -1,21 +1,17 @@
 <script lang="ts">
-	import { fade, fly, slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 
 	import type { NavIcon, Navigation, NavGroup } from '$components';
-	import { HamburgerMenu, SidebarGroup } from '$components';
+	import { HamburgerMenu, NavLightSwitch, SidebarGroup, ThemeDropdown } from '$components';
 
-	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
-	import { darkTheme } from '$lib/stores/lightswitch';
-	// import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
+	import { darkTheme } from '$docs/utils/stores';
 	import { TOC } from '$components';
-	import DropMenu from '$lib/components/dropdown-menu/DropMenu.svelte';
 
 	export let navigation: Navigation = [];
 	export let icons: NavIcon[] = [];
 	export let groups: NavGroup[];
 	export let showSidebar = false;
-	export let themes: DropMenuGroup[] = [];
 
 	let revealTOC = false;
 	let revealSidebar = false;
@@ -40,34 +36,15 @@
 			{/each}
 		</nav>
 		<div class="hidden md:inline-flex">
-			<DropMenu
-				label="Theme"
-				width="w-24"
-				groups={themes}
-				buttonIcon="i-mdi-chevron-down"
-				buttonClass="btn-tr-primary-secondary btn-sm"
-				on:select
-			/>
+			<ThemeDropdown />
 		</div>
 
 		<div class="md:hidden">
 			<HamburgerMenu bind:opened={revealNavItems} ariaControls="ato-mobile-nav-items" />
 		</div>
 
-		<button
-			class="border-x-1 px-4 mx-2 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
-			on:click={() => ($darkTheme = !$darkTheme)}
-			aria-label="dark-theme"
-			aria-pressed={$darkTheme}
-		>
-			{#if $darkTheme}
-				<span class="sr-only">Dark mode</span>
-				<span in:fly={{ y: -10 }} class="i-material-symbols-dark-mode-rounded text-2xl" />
-			{:else}
-				<span class="sr-only">Light mode</span>
-				<span in:fly={{ y: 10 }} class="i-material-symbols-light-mode text-2xl" />
-			{/if}
-		</button>
+		<NavLightSwitch />
+
 		{#if icons.length > 0}
 			<div class="AtoNavBarSocials gap-x-2 hidden md:inline-flex">
 				{#each icons as { icon, link, title }}
@@ -101,30 +78,8 @@
 			<div
 				class="flex flex justify-around w-full items-center bg-surface-100-700 py-4 rounded-container text-surface-900-50"
 			>
-				<div class="z-60">
-					<DropMenu
-						label="Theme"
-						width="w-24"
-						groups={themes}
-						buttonIcon="i-mdi-chevron-down"
-						buttonClass="btn-tr-primary-secondary btn-sm"
-						on:select
-					/>
-				</div>
-				<button
-					class="text-surface-400-900-200-50 inline-flex"
-					on:click={() => ($darkTheme = !$darkTheme)}
-					aria-label="dark-theme"
-					aria-pressed={$darkTheme}
-				>
-					{#if $darkTheme}
-						<span class="sr-only">Dark mode</span>
-						<span class="i-material-symbols-dark-mode-rounded text-2xl" />
-					{:else}
-						<span class="sr-only">Light mode</span>
-						<span class="i-material-symbols-light-mode text-2xl" />
-					{/if}
-				</button>
+				<ThemeDropdown />
+				<NavLightSwitch />
 			</div>
 			{#if icons.length > 0}
 				<div class="AtoNavBarSocials w-full py-4 gap-x-2 inline-flex justify-center items-center">

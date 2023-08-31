@@ -70,7 +70,9 @@ export default defineConfig({
 
 ## Update Layout
 
-Next we need to setup the root `+layout.svelte` file by importing `uno.css`. You can also do [style resetting](https://unocss.dev/guide/style-reset) like tailwind does. You can then import a theme from `ato-ui/themes/...` or use a custom one that you created in our [designer](/designer) page. The theme should be added as a `data-theme` attribute, with the same name as the css file name, so make sure to add it to a wrapping `div`, either inside your layout or in the top level `app.html` file. You can see all our themes in our [styles repo page](https://github.com/bennymi/ato-ui/tree/main/src/lib/styles/themes).
+Next we need to setup the root `+layout.svelte` file by importing `uno.css`. You can also do [style resetting](https://unocss.dev/guide/style-reset) like tailwind does. You can then import a theme from `ato-ui/themes/...` or use a custom one that you created in our [designer](/designer) page. The theme should be added as a `data-theme` attribute, with the same name as the css file name, so make sure to add it to a wrapping `div`, as well as in the top level `app.html` file. This is important because some floating elements might be rendered outside of the below `div` element. 
+
+You can see all our themes in our [styles repo page](https://github.com/bennymi/ato-ui/tree/main/src/lib/styles/themes).
 
 ```svelte title="./src/routes/+layout.svelte" {3,9}
 <script lang="ts">

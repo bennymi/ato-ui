@@ -2,7 +2,7 @@ import { get } from 'svelte/store';
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageServerLoad } from './$types';
 
-import { themeStore } from '$docs/utils/stores';
+import { shikiThemeStore } from '$docs/utils/stores';
 import { componentsList, isComponent, componentsData } from '$docs/data/components';
 import { getAllPreviewSnippets } from '$docs/utils/preview';
 import type { ComponentsAPI } from '$docs/data/types';
@@ -30,13 +30,13 @@ export const load = (async ({ params,  fetch }) => {
     }
 
     // Get the theme and update theme store.
-    let theme = get(themeStore);
+    let theme = get(shikiThemeStore);
 
 	if (!theme) {
         const response = await fetch('/moonlight-2-theme.json');
         theme = await response.json();
 
-        themeStore.set(theme);
+        shikiThemeStore.set(theme);
 	}
 
     const previewSnippets = await getAllPreviewSnippets({ slug, theme: theme ?? 'github-dark', highlights: componentsData[slug].highlights });

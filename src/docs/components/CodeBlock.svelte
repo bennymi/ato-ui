@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import { darkTheme } from '$lib/stores/lightswitch';
+	import { darkTheme } from '$docs/utils/stores';
 
 	export let lang = '';
 	export let darkCode: string | null = null;

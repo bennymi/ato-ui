@@ -5,8 +5,7 @@
 	import RangeSlider from 'svelte-range-slider-pips';
 	import { slide } from 'svelte/transition';
 
-	import ToggleSwitch from '$lib/components/toggle-switch/ToggleSwitch.svelte';
-	import RadioGroup from '$lib/components/radio-group/RadioGroup.svelte';
+	import { Switch, RadioGroup } from 'ato-ui';
 
 	import { new_theme } from './stores';
 	import type { RadioItem } from 'ato-ui/components/radio-group/types';
@@ -23,30 +22,34 @@
 	let show_slider = 'primary';
 	let showNumbers = true;
 
-	let contrast_group = 'all';
+	let contrastGroup = 'all';
 
 	$: {
-		if (contrast_group === 'all') {
+		if (contrastGroup === 'all') {
 			contrast_threshold = 22;
-		} else if (contrast_group === 'aa') {
+		} else if (contrastGroup === 'aa') {
 			contrast_threshold = 4;
-		} else if (contrast_group === 'aaa') {
+		} else if (contrastGroup === 'aaa') {
 			contrast_threshold = 7;
 		}
 	}
 </script>
 
 <div class="flex gap-2 my-2 w-full justify-between">
-	<ToggleSwitch
-		bind:checked={showNumbers}
-		label="Toggle Numbers"
-		labelClasses="font-bold text-surface-900-50"
-	/>
+	<Switch 
+        label="Toggle Contrast"
+        bind:checked={showNumbers}
+        hideLabel={false}
+        activeBackground="bg-primary-500" 
+        labelPosition="left" 
+        activeIcon="text-surface-900 text-lg i-material-symbols-contrast"
+        inactiveIcon="text-surface-900 text-lg i-material-symbols-contrast-rtl-off-rounded"    
+    />
 	<div>
 		<RadioGroup
 			{items}
-			bind:group={contrast_group}
-			name="contrast-guidelines"
+			bind:group={contrastGroup}
+			ariaLabel="contrast-guidelines"
 			size="sm"
 			bgActiveClasses="primary-500"
 		/>

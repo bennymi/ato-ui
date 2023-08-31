@@ -43,7 +43,7 @@
         {...$subMenu} use:subMenu
         transition:trans={options}
     >
-        <slot name="submenu" />
+        <slot />
 
         {#if !hideArrow}
             <div {...$subArrow} use:subArrow />

@@ -26,48 +26,54 @@
 		</svelte:fragment>
 
 		<!-- Menu content -->
-		<svelte:fragment slot="dropdown-menu-content">
-			<!-- A regular item. -->
-			<Dropdown.Item on:m-click={() => console.log('add theme clicked')}>
-				<IconItem text="Add theme" icon="i-material-symbols-palette" />
-			</Dropdown.Item>
 
-			<!-- A checkbox item. -->
-			<Dropdown.CheckboxItem
-				checked={dark}
-				{checkedIcon}
-				on:checked-change={(e) => console.log('checked change', e)}
+		<!-- A regular item. -->
+		<Dropdown.Item on:m-click={() => console.log('add theme clicked')}>
+			<IconItem text="Add theme" icon="i-material-symbols-palette" />
+		</Dropdown.Item>
+
+		<!-- A checkbox item. -->
+		<Dropdown.CheckboxItem
+			checked={dark}
+			{checkedIcon}
+			on:checked-change={(e) => console.log('checked change', e)}
+		>
+			<IconItem text="Dark mode" icon="i-mdi-theme-light-dark" />
+		</Dropdown.CheckboxItem>
+
+		<Dropdown.Item disabled={true}>
+			<IconItem text="Edit theme" icon="i-material-symbols-edit-rounded" />
+		</Dropdown.Item>
+
+		<Dropdown.Submenu transition={{ trans: fly, options: { x: -50, duration: 150 } }}>
+			<!-- The trigger item for which a submenu opens. -->
+			<svelte:fragment slot="submenu-trigger">
+				<IconItem text="Select a theme" icon="i-material-symbols-chevron-right-rounded" />
+			</svelte:fragment>
+
+			<!-- The actual submenu. -->
+			<Dropdown.RadioGroup 
+				value={themeValue} 
+				{checkedIcon} 
+				on:value-change={(e) => console.log('radio group value changed:', e.detail)}
 			>
-				<IconItem text="Dark mode" icon="i-mdi-theme-light-dark" />
-			</Dropdown.CheckboxItem>
+				{#each themes as theme}
+					<Dropdown.RadioGroupItem
+						value={theme}
+					>
+						{theme}
+					</Dropdown.RadioGroupItem>
+				{/each}
+			</Dropdown.RadioGroup>
+		</Dropdown.Submenu>
 
-			<Dropdown.Submenu transition={{ trans: fly, options: { x: -50, duration: 150 } }}>
-				<!-- The trigger item for which a submenu opens. -->
-				<svelte:fragment slot="submenu-trigger">
-					<IconItem text="Select a theme" icon="i-material-symbols-chevron-right-rounded" />
-				</svelte:fragment>
+		<Dropdown.Separator />
 
-				<!-- The actual submenu. -->
-				<svelte:fragment slot="submenu">
-					<Dropdown.RadioGroup value={themeValue} {checkedIcon} on:value-change={(e) => console.log('radio group value changed:', e.detail)}>
-						{#each themes as theme}
-							<Dropdown.RadioGroupItem
-								value={theme}
-								on:m-click={(e) => console.log('radio group click:', e.detail.value)}
-								>{theme}</Dropdown.RadioGroupItem
-							>
-						{/each}
-					</Dropdown.RadioGroup>
-				</svelte:fragment>
-			</Dropdown.Submenu>
-
-			<Dropdown.Separator />
-
-			<Dropdown.Item
-				itemStyle="px-2 py-1 select-none rounded-container hover:(error-500/90) focus:(error-500/90)"
-			>
-				<IconItem text="Delete theme" icon="i-material-symbols-delete-rounded" />
-			</Dropdown.Item>
-		</svelte:fragment>
+		<Dropdown.Item
+			itemStyle="px-2 py-1 select-none rounded-container hover:(error-500/90) focus:(error-500/90)"
+		>
+			<IconItem text="Delete theme" icon="i-material-symbols-delete-rounded" />
+		</Dropdown.Item>
+		
 	</Dropdown.Menu>
 </div>

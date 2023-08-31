@@ -13,12 +13,10 @@
 	import { NavBar, Sidebar, BottomNav } from '$components';
 	import type { Navigation, NavGroupItem } from '$components';
 
-	// import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
 	import { TOC } from '$components';
-	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
 
-	import { darkTheme } from '$lib/stores/lightswitch';
-	import { themeStore, customThemeCSSStore } from './stores';
+	import { darkTheme } from '$docs/utils/stores';
+	import { themeStore, customThemeCSSStore } from '$docs/utils/stores';
 	import AtoUI from './AtoUI.svelte';
 
 	import { browser } from '$app/environment';
@@ -26,18 +24,6 @@
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
-
-	const themes: DropMenuGroup[] = [
-		{
-			items: [
-				{ icon: 'i-mdi-atom-variant', text: `Ato` },
-				{ icon: 'i-material-symbols-water-drop-outline-rounded', text: `Water` },
-				{ icon: 'i-mdi-earth', text: `Earth` },
-				{ icon: 'i-material-symbols-local-fire-department-rounded', text: `Fire` },
-				{ icon: 'i-mdi-weather-windy-variant', text: `Air` }
-			]
-		}
-	];
 
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
@@ -186,7 +172,6 @@
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		groups={currentNavPage ? currentNavPage?.groups : []}
-		{themes}
 		icons={socials}
 		on:select={(event) => ($themeStore = event.detail.selected.toLowerCase())}
 	>

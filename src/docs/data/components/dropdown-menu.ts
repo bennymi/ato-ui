@@ -23,6 +23,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         component: 'DropdownMenu',
         updatedName: 'Dropdown.Menu',
         required: ['ariaLabel', 'open'],
+        transitions: ['transition'],
         styles: ['btnStyle', 'width', 'menuBgStyle', 'menuBorderStyle', 'itemStyle', 'itemDisabledStyle'],
     },
     {

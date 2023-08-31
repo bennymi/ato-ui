@@ -3,8 +3,28 @@
 	import { default as Heading } from './markdown/heading.svelte';
 	import type { APIProp, Data } from '$docs/data/types';
 
+	import { TabsList, Tab, type TabHeader } from 'ato-ui';
+
 	export let componentData: Data;
 	export let componentAPI: APIProp[];
+
+	const tabHeaders: TabHeader[] = [
+		{
+			key: 'props',
+			title: 'Props',
+			icon: 'text-xl i-material-symbols-play-shapes-rounded'
+		},
+		{
+			key: 'events',
+			title: 'Events',
+			icon: 'text-xl i-mdi-lightning-bolt'
+		},
+		{ 
+			key: 'slots', 
+			title: 'Slots',
+			icon: 'text-xl i-material-symbols-space-bar-rounded'
+		}
+	];
 
 	const filterButtons = [
 		{
@@ -96,7 +116,7 @@
 
 			if (idx === undefined || idx === -1) return;
 
-			apis.push({ ...newAPIs[idx], events: events, slots: slots });
+			apis.push({ ...newAPIs[idx], events, slots });
 		});
 	}
 
@@ -116,7 +136,7 @@
 						} else if (filter === 'transition') {
 							props = component.props.filter((prop) => prop.isTransition);
 						} else {
-							props = component.props.filter((prop) => !prop.isIcon && !prop.isStyle);
+							props = component.props.filter((prop) => !prop.isIcon && !prop.isStyle && !prop.isTransition);
 						}
 
 						return {
@@ -130,7 +150,17 @@
 {#if componentAPI}
 	<Heading content="API" headerTag="h2">API</Heading>
 
-	<div class="w-full flex flex-wrap justify-center gap-2 mt-4">
+	<Heading content="API" headerTag="h3">Props</Heading>
+
+	<!-- <TabsList activeTab="props" borderStyle="my-8" activeStyle="primary-500" inactiveStyle="surface-400" justifyHeaders="gap-1 justify-center" {tabHeaders} headerStyle="px-2 py-1 rounded-container" ariaLabel="API sections" headerWidth="min-w-20 md:min-w-40">
+		<Tab key="props">
+		</Tab>
+
+		<Tab key="events">TODO: Events...</Tab>
+		<Tab key="slots">TODO: Slots...</Tab>
+	</TabsList> -->
+
+	<div class="w-full flex flex-wrap justify-center gap-2 mt-8">
 		{#each filterButtons as { value, icon }, i}
 			{@const active = filter === value}
 			<div class="rounded-btn">
@@ -157,7 +187,7 @@
 
 	{#each filteredAPIs as { component, props }}
 		<div>
-			<Heading content={component} headerTag="h3">
+			<Heading content={component} headerTag="h4">
 				{component}
 			</Heading>
 
@@ -229,6 +259,10 @@
 			</div>
 		</div>
 	{/each}
+
+	<Heading content="Events" headerTag="h3">Events</Heading>
+
+	<Heading content="Slots" headerTag="h3">Slots</Heading>
 {/if}
 
 <style>
