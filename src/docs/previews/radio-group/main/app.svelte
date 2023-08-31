@@ -6,7 +6,6 @@
 		{
 			value: 'startup',
 			label: 'Startup',
-			subLabel: 'This is a startup',
 			icon: 'i-material-symbols-rocket-launch-rounded'
 		},
 		{ 

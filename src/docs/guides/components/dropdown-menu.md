@@ -30,11 +30,11 @@ The `Item`, `CheckboxItem`, and `RadioGroupItem` all have the `itemStyle`. The `
 </Dropdown.Menu>
 ```
 
-## Events
+## Listening to Events
 
 All components except for the `Dropdown.Menu` component have events that you can listen to for updates. Check the API Events section below to see them in more detail.
 
-```svelte {12, 21}
+```svelte {12, 21} /on:m-click/#prop /on:checked-change/#prop
 <Dropdown.Menu
     ariaLabel="theme menu" 
     {open}

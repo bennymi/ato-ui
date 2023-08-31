@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { darkTheme } from '$docs/utils/stores';
-	import { ToggleSwitch } from '$lib';
+	import { Switch } from '$lib';
 
 	export let lang = '';
 	export let darkCode: string | null = null;
@@ -59,7 +59,7 @@
 <div class="mt-2">
 	<!-- Header -->
 	<div class="flex justify-between items-center h-12">
-		<ToggleSwitch bind:checked={showCode} size="sm" label="Show Code" />
+		<Switch bind:checked={showCode} size="sm" label="Show Code" />
 		{#if showCode}
 			<div
 				class="px-2 py-1 rounded-container select-none primary-500 font-semibold font-mono flex items-center justify-center"

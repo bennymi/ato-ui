@@ -48,6 +48,25 @@ function isMainFile(key: string) {
     return false;
 }
 
+export function getGuidesFolderFiles(folder: string) {
+    // Get the files.
+    const filePaths = import.meta.glob(`/src/docs/guides/**/*.md`);
+
+    const keys = Object.keys(filePaths);
+
+    const files: string[] = [];
+
+    for (const key of keys) {
+        const pathParts = key.split('/');
+
+        if (pathParts.at(-2) === folder) {
+            files.push(pathParts.at(-1).replace('.md', ''));
+        }
+    }
+
+    return files;
+}
+
 function getFileType(key: string) {
     const splitPath = key.split('/');
     if (splitPath && splitPath.length === PATH_LENGTH) {

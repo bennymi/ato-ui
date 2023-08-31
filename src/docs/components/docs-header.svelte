@@ -2,6 +2,8 @@
 	import { page } from '$app/stores';
 	import type { Dependency } from '$docs/data/types';
 	import type { Metadata } from '$docs/utils/preview';
+	
+	import { HeaderLink } from '$components';
 
 	export let meta: Metadata | undefined;
 	export let githubPath: string | undefined;
@@ -52,7 +54,42 @@
 		</nav>
 	{/if}
 
-	<a
+	<div class="flex gap-2">
+		<!-- <a
+			class="inline-flex justify-center items-center gap-2 transition-all surface-500 hover:surface-800 border-1 border-surface-500/50 rounded-container px-1"
+			href={`https://github.com/bennymi/ato-ui/tree/main${githubPath}`}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<span class="text-lg i-material-symbols-edit-square-outline-rounded"></span>
+			<span class="tracking-tight">Edit page</span>
+		</a> -->
+		<HeaderLink
+			href={`https://github.com/bennymi/ato-ui/tree/main${githubPath}`}
+			text="Edit page"
+			icon="i-material-symbols-edit-square-outline-rounded"
+		/>
+
+		{#if isComponent && styledExists}
+			<HeaderLink
+				href={`https://github.com/bennymi/ato-ui/tree/main/src/lib/components/${$page.params.slug}`}
+				text="Styled source"
+				icon="i-mdi-github"
+			/>
+			<!-- <a
+				class="inline-flex justify-center items-center gap-1 surface-700 border-1 border-surface-800 rounded-container px-1"
+				href={`https://github.com/bennymi/ato-ui/tree/main/src/lib/components${$page.url.pathname}`}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<span class="text-lg i-mdi-github"></span>
+				<span class="tracking-tight">Styled source</span>
+			</a> -->
+		{/if}
+
+	</div>
+
+	<!-- <a
 		class="inline-flex items-center gap-1 underline underline-offset-2 transition-colors hover:text-surface-800/80-100/80 selection:(text-on-primary bg-primary-500/70)"
 		href={`https://github.com/bennymi/ato-ui/tree/main${githubPath}`}
 		target="_blank"
@@ -60,7 +97,7 @@
 	>
 		<span class="h-5 w-5 i-material-symbols-edit-square-outline-rounded"></span>
 		<span>Suggest changes to this page</span>
-	</a>
+	</a> -->
 
 	<!-- {#if isComponent}
 		<div class="mt-2 flex items-center gap-2">

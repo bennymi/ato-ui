@@ -28,7 +28,7 @@
 	</div>
 
 	<div class="flex gap-2 justify-between items-center">
-		<nav class="AtoNavBarMenu space-x-4 text-surface-900-50 hidden md:inline-flex">
+		<nav class="space-x-4 text-surface-900-50 hidden md:inline-flex">
 			{#each navigation as { navTitle, landingPath }}
 				<a class="font-semibold transition-all duration-200 hover:underline" href={landingPath}
 					>{navTitle}</a
@@ -46,7 +46,7 @@
 		<NavLightSwitch />
 
 		{#if icons.length > 0}
-			<div class="AtoNavBarSocials gap-x-2 hidden md:inline-flex">
+			<div class="gap-x-2 hidden md:inline-flex">
 				{#each icons as { icon, link, title }}
 					<a href={link} class="text-surface-400-900-200-50">
 						<span class="sr-only">{title}</span>
@@ -82,7 +82,7 @@
 				<NavLightSwitch />
 			</div>
 			{#if icons.length > 0}
-				<div class="AtoNavBarSocials w-full py-4 gap-x-2 inline-flex justify-center items-center">
+				<div class="w-full py-4 gap-x-2 inline-flex justify-center items-center">
 					{#each icons as { icon, link, title }}
 						<a href={link} class="text-surface-400-900-200-50">
 							<span class="sr-only">{title}</span>

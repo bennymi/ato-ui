@@ -46,7 +46,7 @@
 					items: data.articles
 				},
 				{
-					groupTitle: 'Tokens',
+					groupTitle: 'Shortcuts',
 					groupIcon: 'i-mdi-dots-grid',
 					items: data.tokens
 				},

@@ -19,9 +19,9 @@ const sizes: { [key: string]: string } = {
 
 const disabledStyles = 'opacity-70 cursor-not-allowed scale-100';
 
-const baseStyles = `${sizes.md} active:scale-95 inline-flex justify-center items-center space-x-1 rounded-btn disabled:(${disabledStyles})`;
+const baseStyles = `${sizes.md} active:scale-95 inline-flex justify-center items-center gap-1 rounded-btn disabled:(${disabledStyles})`;
 
-const baseStylesIcon = `${sizes.md} active:scale-95 inline-flex justify-center items-center space-x-1 rounded-btn-icon disabled:(opacity-80 cursor-not-allowed scale-100)`;
+const baseStylesIcon = `${sizes.md} active:scale-95 inline-flex justify-center items-center gap-1 rounded-btn-icon disabled:(opacity-80 cursor-not-allowed scale-100)`;
 
 const glassStyles = 'border-1 backdrop-blur-sm';
 const glassOp = '70';
