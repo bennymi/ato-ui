@@ -3,22 +3,14 @@ title: Spinners / Loaders
 description: Allows you to easily add spinners to your website when loading data.
 ---
 
-# Spinners / Loaders
+<script>
+    import { Preview } from '$components';
 
-## Examples
+    export let previewSnippets;
+    export let previewComponents;
+</script>
 
-```svelte example
-<span class="s-circle-primary" />
-<span class="s-circle-split-primary" />
-<span class="s-circle-secondary border-dotted border-10" />
-<span class="s-circle-tertiary-800 border-dashed border-6" />
-<span class="s-squares-hover-tertiary-secondary-primary dark:s-squares-hover-tertiary-secondary-primary-200" />
-<span class="s-squares-flip-primary" />
-<span class="s-corners-outline-tertiary" />
-<span class="s-corners-outline-secondary border-primary/0-bl-error-tertiary-primary" />
-<span class="s-squares-rotate-primary" />
-<span class="s-squares-rotate-primary-secondary" />
-```
+
 <!-- Dots fading -->
 <!-- <span class="s-dots-primary" />
 <span class="s-dots-primary-secondary-tertiary" /> -->
@@ -48,56 +40,17 @@ To customize these spinners use regular Tailwind classes to modify the size and 
 
 Example: `w-12 h-12 text-primary-500 i-svg-spinners-blocks-scale`.
 
-<!-- <div class="w-full flex flex-col gap-6 justify-center items-center p-4 rounded-container border-1 border-surface-500/30-200/30 my-4 text-surface-900-50 font-mono"> -->
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span class="mr-2 w-12 h-12 text-primary-500 i-svg-spinners-blocks-wave" />
-		i-svg-spinners-blocks-wave
-	</div>
-	<div>
-		<span class="mr-2 w-12 h-12 text-secondary-500 i-svg-spinners-blocks-shuffle-2" />
-		i-svg-spinners-blocks-shuffle-2
-	</div>
-	<div>
-		<span class="mr-2 w-12 h-12 text-tertiary-500 i-svg-spinners-blocks-scale" />
-		i-svg-spinners-blocks-scale
-	</div>
-	<div>
-		<span class="mr-2 w-12 h-12 text-success-500 i-svg-spinners-3-dots-move" />
-		i-svg-spinners-3-dots-move
-	</div>
-	<div>
-		<span class="mr-2 w-12 h-12 text-warning-500 i-svg-spinners-gooey-balls-2" />
-		i-svg-spinners-gooey-balls-2
-	</div>
-	<div>
-		<span class="mr-2 w-12 h-12 text-error-500 i-svg-spinners-pulse-rings-multiple" />
-		i-svg-spinners-pulse-rings-multiple
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['iconify']}>
+    <svelte:component this={previewComponents['iconify']} />
+</Preview>
 
 ## Size
 
 You can set the size of each spinner by setting the width and height after the `s-` prefix. For example: `s-wh15-circle-secondary`, `s-wh20-flip-tertiary`. This will set the width and height to `w-15 h-15` and `w-20 h-20` respectively.
 
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span class="mr-2 s-squares-rotate-primary-secondary" />
-		s-squares-rotate-primary-secondary
-	</div>
-	<div>
-		<span class="mr-2 s-wh15-squares-rotate-primary-secondary" />
-		s-wh15-squares-rotate-primary-secondary
-	</div>
-	<div>
-		<span class="mr-2 s-wh20-squares-rotate-primary-secondary" />
-		s-wh20-squares-rotate-primary-secondary
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['size']}>
+    <svelte:component this={previewComponents['size']} />
+</Preview>
 
 ## Colors & Variations
 
@@ -109,59 +62,33 @@ Pattern: `s-circle-[color]`.
 
 You can change the border type and size of circles by using regular Tailwind classes like: `border-dashed`,  `border-spotted`, `border-6`, and `border-8`.
 
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span class="mr-2 s-wh8-circle-secondary border-dotted border-4" />
-		s-wh8-circle-secondary border-dotted border-4
-	</div>
-	<div>
-		<span class="mr-2 s-wh8-circle-secondary border-dashed border-4" />
-		s-wh8-circle-secondary border-dashed border-4
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['circle']}>
+    <svelte:component this={previewComponents['circle']} />
+</Preview>
 
 ### Circle Split
 
 Pattern: `s-circle-split-[color]`.
 
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span class="mr-2 s-wh8-circle-split-secondary" />
-		s-wh8-circle-split-secondary
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['circle-split']}>
+    <svelte:component this={previewComponents['circle-split']} />
+</Preview>
 
 ### Squares Hover
 
 Pattern: `s-squares-hover-[color1]-[color2]-[color3]`. You can set the colors of all three layers.
 
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span
-			class="s-wh12-squares-hover-tertiary-secondary-primary"
-		/>
-		<span>s-squares-hover-tertiary-secondary-primary</span>
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['squares-hover']}>
+    <svelte:component this={previewComponents['squares-hover']} />
+</Preview>
 
 ### Squares Rotate
 
 Pattern: `s-squares-hover-[color1]-[color2]`. You can set the colors of both rotating squares. The second color is optional.
 
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span class="s-squares-rotate-primary-secondary" />
-		s-squares-rotate-primary-secondary
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['squares-rotate']}>
+    <svelte:component this={previewComponents['squares-rotate']} />
+</Preview>
 
 ### Corners
 
@@ -169,28 +96,14 @@ Pattern: `s-corners-[color]`.
 
 You can also change the background with some additional classes such as:`bg-gradient-primary-secondary-tertiary`.
 
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span class="s-wh10-corners-primary" />
-		s-corners-primary
-	</div>
-	<div>
-		<span class="s-wh10-corners-primary bg-gradient-error-tertiary-primary" />
-		s-corners-primary bg-gradient-error-tertiary-primary
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['corners']}>
+    <svelte:component this={previewComponents['corners']} />
+</Preview>
 
 ### Corners Outline
 
 Pattern: `s-corners-outline-[color]`.
 
-```svelte example column
-<div class="text-surface-900-50 font-mono flex flex-col gap-2">
-	<div>
-		<span class="s-wh10-corners-outline-primary" />
-		s-corners-outline-primary
-	</div>
-</div>
-```
+<Preview previewSnippets={previewSnippets['corners-outline']}>
+    <svelte:component this={previewComponents['corners-outline']} />
+</Preview>

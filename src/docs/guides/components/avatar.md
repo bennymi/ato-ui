@@ -5,10 +5,9 @@ component: components/avatar/Avatar.svelte
 ---
 
 <script lang="ts">
-	import { PropsTable } from '$components';
-    import docs from '$lib/components/avatar/Avatar.svelte?raw&sveld';
 
-	import { ToggleSwitch, Avatar } from '$lib';
+	// import { ToggleSwitch, Avatar } from '$lib';
+	import { Avatar } from '$lib';
 
 	let typing = true;
 </script>
@@ -16,7 +15,7 @@ component: components/avatar/Avatar.svelte
 ## Preview
 
 <Usage>
-	<ToggleSwitch bind:checked={typing} label="Typing" />
+	<!-- <ToggleSwitch bind:checked={typing} label="Typing" /> -->
 	<div class="flex flex-wrap justify-center items-center gap-8">
 		<Avatar
 			src="/corgi-avatar.jpg"
@@ -295,8 +294,3 @@ This event is emitted when the mouse leaves the badge container.
 ### `badge-click`
 
 This event is emitted when the badge is clicked.
-
-
-## Props
-
-<PropsTable props={docs.props} />

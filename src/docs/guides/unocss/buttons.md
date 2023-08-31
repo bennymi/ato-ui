@@ -1,6 +1,6 @@
 ---
 title: Buttons
-description: Create a nice button with just a class. Can be used for anchors and button elements.
+description: Create nice buttons with simple CSS classes. Can be used for anchors and button elements.
 ---
 
 <script>

@@ -2,7 +2,7 @@
     Adapted from: https://codepen.io/stufreen/pen/KOWKBw?editors=0010
  -->
 <script lang="ts">
-    import { themeStore } from '../../stores';
+    import { themeStore } from '$docs/utils/stores';
     import type { Colour, NormalArgs } from './types';
 
 	export let numberOfParticles = 100;
