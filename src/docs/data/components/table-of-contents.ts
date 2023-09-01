@@ -13,6 +13,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         component: 'TOC',
         required: ['selector'],
         styles: ['labelStyles', 'contentStyles', 'activeStyles'],
+        specialTypes: ['ToCScrollFn', 'ToCHeading[]', 'ToCScrollBehaviour', 'ToCActiveType', 'ToCHeadingFilterFn'],
         function: ['']
     }
 ]

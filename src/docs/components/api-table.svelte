@@ -3,10 +3,13 @@
 	import { default as Heading } from './markdown/heading.svelte';
 	import type { APIProp, Data } from '$docs/data/types';
 
+	import { default as ApiTableItem } from './api-table-item.svelte';
+
 	// import { TabsList, Tab, type TabHeader } from 'ato-ui';
 
 	export let componentData: Data;
 	export let componentAPI: APIProp[];
+	export let typesSnippet = '';
 
 	// const tabHeaders: TabHeader[] = [
 	// 	{
@@ -115,14 +118,16 @@
 		});
 
 		// apis = newAPIs;
-		apiExtraInfo?.forEach(({ component, events, slots }) => {
+		apiExtraInfo?.forEach(({ component, events, slots, specialTypes }) => {
 			const idx = newAPIs?.findIndex((item) => item.oldName === component);
 
 			if (idx === undefined || idx === -1) return;
 
-			apis.push({ ...newAPIs[idx], events, slots });
+			apis.push({ ...newAPIs[idx], events, slots, specialTypes });
 		});
 	}
+
+	$: console.log('apis:', apis);
 
 	$: filteredAPIs =
 		filter === 'all'
@@ -150,6 +155,9 @@
 					};
 			  });
 	// .filter((component) => component.props.length > 0);
+
+	$: showEvents = apis.some((item) => item.events?.length > 0);
+	$: showSlots = apis.some((item) => item.slots?.length > 0);
 </script>
 
 {#if componentAPI}
@@ -190,9 +198,9 @@
 		{/each}
 	</div>
 
-	{#each filteredAPIs as { component, props }}
+	{#each filteredAPIs as { component, props, specialTypes }}
 		<div>
-			<Heading content={component} headerTag="h4">
+			<Heading content={`props-${component}`} headerTag="h4">
 				{component}
 			</Heading>
 
@@ -204,72 +212,45 @@
 					</div>
 				{:else}
 					{#each props as { name, type, description, defaultValue, isIcon, isStyle, isTransition, isFunction, required }}
-						<div
-							class:required
-							transition:slide
-							class="relative flex flex-col gap-2 surface-100 dark:surface-500 p-4 rounded-container ring-0.5 ring-surface-200/50 hover:(ring-primary-500)
-						"
-						>
-							<!-- <div
-								class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 inline-flex justify-center items-center rounded-container p-1 surface-100 dark:surface-500 ring-1 ring-surface-200/50"
-							>
-								{#if isStyle}
-									<span class="text-xl i-material-symbols-format-color-fill-rounded" />
-								{:else if isIcon}
-									<span class="text-xl i-mdi-emoticon-wink-outline" />
-								{:else}
-									<span class="text-xl i-material-symbols-functions-rounded" />
-								{/if}
-							</div> -->
-							<div
-								class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 inline-flex flex-col gap-1 justify-center items-center rounded-container p-1 surface-100 dark:surface-500 ring-1 ring-surface-200/50"
-							>
-								{#if isFunction}
-									<span class="text-xl i-material-symbols-functions-rounded" />
-								{/if}
-								{#if isStyle}
-									<span class="text-xl i-material-symbols-format-color-fill-rounded" />
-								{/if}
-								{#if isIcon}
-									<span class="text-xl i-mdi-emoticon-wink-outline" />
-								{/if}
-								{#if isTransition}
-									<span class="text-xl i-mdi-transition" />
-								{/if}
-							</div>
-							<div class="flex justify-left items-center gap-1 font-mono overflow-auto ml-2">
-								<div
-									class="shrink-0 px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit"
-								>
-									{name}
-								</div>
-								<div>:</div>
-								<!-- TODO: add tooltip on type -> shows options -->
-								<div class="shrink-0 px-2 bg-surface-400 text-on-surface-400 rounded-container">
-									{type}
-								</div>
-								{#if defaultValue}
-									<div>=</div>
-									<div
-										class="shrink-0 px-2 bg-secondary-500 text-on-secondary-500 rounded-container"
-									>
-										{defaultValue}
-									</div>
-								{/if}
-							</div>
-							<div class="ml-2 text-justify selection:(text-on-primary bg-primary-500/70)">
-								{description}
-							</div>
-						</div>
+						<ApiTableItem 
+							{name} {type} {description} {defaultValue} {isIcon} 
+							{isStyle} {isTransition} {isFunction} {typesSnippet} {specialTypes}
+							highlight={required}
+							showIcons={true}
+						/>
 					{/each}
 				{/if}
 			</div>
 		</div>
 	{/each}
 
-	<Heading content="Events" headerTag="h3">Events</Heading>
+	{#if showEvents}
+		<Heading content="Events" headerTag="h3">Events</Heading>
 
-	<Heading content="Slots" headerTag="h3">Slots</Heading>
+		{#each apis as {component, events, specialTypes}}
+			{#if events?.length > 0}
+				<Heading content={`events-${component}`} headerTag="h4">{component}</Heading>
+
+				{#each events as {name, description, type}}
+					<ApiTableItem {name} {description} {type} {typesSnippet} {specialTypes} />
+				{/each}
+			{/if}
+		{/each}
+	{/if}
+
+	{#if showSlots}
+		<Heading content="Slots" headerTag="h3">Slots</Heading>
+
+		{#each apis as {component, slots}}
+			{#if slots?.length > 0}
+				<Heading content={`slots-${component}`} headerTag="h4">{component}</Heading>
+
+				{#each slots as {name, description}}
+					<ApiTableItem {name} {description} />
+				{/each}
+			{/if}
+		{/each}
+	{/if}
 {/if}
 
 <style>

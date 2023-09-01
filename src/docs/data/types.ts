@@ -52,6 +52,7 @@ export type ComponentAPIExtraInfo = {
     icons?: string[]; // Props that allow the user to pass icons.
     transitions?: string[]; // Props that are transitions.
     function?: string[]; // Props that are functionality related. This is the default, so you only need to fill in props that can be multiple things at once.
+    specialTypes?: string[]; // Special types defined within the types.ts file that should show up when clicked in the docs (props + events).
     events?: ComponentEvents[];
     slots?: ComponentSlots[];
 }

@@ -8,7 +8,8 @@
 	export let title = '';
 	export let containerMargin = 'mb-4 mt-6';
 	export let containerRounded = 'rounded-container';
-
+	export let height = 'h-fit max-h-[650px]';
+	
 	let codeElement: HTMLElement;
 	let copyState = false;
 
@@ -35,7 +36,7 @@
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -- This is needed to be acessible -- flex is for removing the whitespaces -->
 	<pre
 		bind:this={codeElement}
-		class="{containerMargin} h-fit max-h-[650px] overflow-x-auto {containerRounded} border border-surface-300/50 py-3 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
+		class="{containerMargin} {height} overflow-x-auto {containerRounded} border border-surface-300/50 py-3 px-0.5 bg-gray-800/40 {className} {activeStylesContainer}"
 		tabindex="0"
 		{...$$restProps}><slot /></pre>
 	{#if title}

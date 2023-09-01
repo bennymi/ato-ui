@@ -25,7 +25,7 @@ You can update the active styles with the `activeStyle` prop.
 />
 ```
 
-## Adding Icons
+## Adding a Select Icon
 
 You can add a select icon with the `selectIcon` prop.
 

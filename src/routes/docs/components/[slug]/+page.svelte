@@ -8,7 +8,9 @@
 	$: ({
 		previewSnippets,
 		previewComponents,
+		typesSnippet,
 		content,
+		isStyledPage,
 		meta,
 		headlessExists,
 		styledExists,
@@ -45,4 +47,6 @@
 
 <svelte:component this={docsComponent} {previewSnippets} {previewComponents} />
 
-<APITable {componentData} {componentAPI} />
+{#if isStyledPage}
+	<APITable {componentData} {componentAPI} {typesSnippet} />
+{/if}

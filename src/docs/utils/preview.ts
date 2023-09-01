@@ -32,11 +32,7 @@ const PATH_LENGTH = 7;
 
 function isSlugFile(slug: string, key: string) {
     const splitPath = key.split('/');
-    if (splitPath && splitPath.length === PATH_LENGTH) {
-        return slug === splitPath[4];
-    }
-
-    return false;
+    return splitPath.includes(slug);
 }
 
 function isMainFile(key: string) {
@@ -167,6 +163,39 @@ export async function getAllPreviewSnippets(args: { slug: string, theme: IShikiT
     }
 
     return previewSnippets;
+}
+
+/**
+ * This gets the highlighted types.ts file
+ * for a given component page. 
+ */
+export async function getComponentsTypesSnippet(args: { slug: string, theme: IShikiTheme | string }) {
+    const { slug, theme } = args;
+
+    // Get the files.
+    const rawFiles = import.meta.glob(`/src/lib/components/**/types.ts`, {
+		as: 'raw',
+		eager: true,
+	});
+
+    // Get the highlighted HTML for each file.
+    // const previewSnippets: PreviewTab[] = [];
+    let typesSnippet: string = '';
+
+    const keys = Object.keys(rawFiles);
+
+    for await (const key of keys) {
+        if (isSlugFile(slug, key)) {
+
+            const snippet = await getHighlightedPreviews({ code: rawFiles[key].trim(), lang: 'typescript', fetcher: fetch, theme: theme });
+
+            typesSnippet = snippet;
+
+            break;
+        }
+    }
+
+    return typesSnippet;
 }
 
 export type PreviewComponents = Record<string, SvelteComponent>;

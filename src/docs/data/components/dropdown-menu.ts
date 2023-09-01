@@ -25,6 +25,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         required: ['ariaLabel', 'open'],
         transitions: ['transition'],
         styles: ['btnStyle', 'width', 'menuBgStyle', 'menuBorderStyle', 'itemStyle', 'itemDisabledStyle'],
+        specialTypes: ['DropdownMenuOpenStore', 'DropdownMenuTransition']
     },
     {
         component: 'DropdownMenuCheckboxItem',
@@ -32,6 +33,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         required: ['checked'],
         styles: ['itemStyle', 'itemDisabledStyle'],
         icons: ['checkedIcon'],
+        specialTypes: ['DropdownMenuCheckboxValue', 'DropdownMenuCheckboxCheckedChangeEvent'],
         events: [
             {
                 name: 'checked-change',
@@ -62,6 +64,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         updatedName: 'Dropdown.RadioGroup',
         required: ['value'],
         icons: ['checkedIcon'],
+        specialTypes: ['DropdownMenuRadioGroupValue', 'DropdownMenuRadioGroupChangeEvent'],
         events: [
             {
                 name: 'value-change',
@@ -75,6 +78,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         updatedName: 'Dropdown.RadioGroupItem',
         required: ['value'],
         styles: ['itemStyle'],
+        specialTypes: ['DropdownMenuRadioGroupItemClickEvent'],
         events: [
             {
                 name: 'm-clicked',
@@ -88,6 +92,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         updatedName: 'Dropdown.Submenu',
         transitions: ['transition'],
         styles: ['width'],
+        specialTypes: ['DropdownMenuTransition'],
         events: [
             {
                 name: 'm-clicked',

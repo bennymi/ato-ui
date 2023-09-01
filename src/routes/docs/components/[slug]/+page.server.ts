@@ -4,7 +4,7 @@ import type { EntryGenerator, PageServerLoad } from './$types';
 
 import { shikiThemeStore } from '$docs/utils/stores';
 import { componentsList, isComponent, componentsData } from '$docs/data/components';
-import { getAllPreviewSnippets } from '$docs/utils/preview';
+import { getAllPreviewSnippets, getComponentsTypesSnippet } from '$docs/utils/preview';
 import type { ComponentsAPI } from '$docs/data/types';
 
 
@@ -41,8 +41,12 @@ export const load = (async ({ params,  fetch }) => {
 
     const previewSnippets = await getAllPreviewSnippets({ slug, theme: theme ?? 'github-dark', highlights: componentsData[slug].highlights });
 
+    const typesSnippet = await getComponentsTypesSnippet({ slug, theme: theme ?? 'github-dark', highlights: componentsData[slug].highlights });
+
 	return {
         previewSnippets,
+        typesSnippet,
+        isStyledPage: !slug.includes('-headless'),
         componentData: componentsData[slug],
         componentAPI: componentAPIs[slug]
 	};
