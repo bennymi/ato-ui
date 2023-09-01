@@ -3,28 +3,28 @@
 	import { default as Heading } from './markdown/heading.svelte';
 	import type { APIProp, Data } from '$docs/data/types';
 
-	import { TabsList, Tab, type TabHeader } from 'ato-ui';
+	// import { TabsList, Tab, type TabHeader } from 'ato-ui';
 
 	export let componentData: Data;
 	export let componentAPI: APIProp[];
 
-	const tabHeaders: TabHeader[] = [
-		{
-			key: 'props',
-			title: 'Props',
-			icon: 'text-xl i-material-symbols-play-shapes-rounded'
-		},
-		{
-			key: 'events',
-			title: 'Events',
-			icon: 'text-xl i-mdi-lightning-bolt'
-		},
-		{ 
-			key: 'slots', 
-			title: 'Slots',
-			icon: 'text-xl i-material-symbols-space-bar-rounded'
-		}
-	];
+	// const tabHeaders: TabHeader[] = [
+	// 	{
+	// 		key: 'props',
+	// 		title: 'Props',
+	// 		icon: 'text-xl i-material-symbols-play-shapes-rounded'
+	// 	},
+	// 	{
+	// 		key: 'events',
+	// 		title: 'Events',
+	// 		icon: 'text-xl i-mdi-lightning-bolt'
+	// 	},
+	// 	{
+	// 		key: 'slots',
+	// 		title: 'Slots',
+	// 		icon: 'text-xl i-material-symbols-space-bar-rounded'
+	// 	}
+	// ];
 
 	const filterButtons = [
 		{
@@ -64,6 +64,7 @@
 	$: resetFilter(componentData);
 
 	$: {
+		apis = [];
 		const newAPIs: APIProp[] = [];
 
 		componentAPI?.forEach((component) => {
@@ -80,7 +81,7 @@
 						required: false,
 						isIcon: false,
 						isStyle: false,
-						isTransition: false,
+						isTransition: false
 					}))
 				});
 				return;
@@ -91,7 +92,10 @@
 				const isStyle = apiExtraInfo![idx].styles?.includes(prop.name) ?? false;
 				const isIcon = apiExtraInfo![idx].icons?.includes(prop.name) ?? false;
 				const isTransition = apiExtraInfo![idx].transitions?.includes(prop.name) ?? false;
-				const isFunction = ((!isStyle && !isIcon && !isTransition) || apiExtraInfo![idx].function?.includes(prop.name)) ?? false;
+				const isFunction =
+					((!isStyle && !isIcon && !isTransition) ||
+						apiExtraInfo![idx].function?.includes(prop.name)) ??
+					false;
 
 				props.push({
 					...prop,
@@ -123,28 +127,29 @@
 	$: filteredAPIs =
 		filter === 'all'
 			? apis
-			: apis
-					.map((component) => {
-						let props: typeof component.props;
+			: apis.map((component) => {
+					let props: typeof component.props;
 
-						if (filter === 'required') {
-							props = component.props.filter((prop) => prop.required);
-						} else if (filter === 'icon') {
-							props = component.props.filter((prop) => prop.isIcon);
-						} else if (filter === 'style') {
-							props = component.props.filter((prop) => prop.isStyle);
-						} else if (filter === 'transition') {
-							props = component.props.filter((prop) => prop.isTransition);
-						} else {
-							props = component.props.filter((prop) => !prop.isIcon && !prop.isStyle && !prop.isTransition);
-						}
+					if (filter === 'required') {
+						props = component.props.filter((prop) => prop.required);
+					} else if (filter === 'icon') {
+						props = component.props.filter((prop) => prop.isIcon);
+					} else if (filter === 'style') {
+						props = component.props.filter((prop) => prop.isStyle);
+					} else if (filter === 'transition') {
+						props = component.props.filter((prop) => prop.isTransition);
+					} else {
+						props = component.props.filter(
+							(prop) => !prop.isIcon && !prop.isStyle && !prop.isTransition
+						);
+					}
 
-						return {
-							component: component.component,
-							props
-						};
-					});
-					// .filter((component) => component.props.length > 0);
+					return {
+						component: component.component,
+						props
+					};
+			  });
+	// .filter((component) => component.props.length > 0);
 </script>
 
 {#if componentAPI}
@@ -195,9 +200,7 @@
 				{#if props.length === 0}
 					<div class="rounded-container error-500 p-2 flex justify-left items-center gap-2">
 						<span class="i-material-symbols-error-circle-rounded text-2xl" />
-						<span class="text-xl font-semibold">
-							No props matching the applied filter.
-						</span>
+						<span class="text-xl font-semibold"> No props matching the applied filter. </span>
 					</div>
 				{:else}
 					{#each props as { name, type, description, defaultValue, isIcon, isStyle, isTransition, isFunction, required }}
@@ -235,7 +238,9 @@
 								{/if}
 							</div>
 							<div class="flex justify-left items-center gap-1 font-mono overflow-auto ml-2">
-								<div class="shrink-0 px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit">
+								<div
+									class="shrink-0 px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit"
+								>
 									{name}
 								</div>
 								<div>:</div>
@@ -245,7 +250,9 @@
 								</div>
 								{#if defaultValue}
 									<div>=</div>
-									<div class="shrink-0 px-2 bg-secondary-500 text-on-secondary-500 rounded-container">
+									<div
+										class="shrink-0 px-2 bg-secondary-500 text-on-secondary-500 rounded-container"
+									>
 										{defaultValue}
 									</div>
 								{/if}
@@ -268,6 +275,8 @@
 <style>
 	.required {
 		/* shadow-[rgba(var(--color-error-500))_-4px_0px_0px_0px] */
-		box-shadow: -4px 0 0 0 rgba(var(--color-error-500)), 4px 0 0 0 rgba(var(--color-error-500));
+		box-shadow:
+			-4px 0 0 0 rgba(var(--color-error-500)),
+			4px 0 0 0 rgba(var(--color-error-500));
 	}
 </style>
