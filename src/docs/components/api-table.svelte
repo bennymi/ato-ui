@@ -127,8 +127,6 @@
 		});
 	}
 
-	$: console.log('apis:', apis);
-
 	$: filteredAPIs =
 		filter === 'all'
 			? apis
