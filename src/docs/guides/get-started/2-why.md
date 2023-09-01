@@ -27,9 +27,11 @@ icon: i-material-symbols:question-mark-rounded
 
 ## Goals
 
-Ato UI is build on top of other fantastic headless libraries, such as [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/) and [Melt UI](https://github.com/melt-ui/melt-ui). The goal of this library is to provide a design system around headless libraries that allows you to integrate different themes into your website and make the creation of light & dark mode more simple with our tokens.
+Ato UI is build on top of the fantastic [Melt UI](https://github.com/melt-ui/melt-ui) headless library. The goal of Ato UI is to provide a design system around Melt that allows you to integrate different themes into your website, simplify the creation of light & dark mode with our tokens and shortcuts, and to provide additionaly functionality with our styled components.
 
-We provide styled components of these headless libraries, which you can import as regular Svelte components. Since you might not want to have to style every component yourself, this will allow you to get started more quickly. Additionally, we have examples of how to create the headless components using Ato UI's design system. This way you can easily modify the components to your liking, while keeping them theme-able.
+While Melt UI provides builders, we provide regular Svelte components. Since you might not want to have to style every component yourself, this will allow you to get started more quickly. These styled components also support light & dark mode out of the box, while still providing props through which you can customize their looks. Additionally, we have examples of how to create the headless components using Ato UI's design system. This way you can easily modify the components to your liking, while keeping them theme-able and consistent with the rest of your website.
+
+Have questions or improvement ideas? Join us on our [Discord](https://discord.gg/7PXN3fs3tN).
 
 ## Shortcuts
 

@@ -13,6 +13,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         component: 'Dialog',
         required: ['open'],
         styles: ['overlayStyle', 'containerStyle', 'zIndex', 'position'],
+        transitions: ['overlayTransition', 'containerTransition']
     }
 ]
 
