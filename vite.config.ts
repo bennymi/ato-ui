@@ -2,8 +2,6 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
 
-// import { sveld } from './sveld';
-
 import { readdirSync } from 'fs';
 import { extname, join } from 'path';
 

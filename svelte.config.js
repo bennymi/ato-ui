@@ -13,25 +13,6 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: [
 		mdsvex(mdsvexOptions),
-		// svelteGlobalComponents({
-		// 	components: [
-		// 		// {
-		// 		// 	name: 'CodeBlock',
-		// 		// 	location: '/src/docs/components/CodeBlock.svelte',
-		// 		// 	importPaths: ['src/docs/guides/']
-		// 		// },
-		// 		{
-		// 			name: 'Usage',
-		// 			location: '/src/docs/components/Usage.svelte',
-		// 			importPaths: ['src/docs/guides/']
-		// 		},
-		// 		{
-		// 			name: 'Example',
-		// 			location: '/src/docs/components/Example.svelte',
-		// 			importPaths: ['src/docs/guides/']
-		// 		}
-		// 	]
-		// }),
 		vitePreprocess()
 	],
 

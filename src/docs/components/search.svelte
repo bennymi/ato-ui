@@ -6,7 +6,7 @@
 	import { generate_css, get_uno_generator_configs } from '$docs/search/utils';
 	import type { UnoGenerator } from 'unocss';
 
-	import CodeBlock from '$components/CodeBlock.svelte';
+	// import CodeBlock from '$components/CodeBlock.svelte';
 
 	let search = '';
 	let uno: UnoGenerator;
@@ -142,7 +142,7 @@
 				</div>
 				{#if example_css && dark_html && light_html && examples.includes(example)}
 					<div transition:slide={{ duration: 200 }}>
-						<CodeBlock
+						<!-- <CodeBlock
 							darkCode={dark_html}
 							lightCode={light_html}
 							hideHeader={true}
@@ -151,7 +151,7 @@
 							rawCode={example_css}
 							showCode={true}
 							height="[&>pre]:(h-fit max-h-50)"
-						/>
+						/> -->
 					</div>
 				{/if}
 			</div>
