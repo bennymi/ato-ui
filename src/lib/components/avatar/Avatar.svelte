@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import type { Rounded, Position } from '../../types/types.d';
+	import type { Position } from './types';
 
 	const dispatch = createEventDispatcher();
 
@@ -10,10 +10,11 @@
 	export let alt = 'avatar';
 	/** Set the text value in case you don't have an image. The string automatically gets shortened to 4 characters. If you pass in separate words it will use the first letters of each word. */
 	export let text = '';
+
 	/** Set the width and height of the avatar. */
 	export let size = 'w-16 h-16';
 	/** Set the rounded shape. */
-	export let rounded: Rounded = 'rounded-btn';
+	export let rounded = 'rounded-btn';
 	/** Set the border size. You can also use this to apply hover effects: hover:(...). */
 	export let borderSize = 'border-2';
 	/** Set the border color. You can also use this to apply hover effects: hover:(...). */

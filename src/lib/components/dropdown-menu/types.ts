@@ -6,17 +6,17 @@ import type {
     DropdownMenuRadioGroup 
 } from '@melt-ui/svelte';
 
-type GroupItem = {
-    icon: string;
-    text: string;
-    hoverStyle?: string;
-    iconStyle?: string;
-}
+// type GroupItem = {
+//     icon: string;
+//     text: string;
+//     hoverStyle?: string;
+//     iconStyle?: string;
+// }
 
-export type DropMenuGroup = {
-    title?: string;
-    items: GroupItem[];
-};
+// export type DropMenuGroup = {
+//     title?: string;
+//     items: GroupItem[];
+// };
 
 export type DropdownMenuCheckboxCheckedChangeEvent = CustomEvent<{ curr: boolean, next: boolean }>;
 export type DropdownMenuRadioGroupChangeEvent = CustomEvent<{ curr: string, next: string }>;

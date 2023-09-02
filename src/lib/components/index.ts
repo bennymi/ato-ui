@@ -1,5 +1,6 @@
 
 export * from './accordion';
+export * from './avatar';
 export * from './combobox';
 export * from './dialog';
 export * from './dropdown-menu'

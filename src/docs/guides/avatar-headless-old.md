@@ -1,7 +1,7 @@
 ---
-title: Avatar
-description: A headless avatar component.
 ---
+<!-- title: Avatar
+description: A headless avatar component. -->
 
 <script lang="ts">
 	import Avatar from '$lib/components/avatar/Avatar.svelte';
