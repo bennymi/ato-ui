@@ -107,9 +107,10 @@ export type PreviewTab = {
 export type PreviewExamples = Record<string, PreviewTab[]>;
 
 type PreviewSnippetsArgs = {
-    slug: string, 
-    theme: IShikiTheme | string, 
-    highlights?: ExampleHighlights | undefined 
+    slug: string;
+    theme: IShikiTheme | string;
+    highlights?: ExampleHighlights | undefined;
+    required?: boolean;
 }
 
 /**
@@ -117,7 +118,7 @@ type PreviewSnippetsArgs = {
  * of the specified slug route.
  */
 export async function getAllPreviewSnippets(args: PreviewSnippetsArgs) {
-    const { slug, theme, highlights } = args;
+    const { slug, theme, highlights, required } = { required: true, ...args };
 
     // Get the files.
     const rawFiles = import.meta.glob(`/src/docs/previews/**/*.{css,svelte,ts}`, {
@@ -164,7 +165,7 @@ export async function getAllPreviewSnippets(args: PreviewSnippetsArgs) {
         }
     }
 
-    if (!mainExists) {
+    if (required && !mainExists) {
         throw error(500);
     }
 
@@ -210,13 +211,18 @@ export type PreviewFile = {
 	default: SvelteComponent;
 };
 
+type PreviewComponentsArgs = {
+    slug: string;
+    required?: boolean;
+}
+
 /**
  * Returns the main 'app.svelte' component for every example
  * folder within the specified slug route from inside the 
  * previews folder.
  */
-export async function getAllPreviewComponents(args: { slug: string }) {
-    const { slug } = args;
+export async function getAllPreviewComponents(args: PreviewComponentsArgs) {
+    const { slug, required } = { required: true, ...args};
 
     // Get the files.
     const rawFiles = import.meta.glob(`/src/docs/previews/**/app.svelte`);
@@ -251,7 +257,7 @@ export async function getAllPreviewComponents(args: { slug: string }) {
         }
     }
 
-    if (!mainExists) {
+    if (required && !mainExists) {
         throw error(500);
     }
 

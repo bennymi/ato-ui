@@ -1,14 +1,12 @@
 ---
 title: Why Ato-UI?
-description: Ato-UI is a component and UI library for Svelte / SvelteKit and UnoCSS.
+description: Describes why you should choose Ato UI.
 icon: i-material-symbols:question-mark-rounded
 ---
 
 <script>
     import { BackgroundDemo } from '$components';
 </script>
-
-# Why Ato-UI?
 
 ## Why Ato-UI?
 

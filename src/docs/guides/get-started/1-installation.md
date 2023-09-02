@@ -1,14 +1,12 @@
 ---
 title: Installation
-description: Describes how to set up your project to use Ato-UI and UnoCSS.
+description: Describes how to set up your project to use Ato UI and UnoCSS.
 icon: i-material-symbols-rocket-launch-rounded
 ---
 
 <script>
 	import { InstallationTabs, ConstructionBanner } from '$components';
 </script>
-
-# Installation
 
 ## Installation
 
