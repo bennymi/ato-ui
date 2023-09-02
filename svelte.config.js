@@ -4,7 +4,7 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from '@huntabyte/mdsvex';
 import { mdsvexOptions } from './mdsvex.config.js';
 
-import svelteGlobalComponents from './src/docs/mdsvex/svelte-global-components.js';
+// import svelteGlobalComponents from './src/docs/mdsvex/svelte-global-components.js';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -13,25 +13,25 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: [
 		mdsvex(mdsvexOptions),
-		svelteGlobalComponents({
-			components: [
-				// {
-				// 	name: 'CodeBlock',
-				// 	location: '/src/docs/components/CodeBlock.svelte',
-				// 	importPaths: ['src/docs/guides/']
-				// },
-				{
-					name: 'Usage',
-					location: '/src/docs/components/Usage.svelte',
-					importPaths: ['src/docs/guides/']
-				},
-				{
-					name: 'Example',
-					location: '/src/docs/components/Example.svelte',
-					importPaths: ['src/docs/guides/']
-				}
-			]
-		}),
+		// svelteGlobalComponents({
+		// 	components: [
+		// 		// {
+		// 		// 	name: 'CodeBlock',
+		// 		// 	location: '/src/docs/components/CodeBlock.svelte',
+		// 		// 	importPaths: ['src/docs/guides/']
+		// 		// },
+		// 		{
+		// 			name: 'Usage',
+		// 			location: '/src/docs/components/Usage.svelte',
+		// 			importPaths: ['src/docs/guides/']
+		// 		},
+		// 		{
+		// 			name: 'Example',
+		// 			location: '/src/docs/components/Example.svelte',
+		// 			importPaths: ['src/docs/guides/']
+		// 		}
+		// 	]
+		// }),
 		vitePreprocess()
 	],
 
