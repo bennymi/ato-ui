@@ -24,7 +24,7 @@
 
 
     const {
-        elements: { image, fallback },
+        elements: { image },
     } = createAvatar({
         src,
         delayMs

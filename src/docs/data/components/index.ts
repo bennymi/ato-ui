@@ -2,6 +2,7 @@ import type { ComponentsData } from "../types";
 
 import { accordionHeadlessData } from "./accordion-headless";
 import { accordionData } from "./accordion";
+import { avatarHeadlessData } from "./avatar-headless";
 import { avatarData } from "./avatar";
 import { comboboxHeadlessData } from "./combobox-headless";
 import { comboboxData } from "./combobox";
@@ -21,7 +22,7 @@ import { tocData } from './table-of-contents';
 export const componentsList = [
     'accordion-headless',
     'accordion',
-    // 'avatar-headless',
+    'avatar-headless',
     'avatar',
     'dropdown-menu-headless',
     'dropdown-menu',
@@ -42,6 +43,7 @@ export const componentsList = [
 export const componentsData: ComponentsData = {
     'accordion-headless': accordionHeadlessData,
     'accordion': accordionData,
+    'avatar-headless': avatarHeadlessData,
     'avatar': avatarData,
     'combobox-headless': comboboxHeadlessData,
     'combobox': comboboxData,
