@@ -43,7 +43,7 @@ export const load = (async ({ params,  fetch }) => {
 
     const isStyledPage = !slug.includes('-headless');
 
-    const typesSnippet = isStyledPage ? await getComponentsTypesSnippet({ slug, theme: theme ?? 'github-dark', highlights: componentsData[slug].highlights }) : '';
+    const typesSnippet = isStyledPage ? await getComponentsTypesSnippet({ slug, theme: theme ?? 'github-dark' }) : '';
 
 	return {
         previewSnippets,

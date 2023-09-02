@@ -148,14 +148,15 @@
 					}
 
 					return {
+						...component,
 						component: component.component,
 						props
 					};
 			  });
 	// .filter((component) => component.props.length > 0);
 
-	$: showEvents = apis.some((item) => item.events?.length > 0);
-	$: showSlots = apis.some((item) => item.slots?.length > 0);
+	$: showEvents = apis.some((item) => !!item.events && item.events?.length > 0);
+	$: showSlots = apis.some((item) => !!item.slots && item.slots?.length > 0);
 </script>
 
 {#if componentAPI}
@@ -210,9 +211,17 @@
 					</div>
 				{:else}
 					{#each props as { name, type, description, defaultValue, isIcon, isStyle, isTransition, isFunction, required }}
-						<ApiTableItem 
-							{name} {type} {description} {defaultValue} {isIcon} 
-							{isStyle} {isTransition} {isFunction} {typesSnippet} {specialTypes}
+						<ApiTableItem
+							{name}
+							{type}
+							{description}
+							{defaultValue}
+							{isIcon}
+							{isStyle}
+							{isTransition}
+							{isFunction}
+							{typesSnippet}
+							{specialTypes}
 							highlight={required}
 							showIcons={true}
 						/>
@@ -225,11 +234,11 @@
 	{#if showEvents}
 		<Heading content="Events" headerTag="h3">Events</Heading>
 
-		{#each apis as {component, events, specialTypes}}
+		{#each apis as { component, events, specialTypes }}
 			{#if events?.length > 0}
 				<Heading content={`events-${component}`} headerTag="h4">{component}</Heading>
 
-				{#each events as {name, description, type}}
+				{#each events as { name, description, type }}
 					<ApiTableItem {name} {description} {type} {typesSnippet} {specialTypes} />
 				{/each}
 			{/if}
@@ -239,11 +248,11 @@
 	{#if showSlots}
 		<Heading content="Slots" headerTag="h3">Slots</Heading>
 
-		{#each apis as {component, slots}}
+		{#each apis as { component, slots }}
 			{#if slots?.length > 0}
 				<Heading content={`slots-${component}`} headerTag="h4">{component}</Heading>
 
-				{#each slots as {name, description}}
+				{#each slots as { name, description }}
 					<ApiTableItem {name} {description} />
 				{/each}
 			{/if}

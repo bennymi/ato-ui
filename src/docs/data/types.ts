@@ -63,6 +63,7 @@ export type APIProp = {
     props: Prop[];
     events?: ComponentEvents[];
     slots?: ComponentSlots[];
+    specialTypes?: string[];
 }
 
 /**
@@ -85,4 +86,4 @@ export type Data = {
 
 export type ComponentsData = Record<string, Data>;
 
-// export type ComponentsAPI = Record<string, APIProp[]>;
+export type ComponentsAPI = Record<string, APIProp[]>;

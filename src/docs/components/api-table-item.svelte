@@ -24,6 +24,8 @@
     let clickedType = '';
 
     $: typeParts = type.split('|').map((item) => item.trim());
+
+    $: console.log(`${name}: ${type} -> ${specialTypes}`);
 </script>
 
 <div
