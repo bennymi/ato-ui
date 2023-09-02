@@ -1,6 +1,4 @@
 
-import { error } from '@sveltejs/kit';
-
 import type { PageLoad } from './$types';
 import { getAllPreviewComponents, getDocsData } from '$docs/utils/preview';
 

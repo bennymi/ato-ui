@@ -1,15 +1,11 @@
 ---
 title: Text
-description: Text tokens allow you to easily create gradient texts or select the font colour that should be used on top of specific theme background colors.
+description: Text shortcuts allow you to easily create gradient texts or select the font colour that should be used on top of specific theme background colors.
 ---
 
 <script>
     import { TextDemo } from '$components';
 </script>
-
-# Text Tokens
-
-## Demo
 
 <TextDemo />
 

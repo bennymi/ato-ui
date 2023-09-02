@@ -78,10 +78,18 @@ function createMetaString(fileHighlights: FileHighlights | null): string {
 	return meta;
 }
 
-export async function getHighlightedPreviews(args: { code: string, lang: string, fetcher: typeof fetch, theme: IShikiTheme | string, fileHighlights: FileHighlights | null }) {
+type HighlightedPreviewArgs = { 
+	code: string, 
+	lang: string, 
+	fetcher: typeof fetch, 
+	theme: IShikiTheme | string, 
+	fileHighlights?: FileHighlights | null 
+}
+
+export async function getHighlightedPreviews(args: HighlightedPreviewArgs) {
 	const { code, lang, fetcher, theme, fileHighlights } = args;
 
-	const meta = createMetaString(fileHighlights);
+	const meta = fileHighlights ? createMetaString(fileHighlights) : '';
 
 	// await getStoredHighlighter(theme, fetcher);
 

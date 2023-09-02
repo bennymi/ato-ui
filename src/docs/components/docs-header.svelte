@@ -2,12 +2,12 @@
 	import { page } from '$app/stores';
 	import type { Dependency } from '$docs/data/types';
 	import type { Metadata } from '$docs/utils/preview';
-	
+
 	import { HeaderLink } from '$components';
 
 	export let meta: Metadata | undefined;
 	export let githubPath: string | undefined;
-	export let dependencies: Dependency[] = [];
+	// export let dependencies: Dependency[] = [];
 	export let isComponent = false;
 	export let headlessExists = false;
 	export let styledExists = false;
@@ -86,7 +86,6 @@
 				<span class="tracking-tight">Styled source</span>
 			</a> -->
 		{/if}
-
 	</div>
 
 	<!-- <a

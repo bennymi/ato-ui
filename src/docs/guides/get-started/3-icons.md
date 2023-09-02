@@ -1,21 +1,11 @@
 ---
 title: Icons
-description: How to use UnoCSS icons with Ato-UI.
+description: Describes how to use UnoCSS icons with Ato UI.
 icon: i-mdi-emoticon-outline
 hoverIcon: group-hover:i-mdi-emoticon-wink
 ---
 
-# UnoCSS Icons
-
-## Examples
-
-You can then apply regular tailwind classes to the icons (hover the icons).
-
-```svelte example 
-<span class="i-vscode-icons-file-type-svelte text-5xl transition-all duration-200 hover:scale-125" />
-<span class="i-material-symbols-water-drop-outline-rounded text-5xl transition-all duration-200 hover:i-material-symbols-water-drop-rounded hover:text-cyan-500" />
-<span class="i-material-symbols-local-fire-department-rounded text-5xl transition-all duration-900 text-red-500 hover:rotate-360" /> 
-```
+Icons can be implemented as simple CSS classes, to which you can then apply regular tailwind classes to (hover the icons to see it in action).
 
 ## Installation
 

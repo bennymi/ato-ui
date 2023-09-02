@@ -1,9 +1,7 @@
 ---
-title: SVGs
-description: Available tokens related to SVGs, such as fill and stroke color.
+title: SVG
+description: Available shortcuts related to SVGs, such as fill and stroke color.
 ---
-
-# SVG Tokens
 
 ## On-Colors
 

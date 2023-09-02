@@ -21,14 +21,7 @@
 
 	export let data: PageData;
 
-	$: ({
-		previewSnippets,
-		previewComponents,
-		content,
-		meta,
-		githubPath,
-		componentData,
-	} = data);
+	$: ({ previewSnippets, previewComponents, content, meta, githubPath } = data);
 
 	type Component = $$Generic<typeof SvelteComponent>;
 
@@ -36,16 +29,7 @@
 	$: docsComponent = content as unknown as Component;
 </script>
 
-<!-- <div class="w-1/2 overflow-scroll pl-0.5 text-surface-900-50">
-</div> -->
-
-<DocsHeader
-	isComponent={false}
-	{meta}
-	{githubPath}
-/>
-
-<!-- <h2 class="opacity-0 text-[1px] my-0 py-0">Preview</h2> -->
+<DocsHeader isComponent={false} {meta} {githubPath} />
 
 {#if 'main' in previewSnippets && 'main' in previewComponents}
 	<Preview previewSnippets={previewSnippets.main}>
