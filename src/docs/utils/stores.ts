@@ -10,7 +10,8 @@ export const shikiThemeStore = writable<IShikiTheme | null>(null);
 // For docs themes.
 export type Themes = 'ato' | 'air' | 'earth' | 'fire' | 'water' | 'custom-theme';
 
-export const themeStore: Writable<Themes> = persisted('ato-selected-theme', 'ato');
+export const themeStore: Writable<Themes> = writable('ato');
+// export const themeStore: Writable<Themes> = persisted('ato-selected-theme', 'ato');
 
 export const customThemeCSSStore: Writable<string> = writable('');
 
