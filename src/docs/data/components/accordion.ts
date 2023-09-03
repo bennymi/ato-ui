@@ -20,13 +20,32 @@ const highlights: ExampleHighlights = {
 
 const apiExtraInfo: ComponentAPIExtraInfo[] = [
     {
-        component: 'Accordion',
+        component: 'AccordionRoot',
+        updatedName: 'Accordion.Root',
         styles: ['width', 'containerStyle'],
+        slots: [{
+            name: 'default',
+            description: 'The default slot for you to put the accordion items in.',
+            parentElement: 'div'
+        }]
     },
     {
         component: 'AccordionItem',
+        updatedName: 'Accordion.Item',
         required: ['key'],
         styles: ['titleStyle', 'titleBgStyle', 'contentStyle', 'disabledStyle'],
+        slots: [
+            {
+                name: 'default',
+                description: 'The default slot is for the item content.',
+                parentElement: 'div'
+            },
+            {
+                name: 'title',
+                description: 'The slot for the trigger button title content.',
+                parentElement: 'button'
+            }
+        ]
     },
 ]
 

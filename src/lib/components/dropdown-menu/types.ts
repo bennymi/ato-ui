@@ -44,7 +44,7 @@ export type DropdownMenuRadioGroupContext = {
 }
 
 export type DropdownMenuOpenStore = Writable<boolean>;
-export type DropdownMenuRadioGroupValue = Writable<string | null>;
+export type DropdownMenuRadioGroupValue = Writable<string>;
 export type DropdownMenuCheckboxValue = Writable<boolean>;
 
 export type DropdownMenuTransition = {

@@ -25,7 +25,17 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         required: ['ariaLabel', 'open'],
         transitions: ['transition'],
         styles: ['btnStyle', 'width', 'menuBgStyle', 'menuBorderStyle', 'itemStyle', 'itemDisabledStyle'],
-        specialTypes: ['DropdownMenuOpenStore', 'DropdownMenuTransition']
+        specialTypes: ['DropdownMenuOpenStore', 'DropdownMenuTransition'],
+        slots: [
+            {
+                name: 'dropdown-menu-trigger',
+                description: 'The slot for your dropdown menu trigger content.'
+            },
+            {
+                name: 'default',
+                description: 'The default slot for all your dropdown menu items.'
+            }
+        ]
     },
     {
         component: 'DropdownMenuCheckboxItem',
@@ -40,6 +50,12 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
                 type: 'DropdownMenuCheckboxCheckedChangeEvent',
                 description: 'Gets called when the value of the checkbox item changes and returns the current and next value of the checkbox item.'
             }
+        ],
+        slots: [
+            {
+                name: 'default',
+                description: 'The default slot for your checkbox item content.'
+            }
         ]
     },
     {
@@ -51,6 +67,12 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
                 name: 'm-clicked',
                 type: 'CustomEvent',
                 description: 'Gets dispatched when the item is clicked.'
+            }
+        ],
+        slots: [
+            {
+                name: 'default',
+                description: 'The default slot for your dropdown menu item content.'
             }
         ]
     },
@@ -71,6 +93,12 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
                 type: 'DropdownMenuRadioGroupChangeEvent',
                 description: 'Gets dispatched when the selected radio group item changes, and returns both the current and next value.'
             }
+        ],
+        slots: [
+            {
+                name: 'default',
+                description: 'The default slot for your radio group items.'
+            }
         ]
     },
     {
@@ -85,6 +113,12 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
                 description: 'Gets dispatched when the item is clicked. Returns the item value and the original event.',
                 type: 'DropdownMenuRadioGroupItemClickEvent'
             }
+        ],
+        slots: [
+            {
+                name: 'default',
+                description: 'The default slot for your radio group item content.'
+            }
         ]
     },
     {
@@ -98,6 +132,16 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
                 name: 'm-clicked',
                 description: 'Gets dispatched when the submenu trigger item is clicked.',
                 type: 'CustomEvent'
+            }
+        ],
+        slots: [
+            {
+                name: 'submenu-trigger',
+                description: 'The slot for your submenu trigger content.'
+            },
+            {
+                name: 'default',
+                description: 'The default slot for your submenu items.'
             }
         ]
     },

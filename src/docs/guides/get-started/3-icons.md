@@ -2,7 +2,7 @@
 title: Icons
 description: Describes how to use UnoCSS icons with Ato UI.
 icon: i-mdi-emoticon-outline
-hoverIcon: group-hover:i-mdi-emoticon-wink
+hoverIcon: group-hover-i-mdi-emoticon-wink
 ---
 
 Icons can be implemented as simple CSS classes, to which you can then apply regular tailwind classes to (hover the icons to see it in action).

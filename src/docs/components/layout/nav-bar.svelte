@@ -3,10 +3,7 @@
 	import { page } from '$app/stores';
 
 	import type { NavIcon, Navigation, NavGroup } from '$components';
-	import { HamburgerMenu, NavLightSwitch, SidebarGroup, ThemeDropdown } from '$components';
-
-	import { darkTheme } from '$docs/utils/stores';
-	import { TOC } from '$components';
+	import { HamburgerMenu, NavLightSwitch, SidebarGroup, ThemeDropdown, TOC } from '$components';
 
 	export let navigation: Navigation = [];
 	export let icons: NavIcon[] = [];

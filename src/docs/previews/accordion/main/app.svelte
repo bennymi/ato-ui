@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Accordion, AccordionItem } from 'ato-ui';
+    import { Accordion } from 'ato-ui';
 
     type ExampleItem = {
         key: string;
@@ -37,16 +37,18 @@
     ];
 </script>
 
-<Accordion width="w-80 md:w-96">
+<Accordion.Root width="w-80 md:w-96">
     {#each items as { title, content, key, icon }}
-        <AccordionItem {key} >
+        <Accordion.Item {key} >
             <svelte:fragment slot="title">
                 <div class="flex justify-left items-center gap-2">
                     <span class="text-lg {icon}" />
                     <span>{title}</span>
                 </div>
             </svelte:fragment>
-            <svelte:fragment slot="content">{content}</svelte:fragment>
-        </AccordionItem>
+
+            <!-- Content in default slot -->
+            {content}
+        </Accordion.Item>
     {/each}
-</Accordion>
+</Accordion.Root>

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { getContext, createEventDispatcher } from 'svelte';
-    import type { MeltEvent } from '@melt-ui/svelte/internals/types';
+    import type { MeltEvent } from '@melt-ui/svelte/internal/types';
 
     import type { DropdownMenuRadioGroupContext, DropdownMenuContext } from './types';
 
@@ -16,8 +16,8 @@
 
     const dispatch = createEventDispatcher();
 
-    function handleClickEvent(e: MeltEvent<T>) {
-        dispatch('m-click', { value, originalEvent: e.detail.originalEvent })
+    function handleClickEvent(e: MeltEvent<MouseEvent>) {
+        dispatch('m-click', { value, originalEvent: e?.detail?.originalEvent })
     }
 
     const { 

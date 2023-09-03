@@ -3,89 +3,96 @@
  -->
 
 <script>
-    import { page } from '$app/stores';
-    import { fly } from 'svelte/transition';
-    import { darkTheme } from '$docs/utils/stores';
+	import { page } from '$app/stores';
+	import { fly } from 'svelte/transition';
+	import { darkTheme } from '$docs/utils/stores';
 
-    import { tick } from 'svelte';
+	import { tick } from 'svelte';
 
-    let isDark = true;
+	let isDark = true;
 
-    function addOrRemoveClass() {
-        if (isDark) {
-            document.querySelector('html').classList.add('dark');
-        } else {
-            document.querySelector('html').classList.remove('dark');
-        }
-    }
+	const isLandingPage = () => $page.route.id === '/';
 
-    function toggle(evt) {
-        const isAppearanceTransition =
-            document.startViewTransition &&
-            !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	function addOrRemoveClass() {
+		if (isDark) {
+			document.querySelector('html').classList.add('dark');
+		} else {
+			document.querySelector('html').classList.remove('dark');
+		}
+	}
 
-        if (!isAppearanceTransition || $page.route.id === '/') {
-            isDark = !isDark;
-            addOrRemoveClass();
-            return;
-        }
+	function toggle(evt) {
+		const isAppearanceTransition =
+			document.startViewTransition &&
+			!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        const x = evt.clientX;
-        const y = evt.clientY;
+		if (!isAppearanceTransition || isLandingPage()) {
+			isDark = !isDark;
+			addOrRemoveClass();
+			return;
+		}
 
-        const endRadius = Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y),
-        );
+		const x = evt.clientX;
+		const y = evt.clientY;
 
-        const transition = document.startViewTransition(async () => {
-            isDark = !isDark;
-            await tick();
-            addOrRemoveClass();
-        });
+		const endRadius = Math.hypot(
+			Math.max(x, window.innerWidth - x),
+			Math.max(y, window.innerHeight - y)
+		);
 
-        transition.ready.then(() => {
-            const clipPath = [
-                // `circle(0px at ${x}px ${y}px)`,
-                `circle(0px at 100% 0%)`,
-                `circle(${endRadius}px at ${x}px ${y}px)`
-                // `ellipse(80% 80%)`,
-                // `ellipse(0% 20%)`
-                // 'inset(0% round 0%)',
-                // 'inset(50% round 50%)'
-            ];
+		const transition = document.startViewTransition(async () => {
+			isDark = !isDark;
+			await tick();
+			addOrRemoveClass();
+		});
 
-            document.documentElement.animate(
-                {
-                    clipPath: isDark ? [...clipPath].reverse() : clipPath,
-                },
-                {
-                    duration: 500,
-                    easing: isDark ? 'ease-out' : 'ease-in',
-                    pseudoElement: isDark
-                            ? '::view-transition-old(root)'
-                            : '::view-transition-new(root)'
-                }
-            )
-        });
+		transition.ready.then(() => {
+			const clipPath = [
+				`circle(0px at ${x}px ${y}px)`,
+				`circle(${endRadius}px at ${x}px ${y}px)`
+				// `circle(0px at 100% 0%)`,
+				// `circle(${endRadius}px at 50% 100%)`
+				// `ellipse(80% 80%)`,
+				// `ellipse(0% 20%)`
+				// 'inset(0% round 0%)',
+				// 'inset(50% round 50%)'
+			];
 
-        transition.finished.them(() => $darkTheme = !$darkTheme);
-    }
+			document.documentElement.animate(
+				{
+					clipPath: isDark ? [...clipPath].reverse() : clipPath
+				},
+				{
+					duration: 500,
+					easing: isDark ? 'ease-out' : 'ease-in',
+					pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)'
+				}
+			);
+		});
+
+		transition.finished.then(() => ($darkTheme = !$darkTheme));
+	}
 </script>
 
 <button
-    class="border-x-1 px-4 mx-2 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
-    on:click={toggle}
-    aria-label="dark-theme"
-    aria-pressed={isDark}
+	class="border-x-1 px-4 mx-2 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
+	on:click={toggle}
+	aria-label="dark-theme"
+	aria-pressed={isDark}
 >
-    {#if isDark}
-        <span class="sr-only">Dark mode</span>
-        <span in:fly={{ y: -10 }} class="i-material-symbols-dark-mode-rounded text-2xl" />
-    {:else}
-        <span class="sr-only">Light mode</span>
-        <span in:fly={{ y: 10 }} class="i-material-symbols-light-mode text-2xl" />
-    {/if}
+	{#if isDark}
+		<span class="sr-only">Dark mode</span>
+		<span
+			in:fly={{ y: -10, delay: isLandingPage() ? 0 : 500 }}
+			class="i-material-symbols-dark-mode-rounded text-2xl"
+		/>
+	{:else}
+		<span class="sr-only">Light mode</span>
+		<span
+			in:fly={{ y: 10, delay: isLandingPage() ? 0 : 500 }}
+			class="i-material-symbols-light-mode text-2xl"
+		/>
+	{/if}
 </button>
 
 <!-- <button

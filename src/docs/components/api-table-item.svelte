@@ -11,6 +11,7 @@
 	export let type = '';
 	export let defaultValue = '';
 	export let typesSnippet = '';
+	export let parentElement: string | null = '';
 	export let specialTypes: string[] | null = [];
 
 	export let highlight = false;
@@ -66,9 +67,9 @@
 		<div class="shrink-0 px-2 bg-primary-500 rounded-container text-on-primary-500 w-fit">
 			{name}
 		</div>
-		<div>:</div>
 		<!-- TODO: add tooltip on type -> shows options -->
 		{#if type}
+			<div>:</div>
 			<div class="shrink-0 px-2 bg-surface-400 text-on-surface-400 rounded-container">
 				{#each typeParts as option, i}
 					{@const isSpecialType = specialTypes?.includes(option)}
@@ -98,6 +99,11 @@
 			</div>
 		{/if}
 	</div>
+	<!-- {#if parentElement}
+		<div class="shrink-0 px-2 bg-surface-400 text-on-surface-400 rounded-container">
+			Parent elemnt: {parentElement}
+		</div>
+	{/if} -->
 	<div class="ml-2 text-justify selection:(text-on-primary bg-primary-500/70)">
 		{description}
 	</div>

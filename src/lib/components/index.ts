@@ -1,5 +1,6 @@
 
-export * from './accordion';
+// export * from './accordion';
+export * as Accordion from './accordion/exports';
 export * from './avatar';
 export * from './combobox';
 export * from './dialog';

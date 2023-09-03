@@ -41,7 +41,7 @@ export type ComponentEvents = {
 export type ComponentSlots = {
     name: string;
     description: string;
-    parentElement: string;
+    parentElement?: string;
 }
 
 export type ComponentAPIExtraInfo = {

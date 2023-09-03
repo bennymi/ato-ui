@@ -1,7 +1,7 @@
 ---
 title: Why Ato-UI?
 description: Describes why you should choose Ato UI.
-icon: i-material-symbols:question-mark-rounded
+icon: i-material-symbols-question-mark-rounded
 ---
 
 <script>

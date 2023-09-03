@@ -37,7 +37,7 @@
             class="content {contentStyle}"
             transition:slide
         >
-            <slot name="content" />
+            <slot />
         </div>
     {/if}
 </div>
