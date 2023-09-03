@@ -81,15 +81,15 @@
 		"@sveltejs/package": "^2.2.2",
 		"@types/fs-extra": "^11.0.1",
 		"@types/hast": "^3.0.0",
-		"@types/node": "^20.5.8",
+		"@types/node": "^20.5.9",
 		"@types/svelte-range-slider-pips": "^2.0.0",
 		"@types/tinycolor2": "^1.4.3",
 		"@typescript-eslint/eslint-plugin": "^6.5.0",
 		"@typescript-eslint/parser": "^6.5.0",
-		"@unocss/core": "^0.55.4",
-		"@unocss/extractor-svelte": "^0.55.4",
-		"@unocss/preset-icons": "^0.55.4",
-		"@unocss/preset-uno": "^0.55.4",
+		"@unocss/core": "^0.55.6",
+		"@unocss/extractor-svelte": "^0.55.6",
+		"@unocss/preset-icons": "^0.55.6",
+		"@unocss/preset-uno": "^0.55.6",
 		"eslint": "^8.48.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-import-resolver-typescript": "^3.6.0",
@@ -127,11 +127,11 @@
 	"type": "module",
 	"dependencies": {
 		"@melt-ui/svelte": "^0.41.3",
-		"@unocss/preset-wind": "^0.55.4",
-		"@unocss/reset": "^0.55.4",
-		"@unocss/transformer-directives": "^0.55.4",
-		"@unocss/transformer-variant-group": "^0.55.4",
+		"@unocss/preset-wind": "^0.55.6",
+		"@unocss/reset": "^0.55.6",
+		"@unocss/transformer-directives": "^0.55.6",
+		"@unocss/transformer-variant-group": "^0.55.6",
 		"esm-env": "^1.0.0",
-		"unocss": "^0.55.4"
+		"unocss": "^0.55.6"
 	}
 }
