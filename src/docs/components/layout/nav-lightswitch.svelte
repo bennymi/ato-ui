@@ -9,12 +9,10 @@
 
 	import { tick } from 'svelte';
 
-	let isDark = true;
-
 	const isLandingPage = () => $page.route.id === '/';
 
 	function addOrRemoveClass() {
-		if (isDark) {
+		if ($darkTheme) {
 			document.querySelector('html').classList.add('dark');
 		} else {
 			document.querySelector('html').classList.remove('dark');
@@ -27,7 +25,7 @@
 			!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		if (!isAppearanceTransition || isLandingPage()) {
-			isDark = !isDark;
+			$darkTheme = !$darkTheme;
 			addOrRemoveClass();
 			return;
 		}
@@ -41,7 +39,7 @@
 		);
 
 		const transition = document.startViewTransition(async () => {
-			isDark = !isDark;
+			$darkTheme = !$darkTheme;
 			await tick();
 			addOrRemoveClass();
 		});
@@ -60,17 +58,17 @@
 
 			document.documentElement.animate(
 				{
-					clipPath: isDark ? [...clipPath].reverse() : clipPath
+					clipPath: $darkTheme ? [...clipPath].reverse() : clipPath
 				},
 				{
 					duration: 500,
-					easing: isDark ? 'ease-out' : 'ease-in',
-					pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)'
+					easing: $darkTheme ? 'ease-out' : 'ease-in',
+					pseudoElement: $darkTheme ? '::view-transition-old(root)' : '::view-transition-new(root)'
 				}
 			);
 		});
 
-		transition.finished.then(() => ($darkTheme = !$darkTheme));
+		// transition.finished.then(() => ($darkTheme = !$darkTheme));
 	}
 </script>
 
@@ -78,9 +76,9 @@
 	class="border-x-1 px-4 mx-2 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
 	on:click={toggle}
 	aria-label="dark-theme"
-	aria-pressed={isDark}
+	aria-pressed={$darkTheme}
 >
-	{#if isDark}
+	{#if $darkTheme}
 		<span class="sr-only">Dark mode</span>
 		<span
 			in:fly={{ y: -10, delay: isLandingPage() ? 0 : 500 }}
