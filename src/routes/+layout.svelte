@@ -76,12 +76,13 @@
 		}
 	];
 
-	const default_seo = {
+	const defaultSEO = {
 		title: 'Ato UI',
 		description:
 			'A component UI library for Svelte and UnoCSS offering both styled and headless components.',
 		keywords:
-			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer'
+			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer',
+		image: '/seo/ato-ui-banner-resized.png'
 	};
 
 	// Update data-theme attribute when theme changes.
@@ -121,7 +122,7 @@
 			? allGroupItems[currentPageIdx ?? 0][hasStyledAndHeadless && !isHeadlessPage ? 1 : 0]
 			: {};
 
-	$: activeSEO = { ...default_seo, ...activePage };
+	$: activeSEO = { ...defaultSEO, ...activePage };
 
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
@@ -153,6 +154,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Open Graph - https://ogp.me/ -->
+	<meta property="og:image" content={activeSEO.image} />
 	<meta property="og:site_name" content="Ato UI" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ato-ui.vercel.app{$page.url.pathname}" />
