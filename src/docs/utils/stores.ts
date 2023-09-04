@@ -1,5 +1,5 @@
 import type { Highlighter } from 'shiki';
-import { writable } from 'svelte/store';
+import { writable, type Writable } from 'svelte/store';
 import type { IShikiTheme } from 'shiki';
 import { persisted } from 'svelte-local-storage-store';
 
