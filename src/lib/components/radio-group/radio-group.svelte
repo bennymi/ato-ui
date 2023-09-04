@@ -23,6 +23,8 @@
 	export let loop = true;
 
 	// Style props
+	/** Set the root styles for positioning the items. */
+	export let rootStyles = 'flex gap-2';
 	/** Set active background classes. */
 	export let bgActiveStyles = 'primary-500';
 	/** Set in-active background classes. */
@@ -72,7 +74,7 @@
 	}
 </script>
 
-<div {...$root} use:root class="flex gap-2" aria-label={ariaLabel}>
+<div {...$root} use:root class="{rootStyles}" aria-label={ariaLabel}>
 	{#each updated_items as { value, label, subLabel, icon, uid }}
 		{@const active = $isChecked(value)}
 		{@const styles = $isChecked(value) ? bgActiveStyles : bgStyles}

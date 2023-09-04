@@ -12,7 +12,7 @@
             class="absolute w-5 h-5 rounded-btn 
                 border-2 border-surface-900 flex 
                 justify-center items-center 
-                bg-surface-700 -bottom-0.5 -right-0.5"
+                surface-700 -bottom-0.5 -right-0.5"
         >
             <span class="inline-flex w-3 h-3 i-material-symbols-nights-stay-rounded" />
         </div>

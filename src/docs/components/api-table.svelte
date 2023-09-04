@@ -3,6 +3,8 @@
 	import { default as Heading } from './markdown/heading.svelte';
 	import type { APIProp, Data } from '$docs/data/types';
 
+	import { RadioGroup, type RadioItem } from 'ato-ui';
+
 	import { default as ApiTableItem } from './api-table-item.svelte';
 
 	// import { TabsList, Tab, type TabHeader } from 'ato-ui';
@@ -29,29 +31,35 @@
 	// 	}
 	// ];
 
-	const filterButtons = [
+	const filterButtons: RadioItem[] = [
 		{
 			value: 'all',
+			label: 'All',
 			icon: 'i-material-symbols-filter-alt-off-rounded'
 		},
 		{
 			value: 'required',
+			label: 'Required',
 			icon: 'h-4 w-4 rounded-container bg-error-500 ring-1 ring-surface-500/50'
 		},
 		{
 			value: 'function',
+			label: 'Functionality',
 			icon: 'i-material-symbols-functions-rounded'
 		},
 		{
 			value: 'style',
+			label: 'Style',
 			icon: 'i-material-symbols-format-color-fill-rounded'
 		},
 		{
 			value: 'icon',
+			label: 'Icon',
 			icon: 'i-mdi-emoticon-wink-outline'
 		},
 		{
 			value: 'transition',
+			label: 'Transition',
 			icon: 'i-mdi-transition'
 		}
 	];
@@ -172,30 +180,16 @@
 		<Tab key="slots">TODO: Slots...</Tab>
 	</TabsList> -->
 
-	<div class="w-full flex flex-wrap justify-center gap-2 mt-8">
-		{#each filterButtons as { value, icon }, i}
-			{@const active = filter === value}
-			<div class="rounded-btn">
-				<input
-					type="radio"
-					id="prop-filter-{i}"
-					bind:group={filter}
-					name="filters"
-					{value}
-					class="hidden peer"
-				/>
-				<label
-					for="prop-filter-{i}"
-					class="inline-flex items-center justify-center gap-2 px-2 py-1 ring-0.5 rounded-btn cursor-pointer hover:primary-500/80 {active
-						? 'primary-500 ring-primary-500'
-						: 'surface-100 dark:surface-500 ring-surface-200/50'}"
-				>
-					<span class="text-xl {icon}" />
-					<div class="shrink-0 text-center text-lg font-semibold select-none">{value}</div>
-				</label>
-			</div>
-		{/each}
-	</div>
+	<RadioGroup
+		ariaLabel="props filter"
+		rootStyles="flex flex-wrap justify-center gap-2 mt-4"
+		size="md"
+		bind:group={filter}
+		items={filterButtons}
+		name="props-filter"
+		bgActiveStyles="primary-500"
+		activeIcon=""
+	/>
 
 	{#each filteredAPIs as { component, props, specialTypes }}
 		<div>

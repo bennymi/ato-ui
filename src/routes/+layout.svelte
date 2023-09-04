@@ -79,7 +79,7 @@
 	const defaultSEO = {
 		title: 'Ato UI',
 		description:
-			'A component UI library for Svelte and UnoCSS offering both styled and headless components.',
+			'The elemental UI component library for Svelte, built with UnoCSS and Melt UI.',
 		keywords:
 			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer',
 		image: '/seo/ato-ui-banner-resized.png'
