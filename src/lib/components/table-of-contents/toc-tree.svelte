@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import type { TableOfContentsItem, CreateTableOfContentsReturn } from '@melt-ui/svelte';
+	import type { TableOfContentsItem, TableOfContentsElements } from '@melt-ui/svelte';
 
 	import type { ToCTreeContext } from './types';
 
 	export let tree: TableOfContentsItem[] = [];
 	export let activeHeadingIdxs: number[];
-	export let item: CreateTableOfContentsReturn['item'];
+	export let item: TableOfContentsElements['item'];
 	export let level = 1;
 
 	const { contentStyles, activeStyles } = getContext<ToCTreeContext>('toc-styles');
@@ -24,7 +24,8 @@
 					class="inline-block no-underline transition-colors
 						{active ? activeStyles : contentStyles}"
 				>
-					{heading.title}
+					<!-- {heading.title} -->
+					{@html heading.node.innerHTML}
 				</a>
 				{#if heading.children && heading.children.length}
 					<svelte:self tree={heading.children} level={level + 1} {activeHeadingIdxs} {item} />

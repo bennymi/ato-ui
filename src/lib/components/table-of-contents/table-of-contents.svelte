@@ -46,7 +46,10 @@
 		...(scrollFn && { scrollFn })
 	};
 
-	const { activeHeadingIdxs, headingsTree, item } = createTableOfContents(args);
+	const {
+		elements: { item },
+		states: { activeHeadingIdxs, headingsTree }
+	} = createTableOfContents(args);
 
 	setContext<ToCTreeContext>('toc-styles', {
 		contentStyles,
@@ -70,6 +73,8 @@
 <div class="ato-toc">
 	<p class={labelStyles}>{label}</p>
 	<nav>
-		<Tree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
+		{#key $headingsTree}
+			<Tree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
+		{/key}
 	</nav>
 </div>

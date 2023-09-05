@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type {
 		TableOfContentsItem,
-		CreateTableOfContentsReturn
+		TableOfContentsElements
 	} from '@melt-ui/svelte';
 
 	export let tree: TableOfContentsItem[] = [];
 	export let activeHeadingIdxs: number[];
-	export let item: CreateTableOfContentsReturn['item'];
+	export let item: TableOfContentsElements['item'];
 	export let level = 1;
 </script>
 
@@ -21,7 +21,8 @@
 					class="inline-block no-underline transition-colors 
 						{active ? 'text-surface-900-50' : 'text-surface-700-800-200-100'}"
 				>
-					{heading.title}
+					<!-- {heading.title} -->
+					{@html heading.node.innerHTML}
 				</a>
 				{#if heading.children && heading.children.length}
 					<svelte:self tree={heading.children} level={level + 1} {activeHeadingIdxs} {item} />
