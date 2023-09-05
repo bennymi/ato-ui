@@ -78,11 +78,10 @@
 
 	const defaultSEO = {
 		title: 'Ato UI',
-		description:
-			'The elemental UI component library for Svelte, built with UnoCSS and Melt UI.',
+		description: 'The elemental accessible and theme-able UI component library for Svelte, built with UnoCSS and Melt UI.',
 		keywords:
-			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer',
-		image: '/seo/ato-ui-banner-resized.png'
+			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer, accessible',
+		image: '/seo/new-ato-ui-dark-1-resized.png'
 	};
 
 	// Update data-theme attribute when theme changes.
@@ -124,12 +123,14 @@
 
 	$: activeSEO = { ...defaultSEO, ...activePage };
 
+	$: seoTitle = `${activeSEO.title}${activeSEO.title.includes('Ato') ? '' : ' | Ato UI'}`;
+
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
 			? null
-			: allGroupItems[currentPageIdx - 1].length === 2 
-				? allGroupItems[currentPageIdx - 1][1]
-				: allGroupItems[currentPageIdx - 1][0];
+			: allGroupItems[currentPageIdx - 1].length === 2
+			? allGroupItems[currentPageIdx - 1][1]
+			: allGroupItems[currentPageIdx - 1][0];
 
 	$: nextPage =
 		!allGroupItems ||
@@ -138,8 +139,8 @@
 		currentPageIdx === allGroupItems.length - 1
 			? null
 			: allGroupItems[currentPageIdx + 1].length === 2
-				? allGroupItems[currentPageIdx + 1][1]
-				: allGroupItems[currentPageIdx + 1][0];
+			? allGroupItems[currentPageIdx + 1][1]
+			: allGroupItems[currentPageIdx + 1][0];
 </script>
 
 <svelte:head>
@@ -161,9 +162,16 @@
 	<meta property="og:locale" content="en_US" />
 	<meta
 		property="og:title"
-		content={`${activeSEO.title}${activeSEO.title.includes('Ato') ? '' : ' | Ato UI'}`}
+		content={seoTitle}
 	/>
 	<meta property="og:description" content={activeSEO.description} />
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:domain" content="ato-ui.vercel.app">
+	<meta property="twitter:url" content="https://ato-ui.vercel.app{$page.url.pathname}">
+	<meta name="twitter:title" content={seoTitle}>
+	<meta name="twitter:description" content={activeSEO.description}>
+	<meta name="twitter:image" content={activeSEO.image}>
 
 	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
 </svelte:head>
@@ -196,7 +204,9 @@
 	>
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key $page.url.pathname}
-				<div class="hidden text-left xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">
+				<div
+					class="hidden text-left xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]"
+				>
 					<!-- <TableOfContents
 						target="#AtoContent"
 						tocType="lowest-parents"
