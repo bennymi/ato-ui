@@ -34,6 +34,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         required: ['label', 'selected', 'items'],
         icons: ['selectIcon'],
         styles: ['labelStyle', 'inputStyle', 'activeStyle', 'width', 'comboboxBgStyle', 'comboboxBorderStyle', 'noResultStyle'],
+        specialTypes: ['ComboboxSelectedStore', 'ComboboxItem[]', 'ComboboxItem']
     }
 ]
 

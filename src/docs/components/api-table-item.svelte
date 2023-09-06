@@ -123,7 +123,7 @@
 		</CodeBlock>
 
 		<button
-			class="absolute z-60 left-1/2 bottom-1 transform -translate-y-1/2 -translate-x-1/2 btn-primary"
+			class="absolute z-60 left-1/2 transform -translate-x-1/2 btn-primary"
 			on:click={() => {
 				$open = false;
 				clickedType = '';

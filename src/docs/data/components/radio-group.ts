@@ -6,12 +6,14 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         required: ['ariaLabel', 'group', 'items'],
         styles: ['bgActiveStyles', 'bgStyles'],
         icons: ['activeIcon', 'items'],
-        function: ['items'] // the others as well, but this one should have two icons
+        function: ['items'], // the others as well, but this one should have two icons
+        specialTypes: ['RadioItem[]', 'RadioItemSize']
     },
     {
         component: 'RadioGroupRegular',
         required: ['ariaLabel', 'checked', 'radioItems'],
         styles: ['activeColor', 'backgroundStyles', 'activeBackgroundStyles', 'labelStyles'],
+        specialTypes: ['RadioGroupOrientation', 'RegularRadioItem[]', 'RadioItemSize']
         // function: ['ariaLabel', 'orientation', 'checked', 'radioItems', 'disabled', 'required', 'loop', 'size']
     }
 ];
