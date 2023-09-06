@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
 	import { createTabs } from '@melt-ui/svelte';
-	import type { TabHeader } from './types';
+	import type { TabHeader, TabValue } from './types';
 
-	/** Set the key of the tab that should be active by default. */
-	export let activeTab: string;
+	/** A writable store that can be used to read and update the tabs value. You can use this to set the default active tab. */
+	export let value: TabValue;
 	/** Set the tabs that should be disabled. You can pass individual tabs in a list of strings or disable all tabs by setting this prop to 'true'. */
 	export let disabledTabs: boolean | string[] = [];
 	/** Set the tab headers. For each header provide a key, a title, and optionally an iconify icon. */
@@ -25,8 +25,8 @@
 	/** Set how the headers should be aligned with the justify property. */
 	export let justifyHeaders = 'justify-center';
 
-	const { elements: { root, list, content, trigger}, states: { value } } = createTabs({
-		defaultValue: activeTab
+	const { elements: { root, list, content, trigger} } = createTabs({
+		value
 	});
 
 	$: isDisabled = (key: string) =>
@@ -34,10 +34,6 @@
 		 (typeof disabledTabs !== 'boolean' && disabledTabs.includes(key)));
 
 	setContext('content', content);
-
-	$: {
-		activeTab = $value;
-	}
 </script>
 
 <div {...$root} use:root class="w-full">

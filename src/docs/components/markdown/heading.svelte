@@ -13,7 +13,7 @@
 	let showCopyButton = false;
 	let hoveringButton = false;
 
-    const baseClasses = 'scroll-m-20 tracking-tight';
+    const baseClasses = 'scroll-m-20 tracking-tight flex justify-left items-center gap-1';
 
     const headerClasses = {
         h1: { size: 'text-4xl', classes: 'mb-4 font-bold' },

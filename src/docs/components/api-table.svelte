@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
+	import { writable } from 'svelte/store';
 	import { default as Heading } from './markdown/heading.svelte';
 	import type { APIProp, Data } from '$docs/data/types';
 
@@ -7,29 +8,31 @@
 
 	import { default as ApiTableItem } from './api-table-item.svelte';
 
-	// import { TabsList, Tab, type TabHeader } from 'ato-ui';
+	import { TabsList, Tab, type TabHeader } from 'ato-ui';
 
 	export let componentData: Data;
 	export let componentAPI: APIProp[];
 	export let typesSnippet = '';
 
-	// const tabHeaders: TabHeader[] = [
-	// 	{
-	// 		key: 'props',
-	// 		title: 'Props',
-	// 		icon: 'text-xl i-material-symbols-play-shapes-rounded'
-	// 	},
-	// 	{
-	// 		key: 'events',
-	// 		title: 'Events',
-	// 		icon: 'text-xl i-mdi-lightning-bolt'
-	// 	},
-	// 	{
-	// 		key: 'slots',
-	// 		title: 'Slots',
-	// 		icon: 'text-xl i-material-symbols-space-bar-rounded'
-	// 	}
-	// ];
+	const activeTab = writable('props');
+
+	const tabHeaders: TabHeader[] = [
+		{
+			key: 'props',
+			title: 'Props',
+			icon: 'text-xl i-material-symbols-play-shapes-rounded'
+		},
+		{
+			key: 'events',
+			title: 'Events',
+			icon: 'text-xl i-material-symbols-charger-rounded'
+		},
+		{
+			key: 'slots',
+			title: 'Slots',
+			icon: 'text-xl i-material-symbols-space-dashboard-outline-rounded'
+		}
+	];
 
 	const filterButtons: RadioItem[] = [
 		{
@@ -170,99 +173,104 @@
 {#if componentAPI}
 	<Heading content="API" headerTag="h2">API</Heading>
 
-	<Heading content="API" headerTag="h3">Props</Heading>
+	<TabsList
+		value={activeTab}
+		borderStyle="my-8"
+		activeStyle="primary-500"
+		inactiveStyle="surface-400"
+		justifyHeaders="gap-1 justify-center"
+		{tabHeaders}
+		headerStyle="px-2 py-1 rounded-container"
+		ariaLabel="API sections"
+		headerWidth="min-w-20 md:min-w-40"
+	>
+		{#if $activeTab === 'props'}
+			<Tab key="props">
+				<Heading content="API" headerTag="h3">
+					Props
+				</Heading>
 
-	<!-- <TabsList activeTab="props" borderStyle="my-8" activeStyle="primary-500" inactiveStyle="surface-400" justifyHeaders="gap-1 justify-center" {tabHeaders} headerStyle="px-2 py-1 rounded-container" ariaLabel="API sections" headerWidth="min-w-20 md:min-w-40">
-		<Tab key="props">
-		</Tab>
+				<RadioGroup
+					ariaLabel="props filter"
+					rootStyles="flex flex-wrap justify-center gap-2 mt-4"
+					size="md"
+					bind:group={filter}
+					items={filterButtons}
+					name="props-filter"
+					bgActiveStyles="primary-500"
+					activeIcon=""
+				/>
 
-		<Tab key="events">TODO: Events...</Tab>
-		<Tab key="slots">TODO: Slots...</Tab>
-	</TabsList> -->
+				{#each filteredAPIs as { component, props, specialTypes }}
+					<div>
+						<Heading content={`props-${component}`} headerTag="h4">
+							{component}
+						</Heading>
 
-	<RadioGroup
-		ariaLabel="props filter"
-		rootStyles="flex flex-wrap justify-center gap-2 mt-4"
-		size="md"
-		bind:group={filter}
-		items={filterButtons}
-		name="props-filter"
-		bgActiveStyles="primary-500"
-		activeIcon=""
-	/>
-
-	{#each filteredAPIs as { component, props, specialTypes }}
-		<div>
-			<Heading content={`props-${component}`} headerTag="h4">
-				{component}
-			</Heading>
-
-			<div class="flex flex-col gap-2">
-				{#if props.length === 0}
-					<div class="rounded-container error-500 p-2 flex justify-left items-center gap-2">
-						<span class="i-material-symbols-error-circle-rounded text-2xl" />
-						<span class="text-xl font-semibold"> No props matching the applied filter. </span>
+						<div class="flex flex-col gap-2">
+							{#if props.length === 0}
+								<div class="rounded-container error-500 p-2 flex justify-left items-center gap-2">
+									<span class="i-material-symbols-error-circle-rounded text-2xl" />
+									<span class="text-xl font-semibold"> No props matching the applied filter. </span>
+								</div>
+							{:else}
+								{#each props as { name, type, description, defaultValue, isIcon, isStyle, isTransition, isFunction, required }}
+									<ApiTableItem
+										{name}
+										{type}
+										{description}
+										{defaultValue}
+										{isIcon}
+										{isStyle}
+										{isTransition}
+										{isFunction}
+										{typesSnippet}
+										{specialTypes}
+										highlight={required}
+										showIcons={true}
+									/>
+								{/each}
+							{/if}
+						</div>
 					</div>
-				{:else}
-					{#each props as { name, type, description, defaultValue, isIcon, isStyle, isTransition, isFunction, required }}
-						<ApiTableItem
-							{name}
-							{type}
-							{description}
-							{defaultValue}
-							{isIcon}
-							{isStyle}
-							{isTransition}
-							{isFunction}
-							{typesSnippet}
-							{specialTypes}
-							highlight={required}
-							showIcons={true}
-						/>
-					{/each}
+				{/each}
+			</Tab>
+		{:else if $activeTab === 'events'}
+			<Tab key="events">
+				{#if showEvents}
+					<Heading content="Events" headerTag="h3">Events</Heading>
+
+					<div class="flex flex-col gap-2">
+						{#each apis as { component, events, specialTypes }}
+							{#if events?.length > 0}
+								<Heading content={`events-${component}`} headerTag="h4">{component}</Heading>
+
+								{#each events as { name, description, type }}
+									<ApiTableItem {name} {description} {type} {typesSnippet} {specialTypes} />
+								{/each}
+							{/if}
+						{/each}
+					</div>
 				{/if}
-			</div>
-		</div>
-	{/each}
+			</Tab>
+		{:else if $activeTab === 'slots'}
+			<Tab key="slots">
+				{#if showSlots}
+					<Heading content="Slots" headerTag="h3">Slots</Heading>
 
-	{#if showEvents}
-		<Heading content="Events" headerTag="h3">Events</Heading>
+					<div class="flex flex-col gap-2">
+						{#each apis as { component, slots }}
+							{#if slots?.length > 0}
+								<Heading content={`slots-${component}`} headerTag="h4">{component}</Heading>
 
-		<div class="flex flex-col gap-2">
-			{#each apis as { component, events, specialTypes }}
-				{#if events?.length > 0}
-					<Heading content={`events-${component}`} headerTag="h4">{component}</Heading>
-
-					{#each events as { name, description, type }}
-						<ApiTableItem {name} {description} {type} {typesSnippet} {specialTypes} />
-					{/each}
+								{#each slots as { name, description, parentElement }}
+									<ApiTableItem {name} {description} {parentElement} />
+								{/each}
+							{/if}
+						{/each}
+					</div>
 				{/if}
-			{/each}
-		</div>
-	{/if}
-
-	{#if showSlots}
-		<Heading content="Slots" headerTag="h3">Slots</Heading>
-
-		<div class="flex flex-col gap-2">
-			{#each apis as { component, slots }}
-				{#if slots?.length > 0}
-					<Heading content={`slots-${component}`} headerTag="h4">{component}</Heading>
-
-					{#each slots as { name, description, parentElement }}
-						<ApiTableItem {name} {description} {parentElement} />
-					{/each}
-				{/if}
-			{/each}
-		</div>
-	{/if}
+			</Tab>
+		{/if}
+	</TabsList>
 {/if}
-
-<style>
-	.required {
-		/* shadow-[rgba(var(--color-error-500))_-4px_0px_0px_0px] */
-		box-shadow:
-			-4px 0 0 0 rgba(var(--color-error-500)),
-			4px 0 0 0 rgba(var(--color-error-500));
-	}
-</style>
