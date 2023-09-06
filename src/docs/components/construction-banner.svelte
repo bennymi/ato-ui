@@ -1,5 +1,5 @@
 
-<div class="my-4 flex justify-left gap-2 items-stretch warning-500 rounded-container">
+<div class="my-4 flex justify-left gap-2 items-stretch warning-500 rounded-container shadow-lg shadow-warning-500/50">
     <div class="warning-700 flex justify-center items-center px-2 py-1 rounded-l-container">
         <span class="i-material-symbols-construction-rounded text-2xl" />
     </div>
