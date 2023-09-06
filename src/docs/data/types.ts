@@ -59,7 +59,7 @@ export type ComponentAPIExtraInfo = {
 
 export type APIProp = {
     component: string;
-    oldName: string;
+    oldName?: string;
     props: Prop[];
     events?: ComponentEvents[];
     slots?: ComponentSlots[];

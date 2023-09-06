@@ -2,9 +2,9 @@
 	import { default as Tree } from './tree.svelte';
 	import { createTableOfContents } from '@melt-ui/svelte';
 
-	const { 
-		elements: { item }, 
-		states: { activeHeadingIdxs, headingsTree } 
+	const {
+		elements: { item },
+		states: { activeHeadingIdxs, headingsTree }
 	} = createTableOfContents({
 		selector: '#toc-preview',
 		exclude: ['h1', 'h4', 'h5', 'h6'],
@@ -35,12 +35,9 @@
 	<!-- Page Content -->
 	<div
 		id="toc-preview"
-		class="space-y-2 overflow-y-auto rounded-container bg-surface-50-800 p-4 text-surface-900-50"
+		class="space-y-2 overflow-y-auto rounded-container bg-surface-50-800 p-4 text-surface-900-50 [&>h2]:(text-xl font-bold) [&>h3]:(text-lg font-bold) [&>h4]:(text-lg font-semibold)"
 	>
-		<button
-			class="btn-primary"
-			on:click={() => hideHeading = !hideHeading}
-		>
+		<button class="btn-primary" on:click={() => (hideHeading = !hideHeading)}>
 			{hideHeading ? 'Show heading' : 'Hide heading'}
 		</button>
 
@@ -51,7 +48,8 @@
 		{#if !hideHeading}
 			<h2>Reactive ToC</h2>
 			<p>
-				The ToC reacts to changes on the page and updates when headings change or get added or removed.
+				The ToC reacts to changes on the page and updates when headings change or get added or
+				removed.
 			</p>
 			<h3>Another sub-heading</h3>
 			<p>This one also gets added and removed.</p>
@@ -97,17 +95,3 @@
 		</nav>
 	</div>
 </div>
-
-<style>
-	#toc-preview > h2 {
-		@apply text-xl font-bold;
-	}
-
-	#toc-preview > h3 {
-		@apply text-lg font-bold;
-	}
-
-	#toc-preview > h4 {
-		@apply text-lg font-semibold;
-	}
-</style>

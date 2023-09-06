@@ -11,7 +11,7 @@
 	import './app.css';
 
 	import { NavBar, Sidebar, BottomNav } from '$components';
-	import type { Navigation, NavGroupItem } from '$components';
+	import type { Navigation, NavGroupItem } from '$components/layout/types';
 
 	import { TOC } from '$components';
 

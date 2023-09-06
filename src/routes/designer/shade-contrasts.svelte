@@ -51,7 +51,7 @@
 			bind:group={contrastGroup}
 			ariaLabel="contrast-guidelines"
 			size="sm"
-			bgActiveClasses="primary-500"
+			bgActiveStyles="primary-500"
 		/>
 	</div>
 </div>

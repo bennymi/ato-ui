@@ -1,4 +1,4 @@
-import type { NavGroupItem } from '../docs/layout/types.d';
+import type { NavGroupItem } from '$components/layout/types';
 
 export async function load() {
 

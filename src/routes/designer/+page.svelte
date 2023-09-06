@@ -245,15 +245,15 @@
 
 <style>
 	label {
-		@apply flex flex-col gap-2 mb-4;
+		--at-apply: "flex flex-col gap-2 mb-4";
 	}
 
 	label > span {
-		@apply font-bold;
+		--at-apply: "font-bold";
 	}
 
 	select {
-		@apply rounded-container bg-surface-50-900 outline-primary-500;
+		--at-apply: "rounded-container bg-surface-50-900 outline-primary-500";
 	}
 
 	.bg-animated-gradient {

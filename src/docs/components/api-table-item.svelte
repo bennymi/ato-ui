@@ -11,7 +11,7 @@
 	export let type = '';
 	export let defaultValue = '';
 	export let typesSnippet = '';
-	export let parentElement: string | null = '';
+	// export let parentElement: string | null = '';
 	export let specialTypes: string[] | null = [];
 
 	export let highlight = false;

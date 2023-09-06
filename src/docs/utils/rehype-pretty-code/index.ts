@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Element, ElementContent, Root } from 'hast';
 import type { LineElement, Options, CharsHighlighterOptions } from './types';
 import type { Highlighter } from 'shiki';

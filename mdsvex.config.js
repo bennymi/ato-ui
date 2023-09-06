@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Source: https://github.com/melt-ui/melt-ui/blob/develop/mdsvex.config.js
  */

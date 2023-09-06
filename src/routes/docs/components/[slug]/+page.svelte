@@ -28,14 +28,7 @@
 <!-- <div class="w-1/2 overflow-scroll pl-0.5 text-surface-900-50">
 </div> -->
 
-<DocsHeader
-	isComponent={true}
-	{meta}
-	{headlessExists}
-	{styledExists}
-	{githubPath}
-	dependencies={componentData.dependencies}
-/>
+<DocsHeader isComponent={true} {meta} {headlessExists} {styledExists} {githubPath} />
 
 <!-- <h2 class="opacity-0 text-[1px] my-0 py-0">Preview</h2> -->
 

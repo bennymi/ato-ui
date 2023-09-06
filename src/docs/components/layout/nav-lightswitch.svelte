@@ -2,7 +2,7 @@
     Adapted from sveltepress: https://github.com/SveltePress/sveltepress/blob/main/packages/theme-default/src/components/ToggleDark.svelte
  -->
 
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
 	import { darkTheme } from '$docs/utils/stores';
@@ -13,15 +13,15 @@
 
 	function addOrRemoveClass() {
 		if ($darkTheme) {
-			document.querySelector('html').classList.add('dark');
+			document.querySelector('html')?.classList.add('dark');
 		} else {
-			document.querySelector('html').classList.remove('dark');
+			document.querySelector('html')?.classList.remove('dark');
 		}
 	}
 
-	function toggle(evt) {
-		const isAppearanceTransition =
-			document.startViewTransition &&
+	function toggle(evt: any) {
+		// @ts-ignore:next-line
+		const isAppearanceTransition = document.startViewTransition &&
 			!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		if (!isAppearanceTransition || isLandingPage()) {
@@ -38,6 +38,7 @@
 			Math.max(y, window.innerHeight - y)
 		);
 
+		// @ts-ignore:next-line
 		const transition = document.startViewTransition(async () => {
 			$darkTheme = !$darkTheme;
 			await tick();

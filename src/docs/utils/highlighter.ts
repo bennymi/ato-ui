@@ -48,6 +48,7 @@ export async function getStoredHighlighter(theme: IShikiTheme | string, fetcher?
  * Source: https://github.com/pngwn/MDsveX/blob/26591be63e088f57c78108553813ef18cc8ca5b1/packages/mdsvex/src/index.ts#L40 
  */
 function stringify(this: Processor, options = {}) {
+	// @ts-ignore:next-line
 	this.Compiler = compiler;
 
 	function compiler(tree: Node): string {

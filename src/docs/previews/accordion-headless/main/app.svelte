@@ -12,7 +12,7 @@
     type ExampleItem = {
         key: string;
         title: string;
-        itemcontent: string;
+        itemContent: string;
         icon: string;
     }
 

@@ -19,7 +19,7 @@
 	const increment = () => (idx += 1);
 
 	onMount(() => {
-		new TypeIt('#ato-type-it-bg-demo', {
+		new (TypeIt as any)('#ato-type-it-bg-demo', {
 			speed: 50,
 			startDelay: 900
 		})

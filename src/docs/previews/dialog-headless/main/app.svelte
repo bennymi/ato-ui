@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { createDialog } from '@melt-ui/svelte';
-	import type { DialogRole } from './types';
 
 	let open = writable(false);
 	let zIndex = 'z-50';

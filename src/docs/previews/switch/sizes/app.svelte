@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { Switch } from 'ato-ui';
+    import { Switch, type SwitchSize } from 'ato-ui';
 
-    const sizes = ['sm', 'md', 'lg'];
+    const sizes: SwitchSize[] = ['sm', 'md', 'lg'];
 </script>
 
 <div class="bg-surface-50-800 p-4 rounded-container flex justify-left items-center gap-3">

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import MagicString from 'magic-string';
 
 /**

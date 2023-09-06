@@ -27,7 +27,7 @@
 	<!-- Page Content -->
 	<div
 		id="toc-preview"
-		class="space-y-2 overflow-y-auto rounded-container bg-surface-50-800 p-4 text-surface-900-50"
+		class="space-y-2 overflow-y-auto rounded-container bg-surface-50-800 p-4 text-surface-900-50 "
 	>
 		<button
 			class="btn-primary"
@@ -93,14 +93,14 @@
 
 <style>
 	#toc-preview > h2 {
-		@apply text-xl font-bold;
+		--at-apply: "text-xl font-bold";
 	}
 
 	#toc-preview > h3 {
-		@apply text-lg font-bold;
+		--at-apply: "text-lg font-bold";
 	}
 
 	#toc-preview > h4 {
-		@apply text-lg font-semibold;
+		--at-apply: "text-lg font-semibold";
 	}
 </style>

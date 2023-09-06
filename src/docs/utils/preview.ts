@@ -54,9 +54,10 @@ export function getGuidesFolderFiles(folder: string) {
 
     for (const key of keys) {
         const pathParts = key.split('/');
+        const file = pathParts.at(-1)?.replace('.md', '') ?? '';
 
-        if (pathParts.at(-2) === folder) {
-            files.push(pathParts.at(-1).replace('.md', ''));
+        if (file && pathParts.at(-2) === folder) {
+            files.push(file);
         }
     }
 
@@ -91,7 +92,7 @@ function getFileName(key: string) {
     return '';
 }
 
-function getFileHighlights(foldername: string, filename: string, highlights: ExampleHighlights): FileHighlights | null {
+function getFileHighlights(foldername: string, filename: string, highlights: ExampleHighlights | undefined): FileHighlights | null {
     if (!highlights) return null;
     if (!(foldername in highlights)) return null;
     if (!(filename in highlights[foldername])) return null;

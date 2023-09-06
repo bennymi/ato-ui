@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	export let data;
 </script>
 
@@ -12,4 +12,6 @@
 	<div class="prose">
 		<svelte:component this={data.content} />
 	</div>
-</article>
+</article> -->
+
+<h2>Actions</h2>

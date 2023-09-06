@@ -242,7 +242,7 @@
 
 					<div class="flex flex-col gap-2">
 						{#each apis as { component, events, specialTypes }}
-							{#if events?.length > 0}
+							{#if !!events && events?.length > 0}
 								<Heading content={`events-${component}`} headerTag="h4">{component}</Heading>
 
 								{#each events as { name, description, type }}
@@ -260,11 +260,11 @@
 
 					<div class="flex flex-col gap-2">
 						{#each apis as { component, slots }}
-							{#if slots?.length > 0}
+							{#if !!slots && slots?.length > 0}
 								<Heading content={`slots-${component}`} headerTag="h4">{component}</Heading>
 
-								{#each slots as { name, description, parentElement }}
-									<ApiTableItem {name} {description} {parentElement} />
+								{#each slots as { name, description }}
+									<ApiTableItem {name} {description} />
 								{/each}
 							{/if}
 						{/each}
