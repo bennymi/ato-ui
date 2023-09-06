@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import { TabsList, Tab, type TabHeader } from 'ato-ui';
+	import { Tabs, type TabHeader } from 'ato-ui';
 
 	const activeTab = writable('styled');
 
@@ -20,9 +20,9 @@
 </script>
 
 <div class="rounded-container p-4 bg-surface-50-800">
-	<TabsList value={activeTab} {tabHeaders} ariaLabel="preview" headerWidth="min-w-20 md:min-w-40">
-		<Tab key="styled">Styled Content</Tab>
-		<Tab key="headless">Headless Content</Tab>
-		<Tab key="extra">Extra Content</Tab>
-	</TabsList>
+	<Tabs.Root value={activeTab} {tabHeaders} ariaLabel="preview" headerWidth="min-w-20 md:min-w-40">
+		<Tabs.Tab key="styled">Styled Content</Tabs.Tab>
+		<Tabs.Tab key="headless">Headless Content</Tabs.Tab>
+		<Tabs.Tab key="extra">Extra Content</Tabs.Tab>
+	</Tabs.Root>
 </div>

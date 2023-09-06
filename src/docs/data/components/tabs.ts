@@ -11,6 +11,7 @@ const highlights: ExampleHighlights = {
 const apiExtraInfo: ComponentAPIExtraInfo[] = [
     {
         component: 'TabsList',
+        updatedName: 'Tabs.Root',
         required: ['value', 'tabHeaders', 'ariaLabel'],
         styles: ['borderStyle', 'activeStyle', 'inactiveStyle', 'headerWidth', 'justifyHeaders'],
         icons: ['tabHeaders'],
@@ -25,6 +26,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
     },
     {
         component: 'Tab',
+        updatedName: 'Tabs.Tab',
         required: ['key'],
         slots: [
             {

@@ -10,4 +10,5 @@ export * as Dropdown from './dropdown-menu/exports';
 export * from './radio-group';
 export * from './switch';
 export * from './tabs';
+export * as Tabs from './tabs/exports';
 export * from './table-of-contents';

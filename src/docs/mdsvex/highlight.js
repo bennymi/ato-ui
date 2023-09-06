@@ -3,6 +3,7 @@
  *
  * Theme is from: https://github.com/robb0wen/synthwave-vscode/blob/master/themes/synthwave-color-theme.json
  *
+ * The files in the mdsvex folder is no longer used. Check out the utils folder instead.
  */
 
 import { escapeSvelte } from 'mdsvex';
