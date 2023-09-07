@@ -91,12 +91,12 @@
 	}
 </script>
 
-<div class="ato-toc">
+<div class="ato-toc relative">
 	<p class={labelStyles}>{label}</p>
 	{#key $headingsTree}
 		{#if showMarker && $activeHeadingIdxs.length > 0 && markerTop !== -1}
 			<div
-				class="ato-toc-marker transition-all absolute top-0 -left-2 {markerStyles}"
+				class="ato-toc-marker transition-all absolute -left-2 {markerStyles}"
 				style={`top: ${markerTop}px; height: ${markerHeight}px;`}
 			/>
 		{/if}

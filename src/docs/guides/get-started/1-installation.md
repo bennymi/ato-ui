@@ -5,7 +5,7 @@ icon: i-material-symbols-rocket-launch-rounded
 ---
 
 <script>
-	import { InstallationTabs, ConstructionBanner } from '$components';
+	import { InstallationTabs, DependenciesTabs, ConstructionBanner } from '$components';
 </script>
 
 ## Installation
@@ -16,6 +16,10 @@ Use the package manager of your choice.
 
 <InstallationTabs />
 
+We also rely on a few dependencies, so make sure they are also installed.
+
+<DependenciesTabs />
+
 ## UnoCSS Config
 
 Create a `unocss.config.ts` file with all the required presets and transformers.
@@ -25,9 +29,9 @@ import { defineConfig } from 'unocss';
 import presetWind from '@unocss/preset-wind';
 import transformerVariantGroup from '@unocss/transformer-variant-group';
 import transformerDirectives from '@unocss/transformer-directives';
-import presetIcons from '@unocss/preset-icons'
+import presetIcons from '@unocss/preset-icons';
 
-import { presetAtoUI } from 'ato-ui';
+import { presetAtoUI } from 'ato-ui/preset';
 
 export default defineConfig({
   presets: [

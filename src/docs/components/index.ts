@@ -11,6 +11,7 @@ export { default as TextDemo } from './demo-text.svelte';
 export { default as DocsHeader } from './docs-header.svelte';
 export { default as HeaderLink } from './docs-header-link.svelte';
 export { default as InstallationTabs } from './installation.svelte';
+export { default as DependenciesTabs } from './installation-dependencies.svelte';
 export { default as PropsTable } from './props-table.svelte';
 export { default as Search } from './search.svelte';
 export { default as TOC } from './toc.svelte';

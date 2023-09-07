@@ -48,7 +48,7 @@
 			<button
 				{...$trigger({ value: item.key, disabled: deactivated })}
 				use:trigger
-				class="{headerStyle} {headerWidth} inline-flex gap-1 justify-center items-center shadow-md shadow-surface-900/20 transition-all duration-150 font-semibold focus:(ring-2 ring-surface-300 ring-offset-2) {deactivated
+				class="{headerStyle} {headerWidth} inline-flex gap-1 justify-center items-center shadow-md shadow-surface-900/20 transition-all duration-150 font-semibold focus:ring-2 focus:ring-surface-300 focus:ring-offset-2 {deactivated
 					? 'opacity-70 cursor-not-allowed'
 					: ''} {activated ? activeStyle : inactiveStyle}"
 			>
