@@ -77,7 +77,8 @@
 
 	{#if $open}
 		<div
-			{...$menu} use:menu
+			{...$menu}
+			use:menu
 			class="dropdown-menu rounded-container flex flex-col p-2 z-10 w-fill {menuStyle}"
 			transition:fly={{ duration: 150, y: -10 }}
 		>
@@ -132,7 +133,7 @@
 					<div {...$radioGroup} use:radioGroup>
 						{#each themes as theme}
 							<div
-								{...$radioItem({ theme })}
+								{...$radioItem({ value: theme })}
 								use:radioItem
 								class="dropdown-menu-radio-item relative {itemClasses}"
 							>

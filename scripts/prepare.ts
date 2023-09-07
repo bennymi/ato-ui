@@ -4,7 +4,8 @@ import shiki from 'shiki';
 import { type UnoGenerator, createGenerator } from '@unocss/core';
 import { presetWind } from '@unocss/preset-wind';
 import prettier from 'prettier/standalone';
-import prettierParserCSS from 'prettier/parser-postcss';
+// import prettierParserCSS from 'prettier/parser-postcss';
+import prettierParserCSS from 'prettier/plugins/postcss';
 
 import { descriptions } from '../src/docs/search/index';
 import type { HighlightedExamples } from './prepare.types';
@@ -18,7 +19,7 @@ export const unocss_config = {
     ]
 };
 
-let uno_generator = createGenerator(unocss_config);;
+const unoGenerator = createGenerator(unocss_config);;
 
 const prettier_config = {
     parser: 'css',
@@ -51,11 +52,11 @@ export function get_highlighted_html(code: string, lang: string) {
     }
 }
 
-let highlighted_examples: HighlightedExamples = {};
+const highlighted_examples: HighlightedExamples = {};
 
 for (const desc of descriptions) {
     for (const ex of desc.examples) {
-        const css = await generate_css(uno_generator, ex);
+        const css = await generate_css(unoGenerator, ex);
         const html = get_highlighted_html(css, 'css');
 
         Object.assign(highlighted_examples, { [ex]: html });

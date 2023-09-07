@@ -84,7 +84,8 @@ function getComponentAPIs(filePaths: ComponentFile['files']): APIProp[] | null {
     const apis: APIProp[] = [];
 
     svelteFiles.forEach((svelteFile) => {
-        const re = new RegExp(`export { default as (.*) } from ["'].\/${svelteFile.file}["']`);
+        // const re = new RegExp(`export { default as (.*) } from ["'].\/${svelteFile.file}["']`);
+        const re = new RegExp(`export { default as (.*) } from ["']./${svelteFile.file}["']`);
 
         const matches = indexFile.match(re);
 
@@ -175,12 +176,13 @@ function getFilePropDescriptions(svelteScriptString: string) {
     for (const variableDeclaration of variableDeclarations) {
 
         const variableName = variableDeclaration.name.getText();
-        const isExported = !!(ts.getCombinedModifierFlags(variableDeclaration.parent.parent) & ts.ModifierFlags.Export);
 
-        // console.log('isExported:', isExported);
+        // const isExported = !!(ts.getCombinedModifierFlags(variableDeclaration?.parent?.parent) & ts.ModifierFlags.Export);
+        const isExported = !!(ts.getCombinedModifierFlags(<ts.Declaration>({...variableDeclaration?.parent?.parent, _declarationBrand: null })) & ts.ModifierFlags.Export);
+
         if (isExported) {
             const typeNode = typeChecker.getTypeAtLocation(variableDeclaration);
-            let typeText = variableDeclaration.type?.getText().trim() ?? '';
+            const typeText = variableDeclaration.type?.getText().trim() ?? '';
 
             const type = typeText === '' ? typeChecker.typeToString(typeNode) : typeText;
             
@@ -197,10 +199,8 @@ function getFilePropDescriptions(svelteScriptString: string) {
     
             componentProps.push(newVariable);
         }
-
     }
 
     return componentProps;
-
     // console.log(typesAndComments);
 }
