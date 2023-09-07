@@ -1,7 +1,7 @@
 {
 	"name": "ato-ui",
 	"version": "0.2.0",
-	"description": "A component UI library for Svelte, SvelteKit, and UnoCSS.",
+	"description": "The elemental UI component library for Svelte / SvelteKit, built with UnoCSS and Melt UI.",
 	"author": "Benedikt Mielke",
 	"homepage": "https://ato-ui.vercel.app/",
 	"scripts": {
