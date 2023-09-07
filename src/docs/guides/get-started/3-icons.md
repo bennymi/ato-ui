@@ -1,49 +1,29 @@
 ---
 title: Icons
-description: How to use UnoCSS icons with Ato-UI.
+description: Describes how to use UnoCSS icons with Ato UI.
 icon: i-mdi-emoticon-outline
-hoverIcon: group-hover:i-mdi-emoticon-wink
+hoverIcon: group-hover-i-mdi-emoticon-wink
 ---
 
-<script>
-    import Usage from '../Usage.svelte';
-</script>
-
-# UnoCSS Icons
-
-## Examples
-
-You can then apply regular tailwind classes to the icons (hover the icons).
-
-<Usage>
-    <span class="i-vscode-icons-file-type-svelte text-5xl transition-all duration-200 hover:scale-125" />
-    <span class="i-material-symbols-water-drop-outline-rounded text-5xl transition-all duration-200 hover:i-material-symbols-water-drop-rounded hover:text-cyan-500" />
-    <span class="i-material-symbols-local-fire-department-rounded text-5xl transition-all duration-900 text-red-500 hover:rotate-360" />
-</Usage>
-
-```html
-<span class="i-vscode-icons-file-type-svelte text-5xl transition-all duration-200 hover:scale-125" />
-<span class="i-material-symbols-water-drop-outline-rounded text-5xl transition-all duration-200 hover:i-material-symbols-water-drop-rounded hover:text-cyan-500" />
-<span class="i-material-symbols-local-fire-department-rounded text-5xl transition-all duration-900 text-red-500 hover:rotate-360" />
-```
+Icons can be implemented as simple CSS classes, to which you can then apply regular tailwind classes to (hover the icons to see it in action).
 
 ## Installation
 
 We use the [UnoCSS Icons preset](https://unocss.dev/presets/icons) for our icons, which gives you access to all [iconify](https://iconify.design/) icons as CSS classes. Here's a quick start, but head over to the official documentation to see how it works.
 
-```shell showCode
+```shell hideHeader
 pnpm add -D @unocss/preset-icons
 ```
 
 You can then simply install icon collections like so:
 
-```shell showCode
+```shell hideHeader
 pnpm add -D @iconify-json/[the-collection-you-want]
 ```
 
 For example, if you want to get the `material-symbols` icons:
 
-```shell showCode
+```shell hideHeader
 pnpm add -D @iconify-json/material-symbols
 ```
 

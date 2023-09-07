@@ -1,14 +1,12 @@
 ---
 title: Why Ato-UI?
-description: Ato-UI is a component and UI library for Svelte / SvelteKit and UnoCSS.
-icon: i-material-symbols:question-mark-rounded
+description: Describes why you should choose Ato UI.
+icon: i-material-symbols-question-mark-rounded
 ---
 
 <script>
-    import BackgroundDemo from '../tokens/BackgroundDemo.svelte';
+    import { BackgroundDemo } from '$components';
 </script>
-
-# Why Ato-UI?
 
 ## Why Ato-UI?
 
@@ -16,21 +14,22 @@ icon: i-material-symbols:question-mark-rounded
 - 🎨 easily integrate different themes into your website
 - 🌈 provides styled components for components which you do not want to style yourself
 - 🦄 headless code examples with Ato UI's design tokens for maximum flexibility
+- 💜 all components follow web accessibility standards because it's built with [Melt UI](https://www.melt-ui.com/)
 - 🌸 build on top of [UnoCSS](https://unocss.dev/) and the [Wind preset](https://unocss.dev/presets/wind) (Tailwind + Windi CSS), but does not require Tailwind
 
 ## Why UnoCSS?
 
 - 😉 pure CSS icons
 - 💪 flexible classes defined through regular expressions are perfect for creating a themeable website
-- 🍻 [variant group preset](https://unocss.dev/transformers/variant-group) that allows you to group classes efficiently `dark:(` `...` `)` or `hover:(` `...` `)`
+- ⚡ [variant group preset](https://unocss.dev/transformers/variant-group) that allows you to group classes efficiently
 
 ## Goals
 
-Ato UI is build on top of other fantastic headless libraries, such as [HeadlessUI](https://captaincodeman.github.io/svelte-headlessui/) and [GrailUI](https://grail-ui.vercel.app/). The goal of this library is to provide a design system around headless libraries that allows you to integrate different themes into your website and make the creation of light & dark mode more simple with our tokens.
+Ato UI is build on top of the fantastic [Melt UI](https://github.com/melt-ui/melt-ui) headless library. The goal of Ato UI is to provide a design system around Melt that allows you to integrate different themes into your website, simplify the creation of light & dark mode with our tokens and shortcuts, and to provide additionaly functionality with our styled components.
 
-We provide styled components of these headless libraries, which you can import as regular Svelte components. Since you might not want to have to style every component yourself, this will allow you to get started more quickly.
+While Melt UI provides builders, we provide regular Svelte components. Since you might not want to have to style every component yourself, this will allow you to get started more quickly. These styled components also support light & dark mode out of the box, while still providing props through which you can customize their looks. Additionally, we have examples of how to create the headless components using Ato UI's design system. This way you can easily modify the components to your liking, while keeping them theme-able and consistent with the rest of your website.
 
-We also provide examples of how to create the headless components from the above mentioned libraries with Ato UI's design token system. This way you can easily modify the components to your liking.
+Have questions or improvement ideas? Join us on our [Discord](https://discord.gg/7PXN3fs3tN).
 
 ## Shortcuts
 
@@ -62,8 +61,6 @@ Example: `text-surface-700-900-200-50` turns into `text-surface-700 hover:text-s
 
 ### Backgrounds
 
-You can set both the background color and the corresponding on-color (see the designer page) in one class.
+You can set both the background color and the corresponding on-color (see the designer page) in one class. We also have convenient classes to create [background gradients](/docs/tokens/background#gradients), [mesh gradients](/docs/tokens/background#mesh-gradients), or [radial gradients](/docs/tokens/background#radial-gradients).
 
 Example: `primary-500` turns into `bg-primary-500 text-on-primary-500`.
-
-We also have convenient classes to create background gradients, mesh gradients, or radial gradients.

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { themeStore, customThemeCSSStore } from '../stores';
+	import { themeStore, customThemeCSSStore } from '$docs/utils/stores';
 	import { new_theme } from './stores';
 
 	import type { ThemeColor, FullTheme, LocalStorageColor } from './types.d';
@@ -9,34 +9,42 @@
 
 	// import CodeBlock from '$lib/mdsvex/CodeBlock.svelte';
 
-	import ColorPicker from './ColorPicker.svelte';
-	import Contrasts from './Contrasts.svelte';
+	import { default as ColorPicker } from './color-picker.svelte';
+	import { default as Contrasts } from './shade-contrasts.svelte';
+
+	/**
+	 * TODO:
+	 * [ ] add theme name
+	 * [ ] be able to store themes
+	 * [ ] switches should have a separate rounded variable
+	 * [ ] ...
+	*/
 
 	$themeStore = 'custom-theme';
 
-	const update_shades = (store: LocalStorageColor) =>
+	const updateShades = (store: LocalStorageColor) =>
 		Object.fromEntries(
 			theme_colors.map((c) => [c, generate_palette(store[<ThemeColor>c])])
 		) as FullTheme;
 
-	let shades = update_shades($new_theme.colors);
-	let copy_state = false;
+	let shades = updateShades($new_theme.colors);
+	let copying = false;
 
-	function copy_to_clipboard(css: string) {
+	function copyToClipboard(css: string) {
 		// Add code to clipboard
 		navigator.clipboard.writeText(css ?? '');
 
 		// Give feedback
-		copy_state = true;
+		copying = true;
 		setTimeout(() => {
-			copy_state = false;
+			copying = false;
 		}, 1500);
 	}
 
-	$: shades = update_shades($new_theme.colors);
+	$: shades = updateShades($new_theme.colors);
 
 	$: custom_theme_css_variables = `
-:root .custom-theme {
+:root [data-theme="custom-theme"] {
 	--ato-container-radius: ${$new_theme.container_radius};
 
 	/* Buttons */
@@ -75,10 +83,10 @@
 <div class="absolute fixed bottom-5 right-5 2xl:(bottom-10 right-20)">
 	<button
 		class="btn-border-surface-bl-primary-secondary btn-md xl:btn-lg"
-		on:click={() => copy_to_clipboard(custom_theme_css_variables)}
+		on:click={() => copyToClipboard(custom_theme_css_variables)}
 	>
 		<span
-			class={copy_state
+			class={copying
 				? 'i-material-symbols-content-copy-rounded'
 				: 'i-material-symbols-content-copy-outline-rounded'}
 		/>
@@ -237,15 +245,15 @@
 
 <style>
 	label {
-		@apply flex flex-col gap-2 mb-4;
+		--at-apply: "flex flex-col gap-2 mb-4";
 	}
 
 	label > span {
-		@apply font-bold;
+		--at-apply: "font-bold";
 	}
 
 	select {
-		@apply rounded-container bg-surface-50-900 outline-primary-500;
+		--at-apply: "rounded-container bg-surface-50-900 outline-primary-500";
 	}
 
 	.bg-animated-gradient {

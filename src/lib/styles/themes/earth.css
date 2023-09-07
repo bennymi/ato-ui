@@ -1,5 +1,5 @@
 
-:root .earth {
+:root [data-theme="earth"] {
 	--ato-container-radius: 2px;
 
 	/* Buttons */

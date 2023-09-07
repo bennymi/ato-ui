@@ -1,12 +1,55 @@
 
 /* html, body {
-    @apply min-w-screen w-full h-full;
+    --at-apply: "min-w-screen w-full h-full";
 } */
 
 .prose {
-    @apply w-full;
+    --at-apply: "w-full text-surface-900-50";
 }
 
+[data-highlighted-line] {
+	/* --at-apply: "bg-surface-400/80"; */
+	/* background: rgba(var(--color-surface-400), 1); */
+	--at-apply: "bg-surface-950/60";
+	box-shadow: -5px 0 0px 0 rgba(var(--color-primary-300));
+}
+
+pre > code {
+	display: grid;
+}
+
+/* [data-chars-id] {
+	--at-apply: "shadow-none p-1 border-b-2 rounded-btn";
+} */
+
+/* [data-chars-id] span {
+	--at-apply: "!text-inherit";
+} */
+
+[data-chars-id] {
+	--at-apply: "p-1 rounded-btn";
+}
+
+[data-chars-id='v'] {
+	--at-apply: "!text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold";
+}
+
+[data-chars-id='builder'] {
+	/* --at-apply: "!text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold"; */
+	--at-apply: "bg-yellow-800/50 font-semibold";
+}
+
+[data-chars-id='prop'] {
+	/* --at-apply: "!text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold"; */
+	--at-apply: "bg-yellow-800/50 font-semibold";
+}
+
+/* [data-chars-id='builder'] > span {
+	--at-apply: "font-bold";
+} */
+
+
+/* 
 .prose > :is(h1, h2, h3, h4, h5, h6) > a {
     position: relative;
 }
@@ -26,38 +69,115 @@
 }
 
 .prose > :is(h1, h2, h3, h4, h5, h6, p, ul) {
-    @apply text-surface-900-50;
+    --at-apply: "text-surface-900-50";
 }
 
 .prose > h1 {
-    @apply text-4xl font-bold mb-8;
+    --at-apply: "text-4xl font-bold mb-8";
 }
 
 .prose > h2 {
-    @apply mt-8 mb-4 text-2xl font-bold;
+    --at-apply: "mt-8 mb-4 text-2xl font-bold";
 }
 
 .prose > h3 {
-    @apply my-4 text-xl font-bold;
+    --at-apply: "my-4 text-xl font-bold";
 }
 
 .prose > h4 {
-    @apply my-4 text-xl font-bold;
+    --at-apply: "my-4 text-xl font-bold";
+} 
+
+.prose > p > a, p > a, li > a {
+    --at-apply: "font-semibold secondary-500 rounded-container px-1 visited:secondary-800 hover:underline";
 }
 
 .prose > p {
-    @apply text-justify mt-4;
+    --at-apply: "text-justify mt-4";
 }
 
 .prose > ul {
-    @apply list-disc;
+    --at-apply: "list-disc";
 }
+*/
 
 .prose > p > code, p > code, li > code {
-    @apply px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container;
+    --at-apply: "px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container selection:(text-on-primary bg-primary-500/70)";
 }
 
-.prose > p > a, p > a, li > a {
-    @apply font-semibold secondary-500 rounded-container px-1 visited:secondary-900 hover:underline;
-    /* @apply font-semibold text-secondary-500 hover:text-secondary-600 visited:text-secondary-700 hover:underline; */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* --- Scrollbars --- */
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(var(--color-surface-950)) transparent;
+}
+
+/* Other browsers */
+*::-webkit-scrollbar {
+	width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: rgba(var(--color-surface-950));
+	background-clip: padding-box;
+	border-radius: 0.5rem;
+	border: 0.25rem solid transparent;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: rgba(var(--color-surface-500));
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+/* Firefox */
+body {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(var(--color-primary-900)) transparent;
+}
+
+/* Other browsers */
+body::-webkit-scrollbar {
+	width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(var(--color-surface-900));
+}
+
+body::-webkit-scrollbar-thumb {
+	background: rgba(var(--color-surface-500));
+	background-clip: padding-box;
+	border-radius: 0.5rem;
+	border: 0.25rem solid transparent;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: rgba(var(--color-surface-500));
+	background-clip: padding-box;
 }

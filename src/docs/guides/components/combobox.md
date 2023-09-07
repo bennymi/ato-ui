@@ -1,122 +1,42 @@
 ---
-title: Combobox (Autocomplete)
-description: A combobox component with autocomplete.
+title: Combobox
+description: A filterable list of items that supports selection.
 ---
 
 <script>
-	import Usage from '../Usage.svelte';
-    import PropsTable from './PropsTable.svelte';
-    import docs from '$lib/components/combobox/Combobox.svelte?raw&sveld';
-    import Combobox from '$lib/components/combobox/Combobox.svelte';
+    import { Preview } from '$components';
 
-    const options = [
-		'Aang',
-		'Katara',
-		'Toph',
-		'Sokka',
-		'Appa',
-		'Zuko',
-		'Iroh',
-		'Momo'
-	];
+    export let previewSnippets;
+    export let previewComponents;
 </script>
-
-# Combobox (Autocomplete)
-
-## Example
-
-<Usage padding="pt-2 pb-62">
-    <Combobox
-		{options}
-		selected={options[0]}
-		ariaLabel="Actions"
-		searchIcon="text-xl i-material-symbols-search-check-rounded"
-		selectIcon="text-xl i-material-symbols-check-small-rounded"
-	/>
-</Usage>
-
-```svelte
-<script lang="ts">
-	import { Combobox } from 'ato-ui';
-
-	const options = [
-		'Aang',
-		'Katara',
-		'Toph',
-		'Sokka',
-		'Appa',
-		'Zuko',
-		'Iroh'
-	];
-
-	function onSelect(e: Event) {
-		console.log('select', (e as CustomEvent).detail);
-	}
-</script>
-
-<Combobox
-    {options}
-    selected={options[0]}
-    ariaLabel="Actions"
-    on:select={onSelect}
-/>
-```
 
 ## Changing Colors
 
-You can use the `buttonStyle`, `activeStyle`, and `inactiveStyle` props to change the colors of the buttons and list items.
+You can update the active styles with the `activeStyle` prop.
 
-<Usage padding="pt-2 pb-62">
-    <Combobox
-		{options}
-		selected={options[0]}
-		ariaLabel="Actions"
-        buttonStyle="success-500/90 hover:success-500"
-		activeStyle="success-500"
-	/>
-</Usage>
-
-```svelte
+```svelte {7}
 <Combobox
-    {options}
-    selected={options[0]}
-    ariaLabel="Actions"
-    on:select={onSelect}
-    buttonStyle="success-500/90 hover:success-500"
-	activeStyle="success-500"
-    inctiveStyle="text-surface-800"
+	{items}
+	label="Choose your favourite book"
+	placeholder="Favourite book"
+	bind:selected
+	width="w-64"
+	activeStyle="secondary-500/80"
 />
 ```
 
-## Changing Icons
+## Adding a Select Icon
 
-You can use the `searchIcon` and `selectIcon` props to change the icons of the button and selected item. You also have to pass in the size the icons should be with `text-lg` or `text-xl` for example.
+You can add a select icon with the `selectIcon` prop.
 
-<Usage padding="pt-2 pb-62">
-    <Combobox
-		{options}
-		selected={options[0]}
-		ariaLabel="Actions"
-        searchIcon="i-material-symbols-clear-day-rounded text-lg"
-		selectIcon="i-material-symbols-cloud text-lg"
-		buttonStyle="warning-500/90 hover:warning-500"
-		activeStyle="warning-500"
-	/>
-</Usage>
+<Preview previewSnippets={previewSnippets['icon']}>
+    <svelte:component this={previewComponents['icon']} />
+</Preview>
 
-```svelte
-<Combobox
-    {options}
-    selected={options[0]}
-    ariaLabel="Actions"
-    on:select={onSelect}
-    searchIcon="i-material-symbols-clear-day-rounded text-lg"
-    selectIcon="i-material-symbols-cloud text-lg"
-    buttonStyle="warning-500/90 hover:warning-500"
-    activeStyle="warning-500"
-/>
-```
+## Debounce
 
-## Props
+The debounce time represents the time taken in between a key stroke in the input field and the search taking place. If the debounce time is 1 second, then a search will only take place if there has been no keyboard inputs for 1 second. For a larger list of items this might help improve performance, since it avoids too many searches from happening.
 
-<PropsTable props={docs.props} />
+<Preview previewSnippets={previewSnippets['debounce']}>
+	<svelte:component this={previewComponents['debounce']} />
+</Preview>

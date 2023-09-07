@@ -1,5 +1,5 @@
 
-:root .ato {
+:root [data-theme="ato"] {
 	--ato-container-radius: 6px;
 
 	/* Buttons */

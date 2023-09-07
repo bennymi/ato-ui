@@ -1,4 +1,4 @@
-import type { NavGroupItem } from '../docs/layout/types.d';
+import type { NavGroupItem } from '$components/layout/types';
 
 export async function load() {
 
@@ -75,10 +75,6 @@ export async function load() {
             const component = { mdPath: c, component: name, sitePath: `/docs/components/${slug}`, ...metadata };
             
             const idx = components.findIndex((v) => v.findIndex((item) => item.component === name) >= 0);
-            
-            // console.log('component', component);
-            // console.log('component', components);
-            // console.log('idx', idx);
 
             if (idx >= 0 && headless) {
                 components[idx].unshift(component);
@@ -89,7 +85,7 @@ export async function load() {
             }
         }
     });
-    
+
 	return {
         articles,
         // actions,

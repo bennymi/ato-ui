@@ -1,9 +1,7 @@
 ---
 title: Border
-description: Available border tokens for theme roundedness or selecting border colors for light and dark modes.
+description: Available border shortcuts for theme roundedness or selecting border colors for light and dark modes.
 ---
-
-# Border Tokens
 
 ## Border Radius
 
@@ -29,7 +27,7 @@ Examples: `rounded-r-container`, `rounded-bl-container`.
 
 ## Light & Dark Mode
 
-`border-{color}-{shade1}/{opacity1}-{shade2}/{opacity2}`: Sets the border color with shades 1 and 2 for light and dark mode respectively. The opacities are optional.
+`border-[color]-[shade1]/[opacity1]-[shade2]/[opacity2]`: Sets the border color with shades 1 and 2 for light and dark mode respectively. The opacities are optional.
 
 Examples: `border-surface-700-200`, `border-surface-800/50-200/50`.
 
@@ -39,7 +37,7 @@ Examples: `border-surface-700-200`, `border-surface-800/50-200/50`.
 
 ## Inverse Light & Dark Mode
 
-`border-inverse-{color1}-{shade1}/{opacity1}-{color2}-{shade2}/{opacity2}`: Allows you to set a different border color for light and dark mode with the two specified colors. Shades and opacities are optional.
+`border-inverse-[color1]-[shade1]/[opacity1]-[color2]-[shade2]/[opacity2]`: Allows you to set a different border color for light and dark mode with the two specified colors. Shades and opacities are optional.
 
 Examples: `border-inverse-primary-secondary`, `border-inverse-surface/50-surface-200/40`.
 

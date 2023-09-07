@@ -10,7 +10,7 @@
 	<meta property="og:description" content="Create your own custom Ato UI CSS theme." />
 
 	<style>
-		#ato-ui-docu.dark > div {
+		.dark #ato-ui-docu > div {
 			background-color: rgb(var(--color-surface-800));
 			background-image: radial-gradient(
 					at 8% 0%,

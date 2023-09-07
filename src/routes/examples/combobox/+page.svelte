@@ -1,63 +1,67 @@
 <script lang="ts">
-	import Combobox from '$lib/components/combobox/Combobox.svelte';
+	import { writable } from 'svelte/store';
+	import {
+		Combobox,
+		type ComboboxItem,
+		type ComboboxSelectedStore
+	} from '$lib/components/combobox';
 
-	const options = [
-		'Aang',
-		'Katara',
-		'Toph',
-		'Sokka',
-		'Appa',
-		'Zuko',
-		'Iroh'
-		// 'Wade Cooper',
-		// 'Arlene Mccoy',
-		// 'Devon Webb',
-		// 'Tom Cook',
-		// 'Tanya Fox',
-		// 'Hellen Schmidt'
+	let items: ComboboxItem[] = [
+		{
+			subtitle: 'Harper Lee',
+			value: 'To Kill a Mockingbird'
+		},
+		{
+			subtitle: 'Lev Tolstoy',
+			value: 'War and Peace',
+			disabled: true
+		},
+		{
+			subtitle: 'Alexandre Dumas',
+			value: 'The Count of Monte Cristo'
+		},
+		{
+			subtitle: 'Oscar Wilde',
+			value: 'A Picture of Dorian Gray'
+		},
+		{
+			subtitle: 'George Orwell',
+			value: '1984'
+		},
+		{
+			subtitle: 'Jane Austen',
+			value: 'Pride and Prejudice'
+		},
+		{
+			subtitle: 'Marcus Aurelius',
+			value: 'Meditations'
+		},
+		{
+			subtitle: 'Fyodor Dostoevsky',
+			value: 'The Brothers Karamazov'
+		},
+		{
+			subtitle: 'Lev Tolstoy',
+			value: 'Anna Karenina'
+		},
+		{
+			subtitle: 'George R.R. Martin',
+			value: 'A Game of Thrones'
+		}
 	];
 
-	function onSelect(e: Event) {
-		console.log('select', (e as CustomEvent).detail);
-	}
+	let selected: ComboboxSelectedStore = writable();
+	let selectIcon = 'i-material-symbols-check-small-rounded text-on-primary-500';
+
+	$: console.log('page selected:', $selected);
 </script>
 
-<div class="flex gap-4 flex-wrap justify-center items-center">
-	<Combobox
-		{options}
-		selected={options[0]}
-		ariaLabel="Actions"
-		on:select={onSelect}
-		searchIcon="text-xl i-material-symbols-search-check-rounded"
-		selectIcon="text-xl i-material-symbols-check-small-rounded"
-	/>
-
-	<Combobox
-		{options}
-		selected={options[0]}
-		ariaLabel="Actions"
-		on:select={onSelect}
-		buttonStyle="secondary-500/90 hover:secondary-500"
-		activeStyle="secondary-500"
-		searchIcon="text-xl i-material-symbols-search-check-rounded"
-		selectIcon="text-xl i-material-symbols-check-small-rounded"
-	/>
-	<Combobox
-		{options}
-		selected={options[0]}
-		ariaLabel="Actions"
-		on:select={onSelect}
-		buttonStyle="success-500/90 hover:success-500"
-		activeStyle="success-500"
-	/>
-	<Combobox
-		{options}
-		selected={options[0]}
-		ariaLabel="Actions"
-		on:select={onSelect}
-		searchIcon="i-material-symbols-clear-day-rounded text-lg"
-		selectIcon="i-material-symbols-cloud text-lg"
-		buttonStyle="warning-500/90 hover:warning-500"
-		activeStyle="warning-500"
-	/>
-</div>
+<Combobox
+	{items}
+	label="Choose your favourite book"
+	placeholder="Favourite book"
+	width="w-64"
+	{selectIcon}
+	debounce={0}
+	bind:selected
+/>

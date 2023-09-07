@@ -1,151 +1,53 @@
 ---
 title: Accordion
-description: A simple accordion component.
+description: An component that allows you to organize your content into sections that can be expanded or collapsed.
 ---
 
 <script>
-    import Usage from '../Usage.svelte';
-    import PropsTable from './PropsTable.svelte';
-    import accordion_docs from '$lib/components/accordion/Accordion.svelte?raw&sveld';
-    import accordion_item_docs from '$lib/components/accordion/AccordionItem.svelte?raw&sveld';
-    import Accordion from '$lib/components/accordion/Accordion.svelte';
-    import AccordionItem from '$lib/components/accordion/AccordionItem.svelte';
+    import { Preview } from '$components';
+
+    export let previewSnippets;
+    export let previewComponents;
 </script>
 
-# Accordion
+## Changing Colors
 
-## Example
+You can update the styles for the title button with the `titleStyle` prop.
 
-<Usage height="h-60">
-    <Accordion collapse>
-        <AccordionItem label="refund policy" open>
-            <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
-            <svelte:fragment slot="content"
-                >If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund
-                you in full, no questions asked.</svelte:fragment
-            >
-        </AccordionItem>
-        <AccordionItem label="technical support" buttonStyle="secondary-200 hover:secondary-300">
-            <svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
-            <svelte:fragment slot="content">No.</svelte:fragment>
-        </AccordionItem>
-    </Accordion>
-</Usage>
+<Preview previewSnippets={previewSnippets['colors']}>
+    <svelte:component this={previewComponents['colors']} />
+</Preview>
 
-```svelte
-<script lang="ts">
-	import { Accordion, AccordionItem } from 'ato-ui';
-</script>
+## Multiple 
 
-<Accordion collapse>
-	<AccordionItem label="refund policy" open>
-		<svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
-		<svelte:fragment slot="content">
-            If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund
-			you in full, no questions asked.
-        </svelte:fragment>
-	</AccordionItem>
-	<AccordionItem label="technical support" buttonStyle="secondary-200 hover:secondary-300">
-		<svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
-		<svelte:fragment slot="content">No.</svelte:fragment>
-	</AccordionItem>
-</Accordion>
-```
+You can allow multiple accordion items to be open at the same time, using the the `multiple` prop and setting it to `true`.
 
-## Collapse
-
-The `collapse` prop allows you to set whether multiple accordion items are allowed to be open at the same time. If `collapse = true` it will close other items if a new one is opened. By default `collapse = false`.
-
-<Usage height="h-60">
-    <Accordion>
-        <AccordionItem label="refund policy" open>
-            <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
-            <svelte:fragment slot="content"
-                >If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund
-                you in full, no questions asked.</svelte:fragment
-            >
-        </AccordionItem>
-        <AccordionItem label="technical support" open buttonStyle="secondary-200 hover:secondary-300">
-            <svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
-            <svelte:fragment slot="content">No.</svelte:fragment>
-        </AccordionItem>
-    </Accordion>
-</Usage>
-
-```svelte
-<Accordion collapse={false}>
+```svelte /multiple/#prop
+<Accordion multiple={true} >
     <!-- Items... -->
 </Accordion>
 ```
 
-## Button Style
+## Default Open Item
 
-You can change an item's button styles with the `buttonStyle` prop.
+You can set the item that should be open by default by passing in the item's key to the `defaultOpen` prop.
 
-<Usage height="h-60">
-    <Accordion>
-        <AccordionItem label="refund policy" buttonStyle="success-200 hover:success-300">
-            <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
-            <svelte:fragment slot="content"
-                >If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund
-                you in full, no questions asked.</svelte:fragment
-            >
-        </AccordionItem>
-        <AccordionItem label="technical support" buttonStyle="error-200 hover:error-300">
-            <svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
-            <svelte:fragment slot="content">No.</svelte:fragment>
-        </AccordionItem>
-    </Accordion>
-</Usage>
-
-```svelte
-<Accordion>
-    <AccordionItem label="refund policy" buttonStyle="success-200 hover:success-300">
-        <!-- title & content -->
+```svelte /defaultOpen/#prop
+<Accordion defaultOpen="water" >
+    <AccordionItem key="water">
+        <!-- Title & Content -->
     </AccordionItem>
-    <AccordionItem label="technical support" buttonStyle="error-200 hover:error-300">
-        <!-- title & content -->
-    </AccordionItem>
+
+    <!-- More items... -->
 </Accordion>
 ```
 
-## Collapse Icon
+## Disable Accordion
 
-You can change the item's default collapse icon with the `collapseIcon` prop by passing it an iconify icon.
+You can disable the accordion and adjust the disabled styles with the `disabled` and `disabledStyle` props respectively.
 
-<Usage height="h-60">
-    <Accordion>
-        <AccordionItem label="refund policy" collapseIcon="i-material-symbols-local-fire-department-rounded">
-            <svelte:fragment slot="title">What is your refund policy?</svelte:fragment>
-            <svelte:fragment slot="content"
-                >If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund
-                you in full, no questions asked.</svelte:fragment
-            >
-        </AccordionItem>
-        <AccordionItem label="technical support" collapseIcon="i-material-symbols-rocket-rounded">
-            <svelte:fragment slot="title">Do you offer technical support?</svelte:fragment>
-            <svelte:fragment slot="content">No.</svelte:fragment>
-        </AccordionItem>
-    </Accordion>
-</Usage>
-
-```svelte
-<Accordion>
-    <AccordionItem label="fire" collapseIcon="i-material-symbols-local-fire-department-rounded">
-        <!-- title & content -->
-    </AccordionItem>
-    <AccordionItem label="rocket" collapseIcon="i-material-symbols-rocket-rounded">
-        <!-- title & content -->
-    </AccordionItem>
+```svelte /disabled/#prop
+<Accordion disabled={true} >
+    <!-- Items... -->
 </Accordion>
 ```
-
-## Props
-
-### Accordion
-
-<PropsTable props={accordion_docs.props} />
-
-### AccordionItem
-
-<PropsTable props={accordion_item_docs.props} />

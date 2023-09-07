@@ -10,34 +10,28 @@
 	import 'uno.css';
 	import './app.css';
 
-	import { NavBar, Sidebar, BottomNav } from '../docs/layout';
-	import type { Navigation, NavGroupItem } from '../docs/layout/types';
-	import TableOfContents from '$lib/components/table-of-contents/TableOfContents.svelte';
-	import type { DropMenuGroup } from '$lib/components/dropdown-menu/types';
+	import { NavBar, Sidebar, BottomNav } from '$components';
+	import type { Navigation, NavGroupItem } from '$components/layout/types';
 
-	import { darkTheme } from '$lib/stores/lightswitch';
-	import { themeStore, customThemeCSSStore } from './stores';
+	import { TOC } from '$components';
+
+	import { darkTheme } from '$docs/utils/stores';
+	import { themeStore, customThemeCSSStore } from '$docs/utils/stores';
 	import AtoUI from './AtoUI.svelte';
 
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
 
-	const themes: DropMenuGroup[] = [
-		{
-			items: [
-				{ icon: 'i-mdi-atom-variant', text: `Ato` },
-				{ icon: 'i-material-symbols-water-drop-outline-rounded', text: `Water` },
-				{ icon: 'i-mdi-earth', text: `Earth` },
-				{ icon: 'i-material-symbols-local-fire-department-rounded', text: `Fire` },
-				{ icon: 'i-mdi-weather-windy-variant', text: `Air` }
-			]
-		}
-	];
-
 	let previousPage: NavGroupItem | null = null;
 	let nextPage: NavGroupItem | null = null;
+
+	const socials = [
+		{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
+		{ icon: 'i-mdi-discord', link: 'https://discord.gg/7PXN3fs3tN', title: 'Discord' }
+	];
 
 	const navigation: Navigation = [
 		{
@@ -52,7 +46,7 @@
 					items: data.articles
 				},
 				{
-					groupTitle: 'Tokens',
+					groupTitle: 'Shortcuts',
 					groupIcon: 'i-mdi-dots-grid',
 					items: data.tokens
 				},
@@ -82,13 +76,28 @@
 		}
 	];
 
-	const default_seo = {
+	const defaultSEO = {
 		title: 'Ato UI',
-		description:
-			'A component UI library for Svelte and UnoCSS offering both styled and headless components.',
+		description: 'The elemental accessible and theme-able UI component library for Svelte, built with UnoCSS and Melt UI.',
 		keywords:
-			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer'
+			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer, accessible',
+		image: '/seo/new-ato-ui-dark-1-resized.png'
 	};
+
+	// Update data-theme attribute when theme changes.
+	$: if (browser) {
+		document.body.setAttribute('data-theme', $themeStore);
+	}
+
+	// Update dark mode.
+	$: if (browser) {
+		const documentClasses = document.documentElement.classList;
+		if ($darkTheme) {
+			documentClasses.add('dark');
+		} else {
+			documentClasses.remove('dark');
+		}
+	}
 
 	$: currentNavPage = navigation.find((item) => $page.url.pathname.includes(item.basePath));
 
@@ -112,11 +121,15 @@
 			? allGroupItems[currentPageIdx ?? 0][hasStyledAndHeadless && !isHeadlessPage ? 1 : 0]
 			: {};
 
-	$: activeSEO = { ...default_seo, ...activePage };
+	$: activeSEO = { ...defaultSEO, ...activePage };
+
+	$: seoTitle = `${activeSEO.title}${activeSEO.title.includes('Ato') ? '' : ' | Ato UI'}`;
 
 	$: previousPage =
 		!allGroupItems || !currentPageIdx || currentPageIdx <= 0
 			? null
+			: allGroupItems[currentPageIdx - 1].length === 2
+			? allGroupItems[currentPageIdx - 1][1]
 			: allGroupItems[currentPageIdx - 1][0];
 
 	$: nextPage =
@@ -125,6 +138,8 @@
 		currentPageIdx < 0 ||
 		currentPageIdx === allGroupItems.length - 1
 			? null
+			: allGroupItems[currentPageIdx + 1].length === 2
+			? allGroupItems[currentPageIdx + 1][1]
 			: allGroupItems[currentPageIdx + 1][0];
 </script>
 
@@ -140,29 +155,34 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Open Graph - https://ogp.me/ -->
+	<meta property="og:image" content={activeSEO.image} />
 	<meta property="og:site_name" content="Ato UI" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ato-ui.vercel.app{$page.url.pathname}" />
 	<meta property="og:locale" content="en_US" />
 	<meta
 		property="og:title"
-		content={`${activeSEO.title}${activeSEO.title.includes('Ato') ? '' : ' | Ato UI'}`}
+		content={seoTitle}
 	/>
 	<meta property="og:description" content={activeSEO.description} />
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:domain" content="ato-ui.vercel.app">
+	<meta property="twitter:url" content="https://ato-ui.vercel.app{$page.url.pathname}">
+	<meta name="twitter:title" content={seoTitle}>
+	<meta name="twitter:description" content={activeSEO.description}>
+	<meta name="twitter:image" content={activeSEO.image}>
 
 	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
 </svelte:head>
 
-<div id="ato-ui-docu" class:dark={$darkTheme} class="{$themeStore} min-h-screen">
+<!-- Also include data-theme here to avoid FOUC (Flash Of Unstyled Content) on page reloads. -->
+<div id="ato-ui-docu" class="min-h-screen" data-theme={$themeStore}>
 	<NavBar
 		{navigation}
 		showSidebar={currentNavPage ? currentNavPage?.showSidebar : false}
 		groups={currentNavPage ? currentNavPage?.groups : []}
-		{themes}
-		icons={[
-			{ icon: 'i-mdi-github', link: 'https://github.com/bennymi/ato-ui', title: 'Github' },
-			{ icon: 'i-mdi-discord', link: 'https://discord.gg/7PXN3fs3tN', title: 'Discord' }
-		]}
+		icons={socials}
 		on:select={(event) => ($themeStore = event.detail.selected.toLowerCase())}
 	>
 		<svelte:fragment slot="title">
@@ -184,13 +204,16 @@
 	>
 		{#if currentNavPage && currentNavPage?.showSidebar}
 			{#key $page.url.pathname}
-				<div class="hidden xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]">
-					<TableOfContents
+				<div
+					class="hidden text-left xl:block absolute fixed right-[50px] 2xl:right-[150px] w-[250px]"
+				>
+					<!-- <TableOfContents
 						target="#AtoContent"
 						tocType="lowest-parents"
 						hover="hover:(text-surface-900-50)"
 						markerBackground="bg-secondary-500"
-					/>
+					/> -->
+					<TOC />
 				</div>
 			{/key}
 		{/if}
