@@ -13,10 +13,10 @@
 		ToCTreeContext
 	} from './types';
 
-	/** Set the header label of the ToC. */
-	export let label = 'On This Page';
 	/** The selector of the container for which the table of contents (ToC) should be created. */
 	export let selector: string;
+	/** Set the header label of the ToC. */
+	export let label = 'On This Page';
 	/** A list of headings that should be excluded from the ToC. Possible values: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'. */
 	export let exclude: ToCHeading[] = ['h1'];
 	/** The number of pixels to add to the top of the element when scrolling. Can be used if you have a fixed header which might block the scrolled-to element. Has no effect if you overwrite the default scroll function with your own (see scrollFn prop). */
