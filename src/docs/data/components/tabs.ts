@@ -1,4 +1,4 @@
-import type { Data, APIProp, ExampleHighlights, ComponentAPIExtraInfo } from "../types";
+import type { Data, ExampleHighlights, ComponentAPIExtraInfo } from "../types";
 
 const highlights: ExampleHighlights = {
     main: {

@@ -9,6 +9,8 @@ export type ToCActiveType =
 	| 'lowest-parents'
 	| 'highest-parents';
 
+export type ToCMarkerType = 'lowest' | 'highest';
+
 export type ToCScrollBehaviour = 'smooth' | 'instant';
 
 export type ToCHeadingFilterFn = (heading: HTMLHeadingElement) => boolean;

@@ -1,4 +1,4 @@
-import type { ExampleHighlights, Dependency, Data } from "../types";
+import type { ExampleHighlights, Data } from "../types";
 
 const highlights: ExampleHighlights = {
     main: {

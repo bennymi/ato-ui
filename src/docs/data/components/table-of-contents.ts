@@ -1,4 +1,4 @@
-import type { Data, APIProp, ExampleHighlights, ComponentAPIExtraInfo } from "../types";
+import type { Data, ExampleHighlights, ComponentAPIExtraInfo } from "../types";
 
 const highlights: ExampleHighlights = {
     main: {
@@ -13,7 +13,7 @@ const apiExtraInfo: ComponentAPIExtraInfo[] = [
         component: 'TOC',
         required: ['selector'],
         styles: ['labelStyles', 'contentStyles', 'activeStyles'],
-        specialTypes: ['ToCScrollFn', 'ToCHeading[]', 'ToCScrollBehaviour', 'ToCActiveType', 'ToCHeadingFilterFn'],
+        specialTypes: ['ToCScrollFn', 'ToCHeading[]', 'ToCScrollBehaviour', 'ToCActiveType', 'ToCHeadingFilterFn', 'ToCMarkerType'],
         function: ['']
     }
 ]
