@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import type { Dependency } from '$docs/data/types';
+	// import type { Dependency } from '$docs/data/types';
 	import type { Metadata } from '$docs/utils/preview';
 
-	import { HeaderLink } from '$components';
+	// import { HeaderLink } from '$components';
+	import { default as HeaderLink } from './docs-header-link.svelte';
 
 	export let meta: Metadata | undefined;
 	export let githubPath: string | undefined;

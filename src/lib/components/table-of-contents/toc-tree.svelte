@@ -16,11 +16,13 @@
 	{#if tree && tree.length}
 		{#each tree as heading, i (i)}
 			{@const active = activeHeadingIdxs.includes(heading.index)}
-			<li class="mt-0 pt-2">
+			<li class="py-1 my-auto">
 				<a
 					href="#{heading.id}"
 					{...$item(heading.id)}
 					use:item
+					data-toc-item
+					data-toc-active={active || null}
 					class="inline-block no-underline transition-colors
 						{active ? activeStyles : contentStyles}"
 				>

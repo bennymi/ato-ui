@@ -28,6 +28,10 @@
 	export let headingFilterFn: ToCHeadingFilterFn | null = null;
 	/** Allows you to overwrite the default scroll function with your own custom one. The scroll function gets the heading id passed to it. Using this overwrites the scrollOffset and scrollBehaviour props. */
 	export let scrollFn: ToCScrollFn | null = null;
+	/** Show a marker beside the active element. */
+	export let showMarker = true;
+	/** Define beside which heading the marker should appear. 'highest' is the first active heading. 'lowest' is the last active heading. */
+	export let markerType = 'lowest';
 
 	/** Set the styles for the label header. */
 	export let labelStyles = 'font-semibold text-surface-900-50';
@@ -35,6 +39,8 @@
 	export let contentStyles = 'text-surface-700-800-200-100';
 	/** Set the active content link styles. */
 	export let activeStyles = 'text-surface-900-50';
+	/** Set the marker styles. */
+	export let markerStyles = 'w-0.5 rounded-container bg-tertiary-500';
 
 	const args = {
 		selector,
@@ -56,25 +62,45 @@
 		activeStyles
 	});
 
-	// let nav: HTMLElement;
-	// let liElements;
+	let nav: HTMLElement;
+	let anchorEls: HTMLAnchorElement[] = [];
+	let markerTop = 0;
+	let markerHeight = 24;
 
-	// $: {
-	// 	if (nav) {
-	// 		console.log('nav:', nav);
-	// 		const ulElement = nav.querySelectorAll('ul');
-	// 		liElements = ulElement[0].querySelectorAll('li');
-	// 		console.log(liElements);
-	// 		console.log('document:', document.querySelectorAll('li'));
-	// 	}
-	// }
+	$: if (nav && $headingsTree.length > 0 && $activeHeadingIdxs.length > 0) {
+		anchorEls = <HTMLAnchorElement[]>(
+			Array.from(nav.querySelectorAll('a')).filter((a) => a.hasAttribute('data-toc-item'))
+		);
+	}
+
+	// Update marker position when active elements change.
+	$: if (anchorEls.length > 0 && $activeHeadingIdxs.length > 0) {
+		const activeAnchors = anchorEls.filter((a) => a.hasAttribute('data-toc-active'));
+
+		const idx = markerType === 'highest' ? 0 : -1;
+
+		const activeMarkerEl = activeAnchors.at(idx);
+
+		if (activeAnchors.length > 0 && activeMarkerEl) {
+			const firstRects = activeMarkerEl.getBoundingClientRect();
+
+			markerTop = firstRects.top - nav.getBoundingClientRect().top + firstRects.height;
+			markerHeight = activeMarkerEl.offsetHeight;
+		}
+	}
 </script>
 
 <div class="ato-toc">
 	<p class={labelStyles}>{label}</p>
-	<nav>
-		{#key $headingsTree}
+	{#key $headingsTree}
+		{#if showMarker && $activeHeadingIdxs.length > 0}
+			<div
+				class="ato-toc-marker transition-all absolute top-0 -left-2 {markerStyles}"
+				style={`top: ${markerTop}px; height: ${markerHeight}px;`}
+			/>
+		{/if}
+		<nav bind:this={nav}>
 			<Tree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
-		{/key}
-	</nav>
+		</nav>
+	{/key}
 </div>
