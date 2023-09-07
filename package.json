@@ -18,6 +18,9 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"keywords": [
 		"svelte",
 		"sveltekit",
