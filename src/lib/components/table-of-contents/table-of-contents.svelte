@@ -32,7 +32,7 @@
 	/** Show a marker beside the active element. */
 	export let showMarker = true;
 	/** Define beside which heading the marker should appear. 'highest' is the first active heading. 'lowest' is the last active heading. */
-	export let markerType: ToCMarkerType = 'lowest';
+	export let markerType: ToCMarkerType = 'highest';
 
 	/** Set the styles for the label header. */
 	export let labelStyles = 'font-semibold text-surface-900-50';
@@ -94,7 +94,7 @@
 <div class="ato-toc">
 	<p class={labelStyles}>{label}</p>
 	{#key $headingsTree}
-		{#if showMarker && $activeHeadingIdxs.length > 0 && markerHeight !== -1}
+		{#if showMarker && $activeHeadingIdxs.length > 0 && markerTop !== -1}
 			<div
 				class="ato-toc-marker transition-all absolute top-0 -left-2 {markerStyles}"
 				style={`top: ${markerTop}px; height: ${markerHeight}px;`}
