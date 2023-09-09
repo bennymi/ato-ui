@@ -26,13 +26,13 @@ export const rules: Rule[] = [
 
 export const shortcuts: Shortcut[] = [
     ...backgroundSCs,
-    ...buttonSCs,
-    ...cardSCs,
-    ...chipSCs,
-    ...convenienceSCs,
-    ...borderSCs,
-    ...shadowSCs,
-    ...spinnerSCs,
-    ...svgSCs,
-    ...textSCs
+    // ...buttonSCs,
+    // ...cardSCs,
+    // ...chipSCs,
+    // ...convenienceSCs,
+    // ...borderSCs,
+    // ...shadowSCs,
+    // ...spinnerSCs,
+    // ...svgSCs,
+    // ...textSCs
 ];

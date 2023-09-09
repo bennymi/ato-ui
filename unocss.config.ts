@@ -4,8 +4,8 @@ import transformerVariantGroup from '@unocss/transformer-variant-group';
 import transformerDirectives from '@unocss/transformer-directives';
 import extractorSvelte from '@unocss/extractor-svelte';
 import presetIcons from '@unocss/preset-icons';
-import presetWind from '@unocss/preset-wind';
-import presetUno from '@unocss/preset-uno';
+// import presetWind from '@unocss/preset-wind';
+// import presetUno from '@unocss/preset-uno';
 import { presetForms } from '@julr/unocss-preset-forms';
 
 import { presetAtoUI } from './src/lib/preset/index';
@@ -19,8 +19,7 @@ export default defineConfig({
 				'vertical-align': 'middle',
 			},
 		}),
-		presetUno(),
-		presetWind(),
+		// presetWind(),
 		presetForms(),
 		presetAtoUI()
 	],
