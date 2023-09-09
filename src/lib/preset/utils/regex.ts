@@ -1,7 +1,7 @@
-import { themeColorsJ, shadesJ } from '../../types/colors.d';
-import { directionsJ } from '../../types/directions.d';
-import { sizesJ } from '../../types/types.d';
-import { pos_j  } from '../../types/positions.d';
+import { themeColorsJ, shadesJ } from '../../types/colors';
+import { directionsJ } from '../../types/directions';
+import { sizesJ } from '../../types/types';
+import { pos_j  } from '../../types/positions';
 
 /**
  * reg_... = regular expressions

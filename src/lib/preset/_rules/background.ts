@@ -1,8 +1,8 @@
 import type { Rule, Shortcut } from '@unocss/core';
 
-import { directionsJ } from '../../types/directions.d';
-import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors.d';
-import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_c_sO_oO, cso, reg_sO, reg_oO, reg_100, reg_num } from '../utils/regex';
+import { directionsJ } from '../../types/directions';
+import { allColorsJ, themeColorsJ, shadesJ } from '../../types/colors';
+import { default_dir, reg_dO, reg_c, reg_s, reg_c_sO, cs, reg_c_sO_oO, cso, reg_sO, reg_oO, reg_num } from '../utils/regex';
 import { parse_opacity } from '../utils/regex';
 
 export const backgroundRules: Rule[] = [

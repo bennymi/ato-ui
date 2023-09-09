@@ -1,8 +1,8 @@
 import type { Shortcut, Rule } from '@unocss/core';
 
-import { themeColorsJ, shadesJ } from '../../types/colors.d';
-import { directions, directionsJ } from '../../types/directions.d';
-import { sizesJ } from '../../types/types.d';
+import { themeColorsJ, shadesJ } from '../../types/colors';
+import { directions, directionsJ } from '../../types/directions';
+import { sizesJ } from '../../types/types';
 
 import { reg_c, reg_c_sO, reg_c_sO_oO, cs, cso, name_c_sO_oO, reg_l, reg_dO, norm_op } from '../utils/regex';
 
@@ -26,7 +26,7 @@ const baseStylesIcon = `${sizes.md} active:scale-95 inline-flex justify-center i
 const glassStyles = 'border-1 backdrop-blur-sm';
 const glassOp = '70';
 
-const outlineOp = '25';
+// const outlineOp = '25';
 
 const borderBaseOp = '0.8';
 

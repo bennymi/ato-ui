@@ -1,5 +1,5 @@
-import { allColors, themeColors, shades } from './colors.d';
-import { directions } from './directions.d';
+import { allColors, themeColors, shades } from './colors';
+import { directions } from './directions';
 
 export type Size = 'sm' | 'md' | 'lg' | 'xl';
 

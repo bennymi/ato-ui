@@ -1,7 +1,7 @@
 // Reference: https://github.com/unocss/unocss/blob/172f480a9a092538685fddd9cb5fccdab9d59a86/packages/preset-mini/src/_theme/colors.ts
 
 import type { Theme } from "@unocss/preset-uno";
-import { shades } from "../../types/colors.d";
+import { shades } from "../../types/colors";
 
 export const colors = {
     primary: Object.fromEntries(shades.map(x => [x, `rgba(var(--color-primary-${x}), %alpha)`])),

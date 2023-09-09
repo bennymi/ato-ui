@@ -5,8 +5,8 @@
 
 import type { Rule, Shortcut } from '@unocss/core';
 
-import { themeColorsJ, shadesJ } from '../../types/colors.d';
-import type { RulesDescription } from '../../types/types.d';
+import { themeColorsJ, shadesJ } from '../../types/colors';
+import type { RulesDescription } from '../../types/types';
 
 import { reg_c_sO, cs, reg_whO, dim } from '../utils/regex';
 
