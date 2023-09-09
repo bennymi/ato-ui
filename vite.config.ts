@@ -13,12 +13,11 @@ function getAllConfigFiles(dir: string) {
 
 export default defineConfig({
 	plugins: [
-    	// sveld(),
-		sveltekit(),
 		UnoCSS({
       		configFile: './unocss.config.ts',
 			configDeps: getAllConfigFiles('./src/lib/preset/_rules')
-		})
+		}),
+		sveltekit()
 	],
 	// https://github.com/mswjs/msw/discussions/1440#discussioncomment-6124922
 	// build: {

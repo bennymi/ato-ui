@@ -8,6 +8,9 @@ dependencies:
   '@melt-ui/svelte':
     specifier: ^0.47.1
     version: 0.47.1(svelte@4.2.0)
+  '@unocss/preset-mini':
+    specifier: ^0.55.7
+    version: 0.55.7
   '@unocss/preset-wind':
     specifier: ^0.55.7
     version: 0.55.7

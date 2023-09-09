@@ -1,6 +1,4 @@
-import {
-  defineConfig
-} from 'unocss';
+import { defineConfig } from 'unocss';
 
 import transformerVariantGroup from '@unocss/transformer-variant-group';
 import transformerDirectives from '@unocss/transformer-directives';
