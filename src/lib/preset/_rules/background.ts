@@ -23,7 +23,7 @@ export const backgroundRules: Rule[] = [
     // Radial background gradients
     [
         new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2]: string[]) => ({
+        ([, c1, s1, c2, s2]: string[]) => ({
           "background": `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})))`
         }),
         {
@@ -35,7 +35,7 @@ export const backgroundRules: Rule[] = [
     ],
     [
         new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, c1, s1, c2, s2, c3, s3]: string[]) => ({
+        ([, c1, s1, c2, s2, c3, s3]: string[]) => ({
           "background": `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})), rgb(var(--color-${cs(c3, s3)})))`
         }),
         {
@@ -55,7 +55,7 @@ export const backgroundRules: Rule[] = [
             let bg_image = '';
 
             for (let i = 0; i < meshes.length; i++) {
-                const [ n, c, s, o, x, y ] = meshes[i];
+                const [ , c, s, o, x, y ] = meshes[i];
 
                 bg_image += `radial-gradient(at ${x}% ${y}%, rgba(var(--color-${cs(c, s)}), ${parse_opacity(o, '0.3')}) 0px, transparent 50%)`;
 
@@ -73,11 +73,11 @@ export const backgroundSCs: Shortcut[] = [
     // Background + text on background
     [
         new RegExp(`^${reg_c}-${reg_s}${reg_oO}$`),
-        ([_, c, s, o]) => `bg-${cso(c, s, o)} text-on-${cs(c, s)}`
+        ([, c, s, o]) => `bg-${cso(c, s, o)} text-on-${cs(c, s)}`
     ],
     [
         new RegExp(`^${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`),
-        ([_, c, s1, o1, s2, o2]) => `bg-${cso(c, s1, o1)} text-on-${cs(c, s1)} dark:(bg-${cso(c, s2, o2)} text-on-${cs(c, s2)})`
+        ([, c, s1, o1, s2, o2]) => `bg-${cso(c, s1, o1)} text-on-${cs(c, s1)} dark:(bg-${cso(c, s2, o2)} text-on-${cs(c, s2)})`
     ],
 
     // Background Tokens

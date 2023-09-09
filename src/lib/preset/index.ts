@@ -4,7 +4,8 @@ import type { Preset } from '@unocss/core';
 // import { presetWind } from '@unocss/preset-wind';
 
 import { colors } from './_theme/colors';
-import { animation, rules, shortcuts } from './_rules/index';
+// import { animation, rules, shortcuts } from './_rules/index';
+import { animation, rules } from './_rules/index';
 
 export { colors } from './_theme/colors';
 
@@ -15,7 +16,7 @@ export const presetAtoUI = (): Preset => ({
         animation
     },
     rules,
-    shortcuts
+    // shortcuts
 });
 
 // export const presetAtoUI = (): Preset => {
