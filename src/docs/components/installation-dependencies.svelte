@@ -8,7 +8,7 @@
 		defaultValue: 'npm'
 	});
 
-    const value = 'unocss @unocss/transformer-variant-group @unocss/transformer-directives @unocss/preset-icons @unocss/reset';
+    const value = 'unocss @unocss/transformer-variant-group @unocss/transformer-directives @unocss/preset-icons @unocss/reset @unocss/preset-wind';
 
 	const tabs = [
 		{
