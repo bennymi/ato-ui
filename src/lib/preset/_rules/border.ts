@@ -31,8 +31,12 @@ export const borderSCs: Shortcut[] = [
         {
             autocomplete: [
                 `border-${reg_c}-${reg_c}`,
+                `border-${reg_c}-${reg_s}`,
+                `border-${reg_c}-${reg_s}-${reg_c}`,
                 `border-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `border-${reg_c}/<num>-${reg_c}/<num>`
+                `border-${reg_c}/<percent>`,
+                `border-${reg_c}/<percent>-${reg_c}`,
+                `border-${reg_c}/<percent>-${reg_c}/<percent>`
             ]
         }
     ],
@@ -44,8 +48,13 @@ export const borderSCs: Shortcut[] = [
         {
             autocomplete: [
                 `ring-${reg_c}-${reg_c}`,
+                `ring-${reg_c}-${reg_s}`,
+                `ring-${reg_c}-${reg_s}-${reg_c}`,
+                `ring-${reg_c}-${reg_c}-${reg_s}`,
                 `ring-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `ring-${reg_c}/<num>-${reg_c}/<num>`
+                `ring-${reg_c}/<percent>`,
+                `ring-${reg_c}/<percent>-${reg_c}`,
+                `ring-${reg_c}/<percent>-${reg_c}/<percent>`
             ]
         }
     ],
@@ -56,9 +65,15 @@ export const borderSCs: Shortcut[] = [
         ([, c1, s1, o1, c2, s2, o2]: string[]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
+                `border-inverse`,
+                `border-inverse-${reg_c}`,
                 `border-inverse-${reg_c}-${reg_c}`,
+                `border-inverse-${reg_c}-${reg_s}`,
+                `border-inverse-${reg_c}-${reg_s}-${reg_c}`,
                 `border-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `border-inverse-${reg_c}/<num>-${reg_c}/<num>`
+                `border-inverse-${reg_c}/<percent>`,
+                `border-inverse-${reg_c}/<percent>-${reg_c}`,
+                `border-inverse-${reg_c}/<percent>-${reg_c}/<percent>`
             ]
         }
     ],
@@ -69,9 +84,15 @@ export const borderSCs: Shortcut[] = [
         ([, c1, s1, o1, c2, s2, o2]: string[]) => `ring-${cso(c1, s1, o1)} dark:ring-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
+                `ring-inverse`,
+                `ring-inverse-${reg_c}`,
                 `ring-inverse-${reg_c}-${reg_c}`,
+                `ring-inverse-${reg_c}-${reg_s}`,
+                `ring-inverse-${reg_c}-${reg_s}-${reg_c}`,
                 `ring-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `ring-inverse-${reg_c}/<num>-${reg_c}/<num>`
+                `ring-inverse-${reg_c}/<percent>`,
+                `ring-inverse-${reg_c}/<percent>-${reg_c}`,
+                `ring-inverse-${reg_c}/<percent>-${reg_c}/<percent>`
             ]
         }
     ],

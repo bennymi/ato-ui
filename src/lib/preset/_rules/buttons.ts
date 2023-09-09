@@ -1,10 +1,9 @@
 import type { Shortcut, Rule } from '@unocss/core';
 
-import { themeColorsJ, shadesJ } from '../../types/colors';
-import { directions, directionsJ } from '../../types/directions';
+import { directions } from '../../types/directions';
 import { sizesJ } from '../../types/types';
 
-import { reg_c, reg_c_sO, reg_c_sO_oO, cs, cso, name_c_sO_oO, reg_l, reg_dO, norm_op } from '../utils/regex';
+import { reg_c, reg_c_sO, reg_c_sO_oO, cs, cso, name_c_sO_oO, reg_l, reg_dO, norm_op, reg_s, reg_d } from '../utils/regex';
 
 const sizes: { [key: string]: string } = {
     // 'sm': 'py-1 px-2 text-sm font-medium',
@@ -57,16 +56,16 @@ export const buttonRules: Rule[] = [
         {
             autocomplete: [
                 `border-gradient`,
-                `border-gradient-(${themeColorsJ})`,
-                `border-gradient-(${themeColorsJ})-(${shadesJ})`,
-                `border-gradient-(${themeColorsJ})-(${shadesJ})-(${directionsJ})`,
-                `border-gradient-(${themeColorsJ})-(${directionsJ})`,
-                `border-gradient-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})`,
-                `border-gradient-(${themeColorsJ})-(${themeColorsJ})`,
-                `border-gradient-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `border-gradient-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `border-gradient-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `border-gradient-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+                `border-gradient-${reg_c}`,
+                `border-gradient-${reg_c}-${reg_s}`,
+                `border-gradient-${reg_c}-${reg_s}-${reg_d}`,
+                `border-gradient-${reg_c}-${reg_d}`,
+                `border-gradient-${reg_c}-${reg_d}-${reg_c}`,
+                `border-gradient-${reg_c}-${reg_c}`,
+                `border-gradient-${reg_c}-${reg_d}-${reg_c}-${reg_c}`,
+                `border-gradient-${reg_c}-${reg_c}-${reg_c}`,
+                `border-gradient-${reg_c}-${reg_d}-${reg_c}-${reg_c}-${reg_c}`,
+                `border-gradient-${reg_c}-${reg_c}-${reg_c}-${reg_c}`,
             ]
         }
     ]
@@ -92,7 +91,7 @@ export const buttonSCs: Shortcut[] = [
         new RegExp(`^btn-${reg_c}$`), 
         ([, c]: string[]) => `${baseStyles} bg-${c}-500 text-on-${cs(c, '500')} hover:(bg-${c}-600 text-on-${c}-600) disabled:hover:(bg-${c}-500 text-on-${c}-500)`, 
         {
-            autocomplete: `btn-(${themeColorsJ})`
+            autocomplete: `btn-${reg_c}`
         }
     ],
     
@@ -118,13 +117,14 @@ export const buttonSCs: Shortcut[] = [
             disabled:hover:(from-${cso(c1, s1, `${o1 ?? glassOp}`)} via-${cso(c2, s2, `${o2 ?? glassOp}`)} to-${cso(c3, s3, `${o3 ?? glassOp}`)})`, 
         {
             autocomplete: [
-                `btn-glass-(${themeColorsJ})`,
-                `btn-glass-(${themeColorsJ})-(${shadesJ})`,
-                `btn-glass-(${directionsJ})-(${themeColorsJ})`,
-                `btn-glass-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-glass-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-glass-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-glass-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
+                `btn-glass`,
+                `btn-glass-${reg_c}`,
+                `btn-glass-${reg_c}-${reg_s}`,
+                `btn-glass-${reg_d}-${reg_c}`,
+                `btn-glass-${reg_c}-${reg_c}`,
+                `btn-glass-${reg_d}-${reg_c}-${reg_c}`,
+                `btn-glass-${reg_c}-${reg_c}-${reg_c}`,
+                `btn-glass-${reg_d}-${reg_c}-${reg_c}-${reg_c}`
             ]
         }
     ],
@@ -140,12 +140,13 @@ export const buttonSCs: Shortcut[] = [
         ([, d, c1, s1, o1, c2, s2, o2, c3, s3, o3]: string[]) => `${baseStyles} ${gradientStyles} bg-gradient-to-${d ?? default_dir} text-on-${cs(c1, s1)} from-${cso(c1, s1, o1)} via-${cso(c2, s2, o2)} to-${cso(c3, s3, o3)}`, 
         {
             autocomplete: [
-                `brn-gradient-${directionsJ}`,
-                `btn-gradient-(${themeColorsJ})`,
-                `btn-gradient-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-gradient(${directionsJ})-(${themeColorsJ})`,
-                `btn-gradient(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-gradient(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
+                `btn-gradient`,
+                `btn-gradient-${reg_d}`,
+                `btn-gradient-${reg_c}`,
+                `btn-gradient-${reg_c}-${reg_c}`,
+                `btn-gradient${reg_d}-${reg_c}`,
+                `btn-gradient${reg_d}-${reg_c}-${reg_c}`,
+                `btn-gradient${reg_d}-${reg_c}-${reg_c}-${reg_c}`
             ]
         }
     ],
@@ -171,13 +172,14 @@ export const buttonSCs: Shortcut[] = [
         disabled:hover:(border-gradient-${name_c_sO_oO(bc, bs, bo)}-${d ?? default_dir}-${cs(c1, s1)}-${cs(c2, s2)}-${cs(c3, s3)}!)`,
         {
             autocomplete: [
-                `btn-border-(${themeColorsJ})`,
-                `btn-border-(${themeColorsJ})-(${shadesJ})`,
-                `btn-border-(${themeColorsJ})-(${shadesJ})-(${directionsJ})`,
-                `btn-border-(${themeColorsJ})-(${directionsJ})`,
-                `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})`,
-                `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-                `btn-border-(${themeColorsJ})-(${directionsJ})-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
+                `btn-border`,
+                `btn-border-${reg_c}`,
+                `btn-border-${reg_c}-${reg_s}`,
+                `btn-border-${reg_c}-${reg_s}-${reg_d}`,
+                `btn-border-${reg_c}-${reg_d}`,
+                `btn-border-${reg_c}-${reg_d}-${reg_c}`,
+                `btn-border-${reg_c}-${reg_d}-${reg_c}-${reg_c}`,
+                `btn-border-${reg_c}-${reg_d}-${reg_c}-${reg_c}-${reg_c}`,
             ]
         }
     ],
@@ -202,10 +204,10 @@ export const buttonSCs: Shortcut[] = [
                 'btn-group-vertical',
                 'btn-group-vertical-outline',
                 'btn-group-outline',
-                `btn-group-(${themeColorsJ})`,
-                `btn-group-vertical-(${themeColorsJ})`,
-                `btn-group-outline-(${themeColorsJ})`,
-                `btn-group-vertical-outline-(${themeColorsJ})`,
+                `btn-group-${reg_c}`,
+                `btn-group-vertical-${reg_c}`,
+                `btn-group-outline-${reg_c}`,
+                `btn-group-vertical-outline-${reg_c}`,
             ]
         }
     ],
