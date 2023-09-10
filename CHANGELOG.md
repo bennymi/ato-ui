@@ -1,5 +1,11 @@
 # ato-ui
 
+## 0.3.2
+
+### Patch Changes
+
+- 234788d: fix issue with long save times and intellisense not working
+
 ## 0.3.1
 
 ### Patch Changes
