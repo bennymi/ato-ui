@@ -21,24 +21,27 @@
 	/** Set the header width. */
 	export let headerWidth = 'min-w-40';
 	/** Set the header styles. */
-	export let headerStyle = 'rounded-t-btn px-2 py-1';
+	export let headerStyle = 'rounded-btn-t px-2 py-1';
 	/** Set how the headers should be aligned with the justify property. */
 	export let justifyHeaders = 'justify-center';
 
-	const { elements: { root, list, content, trigger} } = createTabs({
+	const {
+		elements: { root, list, content, trigger }
+	} = createTabs({
 		value
 	});
 
 	$: isDisabled = (key: string) =>
-		((typeof disabledTabs === 'boolean' && disabledTabs) ||
-		 (typeof disabledTabs !== 'boolean' && disabledTabs.includes(key)));
+		(typeof disabledTabs === 'boolean' && disabledTabs) ||
+		(typeof disabledTabs !== 'boolean' && disabledTabs.includes(key));
 
 	setContext('content', content);
 </script>
 
 <div {...$root} use:root class="w-full">
-	<div 
-		{...$list} use:list 
+	<div
+		{...$list}
+		use:list
 		class="w-full flex {justifyHeaders} items-center mb-4 {borderStyle}"
 		aria-label={ariaLabel}
 	>

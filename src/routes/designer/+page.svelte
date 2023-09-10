@@ -18,7 +18,7 @@
 	 * [ ] be able to store themes
 	 * [ ] switches should have a separate rounded variable
 	 * [ ] ...
-	*/
+	 */
 
 	$themeStore = 'custom-theme';
 
@@ -127,9 +127,9 @@
 							bind:value={$new_theme.colors[c].color}
 							size="w-14 h-14 sm:(w-16 h-16) md:(w-20 h-20)"
 							rounded={i === 0
-								? 'rounded-l-container'
+								? 'rounded-container-l'
 								: i === theme_colors.length - 1
-								? 'rounded-r-container'
+								? 'rounded-container-r'
 								: ''}
 						/>
 					</div>
@@ -245,15 +245,15 @@
 
 <style>
 	label {
-		--at-apply: "flex flex-col gap-2 mb-4";
+		--at-apply: 'flex flex-col gap-2 mb-4';
 	}
 
 	label > span {
-		--at-apply: "font-bold";
+		--at-apply: 'font-bold';
 	}
 
 	select {
-		--at-apply: "rounded-container bg-surface-50-900 outline-primary-500";
+		--at-apply: 'rounded-container bg-surface-50-900 outline-primary-500';
 	}
 
 	.bg-animated-gradient {

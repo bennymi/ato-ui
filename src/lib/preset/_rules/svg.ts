@@ -14,9 +14,10 @@ export const svgSCs: Shortcut[] = [
         ([, c1, s1, o1, s2, o2]: string[]) => `fill-[color:rgb(var(--on-${cs(c1, s1)}))]${o1 ? `/${convert_opacity(o1)}` : ''} dark:fill-[color:rgb(var(--on-${cs(c1, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
         {
             autocomplete: [
+                'fill-on',
                 `fill-on-${reg_c}`,
-                `fill-on-${reg_c}/<percent>`,
-                `fill-on-${reg_c}/<percent>-${reg_c}/<percent>`
+                `fill-on-${reg_c}-${reg_s}`,
+                `fill-on-${reg_c}-${reg_s}-${reg_s}`
             ]
         }
     ], 
@@ -27,11 +28,12 @@ export const svgSCs: Shortcut[] = [
         ([, c1, s1, o1, c2, s2, o2]: string[]) => `fill-[color:rgb(var(--on-${cs(c1, s1)}))]${o1 ? `/${convert_opacity(o1)}` : ''} dark:fill-[color:rgb(var(--on-${cs(c2, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
         {
             autocomplete: [
+                'fill-on-inverse',
                 `fill-on-inverse-${reg_c}`,
+                `fill-on-inverse-${reg_c}-${reg_s}`,
                 `fill-on-inverse-${reg_c}-${reg_c}`,
-                `fill-on-inverse-${reg_c}/<percent>`,
-                `fill-on-inverse-${reg_c}/<percent>-${reg_c}`,
-                `fill-on-inverse-${reg_c}/<percent>-${reg_c}/<percent>`
+                `fill-on-inverse-${reg_c}-${reg_c}-${reg_s}`,
+                `fill-on-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`
             ]
         }
     ], 
@@ -48,11 +50,13 @@ export const svgSCs: Shortcut[] = [
         ([, c1, s1, o1, c2, s2, o2]: string[]) => `fill-${cso(c1, s1, o1)} dark:fill-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
+                'fill-inverse',
                 `fill-inverse-${reg_c}`,
-                `fill-inverse-${reg_c}/<percent>`,
+                `fill-inverse-${reg_c}-${reg_s}`,
+                `fill-inverse-${reg_c}-${reg_s}-${reg_c}`,
                 `fill-inverse-${reg_c}-${reg_c}`,
-                `fill-inverse-${reg_c}/<percent>-${reg_c}`,
-                `fill-inverse-${reg_c}/<percent>-${reg_c}/<percent>`
+                `fill-inverse-${reg_c}-${reg_c}-${reg_s}`,
+                `fill-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`
             ]
         }
     ], 
@@ -69,11 +73,10 @@ export const svgSCs: Shortcut[] = [
         ([, c1, s1, o1, s2, o2]: string[]) => `stroke-[color:rgb(var(--on-${cs(c1, s1)}))]${o1 ? `/${convert_opacity(o1)}` : ''} dark:stroke-[color:rgb(var(--on-${cs(c1, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
         {
             autocomplete: [
+                'stroke-on',
                 `stroke-on-${reg_c}`,
-                `stroke-on-${reg_c}/<percent>`,
-                `stroke-on-${reg_c}-${reg_c}`,
-                `stroke-on-${reg_c}/<percent>-${reg_c}`,
-                `stroke-on-${reg_c}/<percent>-${reg_c}/</percent>`
+                `stroke-on-${reg_c}-${reg_s}`,
+                `stroke-on-${reg_c}-${reg_s}-${reg_s}`,
             ]
         }
     ], 
@@ -84,11 +87,13 @@ export const svgSCs: Shortcut[] = [
         ([, c1, s1, o1, c2, s2, o2]: string[]) => `stroke-[color:rgb(var(--on-${cs(c1, s1)}))]${o1 ? `/${convert_opacity(o1)}` : ''} dark:stroke-[color:rgb(var(--on-${cs(c2, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
         {
             autocomplete: [
+                'stroke-on-inverse',
                 `stroke-on-inverse-${reg_c}`,
                 `stroke-on-inverse-${reg_c}-${reg_c}`,
-                `stroke-on-inverse-${reg_c}/<percent>`,
-                `stroke-on-inverse-${reg_c}/<percent>-${reg_c}`,
-                `stroke-on-inverse-${reg_c}/<percent>-${reg_c}/</percent>`,
+                `stroke-on-inverse-${reg_c}-${reg_s}`,
+                `stroke-on-inverse-${reg_c}-${reg_c}-${reg_s}`,
+                `stroke-on-inverse-${reg_c}-${reg_s}-${reg_c}`,
+                `stroke-on-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
             ]
         }
     ], 
@@ -105,11 +110,13 @@ export const svgSCs: Shortcut[] = [
         ([, c1, s1, o1, c2, s2, o2]: string[]) => `stroke-${cso(c1, s1, o1)} dark:stroke-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
+                'stroke-inverse',
                 `stroke-inverse-${reg_c}`,
                 `stroke-inverse-${reg_c}-${reg_c}`,
-                `stroke-inverse-${reg_c}/<percent>`,
-                `stroke-inverse-${reg_c}/<percent>-${reg_c}`,
-                `stroke-inverse-${reg_c}/<percent>-${reg_c}/<percent>`,
+                `stroke-inverse-${reg_c}-${reg_s}`,
+                `stroke-inverse-${reg_c}-${reg_c}-${reg_s}`,
+                `stroke-inverse-${reg_c}-${reg_s}-${reg_c}`,
+                `stroke-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
             ]
         }
     ], 

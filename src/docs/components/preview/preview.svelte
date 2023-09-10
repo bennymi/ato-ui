@@ -62,7 +62,7 @@
 				<div
 					{...$list}
 					use:list
-					class="py-1 px-1 w-full flex gap-0.5 items-center overflow-auto rounded-t-container"
+					class="py-1 px-1 w-full flex gap-0.5 items-center overflow-auto rounded-container-t"
 					aria-label="preview snippet files"
 					transition:slide
 				>

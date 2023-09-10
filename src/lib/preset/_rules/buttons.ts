@@ -1,7 +1,6 @@
 import type { Shortcut, Rule } from '@unocss/core';
 
 import { directions } from '../../types/directions';
-import { sizesJ } from '../../types/types';
 
 import { reg_c, reg_c_sO, reg_c_sO_oO, cs, cso, name_c_sO_oO, reg_l, reg_dO, norm_op, reg_s, reg_d } from '../utils/regex';
 
@@ -77,7 +76,7 @@ export const buttonSCs: Shortcut[] = [
         new RegExp(`^btn-${reg_l}$`),
         ([, l]: string[]) => `${sizes[l]}`,
         {
-            autocomplete: `btn-(${sizesJ})`
+            autocomplete: `btn-${reg_l}`
         }
     ],
 
