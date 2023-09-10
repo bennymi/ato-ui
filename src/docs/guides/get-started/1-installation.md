@@ -22,9 +22,9 @@ We also rely on a few dependencies, so make sure they are also installed.
 
 ## UnoCSS Config
 
-Create a `unocss.config.ts` file with all the required presets and transformers.
+Create a `uno.config.ts` file with all the required presets and transformers.
 
-```typescript title="unocss.config.ts"
+```typescript title="uno.config.ts"
 import { defineConfig } from 'unocss';
 import presetWind from '@unocss/preset-wind';
 import transformerVariantGroup from '@unocss/transformer-variant-group';
@@ -34,20 +34,20 @@ import presetIcons from '@unocss/preset-icons';
 import { presetAtoUI } from 'ato-ui/preset';
 
 export default defineConfig({
-  presets: [
-	  presetIcons({
-        extraProperties: {
-            'display': 'inline-block',
-            'vertical-align': 'middle',
-        },
-    }),
-    presetWind(),
-    presetAtoUI(),
-  ],
-  transformers: [
-    transformerVariantGroup(),
-    transformerDirectives()
-  ],
+	presets: [
+		presetIcons({
+			extraProperties: {
+				'display': 'inline-block',
+				'vertical-align': 'middle',
+			},
+		}),
+		presetWind(),
+		presetAtoUI()
+	],
+	transformers: [
+		transformerVariantGroup(),
+		transformerDirectives()
+	],
 })
 ```
 
@@ -63,9 +63,7 @@ import UnoCSS from 'unocss/vite';
 export default defineConfig({
 	plugins: [
 		sveltekit(),
-		UnoCSS({
-      		configFile: './unocss.config.ts',
-		})
+		UnoCSS()
 	]
 });
 ```

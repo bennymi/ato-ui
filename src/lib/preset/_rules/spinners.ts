@@ -5,10 +5,9 @@
 
 import type { Rule, Shortcut } from '@unocss/core';
 
-import { themeColorsJ, shadesJ } from '../../types/colors.d';
-import type { RulesDescription } from '../../types/types.d';
+import type { RulesDescription } from '../../types/types';
 
-import { reg_c_sO, cs, reg_whO, dim } from '../utils/regex';
+import { reg_c_sO, cs, reg_whO, dim, reg_c, reg_s } from '../utils/regex';
 
 const sqHoverBase = `inline-block relative rounded-container rotate-x-65 rotate-z-45 animate-layers1 animate-alternate after:(content-[''] rounded-container absolute inset-0 animate-layerTr animate-alternate animate-delay-500)`;
 
@@ -27,7 +26,7 @@ const rotSquaresBeforeAfter = `content-[''] border-2 absolute top-0 left-0 box-b
 export const spinnerRules: Rule[] = [
     [
         new RegExp(`^folding-squares-${reg_c_sO}$`),
-        ([_, c, s]: string[], { constructCSS }) => `@keyframes foldingSquares1-${cs(c, s)} {
+        ([, c, s]: string[], { constructCSS }) => `@keyframes foldingSquares1-${cs(c, s)} {
             0% {box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
             12% {box-shadow: 0 24px rgb(var(--color-${cs(c, s)})), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
             25% {box-shadow: 0 24px rgb(var(--color-${cs(c, s)})), 24px 24px rgb(var(--color-${cs(c, s)})), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);}
@@ -45,21 +44,29 @@ export const spinnerSCs: Shortcut[] = [
     // Regular spinner
     [
         new RegExp(`^s${reg_whO}-circle-${reg_c_sO}$`),
-        ([_, wh, c, s]: string[]) => `inline-block ${dim(wh)} border-2 border-solid border-${cs(c, s)} border-b-transparent box-border rounded-full animate-rotate360`,
+        ([, wh, c, s]: string[]) => `inline-block ${dim(wh)} border-2 border-solid border-${cs(c, s)} border-b-transparent box-border rounded-full animate-rotate360`,
         {
             autocomplete: [
-                `s-circle-(${themeColorsJ})`,
-                `s-circle-(${themeColorsJ})-(${shadesJ})`
+                's-circle',
+                // 's-wh<num>-circle',
+                // `s-wh<num>-circle-${reg_c}`,
+                // `s-wh<num>-circle-${reg_c}-${reg_s}`,
+                `s-circle-${reg_c}`,
+                `s-circle-${reg_c}-${reg_s}`
             ]
         }
     ],
     [
         new RegExp(`^s${reg_whO}-circle-split-${reg_c_sO}$`),
-        ([_, wh, c, s]: string[]) => `inline-block ${dim(wh)} border-2 border-solid border-${cs(c, s)} border-y-transparent box-border rounded-full animate-rotate360`,
+        ([, wh, c, s]: string[]) => `inline-block ${dim(wh)} border-2 border-solid border-${cs(c, s)} border-y-transparent box-border rounded-full animate-rotate360`,
         {
             autocomplete: [
-                `s-circle-split-(${themeColorsJ})`,
-                `s-circle-split-(${themeColorsJ})-(${shadesJ})`
+                's-circle-split',
+                // 's-wh<num>-circle-split',
+                // `s-wh<num>-circle-split-${reg_c}`,
+                // `s-wh<num>-circle-split-${reg_c}-${reg_s}`,
+                `s-circle-split-${reg_c}`,
+                `s-circle-split-${reg_c}-${reg_s}`
             ]
         }
     ],
@@ -72,8 +79,8 @@ export const spinnerSCs: Shortcut[] = [
     //         after:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c, s)} left-6 animate-delay-600)`,
     //     {
     //         autocomplete: [
-    //             `s-dots-(${themeColorsJ})`,
-    //             `s-dots-(${themeColorsJ})-(${shadesJ})`
+    //             `s-dots-${reg_c}`,
+    //             `s-dots-${reg_c}-${reg_s}`
     //         ]
     //     }
     // ],
@@ -84,8 +91,8 @@ export const spinnerSCs: Shortcut[] = [
     //         after:(${dotsBase} ${dotsBeforeAfter} bg-${cs(c3, s3)} left-6 animate-delay-600)`,
     //     {
     //         autocomplete: [
-    //             `s-dots-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-    //             `s-dots-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
+    //             `s-dots-${reg_c}-${reg_c}-${reg_c}`,
+    //             `s-dots-${reg_c}-${reg_s}-${reg_c}-${reg_s}-${reg_c}-${reg_s}`
     //         ]
     //     }
     // ],
@@ -93,11 +100,29 @@ export const spinnerSCs: Shortcut[] = [
     // Hovering squares
     [
         new RegExp(`^s${reg_whO}-squares-hover-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, wh, c1, s1, c2, s2, c3, s3]: string[]) => `${sqHoverBase} ${dim(wh)} text-${cs(c1, s1)} bg-${cs(c2, s2)} after:(bg-${cs(c3, s3)}/75)`,
+        ([, wh, c1, s1, c2, s2, c3, s3]: string[]) => `${sqHoverBase} ${dim(wh)} text-${cs(c1, s1)} bg-${cs(c2, s2)} after:(bg-${cs(c3, s3)}/75)`,
         {
             autocomplete: [
-                `s-squares-hover-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
-                `s-squares-hover-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
+                `s-squares-hover`,
+                // `s-wh<num>-squares-hover`,
+                // `s-wh<num>-squares-hover-${reg_c}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_s}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_c}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_c}-${reg_s}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_s}-${reg_c}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_s}-${reg_c}-${reg_c}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_s}-${reg_c}-${reg_c}`,
+                // `s-wh<num>-squares-hover-${reg_c}-${reg_c}-${reg_c}`,
+                `s-squares-hover-${reg_c}`,
+                `s-squares-hover-${reg_c}-${reg_s}`,
+                `s-squares-hover-${reg_c}-${reg_c}`,
+                `s-squares-hover-${reg_c}-${reg_c}-${reg_s}`,
+                `s-squares-hover-${reg_c}-${reg_s}-${reg_c}`,
+                `s-squares-hover-${reg_c}-${reg_s}-${reg_c}-${reg_c}`,
+                `s-squares-hover-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
+                `s-squares-hover-${reg_c}-${reg_s}-${reg_c}-${reg_c}`,
+                `s-squares-hover-${reg_c}-${reg_c}-${reg_c}`,
             ]
         }
     ],
@@ -105,11 +130,12 @@ export const spinnerSCs: Shortcut[] = [
     // Flipping Square
     [
         new RegExp(`^s${reg_whO}-squares-flip-${reg_c_sO}$`),
-        ([_, wh, c, s]: string[]) => `${sqFlipBase} ${dim(wh, sqFlip_WH)} bg-${cs(c, s)}`,
+        ([, wh, c, s]: string[]) => `${sqFlipBase} ${dim(wh, sqFlip_WH)} bg-${cs(c, s)}`,
         {
             autocomplete: [
-                `s-squares-flip-(${themeColorsJ})`,
-                `s-squares-flip-(${themeColorsJ})-(${shadesJ})`
+                's-squares-flip',
+                `s-squares-flip-${reg_c}`,
+                `s-squares-flip-${reg_c}-${reg_s}`
             ]
         }
     ],
@@ -119,8 +145,8 @@ export const spinnerSCs: Shortcut[] = [
     //     ([_, wh, c1, s1, c2, s2]: string[]) => `${sqFlipBase} ${dim(wh, sqFlip_WH)} bg-radial-${c1}${s1 ? `-${s1}` : ''}-${c2}${s2 ? `-${s2}` : ''}`,
     //     {
     //         autocomplete: [
-    //             `s-squares-flip-(${themeColorsJ})-(${themeColorsJ})`,
-    //             `s-squares-flip-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
+    //             `s-squares-flip-${reg_c}-${reg_c}`,
+    //             `s-squares-flip-${reg_c}-${reg_s}-${reg_c}-${reg_s}`
     //         ]
     //     }
     // ],
@@ -130,8 +156,8 @@ export const spinnerSCs: Shortcut[] = [
     //     ([_, wh, c1, s1, c2, s2, c3, s3]: string[]) => `${sqFlipBase} ${dim(wh, sqFlip_WH)} bg-radial-${c1}${s1 ? `-${s1}` : ''}-${c2}${s2 ? `-${s2}` : ''}-${c3}${s3 ? `-${s3}` : ''}`,
     //     {
     //         autocomplete: [
-    //             `s-squares-flip-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`,
-    //             `s-squares-flip-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
+    //             `s-squares-flip-${reg_c}-${reg_c}-${reg_c}`,
+    //             `s-squares-flip-${reg_c}-${reg_s}-${reg_c}-${reg_s}-${reg_c}-${reg_s}`
     //         ]
     //     }
     // ],
@@ -144,8 +170,8 @@ export const spinnerSCs: Shortcut[] = [
     //     after:(bg-${cs(c3, s3)} ${barSlideBeforeAfter} rounded-md -bottom-5 w-9)`,
     //     {
     //         autocomplete: [
-    //             `s-squares-hover-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`,
-    //             `s-squares-hover-(${themeColorsJ})-(${themeColorsJ})-(${themeColorsJ})`
+    //             `s-squares-hover-${reg_c}-${reg_s}-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
+    //             `s-squares-hover-${reg_c}-${reg_c}-${reg_c}`
     //         ]
     //     }
     // ],
@@ -153,21 +179,23 @@ export const spinnerSCs: Shortcut[] = [
     // Shape shifting square
     [
         new RegExp(`^s${reg_whO}-corners-${reg_c_sO}$`),
-        ([_, wh, c, s]: string[]) => `relative inline-block ${dim(wh)} bg-${cs(c, s)} animate-squareShapeShift`,
+        ([, wh, c, s]: string[]) => `relative inline-block ${dim(wh)} bg-${cs(c, s)} animate-squareShapeShift`,
         {
             autocomplete: [
-                `s-corners-(${themeColorsJ})`,
-                `s-corners-(${themeColorsJ})-(${shadesJ})`
+                's-corners',
+                `s-corners-${reg_c}`,
+                `s-corners-${reg_c}-${reg_s}`
             ]
         }
     ],
     [
         new RegExp(`^s${reg_whO}-corners-outline-${reg_c_sO}$`),
-        ([_, wh, c, s]: string[]) => `relative inline-block ${dim(wh)} border-4 border-${cs(c, s)} animate-squareShapeShift`,
+        ([, wh, c, s]: string[]) => `relative inline-block ${dim(wh)} border-4 border-${cs(c, s)} animate-squareShapeShift`,
         {
             autocomplete: [
-                `s-corners-outline-(${themeColorsJ})`,
-                `s-corners-outline-(${themeColorsJ})-(${shadesJ})`
+                's-corners-outline',
+                `s-corners-outline-${reg_c}`,
+                `s-corners-outline-${reg_c}-${reg_s}`
             ]
         }
     ],
@@ -182,8 +210,8 @@ export const spinnerSCs: Shortcut[] = [
     //     `,
     //     {
     //         autocomplete: [
-    //             `s-squares-folding-(${themeColorsJ})`,
-    //             `s-squares-folding-(${themeColorsJ})-(${shadesJ})`
+    //             `s-squares-folding-${reg_c}`,
+    //             `s-squares-folding-${reg_c}-${reg_s}`
     //         ]
     //     }
     // ],
@@ -191,27 +219,25 @@ export const spinnerSCs: Shortcut[] = [
     // 2 Rotating squares
     [
         new RegExp(`^s${reg_whO}-squares-rotate-${reg_c_sO}$`),
-        ([_, wh, c1, s1]: string[]) => `
+        ([, wh, c1, s1]: string[]) => `
             ${dim(wh)} relative inline-block 
             before:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c1, s1)})
-            after:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c1, s1)} animate-reverse)`,
-        {
-            autocomplete: [
-                `s-squares-rotate-(${themeColorsJ})`,
-                `s-squares-rotate-(${themeColorsJ})-(${shadesJ})`
-            ]
-        }
+            after:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c1, s1)} animate-reverse)`
     ],
     [
         new RegExp(`^s${reg_whO}-squares-rotate-${reg_c_sO}-${reg_c_sO}$`),
-        ([_, wh, c1, s1, c2, s2]: string[]) => `
+        ([, wh, c1, s1, c2, s2]: string[]) => `
             ${dim(wh)} relative inline-block 
             before:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c1, s1)})
             after:(${rotSquaresBeforeAfter} ${dim(wh)} border-${cs(c2, s2)} animate-reverse)`,
         {
             autocomplete: [
-                `s-squares-rotate-(${themeColorsJ})-(${themeColorsJ})`,
-                `s-squares-rotate-(${themeColorsJ})-(${shadesJ})-(${themeColorsJ})-(${shadesJ})`
+                's-squares-rotate',
+                `s-squares-rotate-${reg_c}`,
+                `s-squares-rotate-${reg_c}-${reg_s}`,
+                `s-squares-rotate-${reg_c}-${reg_c}`,
+                `s-squares-rotate-${reg_c}-${reg_s}-${reg_c}`,
+                `s-squares-rotate-${reg_c}-${reg_c}-${reg_s}`,
             ]
         }
     ],

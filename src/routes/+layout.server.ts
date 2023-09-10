@@ -8,11 +8,11 @@ export async function load() {
     const glob_unocss = import.meta.glob('/src/docs/guides/unocss/*.md', { eager: true });
     const glob_components = import.meta.glob('/src/docs/guides/components/*.md', { eager: true });
 
-    let articles: NavGroupItem[][] = [];
+    const articles: NavGroupItem[][] = [];
     // let actions: NavGroupItem[][] = [];
-    let components: NavGroupItem[][] = [];
-    let tokens: NavGroupItem[][] = [];
-    let unocss: NavGroupItem[][] = [];
+    const components: NavGroupItem[][] = [];
+    const tokens: NavGroupItem[][] = [];
+    const unocss: NavGroupItem[][] = [];
 
     // Object.keys(glob_actions).forEach((s) => {
     //     const file = glob_actions[s];

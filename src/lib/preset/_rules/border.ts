@@ -3,36 +3,47 @@ import type { Shortcut } from '@unocss/core';
 import { cso, reg_c, reg_c_sO_oO, reg_oO, reg_p, reg_pO, reg_s } from '../utils/regex';
 
 export const borderSCs: Shortcut[] = [
-    // rounded regular
+    // rounded container
     [
-        `rounded-container`,
-        `rounded-[var(--ato-container-radius)]`
-    ],
-    [
-        new RegExp(`^rounded-${reg_p}-container$`),
-        ([_, side]: string[]) => `rounded-${side}-[var(--ato-container-radius)]`,
+        new RegExp(`^rounded-container${reg_pO}$`),
+        ([, p]: string[]) => `rounded-${p ? `${p}-` : ''}[var(--ato-container-radius)]`,
         {
-            autocomplete: `rounded-${reg_p}-container`
+            autocomplete: [
+                'rounded-container',
+                `rounded-container-${reg_p}`
+            ]
         }
     ],
     [
-        new RegExp(`rounded${reg_pO}-btn`), 
-        ([_, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-radius)]`, 
+        new RegExp(`rounded-btn${reg_pO}`), 
+        ([, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-radius)]`,
     ],
     [
-        new RegExp(`rounded${reg_pO}-btn-icon`), 
-        ([_, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`, 
+        new RegExp(`rounded-btn-icon${reg_pO}`), 
+        ([, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`,
+        {
+            autocomplete: [
+                'rounded-btn',
+                'rounded-btn-icon',
+                `rounded-btn-${reg_p}`,
+                `rounded-btn-icon-${reg_p}`
+            ]
+        }
     ],
 
     // Border light - dark
     [
         new RegExp(`^border-${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`),
-        ([_, c1, s1, o1, s2, o2]: string[]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c1, s2, o2)}`,
+        ([, c1, s1, o1, s2, o2]: string[]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c1, s2, o2)}`,
         {
             autocomplete: [
-                `border-${reg_c}-${reg_c}`,
-                `border-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `border-${reg_c}/<num>-${reg_c}/<num>`
+                `border-${reg_c}`,
+                `border-${reg_c}-${reg_s}`,
+                `border-${reg_c}-${reg_s}/<percent>`,
+                `border-${reg_c}-${reg_s}-${reg_s}`,
+                `border-${reg_c}-${reg_s}/<percent>-${reg_s}`,
+                `border-${reg_c}-${reg_s}-${reg_s}/<percent>`,
+                `border-${reg_c}-${reg_s}/<percent>-${reg_s}/<percent>`,
             ]
         }
     ],
@@ -40,12 +51,13 @@ export const borderSCs: Shortcut[] = [
     // Ring light - dark
     [
         new RegExp(`^ring-${reg_c}-${reg_s}${reg_oO}-${reg_s}${reg_oO}$`),
-        ([_, c1, s1, o1, s2, o2]: string[]) => `ring-${cso(c1, s1, o1)} dark:ring-${cso(c1, s2, o2)}`,
+        ([, c1, s1, o1, s2, o2]: string[]) => `ring-${cso(c1, s1, o1)} dark:ring-${cso(c1, s2, o2)}`,
         {
             autocomplete: [
-                `ring-${reg_c}-${reg_c}`,
-                `ring-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `ring-${reg_c}/<num>-${reg_c}/<num>`
+                `ring-${reg_c}`,
+                `ring-${reg_c}-${reg_s}`,
+                `ring-${reg_c}-${reg_s}`,
+                `ring-${reg_c}-${reg_s}-${reg_s}`,
             ]
         }
     ],
@@ -53,12 +65,16 @@ export const borderSCs: Shortcut[] = [
     // Border inverse light - dark
     [
         new RegExp(`^border-inverse-${reg_c_sO_oO}-${reg_c_sO_oO}$`),
-        ([_, c1, s1, o1, c2, s2, o2]: string[]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c2, s2, o2)}`,
+        ([, c1, s1, o1, c2, s2, o2]: string[]) => `border-${cso(c1, s1, o1)} dark:border-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
+                `border-inverse`,
+                `border-inverse-${reg_c}`,
                 `border-inverse-${reg_c}-${reg_c}`,
-                `border-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `border-inverse-${reg_c}/<num>-${reg_c}/<num>`
+                `border-inverse-${reg_c}-${reg_s}`,
+                `border-inverse-${reg_c}-${reg_s}-${reg_c}`,
+                `border-inverse-${reg_c}-${reg_c}-${reg_s}`,
+                `border-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`
             ]
         }
     ],
@@ -66,12 +82,16 @@ export const borderSCs: Shortcut[] = [
     // Ring inverse light - dark
     [
         new RegExp(`^ring-inverse-${reg_c_sO_oO}-${reg_c_sO_oO}$`),
-        ([_, c1, s1, o1, c2, s2, o2]: string[]) => `ring-${cso(c1, s1, o1)} dark:ring-${cso(c2, s2, o2)}`,
+        ([, c1, s1, o1, c2, s2, o2]: string[]) => `ring-${cso(c1, s1, o1)} dark:ring-${cso(c2, s2, o2)}`,
         {
             autocomplete: [
+                `ring-inverse`,
+                `ring-inverse-${reg_c}`,
                 `ring-inverse-${reg_c}-${reg_c}`,
+                `ring-inverse-${reg_c}-${reg_s}`,
+                `ring-inverse-${reg_c}-${reg_s}-${reg_c}`,
+                `ring-inverse-${reg_c}-${reg_c}-${reg_s}`,
                 `ring-inverse-${reg_c}-${reg_s}-${reg_c}-${reg_s}`,
-                `ring-inverse-${reg_c}/<num>-${reg_c}/<num>`
             ]
         }
     ],

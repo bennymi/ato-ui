@@ -32,7 +32,7 @@
 		>
 			<a
 				href={headlessExists ? headlessPath : '#'}
-				class="rounded-l-btn {!headlessExists
+				class="rounded-btn-l {!headlessExists
 					? unavailableStyle
 					: pageIsHeadless
 					? 'primary-500'
@@ -43,7 +43,7 @@
 			</a>
 			<a
 				href={styledExists ? styledPath : '#'}
-				class="rounded-r-btn {!styledExists
+				class="rounded-btn-r {!styledExists
 					? unavailableStyle
 					: pageIsHeadless
 					? inactiveStyle

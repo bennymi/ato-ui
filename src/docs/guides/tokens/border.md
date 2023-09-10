@@ -13,7 +13,7 @@ Please do not use Tailwind classes like `rounded-lg | rounded-xl` and so on in y
 
 You can use all the position variants that you can also use in with regular Tailwind classes: `r | l | b | t | tl | tr | bl | br`.
 
-Examples: `rounded-l-btn`, `rounded-tr-btn`.
+Examples: `rounded-btn-l`, `rounded-btn-tr`.
 
 ### rounded-btn-icon
 
@@ -23,7 +23,7 @@ Examples: `rounded-l-btn`, `rounded-tr-btn`.
 
 `rounded-container` can be used for any containers, such as form containers, hero containers, cards, etc. This class is also already used in a few of Ato-UI's available shortcuts.
 
-Examples: `rounded-r-container`, `rounded-bl-container`.
+Examples: `rounded-container-r`, `rounded-container-bl`.
 
 ## Light & Dark Mode
 

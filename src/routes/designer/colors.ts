@@ -4,7 +4,7 @@
 
 import tinycolor from 'tinycolor2';
 
-import type { Rgb, Palette, Contrast, PaletteShades, Shade, ShadeValues, FullTheme, ColorManipulation } from "./types.d";
+import type { Rgb, Contrast, PaletteShades, Shade, ShadeValues, FullTheme, ColorManipulation } from "./types.d";
 import { theme_colors, shade_values } from './constants';
 
 function hexToRgb(hex: string): Rgb | null {

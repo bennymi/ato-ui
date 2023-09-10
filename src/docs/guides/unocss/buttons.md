@@ -22,7 +22,7 @@ Pattern: `btn-[size]`.
 
 ## Regular Gradients
 
-Pattern: `btn-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`.
+Pattern: `btn-gradient-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`.
 
 For each color you can also specify an opacity if you want. The shades are always optional and the third color is also optional.
 

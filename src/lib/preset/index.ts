@@ -18,19 +18,24 @@ export const presetAtoUI = (): Preset => ({
     shortcuts
 });
 
-// export const presetAtoUI = (): Preset => {
-//     let ato = presetWind();
+// const ato = presetWind();
 
-//     ato.theme!.colors = {
-//         ...ato.theme!.colors,
-//         ...colors
-//     };
-
-//     ato.shortcuts = [...<[]>ato.shortcuts, ...shortcuts];
-
-//     ato.name = 'presetAtoUI';
-
-//     return ato
-// }
+// export const presetAtoUI = (): Preset => ({
+//     ...ato,
+//     name: 'presetAtoUI',
+//     theme: {
+//         ...ato.theme,
+//         colors: {
+//             ...ato.theme?.colors,
+//             ...colors
+//         },
+//         animation: {
+//             ...<[]>ato.theme?.animation, 
+//             ...animation
+//         }
+//     },
+//     rules: [...<[]>ato.rules, ...rules],
+//     shortcuts: [...<[]>ato.shortcuts, ...shortcuts],
+// });
 
 export default presetAtoUI;
