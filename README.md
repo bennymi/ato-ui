@@ -1,4 +1,4 @@
-![Ato UI](./static/seo/ato-ui-banner-resized.png "Ato UI")
+![Ato UI](./static/seo/ato-ui-banner-resized.png 'Ato UI')
 
 # Ato UI
 
@@ -17,6 +17,7 @@ pnpm add -D ato-ui
 ```
 
 ## ✨ Features
+
 - 🦄 Headless + Styled components
 - 🎨 Themeable with an easy to use designers page
 - 🎯 Written in TypeScript

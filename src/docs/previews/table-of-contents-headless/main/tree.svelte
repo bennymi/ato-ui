@@ -1,8 +1,5 @@
 <script lang="ts">
-	import type {
-		TableOfContentsItem,
-		TableOfContentsElements
-	} from '@melt-ui/svelte';
+	import type { TableOfContentsItem, TableOfContentsElements } from '@melt-ui/svelte';
 
 	export let tree: TableOfContentsItem[] = [];
 	export let activeHeadingIdxs: number[];
@@ -17,8 +14,9 @@
 			<li class="mt-0 pt-2">
 				<a
 					href="#{heading.id}"
-					{...$item(heading.id)} use:item
-					class="inline-block no-underline transition-colors 
+					{...$item(heading.id)}
+					use:item
+					class="inline-block no-underline transition-colors
 						{active ? 'text-surface-900-50' : 'text-surface-700-800-200-100'}"
 				>
 					<!-- {heading.title} -->

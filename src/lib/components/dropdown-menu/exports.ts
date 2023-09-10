@@ -1,4 +1,3 @@
-
 // https://github.com/huntabyte/bits/blob/main/src/lib/bits/accordion/index.ts
 // https://github.com/huntabyte/bits/blob/main/src/lib/bits/index.ts
 
@@ -11,12 +10,4 @@ import { default as RadioGroupItem } from './dropdown-menu-radio-group-item.svel
 import { default as Separator } from './dropdown-menu-separator.svelte';
 import { default as Submenu } from './dropdown-menu-submenu.svelte';
 
-export {
-    Menu,
-    CheckboxItem,
-    Item,
-    RadioGroup,
-    RadioGroupItem,
-    Separator,
-    Submenu
-};
+export { Menu, CheckboxItem, Item, RadioGroup, RadioGroupItem, Separator, Submenu };

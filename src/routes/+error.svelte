@@ -58,7 +58,7 @@
 
 <style>
 	svg {
-		--at-apply: "w-[300px] h-[150px] p-0 text-[7.5em] md:(w-[500px] h-[200px] text-[10.5em]) lg:(text-[12.5em])";
+		--at-apply: 'w-[300px] h-[150px] p-0 text-[7.5em] md:(w-[500px] h-[200px] text-[10.5em]) lg:(text-[12.5em])';
 		font: 'Montserrat';
 		margin: 0 auto;
 	}

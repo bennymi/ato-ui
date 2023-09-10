@@ -13,13 +13,13 @@
 </script>
 
 <a
-	class="inline-flex items-center gap-1 underline underline-offset-2 transition-colors hover:text-surface-800/80-100/80 selection:(text-on-primary bg-primary-500/70) "
+	class="inline-flex items-center gap-1 underline underline-offset-2 transition-colors hover:text-surface-800/80-100/80 selection:(text-on-primary bg-primary-500/70)"
 	{href}
 	{target}
 	{rel}
 >
 	<slot />
 	{#if !internal}
-        <span class="h-4 w-4 i-mdi-launch"></span>
+		<span class="h-4 w-4 i-mdi-launch"></span>
 	{/if}
 </a>

@@ -2,7 +2,7 @@ name: 📖 Report docs related issue
 description: Report some problems with the documentation or improvements that can be made.
 labels: [📖 documentation]
 body:
-- type: textarea
-  attributes:
-    label: Describe the issue
-    description: Please add helpful screenshots and links (if it is a specific page).
+  - type: textarea
+    attributes:
+      label: Describe the issue
+      description: Please add helpful screenshots and links (if it is a specific page).

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { createSwitch } from '@melt-ui/svelte';
-	import { generateId } from '@melt-ui/svelte/internal/helpers'; 
+	import { generateId } from '@melt-ui/svelte/internal/helpers';
 	import type { SwitchLabelPosition, SwitchSize } from './types';
 
 	/** Set the toggle text. */
@@ -35,9 +35,7 @@
 	const {
 		elements: { root, input },
 		states: { checked: switchChecked },
-		options: {
-			disabled: switchDisabled
-		}
+		options: { disabled: switchDisabled }
 	} = createSwitch({ disabled, name, required, defaultChecked: checked });
 
 	let uniqueId = generateId();
@@ -79,7 +77,9 @@
 		<button
 			{...$root}
 			use:root
-			class="relative {containerClasses} cursor-default rounded-btn transition-colors {bgClasses} {$switchDisabled ? 'cursor-not-allowed opacity-70' : ''}"
+			class="relative {containerClasses} cursor-default rounded-btn transition-colors {bgClasses} {$switchDisabled
+				? 'cursor-not-allowed opacity-70'
+				: ''}"
 			id={uniqueId}
 		>
 			<span

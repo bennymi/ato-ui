@@ -9,13 +9,13 @@ import { animation, rules, shortcuts } from './_rules/index';
 export { colors } from './_theme/colors';
 
 export const presetAtoUI = (): Preset => ({
-    name: 'presetAtoUI',
-    theme: {
-        colors,
-        animation
-    },
-    rules,
-    shortcuts
+	name: 'presetAtoUI',
+	theme: {
+		colors,
+		animation
+	},
+	rules,
+	shortcuts
 });
 
 // const ato = presetWind();
@@ -30,7 +30,7 @@ export const presetAtoUI = (): Preset => ({
 //             ...colors
 //         },
 //         animation: {
-//             ...<[]>ato.theme?.animation, 
+//             ...<[]>ato.theme?.animation,
 //             ...animation
 //         }
 //     },

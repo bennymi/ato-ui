@@ -27,8 +27,7 @@
 		{
 			icon: 'i-mdi-theme-light-dark',
 			title: 'Dark + Light Mode',
-			description:
-				'Styled components support dark / light mode out of the box.'
+			description: 'Styled components support dark / light mode out of the box.'
 		},
 		{
 			icon: 'i-vscode-icons-file-type-unocss',
@@ -43,7 +42,8 @@
 		{
 			icon: 'i-mdi-dots-grid',
 			title: 'Tokens & Shortcuts',
-			description: 'Helpful shortcuts make it simpler to create consistent UIs with fewer CSS classes.'
+			description:
+				'Helpful shortcuts make it simpler to create consistent UIs with fewer CSS classes.'
 		}
 	];
 </script>
@@ -55,8 +55,7 @@
 		}
 		#ato-ui-docu > div {
 			background-color: rgb(var(--color-surface-50));
-			background-image: 
-				radial-gradient(
+			background-image: radial-gradient(
 					at 50% 0%,
 					rgba(var(--color-surface-400), 0.25) 0px,
 					transparent 50%
@@ -93,7 +92,9 @@
 							class="block h-0.5 max-w-0 rounded-btn bg-secondary-500 transition-all duration-500 group-hover:max-w-full"
 						/>
 					</div>
-					<p class="font-sans text-sm text-surface-800-100 group-hover:(text-on-surface-50/90) dark:group-hover:text-on-surface-800/90">
+					<p
+						class="font-sans text-sm text-surface-800-100 group-hover:(text-on-surface-50/90) dark:group-hover:text-on-surface-800/90"
+					>
 						{description}
 					</p>
 				</div>

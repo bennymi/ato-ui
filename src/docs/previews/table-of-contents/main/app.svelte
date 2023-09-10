@@ -1,24 +1,24 @@
 <script lang="ts">
-    import { TOC } from 'ato-ui';
+	import { TOC } from 'ato-ui';
 
-    const scrollFn = (id: string) => {
-        /**
-			 * Here we're overwriting the default scroll function
-			 * so that we only scroll within the ToC preview
-			 * container, instead of the entire page.
-			 */
-			const container = document.getElementById('toc-preview');
-			const element = document.getElementById(id);
+	const scrollFn = (id: string) => {
+		/**
+		 * Here we're overwriting the default scroll function
+		 * so that we only scroll within the ToC preview
+		 * container, instead of the entire page.
+		 */
+		const container = document.getElementById('toc-preview');
+		const element = document.getElementById(id);
 
-			if (container && element) {
-				container.scrollTo({
-					top: element.offsetTop - container.offsetTop,
-					behavior: 'smooth'
-				});
-			}
-    }
+		if (container && element) {
+			container.scrollTo({
+				top: element.offsetTop - container.offsetTop,
+				behavior: 'smooth'
+			});
+		}
+	};
 
-    const headingFilterFn = (heading: HTMLElement) => !heading.hasAttribute('data-toc-ignore');
+	const headingFilterFn = (heading: HTMLElement) => !heading.hasAttribute('data-toc-ignore');
 
 	let hideHeading = false;
 </script>
@@ -27,12 +27,9 @@
 	<!-- Page Content -->
 	<div
 		id="toc-preview"
-		class="space-y-2 overflow-y-auto rounded-container bg-surface-50-800 p-4 text-surface-900-50 "
+		class="space-y-2 overflow-y-auto rounded-container bg-surface-50-800 p-4 text-surface-900-50"
 	>
-		<button
-			class="btn-primary"
-			on:click={() => hideHeading = !hideHeading}
-		>
+		<button class="btn-primary" on:click={() => (hideHeading = !hideHeading)}>
 			{hideHeading ? 'Show heading' : 'Hide heading'}
 		</button>
 
@@ -43,7 +40,8 @@
 		{#if !hideHeading}
 			<h2>Reactive ToC</h2>
 			<p>
-				The ToC reacts to changes on the page and updates when headings change or get added or removed.
+				The ToC reacts to changes on the page and updates when headings change or get added or
+				removed.
 			</p>
 			<h3>Another sub-heading</h3>
 			<p>This one also gets added and removed.</p>
@@ -82,25 +80,25 @@
 	<!-- Table of Contents -->
 	<div class="overflow-y-auto rounded-container p-4 bg-surface-50-800">
 		<TOC
-            selector="#toc-preview"
-            exclude={['h1', 'h4', 'h5', 'h6']}
-            activeType="highest"
-            {scrollFn}
-            {headingFilterFn}
-        />
+			selector="#toc-preview"
+			exclude={['h1', 'h4', 'h5', 'h6']}
+			activeType="highest"
+			{scrollFn}
+			{headingFilterFn}
+		/>
 	</div>
 </div>
 
 <style>
 	#toc-preview > h2 {
-		--at-apply: "text-xl font-bold";
+		--at-apply: 'text-xl font-bold';
 	}
 
 	#toc-preview > h3 {
-		--at-apply: "text-lg font-bold";
+		--at-apply: 'text-lg font-bold';
 	}
 
 	#toc-preview > h4 {
-		--at-apply: "text-lg font-semibold";
+		--at-apply: 'text-lg font-semibold';
 	}
 </style>

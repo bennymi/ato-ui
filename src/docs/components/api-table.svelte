@@ -186,9 +186,7 @@
 	>
 		{#if $activeTab === 'props'}
 			<Tab key="props">
-				<Heading content="API" headerTag="h3">
-					Props
-				</Heading>
+				<Heading content="API" headerTag="h3">Props</Heading>
 
 				<RadioGroup
 					ariaLabel="props filter"

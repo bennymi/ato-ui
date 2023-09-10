@@ -25,10 +25,7 @@
 		"*.ts",
 		"**/*.tsx"
 	],
-	"exclude": [
-		"node_modules",
-		"**/*.test.*"
-	]
+	"exclude": ["node_modules", "**/*.test.*"]
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//
 	// If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes

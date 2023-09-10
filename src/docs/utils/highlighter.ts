@@ -1,4 +1,3 @@
-
 /**
  * Copy rehype-pretty-code into separate folder because of bundle errors.
  * Packages installed for this rehype (remove them when issue is solved):
@@ -21,7 +20,6 @@ import { highlighterStore } from './stores';
 import type { IShikiTheme } from 'shiki';
 import type { FileHighlights } from '$docs/data/types';
 
-
 async function getShikiHighlighter(theme: IShikiTheme | string, fetcher?: typeof fetch) {
 	if (fetcher && typeof window !== 'undefined') {
 		window.fetch = fetcher;
@@ -29,7 +27,7 @@ async function getShikiHighlighter(theme: IShikiTheme | string, fetcher?: typeof
 
 	const shikiHighlighter = await getHighlighter({
 		theme,
-		langs: ['svelte'],
+		langs: ['svelte']
 	});
 	return shikiHighlighter;
 }
@@ -45,7 +43,7 @@ export async function getStoredHighlighter(theme: IShikiTheme | string, fetcher?
 }
 
 /**
- * Source: https://github.com/pngwn/MDsveX/blob/26591be63e088f57c78108553813ef18cc8ca5b1/packages/mdsvex/src/index.ts#L40 
+ * Source: https://github.com/pngwn/MDsveX/blob/26591be63e088f57c78108553813ef18cc8ca5b1/packages/mdsvex/src/index.ts#L40
  */
 function stringify(this: Processor, options = {}) {
 	// @ts-ignore:next-line
@@ -72,20 +70,20 @@ function createMetaString(fileHighlights: FileHighlights | null): string {
 		words.forEach((item) => {
 			const { strings, id } = item;
 
-			strings.forEach((string) => meta = `${meta} /${string}/#${id}`);
+			strings.forEach((string) => (meta = `${meta} /${string}/#${id}`));
 		});
 	}
 
 	return meta;
 }
 
-type HighlightedPreviewArgs = { 
-	code: string, 
-	lang: string, 
-	fetcher: typeof fetch, 
-	theme: IShikiTheme | string, 
-	fileHighlights?: FileHighlights | null 
-}
+type HighlightedPreviewArgs = {
+	code: string;
+	lang: string;
+	fetcher: typeof fetch;
+	theme: IShikiTheme | string;
+	fileHighlights?: FileHighlights | null;
+};
 
 export async function getHighlightedPreviews(args: HighlightedPreviewArgs) {
 	const { code, lang, fetcher, theme, fileHighlights } = args;
@@ -94,9 +92,9 @@ export async function getHighlightedPreviews(args: HighlightedPreviewArgs) {
 
 	// await getStoredHighlighter(theme, fetcher);
 
-    const file = await unified()
+	const file = await unified()
 		.use(rehypeCustomParser, { lang, meta })
-        .use(rehypePrettyCode, {
+		.use(rehypePrettyCode, {
 			keepBackground: false,
 			// @ts-ignore:next-line
 			getHighlighter: (options) => {
@@ -105,39 +103,40 @@ export async function getHighlightedPreviews(args: HighlightedPreviewArgs) {
 		})
 		.use(stringify, {
 			allowDangerousHtml: true,
-			allowDangerousCharacters: true,
+			allowDangerousCharacters: true
 		})
-        .process(code);
+		.process(code);
 
-    return String(file);
+	return String(file);
 }
-
 
 /**
  * Source: https://github.com/rehypejs/rehype/blob/main/packages/rehype-parse/lib/index.js
  */
-function rehypeCustomParser(this: Processor, args: { lang: string, meta: string }) {
+function rehypeCustomParser(this: Processor, args: { lang: string; meta: string }) {
 	const { lang, meta } = args;
-	Object.assign(this, {Parser: parser});
+	Object.assign(this, { Parser: parser });
 
 	// meta example: data: { meta: '{5,6,14,18} /surface/#v' }
-	
+
 	function parser(doc: string) {
-		return{
+		return {
 			type: 'element',
 			tagName: 'pre',
-			children: [{
-				type: 'element',
-				tagName: 'code',
-				properties: { className: [ `language-${lang}` ] },
-				children: [
+			children: [
 				{
-					type: 'text',
-					value: doc
+					type: 'element',
+					tagName: 'code',
+					properties: { className: [`language-${lang}`] },
+					children: [
+						{
+							type: 'text',
+							value: doc
+						}
+					],
+					data: { meta }
 				}
-				],
-				data: { meta }
-			}]
-		}
+			]
+		};
 	}
 }

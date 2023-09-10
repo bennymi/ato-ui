@@ -14,14 +14,11 @@ import { escapeSvelte } from '@huntabyte/mdsvex';
 
 import { highlightCode } from './src/docs/mdsvex/highlight.js';
 
-
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const prettyCodeOptions = {
 	// theme: 'github-dark',
-	theme: JSON.parse(
-		readFileSync(resolve(__dirname, './static/moonlight-2-theme.json'), 'utf-8')
-	),
+	theme: JSON.parse(readFileSync(resolve(__dirname, './static/moonlight-2-theme.json'), 'utf-8')),
 	keepBackground: false,
 	// @ts-ignore:next-line
 	onVisitLine(node) {
@@ -39,9 +36,9 @@ const prettyCodeOptions = {
 			...options,
 			langs: BUNDLED_LANGUAGES.filter(({ id }) => {
 				return ['svelte', 'typescript', 'html', 'css', 'javascript', 'bash', 'shell'].includes(id);
-			}),
+			})
 		});
-	},
+	}
 };
 
 /** @type {import('mdsvex').MdsvexOptions} */
@@ -51,29 +48,34 @@ export const mdsvexOptions = {
 	// highlight: {
 	// 	highlighter: highlightCode
 	// },
-    rehypePlugins: [
+	rehypePlugins: [
 		rehypeCustomComponents,
 		rehypeComponentPreToPre,
 		[rehypePrettyCode, prettyCodeOptions],
 		rehypeHandleMetadata,
 		rehypeRenderCode,
-		rehypePreToComponentPre,
-
-	],
+		rehypePreToComponentPre
+	]
 };
-
 
 function rehypeCustomComponents() {
 	// @ts-ignore:next-line
 	return async (tree) => {
-		const hTags = ['Components.h1', 'Components.h2', 'Components.h3', 'Components.h4', 'Components.h5', 'Components.h6'];
+		const hTags = [
+			'Components.h1',
+			'Components.h2',
+			'Components.h3',
+			'Components.h4',
+			'Components.h5',
+			'Components.h6'
+		];
 
 		visit(tree, (node, index, parent) => {
 			// Check h tags, and pass some extra parameters to the custom components.
-            if (node?.type === 'element' && hTags.includes(node?.tagName)) {
+			if (node?.type === 'element' && hTags.includes(node?.tagName)) {
 				node.properties['content'] = node.children[0].value;
-                node.properties['headerTag'] = node.tagName.split('.')[1];
-            }
+				node.properties['headerTag'] = node.tagName.split('.')[1];
+			}
 		});
 	};
 }
@@ -84,7 +86,6 @@ function rehypeComponentPreToPre() {
 		// Replace `Component.pre` tags with regular `pre` tags.
 		// This enables us to use rehype-pretty-code with our custom `pre` component.
 		visit(tree, (node) => {
-
 			// if (node?.data && 'meta' in node?.data) {
 			// 	console.log('node:', node, '\n');
 			// 	console.log('data:', node?.data, '\n-------------------------');
@@ -100,11 +101,16 @@ function rehypeComponentPreToPre() {
 /**
  * Escapes the html string of code blocks so we can pass
  * it on to our custom `Component.pre` element.
- * @param {string} html 
+ * @param {string} html
  * @returns {string}
  */
 function escapeHtml(html) {
-	return html.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+	return html
+		.replaceAll('&', '&amp;')
+		.replaceAll('<', '&lt;')
+		.replaceAll('>', '&gt;')
+		.replaceAll('"', '&quot;')
+		.replaceAll("'", '&#039;');
 }
 
 function rehypePreToComponentPre() {
@@ -119,7 +125,6 @@ function rehypePreToComponentPre() {
 			if (node?.type === 'element' && node?.tagName === 'pre') {
 				node.tagName = 'Components.pre';
 
-				
 				// if (node?.children.length > 0) {
 				// 	console.log('\n\nnode:', node);
 				// 	console.log('\n\nnode.children[0]:', node?.children[0], '\n------------------------');
@@ -143,7 +148,10 @@ function rehypeHandleMetadata() {
 
 				const titleElement = node.children[0];
 				const preElement = node.children.at(-1);
-				if (preElement.tagName !== 'pre' || !('data-rehype-pretty-code-title' in titleElement.properties)) {
+				if (
+					preElement.tagName !== 'pre' ||
+					!('data-rehype-pretty-code-title' in titleElement.properties)
+				) {
 					return;
 				}
 
@@ -173,7 +181,7 @@ function rehypeRenderCode() {
 				const codeString = tabsToSpaces(
 					toHtml(codeEl, {
 						allowDangerousCharacters: true,
-						allowDangerousHtml: true,
+						allowDangerousHtml: true
 					})
 				);
 
@@ -185,8 +193,8 @@ function rehypeRenderCode() {
 }
 
 /**
- * 
- * @param {string} code 
+ *
+ * @param {string} code
  * @returns {string}
  */
 function tabsToSpaces(code) {

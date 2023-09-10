@@ -11,7 +11,7 @@ description: Available background shortcuts that allow you to easily set gradien
 
 ## Background & Text
 
-`[color]-[shade]`: Sets the background color with the corresponding `text-on` color. 
+`[color]-[shade]`: Sets the background color with the corresponding `text-on` color.
 
 Example: `primary-500` becomes `bg-primary-500 text-on-primary-500`.
 
@@ -57,7 +57,7 @@ Example: `bg-inverse-primary-500/20-surface/33` or `bg-inverse-primary/20-surfac
 
 ## Gradients
 
-`bg-gradient-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`: Sets the background to be a gradient of the three colors in the specified direction. The direction and shades are optional. It's also okay to just use 2 colors. For each color you can also specify an opacity. 
+`bg-gradient-[direction]-[color1]-[shade1]-[color2]-[shade2]-[color3]-[shade3]`: Sets the background to be a gradient of the three colors in the specified direction. The direction and shades are optional. It's also okay to just use 2 colors. For each color you can also specify an opacity.
 
 Possible directions: `r | l | tr | tl | br | bl | b | t`. The default direction is `r` if no direction is specified.
 
@@ -76,9 +76,10 @@ Examples: `bg-mesh-primary/20-x5-y0`, `bg-mesh-secondary-400/20-x20-y20-success/
 <div class="flex justify-center items-center my-4 h-64 bg-mesh-secondary/20-x4-y0-error-400-x125-y-25 surface-50-900">bg-mesh-secondary/20-x4-y0-error-400-x125-y-25</div>
 
 ```html
-<div 
-    class="min-h-screen bg-mesh-primary/20-x4-y0-success-x95-y95 text-surface-950-50 bg-surface-50-500">
-    This div has a background mesh gradient
+<div
+	class="min-h-screen bg-mesh-primary/20-x4-y0-success-x95-y95 text-surface-950-50 bg-surface-50-500"
+>
+	This div has a background mesh gradient
 </div>
 ```
 
@@ -89,4 +90,3 @@ Examples: `bg-mesh-primary/20-x5-y0`, `bg-mesh-secondary-400/20-x20-y20-success/
 Examples: `bg-radial-primary-secondary`, `bg-radial-primary-700-secondary-700-tertiary-700`.
 
 <div class="flex justify-center items-center my-4 h-64 bg-radial-primary-secondary-tertiary-700 text-on-primary">bg-radial-primary-secondary-tertiary-700</div>
-

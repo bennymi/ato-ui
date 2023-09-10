@@ -1,5 +1,4 @@
-
-:root [data-theme="ato"] {
+:root [data-theme='ato'] {
 	--ato-container-radius: 6px;
 
 	/* Buttons */
@@ -9,7 +8,7 @@
 	--btn-sm-p-y: 0.25rem;
 	--btn-sm-p-x: 0.5rem;
 	--btn-sm-font-weight: 500;
-	
+
 	--btn-md-p-y: 0.25rem;
 	--btn-md-p-x: 0.75rem;
 	--btn-md-font-weight: 500;
@@ -22,7 +21,7 @@
 	--btn-xl-p-x: 1.5rem;
 	--btn-xl-font-weight: 700;
 
-		/* primary colors */
+	/* primary colors */
 	--color-primary-50: 245, 245, 255; /* #f5f5ff */
 	--color-primary-100: 203, 203, 255; /* #cbcbff */
 	--color-primary-200: 161, 161, 255; /* #a1a1ff */
@@ -196,6 +195,4 @@
 	--on-error-800: 255, 255, 255; /* #ffffff */
 	--on-error-900: 255, 255, 255; /* #ffffff */
 	--on-error-950: 255, 255, 255; /* #ffffff */
-
 }
-	

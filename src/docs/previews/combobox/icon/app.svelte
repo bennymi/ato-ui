@@ -1,10 +1,6 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import {
-		Combobox,
-		type ComboboxItem,
-		type ComboboxSelectedStore
-	} from 'ato-ui';
+	import { Combobox, type ComboboxItem, type ComboboxSelectedStore } from 'ato-ui';
 
 	let items: ComboboxItem[] = [
 		{

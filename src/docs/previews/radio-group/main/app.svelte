@@ -8,15 +8,15 @@
 			label: 'Startup',
 			icon: 'i-material-symbols-rocket-launch-rounded'
 		},
-		{ 
-			value: 'business', 
-			label: 'Business', 
-			icon: 'i-material-symbols-add-business-rounded' 
+		{
+			value: 'business',
+			label: 'Business',
+			icon: 'i-material-symbols-add-business-rounded'
 		},
-		{ 
-			value: 'enterprise', 
-			label: 'Enterprise', 
-			icon: 'i-material-symbols-star-rounded' 
+		{
+			value: 'enterprise',
+			label: 'Enterprise',
+			icon: 'i-material-symbols-star-rounded'
 		}
 	];
 
@@ -27,19 +27,14 @@
 		{ label: 'Comfortable', value: 'comfortable' },
 		{ label: 'Compact', value: 'compact' }
 	];
-	
+
 	let checked = 'default';
 </script>
 
-<div class="bg-surface-50-800 p-4 rounded-container text-surface-900-50 flex flex-col justify-center items-center gap-8">
-
-	<RadioGroupRegular 
-		ariaLabel="view density"
-		orientation="horizontal"
-		{radioItems}
-		bind:checked
-	/>
-
+<div
+	class="bg-surface-50-800 p-4 rounded-container text-surface-900-50 flex flex-col justify-center items-center gap-8"
+>
+	<RadioGroupRegular ariaLabel="view density" orientation="horizontal" {radioItems} bind:checked />
 
 	<RadioGroup
 		ariaLabel="business type"

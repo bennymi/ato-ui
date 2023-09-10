@@ -10,7 +10,6 @@ description: Allows you to easily add spinners to your website when loading data
     export let previewComponents;
 </script>
 
-
 <!-- Dots fading -->
 <!-- <span class="s-dots-primary" />
 <span class="s-dots-primary-secondary-tertiary" /> -->
@@ -41,7 +40,7 @@ To customize these spinners use regular Tailwind classes to modify the size and 
 Example: `w-12 h-12 text-primary-500 i-svg-spinners-blocks-scale`.
 
 <Preview previewSnippets={previewSnippets['iconify']}>
-    <svelte:component this={previewComponents['iconify']} />
+<svelte:component this={previewComponents['iconify']} />
 </Preview>
 
 ## Size
@@ -49,7 +48,7 @@ Example: `w-12 h-12 text-primary-500 i-svg-spinners-blocks-scale`.
 You can set the size of each spinner by setting the width and height after the `s-` prefix. For example: `s-wh15-circle-secondary`, `s-wh20-flip-tertiary`. This will set the width and height to `w-15 h-15` and `w-20 h-20` respectively.
 
 <Preview previewSnippets={previewSnippets['size']}>
-    <svelte:component this={previewComponents['size']} />
+<svelte:component this={previewComponents['size']} />
 </Preview>
 
 ## Colors & Variations
@@ -60,10 +59,10 @@ Ato-UI's spinners can be customized with different colors. Each one is a bit dif
 
 Pattern: `s-circle-[color]`.
 
-You can change the border type and size of circles by using regular Tailwind classes like: `border-dashed`,  `border-spotted`, `border-6`, and `border-8`.
+You can change the border type and size of circles by using regular Tailwind classes like: `border-dashed`, `border-spotted`, `border-6`, and `border-8`.
 
 <Preview previewSnippets={previewSnippets['circle']}>
-    <svelte:component this={previewComponents['circle']} />
+<svelte:component this={previewComponents['circle']} />
 </Preview>
 
 ### Circle Split
@@ -71,7 +70,7 @@ You can change the border type and size of circles by using regular Tailwind cla
 Pattern: `s-circle-split-[color]`.
 
 <Preview previewSnippets={previewSnippets['circle-split']}>
-    <svelte:component this={previewComponents['circle-split']} />
+<svelte:component this={previewComponents['circle-split']} />
 </Preview>
 
 ### Squares Hover
@@ -79,7 +78,7 @@ Pattern: `s-circle-split-[color]`.
 Pattern: `s-squares-hover-[color1]-[color2]-[color3]`. You can set the colors of all three layers.
 
 <Preview previewSnippets={previewSnippets['squares-hover']}>
-    <svelte:component this={previewComponents['squares-hover']} />
+<svelte:component this={previewComponents['squares-hover']} />
 </Preview>
 
 ### Squares Rotate
@@ -87,17 +86,17 @@ Pattern: `s-squares-hover-[color1]-[color2]-[color3]`. You can set the colors of
 Pattern: `s-squares-hover-[color1]-[color2]`. You can set the colors of both rotating squares. The second color is optional.
 
 <Preview previewSnippets={previewSnippets['squares-rotate']}>
-    <svelte:component this={previewComponents['squares-rotate']} />
+<svelte:component this={previewComponents['squares-rotate']} />
 </Preview>
 
 ### Corners
 
-Pattern: `s-corners-[color]`. 
+Pattern: `s-corners-[color]`.
 
 You can also change the background with some additional classes such as:`bg-gradient-primary-secondary-tertiary`.
 
 <Preview previewSnippets={previewSnippets['corners']}>
-    <svelte:component this={previewComponents['corners']} />
+<svelte:component this={previewComponents['corners']} />
 </Preview>
 
 ### Corners Outline
@@ -105,5 +104,5 @@ You can also change the background with some additional classes such as:`bg-grad
 Pattern: `s-corners-outline-[color]`.
 
 <Preview previewSnippets={previewSnippets['corners-outline']}>
-    <svelte:component this={previewComponents['corners-outline']} />
+<svelte:component this={previewComponents['corners-outline']} />
 </Preview>

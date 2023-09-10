@@ -1,13 +1,12 @@
 <script lang="ts">
-    import { writable } from 'svelte/store';
+	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
 	import { createCombobox, type ComboboxFilterFunction } from '@melt-ui/svelte';
 
 	import type { Item, SelectedStore } from './types';
 
+	let selected: SelectedStore = writable();
 
-	let selected:SelectedStore = writable();
-    
 	let items: Item[] = [
 		{
 			subtitle: 'Harper Lee',
@@ -50,7 +49,7 @@
 			subtitle: 'George R.R. Martin',
 			value: 'A Game of Thrones'
 		}
-	];;
+	];
 
 	const filterFunction: ComboboxFilterFunction<Item> = ({ itemValue, input }) => {
 		const normalize = (str: string) => str.normalize().toLowerCase();
@@ -75,35 +74,35 @@
 </script>
 
 <div class="bg-surface-50-600 p-4 rounded-container">
-    <div class="flex flex-col gap-1">
-        <!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
-        <label {...$label} use:label >
-            <span class="text-sm font-medium text-surface-900-50">Choose your favourite book</span>
-        </label>
+	<div class="flex flex-col gap-1">
+		<!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
+		<label {...$label} use:label>
+			<span class="text-sm font-medium text-surface-900-50">Choose your favourite book</span>
+		</label>
 
-        <div class="relative w-fit">
-            <input
-                {...$input}
-                use:input
-                class="flex h-10 w-64 items-center justify-between rounded-container
+		<div class="relative w-fit">
+			<input
+				{...$input}
+				use:input
+				class="flex h-10 w-64 items-center justify-between rounded-container
                     px-3 pr-12 surface-50-800 border-1 border-surface-400/80"
-                placeholder="Favourite book"
-            />
-            <div
-                class="absolute right-2 top-1/2 z-10 -translate-y-1/2 h-10 flex justify-center items-center text-primary-900"
-            >
-                <svg
-                    class="w-6 h-6 transition-all {$open ? 'rotate-90' : '-rotate-90'}"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    ><path
-                        fill="#888888"
-                        d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l3.9-3.9Z"
-                    /></svg
-                >
-            </div>
-        </div>
-    </div>
+				placeholder="Favourite book"
+			/>
+			<div
+				class="absolute right-2 top-1/2 z-10 -translate-y-1/2 h-10 flex justify-center items-center text-primary-900"
+			>
+				<svg
+					class="w-6 h-6 transition-all {$open ? 'rotate-90' : '-rotate-90'}"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					><path
+						fill="#888888"
+						d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l3.9-3.9Z"
+					/></svg
+				>
+			</div>
+		</div>
+	</div>
 </div>
 
 {#if $open}

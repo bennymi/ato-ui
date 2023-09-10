@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { createAvatar } from '@melt-ui/svelte';
-
+	import { createAvatar } from '@melt-ui/svelte';
 
 	/** Set the image source. */
 	export let src = '';
@@ -8,8 +7,8 @@
 	export let alt = 'avatar';
 	/** Set the text value in case you don't have an image. The string automatically gets shortened to 4 characters. If you pass in separate words it will use the first letters of each word. */
 	export let text = '';
-    /** The amount of time in milliseconds to wait before displaying the image. */
-    export let delayMs = 0;
+	/** The amount of time in milliseconds to wait before displaying the image. */
+	export let delayMs = 0;
 
 	/** Set the width and height of the avatar. */
 	export let size = 'w-16 h-16';
@@ -22,13 +21,12 @@
 	/** Set the text styles. */
 	export let textStyles = 'font-bold text-on-primary';
 
-
-    const {
-        elements: { image },
-    } = createAvatar({
-        src,
-        delayMs
-    });
+	const {
+		elements: { image }
+	} = createAvatar({
+		src,
+		delayMs
+	});
 
 	const formatText = () => {
 		let letters = text
@@ -43,15 +41,16 @@
 </script>
 
 <span
-    class="avatar-image {size} {rounded} {borderStyle} {background} inline-flex justify-center items-center drag-none overflow-hidden"
+	class="avatar-image {size} {rounded} {borderStyle} {background} inline-flex justify-center items-center drag-none overflow-hidden"
 >
-    {#if src}
-        <img
-            {...$image} use:image
-            class="{size} {rounded} drag-none transition-all hover:(scale-110)" 
-            {alt} 
-        />
-    {:else}
-        <span class={textStyles}>{formattedText}</span>
-    {/if}
+	{#if src}
+		<img
+			{...$image}
+			use:image
+			class="{size} {rounded} drag-none transition-all hover:(scale-110)"
+			{alt}
+		/>
+	{:else}
+		<span class={textStyles}>{formattedText}</span>
+	{/if}
 </span>

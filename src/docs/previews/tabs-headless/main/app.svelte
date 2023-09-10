@@ -18,11 +18,7 @@
 </script>
 
 <div class="rounded-container p-4 bg-surface-50-800">
-	<TabsList 
-		activeTab="styled" 
-		{tabHeaders} 
-		ariaLabel="component type"
-	>
+	<TabsList activeTab="styled" {tabHeaders} ariaLabel="component type">
 		<Tab key="styled">Styled Content</Tab>
 		<Tab key="headless">Headless Content</Tab>
 		<Tab key="extra">Extra Content</Tab>

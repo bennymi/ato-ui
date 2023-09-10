@@ -21,7 +21,8 @@
 
 	function toggle(evt: any) {
 		// @ts-ignore:next-line
-		const isAppearanceTransition = document.startViewTransition &&
+		const isAppearanceTransition =
+			document.startViewTransition &&
 			!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		if (!isAppearanceTransition || isLandingPage()) {

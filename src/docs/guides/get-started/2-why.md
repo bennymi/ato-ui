@@ -45,7 +45,7 @@ Ato UI provides a preset that works with UnoCSS's `presetWind` to do exactly tha
 
 ### Dark & Light Mode
 
-We provide classes that make it easy to define light & dark mode colors. 
+We provide classes that make it easy to define light & dark mode colors.
 
 Example: `text-surface-900-50` uses the `text-surface-900` color for light mode and `text-surface-50` color for dark mode.
 

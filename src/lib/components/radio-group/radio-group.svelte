@@ -74,7 +74,7 @@
 	}
 </script>
 
-<div {...$root} use:root class="{rootStyles}" aria-label={ariaLabel}>
+<div {...$root} use:root class={rootStyles} aria-label={ariaLabel}>
 	{#each updated_items as { value, label, subLabel, icon, uid }}
 		{@const active = $isChecked(value)}
 		{@const styles = $isChecked(value) ? bgActiveStyles : bgStyles}

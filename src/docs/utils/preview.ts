@@ -5,7 +5,6 @@ import type { SvelteComponent } from 'svelte';
 import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
 import type { ExampleHighlights, FileHighlights } from '$docs/data/types';
 
-
 const PATH_LENGTH = 7;
 
 // export async function getMainPreviewComponent(slug: string) {
@@ -31,179 +30,196 @@ const PATH_LENGTH = 7;
 // }
 
 function isSlugFile(slug: string, key: string) {
-    const splitPath = key.split('/');
-    return splitPath.includes(slug);
+	const splitPath = key.split('/');
+	return splitPath.includes(slug);
 }
 
 function isMainFile(key: string) {
-    const splitPath = key.split('/');
-    if (splitPath && splitPath.length === PATH_LENGTH) {
-        return splitPath.at(-1)?.toLowerCase() === 'app.svelte';
-    }
+	const splitPath = key.split('/');
+	if (splitPath && splitPath.length === PATH_LENGTH) {
+		return splitPath.at(-1)?.toLowerCase() === 'app.svelte';
+	}
 
-    return false;
+	return false;
 }
 
 export function getGuidesFolderFiles(folder: string) {
-    // Get the files.
-    const filePaths = import.meta.glob(`/src/docs/guides/**/*.md`);
+	// Get the files.
+	const filePaths = import.meta.glob(`/src/docs/guides/**/*.md`);
 
-    const keys = Object.keys(filePaths);
+	const keys = Object.keys(filePaths);
 
-    const files: string[] = [];
+	const files: string[] = [];
 
-    for (const key of keys) {
-        const pathParts = key.split('/');
-        const file = pathParts.at(-1)?.replace('.md', '') ?? '';
+	for (const key of keys) {
+		const pathParts = key.split('/');
+		const file = pathParts.at(-1)?.replace('.md', '') ?? '';
 
-        if (file && pathParts.at(-2) === folder) {
-            files.push(file);
-        }
-    }
+		if (file && pathParts.at(-2) === folder) {
+			files.push(file);
+		}
+	}
 
-    return files;
+	return files;
 }
 
 function getFileType(key: string) {
-    const splitPath = key.split('/');
-    if (splitPath && splitPath.length === PATH_LENGTH) {
-        const filetype = splitPath.at(-1)?.split('.').at(-1);
-        return filetype === 'ts' ? 'typescript' : filetype;
-    }
+	const splitPath = key.split('/');
+	if (splitPath && splitPath.length === PATH_LENGTH) {
+		const filetype = splitPath.at(-1)?.split('.').at(-1);
+		return filetype === 'ts' ? 'typescript' : filetype;
+	}
 
-    return '';
+	return '';
 }
 
 function getFolderName(key: string) {
-    const splitPath = key.split('/');
-    if (splitPath && splitPath.length === PATH_LENGTH) {
-        return splitPath[5];
-    }
+	const splitPath = key.split('/');
+	if (splitPath && splitPath.length === PATH_LENGTH) {
+		return splitPath[5];
+	}
 
-    return '';
+	return '';
 }
 
 function getFileName(key: string) {
-    const splitPath = key.split('/');
-    if (splitPath && splitPath.length === PATH_LENGTH) {
-        return splitPath.at(-1);
-    }
+	const splitPath = key.split('/');
+	if (splitPath && splitPath.length === PATH_LENGTH) {
+		return splitPath.at(-1);
+	}
 
-    return '';
+	return '';
 }
 
-function getFileHighlights(foldername: string, filename: string, highlights: ExampleHighlights | undefined): FileHighlights | null {
-    if (!highlights) return null;
-    if (!(foldername in highlights)) return null;
-    if (!(filename in highlights[foldername])) return null;
+function getFileHighlights(
+	foldername: string,
+	filename: string,
+	highlights: ExampleHighlights | undefined
+): FileHighlights | null {
+	if (!highlights) return null;
+	if (!(foldername in highlights)) return null;
+	if (!(filename in highlights[foldername])) return null;
 
-    return highlights[foldername][filename];
+	return highlights[foldername][filename];
 }
 
 export type PreviewTab = {
-    title: string;
-    file: string;
+	title: string;
+	file: string;
 };
 
 export type PreviewExamples = Record<string, PreviewTab[]>;
 
 type PreviewSnippetsArgs = {
-    slug: string;
-    theme: IShikiTheme | string;
-    highlights?: ExampleHighlights | undefined;
-    required?: boolean;
-}
+	slug: string;
+	theme: IShikiTheme | string;
+	highlights?: ExampleHighlights | undefined;
+	required?: boolean;
+};
 
 /**
  * Returns all highlighted code files for each example
  * of the specified slug route.
  */
 export async function getAllPreviewSnippets(args: PreviewSnippetsArgs) {
-    const { slug, theme, highlights, required } = { required: true, ...args };
+	const { slug, theme, highlights, required } = { required: true, ...args };
 
-    // Get the files.
-    const rawFiles = import.meta.glob(`/src/docs/previews/**/*.{css,svelte,ts}`, {
+	// Get the files.
+	const rawFiles = import.meta.glob(`/src/docs/previews/**/*.{css,svelte,ts}`, {
 		as: 'raw',
-		eager: true,
+		eager: true
 	});
 
-    // Get the highlighted HTML for each file.
-    // const previewSnippets: PreviewTab[] = [];
-    const previewSnippets: PreviewExamples = {};
+	// Get the highlighted HTML for each file.
+	// const previewSnippets: PreviewTab[] = [];
+	const previewSnippets: PreviewExamples = {};
 
-    let mainExists = false;
+	let mainExists = false;
 
-    const keys = Object.keys(rawFiles);
+	const keys = Object.keys(rawFiles);
 
-    for await (const key of keys) {
-        if (isSlugFile(slug, key)) {
-            const foldername = getFolderName(key);
-            const filename = getFileName(key);
-            const filetype = getFileType(key);
+	for await (const key of keys) {
+		if (isSlugFile(slug, key)) {
+			const foldername = getFolderName(key);
+			const filename = getFileName(key);
+			const filetype = getFileType(key);
 
-            if (!filename || !foldername || !filetype) throw error(500);
-            
-            const fileHighlights = getFileHighlights(foldername, filename, highlights);
+			if (!filename || !foldername || !filetype) throw error(500);
 
-            const snippet = await getHighlightedPreviews({ code: rawFiles[key].trim(), lang: filetype, fetcher: fetch, theme: theme, fileHighlights });
+			const fileHighlights = getFileHighlights(foldername, filename, highlights);
 
-            // Add folder to examples.
-            if (!(foldername in previewSnippets)) {
-                previewSnippets[foldername] = [];
-            }
+			const snippet = await getHighlightedPreviews({
+				code: rawFiles[key].trim(),
+				lang: filetype,
+				fetcher: fetch,
+				theme: theme,
+				fileHighlights
+			});
 
-            const file = { title: filename, file: snippet };
+			// Add folder to examples.
+			if (!(foldername in previewSnippets)) {
+				previewSnippets[foldername] = [];
+			}
 
-            // Add file to example.
-            if (isMainFile(key)) {
-                // previewSnippets.main = snippet;
-                previewSnippets[foldername].unshift(file);
+			const file = { title: filename, file: snippet };
 
-                if (foldername.toLowerCase() === 'main') mainExists = true;
-            } else {
-                previewSnippets[foldername].push(file);
-            }
-        }
-    }
+			// Add file to example.
+			if (isMainFile(key)) {
+				// previewSnippets.main = snippet;
+				previewSnippets[foldername].unshift(file);
 
-    if (required && !mainExists) {
-        throw error(500);
-    }
+				if (foldername.toLowerCase() === 'main') mainExists = true;
+			} else {
+				previewSnippets[foldername].push(file);
+			}
+		}
+	}
 
-    return previewSnippets;
+	if (required && !mainExists) {
+		throw error(500);
+	}
+
+	return previewSnippets;
 }
 
 /**
  * This gets the highlighted types.ts file
- * for a given component page. 
+ * for a given component page.
  */
-export async function getComponentsTypesSnippet(args: { slug: string, theme: IShikiTheme | string }) {
-    const { slug, theme } = args;
+export async function getComponentsTypesSnippet(args: {
+	slug: string;
+	theme: IShikiTheme | string;
+}) {
+	const { slug, theme } = args;
 
-    // Get the files.
-    const rawFiles = import.meta.glob(`/src/lib/components/**/types.ts`, {
+	// Get the files.
+	const rawFiles = import.meta.glob(`/src/lib/components/**/types.ts`, {
 		as: 'raw',
-		eager: true,
+		eager: true
 	});
 
-    // Get the highlighted HTML for each file.
-    // const previewSnippets: PreviewTab[] = [];
-    let typesSnippet: string = '';
+	// Get the highlighted HTML for each file.
+	// const previewSnippets: PreviewTab[] = [];
+	let typesSnippet: string = '';
 
-    const keys = Object.keys(rawFiles);
+	const keys = Object.keys(rawFiles);
 
-    for await (const key of keys) {
-        if (isSlugFile(slug, key)) {
+	for await (const key of keys) {
+		if (isSlugFile(slug, key)) {
+			const snippet = await getHighlightedPreviews({
+				code: rawFiles[key].trim(),
+				lang: 'typescript',
+				fetcher: fetch,
+				theme: theme
+			});
 
-            const snippet = await getHighlightedPreviews({ code: rawFiles[key].trim(), lang: 'typescript', fetcher: fetch, theme: theme });
+			typesSnippet = snippet;
 
-            typesSnippet = snippet;
+			break;
+		}
+	}
 
-            break;
-        }
-    }
-
-    return typesSnippet;
+	return typesSnippet;
 }
 
 export type PreviewComponents = Record<string, SvelteComponent>;
@@ -213,122 +229,122 @@ export type PreviewFile = {
 };
 
 type PreviewComponentsArgs = {
-    slug: string;
-    required?: boolean;
-}
+	slug: string;
+	required?: boolean;
+};
 
 /**
  * Returns the main 'app.svelte' component for every example
- * folder within the specified slug route from inside the 
+ * folder within the specified slug route from inside the
  * previews folder.
  */
 export async function getAllPreviewComponents(args: PreviewComponentsArgs) {
-    const { slug, required } = { required: true, ...args};
+	const { slug, required } = { required: true, ...args };
 
-    // Get the files.
-    const rawFiles = import.meta.glob(`/src/docs/previews/**/app.svelte`);
+	// Get the files.
+	const rawFiles = import.meta.glob(`/src/docs/previews/**/app.svelte`);
 
-    const previewComponents: PreviewComponents = {};
+	const previewComponents: PreviewComponents = {};
 
-    let mainExists = false;
+	let mainExists = false;
 
-    const keys = Object.keys(rawFiles);
+	const keys = Object.keys(rawFiles);
 
-    for await (const key of keys) {
-        if (isSlugFile(slug, key)) {
-            const foldername = getFolderName(key);
-            const filename = getFileName(key);
-            const filetype = getFileType(key);
+	for await (const key of keys) {
+		if (isSlugFile(slug, key)) {
+			const foldername = getFolderName(key);
+			const filename = getFileName(key);
+			const filetype = getFileType(key);
 
-            if (!filename || !foldername || !filetype) throw error(500);
+			if (!filename || !foldername || !filetype) throw error(500);
 
-            /**
-             * import.meta.glob returns an import function for each key.
-             * Call the function and await the response to get the 
-             * component.
-             */
-            const previewComponent = (await rawFiles[key]()) as PreviewFile;
+			/**
+			 * import.meta.glob returns an import function for each key.
+			 * Call the function and await the response to get the
+			 * component.
+			 */
+			const previewComponent = (await rawFiles[key]()) as PreviewFile;
 
-            // Add component to example.
-            if ('default' in previewComponent) {
-                previewComponents[foldername] = previewComponent.default;
+			// Add component to example.
+			if ('default' in previewComponent) {
+				previewComponents[foldername] = previewComponent.default;
 
-                if (foldername.toLowerCase() === 'main') mainExists = true;
-            }
-        }
-    }
+				if (foldername.toLowerCase() === 'main') mainExists = true;
+			}
+		}
+	}
 
-    if (required && !mainExists) {
-        throw error(500);
-    }
+	if (required && !mainExists) {
+		throw error(500);
+	}
 
-    return previewComponents;
+	return previewComponents;
 }
 
-
 function isDocsPage(slug: string, key: string) {
-    return key.includes(`${slug}.md`);
+	return key.includes(`${slug}.md`);
 }
 
 export type Metadata = {
-    title: string;
-    description: string;
-    icon?: string;
-}
+	title: string;
+	description: string;
+	icon?: string;
+};
 
 export type DocsComponentData = {
-    content: SvelteComponent | null;
-    meta: Metadata;
-    styledExists?: boolean;
-    headlessExists?: boolean;
-    githubPath: string;
+	content: SvelteComponent | null;
+	meta: Metadata;
+	styledExists?: boolean;
+	headlessExists?: boolean;
+	githubPath: string;
 };
 
 /**
  * Get the markdown documentation related information,
- * so the markdown as a component, as well as the 
+ * so the markdown as a component, as well as the
  * meta data (title, description, etc.).
  */
-export async function getDocsData(args: { slug: string, isComponent: boolean }) {
-    const { slug, isComponent } = args;
+export async function getDocsData(args: { slug: string; isComponent: boolean }) {
+	const { slug, isComponent } = args;
 
-    // Get the files.
-    const rawFiles = import.meta.glob(`/src/docs/guides/**/*.md`);
+	// Get the files.
+	const rawFiles = import.meta.glob(`/src/docs/guides/**/*.md`);
 
-    const docsComponentData: Partial<DocsComponentData> = {
-        content: null,
-    };
+	const docsComponentData: Partial<DocsComponentData> = {
+		content: null
+	};
 
-    const keys = Object.keys(rawFiles);
+	const keys = Object.keys(rawFiles);
 
-    for await (const key of keys) {
-        if (isDocsPage(slug, key)) {
+	for await (const key of keys) {
+		if (isDocsPage(slug, key)) {
+			docsComponentData.githubPath = key;
+			const docsComponent = (await rawFiles[key]()) as PreviewFile;
 
-            docsComponentData.githubPath = key;
-            const docsComponent = (await rawFiles[key]()) as PreviewFile;
+			if ('default' in docsComponent) {
+				docsComponentData.content = docsComponent.default;
+			}
 
-            if ('default' in docsComponent) {
-                docsComponentData.content = docsComponent.default;
-            }
+			if ('metadata' in docsComponent) {
+				docsComponentData.meta = docsComponent.metadata as Metadata;
+			}
+		}
+	}
 
-            if ('metadata' in docsComponent) {
-                docsComponentData.meta = docsComponent.metadata as Metadata;
-            }
-        }
-    }
+	if (!docsComponentData.content || !docsComponentData.meta || !docsComponentData.githubPath) {
+		throw error(500);
+	}
 
-    if (!docsComponentData.content || !docsComponentData.meta || !docsComponentData.githubPath) {
-        throw error(500);
-    }
+	if (isComponent) {
+		let components = keys
+			.filter((v) => v.includes(slug.replace('-headless', '')))
+			.map((v) => v.split('/').at(-1)?.split('.')[0]);
 
-    if (isComponent) {
-        let components = keys
-            .filter((v) => v.includes(slug.replace('-headless', '')))
-            .map((v) => v.split('/').at(-1)?.split('.')[0]);
+		docsComponentData.styledExists = components.includes(slug.replace('-headless', ''));
+		docsComponentData.headlessExists = components.includes(
+			`${slug.replace('-headless', '')}-headless`
+		);
+	}
 
-        docsComponentData.styledExists = components.includes(slug.replace('-headless', ''));
-        docsComponentData.headlessExists = components.includes(`${slug.replace('-headless', '')}-headless`);
-    }
-
-    return docsComponentData;
+	return docsComponentData;
 }

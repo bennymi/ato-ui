@@ -52,15 +52,13 @@
 			</svelte:fragment>
 
 			<!-- The actual submenu. -->
-			<Dropdown.RadioGroup 
-				value={themeValue} 
-				{checkedIcon} 
+			<Dropdown.RadioGroup
+				value={themeValue}
+				{checkedIcon}
 				on:value-change={(e) => console.log('radio group value changed:', e.detail)}
 			>
 				{#each themes as theme}
-					<Dropdown.RadioGroupItem
-						value={theme}
-					>
+					<Dropdown.RadioGroupItem value={theme}>
 						{theme}
 					</Dropdown.RadioGroupItem>
 				{/each}
@@ -74,6 +72,5 @@
 		>
 			<IconItem text="Delete theme" icon="i-material-symbols-delete-rounded" />
 		</Dropdown.Item>
-		
 	</Dropdown.Menu>
 </div>
