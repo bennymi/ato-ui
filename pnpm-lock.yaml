@@ -74,12 +74,6 @@ devDependencies:
   '@unocss/preset-icons':
     specifier: ^0.55.7
     version: 0.55.7
-  '@unocss/preset-mini':
-    specifier: ^0.55.7
-    version: 0.55.7
-  '@unocss/preset-uno':
-    specifier: ^0.55.7
-    version: 0.55.7
   '@unocss/preset-wind':
     specifier: ^0.55.7
     version: 0.55.7
