@@ -76,7 +76,7 @@
 	"devDependencies": {
 		"@changesets/cli": "^2.26.2",
 		"@huntabyte/mdsvex": "^0.16.8",
-		"@iconify-json/logos": "^1.1.35",
+		"@iconify-json/logos": "^1.1.36",
 		"@iconify-json/material-symbols": "^1.1.58",
 		"@iconify-json/mdi": "^1.1.54",
 		"@iconify-json/svg-spinners": "^1.1.2",
