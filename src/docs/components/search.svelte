@@ -102,7 +102,7 @@
 		Results: {searched_list.length}
 	</div>
 	<div class="text-surface-900-50 flex flex-col gap-4">
-		{#each searched_list as { rule, description, keywords, variablesUsed, examples }}
+		{#each searched_list as { rule, description, keywords, examples }}
 			<div
 				class="rounded-container p-4 border-2 bg-surface-50-600 backdrop-blur-sm transition-all duration-200 border-surface-100-900 hover:(border-primary-500 bg-mesh-primary-x50-y105-primary-x115-y105-primary-x-15-y105)"
 				transition:slide={{ duration: 200 }}

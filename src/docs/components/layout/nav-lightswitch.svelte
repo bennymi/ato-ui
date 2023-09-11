@@ -19,7 +19,8 @@
 		}
 	}
 
-	function toggle(evt: any) {
+	function toggle(evt: MouseEvent) {
+		// prettier-ignore
 		// @ts-ignore:next-line
 		const isAppearanceTransition = document.startViewTransition &&
 			!window.matchMedia('(prefers-reduced-motion: reduce)').matches;

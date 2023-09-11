@@ -1,5 +1,4 @@
-
-:root [data-theme="fire"] {
+:root [data-theme='fire'] {
 	--ato-container-radius: 6px;
 
 	/* Buttons */
@@ -9,7 +8,7 @@
 	--btn-sm-p-y: 0.25rem;
 	--btn-sm-p-x: 0.5rem;
 	--btn-sm-font-weight: 500;
-	
+
 	--btn-md-p-y: 0.25rem;
 	--btn-md-p-x: 0.75rem;
 	--btn-md-font-weight: 500;
@@ -22,7 +21,7 @@
 	--btn-xl-p-x: 1.5rem;
 	--btn-xl-font-weight: 700;
 
-		/* primary colors */
+	/* primary colors */
 	--color-primary-50: 251, 243, 243; /* #fbf3f3 */
 	--color-primary-100: 233, 193, 193; /* #e9c1c1 */
 	--color-primary-200: 219, 156, 156; /* #db9c9c */
@@ -196,6 +195,4 @@
 	--on-error-800: 255, 255, 255; /* #ffffff */
 	--on-error-900: 255, 255, 255; /* #ffffff */
 	--on-error-950: 255, 255, 255; /* #ffffff */
-
 }
-	

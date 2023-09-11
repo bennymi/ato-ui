@@ -9,40 +9,32 @@ module.exports = {
 		// 'airbnb-typescript/base',
 		'prettier'
 	],
-	plugins: [
-		'@typescript-eslint', 
-		'import'
-	],
-	// ignorePatterns: [
-	// 	'.changeset',
-	// 	'.github',
-	// 	'.vscode',
-	// 	'src/docs/utils/rehype-pretty-code',
-	// ], // ['*.cjs'],
+	// plugins: ['@typescript-eslint', 'import'],
+	plugins: ['@typescript-eslint'],
 	overrides: [
 		{
 			files: ['**/*.svelte'],
 			parser: 'svelte-eslint-parser',
 			parserOptions: {
 				parser: '@typescript-eslint/parser'
-			},
-			rules: {
-				'import/no-named-as-default': 0,
-				'import/no-named-as-default-member': 0
 			}
+			// rules: {
+			// 	'import/no-named-as-default': 0,
+			// 	'import/no-named-as-default-member': 0
+			// }
 		}
 	],
-	settings: {
-		'import/parsers': {
-			'@typescript-eslint/parser': ['.js', '.ts']
-			// '@typescript-eslint/parser': ['.cjs', '.js', '.ts'],
-		},
-		'import/resolver': {
-			typescript: {
-				alwaysTryTypes: true
-			}
-		}
-	},
+	// settings: {
+	// 	'import/parsers': {
+	// 		'@typescript-eslint/parser': ['.js', '.ts']
+	// 		// '@typescript-eslint/parser': ['.cjs', '.js', '.ts'],
+	// 	},
+	// 	'import/resolver': {
+	// 		typescript: {
+	// 			alwaysTryTypes: true
+	// 		}
+	// 	}
+	// },
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020,
@@ -57,7 +49,6 @@ module.exports = {
 	rules: {
 		// 'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
 		// 'prefer-const': 0,
-		'svelte/no-at-html-tags': 'warn',
 		// 'import/prefer-default-export': 0,
 		// 'no-param-reassign': 0,
 		// 'no-return-assign': 0,
@@ -67,14 +58,19 @@ module.exports = {
 		// 'import/no-extraneous-dependencies': 0,
 		// 'import/no-mutable-exports': 0,
 		// 'import/no-duplicates': 0,
-		// 'import/no-unresolved': 'warn',
 		// 'no-unused-vars': 'off',
 		// '@typescript-eslint/no-loop-func': 0,
 		// '@typescript-eslint/no-unused-vars': 'warn',
 		// '@typescript-eslint/no-throw-literal': 'warn',
+		// 'import/no-unresolved': 'warn',
+		'svelte/no-at-html-tags': 'off',
+		'svelte/no-unused-svelte-ignore': 'off',
+
+		'@typescript-eslint/ban-ts-comment': 0,
+		'@typescript-eslint/no-explicit-any': 'warn',
 
 		'no-restricted-imports': ['error', { paths: ['$env/static/private'] }],
-		'no-self-assign': 0,
+		'no-self-assign': 0
 		// '@typescript-eslint/naming-convention': [
 		// 	'warn',
 		// 	{

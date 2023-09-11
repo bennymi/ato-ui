@@ -22,7 +22,7 @@
 		{ label: 'Compact', value: 'compact' }
 	];
 
-	$: uniqueIds = radioItems.map((item) => generateId());
+	$: uniqueIds = radioItems.map(() => generateId());
 </script>
 
 <div class="bg-surface-50-800 w-48 p-4 rounded-container text-surface-900-50">

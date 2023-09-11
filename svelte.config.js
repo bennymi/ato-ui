@@ -11,10 +11,7 @@ const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
 	extensions: ['.svelte', '.md'],
-	preprocess: [
-		mdsvex(mdsvexOptions),
-		vitePreprocess()
-	],
+	preprocess: [mdsvex(mdsvexOptions), vitePreprocess()],
 
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
@@ -27,10 +24,10 @@ const config = {
 			'$docs/*': 'src/docs/*',
 			$components: 'src/docs/components',
 			'$components/*': 'src/docs/components/*',
-			$lib: "./src/lib",
-			"$lib/*": "./src/lib/*",
-			$app: "./node_modules/@sveltejs/kit/types",
-			"$app/*": "./node_modules/@sveltejs/kit/types/ambient.d.ts",
+			$lib: './src/lib',
+			'$lib/*': './src/lib/*',
+			$app: './node_modules/@sveltejs/kit/types',
+			'$app/*': './node_modules/@sveltejs/kit/types/ambient.d.ts'
 		}
 	},
 	vitePlugin: {

@@ -1,9 +1,9 @@
-import type { TransitionConfig } from "svelte/transition";
+import type { TransitionConfig } from 'svelte/transition';
 
 // Props
 export type DialogRole = 'dialog' | 'alertdialog';
 
 export type DialogTransition = {
-    trans: (node: Element, options: any) => TransitionConfig,
-    options: any
-}
+	trans: (node: Element, options: any) => TransitionConfig;
+	options: any;
+};

@@ -9,21 +9,18 @@ You can change the transitions of the dialog overlay and container opening and c
 
 ```svelte {3,7-10,15}
 <script lang="ts">
-    import { writable } from 'svelte/store';
-    import { slide } from 'svelte/transition';
-    import { Dialog, type DialogTransition } from 'ato-ui';
+	import { writable } from 'svelte/store';
+	import { slide } from 'svelte/transition';
+	import { Dialog, type DialogTransition } from 'ato-ui';
 
-    let open = writable(false);
-    let containerTransition: DialogTransition = {
-        trans: slide,
-        options: { duration: 200 }
-    }
+	let open = writable(false);
+	let containerTransition: DialogTransition = {
+		trans: slide,
+		options: { duration: 200 }
+	};
 </script>
 
-<Dialog
-    {open}
-    {containerTransition}
->
-    <!-- Content -->
+<Dialog {open} {containerTransition}>
+	<!-- Content -->
 </Dialog>
 ```

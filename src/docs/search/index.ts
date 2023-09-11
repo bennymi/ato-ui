@@ -1,7 +1,5 @@
-import type { RulesDescription } from "./types";
+import type { RulesDescription } from './types';
 
-import { buttonDescriptions } from "./rules/buttons";
+import { buttonDescriptions } from './rules/buttons';
 
-export const descriptions: RulesDescription[] = [
-    ...buttonDescriptions,
-]
+export const descriptions: RulesDescription[] = [...buttonDescriptions];

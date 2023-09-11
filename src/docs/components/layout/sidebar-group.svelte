@@ -53,7 +53,7 @@
 
 	{#if !hide_group}
 		<div id={group_id} transition:slide={{ duration: 300 }}>
-			{#each items as item, i}
+			{#each items as item}
 				{@const hasTwoItems = item.length === 2}
 				<div class="flex items-center gap-1">
 					<a

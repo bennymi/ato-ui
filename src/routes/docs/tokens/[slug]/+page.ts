@@ -8,15 +8,15 @@ export const entries = (() => {
 }) satisfies EntryGenerator;
 
 export const load = (async ({ params }) => {
-    const { slug } = params;
+	const { slug } = params;
 
 	if (!getGuidesFolderFiles('tokens').includes(slug)) {
-        throw error(404);
-    }
+		throw error(404);
+	}
 
-    const docsComponentData = await getDocsData({ slug, isComponent: false });
+	const docsComponentData = await getDocsData({ slug, isComponent: false });
 
-    return {
-        ...docsComponentData,
-    };
+	return {
+		...docsComponentData
+	};
 }) satisfies PageLoad;

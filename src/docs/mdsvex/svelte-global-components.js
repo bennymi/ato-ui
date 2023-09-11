@@ -9,7 +9,6 @@ import MagicString from 'magic-string';
  * @property {Array.<string>} importPaths The paths in which the component should be imported. Example: ['src/routes/docs/'].
  */
 
-
 // https://github.com/threlte/threlte/blob/main/packages/preprocess/src/index.ts
 // https://astexplorer.net/
 // https://github.com/Rich-Harris/magic-string
@@ -23,44 +22,48 @@ import MagicString from 'magic-string';
  * @returns {import('svelte/types/compiler/preprocess').PreprocessorGroup}
  */
 const svelteGlobalComponents = (globalOptions) => ({
-    markup(options) {
-        const { content, filename } = options;
-        const { components } = globalOptions;
+	markup(options) {
+		const { content, filename } = options;
+		const { components } = globalOptions;
 
-        let code = '';
+		let code = '';
 
-        const relevant = components.filter((item) => item.importPaths.some((p) => filename?.includes(p)));
+		const relevant = components.filter((item) =>
+			item.importPaths.some((p) => filename?.includes(p))
+		);
 
-        if (filename?.includes('.md') && relevant.length > 0) {
-            let contextModule = '<script context="module">';
+		if (filename?.includes('.md') && relevant.length > 0) {
+			let contextModule = '<script context="module">';
 
-            const hasModuleContext = content.indexOf(contextModule);
+			const hasModuleContext = content.indexOf(contextModule);
 
-            if (hasModuleContext === -1) {
-                code = `${contextModule}\n`;
+			if (hasModuleContext === -1) {
+				code = `${contextModule}\n`;
 
-                relevant.forEach((item) => code += `\timport ${item.name} from '${item.location}';\n`);
+				relevant.forEach((item) => (code += `\timport ${item.name} from '${item.location}';\n`));
 
-                code += `</script>\n${content}`;
-            } else {
-                const s = new MagicString(content);
-                const idx = content.indexOf(contextModule);
+				code += `</script>\n${content}`;
+			} else {
+				const s = new MagicString(content);
+				const idx = content.indexOf(contextModule);
 
-                
-                const imports = relevant.reduce((previous, item) => `${previous}\n\timport ${item.name} from '${item.location}';`, '');
+				const imports = relevant.reduce(
+					(previous, item) => `${previous}\n\timport ${item.name} from '${item.location}';`,
+					''
+				);
 
-                s.prependRight(idx + contextModule.length, imports);
+				s.prependRight(idx + contextModule.length, imports);
 
-                code = s.toString();
-            }
-        } else {
-            code = content;
-        }
+				code = s.toString();
+			}
+		} else {
+			code = content;
+		}
 
-        return {
-            code
-        }
-    },
+		return {
+			code
+		};
+	}
 });
 
 export default svelteGlobalComponents;

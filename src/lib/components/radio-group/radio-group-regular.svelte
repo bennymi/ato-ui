@@ -72,7 +72,7 @@
 
 	$: disabledStyles = disabled ? 'opacity-80 cursor-not-allowed' : '';
 
-	$: uniqueIds = radioItems.map((item) => generateId());
+	$: uniqueIds = radioItems.map(() => generateId());
 	$: checked = $value;
 	$: {
 		$radioDisabled = disabled;

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	import { default as Heading } from './markdown/heading.svelte';
 	import type { APIProp, Data } from '$docs/data/types';
@@ -70,12 +69,12 @@
 	let filter: 'all' | 'required' | 'function' | 'style' | 'icon' | 'transition' = 'all';
 	let apis: APIProp[] = [];
 
-	function resetFilter(componentData: Data): void {
-		filter = 'all';
-	}
+	// function resetFilter(componentData: Data): void {
+	// 	filter = 'all';
+	// }
 
+	// $: resetFilter(componentData);
 	$: ({ apiExtraInfo } = componentData);
-	$: resetFilter(componentData);
 
 	$: {
 		apis = [];
@@ -186,9 +185,7 @@
 	>
 		{#if $activeTab === 'props'}
 			<Tab key="props">
-				<Heading content="API" headerTag="h3">
-					Props
-				</Heading>
+				<Heading content="API" headerTag="h3">Props</Heading>
 
 				<RadioGroup
 					ariaLabel="props filter"

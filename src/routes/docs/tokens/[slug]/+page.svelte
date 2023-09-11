@@ -7,6 +7,7 @@
 
 	$: ({ content, meta, githubPath } = data);
 
+	// eslint-disable-next-line no-undef, @typescript-eslint/no-explicit-any
 	type Component = $$Generic<typeof SvelteComponent>;
 
 	$: docsComponent = content as unknown as Component;

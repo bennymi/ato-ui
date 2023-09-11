@@ -9,11 +9,11 @@ If you put the table of contents (ToC) in the layout file where the content for 
 
 ```svelte
 <script lang="ts">
-    import { page } from '$app/stores';
-    import { TOC } from 'ato-ui';
+	import { page } from '$app/stores';
+	import { TOC } from 'ato-ui';
 </script>
 
 {#key $page.url.pathname}
-    <TOC target="#content" />
+	<TOC target="#content" />
 {/key}
 ```

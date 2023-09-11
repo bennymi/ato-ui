@@ -1,10 +1,6 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import {
-		Combobox,
-		type ComboboxItem,
-		type ComboboxSelectedStore
-	} from 'ato-ui';
+	import { Combobox, type ComboboxItem, type ComboboxSelectedStore } from 'ato-ui';
 
 	let items: ComboboxItem[] = [
 		{
@@ -51,7 +47,6 @@
 	];
 
 	let selected: ComboboxSelectedStore = writable();
-	let selectIcon = 'i-material-symbols-check-small-rounded text-on-primary-500';
 </script>
 
 <div class="bg-surface-50-600 p-4 rounded-container">

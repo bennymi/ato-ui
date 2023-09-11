@@ -20,7 +20,7 @@
 	const itemDisabledClasses = 'px-2 py-1 text-surface-300 cursor-not-allowed';
 
 	const {
-		elements: { trigger, menu, item, separator, arrow },
+		elements: { trigger, menu, item, separator },
 		builders: { createSubmenu, createMenuRadioGroup, createCheckboxItem }
 	} = createDropdownMenu({
 		forceVisible: true,
