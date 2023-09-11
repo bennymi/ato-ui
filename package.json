@@ -15,7 +15,7 @@
 		"release": "changeset publish",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin prettier-plugin-svelte --check . && eslint .",
+		"lint": "prettier --check . && eslint .",
 		"format": "prettier --plugin prettier-plugin-svelte --write ."
 	},
 	"publishConfig": {
