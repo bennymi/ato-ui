@@ -108,7 +108,7 @@ function find_best_contrast(hex: string): Contrast {
 }
 
 export default function generate_palette(baseColor: ColorManipulation): PaletteShades {
-	const response: any = {
+	const response: Partial<Record<ShadeValues, string>> = {
 		500: `#${baseColor.color}`.replace('##', '#')
 	};
 
@@ -123,7 +123,7 @@ export default function generate_palette(baseColor: ColorManipulation): PaletteS
 		response[level] = darken(baseColor.color, (100 - darken_values[i]) / 100);
 	});
 
-	const palette_shades: any = {};
+	const palette_shades: Partial<PaletteShades> = {};
 
 	shade_values.forEach((v) => {
 		const contrast = find_best_contrast(<string>response[v]);
@@ -134,7 +134,7 @@ export default function generate_palette(baseColor: ColorManipulation): PaletteS
 		} satisfies Shade;
 	});
 
-	return palette_shades satisfies PaletteShades;
+	return <PaletteShades>palette_shades;
 }
 
 export function create_css_colors(theme: FullTheme): string {
