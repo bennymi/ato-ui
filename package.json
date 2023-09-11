@@ -16,7 +16,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --plugin prettier-plugin-svelte --write ."
+		"lint:write": "prettier --write . && eslint . --fix",
+		"format": "prettier --write ."
 	},
 	"publishConfig": {
 		"access": "public"
