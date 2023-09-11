@@ -1,16 +1,15 @@
-
 /* html, body {
     --at-apply: "min-w-screen w-full h-full";
 } */
 
 .prose {
-    --at-apply: "w-full text-surface-900-50";
+	--at-apply: 'w-full text-surface-900-50';
 }
 
 [data-highlighted-line] {
 	/* --at-apply: "bg-surface-400/80"; */
 	/* background: rgba(var(--color-surface-400), 1); */
-	--at-apply: "bg-surface-950/60";
+	--at-apply: 'bg-surface-950/60';
 	box-shadow: -5px 0 0px 0 rgba(var(--color-primary-300));
 }
 
@@ -27,27 +26,26 @@ pre > code {
 } */
 
 [data-chars-id] {
-	--at-apply: "p-1 rounded-btn";
+	--at-apply: 'p-1 rounded-btn';
 }
 
 [data-chars-id='v'] {
-	--at-apply: "!text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold";
+	--at-apply: '!text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold';
 }
 
 [data-chars-id='builder'] {
 	/* --at-apply: "!text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold"; */
-	--at-apply: "bg-yellow-800/50 font-semibold";
+	--at-apply: 'bg-yellow-800/50 font-semibold';
 }
 
 [data-chars-id='prop'] {
 	/* --at-apply: "!text-yellow-50 bg-yellow-800/60 border-b-yellow-600 font-bold"; */
-	--at-apply: "bg-yellow-800/50 font-semibold";
+	--at-apply: 'bg-yellow-800/50 font-semibold';
 }
 
 /* [data-chars-id='builder'] > span {
 	--at-apply: "font-bold";
 } */
-
 
 /* 
 .prose > :is(h1, h2, h3, h4, h5, h6) > a {
@@ -101,26 +99,28 @@ pre > code {
 }
 */
 
-.prose > p > code, p > code, li > code {
-    --at-apply: "px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container selection:(text-on-primary bg-primary-500/70)";
+.prose > p > code,
+p > code,
+li > code {
+	--at-apply: 'px-2 bg-primary-500/20 border-1 border-primary-500 rounded-container selection:(text-on-primary bg-primary-500/70)';
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
+	animation: none;
+	mix-blend-mode: normal;
 }
 ::view-transition-old(root) {
-  z-index: 1;
+	z-index: 1;
 }
 ::view-transition-new(root) {
-  z-index: 9999;
+	z-index: 9999;
 }
 .dark::view-transition-old(root) {
-  z-index: 9999;
+	z-index: 9999;
 }
 .dark::view-transition-new(root) {
-  z-index: 1;
+	z-index: 1;
 }
 
 /* --- Scrollbars --- */

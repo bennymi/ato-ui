@@ -20,6 +20,7 @@
 		componentAPI
 	} = data);
 
+	// eslint-disable-next-line no-undef, @typescript-eslint/no-explicit-any
 	type Component = $$Generic<typeof SvelteComponent>;
 
 	$: mainPreview = previewComponents.main as unknown as Component;
@@ -39,5 +40,7 @@
 <svelte:component this={docsComponent} {previewSnippets} {previewComponents} />
 
 {#if isStyledPage}
-	<APITable {componentData} {componentAPI} {typesSnippet} />
+	{#key $page.url.pathname}
+		<APITable {componentData} {componentAPI} {typesSnippet} />
+	{/key}
 {/if}

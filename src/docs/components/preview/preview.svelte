@@ -66,8 +66,7 @@
 					aria-label="preview snippet files"
 					transition:slide
 				>
-					{#each previewSnippets as { title }, i}
-						{@const isLast = i === previewSnippets.length - 1}
+					{#each previewSnippets as { title }}
 						{@const activated = $value === title}
 						<button
 							{...$trigger({ value: title })}

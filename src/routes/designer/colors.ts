@@ -4,7 +4,15 @@
 
 import tinycolor from 'tinycolor2';
 
-import type { Rgb, Contrast, PaletteShades, Shade, ShadeValues, FullTheme, ColorManipulation } from "./types.d";
+import type {
+	Rgb,
+	Contrast,
+	PaletteShades,
+	Shade,
+	ShadeValues,
+	FullTheme,
+	ColorManipulation
+} from './types.d';
 import { theme_colors, shade_values } from './constants';
 
 function hexToRgb(hex: string): Rgb | null {
@@ -28,7 +36,7 @@ function hex_to_rgb_string(hex: string): string {
 	const rgb: Rgb | null = hexToRgb(hex);
 
 	if (rgb) {
-		const { r, g, b} = rgb;
+		const { r, g, b } = rgb;
 		return `${r}, ${g}, ${b}`;
 	}
 
@@ -96,11 +104,11 @@ function find_best_contrast(hex: string): Contrast {
 	return {
 		contrast,
 		on_color: contrast_color
-	}
+	};
 }
 
 export default function generate_palette(baseColor: ColorManipulation): PaletteShades {
-	const response: any = {
+	const response: Partial<Record<ShadeValues, string>> = {
 		500: `#${baseColor.color}`.replace('##', '#')
 	};
 
@@ -115,18 +123,18 @@ export default function generate_palette(baseColor: ColorManipulation): PaletteS
 		response[level] = darken(baseColor.color, (100 - darken_values[i]) / 100);
 	});
 
-	let palette_shades: any = {};
+	const palette_shades: Partial<PaletteShades> = {};
 
 	shade_values.forEach((v) => {
 		const contrast = find_best_contrast(<string>response[v]);
-		
+
 		palette_shades[v] = {
 			color: <string>response[v],
 			...contrast
 		} satisfies Shade;
 	});
 
-	return palette_shades satisfies PaletteShades;
+	return <PaletteShades>palette_shades;
 }
 
 export function create_css_colors(theme: FullTheme): string {
@@ -134,23 +142,27 @@ export function create_css_colors(theme: FullTheme): string {
 
 	theme_colors.forEach((c, i) => {
 		if (c in theme) {
-			css_string += `\t/* ${c} colors */\n`
+			css_string += `\t/* ${c} colors */\n`;
 			shade_values.forEach((v) => {
 				if (v in theme[c]) {
-					css_string += `\t--color-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.color)}; /* ${theme[c][v]?.color} */\n`
+					css_string += `\t--color-${c}-${v}: ${hex_to_rgb_string(
+						<string>theme[c][v]?.color
+					)}; /* ${theme[c][v]?.color} */\n`;
 				}
 			});
 
 			css_string += '\n';
 			shade_values.forEach((v) => {
 				if (v in theme[c]) {
-					css_string += `\t--on-${c}-${v}: ${hex_to_rgb_string(<string>theme[c][v]?.on_color)}; /* ${theme[c][v]?.on_color} */\n`
+					css_string += `\t--on-${c}-${v}: ${hex_to_rgb_string(
+						<string>theme[c][v]?.on_color
+					)}; /* ${theme[c][v]?.on_color} */\n`;
 				}
 			});
 
 			css_string += i === theme_colors.length - 1 ? '' : '\n';
 		}
-	})
+	});
 
 	return css_string;
 }

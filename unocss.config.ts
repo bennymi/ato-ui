@@ -14,16 +14,13 @@ export default defineConfig({
 	presets: [
 		presetIcons({
 			extraProperties: {
-				'display': 'inline-block',
-				'vertical-align': 'middle',
-			},
+				display: 'inline-block',
+				'vertical-align': 'middle'
+			}
 		}),
 		presetWind(),
 		presetForms(),
 		presetAtoUI()
 	],
-	transformers: [
-		transformerVariantGroup(),
-		transformerDirectives()
-	],
+	transformers: [transformerVariantGroup(), transformerDirectives()]
 });

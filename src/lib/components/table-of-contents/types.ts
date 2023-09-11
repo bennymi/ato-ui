@@ -1,4 +1,3 @@
-
 export type ToCHeading = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export type ToCActiveType =
@@ -20,4 +19,4 @@ export type ToCScrollFn = (id: string) => void;
 export type ToCTreeContext = {
 	contentStyles: string;
 	activeStyles: string;
-}
+};

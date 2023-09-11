@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
 	import { createDropdownMenu } from '@melt-ui/svelte';
 

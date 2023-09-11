@@ -21,7 +21,7 @@ You can set the active tab by passing the key of the tab to the `activeTab` prop
 </script>
 
 <TabsList bind:activeTab {tabHeaders} disabledTabs={['extra']} ariaLabel="disabled tabs example">
-    <!-- ... -->
+	<!-- ... -->
 </TabsList>
 ```
 
@@ -31,9 +31,9 @@ You can disable tabs by passing in a list of their keys to the `disabledTabs` pr
 
 ```svelte /disabledTabs={['extra']}/#prop
 <TabsList {activeTab} {tabHeaders} disabledTabs={['extra']} ariaLabel="disabled tabs example">
-    <Tab key="styled">Styled Content</Tab>
-    <Tab key="headless">Headless Content</Tab>
-    <Tab key="extra">Extra Content</Tab>
+	<Tab key="styled">Styled Content</Tab>
+	<Tab key="headless">Headless Content</Tab>
+	<Tab key="extra">Extra Content</Tab>
 </TabsList>
 ```
 
@@ -43,8 +43,8 @@ You can adjust the headers spacings using the `justifyHeaders` prop.
 
 ```svelte /justifyHeaders="justify-around"/#prop
 <TabsList {activeTab} {tabHeaders} justifyHeaders="justify-around" ariaLabel="spacing example">
-    <Tab key="styled">Styled Content</Tab>
-    <Tab key="headless">Headless Content</Tab>
-    <Tab key="extra">Extra Content</Tab>
+	<Tab key="styled">Styled Content</Tab>
+	<Tab key="headless">Headless Content</Tab>
+	<Tab key="extra">Extra Content</Tab>
 </TabsList>
 ```

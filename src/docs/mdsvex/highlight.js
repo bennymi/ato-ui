@@ -118,9 +118,11 @@ export function handleExample(code, lang, meta_args) {
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Example ${container_height} column={${column}} hidePalette={${hidePalette}} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
-			light_html
-		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
+		<Example ${container_height} column={${column}} hidePalette={${hidePalette}} darkCode={${JSON.stringify(
+			dark_html
+		)}} lightCode={${JSON.stringify(light_html)}} rawCode={${JSON.stringify(
+			code
+		)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
 			${example}
 		</Example>
 		`;
@@ -133,9 +135,11 @@ export function handleExample(code, lang, meta_args) {
 		const { dark_html, light_html } = highlighted_html;
 
 		return `
-		<Example ${container_height} column={${column}} hidePalette={${hidePalette}} darkCode={${JSON.stringify(dark_html)}} lightCode={${JSON.stringify(
-			light_html
-		)}} rawCode={${JSON.stringify(code)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
+		<Example ${container_height} column={${column}} hidePalette={${hidePalette}} darkCode={${JSON.stringify(
+			dark_html
+		)}} lightCode={${JSON.stringify(light_html)}} rawCode={${JSON.stringify(
+			code
+		)}} lang={"${lang}"} ${title ? `title={"${title}"}` : ''}>
 			${example}
 		</Example>
 		`;

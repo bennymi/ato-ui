@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext, createEventDispatcher } from 'svelte';
-	import type { MeltEvent, MeltEventHandler } from '@melt-ui/svelte/internal/types';
+	import type { MeltEventHandler } from '@melt-ui/svelte/internal/types';
 
 	import type { DropdownMenuRadioGroupContext, DropdownMenuContext } from './types';
 

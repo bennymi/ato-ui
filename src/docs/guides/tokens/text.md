@@ -41,7 +41,7 @@ More examples: `text-surface-950/70-950-50/80-50`.
 
 ## Inverse Light & Dark Mode
 
-`text-inverse-[color]-[shade]-[color]-[shade]`: In light mode the text is set with the first color and the first shade, and in dark mode the second color and shade are used. Opacity and shades are optional. 
+`text-inverse-[color]-[shade]-[color]-[shade]`: In light mode the text is set with the first color and the first shade, and in dark mode the second color and shade are used. Opacity and shades are optional.
 
 Example: `text-inverse-primary-secondary` becomes `text-primary-500 dark:text-secondary-500`.
 
@@ -53,7 +53,7 @@ More examples: `text-inverse-primary/90-secondary-400/90`.
 
 ## Inverse Light & Dark Mode + Hover
 
-`text-inverse-[color]-[shade]-[hover_shade]-[color]-[shade]-[hover_shade]`: In light mode the text is set with the first color and the first shade. When the text is hovered the first hover shade is used. Same thing with the second color and shades, but for dark mode. Opacity can be included for each shade if needed. 
+`text-inverse-[color]-[shade]-[hover_shade]-[color]-[shade]-[hover_shade]`: In light mode the text is set with the first color and the first shade. When the text is hovered the first hover shade is used. Same thing with the second color and shades, but for dark mode. Opacity can be included for each shade if needed.
 
 Example: `text-inverse-primary-500-700-secondary-500-700` becomes `text-primary-500 hover:text-primary-700 dark:text-secondary-500 dark:hover:text-secondary-700`.
 

@@ -6,7 +6,8 @@
 	import '$lib/styles/themes/air.css';
 
 	import '@unocss/reset/tailwind.css';
-	/* eslint import/no-unresolved: [2, { ignore: ['uno.css'] }] */
+
+	/* -->eslint import/no-unresolved: [2, { ignore: ['uno.css'] }] */
 	import 'uno.css';
 	import './app.css';
 
@@ -78,7 +79,8 @@
 
 	const defaultSEO = {
 		title: 'Ato UI',
-		description: 'The elemental accessible and theme-able UI component library for Svelte, built with UnoCSS and Melt UI.',
+		description:
+			'The elemental accessible and theme-able UI component library for Svelte, built with UnoCSS and Melt UI.',
 		keywords:
 			'svelte, sveltekit, component library, components, unocss, tailwind, headless, styled, themes, designer, accessible',
 		image: '/seo/new-ato-ui-dark-1-resized.png'
@@ -160,18 +162,15 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ato-ui.vercel.app{$page.url.pathname}" />
 	<meta property="og:locale" content="en_US" />
-	<meta
-		property="og:title"
-		content={seoTitle}
-	/>
+	<meta property="og:title" content={seoTitle} />
 	<meta property="og:description" content={activeSEO.description} />
 
-	<meta name="twitter:card" content="summary_large_image">
-	<meta property="twitter:domain" content="ato-ui.vercel.app">
-	<meta property="twitter:url" content="https://ato-ui.vercel.app{$page.url.pathname}">
-	<meta name="twitter:title" content={seoTitle}>
-	<meta name="twitter:description" content={activeSEO.description}>
-	<meta name="twitter:image" content={activeSEO.image}>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="ato-ui.vercel.app" />
+	<meta property="twitter:url" content="https://ato-ui.vercel.app{$page.url.pathname}" />
+	<meta name="twitter:title" content={seoTitle} />
+	<meta name="twitter:description" content={activeSEO.description} />
+	<meta name="twitter:image" content={activeSEO.image} />
 
 	{@html `<style>${$themeStore === 'custom-theme' ? $customThemeCSSStore : ''}</style>`}
 </svelte:head>

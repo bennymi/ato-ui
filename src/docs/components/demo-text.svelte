@@ -19,6 +19,7 @@
 	const increment = () => (idx += 1);
 
 	onMount(() => {
+		// @ts-ignore:next-line
 		new (TypeIt as any)('#ato-type-it-bg-demo', {
 			speed: 50,
 			startDelay: 900

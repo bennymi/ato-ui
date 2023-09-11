@@ -7,6 +7,7 @@
 
 	$: ({ previewSnippets, previewComponents, content, meta, githubPath } = data);
 
+	// eslint-disable-next-line no-undef, @typescript-eslint/no-explicit-any
 	type Component = $$Generic<typeof SvelteComponent>;
 
 	$: mainPreview = previewComponents.main as unknown as Component;

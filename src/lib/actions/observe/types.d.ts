@@ -1,12 +1,12 @@
-import type { Readable } from "svelte/store";
+import type { Readable } from 'svelte/store';
 
 type VisibilityStore = {
-    isVisible: boolean;
-    intersectionRatio: number;
-}
+	isVisible: boolean;
+	intersectionRatio: number;
+};
 
 export interface CustomReadable<T> extends Readable<T> {
-    destroy: () => void;
-};
+	destroy: () => void;
+}
 
 export type Visibility = CustomReadable<VisibilityStore>;
