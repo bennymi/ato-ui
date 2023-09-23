@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { FullTheme } from './types.d';
+	import type { FullTheme } from './types';
 	import { shade_values, theme_colors } from './constants';
 
 	import RangeSlider from 'svelte-range-slider-pips';
@@ -36,15 +36,15 @@
 </script>
 
 <div class="flex gap-2 my-2 w-full justify-between">
-	<Switch 
-        label="Toggle Contrast"
-        bind:checked={showNumbers}
-        hideLabel={false}
-        activeBackground="bg-primary-500" 
-        labelPosition="left" 
-        activeIcon="text-surface-900 text-lg i-material-symbols-contrast"
-        inactiveIcon="text-surface-900 text-lg i-material-symbols-contrast-rtl-off-rounded"    
-    />
+	<Switch
+		label="Toggle Contrast"
+		bind:checked={showNumbers}
+		hideLabel={false}
+		activeBackground="bg-primary-500"
+		labelPosition="left"
+		activeIcon="text-surface-900 text-lg i-material-symbols-contrast"
+		inactiveIcon="text-surface-900 text-lg i-material-symbols-contrast-rtl-off-rounded"
+	/>
 	<div>
 		<RadioGroup
 			{items}

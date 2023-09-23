@@ -2,16 +2,16 @@
 	import { themeStore, customThemeCSSStore } from '$docs/utils/stores';
 	import { new_theme } from './stores';
 
-	import type { ThemeColor, FullTheme, LocalStorageColor } from './types.d';
+	import type { ThemeColor, FullTheme, LocalStorageColor } from './types';
 	import { theme_colors } from './constants';
 	import generate_palette, { create_css_colors } from './colors';
 	import { options } from './options';
 	import { a as Anchor } from '$components';
 
 	// import CodeBlock from '$lib/mdsvex/CodeBlock.svelte';
-
 	import { default as ColorPicker } from './color-picker.svelte';
 	import { default as Contrasts } from './shade-contrasts.svelte';
+	import { default as RadiusPicker } from './radius-picker.svelte';
 
 	/**
 	 * TODO:
@@ -46,6 +46,7 @@
 
 	$: custom_theme_css_variables = `
 :root [data-theme="custom-theme"] {
+	/* Primitives */
 	--ato-container-radius: ${$new_theme.container_radius};
 
 	/* Buttons */
@@ -109,9 +110,12 @@
 				You can browse the rest of the website with this theme as well. (1) First pick your theme
 				colors. (2) Next, check that the contrasts of the text colors on the theme colors meet the
 				AA or AAA requirements for all shades. (3) After that you can adjust other variables, such
-				as the radius and size of your buttons. (4) Finally, copy the CSS and the <code
-					>unocss.config.ts</code
-				> into your project.
+				as the radius and size of your buttons. (4) Finally, copy the CSS into your project and
+				setup the <code>uno.config.ts</code> file like described in our <Anchor
+					href="/docs/get-started/1-installation"
+				>
+					installation guide
+				</Anchor>.
 			</p>
 			<div
 				class="flex justify-center items-center py-0.5 w-[24.75rem] sm:(py-1 w-[29rem]) md:(py-2 w-[36rem]) bg-white rounded-container border-1 border-surface-900/40-50/0"
@@ -181,32 +185,39 @@
 					<span class="i-material-symbols:notifications-active-rounded" />
 				</button>
 			</div>
-			<div class="flex gap-1 [&>label]:(w-1/3)">
-				<label>
-					<span>Button Radius</span>
-					<select bind:value={$new_theme.btns.radius}>
-						{#each options.btn_radius as rad}
-							<option value={rad}>{rad}</option>
-						{/each}
-					</select>
-				</label>
-				<label>
-					<span>Icon Button Radius</span>
-					<select bind:value={$new_theme.btns.icon_radius}>
-						{#each options.btn_icon_radius as rad}
-							<option value={rad}>{rad}</option>
-						{/each}
-					</select>
-				</label>
-				<label>
-					<span>Container Radius</span>
-					<select bind:value={$new_theme.container_radius}>
-						{#each options.container_radius as rad}
-							<option value={rad}>{rad}</option>
-						{/each}
-					</select>
-				</label>
-			</div>
+
+			<!-- 
+				TODO:
+				- [ ] Have different collapsible sections
+					- radiuses: (button, icon, switch, container, input)
+					- button variables: (main, accent, submit, cancel, etc)
+					- surface
+				- [ ] create a preview component
+				    - on a large screen it always shows
+					- on a small screen have a preview button which shows it in a dialog / drawer window
+				- [ ] update layouts of landing page, docs page, designer page, so they all have the same navbar but not the same body
+
+			 -->
+
+			<section class="flex flex-col gap-2">
+				<div>
+					<span class="font-semibold">Button Radius</span>
+					<RadiusPicker bind:pixels={$new_theme.btns.radius} ariaLabelType="button" />
+				</div>
+				<div>
+					<span class="font-semibold">Icon Button Radius</span>
+					<RadiusPicker bind:pixels={$new_theme.btns.icon_radius} ariaLabelType="button icon" />
+				</div>
+				<div>
+					<span class="font-semibold">Container Radius</span>
+					<RadiusPicker
+						showFull={false}
+						bind:pixels={$new_theme.container_radius}
+						ariaLabelType="container"
+					/>
+				</div>
+			</section>
+
 			<div class="flex flex-wrap gap-1">
 				{#each options.btn_sizes as size}
 					<div class="w-full flex flex-col">

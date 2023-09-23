@@ -7,6 +7,10 @@ export type ThemeColor =
 	| 'warning'
 	| 'error';
 
+export type Roundedness = 'rounded-none' | 'rounded-sm' | 'rounded-md' | 'rounded-lg' | 'rounded-xl' | 'rounded-2xl' | 'rounded-3xl' | 'rounded-full';
+
+export type RoundedAriaType = 'button' | 'button icon' | 'container' | 'switch' | 'input';
+
 export type ShadeValues = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
 
 type ColorManipulation = {

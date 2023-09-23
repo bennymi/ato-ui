@@ -1,7 +1,7 @@
 import type { Writable } from 'svelte/store';
 import { persisted } from 'svelte-local-storage-store';
 
-import type { LocalStorageTheme } from './types.d';
+import type { LocalStorageTheme } from './types';
 
 const lighten_values = [5, 25, 50, 70, 85];
 const darken_values = [10, 20, 40, 60, 70];

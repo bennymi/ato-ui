@@ -12,7 +12,7 @@ import type {
 	ShadeValues,
 	FullTheme,
 	ColorManipulation
-} from './types.d';
+} from './types';
 import { theme_colors, shade_values } from './constants';
 
 function hexToRgb(hex: string): Rgb | null {
