@@ -6,6 +6,7 @@
 	import { theme_colors } from './constants';
 	import generate_palette, { create_css_colors } from './colors';
 	import { options } from './options';
+	import { a as Anchor } from '$components';
 
 	// import CodeBlock from '$lib/mdsvex/CodeBlock.svelte';
 
@@ -82,7 +83,7 @@
 
 <div class="absolute fixed bottom-5 right-5 2xl:(bottom-10 right-20)">
 	<button
-		class="btn-border-surface-bl-primary-secondary btn-md xl:btn-lg"
+		class="xl:btn-lg! btn-border-surface-50-bl-primary-secondary dark:btn-border-surface-bl-primary-secondary"
 		on:click={() => copyToClipboard(custom_theme_css_variables)}
 	>
 		<span
@@ -156,11 +157,11 @@
 					>#fff</code
 				>
 				or <code>#000</code> is chosen by default). You can read more about
-				<a
+				<Anchor
 					href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast"
 				>
 					accessibility contrast guidelines
-				</a>
+				</Anchor>
 				here. Click on the buttons to see which contrasts do not meet the requirements and click on the
 				shades to make them lighter or darker.
 			</p>
