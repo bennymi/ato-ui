@@ -49,9 +49,9 @@
 	{#each display as { shape, uid }}
 		{@const active = $isChecked(shape)}
 		<div class="flex flex-col justify-center items-center">
-			<span class="font-mono font-semibold">
+			<label class="font-mono font-semibold" for={uid} id="{uid}-{value}-label">
 				{shape.replace('rounded-', '')}
-			</span>
+			</label>
 			<button
 				{...$item(shape)}
 				use:item
@@ -59,6 +59,7 @@
 					? 'outline-primary-500'
 					: ''}"
 				id={uid}
+				aria-labelledby="{uid}-{value}-label"
 			>
 				<span
 					class="{shape} w-10 h-10 border-1 border-surface-900-50 {active

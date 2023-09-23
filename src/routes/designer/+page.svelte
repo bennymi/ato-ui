@@ -188,7 +188,7 @@
 
 			<!-- 
 				TODO:
-				- [ ] Have different collapsible sections
+				- [ ] Have different collapsible sections (use accordion)
 					- radiuses: (button, icon, switch, container, input)
 					- button variables: (main, accent, submit, cancel, etc)
 					- surface
@@ -200,21 +200,28 @@
 			 -->
 
 			<section class="flex flex-col gap-2">
-				<div>
-					<span class="font-semibold">Button Radius</span>
-					<RadiusPicker bind:pixels={$new_theme.btns.radius} ariaLabelType="button" />
-				</div>
-				<div>
-					<span class="font-semibold">Icon Button Radius</span>
-					<RadiusPicker bind:pixels={$new_theme.btns.icon_radius} ariaLabelType="button icon" />
-				</div>
-				<div>
-					<span class="font-semibold">Container Radius</span>
-					<RadiusPicker
-						showFull={false}
-						bind:pixels={$new_theme.container_radius}
-						ariaLabelType="container"
-					/>
+				<h3 class="font-semibold text-3xl">Pick Radius Values</h3>
+				<p>
+					Choose the pixel radius values for different parts of your application. If you do not like
+					the available options you can later on set precise pixel values in the CSS file.
+				</p>
+				<div class="my-4 flex flex-col gap-2">
+					<div>
+						<span class="font-semibold">Button Radius</span>
+						<RadiusPicker bind:pixels={$new_theme.btns.radius} ariaLabelType="button" />
+					</div>
+					<div>
+						<span class="font-semibold">Icon Button Radius</span>
+						<RadiusPicker bind:pixels={$new_theme.btns.icon_radius} ariaLabelType="button icon" />
+					</div>
+					<div>
+						<span class="font-semibold">Container Radius</span>
+						<RadiusPicker
+							showFull={false}
+							bind:pixels={$new_theme.container_radius}
+							ariaLabelType="container"
+						/>
+					</div>
 				</div>
 			</section>
 
