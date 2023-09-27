@@ -1,10 +1,12 @@
 :root [data-theme='earth'] {
-	--ato-container-radius: 2px;
+	/* Radius */
+	--radius-container: 2px;
+	--radius-input: 6px;
+	--radius-switch: 6px;
+	--radius-btn: 2px;
+	--radius-btn-icon: 2px;
 
 	/* Buttons */
-	--btn-radius: 2px;
-	--btn-icon-radius: 2px;
-
 	--btn-sm-p-y: 0.25rem;
 	--btn-sm-p-x: 0.5rem;
 	--btn-sm-font-weight: 500;

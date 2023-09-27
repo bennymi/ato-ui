@@ -29,9 +29,15 @@ type ButtonVariables = {
 	font: number;
 };
 
+type LocalStorageRoundedness = {
+	container: string;
+	input: string;
+	switch: string;
+	btn: string;
+	icon: string;
+}
+
 type LocalStorageButtons = {
-	radius: string;
-	icon_radius: string;
 	sm: ButtonVariables;
 	md: ButtonVariables;
 	lg: ButtonVariables;
@@ -40,8 +46,8 @@ type LocalStorageButtons = {
 
 export type LocalStorageTheme = {
 	colors: LocalStorageColor;
+	rounded: LocalStorageRoundedness;
 	btns: LocalStorageButtons;
-	container_radius: string;
 };
 
 export type Contrast = {

@@ -49,9 +49,6 @@
 	{#each display as { shape, uid }}
 		{@const active = $isChecked(shape)}
 		<div class="flex flex-col justify-center items-center">
-			<label class="font-mono font-semibold" for={uid} id="{uid}-{value}-label">
-				{shape.replace('rounded-', '')}
-			</label>
 			<button
 				{...$item(shape)}
 				use:item
@@ -67,6 +64,9 @@
 						: ''}"
 				/>
 			</button>
+			<label class="font-mono font-semibold" for={uid} id="{uid}-{value}-label">
+				{shape.replace('rounded-', '')}
+			</label>
 		</div>
 	{/each}
 </div>

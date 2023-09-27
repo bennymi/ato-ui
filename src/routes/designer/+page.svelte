@@ -47,12 +47,15 @@
 	$: custom_theme_css_variables = `
 :root [data-theme="custom-theme"] {
 	/* Primitives */
-	--ato-container-radius: ${$new_theme.container_radius};
+
+	/* Roundedness / Radius */
+	--radius-container: ${$new_theme.rounded.container};
+	--radius-input: ${$new_theme.rounded.input};
+	--radius-switch: ${$new_theme.rounded.switch};
+	--radius-btn: ${$new_theme.rounded.btn};
+	--radius-btn-icon: ${$new_theme.rounded.icon};
 
 	/* Buttons */
-	--btn-radius: ${$new_theme.btns.radius};
-	--btn-icon-radius: ${$new_theme.btns.icon_radius};
-
 	--btn-sm-p-y: ${$new_theme.btns.sm.py}rem;
 	--btn-sm-p-x: ${$new_theme.btns.sm.px}rem;
 	--btn-sm-font-weight: ${$new_theme.btns.sm.font};
@@ -208,19 +211,31 @@
 				<div class="my-4 flex flex-col gap-2">
 					<div>
 						<span class="font-semibold">Button Radius</span>
-						<RadiusPicker bind:pixels={$new_theme.btns.radius} ariaLabelType="button" />
+						<RadiusPicker bind:pixels={$new_theme.rounded.btn} ariaLabelType="button" />
 					</div>
 					<div>
 						<span class="font-semibold">Icon Button Radius</span>
-						<RadiusPicker bind:pixels={$new_theme.btns.icon_radius} ariaLabelType="button icon" />
+						<RadiusPicker bind:pixels={$new_theme.rounded.icon} ariaLabelType="button icon" />
 					</div>
 					<div>
 						<span class="font-semibold">Container Radius</span>
 						<RadiusPicker
 							showFull={false}
-							bind:pixels={$new_theme.container_radius}
+							bind:pixels={$new_theme.rounded.container}
 							ariaLabelType="container"
 						/>
+					</div>
+					<div>
+						<span class="font-semibold">Input Radius</span>
+						<RadiusPicker
+							showFull={false}
+							bind:pixels={$new_theme.rounded.input}
+							ariaLabelType="input"
+						/>
+					</div>
+					<div>
+						<span class="font-semibold">Switch Radius</span>
+						<RadiusPicker bind:pixels={$new_theme.rounded.switch} ariaLabelType="switch" />
 					</div>
 				</div>
 			</section>
@@ -272,7 +287,7 @@
 	}
 
 	select {
-		--at-apply: 'rounded-container bg-surface-50-900 outline-primary-500';
+		--at-apply: 'rounded-input bg-surface-50-900 outline-primary-500';
 	}
 
 	.bg-animated-gradient {

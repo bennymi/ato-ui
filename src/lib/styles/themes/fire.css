@@ -1,10 +1,12 @@
 :root [data-theme='fire'] {
-	--ato-container-radius: 6px;
+	/* Radius */
+	--radius-container: 6px;
+	--radius-input: 6px;
+	--radius-switch: 6px;
+	--radius-btn: 6px;
+	--radius-btn-icon: 6px;
 
 	/* Buttons */
-	--btn-radius: 6px;
-	--btn-icon-radius: 6px;
-
 	--btn-sm-p-y: 0.25rem;
 	--btn-sm-p-x: 0.5rem;
 	--btn-sm-font-weight: 500;

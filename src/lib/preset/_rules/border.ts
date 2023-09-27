@@ -6,18 +6,32 @@ export const borderSCs: Shortcut[] = [
 	// rounded container
 	[
 		new RegExp(`^rounded-container${reg_pO}$`),
-		([, p]: string[]) => `rounded-${p ? `${p}-` : ''}[var(--ato-container-radius)]`,
+		([, p]: string[]) => `rounded-${p ? `${p}-` : ''}[var(--radius-container)]`,
 		{
 			autocomplete: ['rounded-container', `rounded-container-${reg_p}`]
 		}
 	],
 	[
+		new RegExp(`^rounded-input${reg_pO}$`),
+		([, p]: string[]) => `rounded-${p ? `${p}-` : ''}[var(--radius-input)]`,
+		{
+			autocomplete: ['rounded-input', `rounded-input-${reg_p}`]
+		}
+	],
+	[
+		new RegExp(`^rounded-switch${reg_pO}$`),
+		([, p]: string[]) => `rounded-${p ? `${p}-` : ''}[var(--radius-switch)]`,
+		{
+			autocomplete: ['rounded-switch', `rounded-switch-${reg_p}`]
+		}
+	],
+	[
 		new RegExp(`rounded-btn${reg_pO}`),
-		([, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-radius)]`
+		([, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--radius-btn)]`
 	],
 	[
 		new RegExp(`rounded-btn-icon${reg_pO}`),
-		([, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--btn-icon-radius)]!`,
+		([, side]: string[]) => `rounded-${side ? `${side}-` : ''}[var(--radius-btn-icon)]!`,
 		{
 			autocomplete: [
 				'rounded-btn',

@@ -16,10 +16,14 @@ export const new_theme: Writable<LocalStorageTheme> = persisted('ato-custom-them
 		warning: { color: '#e8b017', lighten_values, darken_values },
 		error: { color: '#ff006f', lighten_values, darken_values }
 	},
-	container_radius: '6px',
+	rounded: {
+		container: '6px',
+		input: '6px',
+		switch: '6px',
+		btn: '6px',
+		icon: '6px'
+	},
 	btns: {
-		radius: '6px',
-		icon_radius: '6px',
 		sm: { py: 0.25, px: 0.5, font: 500 },
 		md: { py: 0.25, px: 0.75, font: 500 },
 		lg: { py: 0.5, px: 1, font: 600 },

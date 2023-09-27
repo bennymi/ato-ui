@@ -1,10 +1,12 @@
 :root [data-theme='water'] {
-	--ato-container-radius: 12px;
+	/* Radius */
+	--radius-container: 12px;
+	--radius-input: 6px;
+	--radius-switch: 6px;
+	--radius-btn: 9999px;
+	--radius-btn-icon: 9999px;
 
 	/* Buttons */
-	--btn-radius: 9999px;
-	--btn-icon-radius: 9999px;
-
 	--btn-sm-p-y: 0.25rem;
 	--btn-sm-p-x: 0.5rem;
 	--btn-sm-font-weight: 500;
