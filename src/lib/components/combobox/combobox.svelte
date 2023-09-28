@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { createCombobox, type ComboboxFilterFunction } from '@melt-ui/svelte';
+	import { createCombobox } from '@melt-ui/svelte';
 
 	import type { ComboboxItem, ComboboxSelectedStore } from './types';
 
@@ -14,6 +14,8 @@
 	export let items: ComboboxItem[];
 	/** Set the default selected item. */
 	export let defaultSelected: ComboboxItem | null = null;
+	/** Whether or not to allow multiple items being selected. */
+	export let multiple = false;
 	/** Set the input placeholder. */
 	export let placeholder = '';
 	/** Whether or not to prevent scrolling of the document when the combobox is open. */
@@ -48,31 +50,44 @@
 	/** Set the style of the no result message. */
 	export let noResultStyle = '';
 
-	const filterFunction: ComboboxFilterFunction<ComboboxItem> = ({ itemValue, input }) => {
-		const normalize = (str: string) => str.normalize().toLowerCase();
-		const normalizedInput = normalize(input);
-
-		return (
-			normalizedInput === '' ||
-			normalize(itemValue.value).includes(normalizedInput) ||
-			(!!itemValue.subtitle && normalize(itemValue.subtitle).includes(normalizedInput))
-		);
-	};
-
 	const {
 		elements: { menu, input, option, label: comboboxLabel },
-		states: { open, isEmpty },
+		states: { open, inputValue, touchedInput },
 		helpers: { isSelected }
 	} = createCombobox({
-		filterFunction,
 		forceVisible: true,
 		...(defaultSelected && { defaultSelected: { value: defaultSelected } }),
 		defaultOpen,
 		loop,
-		debounce,
 		selected,
-		preventScroll
+		preventScroll,
+		multiple
 	});
+
+	let debounceTimer: ReturnType<typeof setTimeout>;
+	let filteredItems = items;
+
+	const handleDebounce = (callback: () => void) => {
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(callback, debounce);
+	};
+
+	$: {
+		if ($touchedInput) {
+			handleDebounce(() => {
+				filteredItems = items.filter(({ value, subtitle }) => {
+					const normalizedInput = $inputValue.toLowerCase();
+					return (
+						normalizedInput === '' ||
+						value.toLowerCase().includes(normalizedInput) ||
+						(!!subtitle && subtitle.toLowerCase().includes(normalizedInput))
+					);
+				});
+			});
+		} else {
+			filteredItems = items;
+		}
+	}
 </script>
 
 <div class="flex flex-col gap-1">
@@ -117,7 +132,7 @@
 			class="flex max-h-full flex-col gap-0 overflow-y-auto px-2 py-2 {comboboxBgStyle}"
 			tabindex="0"
 		>
-			{#each items as item, index (index)}
+			{#each filteredItems as item, index (index)}
 				{@const active = $isSelected(item)}
 				<li
 					{...$option({
@@ -142,12 +157,11 @@
 						{/if}
 					</div>
 				</li>
-			{/each}
-			{#if $isEmpty}
+			{:else}
 				<li class="relative cursor-pointer rounded-container py-1 pl-8 pr-4 {noResultStyle}">
 					{noResultsMessage}
 				</li>
-			{/if}
+			{/each}
 		</div>
 	</ul>
 {/if}

@@ -25,6 +25,16 @@ const highlights: ExampleHighlights = {
 				}
 			]
 		}
+	},
+	multiple: {
+		'app.svelte': {
+			words: [
+				{
+					strings: ['multiple'],
+					id: 'prop'
+				}
+			]
+		}
 	}
 };
 

@@ -91,7 +91,7 @@ You can see all our themes in our [styles repo page](https://github.com/bennymi/
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover" data-theme="ato-ui">
+	<body data-sveltekit-preload-data="hover" data-theme="ato">
 		<div>%sveltekit.body%</div>
 	</body>
 </html>
