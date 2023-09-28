@@ -33,6 +33,14 @@ You can add a select icon with the `selectIcon` prop.
 <svelte:component this={previewComponents['icon']} />
 </Preview>
 
+## Multiple
+
+You can set the `multiple` prop to `true` to allow multiple items to be selected.
+
+<Preview previewSnippets={previewSnippets['multiple']}>
+<svelte:component this={previewComponents['multiple']} />
+</Preview>
+
 ## Debounce
 
 The debounce time represents the time taken in between a key stroke in the input field and the search taking place. If the debounce time is 1 second, then a search will only take place if there has been no keyboard inputs for 1 second. For a larger list of items this might help improve performance, since it avoids too many searches from happening.

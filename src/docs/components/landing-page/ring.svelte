@@ -2,7 +2,7 @@
 	import type { ColourType } from './types';
 	// Adapted from: https://codepen.io/natewiley/pen/GgONKy?editors=0100
 
-	export let number = 85;
+	export let number = 45;
 	export let color: ColourType = 'primary';
 	export let delay = 0;
 	export let size = 5.5;

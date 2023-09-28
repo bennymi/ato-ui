@@ -1,52 +1,32 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import {
-		Combobox,
-		type ComboboxItem,
-		type ComboboxSelectedStore
-	} from 'ato-ui';
+	import { Combobox, type ComboboxItem, type ComboboxSelectedStore } from 'ato-ui';
 
 	let items: ComboboxItem[] = [
 		{
-			subtitle: 'Harper Lee',
-			value: 'To Kill a Mockingbird'
+			value: 'Aaang',
+			subtitle: 'The Avatar'
 		},
 		{
-			subtitle: 'Lev Tolstoy',
-			value: 'War and Peace',
+			value: 'Katara',
+			subtitle: 'Exceptional Waterbender'
+		},
+		{
+			value: 'Sokka',
+			subtitle: 'Warrior & Strategist'
+		},
+		{
+			value: 'Toph',
+			subtitle: 'Powerful Earthbender'
+		},
+		{
+			value: 'Iroh',
+			subtitle: 'The Wise Uncle',
 			disabled: true
 		},
 		{
-			subtitle: 'Alexandre Dumas',
-			value: 'The Count of Monte Cristo'
-		},
-		{
-			subtitle: 'Oscar Wilde',
-			value: 'A Picture of Dorian Gray'
-		},
-		{
-			subtitle: 'George Orwell',
-			value: '1984'
-		},
-		{
-			subtitle: 'Jane Austen',
-			value: 'Pride and Prejudice'
-		},
-		{
-			subtitle: 'Marcus Aurelius',
-			value: 'Meditations'
-		},
-		{
-			subtitle: 'Fyodor Dostoevsky',
-			value: 'The Brothers Karamazov'
-		},
-		{
-			subtitle: 'Lev Tolstoy',
-			value: 'Anna Karenina'
-		},
-		{
-			subtitle: 'George R.R. Martin',
-			value: 'A Game of Thrones'
+			value: 'Zuko',
+			subtitle: 'Temperamental Firebender'
 		}
 	];
 
@@ -57,8 +37,8 @@
 <div class="bg-surface-50-600 p-4 rounded-container">
 	<Combobox
 		{items}
-		label="Choose your favourite book"
-		placeholder="Favourite book"
+		label="Choose your character"
+		placeholder="Favourite character"
 		bind:selected
 		width="w-64"
 		{selectIcon}
