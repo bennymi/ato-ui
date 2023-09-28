@@ -210,15 +210,15 @@
 				</p>
 				<div class="my-4 flex flex-col gap-2">
 					<div>
-						<span class="font-semibold">Button Radius</span>
+						<span class="font-semibold">Button Roundedness</span>
 						<RadiusPicker bind:pixels={$new_theme.rounded.btn} ariaLabelType="button" />
 					</div>
 					<div>
-						<span class="font-semibold">Icon Button Radius</span>
+						<span class="font-semibold">Icon Button Roundedness</span>
 						<RadiusPicker bind:pixels={$new_theme.rounded.icon} ariaLabelType="button icon" />
 					</div>
 					<div>
-						<span class="font-semibold">Container Radius</span>
+						<span class="font-semibold">Container Roundedness</span>
 						<RadiusPicker
 							showFull={false}
 							bind:pixels={$new_theme.rounded.container}
@@ -226,7 +226,7 @@
 						/>
 					</div>
 					<div>
-						<span class="font-semibold">Input Radius</span>
+						<span class="font-semibold">Input Roundedness</span>
 						<RadiusPicker
 							showFull={false}
 							bind:pixels={$new_theme.rounded.input}
@@ -234,7 +234,7 @@
 						/>
 					</div>
 					<div>
-						<span class="font-semibold">Switch Radius</span>
+						<span class="font-semibold">Switch Roundedness</span>
 						<RadiusPicker bind:pixels={$new_theme.rounded.switch} ariaLabelType="switch" />
 					</div>
 				</div>
