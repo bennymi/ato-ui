@@ -1,109 +1,91 @@
 <script lang="ts">
-    import { writable } from 'svelte/store';
+	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
-	import { createCombobox, type ComboboxFilterFunction } from '@melt-ui/svelte';
+	import { createCombobox } from '@melt-ui/svelte';
 
 	import type { Item, SelectedStore } from './types';
 
+	let selected: SelectedStore = writable();
 
-	let selected:SelectedStore = writable();
-    
 	let items: Item[] = [
 		{
-			subtitle: 'Harper Lee',
-			value: 'To Kill a Mockingbird'
+			value: 'Aaang',
+			subtitle: 'The Avatar'
 		},
 		{
-			subtitle: 'Lev Tolstoy',
-			value: 'War and Peace',
+			value: 'Katara',
+			subtitle: 'Exceptional Waterbender'
+		},
+		{
+			value: 'Sokka',
+			subtitle: 'Warrior & Strategist'
+		},
+		{
+			value: 'Toph',
+			subtitle: 'Powerful Earthbender'
+		},
+		{
+			value: 'Iroh',
+			subtitle: 'The Wise Uncle',
 			disabled: true
 		},
 		{
-			subtitle: 'Alexandre Dumas',
-			value: 'The Count of Monte Cristo'
-		},
-		{
-			subtitle: 'Oscar Wilde',
-			value: 'A Picture of Dorian Gray'
-		},
-		{
-			subtitle: 'George Orwell',
-			value: '1984'
-		},
-		{
-			subtitle: 'Jane Austen',
-			value: 'Pride and Prejudice'
-		},
-		{
-			subtitle: 'Marcus Aurelius',
-			value: 'Meditations'
-		},
-		{
-			subtitle: 'Fyodor Dostoevsky',
-			value: 'The Brothers Karamazov'
-		},
-		{
-			subtitle: 'Lev Tolstoy',
-			value: 'Anna Karenina'
-		},
-		{
-			subtitle: 'George R.R. Martin',
-			value: 'A Game of Thrones'
+			value: 'Zuko',
+			subtitle: 'Temperamental Firebender'
 		}
-	];;
-
-	const filterFunction: ComboboxFilterFunction<Item> = ({ itemValue, input }) => {
-		const normalize = (str: string) => str.normalize().toLowerCase();
-		const normalizedInput = normalize(input);
-
-		return (
-			normalizedInput === '' ||
-			normalize(itemValue.value).includes(normalizedInput) ||
-			(!!itemValue.subtitle && normalize(itemValue.subtitle).includes(normalizedInput))
-		);
-	};
+	];
 
 	const {
 		elements: { menu, input, option, label },
-		states: { open, isEmpty },
+		states: { open, inputValue, touchedInput },
 		helpers: { isSelected }
 	} = createCombobox({
-		filterFunction,
 		forceVisible: true,
 		selected
 	});
+
+	$: filteredItems = $touchedInput
+		? items.filter(({ value, subtitle }) => {
+				const normalizedInput = $inputValue.toLowerCase();
+				return (
+					normalizedInput === '' ||
+					value.toLowerCase().includes(normalizedInput) ||
+					(!!subtitle && subtitle.toLowerCase().includes(normalizedInput))
+				);
+		  })
+		: items;
 </script>
 
 <div class="bg-surface-50-600 p-4 rounded-container">
-    <div class="flex flex-col gap-1">
-        <!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
-        <label {...$label} use:label >
-            <span class="text-sm font-medium text-surface-900-50">Choose your favourite book</span>
-        </label>
+	<div class="flex flex-col gap-1">
+		<!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
+		<label {...$label} use:label>
+			<span class="text-sm font-medium text-surface-900-50">Choose your character</span>
+		</label>
 
-        <div class="relative w-fit">
-            <input
-                {...$input}
-                use:input
-                class="flex h-10 w-64 items-center justify-between rounded-container
+		<div class="relative w-fit">
+			<input
+				{...$input}
+				use:input
+				class="flex h-10 w-64 items-center justify-between rounded-container
                     px-3 pr-12 surface-50-800 border-1 border-surface-400/80"
-                placeholder="Favourite book"
-            />
-            <div
-                class="absolute right-2 top-1/2 z-10 -translate-y-1/2 h-10 flex justify-center items-center text-primary-900"
-            >
-                <svg
-                    class="w-6 h-6 transition-all {$open ? 'rotate-90' : '-rotate-90'}"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    ><path
-                        fill="#888888"
-                        d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l3.9-3.9Z"
-                    /></svg
-                >
-            </div>
-        </div>
-    </div>
+				placeholder="Favourite character"
+			/>
+			<div
+				class="absolute right-2 top-1/2 z-10 -translate-y-1/2 h-10 flex justify-center items-center text-primary-900"
+			>
+				<svg
+					class="w-6 h-6 transition-all {$open ? 'rotate-90' : '-rotate-90'}"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					><path
+						fill="#888888"
+						d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l3.9-3.9Z"
+					/></svg
+				>
+			</div>
+		</div>
+	</div>
 </div>
 
 {#if $open}
@@ -118,7 +100,7 @@
 			class="flex max-h-full flex-col gap-0 overflow-y-auto px-2 py-2 surface-50-500"
 			tabindex="0"
 		>
-			{#each items as item, index (index)}
+			{#each filteredItems as item, index (index)}
 				{@const active = $isSelected(item)}
 				<li
 					{...$option({
@@ -143,12 +125,11 @@
 						{/if}
 					</div>
 				</li>
-			{/each}
-			{#if $isEmpty}
+			{:else}
 				<li class="relative cursor-pointer rounded-container py-1 pl-8 pr-4">
 					No results found...
 				</li>
-			{/if}
+			{/each}
 		</div>
 	</ul>
 {/if}

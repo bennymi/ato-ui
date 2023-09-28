@@ -38,7 +38,7 @@ You can add a select icon with the `selectIcon` prop.
 You can set the `multiple` prop to `true` to allow multiple items to be selected.
 
 <Preview previewSnippets={previewSnippets['multiple']}>
-	<svelte:component this={previewComponents['multiple']} />
+<svelte:component this={previewComponents['multiple']} />
 </Preview>
 
 ## Debounce
