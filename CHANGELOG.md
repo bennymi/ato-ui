@@ -1,5 +1,11 @@
 # ato-ui
 
+## 0.3.3
+
+### Patch Changes
+
+- bda2261: update combobox to new Melt UI version
+
 ## 0.3.2
 
 ### Patch Changes
