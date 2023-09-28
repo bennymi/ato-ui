@@ -6,7 +6,7 @@
 	"homepage": "https://ato-ui.vercel.app/",
 	"scripts": {
 		"dev": "tsx ./scripts/api-docs.ts && vite dev",
-		"build": "vite build && tsx ./scripts/api-docs.ts && npm run package",
+		"build": "vite build && npm run package",
 		"create-api-docs": "tsx ./scripts/api-docs.ts",
 		"create-highlights": "tsx ./scripts/prepare.ts",
 		"preview": "vite preview",

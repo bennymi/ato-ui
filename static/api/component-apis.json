@@ -1,0 +1,946 @@
+{
+    "accordion": [
+        {
+            "component": "AccordionItem",
+            "props": [
+                {
+                    "name": "key",
+                    "type": "string",
+                    "description": "A unique key to identify the accordion item."
+                },
+                {
+                    "name": "titleStyle",
+                    "type": "string",
+                    "description": "Set the title styles.",
+                    "defaultValue": "'font-semibold leading-none'"
+                },
+                {
+                    "name": "titleBgStyle",
+                    "type": "string",
+                    "description": "Set the title background style.",
+                    "defaultValue": "'transition-all primary-400 hover:primary-500'"
+                },
+                {
+                    "name": "contentStyle",
+                    "type": "string",
+                    "description": "Set the content styles.",
+                    "defaultValue": "'px-2 py-4'"
+                }
+            ]
+        },
+        {
+            "component": "AccordionRoot",
+            "props": [
+                {
+                    "name": "multiple",
+                    "type": "boolean",
+                    "description": "If true, multiple accordion items can be open at the same time.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "description": "Whether or not the accordion is disabled.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "defaultValue",
+                    "type": "string | null",
+                    "description": "Allows you to set a default open item, by passing in the key of an item.",
+                    "defaultValue": "null"
+                },
+                {
+                    "name": "width",
+                    "type": "string",
+                    "description": "Set the width of the accordion.",
+                    "defaultValue": "'w-full'"
+                },
+                {
+                    "name": "containerStyle",
+                    "type": "string",
+                    "description": "Set the accordion container styles.",
+                    "defaultValue": "'surface-50-600 shadow-lg shadow-surface-500/50-300/50 p-2'"
+                },
+                {
+                    "name": "disabledStyle",
+                    "type": "string",
+                    "description": "Set the disabled styles.",
+                    "defaultValue": "'opacity-70 cursor-not-allowed'"
+                }
+            ]
+        }
+    ],
+    "avatar": [
+        {
+            "component": "Avatar",
+            "props": [
+                {
+                    "name": "src",
+                    "type": "string",
+                    "description": "Set the image source.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "alt",
+                    "type": "string",
+                    "description": "Set the image alt value.",
+                    "defaultValue": "'avatar'"
+                },
+                {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Set the text value in case you don't have an image. The string automatically gets shortened to 4 characters. If you pass in separate words it will use the first letters of each word.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "delayMs",
+                    "type": "number",
+                    "description": "The amount of time in milliseconds to wait before displaying the image.",
+                    "defaultValue": "0"
+                },
+                {
+                    "name": "size",
+                    "type": "string",
+                    "description": "Set the width and height of the avatar.",
+                    "defaultValue": "'w-16 h-16'"
+                },
+                {
+                    "name": "rounded",
+                    "type": "string",
+                    "description": "Set the rounded shape.",
+                    "defaultValue": "'rounded-btn'"
+                },
+                {
+                    "name": "borderStyle",
+                    "type": "string",
+                    "description": "Set the border styles.",
+                    "defaultValue": "'border-2 border-surface-500-800'"
+                },
+                {
+                    "name": "background",
+                    "type": "string",
+                    "description": "Set the background color, for when the text is being shown. Has no effect for when an image is being shown.",
+                    "defaultValue": "'bg-primary-500'"
+                },
+                {
+                    "name": "textStyles",
+                    "type": "string",
+                    "description": "Set the text styles.",
+                    "defaultValue": "'font-bold text-on-primary'"
+                }
+            ]
+        }
+    ],
+    "combobox": [
+        {
+            "component": "Combobox",
+            "props": [
+                {
+                    "name": "label",
+                    "type": "string",
+                    "description": "Set the label of the combobox."
+                },
+                {
+                    "name": "hideLabel",
+                    "type": "boolean",
+                    "description": "Hide label. The hidden label is still available to screen readers.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "selected",
+                    "type": "ComboboxSelectedStore",
+                    "description": "A writable store that can be used to get or update the selected item."
+                },
+                {
+                    "name": "items",
+                    "type": "ComboboxItem[]",
+                    "description": "Pass the list of items that are available as options. Individual items can be disabled. Check the ComboboxItem type for more details."
+                },
+                {
+                    "name": "defaultSelected",
+                    "type": "ComboboxItem | null",
+                    "description": "Set the default selected item.",
+                    "defaultValue": "null"
+                },
+                {
+                    "name": "multiple",
+                    "type": "boolean",
+                    "description": "Whether or not to allow multiple items being selected.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "description": "Set the input placeholder.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "preventScroll",
+                    "type": "boolean",
+                    "description": "Whether or not to prevent scrolling of the document when the combobox is open.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "noResultsMessage",
+                    "type": "string",
+                    "description": "Set the message that shows when no result is returned from a search.",
+                    "defaultValue": "'No results found'"
+                },
+                {
+                    "name": "defaultOpen",
+                    "type": "boolean",
+                    "description": "Whether the combobox is open by default or not.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "description": "Whether or not the focus should loop back to the first item when the last item is reached.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "debounce",
+                    "type": "number",
+                    "description": "The debounce time in milliseconds for the input value. This represents the time taken\r\nin between a key stroke in the input field and the search taking place. For a larger list\r\nof items it might improve performance to increase the debounce time, to avoid too many searches.",
+                    "defaultValue": "0"
+                },
+                {
+                    "name": "selectIcon",
+                    "type": "string",
+                    "description": "Set the select icon if you want one.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "labelStyle",
+                    "type": "string",
+                    "description": "Set the label styles.",
+                    "defaultValue": "'text-sm font-medium text-surface-900-50'"
+                },
+                {
+                    "name": "inputStyle",
+                    "type": "string",
+                    "description": "Set the input styles.",
+                    "defaultValue": "'surface-50-800 border-1 border-surface-400/80'"
+                },
+                {
+                    "name": "activeStyle",
+                    "type": "string",
+                    "description": "Set the active item styles.",
+                    "defaultValue": "'primary-500/80'"
+                },
+                {
+                    "name": "width",
+                    "type": "string",
+                    "description": "Set the width of the input.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "comboboxBgStyle",
+                    "type": "string",
+                    "description": "Set the background styles of the opened combobox.",
+                    "defaultValue": "'surface-50-500'"
+                },
+                {
+                    "name": "comboboxBorderStyle",
+                    "type": "string",
+                    "description": "Set the border styles of the opened combobox.",
+                    "defaultValue": "'shadow-lg shadow-surface-500/50-300/50'"
+                },
+                {
+                    "name": "noResultStyle",
+                    "type": "string",
+                    "description": "Set the style of the no result message.",
+                    "defaultValue": "''"
+                }
+            ]
+        }
+    ],
+    "dialog": [
+        {
+            "component": "Dialog",
+            "props": [
+                {
+                    "name": "open",
+                    "type": "Writable<boolean>",
+                    "description": "A writable store that controls whether or not the dialog is open."
+                },
+                {
+                    "name": "role",
+                    "type": "DialogRole",
+                    "description": "The role attribute of the dialog element. An alert dialog should be used to display content\r\nthat is critical to the user's workflow, whereas a dialog should be used to display content\r\nthat isn't critical to the user's workflow.",
+                    "defaultValue": "'dialog'"
+                },
+                {
+                    "name": "closeOnOutsideClick",
+                    "type": "boolean",
+                    "description": "Whether or not to close the dialog when the user clicks outside of it.",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "preventScroll",
+                    "type": "boolean",
+                    "description": "Whether or not to prevent scrolling of the document when the dialog is open.",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "defaultOpen",
+                    "type": "boolean",
+                    "description": "Whether the dialog is open by default or not.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "overlayTransition",
+                    "type": "DialogTransition",
+                    "description": "Set the overlay transition.",
+                    "defaultValue": "{\r\n\t\ttrans: fade,\r\n\t\toptions: { duration: 150 }\r\n\t}"
+                },
+                {
+                    "name": "containerTransition",
+                    "type": "DialogTransition",
+                    "description": "Set the dialog container transition.",
+                    "defaultValue": "{\r\n\t\ttrans: fade,\r\n\t\toptions: { duration: 150 }\r\n\t}"
+                },
+                {
+                    "name": "center",
+                    "type": "boolean",
+                    "description": "Center modal.",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "position",
+                    "type": "string",
+                    "description": "Set the position of the modal. This only has effect if the center prop is set to false.",
+                    "defaultValue": "'left-0 top-0'"
+                },
+                {
+                    "name": "zIndex",
+                    "type": "string",
+                    "description": "Set the z-index.",
+                    "defaultValue": "'z-50'"
+                },
+                {
+                    "name": "overlayStyle",
+                    "type": "string",
+                    "description": "Set overlay style.",
+                    "defaultValue": "'bg-surface-800/40-300/40 backdrop-blur-sm'"
+                },
+                {
+                    "name": "containerStyle",
+                    "type": "string",
+                    "description": "Set the container style.",
+                    "defaultValue": "'surface-50 dark:surface-700 p-4 shadow-md'"
+                }
+            ]
+        }
+    ],
+    "dropdown-menu": [
+        {
+            "component": "DropdownMenuCheckboxItem",
+            "props": [
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "description": "Whether or not the checkbox item is disabled.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "checked",
+                    "type": "DropdownMenuCheckboxValue",
+                    "description": "A writable store that controls the checked state of the checkbox. Use this to set the default value."
+                },
+                {
+                    "name": "checkedIcon",
+                    "type": "string",
+                    "description": "Set the checked icon.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "itemStyle",
+                    "type": "string",
+                    "description": "Set the item styles for when the item is not disabled.\r\nYou can use this to overwrite the global itemStyle prop set in the\r\nDropdown.Menu component.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "itemDisabledStyle",
+                    "type": "string",
+                    "description": "Set the styles for the disabled item.\r\nYou can use this to overwrite the global itemDisabledStyle prop set\r\nin the Dropdown.Menu component.",
+                    "defaultValue": "''"
+                }
+            ]
+        },
+        {
+            "component": "DropdownMenuItem",
+            "props": [
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "description": "Set whether or not the item is disabled.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "itemStyle",
+                    "type": "string",
+                    "description": "Set the item styles for when the item is not disabled. \r\nYou can use this to overwrite the global itemStyle prop set in the\r\nDropdown.Menu component.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "itemDisabledStyle",
+                    "type": "string",
+                    "description": "Set the styles for the disabled item. \r\nYou can use this to overwrite the global itemDisabledStyle prop set\r\nin the Dropdown.Menu component.",
+                    "defaultValue": "''"
+                }
+            ]
+        },
+        {
+            "component": "DropdownMenuRadioGroupItem",
+            "props": [
+                {
+                    "name": "value",
+                    "type": "string",
+                    "description": "The value of the radio item."
+                },
+                {
+                    "name": "itemStyle",
+                    "type": "string",
+                    "description": "Set the radio group item styles.\r\nYou can use this to overwrite the global itemStyle prop set in the\r\nDropdown.Menu component.",
+                    "defaultValue": "''"
+                }
+            ]
+        },
+        {
+            "component": "DropdownMenuRadioGroup",
+            "props": [
+                {
+                    "name": "value",
+                    "type": "DropdownMenuRadioGroupValue",
+                    "description": "A writable store which controls the value of the selected radio item.\r\nUse this to set the default value of the radio group."
+                },
+                {
+                    "name": "checkedIcon",
+                    "type": "string",
+                    "description": "Set the checked icon.",
+                    "defaultValue": "''"
+                }
+            ]
+        },
+        {
+            "component": "DropdownMenuSeparator",
+            "props": [
+                {
+                    "name": "separatorStyle",
+                    "type": "string",
+                    "description": "Set the styles for the separator.",
+                    "defaultValue": "'m-2 h-0.5 bg-surface-300/70'"
+                }
+            ]
+        },
+        {
+            "component": "DropdownMenuSubmenu",
+            "props": [
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "description": "Whether or not the submenu is disabled.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "transition",
+                    "type": "DropdownMenuTransition",
+                    "description": "The transition for the submenu opening and closing.",
+                    "defaultValue": "{ trans: fly, options: { duration: 150 } }"
+                },
+                {
+                    "name": "hideArrow",
+                    "type": "boolean",
+                    "description": "Show an arrow from the submenu to the trigger.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "width",
+                    "type": "string",
+                    "description": "Set the width of the submenu.",
+                    "defaultValue": "'w-fit min-w-40'"
+                }
+            ]
+        },
+        {
+            "component": "DropdownMenu",
+            "props": [
+                {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "description": "Set the aria label of the trigger button."
+                },
+                {
+                    "name": "open",
+                    "type": "DropdownMenuOpenStore",
+                    "description": "A writable store that controls whether or not the dropdown menu is open."
+                },
+                {
+                    "name": "preventScroll",
+                    "type": "boolean",
+                    "description": "Whether or not to prevent scrolling of the document when the dropdown menu is open.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "showArrow",
+                    "type": "boolean",
+                    "description": "Show arrow pointing at trigger.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "transition",
+                    "type": "DropdownMenuTransition",
+                    "description": "The transition for the dropdown menu opening and closing.",
+                    "defaultValue": "{\r\n\t\ttrans: fly,\r\n\t\toptions: { duration: 150, y: -10 }\r\n\t}"
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "description": "Whether or not the focus should loop back to the first item when the last item is reached.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "zIndex",
+                    "type": "string",
+                    "description": "Set the z index of the menu item.",
+                    "defaultValue": "'z-10'"
+                },
+                {
+                    "name": "btnStyle",
+                    "type": "string",
+                    "description": "Set the trigger button styles.",
+                    "defaultValue": "'btn-primary'"
+                },
+                {
+                    "name": "width",
+                    "type": "string",
+                    "description": "Set the width of the menu.",
+                    "defaultValue": "'w-fill'"
+                },
+                {
+                    "name": "menuBgStyle",
+                    "type": "string",
+                    "description": "Set the menu background styles.",
+                    "defaultValue": "'surface-50-500'"
+                },
+                {
+                    "name": "menuBorderStyle",
+                    "type": "string",
+                    "description": "Set the menu border styles.",
+                    "defaultValue": "'border-1 border-surface-300/70 shadow-md shadow-surface-500/50-300/50'"
+                },
+                {
+                    "name": "itemStyle",
+                    "type": "string",
+                    "description": "Set the global item styles for when the item is not disabled.\r\nYou can overwrite this for each individual item in the item component.",
+                    "defaultValue": "'px-2 py-1 select-none rounded-container hover:primary-500/90 focus:primary-500/90'"
+                },
+                {
+                    "name": "itemDisabledStyle",
+                    "type": "string",
+                    "description": "Set the styles for the disabled item.\r\nYou can overwite this for each individual item in the item component.",
+                    "defaultValue": "'px-2 py-1 text-surface-300 cursor-not-allowed'"
+                }
+            ]
+        }
+    ],
+    "radio-group": [
+        {
+            "component": "RadioGroupRegular",
+            "props": [
+                {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "description": "Set the aria label of the radio group."
+                },
+                {
+                    "name": "orientation",
+                    "type": "RadioGroupOrientation",
+                    "description": "Set the orientation.",
+                    "defaultValue": "'vertical'"
+                },
+                {
+                    "name": "checked",
+                    "type": "string",
+                    "description": "Define the default value with the checked state. You can also bind to this prop."
+                },
+                {
+                    "name": "radioItems",
+                    "type": "RegularRadioItem[]",
+                    "description": "Define the available options."
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "description": "Allows you to disable the radio group.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "required",
+                    "type": "boolean",
+                    "description": "Define whether or not the radio group is required (for forms).",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "description": "Define whether or not the focus should loop back to the first item when the last item is reached.",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "size",
+                    "type": "RadioItemSize",
+                    "description": "Set the size of the radio items.",
+                    "defaultValue": "'md'"
+                },
+                {
+                    "name": "activeColor",
+                    "type": "string",
+                    "description": "Set the active color.",
+                    "defaultValue": "'bg-primary-500'"
+                },
+                {
+                    "name": "backgroundStyles",
+                    "type": "string",
+                    "description": "Set the background color.",
+                    "defaultValue": "'bg-surface-100-50 hover:bg-primary-100'"
+                },
+                {
+                    "name": "activeBackgroundStyles",
+                    "type": "string",
+                    "description": "Set the active background color.",
+                    "defaultValue": "'bg-primary-100 hover:bg-primary-300'"
+                },
+                {
+                    "name": "labelStyles",
+                    "type": "string",
+                    "description": "Set the label styles.",
+                    "defaultValue": "'capitalize leading-none text-surface-900-50'"
+                }
+            ]
+        },
+        {
+            "component": "RadioGroup",
+            "props": [
+                {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "description": "Set the aria label of the radio group."
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "Name attribute of radio inputs.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "group",
+                    "type": "string",
+                    "description": "The group to bind to. Use this to set the default selected value here."
+                },
+                {
+                    "name": "items",
+                    "type": "RadioItem[]",
+                    "description": "The radio items."
+                },
+                {
+                    "name": "size",
+                    "type": "RadioItemSize",
+                    "description": "Set the size of the radio buttons. Options: 'sm' | 'md' | 'lg'.",
+                    "defaultValue": "'md'"
+                },
+                {
+                    "name": "activeIcon",
+                    "type": "string",
+                    "description": "Set the active icon that appears when an item is selected. Example: 'i-material-symbols-check-circle-outline text-on-primary'.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "description": "Allows you to disable the radio group.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "required",
+                    "type": "boolean",
+                    "description": "Define whether or not the radio group is required (for forms).",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "loop",
+                    "type": "boolean",
+                    "description": "Define whether or not the focus should loop back to the first item when the last item is reached.",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "rootStyles",
+                    "type": "string",
+                    "description": "Set the root styles for positioning the items.",
+                    "defaultValue": "'flex gap-2'"
+                },
+                {
+                    "name": "bgActiveStyles",
+                    "type": "string",
+                    "description": "Set active background classes.",
+                    "defaultValue": "'primary-500'"
+                },
+                {
+                    "name": "bgStyles",
+                    "type": "string",
+                    "description": "Set in-active background classes.",
+                    "defaultValue": "'surface-500-50'"
+                }
+            ]
+        }
+    ],
+    "switch": [
+        {
+            "component": "Switch",
+            "props": [
+                {
+                    "name": "label",
+                    "type": "string",
+                    "description": "Set the toggle text."
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "The name of the hidden input element used for form submission.",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "required",
+                    "type": "boolean",
+                    "description": "Whether or not the input is required.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "hideLabel",
+                    "type": "boolean",
+                    "description": "Define if the label should be hidden. It will still be available for screen readers.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "labelPosition",
+                    "type": "SwitchLabelPosition",
+                    "description": "Set the label position (left or right).",
+                    "defaultValue": "'left'"
+                },
+                {
+                    "name": "checked",
+                    "type": "boolean",
+                    "description": "Bind to the checked status of the switch.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "description": "Define whether or not the switch is disabled.",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "size",
+                    "type": "SwitchSize",
+                    "description": "Set the size of the toggle switch. Options: 'sm' | 'md' | 'lg'.",
+                    "defaultValue": "'md'"
+                },
+                {
+                    "name": "labelStyles",
+                    "type": "string",
+                    "description": "Set label styles.",
+                    "defaultValue": "'px-2 text-surface-900-50'"
+                },
+                {
+                    "name": "background",
+                    "type": "string",
+                    "description": "Set the in-active background classes.",
+                    "defaultValue": "'bg-surface-300-400'"
+                },
+                {
+                    "name": "activeBackground",
+                    "type": "string",
+                    "description": "Set the active background classes.",
+                    "defaultValue": "'bg-primary-500'"
+                },
+                {
+                    "name": "inactiveIcon",
+                    "type": "string",
+                    "description": "Set the inactive icon (optional). You can also set the icon size and color here. Example: \"text-surface-900 text-lg i-material-symbols-dark-mode-rounded\".",
+                    "defaultValue": "''"
+                },
+                {
+                    "name": "activeIcon",
+                    "type": "string",
+                    "description": "Set the active icon (optional). You can also set the icon size and color here. Example: \"text-surface-900 text-lg i-material-symbols-clear-day-rounded\".",
+                    "defaultValue": "''"
+                }
+            ]
+        }
+    ],
+    "table-of-contents": [
+        {
+            "component": "TOC",
+            "props": [
+                {
+                    "name": "selector",
+                    "type": "string",
+                    "description": "The selector of the container for which the table of contents (ToC) should be created."
+                },
+                {
+                    "name": "label",
+                    "type": "string",
+                    "description": "Set the header label of the ToC.",
+                    "defaultValue": "'On This Page'"
+                },
+                {
+                    "name": "exclude",
+                    "type": "ToCHeading[]",
+                    "description": "A list of headings that should be excluded from the ToC. Possible values: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'.",
+                    "defaultValue": "['h1']"
+                },
+                {
+                    "name": "scrollOffset",
+                    "type": "number",
+                    "description": "The number of pixels to add to the top of the element when scrolling. Can be used if you have a fixed header which might block the scrolled-to element. Has no effect if you overwrite the default scroll function with your own (see scrollFn prop).",
+                    "defaultValue": "0"
+                },
+                {
+                    "name": "scrollBehaviour",
+                    "type": "ToCScrollBehaviour",
+                    "description": "Defines whether the scroll behaviour should be 'smooth' or 'instant'. Has no effect if you overwrite the default scroll function with your own (see scrollFn prop).",
+                    "defaultValue": "'smooth'"
+                },
+                {
+                    "name": "activeType",
+                    "type": "ToCActiveType",
+                    "description": "Describes which header should be considered active. 'none' means that no intersection observers are added and no headings are considered active. 'all' means that all headings with visible content are considered active. 'lowest' means that the heading of the lowest visible content is considered active. 'highest' means the opposite. 'lowest-parents' means that parents of the heading with the lowest visible content are also considered active, and the same goes for 'highest-parents'.",
+                    "defaultValue": "'highest'"
+                },
+                {
+                    "name": "headingFilterFn",
+                    "type": "ToCHeadingFilterFn | null",
+                    "description": "Allows you to pass a filter function to filter the headings that are returned in the 'headingsTree' store, so you can define which headings should or should not show up in the table of contents. The filter function gets an HTMLHeadingElement passed to it.",
+                    "defaultValue": "null"
+                },
+                {
+                    "name": "scrollFn",
+                    "type": "ToCScrollFn | null",
+                    "description": "Allows you to overwrite the default scroll function with your own custom one. The scroll function gets the heading id passed to it. Using this overwrites the scrollOffset and scrollBehaviour props.",
+                    "defaultValue": "null"
+                },
+                {
+                    "name": "showMarker",
+                    "type": "boolean",
+                    "description": "Show a marker beside the active element.",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "markerType",
+                    "type": "ToCMarkerType",
+                    "description": "Define beside which heading the marker should appear. 'highest' is the first active heading. 'lowest' is the last active heading.",
+                    "defaultValue": "'highest'"
+                },
+                {
+                    "name": "labelStyles",
+                    "type": "string",
+                    "description": "Set the styles for the label header.",
+                    "defaultValue": "'font-semibold text-surface-900-50'"
+                },
+                {
+                    "name": "contentStyles",
+                    "type": "string",
+                    "description": "Set the content link styles.",
+                    "defaultValue": "'text-surface-700-800-200-100'"
+                },
+                {
+                    "name": "activeStyles",
+                    "type": "string",
+                    "description": "Set the active content link styles.",
+                    "defaultValue": "'text-surface-900-50'"
+                },
+                {
+                    "name": "markerStyles",
+                    "type": "string",
+                    "description": "Set the marker styles.",
+                    "defaultValue": "'w-0.5 rounded-container bg-tertiary-500'"
+                }
+            ]
+        }
+    ],
+    "tabs": [
+        {
+            "component": "TabsList",
+            "props": [
+                {
+                    "name": "value",
+                    "type": "TabValue",
+                    "description": "A writable store that can be used to read and update the tabs value. You can use this to set the default active tab."
+                },
+                {
+                    "name": "disabledTabs",
+                    "type": "boolean | string[]",
+                    "description": "Set the tabs that should be disabled. You can pass individual tabs in a list of strings or disable all tabs by setting this prop to 'true'.",
+                    "defaultValue": "[]"
+                },
+                {
+                    "name": "tabHeaders",
+                    "type": "TabHeader[]",
+                    "description": "Set the tab headers. For each header provide a key, a title, and optionally an iconify icon."
+                },
+                {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "description": "Aria label for the tabs."
+                },
+                {
+                    "name": "borderStyle",
+                    "type": "string",
+                    "description": "Set the border style.",
+                    "defaultValue": "'border-b-1 border-surface-100-200'"
+                },
+                {
+                    "name": "activeStyle",
+                    "type": "string",
+                    "description": "Set the active header styles.",
+                    "defaultValue": "'primary-500'"
+                },
+                {
+                    "name": "inactiveStyle",
+                    "type": "string",
+                    "description": "Set the in-active header styles.",
+                    "defaultValue": "'text-surface-900-50 hover:primary-500/60'"
+                },
+                {
+                    "name": "headerWidth",
+                    "type": "string",
+                    "description": "Set the header width.",
+                    "defaultValue": "'min-w-40'"
+                },
+                {
+                    "name": "headerStyle",
+                    "type": "string",
+                    "description": "Set the header styles.",
+                    "defaultValue": "'rounded-btn-t px-2 py-1'"
+                },
+                {
+                    "name": "justifyHeaders",
+                    "type": "string",
+                    "description": "Set how the headers should be aligned with the justify property.",
+                    "defaultValue": "'justify-center'"
+                }
+            ]
+        },
+        {
+            "component": "Tab",
+            "props": [
+                {
+                    "name": "key",
+                    "type": "string",
+                    "description": "Provide the key of the tab content. \r\nShould be the same as the header key it belongs to."
+                }
+            ]
+        }
+    ]
+}
