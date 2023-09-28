@@ -82,7 +82,7 @@ You can see all our themes in our [styles repo page](https://github.com/bennymi/
 </div>
 ```
 
-```svelte /class="dark"/#prop /data-theme="ato-ui"/#prop title="./src/app.html"
+```svelte /class="dark"/#prop /data-theme="ato"/#prop title="./src/app.html"
 <!DOCTYPE html>
 <html lang="en" class="dark">
 	<head>
