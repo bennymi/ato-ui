@@ -66,6 +66,7 @@
 				<nav class="flex flex-col text-surface-900-50">
 					{#each navigation as { navTitle, landingPath }}
 						<a
+							on:click={() => (revealNavItems = false)}
 							class="font-semibold py-2 border-b-1 border-surface-100/60 hover:text-primary-500"
 							href={landingPath}>{navTitle}</a
 						>
@@ -73,10 +74,10 @@
 				</nav>
 			</div>
 			<div
-				class="flex flex justify-around w-full items-center bg-surface-100-700 py-4 rounded-container text-surface-900-50"
+				class="flex flex-col gap-2 justify-around w-full items-center bg-surface-100-700 py-4 rounded-container text-surface-900-50"
 			>
 				<ThemeDropdown />
-				<NavLightSwitch />
+				<NavLightSwitch isMobile={true} />
 			</div>
 			{#if icons.length > 0}
 				<div class="w-full py-4 gap-x-2 inline-flex justify-center items-center">

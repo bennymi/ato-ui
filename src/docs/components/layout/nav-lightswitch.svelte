@@ -9,6 +9,8 @@
 
 	import { tick } from 'svelte';
 
+	export let isMobile = false;
+
 	const isLandingPage = () => $page.route.id === '/';
 
 	function addOrRemoveClass() {
@@ -72,10 +74,14 @@
 
 		// transition.finished.then(() => ($darkTheme = !$darkTheme));
 	}
+
+	$: btnClasses = isMobile
+		? 'inline-flex'
+		: 'border-x-1 hidden md:inline-flex border-surface-400/50 mx-2';
 </script>
 
 <button
-	class="border-x-1 px-4 mx-2 border-surface-400/50 text-surface-400-900-200-50 hidden md:inline-flex"
+	class="px-4 text-surface-400-900-200-50 {btnClasses}"
 	on:click={toggle}
 	aria-label="dark-theme"
 	aria-pressed={$darkTheme}
