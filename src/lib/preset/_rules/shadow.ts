@@ -9,8 +9,6 @@ export const shadowSCs: Shortcut[] = [
 		([, c, s1, o1, s2, o2]: string[]) => `shadow-${cso(c, s1, o1)} dark:shadow-${cso(c, s2, o2)}`,
 		{
 			autocomplete: [
-				`shadow-${reg_c}`,
-				`shadow-${reg_c}-${reg_s}`,
 				`shadow-${reg_c}-${reg_s}-${reg_s}`
 			]
 		}

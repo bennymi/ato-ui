@@ -22,5 +22,5 @@ export default defineConfig({
 		presetForms(),
 		presetAtoUI()
 	],
-	transformers: [transformerVariantGroup(), transformerDirectives()]
+	transformers: [transformerVariantGroup(), transformerDirectives()],
 });
