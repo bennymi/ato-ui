@@ -49,9 +49,6 @@ export const borderSCs: Shortcut[] = [
 			`border-${cso(c1, s1, o1)} dark:border-${cso(c1, s2, o2)}`,
 		{
 			autocomplete: [
-				`border-${reg_c}`,
-				`border-${reg_c}-${reg_s}`,
-				`border-${reg_c}-${reg_s}/<percent>`,
 				`border-${reg_c}-${reg_s}-${reg_s}`,
 				`border-${reg_c}-${reg_s}/<percent>-${reg_s}`,
 				`border-${reg_c}-${reg_s}-${reg_s}/<percent>`,
@@ -66,9 +63,6 @@ export const borderSCs: Shortcut[] = [
 		([, c1, s1, o1, s2, o2]: string[]) => `ring-${cso(c1, s1, o1)} dark:ring-${cso(c1, s2, o2)}`,
 		{
 			autocomplete: [
-				`ring-${reg_c}`,
-				`ring-${reg_c}-${reg_s}`,
-				`ring-${reg_c}-${reg_s}`,
 				`ring-${reg_c}-${reg_s}-${reg_s}`
 			]
 		}

@@ -36,19 +36,13 @@ export const backgroundRules: Rule[] = [
 	[
 		new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}$`),
 		([, c1, s1, c2, s2]: string[]) => ({
-			background: `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(
-				c2,
-				s2
-			)})))`
+			background: `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2, s2)})))`
 		})
 	],
 	[
 		new RegExp(`^bg-radial-${reg_c_sO}-${reg_c_sO}-${reg_c_sO}$`),
 		([, c1, s1, c2, s2, c3, s3]: string[]) => ({
-			background: `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(
-				c2,
-				s2
-			)})), rgb(var(--color-${cs(c3, s3)})))`
+			background: `radial-gradient(rgb(var(--color-${cs(c1, s1)})), rgb(var(--color-${cs(c2,s2)})), rgb(var(--color-${cs(c3, s3)})))`
 		}),
 		{
 			autocomplete: [
@@ -75,10 +69,7 @@ export const backgroundRules: Rule[] = [
 			for (let i = 0; i < meshes.length; i++) {
 				const [, c, s, o, x, y] = meshes[i];
 
-				bg_image += `radial-gradient(at ${x}% ${y}%, rgba(var(--color-${cs(c, s)}), ${parse_opacity(
-					o,
-					'0.3'
-				)}) 0px, transparent 50%)`;
+				bg_image += `radial-gradient(at ${x}% ${y}%, rgba(var(--color-${cs(c, s)}), ${parse_opacity(o,'0.3')}) 0px, transparent 50%)`;
 
 				bg_image += i + 1 === meshes.length ? ';' : ', ';
 			}

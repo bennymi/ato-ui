@@ -27,14 +27,14 @@ export const textSCs: Shortcut[] = [
 	[
 		new RegExp(`^text-on-${reg_c_sO_oO}$`),
 		([, c, s, op]: string[]) =>
-			`text-[color:rgb(var(--on-${cs(c, s)}))]${op ? `/${convert_opacity(op)}` : ''}`
+			`text-[color:rgba(var(--on-${cs(c, s)}))]${op ? `/${convert_opacity(op)}` : ''}`
 	],
 	[
 		new RegExp(`^text-on-${reg_c_s_oO}-${reg_s}${reg_oO}$`),
 		([, c1, s1, o1, s2, o2]: string[]) =>
-			`text-[color:rgb(var(--on-${cs(c1, s1)}))]${
+			`text-[color:rgba(var(--on-${cs(c1, s1)}))]${
 				o1 ? `/${convert_opacity(o1)}` : ''
-			} dark:text-[color:rgb(var(--on-${cs(c1, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
+			} dark:text-[color:rgba(var(--on-${cs(c1, s2)}))]${o2 ? `/${convert_opacity(o2)}` : ''}`,
 		{
 			autocomplete: [
 				'text-on',

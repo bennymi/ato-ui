@@ -1,5 +1,11 @@
 # ato-ui
 
+## 0.4.0
+
+### Minor Changes
+
+- 84cabee: update dependencies + new Fire and Earth theme
+
 ## 0.3.3
 
 ### Patch Changes

@@ -113,10 +113,7 @@ export const buttonSCs: Shortcut[] = [
 	[
 		new RegExp(`^btn-${reg_c}$`),
 		([, c]: string[]) =>
-			`${baseStyles} bg-${c}-500 text-on-${cs(
-				c,
-				'500'
-			)} hover:(bg-${c}-600 text-on-${c}-600) disabled:hover:(bg-${c}-500 text-on-${c}-500)`,
+			`${baseStyles} bg-${c}-500 text-on-${cs(c, '500')} hover:(bg-${c}-600 text-on-${c}-600) disabled:hover:(bg-${c}-500 text-on-${c}-500)`,
 		{
 			autocomplete: `btn-${reg_c}`
 		}
