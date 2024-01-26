@@ -41,7 +41,7 @@
 	{#each tabs as { name, value }}
 		<div {...$content(name)} use:content>
 			<CodeBlock>
-				<code data-language="bash" data-theme="default"
+				<code data-language="shell" data-theme="moonlight-ii"
 					><span data-line=""><span style="color: #c8d3f5">{value}</span></span></code
 				>
 			</CodeBlock>

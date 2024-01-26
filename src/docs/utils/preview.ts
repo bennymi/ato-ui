@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
-import type { IShikiTheme } from 'shiki';
+// import type { IShikiTheme } from 'shiki';
+import type { BuiltinTheme } from 'shikiji';
 import type { SvelteComponent } from 'svelte';
 
 import { getHighlightedPreviews } from '$docs/utils/highlighter.js';
@@ -112,7 +113,7 @@ export type PreviewExamples = Record<string, PreviewTab[]>;
 
 type PreviewSnippetsArgs = {
 	slug: string;
-	theme: IShikiTheme | string;
+	theme: BuiltinTheme | string;
 	highlights?: ExampleHighlights | undefined;
 	required?: boolean;
 };
@@ -188,7 +189,7 @@ export async function getAllPreviewSnippets(args: PreviewSnippetsArgs) {
  */
 export async function getComponentsTypesSnippet(args: {
 	slug: string;
-	theme: IShikiTheme | string;
+	theme: BuiltinTheme | string;
 }) {
 	const { slug, theme } = args;
 

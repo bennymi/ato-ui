@@ -30,7 +30,7 @@ export const load = (async ({ params, fetch }) => {
 	let theme = get(shikiThemeStore);
 
 	if (!theme) {
-		const response = await fetch('/moonlight-2-theme.json');
+		const response = await fetch('/moonlight-2-theme-new.json');
 		theme = await response.json();
 
 		shikiThemeStore.set(theme);

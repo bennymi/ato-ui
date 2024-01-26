@@ -9,30 +9,37 @@
  *  - hast-util-to-string
  */
 
-// import rehypePrettyCode from 'rehype-pretty-code';
-import rehypePrettyCode from './rehype-pretty-code';
+import rehypePrettyCode from 'rehype-pretty-code';
+import type { Theme } from 'rehype-pretty-code';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+
+// import rehypePrettyCode from './rehype-pretty-code';
 import { toHtml } from 'hast-util-to-html';
-import { getHighlighter } from 'shiki-es';
+// import { getHighlighter } from 'shiki-es';
+import { getHighlighter } from 'shikiji';
 import { unified, type Processor } from 'unified';
 
 import { get } from 'svelte/store';
 import { highlighterStore } from './stores';
-import type { IShikiTheme } from 'shiki';
+// import type { IShikiTheme } from 'shiki';
 import type { FileHighlights } from '$docs/data/types';
 
-async function getShikiHighlighter(theme: IShikiTheme | string, fetcher?: typeof fetch) {
+
+async function getShikiHighlighter(theme: string, fetcher?: typeof fetch) {
 	if (fetcher && typeof window !== 'undefined') {
 		window.fetch = fetcher;
 	}
 
 	const shikiHighlighter = await getHighlighter({
-		theme,
+		themes: ['github-dark-dimmed'],
 		langs: ['svelte']
 	});
 	return shikiHighlighter;
 }
 
-export async function getStoredHighlighter(theme: IShikiTheme | string, fetcher?: typeof fetch) {
+export async function getStoredHighlighter(theme: string, fetcher?: typeof fetch) {
 	const currHighlighter = get(highlighterStore);
 	if (currHighlighter) {
 		return currHighlighter;
@@ -81,7 +88,7 @@ type HighlightedPreviewArgs = {
 	code: string;
 	lang: string;
 	fetcher: typeof fetch;
-	theme: IShikiTheme | string;
+	theme: string;
 	fileHighlights?: FileHighlights | null;
 };
 
@@ -90,22 +97,27 @@ export async function getHighlightedPreviews(args: HighlightedPreviewArgs) {
 
 	const meta = fileHighlights ? createMetaString(fileHighlights) : '';
 
-	// await getStoredHighlighter(theme, fetcher);
+	const highlightedCode = `
+\`\`\`${lang} ${meta}
+${code}
+\`\`\`
+`;
 
 	const file = await unified()
-		.use(rehypeCustomParser, { lang, meta })
+		// .use(rehypeCustomParser, { lang, meta })
+		.use(remarkParse)
+		.use(remarkRehype)
 		.use(rehypePrettyCode, {
 			keepBackground: false,
-			// @ts-ignore:next-line
-			getHighlighter: () => {
-				return getStoredHighlighter(theme, fetcher);
-			}
+			theme: <Theme>theme,
+			getHighlighter: () => getStoredHighlighter(theme, fetcher)
 		})
-		.use(stringify, {
-			allowDangerousHtml: true,
-			allowDangerousCharacters: true
-		})
-		.process(code);
+		// .use(stringify, {
+		// 	allowDangerousHtml: true,
+		// 	allowDangerousCharacters: true
+		// })
+		.use(rehypeStringify)
+		.process(highlightedCode)
 
 	return String(file);
 }
@@ -118,8 +130,11 @@ function rehypeCustomParser(this: Processor, args: { lang: string; meta: string 
 	Object.assign(this, { Parser: parser });
 
 	// meta example: data: { meta: '{5,6,14,18} /surface/#v' }
-
+	
 	function parser(doc: string) {
+		console.log('\n\nPARSER\n');
+		console.log(doc, '\n\n');
+
 		return {
 			type: 'element',
 			tagName: 'pre',
@@ -138,5 +153,32 @@ function rehypeCustomParser(this: Processor, args: { lang: string; meta: string 
 				}
 			]
 		};
+		// return {
+		// 	type: 'element',
+		// 	tagName: 'figure',
+		// 	properties: {
+		// 		"data-rehype-pretty-code-figure": ""
+		// 	},
+		// 	children: [
+		// 		{
+		// 			type: 'element',
+		// 			tagName: 'pre',
+		// 			children: [
+		// 				{
+		// 					type: 'element',
+		// 					tagName: 'code',
+		// 					properties: { className: [`language-${lang}`] },
+		// 					children: [
+		// 						{
+		// 							type: 'text',
+		// 							value: doc
+		// 						}
+		// 					],
+		// 					data: { meta }
+		// 				}
+		// 			]
+		// 		}
+		// 	]	
+		// };
 	}
 }

@@ -9,16 +9,18 @@ import { fileURLToPath } from 'url';
 import { visit } from 'unist-util-visit';
 import { toHtml } from 'hast-util-to-html';
 import rehypePrettyCode from 'rehype-pretty-code';
-import { BUNDLED_LANGUAGES, getHighlighter } from 'shiki-es';
+// import { BUNDLED_LANGUAGES, getHighlighter } from 'shiki-es';
+import { getHighlighter } from 'shikiji';
 import { escapeSvelte } from '@huntabyte/mdsvex';
 
 // import { highlightCode } from './src/docs/mdsvex/highlight.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
+/** @type {import('rehype-pretty-code').Options} */
 const prettyCodeOptions = {
 	// theme: 'github-dark',
-	theme: JSON.parse(readFileSync(resolve(__dirname, './static/moonlight-2-theme.json'), 'utf-8')),
+	theme: JSON.parse(readFileSync(resolve(__dirname, './static/moonlight-2-theme-new.json'), 'utf-8')),
 	keepBackground: false,
 	onVisitLine(node) {
 		if (node.children.length === 0) {
@@ -31,9 +33,11 @@ const prettyCodeOptions = {
 	getHighlighter: (options) => {
 		return getHighlighter({
 			...options,
-			langs: BUNDLED_LANGUAGES.filter(({ id }) => {
-				return ['svelte', 'typescript', 'html', 'css', 'javascript', 'bash', 'shell'].includes(id);
-			})
+			themes: ['github-dark-dimmed'],
+			langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'bash', 'shell']
+			// langs: BUNDLED_LANGUAGES.filter(({ id }) => {
+			// 	return ['svelte', 'typescript', 'html', 'css', 'javascript', 'bash', 'shell'].includes(id);
+			// })
 		});
 	}
 };
@@ -129,9 +133,20 @@ function rehypePreToComponentPre() {
 	};
 }
 
+let count = 0;
+
 function rehypeHandleMetadata() {
 	return async (tree) => {
 		visit(tree, (node) => {
+			if (node?.type === 'element' && node?.tagName === 'figure' && 'data-rehype-pretty-code-figure' in node.properties) {
+				// && JSON.stringify(node).includes('presetAtoUI')
+				
+				if (count === 0) {
+					console.log('NODE:', JSON.stringify(node, null, 4));
+					count += 1;
+				}
+			}
+
 			if (node?.type === 'element' && node?.tagName === 'div') {
 				if (!('data-rehype-pretty-code-fragment' in node.properties)) {
 					return;

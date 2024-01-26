@@ -27,11 +27,16 @@ export const load = (async ({ params, fetch }) => {
 		shikiThemeStore.set(theme);
 	}
 
+	console.log('\n\nSTART - getAllPreviewSnippets()\n');
+
 	const previewSnippets = await getAllPreviewSnippets({
 		slug,
 		theme: theme ?? 'github-dark',
 		required: false
 	});
+
+	
+	console.log('\n\nEND - getAllPreviewSnippets()\n');
 
 	return {
 		previewSnippets
