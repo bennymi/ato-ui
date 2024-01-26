@@ -9,17 +9,13 @@ import { fileURLToPath } from 'url';
 import { visit } from 'unist-util-visit';
 import { toHtml } from 'hast-util-to-html';
 import rehypePrettyCode from 'rehype-pretty-code';
-// import { BUNDLED_LANGUAGES, getHighlighter } from 'shiki-es';
 import { getHighlighter } from 'shikiji';
 import { escapeSvelte } from '@huntabyte/mdsvex';
-
-// import { highlightCode } from './src/docs/mdsvex/highlight.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 /** @type {import('rehype-pretty-code').Options} */
 const prettyCodeOptions = {
-	// theme: 'github-dark',
 	theme: JSON.parse(readFileSync(resolve(__dirname, './static/moonlight-2-theme-new.json'), 'utf-8')),
 	keepBackground: false,
 	onVisitLine(node) {
@@ -27,17 +23,11 @@ const prettyCodeOptions = {
 			node.children = { type: 'text', value: ' ' };
 		}
 	},
-	// onVisitTitle(node) {
-	// 	// console.log('title:', node);
-	// },
 	getHighlighter: (options) => {
 		return getHighlighter({
 			...options,
 			themes: ['github-dark-dimmed'],
 			langs: ['svelte', 'typescript', 'html', 'css', 'javascript', 'bash', 'shell']
-			// langs: BUNDLED_LANGUAGES.filter(({ id }) => {
-			// 	return ['svelte', 'typescript', 'html', 'css', 'javascript', 'bash', 'shell'].includes(id);
-			// })
 		});
 	}
 };
@@ -46,9 +36,6 @@ const prettyCodeOptions = {
 export const mdsvexOptions = {
 	extensions: ['.md'],
 	layout: resolve(__dirname, './src/docs/components/markdown/layout.svelte'),
-	// highlight: {
-	// 	highlighter: highlightCode
-	// },
 	rehypePlugins: [
 		rehypeCustomComponents,
 		rehypeComponentPreToPre,
@@ -140,7 +127,7 @@ function rehypeHandleMetadata() {
 		visit(tree, (node) => {
 			if (node?.type === 'element' && node?.tagName === 'figure' && 'data-rehype-pretty-code-figure' in node.properties) {
 				// && JSON.stringify(node).includes('presetAtoUI')
-				
+
 				if (count === 0) {
 					console.log('NODE:', JSON.stringify(node, null, 4));
 					count += 1;
